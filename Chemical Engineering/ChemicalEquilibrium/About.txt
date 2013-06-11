@@ -1,0 +1,7 @@
+ChemicalEquilibrium
+
+//Sources
+Bracken, J, and McCormick, G P, Chapter 5. In Selected Applications of Nonlinear Programming. John Wiley and Sons, New York, 1968, pp. 48-49.
+
+//Type
+NLP
