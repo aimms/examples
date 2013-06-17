@@ -1,0 +1,7 @@
+OilPipelineDesign
+
+//Sources
+Brimberg, J, Hansen, P, Lih, K, Mladenovic, N, and Breton, M, An Oil Pipeline Design Problem. Operations Research 51 (2) (2003), 228-239
+
+//Type
+MIP
