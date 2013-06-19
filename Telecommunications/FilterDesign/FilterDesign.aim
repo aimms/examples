@@ -1,0 +1,164 @@
+﻿
+MAIN MODEL Main_FilterDesign
+
+  DECLARATION SECTION 
+
+    SET:
+       identifier   :  IndexI
+       subset of    :  Integers
+       index        :  i
+       definition   :  {0..N} ;
+
+    SET:
+       identifier   :  IndexK
+       subset of    :  Integers
+       index        :  k
+       definition   :  {0..np} ;
+
+    PARAMETER:
+       identifier   :  N
+       range        :  integer
+       initial data :  180 ; ;
+
+    PARAMETER:
+       identifier   :  N1
+       range        :  integer
+       definition   :  N/2 ;
+
+    PARAMETER:
+       identifier   :  N2
+       definition   :  2*N/3 ;
+
+    PARAMETER:
+       identifier   :  np
+       range        :  integer
+       initial data :  20; ;
+
+    PARAMETER:
+       identifier   :  Beta
+       initial data :  0.01 ; ;
+
+    PARAMETER:
+       identifier   :  Omega
+       index domain :  (i)
+       definition   :  i*Pi/180  ;
+
+    PARAMETER:
+       identifier   :  Pi
+       definition   :  arctan(1)*4  ;
+
+    VARIABLE:
+       identifier   :  t
+       range        :  [1, inf) ;
+
+    VARIABLE:
+       identifier   :  u
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  h
+       index domain :  (k)
+       range        :  free ;
+
+    VARIABLE:
+       identifier   :  hp
+       index domain :  k
+       range        :  free
+       definition   :  if (k=0) then
+                       0
+                       elseif (k<=np/2-1) then
+                       h(k)
+                       elseif (k<np-1) then
+                       h(np-k-1)
+                       else 0
+                       endif ;
+
+    VARIABLE:
+       identifier   :  x
+       range        :  nonnegative
+       definition   :  u+t ;
+
+    VARIABLE:
+       identifier   :  y
+       range        :  free
+       definition   :  u-t ;
+
+    VARIABLE:
+       identifier   :  obj
+       range        :  free
+       definition   :  t ;
+
+    CONSTRAINT:
+       identifier   :  DeviationConstraint
+       definition   :  !4+y^2 <= x^2
+                       
+                       sqrt(4 + (u-t)^2) <= u+t ;
+
+    CONSTRAINT:
+       identifier   :  PassBandUpBounds
+       index domain :  i | i<N1
+       definition   :  2 * sum(k | k<=np/2-1, h(k) * cos((k-(np-1)/2)*Omega(i))) <= t ;
+
+    CONSTRAINT:
+       identifier   :  PassBandLowBounds
+       index domain :  i | i<N1
+       definition   :  2 * sum(k | k<=np/2-1, h(k) * cos((k-(np-1)/2)*Omega(i))) >= u ;
+
+    CONSTRAINT:
+       identifier   :  StopBandUpBounds
+       index domain :  i | i>=N2
+       definition   :  2 * sum(k | k<=np/2-1, h(k) * cos((k-(np-1)/2)*Omega(i))) <= Beta ;
+
+    CONSTRAINT:
+       identifier   :  StopBandLowBounds
+       index domain :  i | i>=N2
+       definition   :  2 * sum(k | k<=np/2-1, h(k) * cos((k-(np-1)/2)*Omega(i))) >= -Beta ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastT
+       objective    :  obj
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  NLP ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      t := 1.04649;
+      u := 0.955577;
+      
+      h[0] :=  -0.00503552;
+      h[1] :=   0.0196456;
+      h[2] :=   0.0246178;
+      h[3] :=  -0.0242968;
+      h[4] :=  -0.0189922;
+      h[5] :=   0.0569488;
+      h[6] :=   0.000586451;
+      h[7] :=  -0.117416;
+      h[8] :=   0.0895147;
+      h[9] :=   0.497671;
+      
+      x := u+t;
+      y := u-t;
+      obj := t;
+      
+      solve LeastT;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return DataManagementExit();
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_FilterDesign ;
