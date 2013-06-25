@@ -1,6 +1,0 @@
-StructuralOptimization
-//Sources
-Bracken, J, and McCormick, G P, Chapter 6. In Selected Applications of Nonlinear Programming. John Wiley and Sons, New York, 1968, pp. 50-57.
-
-//Type
-NLP
