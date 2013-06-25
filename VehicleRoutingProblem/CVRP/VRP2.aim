@@ -1,0 +1,276 @@
+﻿
+MAIN MODEL Main_VRP2
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  CustomersNumber
+       definition   :  13 ;
+
+    SET:
+       identifier   :  Customers
+       subset of    :  Integers
+       indices      :  i, j
+       definition   :  {1..CustomersNumber} ;
+
+    PARAMETER:
+       identifier   :  CustomersDemand
+       index domain :  (i) ;
+
+    PARAMETER:
+       identifier   :  VehiclesNumber
+       range        :  integer
+       definition   :  !CustomersNumber
+                       VehicleLowerBound + 2 ;
+
+    SET:
+       identifier   :  Vehicles
+       subset of    :  Integers
+       index        :  k
+       definition   :  {1..VehiclesNumber} ;
+
+    PARAMETER:
+       identifier   :  XCoordinate
+       index domain :  (i) ;
+
+    PARAMETER:
+       identifier   :  YCoordinate
+       index domain :  (i) ;
+
+    PARAMETER:
+       identifier   :  Distance
+       index domain :  (i,j)
+       definition   :  !round(sqrt((XCoordinate(i) - XCoordinate(j))^2 + (YCoordinate(i) - YCoordinate(j))^2))
+                       ;
+
+    PARAMETER:
+       identifier   :  FullDistance
+       index domain :  (i,j)
+       definition   :  if (i>j) then
+                       Distance(i, j)
+                       else
+                       Distance(j, i)
+                       endif ;
+
+    PARAMETER:
+       identifier   :  LoadCapacity
+       initial data :  6000 ;
+
+    PARAMETER:
+       identifier   :  VehicleLowerBound
+       definition   :  ceil(sum(i, CustomersDemand(i)) / LoadCapacity) ;
+
+    VARIABLE:
+       identifier   :  X
+       index domain :  (i,j,k) | i<>j
+       range        :  binary ;
+
+    VARIABLE:
+       identifier   :  Y
+       index domain :  (i,k)
+       range        :  binary ;
+
+    VARIABLE:
+       identifier   :  U
+       index domain :  (i,k)
+       range        :  free ;
+
+    VARIABLE:
+       identifier   :  TotalCost
+       range        :  free
+       definition   :  sum((i,j), FullDistance(i, j) * sum(k, X(i, j, k))) ;
+
+    CONSTRAINT:
+       identifier   :  C1
+       index domain :  i | i>1
+       definition   :  sum(k, Y(i, k)) = 1 ;
+
+    CONSTRAINT:
+       identifier   :  C2
+       definition   :  sum(k, Y(1,k)) >= VehicleLowerBound ;
+
+    CONSTRAINT:
+       identifier   :  C3
+       index domain :  (i,k)
+       definition   :  sum(j, X(i, j, k)) = Y(i, k) ;
+
+    CONSTRAINT:
+       identifier   :  C3p
+       index domain :  (i,k)
+       definition   :  sum(j, X(j, i, k)) = Y(i, k) ;
+
+    CONSTRAINT:
+       identifier   :  C4
+       index domain :  (k)
+       definition   :  sum(i, CustomersDemand(i) * Y(i, k)) <= LoadCapacity ;
+
+    CONSTRAINT:
+       identifier   :  C5
+       index domain :  (i,j,k) | i>1 and j>0 and i<>j
+       definition   :  U(i, k) - U(j, k) + LoadCapacity * X(i, j, k) <= LoadCapacity - CustomersDemand(j) ;
+
+    CONSTRAINT:
+       identifier   :  C6
+       index domain :  (i,k) | i<>1
+       definition   :  U(i, k) >= CustomersDemand(i) ;
+
+    CONSTRAINT:
+       identifier   :  C6p
+       index domain :  (i,k) | i<>1
+       definition   :  U(i, k) <= LoadCapacity ;
+
+    CONSTRAINT:
+       identifier   :  c7
+       index domain :  k | k < VehiclesNumber
+       definition   :  y(1,k) >= y(1,k+1) ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastCost
+       objective    :  TotalCost
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+    body       :  
+      
+       COMPOSITE TABLE
+        i   j    Distance
+      !--  --    --------
+        2   1       9
+        3   1      14
+        3   2      21
+        4   1      23
+        4   2      22
+        4   3      25
+        5   1      32
+        5   2      36
+        5   3      38
+        5   4      42
+        6   1      50
+        6   2      52
+        6   3       5
+        6   4      12
+        6   5      22
+        7   1      21
+        7   2      24
+        7   3      31
+        7   4      35
+        7   5      37
+        7   6      41
+        8   1      49
+        8   2      51
+        8   3       7
+        8   4      17
+        8   5      16
+        8   6      23
+        8   7      26
+        9   1      30
+        9   2      36
+        9   3      36
+        9   4      44
+        9   5      46
+        9   6      10
+        9   7      21
+        9   8      30
+       10   1      27
+       10   2      37
+       10   3      43
+       10   4      31
+       10   5      37
+       10   6      39
+       10   7      19
+       10   8      28
+       10   9      25
+       11   1      35
+       11   2      41
+       11   3      29
+       11   4      31
+       11   5      29
+       11   6       9
+       11   7      10
+       11   8      16
+       11   9      22
+       11  10      20
+       12   1      28
+       12   2      30
+       12   3       7
+       12   4      11
+       12   5      13
+       12   6      17
+       12   7      25
+       12   8      27
+       12   9      10
+       12  10      16
+       12  11      10
+       13   1      18
+       13   2      20
+       13   3       6
+       13   4       6
+       13   5      14
+       13   6      16
+       13   7      12
+       13   8      12
+       13   9      20
+       13  10       8
+       13  11      10
+       13  12      10
+       ;
+      
+       COMPOSITE TABLE
+       i  CustomersDemand
+      !--  --------------
+       1     0
+       2     1200
+       3     1700
+       4     1500
+       5     1400
+       6     1700
+       7     1400
+       8     1200
+       9     1900
+       10    1800
+       11    1600
+       12    1700
+       13    1100
+      ;
+      
+       COMPOSITE TABLE
+        i   XCoordinate     YCoordinate
+       !--  -----------     -----------
+        1       0                 0
+        2       2                25
+        3      12               -12
+        4      10                -2
+        5       2               -20
+        6      30                 5
+        7      -8                 8
+        8      13               -18
+        9       4                 9
+       10     -10                -7
+       11     -20                10
+       12       0               -10
+       13     -19                -3
+      ;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      solve LeastCost;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return DataManagementExit();
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_VRP2 ;

@@ -1,0 +1,7 @@
+CapacitedVehicleRoutingProblem
+
+//Sources
+Vigo, D and Toth, P, The Vehicle Routing Problem. (2002), 15
+
+//Type
+MIP
