@@ -1,0 +1,189 @@
+﻿
+MAIN MODEL Main_RobotArm
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfIntervals
+       definition   :  50 ;
+
+    SET:
+       identifier   :  Intervals
+       subset of    :  Integers
+       index        :  h
+       definition   :  {0..NumberOfIntervals} ;
+
+    PARAMETER:
+       identifier   :  Pi
+       definition   :  2*arctan(inf) ;
+
+    PARAMETER:
+       identifier   :  LengthOfArm
+       definition   :  5 ;
+
+    VARIABLE:
+       identifier   :  Rho
+       index domain :  (h)
+       range        :  [0, LengthOfArm]
+       definition   :  if(h=0) then
+                       4.5
+                       else!if(h<>NumberOfIntervals) then
+                       Rho(h-1) + 0.5 * Step * (RhoDot(h) + RhoDot(h-1))
+                       !else
+                       !4.5
+                       endif ;
+
+    VARIABLE:
+       identifier   :  Theta
+       index domain :  (h)
+       range        :  (-3.15, Pi]
+       definition   :  if(h=0) then
+                       0
+                       else!if(h<>NumberOfIntervals) then
+                       Theta(h-1) + 0.5 * Step * (ThetaDot(h) + ThetaDot(h-1))
+                       !else
+                       !2 * Pi / 3
+                       endif ;
+
+    VARIABLE:
+       identifier   :  Phi
+       index domain :  (h)
+       range        :  [0, Pi]
+       definition   :  if(h=0) then
+                       Pi / 4
+                       else!if(h<>NumberOfIntervals) then
+                       Phi(h-1) + 0.5 * Step * (PhiDot(h) + PhiDot(h-1))
+                       !else
+                       !Pi / 4
+                       endif ;
+
+    VARIABLE:
+       identifier   :  RhoDot
+       index domain :  (h)
+       range        :  free
+       definition   :  if(h=0) then
+                       0
+                       else!if(h<>NumberOfIntervals) then
+                       RhoDot(h-1) + 0.5 * Step * (URho(h) + URho(h-1))/LengthOfArm
+                       !else
+                       !0
+                       endif ;
+
+    VARIABLE:
+       identifier   :  ThetaDot
+       index domain :  (h)
+       range        :  free
+       definition   :  if(h=0) then
+                       0
+                       else!if(h<>NumberOfIntervals) then
+                       ThetaDot(h-1) + 0.5 * step * (UTheta(h) / ITheta(h) + UTheta(h-1) / ITheta(h-1))
+                       !else
+                       !0
+                       endif ;
+
+    VARIABLE:
+       identifier   :  PhiDot
+       index domain :  (h)
+       range        :  free
+       definition   :  if(h=0) then
+                       0
+                       else!if(h<>NumberOfIntervals) then
+                       PhiDot(h-1) + 0.5 * step * (UPhi(h) / IPhi(h) + UPhi(h-1) / IPhi(h-1))
+                       !else
+                       !0
+                       endif ;
+
+    VARIABLE:
+       identifier   :  URho
+       index domain :  (h)
+       range        :  [-1, 1] ;
+
+    VARIABLE:
+       identifier   :  UTheta
+       index domain :  (h)
+       range        :  [-1, 1] ;
+
+    VARIABLE:
+       identifier   :  UPhi
+       index domain :  (h)
+       range        :  [-1, 1] ;
+
+    VARIABLE:
+       identifier   :  Step
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  Tf
+       range        :  free
+       definition   :  Step * NumberOfIntervals  ;
+
+    VARIABLE:
+       identifier   :  ITheta
+       index domain :  (h)
+       range        :  (0, inf)
+       definition   :  ((LengthOfArm - Rho(h))^3 + Rho(h)^3) * sin(Phi(h))^2 / 3 ;
+
+    VARIABLE:
+       identifier   :  IPhi
+       index domain :  (h)
+       range        :  (0, inf)
+       definition   :  ((LengthOfArm - Rho(h))^3 + Rho(h)^3) / 3 ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastTf
+       objective    :  Tf
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+    CONSTRAINT:
+       identifier   :  ThetaLastValue
+       definition   :  Theta(NumberOfIntervals) >= 2 * Pi /3 ;
+
+    CONSTRAINT:
+       identifier   :  PhiLastValue
+       definition   :  Phi(NumberOfIntervals) = Pi /4 ;
+
+    CONSTRAINT:
+       identifier   :  RhoLastValue
+       definition   :  Rho(NumberOfIntervals) >= 4.5 ;
+
+    CONSTRAINT:
+       identifier   :  RhoDotLastValue
+       definition   :  RhoDot(NumberOfIntervals) = 0 ;
+
+    CONSTRAINT:
+       identifier   :  ThetaDotLastValue
+       definition   :  ThetaDot(NumberOfIntervals) = 0 ;
+
+    CONSTRAINT:
+       identifier   :  PhiDotLastValue
+       definition   :  PhiDot(NumberOfIntervals) = 0 ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      Rho(h) := 4.5;
+      Theta(h) := (2*Pi/3)*(h/NumberOfIntervals)^2;
+      Phi(h) := Pi/4;
+      Step := 1 / NumberOfIntervals;
+      solve LeastTf;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return DataManagementExit();
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_RobotArm ;
