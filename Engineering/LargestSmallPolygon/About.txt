@@ -1,0 +1,7 @@
+LargestSmallPolygon
+
+//Sources
+Dolan, E.D, More, J.J, Benchmarking Optimization Software with COPS. 200. p3
+	
+//Type
+NLP

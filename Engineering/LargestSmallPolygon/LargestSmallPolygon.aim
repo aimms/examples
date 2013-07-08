@@ -1,0 +1,103 @@
+﻿
+MAIN MODEL Main_LargestSmallPolygon
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfSides
+       range        :  integer
+       initial data :  7 ;
+
+    SET:
+       identifier   :  Sides
+       subset of    :  Integers
+       indices      :  i, j
+       definition   :  {1..NumberOfSides} ;
+
+    PARAMETER:
+       identifier   :  Pi
+       definition   :  2 * arctan(inf) ;
+
+    PARAMETER:
+       identifier   :  X
+       index domain :  (i)
+       definition   :  R(i) * cos(Theta(i)) ;
+
+    PARAMETER:
+       identifier   :  Y
+       index domain :  (i)
+       definition   :  R(i) * sin(Theta(i)) ;
+
+    VARIABLE:
+       identifier   :  R
+       index domain :  (i)
+       range        :  [0, 1] ;
+
+    VARIABLE:
+       identifier   :  Theta
+       index domain :  (i)
+       range        :  [0, Pi] ;
+
+    VARIABLE:
+       identifier   :  PolygonArea
+       range        :  free
+       definition   :  0.5 * sum(i | i<>NumberOfSides, R(i+1) * R(i) * sin(Theta(i+1) - Theta(i))) ;
+
+    CONSTRAINT:
+       identifier   :  Distance
+       index domain :  (i,j) | i < j
+       definition   :  R(i)^2 + R(j)^2 - 2 * R(i) * R(j) * cos(Theta(i) - Theta(j)) <= 1 ;
+
+    CONSTRAINT:
+       identifier   :  OrderConstraint
+       index domain :  i | i<NumberOfSides
+       definition   :  Theta(i) - Theta(i+1) <= 0 ;
+
+    CONSTRAINT:
+       identifier   :  LastR
+       definition   :  R(NumberOfSides) = 0 ;
+
+    CONSTRAINT:
+       identifier   :  LastTheta
+       definition   :  Theta(NumberOfSides) = Pi ;
+
+    CONSTRAINT:
+       identifier   :  FirstTheta
+       definition   :  Theta(1) = 0 ;
+
+    CONSTRAINT:
+       identifier   :  FirstR
+       definition   :  R(1) = 0 ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastArea
+       objective    :  PolygonArea
+       direction    :  maximize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      R(i) := 4 * i / (Card(i) + 1 - i) / (Card(i) + 1)^2;
+      Theta(i) := Pi * i / Card(i);
+      solve LeastArea;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return DataManagementExit();
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_LargestSmallPolygon ;
