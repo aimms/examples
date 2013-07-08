@@ -1,0 +1,171 @@
+﻿
+MAIN MODEL Main_GoddardRocket
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfIntervals
+       definition   :  200 ;
+
+    SET:
+       identifier   :  Intervals
+       subset of    :  Integers
+       index        :  h
+       definition   :  {0..NumberOfIntervals} ;
+
+    PARAMETER:
+       identifier   :  InitialHeight
+       definition   :  1 ;
+
+    PARAMETER:
+       identifier   :  InitialVelocity
+       definition   :  0 ;
+
+    PARAMETER:
+       identifier   :  InitialMass
+       definition   :  1 ;
+
+    PARAMETER:
+       identifier   :  SurfaceGravity
+       definition   :  1 ;
+
+    PARAMETER:
+       identifier   :  ThrustConstant
+       definition   :  3.5 ;
+
+    PARAMETER:
+       identifier   :  VelocityConstant
+       definition   :  620 ;
+
+    PARAMETER:
+       identifier   :  HeightConstant
+       definition   :  500 ;
+
+    PARAMETER:
+       identifier   :  MassConstant
+       definition   :  0.6 ;
+
+    PARAMETER:
+       identifier   :  DragConstant
+       definition   :  0.5 * VelocityConstant * (InitialMass / SurfaceGravity) ;
+
+    PARAMETER:
+       identifier   :  FinalMass
+       definition   :  MassConstant * InitialMass ;
+
+    PARAMETER:
+       identifier   :  C
+       definition   :  0.5 * (SurfaceGravity * InitialHeight)^2 ;
+
+    VARIABLE:
+       identifier   :  Step
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  Velocity
+       index domain :  (h)
+       range        :  nonnegative
+       definition   :  if(h = 0) then
+                       InitialVelocity
+                       else
+                       Velocity(h-1) + 0.5 * Step * ((Thrust(h) - Drag(h) - Mass(h) * Gravity(h)) / Mass(h) + (Thrust(h-1) - Drag(h-1) - Mass(h-1) * Gravity(h-1)) / Mass(h-1))
+                       endif ;
+
+    VARIABLE:
+       identifier   :  Height
+       index domain :  (h)
+       range        :  (0, inf)
+       definition   :  if(h = 0) then
+                       InitialHeight
+                       else
+                       Height(h-1) + 0.5 * Step * (Velocity(h) + Velocity(h-1))
+                       endif ;
+
+    VARIABLE:
+       identifier   :  Gravity
+       index domain :  (h)
+       range        :  nonnegative
+       definition   :  SurfaceGravity * (InitialHeight / Height(h))^2 ;
+
+    VARIABLE:
+       identifier   :  Mass
+       index domain :  (h)
+       range        :  (0, inf)
+       definition   :  if(h = 0) then
+                       InitialMass
+                       else
+                       Mass(h-1) - 0.5 * Step * (Thrust(h) + Thrust(h-1)) / C
+                       endif ;
+
+    VARIABLE:
+       identifier   :  Thrust
+       index domain :  (h)
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  Drag
+       index domain :  (h)
+       range        :  nonnegative
+       definition   :  DragConstant * Velocity(h)^2 * Exp(-HeightConstant * (Height(h) - InitialHeight) / InitialHeight) ;
+
+    VARIABLE:
+       identifier   :  FinalAltitude
+       range        :  free
+       definition   :  Height(NumberOfIntervals) ;
+
+    CONSTRAINT:
+       identifier   :  ThrustUpperBound
+       index domain :  (h)
+       definition   :  Thrust(h) <= ThrustConstant * (InitialMass * SurfaceGravity) ;
+
+    CONSTRAINT:
+       identifier   :  MassUpperBound
+       index domain :  (h)
+       definition   :  Mass(h) <= InitialMass ;
+
+    CONSTRAINT:
+       identifier   :  MassLowerBound
+       index domain :  h | h<> NumberOfIntervals
+       definition   :  Mass(h) >= FinalMass ;
+
+    CONSTRAINT:
+       identifier   :  FinalMassConstraint
+       definition   :  Mass(NumberOfIntervals) = FinalMass ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  MaxHeight
+       objective    :  FinalAltitude
+       direction    :  maximize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      Height(h) := 1;
+      Velocity(h | h<>0) := ((h-1) / NumberOfIntervals) * (1 - ((h-1) / NumberOfIntervals));
+      Mass(h | h<>0) := (FinalMass - InitialMass) * ((h-1) / NumberOfIntervals) + InitialMass;
+      Thrust(h) := ThrustConstant * (InitialMass * SurfaceGravity) / 2;
+      Step := 1 / NumberOfIntervals;
+      Drag(h) := DragConstant * (Velocity(h))^2 * Exp(-HeightConstant * (Height(h) - InitialHeight) / InitialHeight);
+      Gravity(h) := SurfaceGravity * (InitialHeight / Height(h))^2;
+      solve MaxHeight;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return DataManagementExit();
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_GoddardRocket ;

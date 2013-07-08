@@ -1,0 +1,7 @@
+GoddardRocket
+
+//Sources
+Dolan, E.D, More, J.J, Benchmarking Optimization Software with COPS. 200. p23-25
+	
+//Type
+NLP
