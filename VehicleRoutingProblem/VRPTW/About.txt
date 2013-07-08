@@ -1,0 +1,11 @@
+VehicleRoutingProblemWithTimeWindows
+
+//Sources
+	Formulation
+	Desrochers, M, Lenstra, J.K, Savelsbergh, M.W.P, Soumis, F, Vehicle Routing Problem with Time Windows: Optimization and Approximation. 1988. p67-68
+	
+	Instance
+	Solomon
+	
+//Type
+MIP
