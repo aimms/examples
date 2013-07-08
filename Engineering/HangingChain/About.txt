@@ -1,0 +1,7 @@
+HangingChain
+
+//Sources
+Dolan, E.D, More, J.J, Benchmarking Optimization Software with COPS. 200. p7-8
+	
+//Type
+NLP
