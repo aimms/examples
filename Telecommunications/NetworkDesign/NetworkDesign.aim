@@ -1,0 +1,206 @@
+﻿
+MAIN MODEL Main_NetworkDesign
+
+  DECLARATION SECTION 
+
+    SET:
+       identifier   :  LinkTypes
+       definition   :  { 'DIRECTED', 'BIDIRECTED', 'UNDIRECTED' } ;
+
+    ELEMENT PARAMETER:
+       identifier   :  LinkModel
+       range        :  LinkTypes ;
+
+    SET:
+       identifier   :  Demands
+       index        :  q ;
+
+    PARAMETER:
+       identifier   :  Demand
+       index domain :  q ;
+
+    PARAMETER:
+       identifier   :  SetupCost
+       index domain :  (i,j) ;
+
+    ELEMENT PARAMETER:
+       identifier   :  FromCity
+       index domain :  q
+       range        :  Cities ;
+
+    ELEMENT PARAMETER:
+       identifier   :  ToCity
+       index domain :  q
+       range        :  Cities ;
+
+    SET:
+       identifier   :  Links
+       index        :  l
+       comment      :  "Dummy set needed to read XML file." ;
+
+  ENDSECTION  ;
+
+  DECLARATION SECTION Declaration_Model
+
+    SET:
+       identifier   :  Cities
+       indices      :  i, j ;
+
+    SET:
+       identifier   :  Commodities
+       subset of    :  Cities
+       index        :  k ;
+
+    PARAMETER:
+       identifier   :  ModuleCost
+       index domain :  (i,j) ;
+
+    PARAMETER:
+       identifier   :  ModuleCapacity
+       index domain :  (i,j) ;
+
+    PARAMETER:
+       identifier   :  AggrDemand
+       index domain :  (k,i) ;
+
+    VARIABLE:
+       identifier   :  Flow
+       index domain :  (i,j,k) | ( ModuleCapacity(i, j) or ModuleCapacity(j, i) ) and k <> i
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  NumberOfModules
+       index domain :  (i,j) | ModuleCapacity(i, j)
+       range        :  integer ;
+
+    VARIABLE:
+       identifier   :  TotalCost
+       range        :  free
+       definition   :  sum((i,j), NumberOfModules(i, j) * ModuleCost(i, j)) ;
+
+    CONSTRAINT:
+       identifier   :  CapacityConstraint
+       index domain :  (i,j) | ModuleCapacity(i, j)
+                       and ( LinkModel = 'DIRECTED' or LinkModel = 'BIDIRECTED' )
+       definition   :  sum(k, Flow(i, j, k)) <= ModuleCapacity(i, j) * NumberOfModules(i, j) ;
+
+    CONSTRAINT:
+       identifier   :  CapacityConstraintBidirected
+       index domain :  (i,j) | ModuleCapacity(j, i)
+                       and LinkModel = 'BIDIRECTED'
+       definition   :  sum(k, Flow(i, j, k)) <= ModuleCapacity(j, i) * NumberOfModules(j, i) ;
+
+    CONSTRAINT:
+       identifier   :  CapacityConstraintUndirected
+       index domain :  (i,j) | ModuleCapacity(i, j)
+                       and LinkModel = 'UNDIRECTED'
+       definition   :  sum(k, Flow(i, j, k) + Flow(j, i, k)) <= ModuleCapacity(i, j) * NumberOfModules(i, j)
+       comment      :  "sum(q, Flow(i, j, q)) <= ModuleCapacity(i, j) * NumberOfModules(i, j)" ;
+
+    CONSTRAINT:
+       identifier   :  DemandConstraint
+       index domain :  (k,i)
+       definition   :  sum(j, Flow(j, i, k)) - sum(j, Flow(i, j, k)) = AggrDemand(k,i) ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastCost
+       objective    :  TotalCost
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+  ENDSECTION  ;
+
+  DECLARATION SECTION Declaration_Benders
+
+    ELEMENT PARAMETER:
+       identifier :  myGMP
+       range      :  AllGeneratedMathematicalPrograms ;
+
+    PARAMETER:
+       identifier :  BendersMode
+       range      :  {0..3} ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      ReadAndProcessData;
+      
+      solve LeastCost;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  Benders
+    body       :  
+      ReadAndProcessData;
+      
+      myGMP := GMP::Instance::Generate( LeastCost );
+      
+      GMPBenders::FeasibilityOnly := 1;
+      GMPBenders::UseMinMaxForFeasibilityProblem := 1;
+      GMPBenders::CreateStatusFile := 1;
+      GMPBenders::DisplayInterval := 1;
+      GMPBenders::TimeLimit := 10800;
+      
+      BendersMode := 0;
+      
+      if ( BendersMode = 0 ) then
+          GMPBenders::DoBendersDecompositionClassic( myGMP, AllIntegerVariables );
+      elseif ( BendersMode = 1 ) then
+          GMPBenders::DoBendersDecompositionSingleMIP( myGMP, AllIntegerVariables );
+      elseif ( BendersMode = 2 ) then
+          GMPBenders::DoBendersDecompositionTwoPhase( myGMP, AllIntegerVariables, 0 );
+      else
+          GMPBenders::DoBendersDecompositionTwoPhase( myGMP, AllIntegerVariables, 1 );
+      endif;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  ReadAndProcessData
+    body       :  
+      !ReadXML( "sunDDSNCANN.xml", "NetworkDesign.axm" );
+      !ReadXML( "franceDBSNCANN.xml", "NetworkDesign.axm" );
+      !ReadXML( "geantDBSNCANN.xml", "NetworkDesign.axm" );
+      ReadXML( "janos-usDDSNCANN.xml", "NetworkDesign.axm" );
+      
+      LinkModel := 'DIRECTED';
+      
+      empty Commodities, AggrDemand;
+      
+      for (q) do
+          Commodities += FromCity(q);
+          AggrDemand(FromCity(q),FromCity(q)) += Demand(q);
+          AggrDemand(FromCity(q),  ToCity(q)) -= Demand(q);
+      endfor;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return 1;
+
+  ENDPROCEDURE  ;
+
+  MODULE GMP_Benders_Decomposition_Module
+      source file :  "%AIMMSMODULES%\\GMPBendersDecomposition.aim"
+    comment     :  "This module contains an implementation of an automatic Benders' Decomposition algorithm
+                    using functions from the GMP library. It can be used to solve linear problems (LP and MIP).
+                    
+                    See the chapter 'Automatic Benders’ Decomposition' in the Language Reference for more
+                    information."
+
+
+  ENDMODULE GMP_Benders_Decomposition_Module ;
+
+ENDMODEL Main_NetworkDesign ;
