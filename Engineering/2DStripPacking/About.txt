@@ -1,0 +1,10 @@
+2DStripPacking
+
+//Sources
+Pedro M. Castro and Ignacio E. Grossmann, Hybrid Spatial Representation Models for Strip Packing Problems.
+
+//Instances
+http://minlp.org/library/problem/mod/index.php?lib=MINLP&i=171&pi=131
+
+//Type
+MIP

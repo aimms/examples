@@ -1,0 +1,167 @@
+﻿
+MAIN MODEL aimms_2_upgrade
+
+  DECLARATION SECTION 
+
+    SET:
+       identifier   :  Items
+       indices      :  I_i, IL
+       initial data :  data { I1 .. I50 } ;
+
+    SET:
+       identifier   :  StripWidth
+       indices      :  X_i, XL, XLL
+       initial data :  data { X1 .. X300 } ;
+
+    SET:
+       identifier   :  StripHeight
+       indices      :  Y_i, YL, YLL
+       initial data :  data { Y1 .. Y300 } ;
+
+    SET:
+       identifier   :  ActiveItems
+       subset of    :  Items
+       text         :  "Active items" ;
+
+    SET:
+       identifier   :  ActiveWidthPoints
+       subset of    :  StripWidth ;
+
+    SET:
+       identifier   :  ActiveHeigthPoints
+       subset of    :  StripHeight ;
+
+    SET:
+       identifier   :  XAxisOrigin
+       subset of    :  StripWidth
+       text         :  "Origin of the grid X axis" ;
+
+    SET:
+       identifier   :  PossibleOriginPoints
+       subset of    :  (Items,StripWidth,StripHeight)
+       text         :  "Possible origin points for item I" ;
+
+    PARAMETER:
+       identifier   :  StripW
+       text         :  "Strip width" ;
+
+    PARAMETER:
+       identifier   :  StripH
+       text         :  "Strip height" ;
+
+    PARAMETER:
+       identifier   :  Width
+       index domain :  I_i
+       text         :  "Width of item I"
+       definition   :  data
+                       ! Instance P1
+                        { I1  :  2,  I2  :  2,  I3  :  2,  I4  :  2,  I5  :  2,  I6  :  5,  I7  :  5,  I8  :  1,  I9  :  1,  I10 : 10,  I11 :  4,
+                          I12 :  2,  I13 :  2,  I14 :  7,  I15 :  7,  I16 :  7,  I17 :  2,  I18 :  2,  I19 :  2,  I20 :  1,  I21 :  1 }
+                       
+                       ! Instance P3
+                       ! {I1 : 9,I2 : 9,I3 : 9,I4 : 3,I5 : 3,I6 : 2,I7 : 1,I8 : 1}
+                       
+                       ! Instance P4
+                       ! {I1 : 3,I2 : 6,I3 : 6,I4 : 6,I5 : 1,I6 : 1,I7 : 7,I8 : 7,I9 : 5,I10 : 5,I11 : 5,I12 : 4,I13 : 3}
+                       ;
+
+    PARAMETER:
+       identifier   :  Height
+       index domain :  I_i
+       text         :  "Heigth of item I"
+       definition   :  data
+                       ! Instance P1
+                          { I1  : 3,  I2  : 3,  I3  : 7,  I4  : 7,  I5  : 7,  I6  : 4,  I7  : 4,  I8  : 4,  I9  : 4,  I10 : 1,  I11 : 8,  I12 : 4,
+                            I13 : 4,  I14 : 3,  I15 : 3,  I16 : 3,  I17 : 6,  I18 : 6,  I19 : 6,  I20 : 9,  I21 : 9 }
+                       
+                       ! Instance P3
+                       ! {I1 : 1,I2 : 1,I3 : 1,I4 : 16,I5 : 18,I6 : 20,I7 : 3,I8 : 3}
+                       
+                       ! Instance P4
+                       ! {I1 : 15,I2 : 6,I3 : 6,I4 : 6,I5 : 13,I6 : 13,I7 : 8,I8 : 8,I9 : 18,I10 : 18,I11 : 18,I12 : 12,I13 : 8}
+                       ;
+
+    PARAMETER:
+       identifier   :  LoopBoolean
+       text         :  "Auxiliary parameter"
+       initial data :  0 ;
+
+    VARIABLE:
+       identifier   :  Origin
+       index domain :  (I_i,X_i,Y_i) | PossibleOriginPoints(I_i,X_i,Y_i)
+       text         :  "Origin of item I is placed on grid element with coordinates X and Y"
+       range        :  binary
+       property     :  ReducedCost ;
+
+    VARIABLE:
+       identifier   :  ExcessResource
+       index domain :  (X_i,Y_i) | (ActiveWidthPoints(X_i) and ActiveHeigthPoints(Y_i))
+       text         :  "Excess resource of point with coordinates X and Y"
+       range        :  nonnegative
+       property     :  ReducedCost ;
+
+    VARIABLE:
+       identifier   :  Obj
+       text         :  "Objective function, Place items as close as possible to grid origin"
+       property     :  ReducedCost
+       definition   :  SUM((I_i,X_i,Y_i) | (PossibleOriginPoints(I_i,X_i,Y_i)),Origin(I_i,X_i,Y_i)*(ord(X_i)+ord(Y_i)-2)) ;
+
+    CONSTRAINT:
+       identifier   :  ExcessResourceBalance
+       index domain :  (X_i,Y_i) | (ActiveWidthPoints(X_i) and ActiveHeigthPoints(Y_i))
+       text         :  "Excess resource balance for point with coordinates X and Y"
+       property     :  ShadowPrice
+       definition   :  ExcessResource(X_i,Y_i) =  1-SUM((I_i,XL,YL) |(ActiveWidthPoints(X_i) and ActiveHeigthPoints(Y_i)) and PossibleOriginPoints(I_i,XL,YL) and (ord(XL) >= ord(X_i)-WIDTH(I_i)+1 and ord(XL) <= ord(X_i) and ord(YL) >= ord(Y_i)-HEIGHT(I_i)+1 and ord(YL) <= ord(Y_i)),Origin(I_i,XL,YL))   ;
+
+    CONSTRAINT:
+       identifier   :  Extra
+       index domain :  I_i | (ActiveItems(I_i))
+       text         :  "Every item needs to be placed on the grid"
+       property     :  ShadowPrice
+       definition   :  Sum((X_i,Y_i) | (PossibleOriginPoints(I_i,X_i,Y_i)),Origin(I_i,X_i,Y_i)) =  1 ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastObj
+       objective    :  Obj
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      empty PossibleOriginPoints;
+      
+      STRIPW := 10; ! Instance P1
+      !STRIPW := 20;  ! Instance P3 & P4
+      
+      ActiveItems(I_i) := yes | (Width(I_i) >  0);
+      XAxisOrigin(X_i) := yes | (ord(X_i) =  1);
+      StripH := Max(Ceil(Round(Sum(I_i | (ActiveItems(I_i)),WIDTH(I_i)*HEIGHT(I_i)/STRIPW),3)),Smax(I_i | (ActiveItems(I_i)),HEIGHT(I_i)));
+      ActiveWidthPoints(X_i):=yes | (ord(X_i) <= StripW);
+      ActiveHeigthPoints(Y_i):=yes | (ord(Y_i) <= StripH);
+      PossibleOriginPoints(I_i,X_i,Y_i) | (ActiveItems(I_i) and ActiveWidthPoints(X_i) and ActiveHeigthPoints(Y_i)):=yes | (ord(X_i)+WIDTH(I_i) <= STRIPW+1 and ord(Y_i)+HEIGHT(I_i) <= STRIPH+1);
+      
+      LoopBoolean:=0;
+      While(LoopBoolean <> 1)do
+      Solve LeastObj ;
+            if(LeastObj.ProgramStatus <> 'Optimal') then
+            StripH := StripH+1;
+            ActiveHeigthPoints(Y_i) := yes | (ord(Y_i) <= STRIPH);
+            PossibleOriginPoints(I_i,X_i,Y_i) | (ActiveItems(I_i) and ActiveWidthPoints(X_i) and ActiveHeigthPoints(Y_i)):=yes$(ord(X_i)+WIDTH(I_i) <= STRIPW+1 and ord(Y_i)+HEIGHT(I_i) <= STRIPH+1);
+            else
+            LoopBoolean:=1;
+            endif;
+            endwhile;
+
+  ENDPROCEDURE  ;
+
+ENDMODEL aimms_2_upgrade ;
