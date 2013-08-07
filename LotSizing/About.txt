@@ -1,0 +1,12 @@
+LotSizing
+
+//Sources
+Gaetan Belvaux and Laurence A. Wolsey, A Library of Models and Matrices for Lot-Sizing Problems, 1999
+
+//Type
+MIP
+
+//Instances
+SingleLevelBigBucket : pp08a
+SingleLevelSmallBucket : Constantino
+SingleLevelSmallBucket2 : vpm5

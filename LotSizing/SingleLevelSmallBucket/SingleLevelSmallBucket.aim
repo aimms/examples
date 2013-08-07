@@ -1,0 +1,156 @@
+﻿
+MAIN MODEL Main_SingleLevelSmallBucket
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfItems
+       definition   :  5 ;
+
+    PARAMETER:
+       identifier   :  NumberOfMachines
+       definition   :  2 ;
+
+    PARAMETER:
+       identifier   :  NumberOfPeriods
+       definition   :  12 ;
+
+    SET:
+       identifier   :  Items
+       subset of    :  Integers
+       index        :  i
+       definition   :  {1..NumberOfItems} ;
+
+    SET:
+       identifier   :  Machines
+       subset of    :  Integers
+       index        :  k
+       definition   :  {1..NumberOfMachines} ;
+
+    SET:
+       identifier   :  Periods
+       subset of    :  Integers
+       index        :  t
+       definition   :  {1..NumberOfPeriods} ;
+
+    PARAMETER:
+       identifier   :  Demand
+       index domain :  (i,t) ;
+
+    PARAMETER:
+       identifier   :  SetUpCost ;
+
+    PARAMETER:
+       identifier   :  StartUpCost ;
+
+    PARAMETER:
+       identifier   :  StockCost
+       index domain :  (i)
+       definition   :  data { 1 : 2,  2 : 1,  3 : 1,  4 : 1,  5 : 1 } ;
+
+    PARAMETER:
+       identifier   :  BackloggingCost
+       index domain :  (i)
+       definition   :  data { 1 : 800,  2 : 400,  3 : 400,  4 : 400,  5 : 400 } ;
+
+    PARAMETER:
+       identifier   :  Capacity
+       index domain :  (k)
+       definition   :  data { 1 : 7,  2 : 10 } ;
+
+    PARAMETER:
+       identifier   :  StartUpTime
+       index domain :  (k)
+       definition   :  data { 1 : 2,  2 : 4 } ;
+
+    VARIABLE:
+       identifier   :  S
+       index domain :  (i,t)
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  R
+       index domain :  (i,t)
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  X
+       index domain :  (i,t,k)
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  Y
+       index domain :  (i,t,k)
+       range        :  binary ;
+
+    VARIABLE:
+       identifier   :  Z
+       index domain :  (i,t,k)
+       range        :  binary ;
+
+    VARIABLE:
+       identifier   :  TotalCost
+       range        :  free
+       definition   :  sum((i,t,k), SetUpCost * Y(i, t, k) + StartUpCost * Z(i, t, k))
+                       + sum((i,t), StockCost(i) * S(i, t) + BackloggingCost(i) * R(i, t)) ;
+
+    CONSTRAINT:
+       identifier   :  FlowConstraint
+       index domain :  (i,t)
+       definition   :  S(i, t-1) - R(i, t-1) + sum(k, X(i, t, k)) = Demand(i, t) + S(i, t) - R(i, t) ;
+
+    CONSTRAINT:
+       identifier   :  CapacityConstraint
+       index domain :  (i,t,k)
+       definition   :  X(i, t, k) + StartUpTime(k) * Z(i, t, k) <= Capacity(k) * Y(i, t, k) ;
+
+    CONSTRAINT:
+       identifier   :  MachineConstraint
+       index domain :  (k,t)
+       definition   :  sum(i, Y(i, t, k)) <= 1 ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastCost
+       objective    :  TotalCost
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+    body       :  
+      Demand(i,t) := DATA TABLE
+      
+          1     2     3     4     5     6     7     8     9     10      11      12
+      !
+      1  2.15  2.07  4.22  4.49  1.88  5.20  1.35  2.06  1.80  1.70    2.51    0.36
+      2  1.92  1.88  1.97  1.74  1.41  2.44  1.69  0.75  1.15  2.02    0.51    0.65
+      3  2.11  2.19  2.11  2.19  2.40  2.47  1.62  2.25  2.25  2.89    1.48    1.48
+      4  0.75  0.92  0.72  0.75  1.39  0.46  0.89  2.35  2.69  0.42    0.46    3.70
+      5  0.92  0.92  1.00  1.17  1.17  1.17  1.25  0.92  2.09  1.92    0.50    0.50
+      ;
+      
+      SetUpCost := 100;
+      
+      StartUpCost := 200;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      solve LeastCost;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return DataManagementExit();
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_SingleLevelSmallBucket ;

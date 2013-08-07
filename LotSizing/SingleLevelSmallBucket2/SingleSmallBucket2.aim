@@ -1,0 +1,212 @@
+﻿
+MAIN MODEL Main_SingleSmallBucket2
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfMachines
+       definition   :  4 ;
+
+    PARAMETER:
+       identifier   :  NumberOfPeriods
+       definition   :  8 ;
+
+    PARAMETER:
+       identifier   :  NumberOfItems
+       definition   :  8 ;
+
+    SET:
+       identifier   :  Machines
+       subset of    :  Integers
+       index        :  k
+       definition   :  {1..NumberOfMachines} ;
+
+    SET:
+       identifier   :  Periods
+       subset of    :  Integers
+       index        :  t
+       definition   :  {1..NumberOfPeriods} ;
+
+    SET:
+       identifier   :  Items
+       subset of    :  Integers
+       index        :  i
+       definition   :  {1..NumberOfItems} ;
+
+    PARAMETER:
+       identifier   :  InitialStock
+       index domain :  (i)
+       definition   :  data { 1 : 200,  2 : 400,  3 : 600,  4 : 500,  5 : 500,  6 : 400,  7 : 400,  8 : 400 } ;
+
+    PARAMETER:
+       identifier   :  MinStock
+       index domain :  (i)
+       definition   :  data { 1 : 100,  2 : 200,  3 : 300,  4 : 400,  5 : 200,  6 : 100,  7 : 300,  8 : 200 } ;
+
+    PARAMETER:
+       identifier   :  MaxStock
+       index domain :  (i)
+       definition   :  data { 1 : 300,  2 : 400,  3 : 400,  4 : 500,  5 : 500,  6 : 600,  7 : 400,  8 : 300 } ;
+
+    PARAMETER:
+       identifier   :  ProductionRate
+       index domain :  (i,k) ;
+
+    PARAMETER:
+       identifier   :  SUP
+       index domain :  (k)
+       definition   :  data { 1 : 0.100,  2 : 0.200,  3 : 0.400,  4 : 0.500 } ;
+
+    PARAMETER:
+       identifier   :  StartUpTime
+       index domain :  (i,k)
+       definition   :  SUP(k) ;
+
+    PARAMETER:
+       identifier   :  Demand
+       index domain :  (i,t) ;
+
+    VARIABLE:
+       identifier   :  X
+       index domain :  (i,k,t)
+       range        :  nonnegative
+       comment      :  "Fraction of the period for i on k in t" ;
+
+    VARIABLE:
+       identifier   :  Y
+       index domain :  (i,k,t)
+       range        :  binary
+       comment      :  "Item i during the period" ;
+
+    VARIABLE:
+       identifier   :  S
+       index domain :  (i,t)
+       range        :  nonnegative
+       comment      :  "Stock i in t" ;
+
+    VARIABLE:
+       identifier   :  Z
+       index domain :  (i,t,k)
+       range        :  binary
+       comment      :  "Start item i in t" ;
+
+    VARIABLE:
+       identifier   :  V
+       index domain :  (i)
+       range        :  nonnegative
+       comment      :  "Excess over upper bound on stock" ;
+
+    VARIABLE:
+       identifier   :  TimeLoss
+       range        :  free
+       definition   :  sum((i,k,t), StartUpTime(i,k) * Z(i, t, k)) + sum(i, 10 * V(i)) ;
+
+    CONSTRAINT:
+       identifier   :  FlowConstraint
+       index domain :  (i,t) | t>1
+       definition   :  S(i, t-1) + sum(k, ProductionRate(i, k) * X(i, k, t)) = Demand(i, t) + S(i, t) ;
+
+    CONSTRAINT:
+       identifier   :  FlowConstraintBis
+       index domain :  (i)
+       definition   :  InitialStock(i) + sum(k, ProductionRate(i, k) * X(i, k, 1)) = Demand(i, 1) + S(i, 1) ;
+
+    CONSTRAINT:
+       identifier   :  StartUpContraint
+       index domain :  (i,k,t)
+       definition   :  X(i, k, t) + StartUpTime(i,k) * Z(i, t, k) <= Y(i, k, t) ;
+
+    CONSTRAINT:
+       identifier   :  C1
+       index domain :  (i,k,t)
+       definition   :  Z(i, t, k) >= Y(i, k, t) - Y(i, k, t-1) ;
+
+    CONSTRAINT:
+       identifier   :  C2
+       index domain :  (i,t,k)
+       definition   :  Z(i, t, k) + Z(i, t-1, k) <= Y(i, k, t) ;
+
+    CONSTRAINT:
+       identifier   :  C3
+       index domain :  (k,t)
+       definition   :  sum(i, Y(i, k, t) - Z(i, t, k)) <=1 ;
+
+    CONSTRAINT:
+       identifier   :  StartConstraint
+       index domain :  (k,t)
+       definition   :  sum(i, Z(i, t, k)) <= 1 ;
+
+    CONSTRAINT:
+       identifier   :  StartUpTimeConstraint
+       index domain :  (k,t)
+       definition   :  sum(i, X(i, k, t)) + sum(i, StartUpTime(i, k) * Z(i, t, k)) <= 1 ;
+
+    CONSTRAINT:
+       identifier   :  MaxStockConstraint
+       index domain :  (i,t)
+       definition   :  S(i, t) <= MaxStock(i) + V(i) ;
+
+    CONSTRAINT:
+       identifier   :  MinStockConstraint
+       index domain :  (i,t)
+       definition   :  S(i, t) >= MinStock(i) ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastTime
+       objective    :  TimeLoss
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+    body       :  
+      Demand(i,t) := DATA TABLE
+      
+         1      2      3      4      5      6      7      8
+      !
+      1 400    300    300     0      0    600      0      0
+      2   0    300    200   300    400      0      0      0
+      3   0      0      0   500    600      0      0      0
+      4   0      0      0     0    300    800      0      0
+      5   0      0      0   500      0    100      0      0
+      6   0      0      0     0      0      0    900    200
+      7 700    200      0     0      0      0      0      0
+      8   0    400    500     0      0      0      0      0
+      ;
+      
+      
+      ProductionRate(i,k) := DATA TABLE
+      
+          1       2       3       4
+      !
+      1  200     300     400     300
+      2  400     200     100     400
+      3  400     400     300     400
+      4  300     400     200     300
+      5  200     200     100     300
+      6  300     200     400     500
+      7  300     500     600     600
+      8  500     500     400     600
+      ;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      solve LeastTime
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return DataManagementExit();
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_SingleSmallBucket2 ;
