@@ -1,0 +1,300 @@
+Comparing 'aoa.txt' vs 'inc.txt' (options 'l'):
+
+Variables:
+----------
+V(1):
+   level value differs  (7.22E+000 vs 7.27E+000)
+B(A,1):
+   level value differs  (6.15E+000 vs 6.20E+000)
+V(2):
+   level value differs  (7.24E+000 vs 7.17E+000)
+B(A,2):
+   level value differs  (5.56E+000 vs 5.52E+000)
+V(3):
+   level value differs  (7.08E+000 vs 6.07E+000)
+B(A,3):
+   level value differs  (4.97E+000 vs 4.42E+000)
+V(4):
+   level value differs  (7.96E+000 vs 7.64E+000)
+B(A,4):
+   level value differs  (6.07E+000 vs 5.52E+000)
+V(5):
+   level value differs  (7.66E+000 vs 7.83E+000)
+B(A,5):
+   level value differs  (5.45E+000 vs 5.74E+000)
+V(6):
+   level value differs  (7.58E+000 vs 7.66E+000)
+B(A,6):
+   level value differs  (4.77E+000 vs 6.23E+000)
+V(7):
+   level value differs  (8.14E+000 vs 6.98E+000)
+B(A,7):
+   level value differs  (5.46E+000 vs 5.37E+000)
+V(8):
+   level value differs  (8.16E+000 vs 7.92E+000)
+B(A,8):
+   level value differs  (5.84E+000 vs 6.18E+000)
+V(9):
+   level value differs  (7.46E+000 vs 7.51E+000)
+B(A,9):
+   level value differs  (5.73E+000 vs 6.35E+000)
+V(10):
+   level value differs  (7.86E+000 vs 7.10E+000)
+B(A,10):
+   level value differs  (6.35E+000 vs 5.60E+000)
+B(B,1):
+   level value differs  (6.18E+000 vs 6.28E+000)
+B(B,2):
+   level value differs  (6.42E+000 vs 6.39E+000)
+B(B,3):
+   level value differs  (6.72E+000 vs 6.17E+000)
+B(B,4):
+   level value differs  (6.74E+000 vs 6.42E+000)
+B(B,5):
+   level value differs  (6.09E+000 vs 6.46E+000)
+B(B,6):
+   level value differs  (6.01E+000 vs 6.60E+000)
+B(B,7):
+   level value differs  (6.50E+000 vs 6.18E+000)
+B(B,8):
+   level value differs  (6.17E+000 vs 5.86E+000)
+B(B,9):
+   level value differs  (6.50E+000 vs 6.42E+000)
+B(B,10):
+   level value differs  (5.40E+000 vs 5.32E+000)
+B(C,1):
+   level value differs  (5.18E+000 vs 6.39E+000)
+B(C,2):
+   level value differs  (6.28E+000 vs 6.21E+000)
+B(C,3):
+   level value differs  (5.89E+000 vs 5.60E+000)
+B(C,4):
+   level value differs  (6.66E+000 vs 6.36E+000)
+B(C,5):
+   level value differs  (6.07E+000 vs 6.46E+000)
+B(C,6):
+   level value differs  (6.49E+000 vs 6.60E+000)
+B(C,7):
+   level value differs  (6.35E+000 vs 5.50E+000)
+B(C,8):
+   level value differs  (5.25E+000 vs 6.18E+000)
+B(C,9):
+   level value differs  (5.60E+000 vs 5.61E+000)
+B(C,10):
+   level value differs  (6.70E+000 vs 6.40E+000)
+B(D,1):
+   level value differs  (5.67E+000 vs 5.72E+000)
+B(D,2):
+   level value differs  (5.32E+000 vs 6.33E+000)
+B(D,3):
+   level value differs  (5.76E+000 vs 5.60E+000)
+B(D,4):
+   level value differs  (6.11E+000 vs 6.39E+000)
+B(D,5):
+   level value differs  (5.94E+000 vs 6.40E+000)
+B(D,6):
+   level value differs  (5.73E+000 vs 6.40E+000)
+B(D,7):
+   level value differs  (5.94E+000 vs 5.59E+000)
+B(D,8):
+   level value differs  (5.98E+000 vs 6.18E+000)
+B(D,9):
+   level value differs  (6.33E+000 vs 6.38E+000)
+B(D,10):
+   level value differs  (5.70E+000 vs 5.35E+000)
+B(E,1):
+   level value differs  (5.51E+000 vs 6.39E+000)
+B(E,2):
+   level value differs  (5.40E+000 vs 5.29E+000)
+B(E,3):
+   level value differs  (6.20E+000 vs 5.19E+000)
+B(E,4):
+   level value differs  (6.46E+000 vs 5.94E+000)
+B(E,5):
+   level value differs  (6.48E+000 vs 6.66E+000)
+B(E,6):
+   level value differs  (5.56E+000 vs 6.60E+000)
+B(E,7):
+   level value differs  (6.50E+000 vs 6.18E+000)
+B(E,8):
+   level value differs  (5.40E+000 vs 6.18E+000)
+B(E,9):
+   level value differs  (6.50E+000 vs 6.42E+000)
+B(E,10):
+   level value differs  (5.44E+000 vs 5.69E+000)
+B(F,1):
+   level value differs  (6.09E+000 vs 5.91E+000)
+B(F,2):
+   level value differs  (5.91E+000 vs 5.66E+000)
+B(F,3):
+   level value differs  (4.81E+000 vs 4.56E+000)
+B(F,4):
+   level value differs  (5.53E+000 vs 5.60E+000)
+B(F,5):
+   level value differs  (6.47E+000 vs 6.63E+000)
+B(F,6):
+   level value differs  (5.78E+000 vs 5.65E+000)
+B(F,7):
+   level value differs  (5.85E+000 vs 6.18E+000)
+B(F,8):
+   level value differs  (6.50E+000 vs 6.18E+000)
+B(F,9):
+   level value differs  (5.40E+000 vs 6.26E+000)
+B(F,10):
+   level value differs  (5.59E+000 vs 6.42E+000)
+B(G,1):
+   level value differs  (6.24E+000 vs 6.29E+000)
+B(G,2):
+   level value differs  (6.45E+000 vs 6.38E+000)
+B(G,3):
+   level value differs  (5.62E+000 vs 6.39E+000)
+B(G,4):
+   level value differs  (5.58E+000 vs 6.21E+000)
+B(G,5):
+   level value differs  (5.28E+000 vs 6.51E+000)
+B(G,6):
+   level value differs  (6.38E+000 vs 6.43E+000)
+B(G,7):
+   level value differs  (5.28E+000 vs 5.33E+000)
+B(G,8):
+   level value differs  (4.90E+000 vs 6.18E+000)
+B(G,9):
+   level value differs  (6.00E+000 vs 6.42E+000)
+B(G,10):
+   level value differs  (5.98E+000 vs 6.42E+000)
+B(H,1):
+   level value differs  (6.05E+000 vs 6.17E+000)
+B(H,2):
+   level value differs  (5.22E+000 vs 5.50E+000)
+B(H,3):
+   level value differs  (5.41E+000 vs 4.40E+000)
+B(H,4):
+   level value differs  (5.19E+000 vs 5.50E+000)
+B(H,5):
+   level value differs  (5.95E+000 vs 6.35E+000)
+B(H,6):
+   level value differs  (6.19E+000 vs 6.28E+000)
+B(H,7):
+   level value differs  (5.09E+000 vs 6.18E+000)
+B(H,8):
+   level value differs  (6.15E+000 vs 6.18E+000)
+B(H,9):
+   level value differs  (5.38E+000 vs 6.42E+000)
+B(H,10):
+   level value differs  (6.20E+000 vs 5.88E+000)
+B(HH,1):
+   level value differs  (5.49E+000 vs 6.39E+000)
+B(HH,2):
+   level value differs  (5.90E+000 vs 6.17E+000)
+B(HH,3):
+   level value differs  (5.70E+000 vs 5.07E+000)
+B(HH,4):
+   level value differs  (6.51E+000 vs 6.17E+000)
+B(HH,5):
+   level value differs  (6.42E+000 vs 6.51E+000)
+B(HH,6):
+   level value differs  (6.49E+000 vs 6.18E+000)
+B(HH,7):
+   level value differs  (6.50E+000 vs 5.08E+000)
+B(HH,8):
+   level value differs  (5.86E+000 vs 6.18E+000)
+B(HH,9):
+   level value differs  (5.67E+000 vs 5.08E+000)
+B(HH,10):
+   level value differs  (4.84E+000 vs 6.18E+000)
+B(HHH,1):
+   level value differs  (4.36E+000 vs 6.28E+000)
+B(HHH,2):
+   level value differs  (5.19E+000 vs 5.68E+000)
+B(HHH,3):
+   level value differs  (5.13E+000 vs 4.59E+000)
+B(HHH,4):
+   level value differs  (5.19E+000 vs 5.68E+000)
+B(HHH,5):
+   level value differs  (5.88E+000 vs 6.34E+000)
+B(HHH,6):
+   level value differs  (4.78E+000 vs 6.34E+000)
+B(HHH,7):
+   level value differs  (5.46E+000 vs 5.98E+000)
+B(HHH,8):
+   level value differs  (6.34E+000 vs 6.10E+000)
+B(HHH,9):
+   level value differs  (5.24E+000 vs 5.00E+000)
+B(HHH,10):
+   level value differs  (5.30E+000 vs 5.88E+000)
+MI(1):
+   level value differs  (1.10E+000 vs 6.93E-001)
+E(A):
+   level value differs  (-5.40E+000 vs 2.40E+009)
+MI(2):
+   level value differs  (1.39E+000 vs 1.10E+000)
+MI(3):
+   level value differs  (1.10E+000 vs 1.79E+000)
+MI(5):
+   level value differs  (6.93E-001 vs 0.00E+000)
+MI(6):
+   level value differs  (1.10E+000 vs 6.93E-001)
+MI(9):
+   level value differs  (1.10E+000 vs 6.93E-001)
+E(B):
+   level value differs  (-5.95E+000 vs -5.63E+000)
+E(C):
+   level value differs  (-5.77E+000 vs -5.47E+000)
+E(D):
+   level value differs  (-5.61E+000 vs -5.25E+000)
+E(E):
+   level value differs  (-5.87E+000 vs -5.35E+000)
+E(F):
+   level value differs  (-5.88E+000 vs -5.35E+000)
+E(G):
+   level value differs  (-5.93E+000 vs -5.57E+000)
+E(H):
+   level value differs  (-5.48E+000 vs -5.16E+000)
+E(HH):
+   level value differs  (-5.63E+000 vs 9.90E+009)
+E(HHH):
+   level value differs  (-4.92E+000 vs -4.69E+000)
+VST(1):
+   level value differs  (8.75E+000 vs 8.69E+000)
+VST(2):
+   level value differs  (9.02E+000 vs 8.69E+000)
+VST(3):
+   level value differs  (9.04E+000 vs 8.72E+000)
+VST(4):
+   level value differs  (9.04E+000 vs 8.96E+000)
+VST(5):
+   level value differs  (8.79E+000 vs 8.96E+000)
+VST(6):
+   level value differs  (8.80E+000 vs 8.90E+000)
+VST(7):
+   level value differs  (8.80E+000 vs 8.48E+000)
+VST(8):
+   level value differs  (8.80E+000 vs 8.72E+000)
+VST(9):
+   level value differs  (9.00E+000 vs 8.72E+000)
+Y2(2,1):
+   level value differs  (0.00E+000 vs 1.00E+000)
+Y2(3,1):
+   level value differs  (1.00E+000 vs 0.00E+000)
+Y2(3,2):
+   level value differs  (0.00E+000 vs 1.00E+000)
+Y2(4,2):
+   level value differs  (1.00E+000 vs 0.00E+000)
+Y2(3,3):
+   level value differs  (1.00E+000 vs 0.00E+000)
+Y2(1,5):
+   level value differs  (0.00E+000 vs 1.00E+000)
+Y2(2,5):
+   level value differs  (1.00E+000 vs 0.00E+000)
+Y2(2,6):
+   level value differs  (0.00E+000 vs 1.00E+000)
+Y2(3,6):
+   level value differs  (1.00E+000 vs 0.00E+000)
+Y2(2,9):
+   level value differs  (0.00E+000 vs 1.00E+000)
+Y2(3,9):
+   level value differs  (1.00E+000 vs 0.00E+000)
+Y2(6,3):
+   level value differs  (0.00E+000 vs 1.00E+000)
+COST_:
+   level value differs  (7.69E+005 vs 5.74E+005)

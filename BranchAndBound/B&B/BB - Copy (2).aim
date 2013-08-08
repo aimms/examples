@@ -1,0 +1,181 @@
+﻿SECTION
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfNodes
+       range        :  integer ;
+
+    PARAMETER:
+       identifier   :  BestObjective ;
+
+    ELEMENT PARAMETER:
+       identifier   :  GMPBB
+       range        :  AllGeneratedMathematicalPrograms ;
+
+    SET:
+       identifier   :  ActiveNodes
+       subset of    :  Integers
+       index        :  an ;
+
+    ELEMENT PARAMETER:
+       identifier   :  CurrentNode
+       range        :  ActiveNodes ;
+
+    ELEMENT PARAMETER:
+       identifier   :  LastActiveNode
+       range        :  ActiveNodes ;
+
+    SET:
+       identifier   :  ChildNodes
+       subset of    :  Integers
+       index        :  cn ;
+
+    PARAMETER:
+       identifier   :  Child1
+       range        :  integer ;
+
+    PARAMETER:
+       identifier   :  Child2
+       range        :  integer ;
+
+    SET:
+       identifier   :  ColNrs
+       subset of    :  Integers
+       index        :  c ;
+
+    PARAMETER:
+       identifier   :  ActiveNodesEvaluation
+       index domain :  an ;
+
+    PARAMETER:
+       identifier   :  LB
+       index domain :  (c,an) ;
+
+    PARAMETER:
+       identifier   :  UB
+       index domain :  (c,an) ;
+
+    PARAMETER:
+       identifier   :  IsInteger ;
+
+    PARAMETER:
+       identifier   :  Obj ;
+
+    PARAMETER:
+       identifier   :  value ;
+
+    PARAMETER:
+       identifier   :  eps
+       initial data :  1e-6 ;
+
+    SET:
+       identifier   :  OptimalityStatuses
+       subset of    :  AllSolutionStates
+       initial data :  { 'Optimal', 'LocallyOptimal', 'IntermediateNonOptimal' } ;
+
+    ELEMENT PARAMETER:
+       identifier   :  ProgramStatus
+       range        :  AllSolutionStates ;
+
+    PARAMETER:
+       identifier   :  FoundSolution
+       range        :  binary ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  BB
+    arguments  :  (myGMP)
+
+    DECLARATION SECTION 
+
+      ELEMENT PARAMETER:
+         identifier :  myGMP
+         range      :  AllGeneratedMathematicalPrograms
+         property   :  Input ;
+
+    ENDSECTION  ;
+
+    body       :  
+      GMPBB := GMP::Instance::Copy( myGMP, 'BB' );
+      GMP::Instance::SetMathematicalProgrammingType( GMPBB, 'rminlp' );
+      ColNrs := GMP::Instance::GetColumnNumbers( GMPBB, AllIntegerVariables );
+      
+      !Initialization
+      ActiveNodes := {1};
+      NumberOfNodes := 0;
+      BestObjective := 1e30;
+      
+      !Initial node
+      LB(c,1) := 0;
+      UB(c,1) := 1;
+      
+      ! Main Loop
+      while(ActiveNodes <> {})do
+      
+              NumberOfNodes += 1;
+      
+              CurrentNode := First(ActiveNodes);
+      
+              for(c) do
+                      GMP::Column::SetLowerBound(GMPBB,c,LB(c,CurrentNode));
+                      GMP::Column::SetUpperBound(GMPBB,c,UB(c,CurrentNode));
+              endfor;
+      
+              GMP::Instance::Solve(GMPBB);
+      
+              ProgramStatus := GMP::Solution::GetProgramStatus(GMPBB, 1);
+      
+              if(ProgramStatus in OptimalityStatuses) then
+                      Obj := GMP::Solution::GetObjective(GMPBB, 1);
+      
+                      if(Obj < BestObjective) then
+                              IsInteger := GMP::Solution::IsInteger(GMPBB,1);
+      
+                              if (IsInteger) then
+                                      ! Found new incumbent
+                                      BestObjective := Obj;
+                                      GMP::Solution::RetrieveFromModel( myGMP, 1 );
+                                      FoundSolution := 1;
+                              else
+                                      LastActiveNode := Last(ActiveNodes);
+      
+                                      !First child of the CurrentNode
+                                      Child1 := val(LastActiveNode) + 1;
+                                      ChildNodes := Child1;
+                                      !Second child of the CurrentNode
+                                      Child2 := val(LastActiveNode) + 2;
+                                      ChildNodes += Child2;
+      
+                                      ActiveNodes += ChildNodes;
+      
+                                      for (cn) do
+                                              LB(c,cn) := LB(c,CurrentNode);
+                                              UB(c,cn) := UB(c,CurrentNode);
+                                      endfor;
+      
+                                      for(c) do
+                                              value := GMP::Solution::GetColumnValue( GMPBB, 1, c );
+                                              if ( value > eps and value < 1-eps ) then   ! Fractional
+                                                      UB(c,Child1) := 0;
+                                                      LB(c,Child2) := 1;
+                                                      break;
+                                              endif;
+                                      endfor;
+                              endif;
+                      endif;
+              endif;
+      
+              ActiveNodes -= CurrentNode;
+      
+      endwhile;
+      
+      if ( FoundSolution ) then
+              GMP::Solution::SendToModel( myGMP, 1 );
+              GMP::Solution::SetProgramStatus( myGMP, 1, 'Optimal' );
+      endif;
+
+  ENDPROCEDURE  ;
+
+ENDSECTION  ;

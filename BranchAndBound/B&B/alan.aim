@@ -1,0 +1,114 @@
+
+MAIN MODEL Main_OuterApproximation
+
+  DECLARATION SECTION 
+
+    VARIABLE:
+       identifier :  x1
+       range      :  nonnegative ;
+
+    VARIABLE:
+       identifier :  x2
+       range      :  nonnegative ;
+
+    VARIABLE:
+       identifier :  x3
+       range      :  nonnegative ;
+
+    VARIABLE:
+       identifier :  x4
+       range      :  nonnegative ;
+
+    VARIABLE:
+       identifier :  objvar ;
+
+    VARIABLE:
+       identifier :  b6
+       range      :  binary ;
+
+    VARIABLE:
+       identifier :  b7
+       range      :  binary ;
+
+    VARIABLE:
+       identifier :  b8
+       range      :  binary ;
+
+    VARIABLE:
+       identifier :  b9
+       range      :  binary ;
+
+    CONSTRAINT:
+       identifier :  e1
+       definition :  objvar = x1*(4*x1 + 3*x2 - x3) + x2*(3*x1 + 6*x2 + x3) + x3*(x2 - x1 + 10*x3) ;
+
+    CONSTRAINT:
+       identifier :  e2
+       definition :  x1 + x2 + x3 + x4 =   1 ;
+
+    CONSTRAINT:
+       identifier :  e3
+       definition :  8*x1 + 9*x2 + 12*x3 + 7*x4 =   10 ;
+
+    CONSTRAINT:
+       identifier :  e4
+       definition :  x1 - b6 <=  0 ;
+
+    CONSTRAINT:
+       identifier :  e5
+       definition :  x2 - b7 <=  0 ;
+
+    CONSTRAINT:
+       identifier :  e6
+       definition :  x3 - b8 <=  0 ;
+
+    CONSTRAINT:
+       identifier :  e7
+       definition :  x4 - b9 <=  0 ;
+
+    CONSTRAINT:
+       identifier :  e8
+       definition :  b6 + b7 + b8 + b9 <=  3 ;
+
+    MATHEMATICAL PROGRAM:
+       identifier :  m
+       objective  :  objvar
+       direction  :  minimize
+       type       :  MINLP ;
+
+    ELEMENT PARAMETER:
+       identifier :  myGMP
+       range      :  AllGeneratedMathematicalPrograms ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      !solve m;
+      
+      myGMP := GMP::Instance::Generate( m );
+      
+      BB( myGMP );
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return 1;
+
+  ENDPROCEDURE  ;
+
+  SECTION Section_BB
+      source file :  "BB.aim"
+
+
+  ENDSECTION Section_BB ;
+
+ENDMODEL Main_OuterApproximation ;

@@ -1,0 +1,191 @@
+﻿SECTION
+
+  PROCEDURE
+    identifier :  BB
+    arguments  :  (myGMP)
+
+    DECLARATION SECTION 
+
+      ELEMENT PARAMETER:
+         identifier   :  myGMP
+         range        :  AllGeneratedMathematicalPrograms
+         property     :  Input ;
+
+      ELEMENT PARAMETER:
+         identifier   :  GMPBB
+         range        :  AllGeneratedMathematicalPrograms ;
+
+      SET:
+         identifier   :  BranchAndBoundNodes
+         subset of    :  Integers ;
+
+      SET:
+         identifier   :  ActiveNodes
+         subset of    :  BranchAndBoundNodes
+         index        :  an ;
+
+      ELEMENT PARAMETER:
+         identifier   :  CurrentNode
+         range        :  ActiveNodes ;
+
+      SET:
+         identifier   :  ChildNodes
+         subset of    :  Integers
+         index        :  cn ;
+
+      PARAMETER:
+         identifier   :  Child1 ;
+
+      PARAMETER:
+         identifier   :  Child2 ;
+
+      SET:
+         identifier   :  ColNrs
+         subset of    :  Integers
+         index        :  c ;
+
+      PARAMETER:
+         identifier   :  ActiveNodesEvaluation
+         index domain :  an ;
+
+      PARAMETER:
+         identifier   :  BestObjective ;
+
+      PARAMETER:
+         identifier   :  LB
+         index domain :  (c,an) ;
+
+      PARAMETER:
+         identifier   :  UB
+         index domain :  (c,an) ;
+
+      PARAMETER:
+         identifier   :  IsInteger ;
+
+      PARAMETER:
+         identifier   :  Obj ;
+
+      PARAMETER:
+         identifier   :  value ;
+
+      PARAMETER:
+         identifier   :  eps
+         initial data :  1e-6 ;
+
+      ELEMENT PARAMETER:
+         identifier   :  ProgramStatus
+         range        :  AllSolutionStates ;
+
+      PARAMETER:
+         identifier   :  FoundSolution
+         range        :  binary ;
+
+    ENDSECTION  ;
+
+    body       :  
+      GMPBB := GMP::Instance::Copy( myGMP, 'BB' );
+      ColNrs := GMP::Instance::GetColumnNumbers( GMPBB, AllIntegerVariables );
+      
+      !Initialization
+      ActiveNodes := {1};
+      BestObjective := 1e30;
+      
+      !Initial node
+      LB(c,1) := 0;
+      UB(c,1) := 1;
+      for(c) do
+              GMP::Column::SetLowerBound(GMPBB,c,LB(C,1));
+              GMP::Column::SetUpperBound(GMPBB,c,UB(C,1));
+      endfor;
+      
+      
+      !Initial node test
+      GMP::Instance::Solve(GMPBB);
+      IsInteger := GMP::Solution::IsInteger(GMPBB,1);
+      ProgramStatus := GMP::Solution::GetProgramStatus(GMPBB, 1);
+      
+      FoundSolution := 0;
+      
+      if((ProgramStatus = 'Infeasible') or (ProgramStatus = 'InfeasibleOrUnbounded')) then
+              GMP::Solution::SetProgramStatus( myGMP, 1, 'Infeasible' );
+              ActiveNodes := {};
+      elseif (IsInteger) then
+              BestObjective := Obj;
+              GMP::Solution::RetrieveFromModel( myGMP, 1 );
+              FoundSolution := 1;
+              ActiveNodes := {};
+      endif;
+      
+      ! Main Loop
+      while(ActiveNodes <> {})do
+      
+              CurrentNode := First(ActiveNodes);
+      
+              !First child of the CurrentNode
+              Child1 := CurrentNode + 1;
+              ActiveNodes += Child1;
+              !Second child of the CurrentNode
+              Child2 := CurrentNode + 2;
+              ActiveNodes += Child2;
+      
+              ChildNodes := Child1 + Child2;
+      
+              for (cn) do
+                      LB(c,cn) := LB(c,CurrentNode);
+                      UB(c,cn) := LB(c,CurrentNode);
+              endfor;
+      
+              for(c) do
+                      value := GMP::Solution::GetColumnValue( GMPBB, 1, c );
+                      if ( value > eps and value < 1-eps ) then   ! Fractional
+                              LB(c,Child1) := 0;
+                              UB(c,Child2) := 1;
+                              break;
+                      endif;
+              endfor;
+      
+              for (cn) do
+                      for(c) do
+                              GMP::Column::SetLowerBound(GMPBB,c,LB(c,cn));
+                              GMP::Column::SetUpperBound(GMPBB,c,UB(c,cn));
+                      endfor;
+      
+                      GMP::Instance::Solve(GMPBB);
+      
+                      ProgramStatus := GMP::Solution::GetProgramStatus(GMPBB, 1);
+      
+                      if((ProgramStatus = 'Infeasible') or (ProgramStatus = 'InfeasibleOrUnbounded')) then
+                              ActiveNodes -= cn;   ! Fathom node
+                      else
+                              Obj := GMP::Solution::GetObjective(GMPBB, 1);
+      
+                              if(Obj < BestObjective) then
+                                      IsInteger := GMP::Solution::IsInteger(GMPBB,1);
+      
+                                      if (IsInteger) then
+                                              ! Found new incumbent
+                                              BestObjective := Obj;
+                                              GMP::Solution::RetrieveFromModel( myGMP, 1 );
+                                              FoundSolution := 1;
+      
+                                              ActiveNodes -= cn; ! Fathom node
+                                      endif;
+                              else
+                                      ActiveNodes -= cn;   ! Fathom node
+                              endif;
+                      endif;
+      
+              endfor;
+      
+              ActiveNodes -= CurrentNode;
+      
+      endwhile;
+      
+      if ( FoundSolution ) then
+              GMP::Solution::SendToModel( myGMP, 1 );
+              GMP::Solution::SetProgramStatus( myGMP, 1, 'Optimal' );
+      endif;
+
+  ENDPROCEDURE  ;
+
+ENDSECTION  ;
