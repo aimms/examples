@@ -1,5 +1,6 @@
 ﻿
 MAIN MODEL Main_BlendingProblem
+  comment :  "Minimization of the price of an alloy produced from other alloys available on the market."
 
   DECLARATION SECTION 
 

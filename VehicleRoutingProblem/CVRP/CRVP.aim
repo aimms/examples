@@ -1,5 +1,6 @@
 ﻿
 MAIN MODEL Main_VRP2
+  comment :  " Vehicle Routing Problem with capacity limited vehicles."
 
   DECLARATION SECTION 
 
@@ -63,17 +64,20 @@ MAIN MODEL Main_VRP2
     VARIABLE:
        identifier   :  X
        index domain :  (i,j,k) | i<>j
-       range        :  binary ;
+       range        :  binary
+       comment      :  "Indicates if vehicle k uses arc (i,j)" ;
 
     VARIABLE:
        identifier   :  Y
        index domain :  (i,k)
-       range        :  binary ;
+       range        :  binary
+       comment      :  "Takes value 1 if customer i is served by vehicle k." ;
 
     VARIABLE:
        identifier   :  U
        index domain :  (i,k)
-       range        :  free ;
+       range        :  free
+       comment      :  "Subtour elemination variable" ;
 
     VARIABLE:
        identifier   :  TotalCost
@@ -83,41 +87,49 @@ MAIN MODEL Main_VRP2
     CONSTRAINT:
        identifier   :  C1
        index domain :  i | i>1
-       definition   :  sum(k, Y(i, k)) = 1 ;
+       definition   :  sum(k, Y(i, k)) = 1
+       comment      :  "Imposes that each sutomer is visited exactly once." ;
 
     CONSTRAINT:
        identifier   :  C2
-       definition   :  sum(k, Y(1,k)) >= VehicleLowerBound ;
+       definition   :  sum(k, Y(1,k)) >= VehicleLowerBound
+       comment      :  "Minimum number of vehicles" ;
 
     CONSTRAINT:
        identifier   :  C3
        index domain :  (i,k)
-       definition   :  sum(j, X(i, j, k)) = Y(i, k) ;
+       definition   :  sum(j, X(i, j, k)) = Y(i, k)
+       comment      :  "The same vehicle enters and leaves a given customer." ;
 
     CONSTRAINT:
        identifier   :  C3p
        index domain :  (i,k)
-       definition   :  sum(j, X(j, i, k)) = Y(i, k) ;
+       definition   :  sum(j, X(j, i, k)) = Y(i, k)
+       comment      :  "The same vehicle enters and leaves a given customer." ;
 
     CONSTRAINT:
        identifier   :  C4
        index domain :  (k)
-       definition   :  sum(i, CustomersDemand(i) * Y(i, k)) <= LoadCapacity ;
+       definition   :  sum(i, CustomersDemand(i) * Y(i, k)) <= LoadCapacity
+       comment      :  "The capacity restriction for each vehicle k." ;
 
     CONSTRAINT:
        identifier   :  C5
        index domain :  (i,j,k) | i>1 and j>0 and i<>j
-       definition   :  U(i, k) - U(j, k) + LoadCapacity * X(i, j, k) <= LoadCapacity - CustomersDemand(j) ;
+       definition   :  U(i, k) - U(j, k) + LoadCapacity * X(i, j, k) <= LoadCapacity - CustomersDemand(j)
+       comment      :  "Subtour elimination constraints." ;
 
     CONSTRAINT:
        identifier   :  C6
        index domain :  (i,k) | i<>1
-       definition   :  U(i, k) >= CustomersDemand(i) ;
+       definition   :  U(i, k) >= CustomersDemand(i)
+       comment      :  "Subtour elimination constraints." ;
 
     CONSTRAINT:
        identifier   :  C6p
        index domain :  (i,k) | i<>1
-       definition   :  U(i, k) <= LoadCapacity ;
+       definition   :  U(i, k) <= LoadCapacity
+       comment      :  "Subtour elimination constraints." ;
 
     CONSTRAINT:
        identifier   :  c7

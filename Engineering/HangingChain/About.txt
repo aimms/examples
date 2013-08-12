@@ -5,3 +5,6 @@ Dolan, E.D, More, J.J, Benchmarking Optimization Software with COPS. 200. p7-8
 	
 //Type
 NLP
+
+//Description
+Determination of the shape of a chain suspended between two points with minimal potential energy.

@@ -8,3 +8,6 @@ http://minlp.org/library/problem/mod/index.php?lib=MINLP&i=171&pi=131
 
 //Type
 MIP
+
+//Description
+Strip packing problems are a class of 2-dimensional allocation problems that are open dimensional, meaning that all items need to be packed into a strip of a given width so as to minimize its height.

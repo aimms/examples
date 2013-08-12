@@ -5,3 +5,6 @@ Brimberg, J, Hansen, P, Lih, K, Mladenovic, N, and Breton, M, An Oil Pipeline De
 
 //Type
 MIP
+
+//Description
+We consider a given set of offshore platforms and onshore wells producing known amounts of oil to be connected to a port. Connections may take place directly between platforms, well sites, and the ports, or may go through connection points at given locations. The configuration of the network and sizes of pipes used must be chosen to minimize construction costs.

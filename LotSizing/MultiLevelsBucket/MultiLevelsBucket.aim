@@ -1,5 +1,6 @@
 ﻿
 MAIN MODEL Main_MultiLevelsBucket
+  comment :  "“Big Bucket” models are those in which several items can be produced on a machine during a single time period."
 
   DECLARATION SECTION 
 
@@ -83,22 +84,26 @@ MAIN MODEL Main_MultiLevelsBucket
     VARIABLE:
        identifier   :  X
        index domain :  (i,t)
-       range        :  nonnegative ;
+       range        :  nonnegative
+       comment      :  "# of items i produced at t" ;
 
     VARIABLE:
        identifier   :  S
        index domain :  (i,t)
-       range        :  nonnegative ;
+       range        :  nonnegative
+       comment      :  "Items stocked" ;
 
     VARIABLE:
        identifier   :  R
        index domain :  (i,t) | IP(i)
-       range        :  nonnegative ;
+       range        :  nonnegative
+       comment      :  "End products backlogged" ;
 
     VARIABLE:
        identifier   :  Y
        index domain :  (i,t)
-       range        :  binary ;
+       range        :  binary
+       comment      :  "Item i is produced at t" ;
 
     VARIABLE:
        identifier   :  TotalCost

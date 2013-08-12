@@ -4,3 +4,6 @@ Bracken, J, and McCormick, G P, Chapter 6. In Selected Applications of Nonlinear
 
 //Type
 NLP
+
+//Description
+Optimization of the design of a vertically corrugated transverse bulkhead of an oil tanker.

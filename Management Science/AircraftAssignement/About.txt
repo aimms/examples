@@ -4,3 +4,6 @@ Dantzig, G B, Chapter 28. In Linear Programming and Extensions. Princeton Univer
 
 //Type
 LP
+
+//Description
+Maximization of profits of allocating aircrafts.

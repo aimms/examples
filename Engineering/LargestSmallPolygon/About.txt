@@ -5,3 +5,6 @@ Dolan, E.D, More, J.J, Benchmarking Optimization Software with COPS. 200. p3
 	
 //Type
 NLP
+
+//Description
+Determination of the polygon with maximal area, among polygons with n sides and diameter d <= 1.

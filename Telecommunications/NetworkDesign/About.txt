@@ -5,3 +5,6 @@ Fortz, B, Labbe, M, Louveaux, F, Models and algorithms for network design proble
 
 //Type
 MIP
+
+//Description
+Determination of the design of a telecommunication network.

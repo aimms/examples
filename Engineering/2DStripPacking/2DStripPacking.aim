@@ -1,5 +1,6 @@
 ﻿
-MAIN MODEL aimms_2_upgrade
+MAIN MODEL StripPacking
+  comment :  "Strip packing problems are a class of 2-dimensional allocation problems that are open dimensional, meaning that all items need to be packed into a strip of a given width so as to minimize its height."
 
   DECLARATION SECTION 
 
@@ -164,4 +165,4 @@ MAIN MODEL aimms_2_upgrade
 
   ENDPROCEDURE  ;
 
-ENDMODEL aimms_2_upgrade ;
+ENDMODEL StripPacking ;

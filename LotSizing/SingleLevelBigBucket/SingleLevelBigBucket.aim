@@ -58,22 +58,26 @@ MAIN MODEL Main_SingleLevelBigBucket
     VARIABLE:
        identifier   :  X
        index domain :  (i,t)
-       range        :  nonnegative ;
+       range        :  nonnegative
+       comment      :  "# of items i produced at t" ;
 
     VARIABLE:
        identifier   :  S
        index domain :  (i,t) | t <> NumberOfPeriods
-       range        :  nonnegative ;
+       range        :  nonnegative
+       comment      :  "Items stocked" ;
 
     VARIABLE:
        identifier   :  R
        index domain :  (i,t) | t <> NumberOfPeriods
-       range        :  nonnegative ;
+       range        :  nonnegative
+       comment      :  "End products backlogged" ;
 
     VARIABLE:
        identifier   :  Y
        index domain :  (i,t)
-       range        :  binary ;
+       range        :  binary
+       comment      :  "Item i is produced at t" ;
 
     VARIABLE:
        identifier   :  TotalCost
