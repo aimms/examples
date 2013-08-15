@@ -1,0 +1,4 @@
+﻿There is 45.848 Mb in use.
+Warning: The parameter "LowerLimitOfOpenWarehouses" is not initialized (default values are used).
+Warning: The parameter "UpperLimitOfOpenWarehouses" is not initialized (default values are used).
+Warning: The parameter "LowerLimitOnDemand" is not initialized (default values are used).

@@ -1,0 +1,200 @@
+﻿
+MAIN MODEL Main_CapacitatedWarehouseLocation
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfPotentialLocations ;
+
+    PARAMETER:
+       identifier   :  NumberOfCustomers ;
+
+    SET:
+       identifier   :  Locations
+       subset of    :  Integers
+       index        :  i
+       definition   :  {1..NumberOfPotentialLocations} ;
+
+    SET:
+       identifier   :  Customers
+       subset of    :  Integers
+       index        :  j
+       definition   :  {1..NumberOfCustomers} ;
+
+    PARAMETER:
+       identifier   :  Demand
+       index domain :  (j) ;
+
+    PARAMETER:
+       identifier   :  AllocatingCost
+       index domain :  (i,j) ;
+
+    PARAMETER:
+       identifier   :  Capacity
+       index domain :  (i) ;
+
+    PARAMETER:
+       identifier   :  LowerLimitOnDemand
+       index domain :  (i) ;
+
+    PARAMETER:
+       identifier   :  LowerLimitOfOpenWarehouses ;
+
+    PARAMETER:
+       identifier   :  UpperLimitOfOpenWarehouses ;
+
+    PARAMETER:
+       identifier   :  FixedCost
+       index domain :  (i) ;
+
+    VARIABLE:
+       identifier   :  DemandFractionSupplied
+       index domain :  (i,j)
+       range        :  [0, 1] ;
+
+    VARIABLE:
+       identifier   :  Open
+       index domain :  (i)
+       range        :  binary ;
+
+    VARIABLE:
+       identifier   :  TotalCost
+       range        :  free
+       definition   :  sum((i,j), AllocatingCost(i, j) * DemandFractionSupplied(i, j)) + sum(i, FixedCost(i) * Open(i)) ;
+
+    CONSTRAINT:
+       identifier   :  DemandSatisfaction
+       index domain :  (j)
+       definition   :  sum(i, DemandFractionSupplied(i, j)) >= 1 ;
+
+    CONSTRAINT:
+       identifier   :  ClosedWarehouse
+       index domain :  (i)
+       definition   :  sum(j, Demand(j) * DemandFractionSupplied(i, j)) <= Capacity(i) * Open(i) ;
+
+    CONSTRAINT:
+       identifier   :  MinimumSupllied
+       index domain :  (i)
+       definition   :  sum(j, Demand(j) * DemandFractionSupplied(i, j)) >= LowerLimitOnDemand(i) * Open(i) ;
+
+    CONSTRAINT:
+       identifier   :  LBWarehouses
+       definition   :  sum(i, Open(i)) >= LowerLimitOfOpenWarehouses ;
+
+    CONSTRAINT:
+       identifier   :  UBWarehouses
+       definition   :  sum(i, Open(i)) <= UpperLimitOfOpenWarehouses ;
+
+    CONSTRAINT:
+       identifier   :  EffectiveCapacity
+       index domain :  (i,j)
+       definition   :  DemandFractionSupplied(i, j) <= min(1, Capacity(i)/Demand(j)) * Open(i) ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastCost
+       objective    :  TotalCost
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+    body       :  
+       NumberOfPotentialLocations := 16 ;
+       NumberOfCustomers := 50 ;
+      
+       COMPOSITE TABLE
+        i  Capacity    FixedCost
+      
+        1    5000        7500.
+        2    5000        7500.
+        3    5000        7500.
+        4    5000        7500.
+        5    5000        7500.
+        6    5000        7500.
+        7    5000        7500.
+        8    5000        7500.
+        9    5000        7500.
+       10    5000        7500.
+       11    5000           0.
+       12    5000        7500.
+       13    5000        7500.
+       14    5000        7500.
+       15    5000        7500.
+       16    5000        7500. ;
+      
+      
+       COMPOSITE TABLE
+       j   Demand
+      
+       1    146
+       2    87
+       3    672
+       4    1337
+       5    31
+       6    559
+       7    2370
+       8    1089
+       9    33
+       10   32
+       11   5495
+       12   904
+       13   1466
+       14   143
+       15   615
+       16   564
+       17   226
+       18   3016
+       19   253
+       20   195
+       21   38
+       22   807
+       23   551
+       24   304
+       25   814
+       26   337
+       27   4368
+       28   577
+       29   482
+       30   495
+       31   231
+       32   322
+       33   685
+       34   12912
+       35   325
+       36   366
+       37   3671
+       38   2213
+       39   705
+       40   328
+       41   1681
+       42   1117
+       43   275
+       44   500
+       45   2241
+       46   733
+       47   222
+       48   49
+       49   1464
+       50   222 ;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      solve LeastCost
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return DataManagementExit();
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_CapacitatedWarehouseLocation ;
