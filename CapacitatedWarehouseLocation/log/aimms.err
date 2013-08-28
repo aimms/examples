@@ -1,6 +1,0 @@
-Warning at line 1 in user-defined function section "MainExecution".
-The parameter "LowerLimitOfOpenWarehouses" is not initialized (default values are used).
-Warning at line 1 in user-defined function section "MainExecution".
-The parameter "UpperLimitOfOpenWarehouses" is not initialized (default values are used).
-Warning at line 1 in user-defined function section "MainExecution".
-The parameter "LowerLimitOnDemand" is not initialized (default values are used).
