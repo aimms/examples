@@ -1,10 +1,10 @@
-RobotArm
+Robot arm
 
-//Sources
-Dolan, E.D, More, J.J, Benchmarking Optimization Software with COPS. 200. p18-20
-	
-//Type
-NLP
+Problem type:
+NLP (medium)
 
-//Description
+Description:
 Minimization of the time taken for a robot arm to travel between two points.
+
+References:
+Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000.

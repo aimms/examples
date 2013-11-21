@@ -1,10 +1,12 @@
-LargestSmallPolygon
+Largest small polygon
 
-//Sources
-Dolan, E.D, More, J.J, Benchmarking Optimization Software with COPS. 200. p3
-	
-//Type
-NLP
+Problem type:
+NLP (small)
 
-//Description
-Determination of the polygon with maximal area, among polygons with n sides and diameter d <= 1.
+Description:
+Find the polygon with maximal area, among polygons with n sides and diameter
+d <= 1. This problem has many local minima and therefore general nonlinear
+solvers are usually expected to find only local solutions.
+
+References:
+Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000.
