@@ -1,7 +1,11 @@
-BlendingProblem
+Blending problem.
 
-//Sources
-Dantzig, G B, Chapter 3.4. In Linear Programming and Extensions. Princeton University Press, Princeton, New Jersey, 1963.
+Problem type:
+LP (small)
 
-//Type
-LP
+Description:
+Minimization of the price of an alloy produced from other alloys available on the market.
+
+References:
+Chapter 3.4 in: Dantzig, G.B., Linear Programming and Extensions, Princeton University Press,
+Princeton, New Jersey, 1963.

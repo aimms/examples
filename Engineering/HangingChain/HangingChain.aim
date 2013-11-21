@@ -1,12 +1,23 @@
 ﻿
 MAIN MODEL Main_HangingChain
+  comment :  "Hanging chain
+              
+              Problem type:
+              NLP (small)
+              
+              Description:
+              Determination of the shape of a chain (of uniform density) suspended between
+              two points with minimal potential energy.
+              
+              References:
+              Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000."
 
   DECLARATION SECTION 
 
     PARAMETER:
        identifier   :  NumberOfIntervals
        range        :  integer
-       initial data :  50 ;
+       initial data :  200 ;
 
     SET:
        identifier   :  Intervals
@@ -20,56 +31,64 @@ MAIN MODEL Main_HangingChain
        definition   :  i/NumberOfIntervals ;
 
     PARAMETER:
-       identifier   :  LengthOfChain
-       initial data :  4 ;
+       identifier   :  ChainLength
+       definition   :  4
+       comment      :  "Length of the suspended chain" ;
 
     PARAMETER:
-       identifier   :  Height0
-       initial data :  1 ;
+       identifier   :  HeightLeft
+       definition   :  1
+       comment      :  "Height of the chain at t=0 (left)" ;
 
     PARAMETER:
-       identifier   :  Height1
-       initial data :  3 ;
+       identifier   :  HeightRight
+       definition   :  3
+       comment      :  "Height of the chain at t=1 (right)" ;
 
     PARAMETER:
        identifier   :  IntervalLength
-       definition   :  1/NumberOfIntervals ;
+       definition   :  1/NumberOfIntervals
+       comment      :  "derivative of x" ;
 
     PARAMETER:
        identifier   :  TMin
-       definition   :  if(Height1 > Height0) then
-                       0.25
+       definition   :  if (HeightRight > HeightLeft) then
+                               0.25
                        else
-                       0.75
+                               0.75
                        endif ;
 
     VARIABLE:
-       identifier   :  X
+       identifier   :  ChainHeight
        index domain :  i
        range        :  free
-       definition   :  if(i=0) then
-                       Height0
+       definition   :  if (i=0) then
+                               HeightLeft
                        else
-                       X(i-1) + 0.5 * IntervalLength * (U(i-1) + U(i))
-                       endif ;
+                               ChainHeight(i-1) + 0.5 * IntervalLength * (ChainHeightDerivative(i-1) + ChainHeightDerivative(i))
+                       endif
+       comment      :  "Height of the chain" ;
 
     VARIABLE:
-       identifier   :  U
+       identifier   :  ChainHeightDerivative
        index domain :  (i)
-       range        :  free ;
+       range        :  free
+       comment      :  "Derivative of ChainHeight" ;
 
     VARIABLE:
        identifier   :  PotentialEnergy
        range        :  free
-       definition   :  0.5 * IntervalLength * sum(i | i>0, X(i-1) * sqrt(1 + sqr(U(i-1))) + X(i) * sqrt(1 + sqr(U(i)))) ;
+       definition   :  0.5 * IntervalLength * sum(i | i>0, ChainHeight(i-1) * sqrt(1 + sqr(ChainHeightDerivative(i-1))) +
+                       ChainHeight(i) * sqrt(1 + sqr(ChainHeightDerivative(i)))) ;
 
     CONSTRAINT:
        identifier   :  LengthConstraint
-       definition   :  0.5 * IntervalLength * sum(i | i>0, sqrt(1 + sqr(U(i-1))) +sqrt(1 + sqr(U(i)))) = LengthOfChain ;
+       definition   :  0.5 * IntervalLength * sum(i | i>0, sqrt(1 + sqr(ChainHeightDerivative(i-1))) +
+                       sqrt(1 + sqr(ChainHeightDerivative(i)))) = ChainLength ;
 
     CONSTRAINT:
-       identifier   :  XUpperBound
-       definition   :  X(NumberOfIntervals) = Height1 ;
+       identifier   :  ChainHeightRightConstraint
+       definition   :  ChainHeight(NumberOfIntervals) = HeightRight ;
 
     MATHEMATICAL PROGRAM:
        identifier   :  LeastPotentialEnergy
@@ -77,7 +96,7 @@ MAIN MODEL Main_HangingChain
        direction    :  minimize
        constraints  :  AllConstraints
        variables    :  AllVariables
-       type         :  Automatic ;
+       type         :  NLP ;
 
   ENDSECTION  ;
 
@@ -96,7 +115,7 @@ MAIN MODEL Main_HangingChain
   PROCEDURE
     identifier :  MainTermination
     body       :  
-      return DataManagementExit();
+      return 1;
 
   ENDPROCEDURE  ;
 

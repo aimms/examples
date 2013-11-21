@@ -1,10 +1,12 @@
-GoddardRocket
+Goddard rocket
 
-//Sources
-Dolan, E.D, More, J.J, Benchmarking Optimization Software with COPS. 200. p23-25
-	
-//Type
-NLP
+Problem type:
+NLP (medium)
 
-//Description
-Maximization of the final altitude of a vertically launched rocket, using the thrust as a control and given the initial mass, the fuel mass, and the drag characteristics of the rocket.
+Description:
+Maximization of the final altitude of a vertically launched rocket, using the
+thrust as a control and given the initial mass, the fuel mass, and the drag
+characteristics of the rocket.
+
+References:
+Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000.

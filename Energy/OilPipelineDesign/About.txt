@@ -1,10 +1,15 @@
-OilPipelineDesign
+Oil pipeline design
 
-//Sources
-Brimberg, J, Hansen, P, Lih, K, Mladenovic, N, and Breton, M, An Oil Pipeline Design Problem. Operations Research 51 (2) (2003), 228-239
+Problem type:
+MIP (medium)
 
-//Type
-MIP
+Description:
+We consider a given set of offshore platforms and onshore wells producing known
+amounts of oil to be connected to a port. Connections may take place directly
+between platforms, well sites, and the ports, or may go through connection points
+at given locations. The configuration of the network and sizes of pipes used must
+be chosen to minimize construction costs.
 
-//Description
-We consider a given set of offshore platforms and onshore wells producing known amounts of oil to be connected to a port. Connections may take place directly between platforms, well sites, and the ports, or may go through connection points at given locations. The configuration of the network and sizes of pipes used must be chosen to minimize construction costs.
+References:
+Brimberg, J., P. Hansen, K. Lih, N. Mladenovic and M. Breton, An Oil Pipeline Design
+Problem, Operations Research 51 (2), 2003, pp. 228-239.

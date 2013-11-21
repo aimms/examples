@@ -1,62 +1,77 @@
 ﻿
 MAIN MODEL Main_GoddardRocket
-  comment :  "Maximization of the final altitude of a vertically launched rocket, using the thrust as a control and given the initial mass, the fuel mass, and the drag characteristics of the rocket."
+  comment :  "Goddard rocket
+              
+              Problem type:
+              NLP (medium)
+              
+              Description:
+              Maximization of the final altitude of a vertically launched rocket, using the
+              thrust as a control and given the initial mass, the fuel mass, and the drag
+              characteristics of the rocket.
+              
+              References:
+              Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000."
 
-  DECLARATION SECTION 
+  DECLARATION SECTION Declaration_Data
 
     PARAMETER:
-       identifier   :  NumberOfIntervals
-       definition   :  200 ;
+       identifier :  NumberOfIntervals
+       definition :  200 ;
 
     SET:
-       identifier   :  Intervals
-       subset of    :  Integers
-       index        :  h
-       definition   :  {0..NumberOfIntervals} ;
+       identifier :  Intervals
+       subset of  :  Integers
+       index      :  h
+       definition :  {0..NumberOfIntervals} ;
 
     PARAMETER:
-       identifier   :  InitialHeight
-       definition   :  1 ;
+       identifier :  InitialHeight
+       definition :  1 ;
 
     PARAMETER:
-       identifier   :  InitialVelocity
-       definition   :  0 ;
+       identifier :  InitialVelocity
+       definition :  0 ;
 
     PARAMETER:
-       identifier   :  InitialMass
-       definition   :  1 ;
+       identifier :  InitialMass
+       definition :  1 ;
 
     PARAMETER:
-       identifier   :  SurfaceGravity
-       definition   :  1 ;
+       identifier :  SurfaceGravity
+       definition :  1 ;
 
     PARAMETER:
-       identifier   :  ThrustConstant
-       definition   :  3.5 ;
+       identifier :  ThrustConstant
+       definition :  3.5 ;
 
     PARAMETER:
-       identifier   :  VelocityConstant
-       definition   :  620 ;
+       identifier :  VelocityConstant
+       definition :  620 ;
 
     PARAMETER:
-       identifier   :  HeightConstant
-       definition   :  500 ;
+       identifier :  HeightConstant
+       definition :  500 ;
 
     PARAMETER:
-       identifier   :  MassConstant
-       definition   :  0.6 ;
+       identifier :  MassConstant
+       definition :  0.6 ;
 
     PARAMETER:
-       identifier   :  DragConstant
-       definition   :  0.5 * VelocityConstant * (InitialMass / SurfaceGravity) ;
+       identifier :  DragConstant
+       definition :  0.5 * VelocityConstant * (InitialMass / SurfaceGravity) ;
 
     PARAMETER:
-       identifier   :  FinalMass
-       definition   :  MassConstant * InitialMass ;
+       identifier :  FinalMass
+       definition :  MassConstant * InitialMass ;
 
     PARAMETER:
-       identifier   :  C
-       definition   :  0.5 * (SurfaceGravity * InitialHeight)^2 ;
+       identifier :  C
+       definition :  0.5 * (SurfaceGravity * InitialHeight)^2 ;
+
+  ENDSECTION  ;
+
+  DECLARATION SECTION Declaration_Model
 
     VARIABLE:
        identifier   :  Step
@@ -66,20 +81,21 @@ MAIN MODEL Main_GoddardRocket
        identifier   :  Velocity
        index domain :  (h)
        range        :  nonnegative
-       definition   :  if(h = 0) then
-                       InitialVelocity
+       definition   :  if (h = 0) then
+                               InitialVelocity
                        else
-                       Velocity(h-1) + 0.5 * Step * ((Thrust(h) - Drag(h) - Mass(h) * Gravity(h)) / Mass(h) + (Thrust(h-1) - Drag(h-1) - Mass(h-1) * Gravity(h-1)) / Mass(h-1))
+                               Velocity(h-1) + 0.5 * Step * ((Thrust(h) - Drag(h) - Mass(h) * Gravity(h)) / Mass(h) +
+                               (Thrust(h-1) - Drag(h-1) - Mass(h-1) * Gravity(h-1)) / Mass(h-1))
                        endif ;
 
     VARIABLE:
        identifier   :  Height
        index domain :  (h)
        range        :  (0, inf)
-       definition   :  if(h = 0) then
-                       InitialHeight
+       definition   :  if (h = 0) then
+                               InitialHeight
                        else
-                       Height(h-1) + 0.5 * Step * (Velocity(h) + Velocity(h-1))
+                               Height(h-1) + 0.5 * Step * (Velocity(h) + Velocity(h-1))
                        endif ;
 
     VARIABLE:
@@ -92,10 +108,10 @@ MAIN MODEL Main_GoddardRocket
        identifier   :  Mass
        index domain :  (h)
        range        :  (0, inf)
-       definition   :  if(h = 0) then
-                       InitialMass
+       definition   :  if (h = 0) then
+                               InitialMass
                        else
-                       Mass(h-1) - 0.5 * Step * (Thrust(h) + Thrust(h-1)) / C
+                               Mass(h-1) - 0.5 * Step * (Thrust(h) + Thrust(h-1)) / C
                        endif ;
 
     VARIABLE:
@@ -126,7 +142,7 @@ MAIN MODEL Main_GoddardRocket
 
     CONSTRAINT:
        identifier   :  MassLowerBound
-       index domain :  h | h<> NumberOfIntervals
+       index domain :  h | h <> NumberOfIntervals
        definition   :  Mass(h) >= FinalMass ;
 
     CONSTRAINT:
@@ -139,7 +155,7 @@ MAIN MODEL Main_GoddardRocket
        direction    :  maximize
        constraints  :  AllConstraints
        variables    :  AllVariables
-       type         :  Automatic ;
+       type         :  NLP ;
 
   ENDSECTION  ;
 
@@ -151,6 +167,7 @@ MAIN MODEL Main_GoddardRocket
   PROCEDURE
     identifier :  MainExecution
     body       :  
+      ! Specify starting solution.
       Height(h) := 1;
       Velocity(h | h<>0) := ((h-1) / NumberOfIntervals) * (1 - ((h-1) / NumberOfIntervals));
       Mass(h | h<>0) := (FinalMass - InitialMass) * ((h-1) / NumberOfIntervals) + InitialMass;
@@ -158,6 +175,7 @@ MAIN MODEL Main_GoddardRocket
       Step := 1 / NumberOfIntervals;
       Drag(h) := DragConstant * (Velocity(h))^2 * Exp(-HeightConstant * (Height(h) - InitialHeight) / InitialHeight);
       Gravity(h) := SurfaceGravity * (InitialHeight / Height(h))^2;
+      
       solve MaxHeight;
 
   ENDPROCEDURE  ;
@@ -165,7 +183,7 @@ MAIN MODEL Main_GoddardRocket
   PROCEDURE
     identifier :  MainTermination
     body       :  
-      return DataManagementExit();
+      return 1;
 
   ENDPROCEDURE  ;
 
