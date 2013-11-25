@@ -1,13 +1,16 @@
-AircraftLanding
+Aircraft landing
 
-//Sources
-"Displacement problem and dynamically scheduling aircraft landings" by J.E. Beasley, M. Krishnamoorthy, Y.M. Sharaiha andD. Abramson, Journal of the Operational Research Society, vol.55, 2004, pp54-64
+Problem type:
+MIP (small)
 
-//Type
-MIP
+Description:
+The Aircraft Landing Problem (ALP) is the problem of deciding a landing time
+on an appropriate runway for each aircraft in a given set of aircraft such
+that each aircraft lands within a predetermined time window; and separation
+criteria between the landing of an aircraft, and the landing of all successive
+aircraft, are respected.
 
-//Instance
-airland1
-
-//Description
-The ALP is the problem of deciding a landing time on an appropriate runway for each aircraft in a given set of aircraft such that each aircraft lands within a predetermined time window; and separation criteria between the landing of an aircraft, and the landing of all successive aircraft, are respected.
+References:
+Beasley, J.E., M. Krishnamoorthy, Y.M. Sharaiha and D. Abramson, Displacement
+problem and dynamically scheduling aircraft landings, Journal of the Operational
+Research Society 55, 2004, pp 54-64.

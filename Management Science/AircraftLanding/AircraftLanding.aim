@@ -1,5 +1,21 @@
 ﻿
 MAIN MODEL Main_AircraftLanding
+  comment :  "Aircraft landing
+              
+              Problem type:
+              MIP (small)
+              
+              Description:
+              The Aircraft Landing Problem (ALP) is the problem of deciding a landing time
+              on an appropriate runway for each aircraft in a given set of aircraft such
+              that each aircraft lands within a predetermined time window; and separation
+              criteria between the landing of an aircraft, and the landing of all successive
+              aircraft, are respected.
+              
+              References:
+              Beasley, J.E., M. Krishnamoorthy, Y.M. Sharaiha and D. Abramson, Displacement
+              problem and dynamically scheduling aircraft landings, Journal of the Operational
+              Research Society 55, 2004, pp 54-64."
 
   DECLARATION SECTION 
 
@@ -86,12 +102,12 @@ MAIN MODEL Main_AircraftLanding
 
     CONSTRAINT:
        identifier   :  EarlyContraint
-       index domain :  i
+       index domain :  (i)
        definition   :  Early(i) >= TargetLanding(i) - Landing(i) ;
 
     CONSTRAINT:
        identifier   :  LateContraint
-       index domain :  i
+       index domain :  (i)
        definition   :  Late(i) >= Landing(i) - TargetLanding(i) ;
 
     MATHEMATICAL PROGRAM:
@@ -100,13 +116,15 @@ MAIN MODEL Main_AircraftLanding
        direction    :  minimize
        constraints  :  AllConstraints
        variables    :  AllVariables
-       type         :  Automatic ;
+       type         :  MIP ;
 
   ENDSECTION  ;
 
   PROCEDURE
     identifier :  MainInitialization
     body       :  
+      ! Instance airland1.
+      
        COMPOSITE TABLE
       
        i   EarliestLanding   TargetLanding   LatestLanding   PenaltyBeforeTarget   PenaltyAfterTarget
@@ -142,7 +160,7 @@ MAIN MODEL Main_AircraftLanding
   PROCEDURE
     identifier :  MainTermination
     body       :  
-      return DataManagementExit();
+      return 1;
 
   ENDPROCEDURE  ;
 

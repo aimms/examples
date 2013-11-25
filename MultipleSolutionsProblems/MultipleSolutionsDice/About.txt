@@ -1,0 +1,19 @@
+Finding multiple solutions for the dice problem
+
+Problem type:
+MIP (small)
+
+Description:
+This example demonstrates several approaches to get multiple solutions when
+solving a MIP problem. These approaches are:
+- Using the incumbent (solver) callback;
+- Using the solution pool (only supported by CPLEX);
+- Repeatedly solve problem forbidding the previous solutions.
+
+In the dice problem a set of three dice has to be designed by assigning an
+integer number to each face such that on average dice 1 beats dice 2, dice
+2 beats dice 3 and dice 3 beats dice 1. The goal is to maximize the number
+of total wins on average. The dice problem has many solutions.
+
+References:
+Paul van der Eijk
