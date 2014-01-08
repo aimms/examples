@@ -1,7 +1,27 @@
 ﻿
 MAIN MODEL Main_SingleSmallBucket2
+  comment :  "Lot sizing
+              
+              Problem type:
+              MIP (small)
+              
+              Description:
+              Lot-sizing problems are production planning problems in which the periods
+              are a priori, and production of an item in a given period implies some
+              discrete event such as payment of a cost or the loss of a amount of
+              production capacity, due to placement of an order, or the set-up, startup,
+              or changeover of a machine.
+              
+              References:
+              Problem vpm5 from: Belvaux, G., L.A. Wolsey, Lotsizelib: A library of models
+              and matrices for lot-sizing problems, Core discussion paper, Universite
+              Catholique de Louvain, 1999."
 
   DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfItems
+       definition   :  8 ;
 
     PARAMETER:
        identifier   :  NumberOfMachines
@@ -11,14 +31,16 @@ MAIN MODEL Main_SingleSmallBucket2
        identifier   :  NumberOfPeriods
        definition   :  8 ;
 
-    PARAMETER:
-       identifier   :  NumberOfItems
-       definition   :  8 ;
+    SET:
+       identifier   :  Items
+       subset of    :  Integers
+       index        :  i
+       definition   :  {1..NumberOfItems} ;
 
     SET:
        identifier   :  Machines
        subset of    :  Integers
-       index        :  k
+       index        :  m
        definition   :  {1..NumberOfMachines} ;
 
     SET:
@@ -26,12 +48,6 @@ MAIN MODEL Main_SingleSmallBucket2
        subset of    :  Integers
        index        :  t
        definition   :  {1..NumberOfPeriods} ;
-
-    SET:
-       identifier   :  Items
-       subset of    :  Integers
-       index        :  i
-       definition   :  {1..NumberOfItems} ;
 
     PARAMETER:
        identifier   :  InitialStock
@@ -50,17 +66,17 @@ MAIN MODEL Main_SingleSmallBucket2
 
     PARAMETER:
        identifier   :  ProductionRate
-       index domain :  (i,k) ;
+       index domain :  (i,m) ;
 
     PARAMETER:
-       identifier   :  SUP
-       index domain :  (k)
+       identifier   :  MachineStartUpTime
+       index domain :  (m)
        definition   :  data { 1 : 0.100,  2 : 0.200,  3 : 0.400,  4 : 0.500 } ;
 
     PARAMETER:
        identifier   :  StartUpTime
-       index domain :  (i,k)
-       definition   :  SUP(k) ;
+       index domain :  (i,m)
+       definition   :  MachineStartUpTime(m) ;
 
     PARAMETER:
        identifier   :  Demand
@@ -68,78 +84,78 @@ MAIN MODEL Main_SingleSmallBucket2
 
     VARIABLE:
        identifier   :  X
-       index domain :  (i,k,t)
+       index domain :  (i,m,t)
        range        :  nonnegative
-       comment      :  "Fraction of the period for i on k in t" ;
+       comment      :  "Fraction produced of item i on machine m in period t" ;
 
     VARIABLE:
        identifier   :  Y
-       index domain :  (i,k,t)
+       index domain :  (i,m,t)
        range        :  binary
-       comment      :  "Item i during the period" ;
+       comment      :  "Production variable: 1 if item i is produced on machine m in period t" ;
 
     VARIABLE:
        identifier   :  S
        index domain :  (i,t)
        range        :  nonnegative
-       comment      :  "Stock i in t" ;
+       comment      :  "Stock of item i on period t" ;
 
     VARIABLE:
        identifier   :  Z
-       index domain :  (i,t,k)
+       index domain :  (i,t,m)
        range        :  binary
-       comment      :  "Start item i in t" ;
+       comment      :  "Startup variable: 1 if production of item i is started on machine m in period t" ;
 
     VARIABLE:
        identifier   :  V
        index domain :  (i)
        range        :  nonnegative
-       comment      :  "Excess over upper bound on stock" ;
+       comment      :  "Excess over upper bound on stock for item i" ;
 
     VARIABLE:
        identifier   :  TimeLoss
        range        :  free
-       definition   :  sum((i,k,t), StartUpTime(i,k) * Z(i, t, k)) + sum(i, 10 * V(i)) ;
+       definition   :  sum((i,m,t), StartUpTime(i,m) * Z(i, t, m)) + sum(i, 10 * V(i)) ;
 
     CONSTRAINT:
        identifier   :  FlowConstraint
        index domain :  (i,t) | t>1
-       definition   :  S(i, t-1) + sum(k, ProductionRate(i, k) * X(i, k, t)) = Demand(i, t) + S(i, t) ;
+       definition   :  S(i, t-1) + sum(m, ProductionRate(i, m) * X(i, m, t)) = Demand(i, t) + S(i, t) ;
 
     CONSTRAINT:
        identifier   :  FlowConstraintBis
        index domain :  (i)
-       definition   :  InitialStock(i) + sum(k, ProductionRate(i, k) * X(i, k, 1)) = Demand(i, 1) + S(i, 1) ;
+       definition   :  InitialStock(i) + sum(m, ProductionRate(i, m) * X(i, m, 1)) = Demand(i, 1) + S(i, 1) ;
 
     CONSTRAINT:
        identifier   :  StartUpContraint
-       index domain :  (i,k,t)
-       definition   :  X(i, k, t) + StartUpTime(i,k) * Z(i, t, k) <= Y(i, k, t) ;
+       index domain :  (i,m,t)
+       definition   :  X(i, m, t) + StartUpTime(i,m) * Z(i, t, m) <= Y(i, m, t) ;
 
     CONSTRAINT:
-       identifier   :  C1
-       index domain :  (i,k,t)
-       definition   :  Z(i, t, k) >= Y(i, k, t) - Y(i, k, t-1) ;
+       identifier   :  StartUpConstraint1
+       index domain :  (i,m,t)
+       definition   :  Z(i, t, m) >= Y(i, m, t) - Y(i, m, t-1) ;
 
     CONSTRAINT:
-       identifier   :  C2
-       index domain :  (i,t,k)
-       definition   :  Z(i, t, k) + Z(i, t-1, k) <= Y(i, k, t) ;
+       identifier   :  StartUpConstraint2
+       index domain :  (i,t,m)
+       definition   :  Z(i, t, m) + Z(i, t-1, m) <= Y(i, m, t) ;
 
     CONSTRAINT:
-       identifier   :  C3
-       index domain :  (k,t)
-       definition   :  sum(i, Y(i, k, t) - Z(i, t, k)) <=1 ;
+       identifier   :  StartUpConstraint3
+       index domain :  (m,t)
+       definition   :  sum(i, Y(i, m, t) - Z(i, t, m)) <= 1 ;
 
     CONSTRAINT:
-       identifier   :  StartConstraint
-       index domain :  (k,t)
-       definition   :  sum(i, Z(i, t, k)) <= 1 ;
+       identifier   :  UniqueStartUpConstraint
+       index domain :  (m,t)
+       definition   :  sum(i, Z(i, t, m)) <= 1 ;
 
     CONSTRAINT:
        identifier   :  StartUpTimeConstraint
-       index domain :  (k,t)
-       definition   :  sum(i, X(i, k, t)) + sum(i, StartUpTime(i, k) * Z(i, t, k)) <= 1 ;
+       index domain :  (m,t)
+       definition   :  sum(i, X(i, m, t)) + sum(i, StartUpTime(i, m) * Z(i, t, m)) <= 1 ;
 
     CONSTRAINT:
        identifier   :  MaxStockConstraint
@@ -179,7 +195,7 @@ MAIN MODEL Main_SingleSmallBucket2
       ;
       
       
-      ProductionRate(i,k) := DATA TABLE
+      ProductionRate(i,m) := DATA TABLE
       
           1       2       3       4
       !
@@ -198,14 +214,14 @@ MAIN MODEL Main_SingleSmallBucket2
   PROCEDURE
     identifier :  MainExecution
     body       :  
-      solve LeastTime
+      solve LeastTime;
 
   ENDPROCEDURE  ;
 
   PROCEDURE
     identifier :  MainTermination
     body       :  
-      return DataManagementExit();
+      return 1;
 
   ENDPROCEDURE  ;
 
