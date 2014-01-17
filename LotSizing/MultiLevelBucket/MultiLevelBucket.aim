@@ -1,6 +1,22 @@
 ﻿
-MAIN MODEL Main_MultiLevelsBucket
-  comment :  "“Big Bucket” models are those in which several items can be produced on a machine during a single time period."
+MAIN MODEL Main_MultiLevelBucket
+  comment :  "Lot sizing
+              
+              Problem type:
+              MIP (medium)
+              
+              Description:
+              Lot-sizing problems are production planning problems in which the periods
+              are a priori, and production of an item in a given period implies some
+              discrete event such as payment of a cost or the loss of a amount of
+              production capacity, due to placement of an order, or the set-up, startup,
+              or changeover of a machine. This is an multi-item, multi-level lot-sizing
+              problem.
+              
+              References:
+              Belvaux, G., L.A. Wolsey, Lotsizelib: A library of models and matrices for
+              lot-sizing problems, Core discussion paper, Universite Catholique de Louvain,
+              1999."
 
   DECLARATION SECTION 
 
@@ -29,27 +45,27 @@ MAIN MODEL Main_MultiLevelsBucket
        definition   :  {1..NumberOfPeriods} ;
 
     PARAMETER:
-       identifier   :  IntermediateSUP
+       identifier   :  IntermediateSetUpCost
        index domain :  (i) ;
 
     PARAMETER:
        identifier   :  SetUpCost
        index domain :  i
-       definition   :  0.1 * IntermediateSUP(i) ;
+       definition   :  0.1 * IntermediateSetUpCost(i) ;
 
     PARAMETER:
-       identifier   :  IntermediateIC
+       identifier   :  IntermediateInventoryCost
        index domain :  (i) ;
 
     PARAMETER:
        identifier   :  InventoryCost
        index domain :  (i)
-       definition   :  0.1 * IntermediateIC(i) ;
+       definition   :  0.1 * IntermediateInventoryCost(i) ;
 
     PARAMETER:
        identifier   :  BackloggingCost
        index domain :  (i)
-       definition   :  10 * IntermediateIC(i) ;
+       definition   :  10 * IntermediateInventoryCost(i) ;
 
     PARAMETER:
        identifier   :  Demand
@@ -85,25 +101,25 @@ MAIN MODEL Main_MultiLevelsBucket
        identifier   :  X
        index domain :  (i,t)
        range        :  nonnegative
-       comment      :  "# of items i produced at t" ;
+       comment      :  "Number of items i produced in period t" ;
 
     VARIABLE:
        identifier   :  S
        index domain :  (i,t)
        range        :  nonnegative
-       comment      :  "Items stocked" ;
+       comment      :  "Stock of item i in period t" ;
 
     VARIABLE:
        identifier   :  R
        index domain :  (i,t) | IP(i)
        range        :  nonnegative
-       comment      :  "End products backlogged" ;
+       comment      :  "Backlog of item i in period t" ;
 
     VARIABLE:
        identifier   :  Y
        index domain :  (i,t)
        range        :  binary
-       comment      :  "Item i is produced at t" ;
+       comment      :  "Production variable: 1 if item i is produced on machine m in period t" ;
 
     VARIABLE:
        identifier   :  TotalCost
@@ -112,7 +128,7 @@ MAIN MODEL Main_MultiLevelsBucket
 
     CONSTRAINT:
        identifier   :  FlowConstraint1
-       index domain :  (i,t) | IP(i) =0
+       index domain :  (i,t) | IP(i) = 0
        definition   :  S(i, t-1) + X(i, t) = sum(j | j<>i, RML(i, j) * X(j, t)) + S(i, t) ;
 
     CONSTRAINT:
@@ -143,7 +159,7 @@ MAIN MODEL Main_MultiLevelsBucket
   PROCEDURE
     identifier :  MainInitialization
     body       :  
-          IntermediateSUP(i) := data
+          IntermediateSetUpCost(i) := data
           {  1 : 282,   2 : 400,   3 : 477,   4 : 381,   5 : 536,   6 : 277,
              7 : 441,   8 : 340,   9 : 863,  10 : 167,  11 : 827,  12 : 479,
             13 : 212,  14 : 335,  15 : 902,  16 : 406,  17 : 733,  18 : 644,
@@ -153,7 +169,7 @@ MAIN MODEL Main_MultiLevelsBucket
             37 : 716,  38 : 306,  39 : 487,  40 : 502 } ;
       
       
-          IntermediateIC(i) := data
+          IntermediateInventoryCost(i) := data
           {  1 : 0.200,   2 : 0.400,   3 : 0.300,   4 : 0.200,   5 : 0.400,
              6 : 0.200,   7 : 0.400,   8 : 0.200,   9 : 0.200,  10 : 0.300,
             11 : 0.200,  12 : 0.400,  13 : 0.300,  14 : 0.300,  15 : 0.300,
@@ -195,15 +211,15 @@ MAIN MODEL Main_MultiLevelsBucket
   PROCEDURE
     identifier :  MainExecution
     body       :  
-      solve LeastCost
+      solve LeastCost;
 
   ENDPROCEDURE  ;
 
   PROCEDURE
     identifier :  MainTermination
     body       :  
-      return DataManagementExit();
+      return 1;
 
   ENDPROCEDURE  ;
 
-ENDMODEL Main_MultiLevelsBucket ;
+ENDMODEL Main_MultiLevelBucket ;

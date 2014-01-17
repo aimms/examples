@@ -1,5 +1,5 @@
 ﻿
-MAIN MODEL Main_SingleSmallBucket2
+MAIN MODEL Main_SingleLevelSmallBucketTwoItems
   comment :  "Lot sizing
               
               Problem type:
@@ -98,7 +98,7 @@ MAIN MODEL Main_SingleSmallBucket2
        identifier   :  S
        index domain :  (i,t)
        range        :  nonnegative
-       comment      :  "Stock of item i on period t" ;
+       comment      :  "Stock of item i in period t" ;
 
     VARIABLE:
        identifier   :  Z
@@ -225,4 +225,4 @@ MAIN MODEL Main_SingleSmallBucket2
 
   ENDPROCEDURE  ;
 
-ENDMODEL Main_SingleSmallBucket2 ;
+ENDMODEL Main_SingleLevelSmallBucketTwoItems ;
