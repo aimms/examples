@@ -1,6 +1,23 @@
 ﻿
-MAIN MODEL Main_VRP2
-  comment :  " Vehicle Routing Problem with capacity limited vehicles."
+MAIN MODEL Main_VRP4
+  comment :  "Capacitated Vehicle Routing Problem
+              
+              Problem type:
+              MIP (medium)
+              
+              Description:
+              The Vehicle Routing Problem (VRP) deals with the distribution of goods between depots
+              and customers using vehicles. In the Capacitated VRP the vehicles have a limited
+              capacity. The model formulation in this project uses the three-index vehicle flow
+              model of Toth and Vigo (2002) denoted by VRP4 on pp. 15-16.
+              
+              This project uses the data instance 'E-n23-k3' from the Christofides and Eilon
+              set on http://neo.lcc.uma.es/vrp/
+              
+              References:
+              Toth, P., and D. Vigo, An Overview of Vehicle Routing Problems, In: The Vehicle
+              Routing Problem, P. Toth and D. Vigo (eds), SIAM Monographs on Discrete Mathematics
+              and Applications, Philadelphia, 2002, pp. 1-26."
 
   DECLARATION SECTION 
 
@@ -21,8 +38,7 @@ MAIN MODEL Main_VRP2
     PARAMETER:
        identifier   :  VehiclesNumber
        range        :  integer
-       definition   :  !CustomersNumber
-                       VehicleLowerBound + 2 ;
+       definition   :  VehicleLowerBound + 2 ;
 
     SET:
        identifier   :  Vehicles
@@ -40,17 +56,15 @@ MAIN MODEL Main_VRP2
 
     PARAMETER:
        identifier   :  Distance
-       index domain :  (i,j)
-       definition   :  !round(sqrt((XCoordinate(i) - XCoordinate(j))^2 + (YCoordinate(i) - YCoordinate(j))^2))
-                       ;
+       index domain :  (i,j) ;
 
     PARAMETER:
        identifier   :  FullDistance
        index domain :  (i,j)
-       definition   :  if (i>j) then
-                       Distance(i, j)
+       definition   :  if ( i>j ) then
+                           Distance(i,j)
                        else
-                       Distance(j, i)
+                           Distance(j,i)
                        endif ;
 
     PARAMETER:
@@ -65,7 +79,7 @@ MAIN MODEL Main_VRP2
        identifier   :  X
        index domain :  (i,j,k) | i<>j
        range        :  binary
-       comment      :  "Indicates if vehicle k uses arc (i,j)" ;
+       comment      :  "Indicates if vehicle k uses arc (i,j)." ;
 
     VARIABLE:
        identifier   :  Y
@@ -77,64 +91,66 @@ MAIN MODEL Main_VRP2
        identifier   :  U
        index domain :  (i,k)
        range        :  free
-       comment      :  "Subtour elemination variable" ;
+       comment      :  "Subtour elemination variable." ;
 
     VARIABLE:
        identifier   :  TotalCost
        range        :  free
-       definition   :  sum((i,j), FullDistance(i, j) * sum(k, X(i, j, k))) ;
+       definition   :  sum( (i,j), FullDistance(i,j) * sum( k, X(i,j,k) ) ) ;
 
     CONSTRAINT:
-       identifier   :  C1
+       identifier   :  CustomerAssignment
        index domain :  i | i>1
-       definition   :  sum(k, Y(i, k)) = 1
-       comment      :  "Imposes that each sutomer is visited exactly once." ;
+       definition   :  sum( k, Y(i,k) ) = 1
+       comment      :  "Imposes that each customer is visited exactly once." ;
 
     CONSTRAINT:
-       identifier   :  C2
-       definition   :  sum(k, Y(1,k)) >= VehicleLowerBound
-       comment      :  "Minimum number of vehicles" ;
+       identifier   :  VehiclesLimit
+       definition   :  sum( k, Y(1,k) ) >= VehicleLowerBound
+       comment      :  "Minimum number of vehicles." ;
 
     CONSTRAINT:
-       identifier   :  C3
+       identifier   :  RouteConstraint1
        index domain :  (i,k)
-       definition   :  sum(j, X(i, j, k)) = Y(i, k)
+       definition   :  sum( j, X(i,j,k) ) = Y(i,k)
        comment      :  "The same vehicle enters and leaves a given customer." ;
 
     CONSTRAINT:
-       identifier   :  C3p
+       identifier   :  RouteConstraint2
        index domain :  (i,k)
-       definition   :  sum(j, X(j, i, k)) = Y(i, k)
+       definition   :  sum( j, X(j,i,k) ) = Y(i,k)
        comment      :  "The same vehicle enters and leaves a given customer." ;
 
     CONSTRAINT:
-       identifier   :  C4
+       identifier   :  CapacityRestriction
        index domain :  (k)
-       definition   :  sum(i, CustomersDemand(i) * Y(i, k)) <= LoadCapacity
+       definition   :  sum( i, CustomersDemand(i) * Y(i,k) ) <= LoadCapacity
        comment      :  "The capacity restriction for each vehicle k." ;
 
     CONSTRAINT:
-       identifier   :  C5
+       identifier   :  SubtourElimination1
        index domain :  (i,j,k) | i>1 and j>0 and i<>j
-       definition   :  U(i, k) - U(j, k) + LoadCapacity * X(i, j, k) <= LoadCapacity - CustomersDemand(j)
-       comment      :  "Subtour elimination constraints." ;
+       definition   :  U(i,k) - U(j,k) + LoadCapacity * X(i,j,k) <= LoadCapacity - CustomersDemand(j)
+       comment      :  "Subtour elimination constraints (Miller, Tucker, Zemlin)." ;
 
     CONSTRAINT:
-       identifier   :  C6
+       identifier   :  SubtourElimination2
        index domain :  (i,k) | i<>1
-       definition   :  U(i, k) >= CustomersDemand(i)
-       comment      :  "Subtour elimination constraints." ;
+       definition   :  U(i,k) >= CustomersDemand(i)
+       comment      :  "Subtour elimination constraints (Miller, Tucker, Zemlin)." ;
 
     CONSTRAINT:
-       identifier   :  C6p
+       identifier   :  SubtourElimination3
        index domain :  (i,k) | i<>1
-       definition   :  U(i, k) <= LoadCapacity
-       comment      :  "Subtour elimination constraints." ;
+       definition   :  U(i,k) <= LoadCapacity
+       comment      :  "Subtour elimination constraints (Miller, Tucker, Zemlin)." ;
 
     CONSTRAINT:
-       identifier   :  c7
+       identifier   :  VehicleOrder
        index domain :  k | k < VehiclesNumber
-       definition   :  y(1,k) >= y(1,k+1) ;
+       definition   :  Y(1,k) >= Y(1,k+1)
+       comment      :  "This constraint enforces that vehicle 1 is used before vehicle 2, which is used
+                        before vehicle3, etc." ;
 
     MATHEMATICAL PROGRAM:
        identifier   :  LeastCost
@@ -142,14 +158,13 @@ MAIN MODEL Main_VRP2
        direction    :  minimize
        constraints  :  AllConstraints
        variables    :  AllVariables
-       type         :  Automatic ;
+       type         :  MIP ;
 
   ENDSECTION  ;
 
   PROCEDURE
     identifier :  MainInitialization
     body       :  
-      
        COMPOSITE TABLE
         i   j    Distance
       !--  --    --------
@@ -274,6 +289,8 @@ MAIN MODEL Main_VRP2
   PROCEDURE
     identifier :  MainExecution
     body       :  
+      ShowProgressWindow;
+      
       solve LeastCost;
 
   ENDPROCEDURE  ;
@@ -281,8 +298,8 @@ MAIN MODEL Main_VRP2
   PROCEDURE
     identifier :  MainTermination
     body       :  
-      return DataManagementExit();
+      return 1;
 
   ENDPROCEDURE  ;
 
-ENDMODEL Main_VRP2 ;
+ENDMODEL Main_VRP4 ;

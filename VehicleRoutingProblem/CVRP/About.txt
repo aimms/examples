@@ -1,7 +1,18 @@
-CapacitedVehicleRoutingProblem
+Capacitated Vehicle Routing Problem
 
-//Sources
-Vigo, D and Toth, P, The Vehicle Routing Problem. (2002), 15
+Problem type:
+MIP (medium)
 
-//Type
-MIP
+Description:
+The Vehicle Routing Problem (VRP) deals with the distribution of goods between depots
+and customers using vehicles. In the Capacitated VRP the vehicles have a limited
+capacity. The model formulation in this project uses the three-index vehicle flow
+model of Toth and Vigo (2002) denoted by VRP4 on pp. 15-16.
+
+This project uses the data instance 'E-n23-k3' from the Christofides and Eilon
+set on http://neo.lcc.uma.es/vrp/
+
+References:
+Toth, P., and D. Vigo, An Overview of Vehicle Routing Problems, In: The Vehicle
+Routing Problem, P. Toth and D. Vigo (eds), SIAM Monographs on Discrete Mathematics
+and Applications, Philadelphia, 2002, pp. 1-26.
