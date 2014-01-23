@@ -228,6 +228,8 @@ MAIN MODEL Water_Distribution
   PROCEDURE
     identifier :  MainExecution
     body       :  
+      ShowProgressWindow;
+      
       myGMP := GMP::Instance::Generate( water );
       
       BB( myGMP );

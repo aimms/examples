@@ -6,4 +6,6 @@ Bracken, J, and McCormick, G P, Chapter 6. In Selected Applications of Nonlinear
 NLP
 
 //Description
-Optimization of the design of a vertically corrugated transverse bulkhead of an oil tanker.
+Design of a vertically corrugated transverse bulkhead of an oil tanker. The model determines
+the design that minimizes the total weight of the transverse bulkhead subject to constraints
+on performance characteristics and on certain dimensions.
