@@ -1,6 +1,6 @@
 ﻿
 MAIN MODEL Main_BlendingProblem
-  comment :  "Blending problem.
+  comment :  "Blending problem
               
               Problem type:
               LP (small)
@@ -9,7 +9,7 @@ MAIN MODEL Main_BlendingProblem
               Minimization of the price of an alloy produced from other alloys available on the market.
               
               References:
-              Chapter 3.4 in: Dantzig, G.B., Linear Programming and Extensions, Princeton University Press,
+              Dantzig, G.B., Chapter 3.4 in: Linear Programming and Extensions, Princeton University Press,
               Princeton, New Jersey, 1963."
 
   DECLARATION SECTION 
