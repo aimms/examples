@@ -3,6 +3,9 @@ Finding multiple solutions for the dice problem
 Problem type:
 MIP (small)
 
+Keywords:
+Multiple solutions, incumbent callback, solution pool, GMP
+
 Description:
 This example demonstrates several approaches to get multiple solutions when
 solving a MIP problem. These approaches are:

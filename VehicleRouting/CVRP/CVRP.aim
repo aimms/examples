@@ -291,7 +291,18 @@ MAIN MODEL Main_VRP4
     body       :  
       ShowProgressWindow;
       
+      LeastCost.CallbackNewIncumbent := 'IncumbentCallback';
+      
       solve LeastCost;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  IncumbentCallback
+    body       :  
+      RetrieveCurrentVariableValues( AllVariables );
+      
+      PageRefreshAll;
 
   ENDPROCEDURE  ;
 

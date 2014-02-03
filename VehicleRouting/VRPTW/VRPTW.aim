@@ -300,6 +300,8 @@ MAIN MODEL Main_VRPTW
   PROCEDURE
     identifier :  MainExecution
     body       :  
+      ShowProgressWindow;
+      
       LeastCost.CallbackNewIncumbent := 'IncumbentCallback';
       
       solve LeastCost;

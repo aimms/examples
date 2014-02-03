@@ -3,6 +3,9 @@ Capacitated network design problem
 Problem type:
 MIP (hard)
 
+Keywords:
+Benders Decomposition, XML
+
 Description:
 Network design problems deal with the selection of a subset of edges in
 an existing network, such that for a set of commodities the given demand

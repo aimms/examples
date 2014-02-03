@@ -3,6 +3,9 @@ Capacitated Vehicle Routing Problem
 Problem type:
 MIP (medium)
 
+Keywords:
+Incumbent callback, Network object
+
 Description:
 The Vehicle Routing Problem (VRP) deals with the distribution of goods between depots
 and customers using vehicles. In the Capacitated VRP the vehicles have a limited
