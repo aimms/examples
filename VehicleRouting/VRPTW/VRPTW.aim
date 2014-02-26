@@ -1,0 +1,331 @@
+﻿
+MAIN MODEL Main_VRPTW
+  comment :  "Capacitated Vehicle Routing Problem with Time Windows
+              
+              Problem type:
+              MIP (medium)
+              
+              Description:
+              The Vehicle Routing Problem with Time Windows (VRPTW) deals with the distribution
+              of goods between depots and customers using vehicles. The vehicles have a limited
+              capacity. Each customer has to be supplied within the time window associated with
+              the customer.
+              
+              The model formulation follows Desrochers et al. (1988), pp. 67-68.
+              
+              By default this project uses the data instance 'R106.25' from the Solomon set at:
+                http://w.cba.neu.edu/~msolomon/problems.htm
+                http://neo.lcc.uma.es/vrp/vrp-instances/
+              More instances are available as cases.
+              
+              References:
+              Desrochers, M., J.K. Lenstra, M.W.P. Savelsbergh, F. Soumis, Vehicle Routing Problem
+              with Time Windows: Optimization and Approximation, In: Vehicle Routing: Methods and
+              Studies, B.L. Golden and A.A. Assad (eds), Studies in Management Science and Systems
+              vol. 16, 1988, pp. 65-84."
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  CustomersNumber
+       range        :  integer
+       initial data :  25 ;
+
+    SET:
+       identifier   :  Customers
+       subset of    :  Integers
+       indices      :  i, j, k
+       definition   :  {0..CustomersNumber} ;
+
+    PARAMETER:
+       identifier   :  Demand
+       index domain :  (i) ;
+
+    PARAMETER:
+       identifier   :  LBTW
+       index domain :  (i)
+       comment      :  "Lower Bound of the Time Window" ;
+
+    PARAMETER:
+       identifier   :  UBTW
+       index domain :  (i)
+       comment      :  "Upper Bound of the Time Window" ;
+
+    PARAMETER:
+       identifier   :  XCoord
+       index domain :  (i)
+       text         :  "X-coordinate" ;
+
+    PARAMETER:
+       identifier   :  YCoord
+       index domain :  (j)
+       text         :  "Y-coordinate" ;
+
+    PARAMETER:
+       identifier   :  Distance
+       index domain :  (i,j)
+       definition   :  floor(sqrt((XCoord(i) - XCoord(j))^2 + (YCoord(i) - YCoord(j))^2)*10)/10
+       comment      :  "Cost or distance between i and j (round to first decimal)" ;
+
+    PARAMETER:
+       identifier   :  ServiceTime
+       index domain :  i
+       comment      :  "Service Time" ;
+
+    PARAMETER:
+       identifier   :  TravelTime
+       index domain :  (i,j)
+       definition   :  Distance(i,j) + ServiceTime(i)
+       comment      :  "Travel time equals the corresponding distance plus the service time" ;
+
+    PARAMETER:
+       identifier   :  Capacity
+       initial data :  200 ;
+
+    PARAMETER:
+       identifier   :  M
+       definition   :  1000
+       comment      :  "A large constant (\"Big M\")" ;
+
+    VARIABLE:
+       identifier   :  X
+       index domain :  (i,j) | i<>j
+       text         :  "Arc indicator"
+       range        :  binary
+       comment      :  "Equal to 1 if arc (i,j) is used by a vehicle and 0 otherwise" ;
+
+    VARIABLE:
+       identifier   :  D
+       index domain :  (i)
+       text         :  "Departure time"
+       range        :  nonnegative
+       comment      :  "Departure time at customer i" ;
+
+    VARIABLE:
+       identifier   :  Y
+       index domain :  (i)
+       text         :  "Vehicle load"
+       range        :  nonnegative
+       comment      :  "Load of the vehicle arriving at i" ;
+
+    VARIABLE:
+       identifier   :  TotalCost
+       range        :  free
+       definition   :  sum( (i,j), Distance(i,j) * X(i,j) ) ;
+
+    CONSTRAINT:
+       identifier   :  CustomerSelection
+       index domain :  i | i>0
+       definition   :  sum( j, X(i,j) ) = 1
+       comment      :  "Corresponds to a minimum cost flow problem" ;
+
+    CONSTRAINT:
+       identifier   :  FlowBalance
+       index domain :  i | i>0
+       definition   :  sum( j, X(i,j) ) - sum( j, X(j,i) ) = 0
+       comment      :  "Correspond to a minimum cost flow problem" ;
+
+    CONSTRAINT:
+       identifier   :  ScheduleFeasibility
+       index domain :  (i,j) | i>0 and j>0 and i<>j
+       definition   :  D(i) + TravelTime(i,j) - D(j) <= M * (1 - X(i,j))
+       comment      :  "Ensures feasibility of the schedule" ;
+
+    CONSTRAINT:
+       identifier   :  TimeWindowConstraint
+       index domain :  i | i>0
+       definition   :  LBTW(i) <= D(i) <= UBTW(i)
+       comment      :  "Ensures that each customer has to be supplied within the time window associated with
+                        the customer" ;
+
+    CONSTRAINT:
+       identifier   :  LoadsFeasibility1
+       index domain :  (i,j) | i>0 and j>0 and i<>j
+       definition   :  Y(i) + Demand(i) - Y(j) <= M * (1 - X(i,j))
+       comment      :  "Ensures feasibility of the loads" ;
+
+    CONSTRAINT:
+       identifier   :  LoadsFeasibility2
+       index domain :  i | i>0
+       definition   :  Y(i) <= Capacity
+       comment      :  "Ensures feasibility of the loads" ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastCost
+       objective    :  TotalCost
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  MIP ;
+
+  ENDSECTION  ;
+
+  SECTION User_Interface
+
+
+    DECLARATION SECTION 
+
+      SET:
+         identifier   :  Colors
+         subset of    :  Integers
+         index        :  n
+         definition   :  {0..NumberOfColors} ;
+
+      PARAMETER:
+         identifier   :  NumberOfColors
+         definition   :  6 ;
+
+      ELEMENT PARAMETER:
+         identifier   :  ColorsValue
+         index domain :  n
+         range        :  AllColors
+         definition   :  data { 0 : red,  1 : blue,  2 : green,  3 : magenta,  4 : cyan,  5 : yellow,  6 : grey } ;
+
+      ELEMENT PARAMETER:
+         identifier   :  RoutesColor
+         index domain :  (i,j)
+         range        :  AllColors ;
+
+      ELEMENT PARAMETER:
+         identifier   :  DepartureTimeColor
+         index domain :  (i)
+         range        :  AllColors ;
+
+      PARAMETER:
+         identifier   :  XRange ;
+
+      PARAMETER:
+         identifier   :  YRange ;
+
+    ENDSECTION  ;
+
+    PROCEDURE
+      identifier :  ColorsAssignment
+
+      DECLARATION SECTION 
+
+        PARAMETER:
+           identifier   :  Counter
+           range        :  integer ;
+
+        PARAMETER:
+           identifier   :  XCopy
+           index domain :  (i,j) ;
+
+        ELEMENT PARAMETER:
+           identifier   :  CurrentCustomer
+           range        :  Customers ;
+
+        ELEMENT PARAMETER:
+           identifier   :  NextCustomer
+           range        :  Customers ;
+
+        ELEMENT PARAMETER:
+           identifier   :  NextCustomerTemp
+           range        :  Customers ;
+
+      ENDSECTION  ;
+
+      body       :  
+        empty RoutesColor;
+        
+        Counter := 0;
+        
+        for (i) do
+            if ( X(0,i) = 1 ) then
+                RoutesColor(0,i) := ColorsValue(Counter);
+                NextCustomer := First( j | X(i,j) );
+                CurrentCustomer := i;
+                DepartureTimeColor(CurrentCustomer) := ColorsValue(Counter);
+                while(NextCustomer <> 0) do
+                    RoutesColor(CurrentCustomer,NextCustomer) := ColorsValue(Counter);
+                    NextCustomerTemp := NextCustomer;
+                    NextCustomer := First( j | X(CurrentCustomer,j) );
+                    CurrentCustomer := NextCustomerTemp;
+                    DepartureTimeColor(CurrentCustomer) := ColorsValue(Counter);
+                endwhile;
+                RoutesColor(CurrentCustomer,0) := ColorsValue(Counter);
+                Counter := Counter + 1;
+            endif;
+        endfor;
+        
+        XRange := 2 * XCoord(0);
+        YRange := 2 * YCoord(0);
+
+    ENDPROCEDURE  ;
+
+  ENDSECTION User_Interface ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+    comment    :  "Instance R106.25 from the Solomon set which can be found at: http://w.cba.neu.edu/~msolomon/problems.htm
+                   or http://neo.lcc.uma.es/vrp/vrp-instances/"
+    body       :  
+      CustomersNumber := 25;
+      Capacity := 200;
+      
+      COMPOSITE TABLE
+          i  XCoord     YCoord     Demand       LBTW       UBTW     ServiceTime
+      !  --  ------     ------     ------       ----       ----     -----------
+          0      35         35          0          0        230          0
+          1      41         49         10          0        204         10
+          2      35         17          7          0        202         10
+          3      55         45         13          0        197         10
+          4      55         20         19        139        169         10
+          5      15         30         26          0        199         10
+          6      25         30          3         89        119         10
+          7      20         50          5          0        198         10
+          8      10         43          9         85        115         10
+          9      55         60         16         87        117         10
+         10      30         60         16        114        144         10
+         11      20         65         12         57         87         10
+         12      50         35         19          0        205         10
+         13      30         25         23        149        179         10
+         14      15         10         20         32         62         10
+         15      30          5          8         51         81         10
+         16      10         20         19         65         95         10
+         17       5         30          2        147        177         10
+         18      20         40         12         77        107         10
+         19      15         60         17         66         96         10
+         20      45         65          9        116        146         10
+         21      45         20         11          0        201         10
+         22      45         10         18         87        117         10
+         23      55          5         29         58         88         10
+         24      65         35          3        143        173         10
+         25      65         20          6        156        186         10
+         ;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      ShowProgressWindow;
+      
+      LeastCost.CallbackNewIncumbent := 'IncumbentCallback';
+      
+      solve LeastCost;
+      
+      ColorsAssignment;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  IncumbentCallback
+    body       :  
+      RetrieveCurrentVariableValues( AllVariables );
+      
+      ColorsAssignment;
+      
+      PageRefreshAll;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return 1;
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_VRPTW ;

@@ -1,0 +1,21 @@
+2D Strip Packing
+
+Problem type:
+MIP (medium)
+
+Keywords:
+Search algorithm
+
+Description:
+Strip packing problems are a class of 2-dimensional allocation problems that are open dimensional,
+meaning that all items need to be packed into a strip of a given width so as to minimize its height.
+
+References:
+Castro, P.M., I.E. Grossmann, Hybrid Spatial Representation Models for Strip Packing Problems,
+Computers and Operations Research, submitted for publication July 2011.
+
+Instances:
+http://minlp.org/library/problem/mod/index.php?lib=MINLP&i=171&pi=131
+
+Note:
+The general solvers option 'relative optimality tolerance' is set to 0.5.

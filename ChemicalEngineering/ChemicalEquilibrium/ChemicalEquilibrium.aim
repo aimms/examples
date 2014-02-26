@@ -1,0 +1,107 @@
+﻿
+MAIN MODEL Main_ChemicalEquilibrium
+  comment :  "Chemical Equilibrium problem
+              
+              Problem type:
+              NLP (small)
+              
+              Description:
+              Determination of the chemical composition of a complex mixture under chemical equilibrium conditions.
+              
+              References:
+              Bracken, J., and G.P. McCormick, Chapter 5 in: Selected Applications of Nonlinear Programming, John
+              Wiley and Sons, New York, 1968, pp. 46-49."
+
+  DECLARATION SECTION 
+
+    SET:
+       identifier   :  Atoms
+       index        :  i
+       definition   :  data { H, N, O }
+       comment      :  "H: hydrogen, N: nitrogen, O: oxygen" ;
+
+    SET:
+       identifier   :  Compounds
+       index        :  j
+       definition   :  data { H, H2, H2O, N, N2, NH, NO, O, O2, OH } ;
+
+    PARAMETER:
+       identifier   :  AtomsPerCompound
+       index domain :  (i,j)
+       definition   :  data
+                       { ( H, H   ) : 1,  ( H, H2  ) : 2,  ( H, H2O ) : 2,  ( H, NH  ) : 1,  ( H, OH  ) : 1,  ( N, N   ) : 1,  ( N, N2  ) : 2,
+                         ( N, NH  ) : 1,  ( N, NO  ) : 1,  ( O, H2O ) : 1,  ( O, NO  ) : 1,  ( O, O   ) : 1,  ( O, O2  ) : 2,  ( O, OH  ) : 1 } ;
+
+    PARAMETER:
+       identifier   :  AtomsInMixture
+       index domain :  (i)
+       definition   :  data { H : 2,  N : 1,  O : 1 } ;
+
+    PARAMETER:
+       identifier   :  Gibbs
+       index domain :  (j)
+       definition   :  data
+                       { H   : -10.021,  H2  : -21.096,  H2O : -37.986,  N   :  -9.846,  N2  : -28.653,  NH  : -18.918,  NO  : -28.032,
+                         O   : -14.640,  O2  : -30.594,  OH  : -26.111 }
+       comment      :  "This parameter stands for the modal standard free energy function (F0/RT)" ;
+
+    PARAMETER:
+       identifier   :  Pressure
+       definition   :  51.0089
+       comment      :  "Total pressure in atmospheres" ;
+
+    PARAMETER:
+       identifier   :  C
+       index domain :  (j)
+       definition   :  Gibbs(j) + log(Pressure) ;
+
+    VARIABLE:
+       identifier   :  MolesOfCompound
+       index domain :  (j)
+       range        :  [0.001, inf) ;
+
+    VARIABLE:
+       identifier   :  TotalMoles
+       range        :  [0.001, inf)
+       definition   :  sum[ j, MolesOfCompound(j) ] ;
+
+    VARIABLE:
+       identifier   :  TotalFreeEnergy
+       range        :  free
+       definition   :  sum[ j, MolesOfCompound(j)*(C(j) + log(MolesOfCompound(j)/TotalMoles)) ] ;
+
+    CONSTRAINT:
+       identifier   :  AtomsConservation
+       index domain :  (i)
+       definition   :  sum[ j, AtomsPerCompound(i,j) * MolesOfCompound(j) ] = AtomsInMixture(i) ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  LeastFreeEnergy
+       objective    :  TotalFreeEnergy
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  NLP ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      solve LeastFreeEnergy;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return 1;
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_ChemicalEquilibrium ;

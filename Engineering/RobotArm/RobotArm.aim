@@ -1,0 +1,193 @@
+﻿
+MAIN MODEL Main_RobotArm
+  comment :  "Robot arm
+              
+              Problem type:
+              NLP (medium)
+              
+              Description:
+              Minimization of the time taken for a robot arm to travel between two points.
+              
+              References:
+              Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000."
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier   :  NumberOfIntervals
+       definition   :  200
+       comment      :  "Number of discretization intervals" ;
+
+    SET:
+       identifier   :  Intervals
+       subset of    :  Integers
+       index        :  h
+       definition   :  {0..NumberOfIntervals} ;
+
+    PARAMETER:
+       identifier   :  pi
+       definition   :  4 * arctan(1) ;
+
+    PARAMETER:
+       identifier   :  minus_pi
+       definition   :  -pi ;
+
+    PARAMETER:
+       identifier   :  LengthOfArm
+       definition   :  5
+       comment      :  "Length of the arm of the robot. This arm is a rigid bar that protrudes
+                        from the origin to the gripping end and sticks out in the opposite
+                        direction. The pivot point of the arm is the origin of a spherical
+                        coordinate system." ;
+
+    VARIABLE:
+       identifier   :  Rho
+       index domain :  (h)
+       range        :  [0, LengthOfArm]
+       definition   :  if (h=0) then
+                               4.5
+                       else
+                               Rho(h-1) + 0.5 * Step * (RhoDot(h) + RhoDot(h-1))
+                       endif
+       comment      :  "The length of the arm from the pivot." ;
+
+    VARIABLE:
+       identifier   :  Theta
+       index domain :  (h) | h > 0
+       range        :  [minus_pi, pi]
+       definition   :  Theta(h-1) + 0.5 * Step * (ThetaDot(h) + ThetaDot(h-1))
+       comment      :  "The horizontal angle from the horizontal plane." ;
+
+    VARIABLE:
+       identifier   :  Phi
+       index domain :  (h)
+       range        :  [0, pi]
+       definition   :  if (h=0) then
+                               Pi / 4
+                       else
+                               Phi(h-1) + 0.5 * Step * (PhiDot(h) + PhiDot(h-1))
+                       endif
+       comment      :  "The vertical angle from the horizontal plane." ;
+
+    VARIABLE:
+       identifier   :  URho
+       index domain :  (h)
+       range        :  [-1, 1]
+       comment      :  "Control variable for Rho, the length of the arm from the pivot." ;
+
+    VARIABLE:
+       identifier   :  UTheta
+       index domain :  (h)
+       range        :  [-1, 1]
+       comment      :  "Control variable for Theta, the horizontal angle from the horizontal plane." ;
+
+    VARIABLE:
+       identifier   :  UPhi
+       index domain :  (h)
+       range        :  [-1, 1]
+       comment      :  "Control variable for Phi, the vertical angle from the horizontal plane." ;
+
+    VARIABLE:
+       identifier   :  RhoDot
+       index domain :  (h) | h > 0
+       range        :  free
+       definition   :  RhoDot(h-1) + 0.5 * Step * (URho(h) + URho(h-1))/LengthOfArm
+       comment      :  "The derivative of Rho (the length of the arm)." ;
+
+    VARIABLE:
+       identifier   :  ThetaDot
+       index domain :  (h) | h > 0
+       range        :  free
+       definition   :  ThetaDot(h-1) + 0.5 * Step * (UTheta(h) / ITheta(h) + UTheta(h-1) / ITheta(h-1))
+       comment      :  "The derivative of Theta (the horizontal angle from the horizontal plane)." ;
+
+    VARIABLE:
+       identifier   :  PhiDot
+       index domain :  (h) | h > 0
+       range        :  free
+       definition   :  PhiDot(h-1) + 0.5 * Step * (UPhi(h) / IPhi(h) + UPhi(h-1) / IPhi(h-1))
+       comment      :  "The derivative of Phi (the vertical angle from the horizontal plane)." ;
+
+    VARIABLE:
+       identifier   :  Step
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  FinalTime
+       range        :  free
+       definition   :  Step * NumberOfIntervals  ;
+
+    VARIABLE:
+       identifier   :  ITheta
+       index domain :  (h)
+       range        :  (0, inf)
+       definition   :  ((LengthOfArm - Rho(h))^3 + Rho(h)^3) * sin(Phi(h))^2 / 3
+       comment      :  "Moment of inertia for Theta, the horizontal angle from the horizontal plane." ;
+
+    VARIABLE:
+       identifier   :  IPhi
+       index domain :  (h)
+       range        :  (0, inf)
+       definition   :  ((LengthOfArm - Rho(h))^3 + Rho(h)^3) / 3
+       comment      :  "Moment of inertia for Phi, the vertical angle from the horizontal plane." ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  RobotArm
+       objective    :  FinalTime
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  NLP ;
+
+    CONSTRAINT:
+       identifier   :  ThetaLastValue
+       definition   :  Theta(NumberOfIntervals) >= 2 * Pi /3 ;
+
+    CONSTRAINT:
+       identifier   :  PhiLastValue
+       definition   :  Phi(NumberOfIntervals) = Pi /4 ;
+
+    CONSTRAINT:
+       identifier   :  RhoLastValue
+       definition   :  Rho(NumberOfIntervals) >= 4.5 ;
+
+    CONSTRAINT:
+       identifier   :  RhoDotLastValue
+       definition   :  RhoDot(NumberOfIntervals) = 0 ;
+
+    CONSTRAINT:
+       identifier   :  ThetaDotLastValue
+       definition   :  ThetaDot(NumberOfIntervals) = 0 ;
+
+    CONSTRAINT:
+       identifier   :  PhiDotLastValue
+       definition   :  PhiDot(NumberOfIntervals) = 0 ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainExecution
+    body       :  
+      ! Specify starting solution.
+      Rho(h) := 4.5;
+      Theta(h) := (2*Pi/3)*(h/NumberOfIntervals)^2;
+      Phi(h) := Pi/4;
+      Step := 1 / NumberOfIntervals;
+      
+      solve RobotArm;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      return 1;
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Main_RobotArm ;

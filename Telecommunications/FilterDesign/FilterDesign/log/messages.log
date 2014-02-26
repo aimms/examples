@@ -1,0 +1,5 @@
+﻿Warning: Solver 'CPLEX 12.6' in the solver configuration file is not available and therefore replaced by 'CPLEX 12.5'.
+Warning: Solver 'CPOptimizer 12.6' in the solver configuration file is not available and therefore replaced by 'CPOptimizer 12.5'.
+Solver 'GUROBI 5.5' has been added to the solver configuration.
+There is 54.461 Mb in use.
+Warning: The variable "FilterCoefficient" is not initialized (default values are used).
