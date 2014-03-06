@@ -5,6 +5,9 @@ MAIN MODEL Main_VRPTW
               Problem type:
               MIP (medium)
               
+              Keywords:
+              Incumbent callback, network object
+              
               Description:
               The Vehicle Routing Problem with Time Windows (VRPTW) deals with the distribution
               of goods between depots and customers using vehicles. The vehicles have a limited
