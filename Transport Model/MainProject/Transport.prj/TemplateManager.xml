@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="8D694E11-CFCC-4349-A8DE-C6EF4A694D62" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|C12D7E12-D170-4F17-9EC1-263546231A89|Size Template">
+		<Template Name="Navigation Template" PageGUID="56B4C4F9-A03C-404C-BD1E-8FC19BB58DB6" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|12CA4C16-64B0-4A0D-BA09-7C2DC4A33E4D|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="44E27AAB-71C3-43E6-9D9B-3FDABA44FABF" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6AFCA942-0BB0-4413-89F1-C1CFEA15DBE8|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="91560298-5802-4358-80FC-E28E3DED056A" />
+			</Template>
+			<Page Name="Basic Transport Model" PageGUID="DCDEE215-6C32-4AF8-AFD8-0C9D1F21FB1F" />
+			<Page Name="Database" PageGUID="F839581B-C72D-4DDD-850B-ED31D8B567B1" />
+			<Page Name="Expressions" PageGUID="52B307BB-A076-48D1-9CD5-459C75F1645B" />
+			<Page Name="Constraint Slacks" PageGUID="B71CC5B1-9D8E-45AC-A945-C019F85AB3FE" />
+		</Template>
+	</Template>
+	<Page Name="Database Tracing Settings" PageGUID="62BF36A7-F8DD-4CA0-8600-E860C5C5219B" />
+</TemplateManager>

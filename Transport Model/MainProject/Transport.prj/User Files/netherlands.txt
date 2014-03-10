@@ -1,0 +1,362 @@
+    Customers := data
+    { Alkmaar           , Almelo            , Amersfoort        ,
+      Amsterdam         , Apeldoorn         , Arnhem            ,
+      Assen             , Barneveld         , 'Bergen op Zoom'  ,
+      Breda             , Delft             , Delfzijl          ,
+      'Den Bosch'       , 'Den Burg'        , 'Den Haag'        ,
+      'Den Helder'      , Deventer          , Doetinchem        ,
+      Dokkum            , Dordrecht         , Drachten          ,
+      Ede               , Eindhoven         , Emmen             ,
+      Enkhuizen         , Enschede          , Franeker          ,
+      Geldermalsen      , Geleen            , Goes              ,
+      Gouda             , Groningen         , Haarlem           ,
+      Harderwijk        , Harlingen         , Heerenveen        ,
+      Heerlen           , Hellevoetssluis   , Helmond           ,
+      Hengelo           , Hilversum         , 'Hoek van Holland',
+      Hoogeveen         , Hoorn             , Ijmuiden          ,
+      Kampen            , Leeuwarden        , Leiden            ,
+      Lelystad          , Maastricht        , Middelburg        ,
+      Nijmegen          , Oss               , Roermond          ,
+      Roozendaal        , Rotterdam         , Sittard           ,
+      Sneek             , Terneuzen         , Tiel              ,
+      Tilburg           , Utrecht           , Valkenswaard      ,
+      Veendam           , Veenendaal        , Veghel            ,
+      Venlo             , Venray            , Vlissingen        ,
+      Weert             , Winterswijk       , Zierikzee         ,
+      Zoetermeer        , Zutphen           , Zwolle            } ;
+
+    Depots := data
+    { Eindhoven, Haarlem, Heerenveen, Middelburg, Zutphen } ;
+
+    Demand := data
+    { Alkmaar            : 793,  Almelo             : 828,
+      Amersfoort         : 767,  Amsterdam          : 820,
+      Apeldoorn          : 773,  Arnhem             : 783,
+      Assen              : 782,  Barneveld          : 843,
+      'Bergen op Zoom'   : 807,  Breda              : 810,
+      Delft              : 785,  Delfzijl           : 780,
+      'Den Bosch'        : 772,  'Den Burg'         : 827,
+      'Den Haag'         : 780,  'Den Helder'       : 799,
+      Deventer           : 762,  Doetinchem         : 838,
+      Dokkum             : 842,  Dordrecht          : 818,
+      Drachten           : 839,  Ede                : 771,
+      Eindhoven          : 811,  Emmen              : 773,
+      Enkhuizen          : 810,  Enschede           : 816,
+      Franeker           : 802,  Geldermalsen       : 808,
+      Geleen             : 782,  Goes               : 825,
+      Gouda              : 763,  Groningen          : 772,
+      Haarlem            : 773,  Harderwijk         : 836,
+      Harlingen          : 820,  Heerenveen         : 839,
+      Heerlen            : 795,  Hellevoetssluis    : 813,
+      Helmond            : 847,  Hengelo            : 849,
+      Hilversum          : 825,  'Hoek van Holland' : 842,
+      Hoogeveen          : 791,  Hoorn              : 763,
+      Ijmuiden           : 770,  Kampen             : 834,
+      Leeuwarden         : 816,  Leiden             : 780,
+      Lelystad           : 813,  Maastricht         : 846,
+      Middelburg         : 764,  Nijmegen           : 810,
+      Oss                : 755,  Roermond           : 761,
+      Roozendaal         : 766,  Rotterdam          : 753,
+      Sittard            : 759,  Sneek              : 780,
+      Terneuzen          : 788,  Tiel               : 791,
+      Tilburg            : 771,  Utrecht            : 830,
+      Valkenswaard       : 807,  Veendam            : 753,
+      Veenendaal         : 804,  Veghel             : 772,
+      Venlo              : 767,  Venray             : 756,
+      Vlissingen         : 844,  Weert              : 780,
+      Winterswijk        : 830,  Zierikzee          : 810,
+      Zoetermeer         : 800,  Zutphen            : 780,
+      Zwolle             : 818 } ;
+
+
+    Supply := data
+    { Eindhoven  : 14500,  Haarlem    : 10800,  Heerenveen : 14300,
+      Middelburg : 12400,  Zutphen    : 13000 } ;
+
+
+    UnitTransportCost := data table
+                       Alkmaar              Almelo          Amersfoort
+         !  ------------------  ------------------  ------------------
+ Eindhoven              17.000              17.550              13.650
+   Haarlem              11.400              20.150              13.950
+Heerenveen              16.100              14.650              14.850
+Middelburg              18.000              25.800              19.400
+   Zutphen              17.650              12.550              14.100
+
+         +           Amsterdam           Apeldoorn              Arnhem
+         !  ------------------  ------------------  ------------------
+ Eindhoven              15.550              14.600              13.550
+   Haarlem              11.300              16.750              16.800
+Heerenveen              15.950              13.700              14.850
+Middelburg              17.700              22.250              21.750
+   Zutphen              16.700              11.250              11.600
+
+         +               Assen           Barneveld    'Bergen op Zoom'
+         !  ------------------  ------------------  ------------------
+ Eindhoven              19.600              13.550              15.900
+   Haarlem              20.200              14.950              14.750
+Heerenveen              13.200              14.450              20.950
+Middelburg              26.550              20.350              13.350
+   Zutphen              14.700              13.100              20.100
+
+         +               Breda               Delft            Delfzijl
+         !  ------------------  ------------------  ------------------
+ Eindhoven              13.500              16.200              22.000
+   Haarlem              14.050              12.250              22.450
+Heerenveen              18.900              19.100              15.300
+Middelburg              15.850              14.550              28.900
+   Zutphen              17.600              19.200              17.000
+
+         +         'Den Bosch'          'Den Burg'          'Den Haag'
+         !  ------------------  ------------------  ------------------
+ Eindhoven              11.550              18.750              16.650
+   Haarlem              14.850              13.450              12.200
+Heerenveen              17.000              15.650              19.200
+Middelburg              18.550              19.750              14.500
+   Zutphen              14.950              18.350              19.450
+
+         +        'Den Helder'            Deventer          Doetinchem
+         !  ------------------  ------------------  ------------------
+ Eindhoven              18.400              15.400              15.000
+   Haarlem              12.950              17.700              18.650
+Heerenveen              15.850              13.650              15.250
+Middelburg              19.250              23.300              23.650
+   Zutphen              18.300              10.650              11.000
+
+         +              Dokkum           Dordrecht            Drachten
+         !  ------------------  ------------------  ------------------
+ Eindhoven              19.850              14.300              19.000
+   Haarlem              18.350              12.950              18.250
+Heerenveen              11.900              18.500              11.150
+Middelburg              25.000              15.550              24.800
+   Zutphen              16.000              17.800              14.900
+
+         +                 Ede           Eindhoven               Emmen
+         !  ------------------  ------------------  ------------------
+ Eindhoven              13.200              10.000              19.850
+   Haarlem              15.400              16.350              21.500
+Heerenveen              14.750              17.950              14.900
+Middelburg              20.550              19.250              27.600
+   Zutphen              12.800              15.100              14.750
+
+         +           Enkhuizen            Enschede            Franeker
+         !  ------------------  ------------------  ------------------
+ Eindhoven              16.450              18.150              18.850
+   Haarlem              13.700              21.400              16.150
+Heerenveen              13.400              16.050              12.300
+Middelburg              20.300              26.750              22.800
+   Zutphen              15.350              13.500              16.250
+
+         +        Geldermalsen              Geleen                Goes
+         !  ------------------  ------------------  ------------------
+ Eindhoven              12.400              12.900              17.850
+   Haarlem              14.200              19.250              15.650
+Heerenveen              16.200              19.950              22.450
+Middelburg              18.650              21.300              11.400
+   Zutphen              14.700              16.150              21.950
+
+         +               Gouda           Groningen             Haarlem
+         !  ------------------  ------------------  ------------------
+ Eindhoven              14.800              20.550              16.350
+   Haarlem              11.850              20.650              10.000
+Heerenveen              17.700              13.550              17.100
+Middelburg              16.050              27.150              16.700
+   Zutphen              17.500              15.750              18.000
+
+         +          Harderwijk           Harlingen          Heerenveen
+         !  ------------------  ------------------  ------------------
+ Eindhoven              14.700              18.750              17.950
+   Haarlem              15.050              15.700              17.100
+Heerenveen              13.350              12.650              10.000
+Middelburg              20.950              22.400              23.650
+   Zutphen              13.050              16.400              14.300
+
+         +             Heerlen     Hellevoetssluis             Helmond
+         !  ------------------  ------------------  ------------------
+ Eindhoven              13.850              16.950              11.000
+   Haarlem              20.200              13.650              16.850
+Heerenveen              20.200              20.600              17.500
+Middelburg              22.450              13.050              20.200
+   Zutphen              16.200              20.450              14.250
+
+         +             Hengelo           Hilversum  'Hoek van Holland'
+         !  ------------------  ------------------  ------------------
+ Eindhoven              17.850              14.200              17.250
+   Haarlem              20.850              12.900              13.150
+Heerenveen              15.500              15.200              20.200
+Middelburg              26.300              18.650              13.500
+   Zutphen              13.000              15.100              20.400
+
+         +           Hoogeveen               Hoorn            Ijmuiden
+         !  ------------------  ------------------  ------------------
+ Eindhoven              18.250              16.400              16.750
+   Haarlem              19.500              12.600              10.450
+Heerenveen              13.000              14.550              17.150
+Middelburg              25.600              19.250              16.800
+   Zutphen              13.300              16.250              18.250
+
+         +              Kampen          Leeuwarden              Leiden
+         !  ------------------  ------------------  ------------------
+ Eindhoven              16.050              19.050              16.050
+   Haarlem              16.500              17.150              11.250
+Heerenveen              11.950              11.450              18.150
+Middelburg              22.650              23.800              15.500
+   Zutphen              12.550              15.750              18.500
+
+         +            Lelystad          Maastricht          Middelburg
+         !  ------------------  ------------------  ------------------
+ Eindhoven              15.400              13.100              19.250
+   Haarlem              14.200              19.350              16.700
+Heerenveen              13.250              20.550              23.650
+Middelburg              20.450              20.900              10.000
+   Zutphen              14.200              16.900              23.300
+
+         +            Nijmegen                 Oss            Roermond
+         !  ------------------  ------------------  ------------------
+ Eindhoven              12.800              11.650              12.950
+   Haarlem              16.700              15.500              19.100
+Heerenveen              15.600              16.300              18.800
+Middelburg              21.300              19.650              22.050
+   Zutphen              12.300              13.850              14.800
+
+         +          Roozendaal           Rotterdam             Sittard
+         !  ------------------  ------------------  ------------------
+ Eindhoven              15.050              15.500              12.900
+   Haarlem              14.300              12.350              19.250
+Heerenveen              20.200              18.850              19.750
+Middelburg              14.250              14.850              21.500
+   Zutphen              19.200              18.650              15.900
+
+         +               Sneek           Terneuzen                Tiel
+         !  ------------------  ------------------  ------------------
+ Eindhoven              18.050              18.100              12.350
+   Haarlem              16.100              16.550              14.800
+Heerenveen              11.400              23.200              15.750
+Middelburg              22.750              11.450              19.400
+   Zutphen              15.250              22.450              13.900
+
+         +             Tilburg             Utrecht        Valkenswaard
+         !  ------------------  ------------------  ------------------
+ Eindhoven              12.050              13.800              10.400
+   Haarlem              14.650              12.850              16.650
+Heerenveen              18.150              15.850              18.350
+Middelburg              17.300              18.100              19.250
+   Zutphen              16.300              15.400              15.400
+
+         +             Veendam          Veenendaal              Veghel
+         !  ------------------  ------------------  ------------------
+ Eindhoven              20.800              13.000              11.000
+   Haarlem              21.700              15.000              16.000
+Heerenveen              14.650              15.000              16.950
+Middelburg              28.000              20.050              19.650
+   Zutphen              15.750              13.300              14.200
+
+         +               Venlo              Venray          Vlissingen
+         !  ------------------  ------------------  ------------------
+ Eindhoven              13.500              12.600              19.450
+   Haarlem              19.200              18.000              17.000
+Heerenveen              18.000              17.150              23.950
+Middelburg              22.750              21.800              10.300
+   Zutphen              13.850              13.250              23.550
+
+         +               Weert         Winterswijk           Zierikzee
+         !  ------------------  ------------------  ------------------
+ Eindhoven              11.500              16.850              17.750
+   Haarlem              17.800              20.700              15.000
+Heerenveen              18.600              16.300              21.900
+Middelburg              20.500              25.700              11.750
+   Zutphen              15.100              12.750              21.600
+
+         +          Zoetermeer             Zutphen              Zwolle
+         !  ------------------  ------------------  ------------------
+ Eindhoven              15.850              15.100              16.300
+   Haarlem              11.700              18.000              17.400
+Heerenveen              18.450              14.300              12.300
+Middelburg              15.150              23.300              23.400
+   Zutphen              18.600              10.000              12.000
+
+    ;
+
+COMPOSITE TABLE:
+    l                     XCoordinate  YCoordinate
+!   ------------------    -----------  -----------
+    Leeuwarden                  5.782       53.212
+    Groningen                   6.574       53.226
+    Veendam                     6.847       53.091
+    Drachten                    6.094       53.112
+    Sneek                       5.654       53.035
+    Heerenveen                  5.923       52.954
+    Assen                       6.561       53.011
+    Emmen                       6.885       52.788
+    Hoogeveen                   6.483       52.730
+    Zwolle                      6.090       52.522
+    Kampen                      5.908       52.560
+    Almelo                      6.649       52.365
+    Hengelo                     6.783       52.272
+    Enschede                    6.890       52.220
+    Zutphen                     6.196       52.141
+    Deventer                    6.158       52.263
+    Lelystad                    5.447       52.511
+    Harderwijk                  5.629       52.357
+    Apeldoorn                   5.953       52.213
+    Ede                         5.648       52.042
+    Arnhem                      5.917       51.982
+    Utrecht                     5.118       52.107
+    Hilversum                   5.179       52.228
+    Amersfoort                  5.377       52.158
+    Amsterdam                   4.880       52.376
+    Ijmuiden                    4.580       52.461
+    Alkmaar                     4.748       52.633
+    'Den Helder'                4.754       52.958
+    Hoorn                       5.060       52.652
+    Enkhuizen                   5.286       52.708
+    Haarlem                     4.618       52.382
+    Leiden                      4.493       52.166
+    'Den Haag'                  4.303       52.079
+    'Hoek van Holland'          4.123       51.985
+    Zoetermeer                  4.478       52.070
+    Delft                       4.364       52.008
+    Rotterdam                   4.482       51.929
+    Gouda                       4.703       52.017
+    Veenendaal                  5.551       52.026
+    Doetinchem                  6.297       51.973
+    Winterswijk                 6.721       51.979
+    Nijmegen                    5.845       51.840
+    Oss                         5.525       51.757
+    'Den Bosch'                 5.308       51.701
+    Veghel                      5.544       51.619
+    Venray                      5.969       51.529
+    Venlo                       6.158       51.374
+    Helmond                     5.655       51.482
+    Eindhoven                   5.461       51.432
+    Valkenswaard                5.457       51.355
+    Tilburg                     5.071       51.568
+    Breda                       4.778       51.588
+    Roozendaal                  4.461       51.535
+    'Bergen op Zoom'            4.285       51.497
+    Dordrecht                   4.679       51.794
+    Zierikzee                   3.927       51.655
+    Middelburg                  3.613       51.502
+    Terneuzen                   3.844       51.327
+    Goes                        3.892       51.512
+    Vlissingen                  3.571       51.458
+    Hellevoetssluis             4.127       51.836
+    Tiel                        5.449       51.902
+    Geldermalsen                5.297       51.883
+    Weert                       5.698       51.253
+    Roermond                    6.005       51.200
+    Geleen                      5.814       50.970
+    Heerlen                     6.028       50.914
+    Maastricht                  5.696       50.857
+    Sittard                     5.863       51.008
+    Delfzijl                    6.912       53.340
+    'Den Burg'                  4.799       53.050
+    Harlingen                   5.438       53.177
+    Franeker                    5.531       53.201
+    Dokkum                      5.997       53.329
+    Barneveld                   5.581       52.135
+    ;
+
+BitmapBounds( nb ) := data
+   { Left : 3.300,  Right : 7.300,  Top : 53.500,  Bottom : 50.680 }
+

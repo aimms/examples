@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-10 14:14:17">
+	<Location top="99" left="391" bottom="322" right="806" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>3155D8A9-0096-4828-B172-02689DA77AC3</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background>
+		<UserColor GUID="2264965C-5BAC-4BC8-9BF1-C78706B5CEED">white</UserColor>
+	</Background>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="114" left="192" bottom="144" right="408" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ProcedureUponChange>UpdateDatabaseTracingOptions</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>DatabaseTracingLevel</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="DatabasePossibleTracingLevels">DatabaseTracingLevelDescription( indexPossibleTracingLevels )</ElementText>
+	</PageObject>
+	<PageObject Type="File Name Object">
+		<Location top="150" left="192" bottom="180" right="408" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Identifier>DatabaseTracingFile</Identifier>
+		<AllowedFiles>AnyFile</AllowedFiles>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<ProcedureUponChange>UpdateDatabaseTracingOptions</ProcedureUponChange>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="192" left="222" bottom="216" right="408" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Close"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="114" left="12" bottom="138" right="108" />
+		<StaticText>Trace Level</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="156" left="12" bottom="180" right="108" />
+		<StaticText>Trace File</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="192" left="12" bottom="216" right="198" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"View Trace File"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>OpenDatabaseTraceFile</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="12" left="12" bottom="102" right="408" />
+		<TabOrder>3</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<DisplayTextFile>true</DisplayTextFile>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>DatabaseTracingInfo</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>OpenDatabaseTraceFile</Symbol>
+			<Symbol>DatabasePossibleTracingLevels</Symbol>
+			<Symbol>DatabaseTracingLevelDescription</Symbol>
+			<Symbol>UpdateDatabaseTracingOptions</Symbol>
+			<Symbol>DatabaseTracingInfo</Symbol>
+			<Symbol>DatabaseTracingFile</Symbol>
+			<Symbol>DatabaseTracingLevel</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

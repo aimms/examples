@@ -1,0 +1,3 @@
+Clicking the button "Solve Model" will solve the model with a supply of 0 in Zutphen and constraint slacks for the demand constraint.
+In the composite table in the middle the constraint slack information is used to illustrate which demands cannot be satisfied with the current supply. 
+In the composite table below you can change the supply of the depots to resolve the shortage.
