@@ -1,0 +1,21 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+constraint_listing 3
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+negate_objective_coefficient_modifications 1
+rounding_compatibility Aimms_3_7
+* AOA
+* CBC 2.7.5
+* CBC 2.8.0
+* IPOPT 3.10.1
+* IPOPT 3.11
+* NETSOL
+* Environment
+Project_Title "AIMMS 3 - Camping"
+Startup_Page "AIMMS Demo"
+Startup_Case "StartupSituation"

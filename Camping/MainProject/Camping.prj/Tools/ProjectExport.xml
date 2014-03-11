@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Boom.bmp</ExcludedFile>
+	<ExcludedFile>Boom.gif</ExcludedFile>
+	<ExcludedFile>Camping.aim</ExcludedFile>
+	<ExcludedFile>Camping.DeveloperState</ExcludedFile>
+	<ExcludedFile>Tent.jpg</ExcludedFile>
+</ExportSettings>

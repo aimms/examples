@@ -1,0 +1,353 @@
+## ams_version=1.0
+
+Model Main_Camping {
+    Section Model_Section {
+        DeclarationSection Model_Declaration {
+            Set Objects {
+                Index: o, o1, o2;
+                Definition: data { Tree, Tent };
+                Comment: "Two possible objects for camping spots: trees and tents.";
+            }
+            Set XCoordinates {
+                SubsetOf: Integers;
+                Index: x, x1, x2;
+                Parameter: XElem;
+                Definition: {
+                    { 1..NumberOfColumns }
+                }
+                Comment: "The X-coordinates of the camping grid.";
+            }
+            Set YCoordinates {
+                SubsetOf: Integers;
+                Index: y, y1, y2;
+                Parameter: YElem;
+                Definition: {
+                    { 1..NumberOfRows }
+                }
+                Comment: "The Y-coordinates of the camping grid.";
+            }
+            Parameter NumberOfSpots {
+                Definition: NumberOfRows * NumberOfColumns;
+                Comment: "The number of spots, given the number of rows and the number of columns.";
+            }
+            Parameter MaxNumberOfTents {
+                Definition: {
+                    if SpaceAroundTent = 1 then
+                    	ceil(NumberOfRows / 2) * ceil(NumberOfColumns / 2)
+                    else
+                    	ceil((NumberOfRows * NumberOfColumns) / 5)
+                    endif
+                }
+                Comment: {
+                    "The maximum number of tents to place, given the number of rows and the number of columns.
+                    The maximum numbers have been determined experimentally (using 0 trees and 0 shadow places
+                    and a varying number of rows/columns)."
+                }
+            }
+            Parameter TreeAtSpot {
+                IndexDomain: (x,y);
+                Range: binary;
+                Comment: "If TreeAtSpot(x, y) = 1, then a tree should be placed at spot (x, y) in the solution.";
+            }
+            Parameter TotalNumberOfTrees {
+                Definition: sum((x, y), TreeAtSpot(x, y));
+                Comment: "The total number of trees on the camping site.";
+            }
+            Variable TotalNumberOfTents {
+                Range: free;
+                Definition: sum((x, y), if Spot(x, y) = 'Tent' then 1 else 0 endif);
+                Comment: "The total number of tents in the solution. This variable is maximized in the solve process.";
+            }
+            ElementVariable Spot {
+                IndexDomain: (x,y);
+                Range: Objects;
+                Property: EmptyElementAllowed;
+                Comment: {
+                    "The main element variable of the solution. This element variable either contains a tree, a tent or none of these at spot (x, y) in the solution. Note
+                    that \'EmptyElementAllowed\' has been set, in order to allow empty spots."
+                }
+            }
+            Variable TentAtShadowSpot {
+                IndexDomain: (x,y) | y < NumberOfRows;
+                Range: binary;
+                Definition: {
+                    if Spot(x, y) = 'Tent' and Spot(x, y + 1) = 'Tree' then
+                    	1
+                    else
+                    	0
+                    endif
+                }
+                Comment: {
+                    "This variable determines whether a tent is located on a shadow spot in the solution. A tent is in a shadow spot, if there is a tree
+                    directly south of the tent."
+                }
+            }
+            Constraint PlaceTrees {
+                IndexDomain: (x,y) | TreeAtSpot(x, y);
+                Definition: Spot(x, y) = 'Tree';
+                Comment: "This constraint takes care of placing the trees at the pre-determined spots in the solution.";
+            }
+            Constraint SatisfyNumberOfTrees {
+                Definition: cp::Count((x, y), Spot(x, y), 'Tree', '=', TotalNumberOfTrees);
+                Comment: "This constraint makes sure that the right number of trees is present in the solution.";
+            }
+            Constraint SatisfyHorizontalSpaceBetweenTents {
+                IndexDomain: y;
+                Definition: cp::Sequence(x, Spot(x, y), 'Tent', SpaceAroundTent + 1, 0, 1);
+                Comment: {
+                    "This constraint make sure that in each horizontal sequence of spots of length (SpaceAroundTent + 1), exactly 1 tent is allowed. This has
+                    the effect that to the left and to the right of each tent, at least SpaceAroundTent spots don\'t contain another tent."
+                }
+            }
+            Constraint SatisfyVerticalSpaceBetweenTents {
+                IndexDomain: x;
+                Definition: cp::Sequence(y, Spot(x, y), 'Tent', SpaceAroundTent + 1, 0, 1);
+                Comment: {
+                    "This constraint make sure that in each vertical sequence of spots of length (SpaceAroundTent + 1), exactly 1 tent is allowed. This has
+                    the effect that above and below each tent, at least SpaceAroundTent spots don\'t contain another tent."
+                }
+            }
+            Constraint SatisfyDiagonalSpaceBetweenTents1 {
+                IndexDomain: (x, y) | x < NumberOfColumns;
+                Definition: {
+                    if Spot(x, y) = 'Tent' then
+                    
+                    	if SpaceAroundTent = 1 then
+                            Spot(x + 1, y + 1) <> 'Tent'
+                        elseif SpaceAroundTent = 2 then
+                            Spot(x + 1, y + 1) <> 'Tent' and
+                            Spot(x + 2, y + 2) <> 'Tent'
+                        elseif SpaceAroundTent = 3 then
+                                Spot(x + 1, y + 1) <> 'Tent' and
+                                Spot(x + 2, y + 2) <> 'Tent' and
+                                Spot(x + 3, y + 3) <> 'Tent'
+                        elseif SpaceAroundTent = 4 then
+                                Spot(x + 1, y + 1) <> 'Tent' and
+                                Spot(x + 2, y + 2) <> 'Tent' and
+                                Spot(x + 3, y + 3) <> 'Tent' and
+                                Spot(x + 4, y + 4) <> 'Tent'
+                    	endif
+                    endif
+                }
+                Comment: {
+                    "Depending on the value of the SpaceAroundTent parameter, one of four constraints is used, making sure that there
+                    are at least SpaceAroundTent diagonal spots free of another tent, as calculated from a tent spot."
+                }
+            }
+            Constraint SatisfyDiagonalSpaceBetweenTents2 {
+                IndexDomain: (x, y) | x < NumberOfColumns;
+                Definition: {
+                    if Spot(x, y) = 'Tent' then
+                    
+                    	if SpaceAroundTent = 1 then
+                            Spot(x + 1, y - 1) <> 'Tent'
+                        elseif SpaceAroundTent = 2 then
+                            Spot(x + 1, y - 1) <> 'Tent' and
+                            Spot(x + 2, y - 2) <> 'Tent'
+                        elseif SpaceAroundTent = 3 then
+                                Spot(x + 1, y - 1) <> 'Tent' and
+                                Spot(x + 2, y - 2) <> 'Tent' and
+                                Spot(x + 3, y - 3) <> 'Tent'
+                        elseif SpaceAroundTent = 4 then
+                                Spot(x + 1, y - 1) <> 'Tent' and
+                                Spot(x + 2, y - 2) <> 'Tent' and
+                                Spot(x + 3, y - 3) <> 'Tent' and
+                                Spot(x + 4, y - 4) <> 'Tent'
+                    	endif
+                    endif
+                }
+                Comment: {
+                    "Depending on the value of the SpaceAroundTent parameter, one of four constraints is used, making sure that there
+                    are at least SpaceAroundTent diagonal spots free of another tent, as calculated from a tent spot."
+                }
+            }
+            Constraint SatisfyShadowPlaces {
+                Definition: cp::Count((x, y), TentAtShadowSpot(x, y), 1, ShadowPlaceRelation, NumberOfShadowPlaces);
+                Comment: {
+                    "This constraint makes sure that the number of shadow places is present in the solution according to the ShadowPlaceRelation element
+                    parameter."
+                }
+            }
+            Constraint SatisfyUpperLimit {
+                Definition: TotalNumberOfTents <= MaxNumberOfTents;
+                Comment: {
+                    "MaxNumberOfTents holds the maximum number of tents, given the number of rows and columns. Feeding this
+                    knowledge into the model makes it a lot faster, since once the maximum number has been reached, the solver
+                    doesn\'t have to look further to see whether there exists a solution with more tents."
+                }
+            }
+            MathematicalProgram CampingProblem {
+                Objective: TotalNumberOfTents;
+                Direction: maximize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: Automatic;
+                Comment: {
+                    "The Math Program used to solve the camping problem. The total number of tents is being maximized. Note that the CPOptimizer solver must be
+                    present in the solver configuration in order to solve this model."
+                }
+            }
+        }
+        DeclarationSection Model_Parameters {
+            Parameter NumberOfColumns {
+                InitialData: 8;
+                Comment: "The number of columns in the camping grid.";
+            }
+            Parameter NumberOfRows {
+                InitialData: 8;
+                Comment: "The number of rows in the camping grid.";
+            }
+            Parameter NumberOfTreesToPlace {
+                Range: {
+                    {0..NumberOfSpots}
+                }
+                InitialData: 15;
+                Comment: "This parameter affects how many trees will be placed on the camping grid, if the \'Place Random Trees\' button is clicked.";
+            }
+            Parameter SpaceAroundTent {
+                Range: {
+                    {1..4}
+                }
+                InitialData: 2;
+                Comment: {
+                    "This parameter determines how much \'non-tent\' spots should exist horizontally, vertically and diagonally
+                    around each tent."
+                }
+            }
+            Parameter NumberOfShadowPlaces {
+                Range: {
+                    {0..MaxNumberOfTents}
+                }
+                InitialData: 5;
+                Comment: {
+                    "This parameter determines the number of shadow places to be taken into account in the solution. A shadow place is a spot for a tent,
+                    where a tree is standing directly below (to the south of) the tent. The \'ShadowPlaceRelation\' element parameter determines the role
+                    of this parameter in the model."
+                }
+            }
+            ElementParameter ShadowPlaceRelation {
+                Range: AllConstraintProgrammingRowTypes;
+                InitialData: {
+                    '=' ;
+                }
+                Comment: {
+                    "The \'ShadowPlaceRelation\' element parameter determines the role of the NumberOfShadowPlaces parameter in the model.
+                    With this element parameter, you can specify whether the number of shadow places should be equal, unequal, greater than, etc.
+                    when compared to the NumberOfShadowPlaces parameter."
+                }
+            }
+        }
+    }
+    Section GUI_Section {
+        StringParameter ImageFile {
+            IndexDomain: (x,y);
+            Definition: {
+                if TreeAtSpot(x, y) then
+                	"Tree42x42.bmp"
+                elseif Spot(x, y) = 'Tent' then
+                	if TreeAtSpot(x, y + 1) then
+                		"TentShadow42x42.bmp"
+                	else
+                		"Tent42x42.bmp"
+                	endif
+                else
+                	"Empty.bmp"
+                endif;
+            }
+            Comment: {
+                "The image file to use for each spot in the camping grid. Depending on the object in the spot (tent, tree, tent in shadow or none at all),
+                an image file is set. This image file is displayed on the 64 (8 * 8) buttons on the Camping Page."
+            }
+        }
+        Procedure ToggleTree {
+            Arguments: (x,y);
+            Body: {
+                TreeAtSpot(x, y) := 1 - TreeAtSpot(x, y);
+            }
+            Comment: "This procudure is called when the user clicks in the camping grid on the Camping Page. It toggles whether there is a tree at the spot clicked.";
+            ElementParameter x {
+                Range: XCoordinates;
+                Property: Input;
+            }
+            ElementParameter y {
+                Range: YCoordinates;
+                Property: Input;
+            }
+        }
+        Procedure ClearTents {
+            Body: {
+                Spot(x, y) := '';
+            }
+            Comment: "Clear all tents from the current camping grid.";
+        }
+        Procedure ClearTrees {
+            Body: {
+                TreeAtSpot(x, y) := 0;
+            }
+            Comment: "Clear all trees from the current camping grid.";
+        }
+        Procedure PlaceRandomTrees {
+            Body: {
+                ClearTrees;
+                ClearTents;
+                
+                XPos := round(uniform(1, NumberOfColumns), 0);
+                YPos := round(uniform(1, NumberOfRows), 0);
+                
+                while loopcount <= NumberOfTreesToPlace do
+                	while TreeAtSpot(XPos, YPos) do
+                		XPos := round(uniform(1, NumberOfColumns), 0);
+                		YPos := round(uniform(1, NumberOfRows), 0);
+                	endwhile;
+                	TreeAtSpot(XPos, YPos) := 1;
+                
+                endwhile;
+            }
+            Comment: "Place NumberOfTreesToPlace trees at random locations on the camping grid.";
+            Parameter XPos;
+            Parameter YPos;
+        }
+    }
+    Section Case_Section {
+        ElementParameter TheCase {
+            Range: AllCases;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	/* Specify a callback procedure for the Mathematical Program. Upon finding a new incumbent during the solving process,
+            	the CampingProblemCallback procedure is called automatically. */
+            	CampingProblem.CallbackNewIncumbent := 'CampingProblemCallback';
+            
+            	/* Perorm the actual solve. */
+            	solve CampingProblem;
+            
+            else
+            
+            	DialogMessage("In AIMMS Viewer, the SOLVE statement is disabled. Therefore, the solution is read from a case.");
+            	CaseFind("SolvedModel", TheCase);
+            	CaseLoadCurrent(TheCase, dialog : 0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return DataManagementExit();
+        }
+    }
+    Procedure CampingProblemCallback {
+        Body: {
+            RetrieveCurrentVariableValues(AllVariables);
+            PageRefreshAll;
+        }
+        Comment: {
+            "The callback procedure, which is set in MainExecution just before the solve statement. When it is called (when a new incumbent is found), the current
+            variable values are retrieved from the solver and all pages are refreshed. This has the effect that the current state of the solving process
+            is visualized on the screen."
+        }
+    }
+}
