@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Project Analysis.dat</ExcludedFile>
+	<ExcludedFile>Project Analysis.DeveloperState</ExcludedFile>
+	<ExcludedFile>Project Analysis.UserState</ExcludedFile>
+</ExportSettings>

@@ -1,0 +1,48 @@
+﻿Converting Main project
+Converting TwoLevel.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Pages\Sensitivity Analysis.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Pages\Input Data and Policy Receiving Submodels.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Pages\Documentation.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Templates\Navigation.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Templates\Page Frame.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Pages\Policy Making and Two Level Model.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\Templates\Navigation 2.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\MainProject\TwoLevel.prj\User Files\bitmaps\construct.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\description.txt
+Copying folder: Explanations Files to C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\Explanations Files
+Copying folder: Initial Data Files to C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\Initial Data Files
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\log
+Copying file: TwoLevel.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\TwoLevel.dat
+Copying file: TwoLevel.pdf to C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\TwoLevel.pdf
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Two Level Decision\TwoLevel.aimms
+Successfully converted the whole project.

@@ -1,0 +1,42 @@
+﻿Converting Main project
+Converting Knapsack.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\Pages\Problem Description.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\Pages\Knapsack Problem.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.prj\User Files\bitmaps\construct.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Knapsack.nch to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.nch
+Copying file: Knapsack.DeveloperState to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\MainProject\Knapsack.DeveloperState
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\Description.txt
+Copying file: Knapsack.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\Knapsack.dat
+Copying file: knapsack.gif to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\knapsack.gif
+Copying file: Knapsack.UserState to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\Knapsack.UserState
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\log
+Copying file: Thumbs.db to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\Thumbs.db
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library
+Copying file: _Example Style Library\Example Style Library.nch to C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\_Example Style Library\Example Style Library.nch
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Knapsack Problem\Knapsack.aimms
+Successfully converted the whole project.

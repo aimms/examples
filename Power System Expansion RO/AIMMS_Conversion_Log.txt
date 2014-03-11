@@ -1,0 +1,48 @@
+﻿Converting Main project
+Converting Power System Expansion RO.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\UISettings\StandardNumberFormats.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Pages\Input Data.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Pages\Robust Optimization Model.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Pages\Uncertainty Sets.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Pages\Non-adjustable Decisions.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Pages\Adjustable Decisions.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Pages\Instantaneous Demand Realizations.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\Templates\Tab Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.prj\User Files\uncertainty_sets.jpg
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Power System Expansion RO.DeveloperState to C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\MainProject\Power System Expansion RO.DeveloperState
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\Description.txt
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\log
+Copying file: Power System Expansion RO.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\Power System Expansion RO.dat
+Copying file: Power System Expansion RO.UserState to C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\Power System Expansion RO.UserState
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Power System Expansion RO\Power System Expansion RO.aimms
+Successfully converted the whole project.

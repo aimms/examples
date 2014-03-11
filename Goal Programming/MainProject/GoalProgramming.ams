@@ -1,0 +1,94 @@
+## ams_version=1.0
+
+Model Main_GoalProgramming {
+    DeclarationSection Model_Declaration {
+        Set Products {
+            Index: p;
+        }
+        Parameter RequiredLabor {
+            IndexDomain: (p);
+        }
+        Parameter AvailableLabor;
+        Parameter ProfitContribution {
+            IndexDomain: (p);
+        }
+        Parameter ProfitGoal;
+        Parameter ProductionNeed {
+            IndexDomain: (p);
+        }
+        Variable Production {
+            IndexDomain: (p);
+            Range: nonnegative;
+        }
+        Variable GoalProgrammingObjective;
+        Constraint AchieveProfit {
+            Property: ShadowPrice;
+            Definition: {
+                sum(p, ProfitContribution(p) * Production(p))
+                =  ProfitGoal
+            }
+        }
+        Constraint AssureLabor {
+            Property: ShadowPrice;
+            Definition: {
+                sum(p, RequiredLabor(p) * Production(p))
+                =  AvailableLabor
+            }
+        }
+        Constraint AssureProductionNeeds {
+            IndexDomain: (p);
+            Property: ShadowPrice;
+            Definition: {
+                Production(p)
+                = ProductionNeed(p)
+            }
+        }
+        Parameter GoalProgrammingCosts {
+            IndexDomain: (IndexVariablesConstraints,IndexViolationTypes);
+        }
+        MathematicalProgram GoalProgrammingMP {
+            Objective: GoalProgrammingObjective;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: LP;
+            ViolationPenalty: GoalProgrammingCosts;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            Products := data {product-1, product-2};
+            
+            RequiredLabor(p) := data { product-1 : 4,  product-2 : 2 };
+            AvailableLabor := 32;
+            
+            ProfitContribution(p) := data { product-1 : 4,  product-2 : 2 };
+            ProfitGoal := 48;
+            
+            ProductionNeed(p) := data { product-1 : 7,  product-2 : 10 };
+            
+            GoalProgrammingCosts(IndexVariablesConstraints,IndexViolationTypes) :=
+            	data {  ( AchieveProfit        , lower ) : 1,
+            		( AssureLabor          , lower ) : 1,
+            		( AssureLabor          , upper ) : 2,
+            		( AssureProductionNeeds, lower ) : 5 };
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            solve GoalProgrammingMP;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+                return 1;
+        }
+    }
+    Procedure PDFFileOpen {
+        Body: {
+            ! http://iwse.osu.edu/isecourses/ise702/GoalProgEx.pdf
+            
+            OpenDocument("GoalProgEx.pdf")
+        }
+    }
+}

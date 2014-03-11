@@ -1,0 +1,904 @@
+## ams_version=1.0
+
+Model Main_PowerSystExp {
+    Section Quantities_and_Units {
+        DeclarationSection Declaration_Units {
+            Quantity SI_Time_Duration {
+                BaseUnit: hour;
+                Comment: "Expresses the value for the duration of periods.";
+            }
+            Quantity SI_Power {
+                BaseUnit: W;
+                Conversions: GW -> W : # -> # * 1000000000;
+                Comment: "Expresses the value for the amount of energy per time unit.";
+            }
+            Quantity Energy {
+                BaseUnit: GWh = hour*GW;
+            }
+            Quantity Monetary {
+                BaseUnit: $;
+            }
+        }
+    }
+    Section Common_Elements {
+        DeclarationSection Declaration_Common {
+            Set PlantTypes {
+                Index: p;
+                Definition: data { coal, hydro, nuclear};
+            }
+            Set DemandCateg {
+                Index: k;
+                Definition: data { base, peak };
+            }
+            Parameter ExistingCap {
+                IndexDomain: p;
+                Range: nonnegative;
+                Unit: GW;
+                Definition: data { coal : 1.75, hydro : 2, nuclear : 0 };
+            }
+            Parameter CapitalCosts {
+                IndexDomain: (p);
+                Range: nonnegative;
+                Unit: 1000 * $/GW;
+                Definition: data { coal : 200, hydro : 500, nuclear : 300 };
+            }
+            Parameter OperatingCosts {
+                IndexDomain: (p);
+                Range: nonnegative;
+                Unit: 1000 * $/GWh;
+                Definition: data { coal : 30, hydro : 10, nuclear : 20 };
+            }
+            Parameter ImportCosts {
+                IndexDomain: k;
+                Range: nonnegative;
+                Unit: 1000 * $/GWh;
+                Definition: data { base : 200, peak : 200 };
+            }
+            Parameter TotalCap {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: ExistingCap(p) + NewCap(p);
+            }
+            Variable NewCap {
+                IndexDomain: (p);
+                Range: [0, 100];
+                Unit: GW;
+            }
+            Variable TotalCapitalCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Definition: sum( p, CapitalCosts(p) * (ExistingCap(p) + NewCap(p)) );
+            }
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+    }
+    Section Deterministic_Model {
+        DeclarationSection Declaration_Det {
+            Parameter InstDemand {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: GW;
+                Property: Stochastic;
+                InitialData: data { base : 8.25, peak : 10.75 };
+            }
+            Parameter DemandDuration {
+                IndexDomain: (k);
+                Range: [0, 24];
+                Unit: hour;
+                Property: Stochastic;
+                InitialData: data { base : 24, peak : 6 };
+            }
+            Parameter RequiredElectr {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: hour*GW;
+                Property: Stochastic;
+                Definition: {
+                    if k = First(DemandCateg)
+                       then InstDemand(k) * DemandDuration(k)
+                       else (InstDemand(k) - InstDemand(k-1)) * DemandDuration(k)
+                    endif
+                }
+            }
+            Parameter CapImported {
+                Range: nonnegative;
+                Unit: GW;
+                Property: Stochastic;
+                Definition: sum(k, ImportCap(k) /$ DemandDuration(k));
+            }
+            Variable CapAllocation {
+                IndexDomain: (p,k);
+                Range: nonnegative;
+                Unit: GW;
+                Property: Stochastic;
+                Stage: 2;
+            }
+            Variable ImportCap {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: GWh;
+                Property: Stochastic;
+                Stage: 2;
+            }
+            Variable TotalImportCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Property: Stochastic;
+                Stage: 2;
+                Definition: sum (k, ImportCosts(k) * ImportCap(k) );
+            }
+            Variable TotalOperationCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Property: Stochastic;
+                Stage: 2;
+                Definition: sum( k, DemandDuration(k) *  sum( p, OperatingCosts(p) * CapAllocation(p,k)) );
+            }
+            Variable TotalCosts {
+                Unit: 1000 * $;
+                Definition: TotalCapitalCosts + TotalImportCosts + TotalOperationCosts;
+            }
+            Constraint MaxAllocation {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: sum(k, CapAllocation(p,k)) <= ExistingCap(p) + NewCap(p);
+            }
+            Constraint SatisfyRequirements {
+                IndexDomain: (k);
+                Unit: hour*GW;
+                Definition: ImportCap(k) + DemandDuration(k) * sum(p, CapAllocation(p,k)) = RequiredElectr(k);
+            }
+            Constraint NoNuclearForPeak {
+                Unit: GW;
+                Definition: {
+                    CapAllocation('nuclear','peak') = 0 [GW];
+                }
+            }
+            Set DetVariables {
+                SubsetOf: AllVariables;
+                Definition: {
+                    {
+                    'NewCap',
+                    'CapAllocation',
+                    'ImportCap',
+                    'TotalCapitalCosts',
+                    'TotalImportCosts',
+                    'TotalOperationCosts',
+                    'TotalCosts'
+                    }
+                }
+                Comment: "TotalOperationCosts,";
+            }
+            Set DetConstraints {
+                SubsetOf: AllConstraints;
+                Definition: {
+                    {
+                    'MaxAllocation',
+                    'SatisfyRequirements',
+                    'NoNuclearForPeak',
+                    'TotalCapitalCosts',
+                    'TotalImportCosts',
+                    'TotalOperationCosts',
+                    'TotalCosts'
+                    }
+                }
+                Comment: "TotalOperationCosts,";
+            }
+            MathematicalProgram PowerExpModel {
+                Objective: TotalCosts;
+                Direction: minimize;
+                Constraints: DetConstraints;
+                Variables: DetVariables;
+                Type: LP;
+            }
+        }
+    }
+    Section Deterministic_Procedures {
+        Procedure EmptyDetVariables {
+            Body: {
+                empty DetVariables;
+            }
+        }
+        Procedure FixNewCapVariables {
+            Body: {
+                NewCap(p).Nonvar := 1;
+                NewCapVarAreFixed := 1;
+            }
+        }
+        Procedure UnfixNewCapVariables {
+            Body: {
+                NewCap(p).Nonvar := 0;
+                NewCapVarAreFixed := 0;
+            }
+        }
+        Procedure SolveDet_PowerExpModel {
+            Body: {
+                solve PowerExpModel;
+            }
+        }
+        Procedure SetInstDemAsInCurrentScenario {
+            Body: {
+                InstDemand(k) := SPInstDemand(k,CurrentScenario);
+            }
+        }
+        Procedure CopyCurrentScenSolInPlan {
+            Body: {
+                PlanNewCap(Plan(CurrentScenario),p) := NewCap(p);
+                
+                PlanTotalCap(Plan(CurrentScenario),p) := TotalCap(p);
+                
+                PlanCapAllocation(Plan(CurrentScenario),p,k) := CapAllocation(p,k);
+                
+                PlanTotalCosts(Plan(CurrentScenario)) := TotalCosts;
+            }
+        }
+        Procedure SetNewCapAsInSelectedPlan {
+            Body: {
+                NewCap(p) := PlanNewCap(SelectedPlan,p);
+                
+                FixNewCapVariables;
+            }
+        }
+        Procedure SetNewCapAsInCurrentPlan {
+            Body: {
+                NewCap(p) := PlanNewCap(CurrentPlan,p);
+            }
+        }
+        Procedure CopyCurrentPlanSolInScenario {
+            Body: {
+                PlanCapImportedInScenario(CurrentPlan,CurrentScenario) := CapImported;
+                
+                PlanTotalCostsInScenario(CurrentPlan,CurrentScenario) := TotalCosts;
+                
+                !PlanShortageCapInScenario(CurrentPlan,p,CurrentScenario) :=
+                !     sum[ k, max[ 0,SPRequiredElectr(k,CurrentScenario) / SPDemandDuration(k,CurrentScenario)
+                !                     - sum[ p, CapAllocation(p,k,CurrentScenario) ] ] ];
+            }
+        }
+        Procedure CopySelectedPlanSolInScenario {
+            Body: {
+                PlanCapImportedInScenario(SelectedPlan,CurrentScenario) := CapImported;
+                
+                PlanTotalCostsInScenario(SelectedPlan,CurrentScenario) := TotalCosts;
+            }
+        }
+        Procedure SolveScenarioModels {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	for s do
+                
+                		CurrentScenario := s;
+                		SetInstDemAsInCurrentScenario;
+                		SolveDet_PowerExpModel;
+                		CopyCurrentScenSolInPlan;
+                
+                	endfor
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
+                    CaseFind("Viewer Case", ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+        Procedure PerformScenarioAnalysis {
+            Body: {
+                If not IsRunningAsViewer then
+                
+                	FixNewCapVariables;
+                
+                	for spl do
+                
+                		CurrentPlan := spl;
+                		SetNewCapAsInCurrentPlan;
+                
+                		for s do
+                
+                		CurrentScenario := s;
+                		SetInstDemAsInCurrentScenario;
+                		SolveDet_PowerExpModel;
+                		CopyCurrentPlanSolInScenario;
+                
+                		endfor
+                
+                	endfor;
+                
+                	UnfixNewcapVariables;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
+                    CaseFind("Viewer Case", ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+    }
+    Section Stochastic_Model_Explicit {
+        DeclarationSection Declaration_SP {
+            Set SPScenarios {
+                SubsetOf: ScenariosAndStoch;
+                Index: s;
+                Parameter: CurrentScenario;
+                Definition: data{ s1, s2, s3, s4 };
+            }
+            Set ScenariosAndStoch {
+                Index: sas;
+                Definition: SPScenarios + { 'stoch' };
+            }
+            Parameter SPInstDemand {
+                IndexDomain: (k,s);
+                Range: nonnegative;
+                Unit: GW;
+                Definition: {
+                    data {
+                    (base,s1) :  8.25, (peak,s1) : 10.75,
+                    (base,s2) : 10.00, (peak,s2) : 12.00,
+                    (base,s3) :  7.50, (peak,s3) : 10.00,
+                    (base,s4) :  9.00, (peak,s4) : 10.50
+                    }
+                }
+            }
+            Parameter AverageSPInstDemand {
+                IndexDomain: (k);
+                Unit: GW;
+                Definition: (1/card(SPScenarios) ) * sum(s, SPInstDemand(k,s));
+            }
+            Parameter SPDemandDuration {
+                IndexDomain: (k,s);
+                Range: [0, 24];
+                Unit: hour;
+                Definition: {
+                    data {
+                    (base,s1) : 24, (peak,s1) : 6,
+                    (base,s2) : 24, (peak,s2) : 6,
+                    (base,s3) : 24, (peak,s3) : 6,
+                    (base,s4) : 24, (peak,s4) : 6
+                    }
+                }
+            }
+            Parameter SPRequiredElectr {
+                IndexDomain: (k,s);
+                Range: nonnegative;
+                Unit: hour*GW;
+                Definition: (SPInstDemand(k,s) - SPInstDemand(k-1,s)) * SPDemandDuration(k,s);
+                Comment: {
+                    "if k=First(DemandCateg)
+                       then SPInstDemand(k,s) * SPDemandDuration(k,s)
+                       else (SPInstDemand(k,s) - SPInstDemand(k-1,s)) * SPDemandDuration(k,s)
+                    endif"
+                }
+            }
+            Parameter SPCapImported {
+                IndexDomain: (s);
+                Range: nonnegative;
+                Unit: GW;
+                Definition: sum(k, SPImportCap(k,s) / SPDemandDuration(k,s));
+            }
+            Parameter SPCapSurplus {
+                IndexDomain: (s);
+                Unit: GW;
+                Definition: sum(p,PlanTotalCap(Plan('stoch'),p)) - sum((p,k), SPCapAllocation(p,k,s));
+            }
+            Parameter TotalCostsInScenarios {
+                IndexDomain: (s);
+                Unit: 1000 * $;
+                Definition: TotalCapitalCosts + SPTotalImpOpCosts(s);
+            }
+            Parameter Probability {
+                IndexDomain: (s);
+                Range: [0, 1];
+                Definition: data { s1 : 0.25, s2 : 0.25, s3 : 0.25, s4 : 0.25 };
+            }
+            Variable SPCapAllocation {
+                IndexDomain: (p,k,s);
+                Range: nonnegative;
+                Unit: GW;
+            }
+            Variable SPImportCap {
+                IndexDomain: (k,s);
+                Range: nonnegative;
+                Unit: hour*GW;
+            }
+            Variable SPTotalImportCosts {
+                IndexDomain: s;
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Definition: sum ( k, ImportCosts(k) * SPImportCap(k,s) );
+            }
+            Variable SPTotalOperationCosts {
+                IndexDomain: (s);
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Definition: sum( k, SPDemandDuration(k,s) *  Sum(p, OperatingCosts(p) * SPCapAllocation(p,k,s)) );
+            }
+            Variable SPTotalImpOpCosts {
+                IndexDomain: (s);
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Definition: SPTotalImportCosts(s) + SPTotalOperationCosts(s);
+            }
+            Variable TotalExpectedCosts {
+                Unit: 1000 * $;
+                Definition: TotalCapitalCosts + sum(s, Probability(s)* SPTotalImpOpCosts(s) );
+            }
+            Constraint SPMaxAllocation {
+                IndexDomain: (p,s);
+                Unit: GW;
+                Definition: sum(k, SPCapAllocation(p,k,s)) <= ExistingCap(p) + NewCap(p);
+            }
+            Constraint SPSatisfyRequirements {
+                IndexDomain: (k,s);
+                Unit: hour*GW;
+                Definition: SPImportCap(k,s) + SPDemandDuration(k,s) * sum(p, SPCapAllocation(p,k,s)) = SPRequiredElectr(k,s);
+            }
+            Constraint SPNoNuclearForPeak {
+                IndexDomain: (s);
+                Unit: GW;
+                Definition: {
+                    SPCapAllocation('nuclear','peak',s) = 0 [GW];
+                }
+            }
+            Set SPVariables {
+                SubsetOf: AllVariables;
+                Definition: {
+                    data
+                    {
+                    NewCap,
+                    SPCapAllocation,
+                    SPImportCap,
+                    TotalCapitalCosts,
+                    SPTotalImportCosts,
+                    SPTotalOperationCosts,
+                    SPTotalImpOpCosts,
+                    TotalExpectedCosts
+                    }
+                }
+            }
+            Set SPConstraints {
+                SubsetOf: AllConstraints;
+                Definition: {
+                    {
+                    'SPMaxAllocation',
+                    'SPSatisfyRequirements',
+                    'SPNoNuclearForPeak',
+                    'TotalCapitalCosts',
+                    'SPTotalImportCosts',
+                    'SPTotalOperationCosts',
+                    'SPTotalImpOpCosts',
+                    'TotalExpectedCosts'
+                    }
+                }
+            }
+            MathematicalProgram SPPowerExpModel {
+                Objective: TotalExpectedCosts;
+                Direction: minimize;
+                Constraints: SPConstraints;
+                Variables: SPVariables;
+                Type: LP;
+            }
+        }
+    }
+    Section SP_Explicit_Procedures {
+        Procedure EmptySPVariables {
+            Body: {
+                empty SPVariables;
+            }
+        }
+        Procedure SolveSP_PowerExpModel {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                    solve SPPowerExpModel;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
+                    CaseFind("Viewer Case", ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+        Procedure CopyStochSolInPlan {
+            Body: {
+                PlanNewCap(Plan('stoch'),p) := NewCap(p);
+                
+                PlanTotalCap(Plan('stoch'),p) := TotalCap(p);
+                
+                PlanTotalCostsInScenario(Plan('stoch'),s) := TotalCapitalCosts + SPTotalImpOpCosts(s);
+                
+                PlanCapImportedInScenario(Plan('stoch'),s) := SPCapImported(s);
+            }
+        }
+    }
+    Section SP_Explicit_Results {
+        Set ScenarioPlans {
+            SubsetOf: AllPlans;
+            Index: spl;
+            Definition: data { 'Plan I', 'Plan II', 'Plan III', 'Plan IV' };
+        }
+        Set AllPlans {
+            Index: pl;
+            Parameter: CurrentPlan, SelectedPlan;
+            Definition: ScenarioPlans + {'Plan V'};
+        }
+        ElementParameter Plan {
+            IndexDomain: sas;
+            Range: AllPlans;
+            Default: '';
+            Definition: {
+                if Ord(sas) <= card(SPScenarios)
+                   then First( pl | Ord(pl) = Ord(sas) )
+                   else Last( AllPlans )
+                endif
+            }
+        }
+        ElementParameter ScenOrStoch {
+            IndexDomain: (pl);
+            Range: ScenariosAndStoch;
+            Default: '';
+            Definition: {
+                if Ord(pl) < card(AllPlans)
+                   then First( s | Ord(s) = Ord(pl) )
+                   else 'stoch'
+                endif
+            }
+        }
+        Parameter NewCapVarAreFixed {
+            Range: binary;
+            Default: 0;
+        }
+        StringParameter NewCapVarFixedOrFree {
+            Definition: {
+                if NewCapVarAreFixed
+                   then "New Capacity Variables Are Fixed"
+                   else "New Capacity Variables Are Free"
+                endif
+            }
+        }
+        ElementParameter NewCapVarStatusColor {
+            Range: AllColors;
+            Definition: {
+                if NewCapVarAreFixed
+                   then 'red'
+                   else 'green'
+                endif
+            }
+        }
+        Parameter PlanNewCap {
+            IndexDomain: (pl,p);
+            Range: nonnegative;
+            Unit: GW;
+        }
+        Parameter PlanTotalCap {
+            IndexDomain: (pl,p);
+            Range: nonnegative;
+            Unit: GW;
+        }
+        Parameter PlanCapAllocation {
+            IndexDomain: (pl,p,k);
+            Unit: GW;
+        }
+        Parameter PlanShortageCapInScenario {
+            IndexDomain: (pl,p,s);
+            Unit: GW;
+        }
+        Parameter PlanTotalCosts {
+            IndexDomain: (spl);
+            Unit: 1000 * $;
+        }
+        Parameter PlanCapImportedInScenario {
+            IndexDomain: (pl,s);
+            Range: nonnegative;
+            Unit: GW;
+        }
+        Parameter PlanTotalCostsInScenario {
+            IndexDomain: (pl,s);
+            Range: nonnegative;
+            Unit: 1000 * $;
+        }
+        Parameter PlanTotalExpectedCosts {
+            IndexDomain: (pl);
+            Range: nonnegative;
+            Unit: 1000 * $;
+            Definition: Sum(s, Probability(s) * PlanTotalCostsInScenario(pl,s));
+        }
+    }
+    Section Stochastic_Model_GMP {
+        DeclarationSection Declaration_SP_GMP {
+            Set Stages {
+                SubsetOf: Integers;
+                Index: st;
+                Definition: {
+                    { 1, 2 }
+                }
+            }
+            Set Scenarios {
+                SubsetOf: AllStochasticScenarios;
+                Index: sc;
+            }
+            ElementParameter ScenarioTreeMapping {
+                IndexDomain: (sc,st);
+                Range: Scenarios;
+            }
+            Parameter ScenarioProbability {
+                IndexDomain: (sc);
+            }
+            Set StageBranches {
+                Index: c;
+                Definition: data { S1, S2, S3, S4 };
+            }
+            Parameter BranchChance {
+                IndexDomain: (c);
+                Definition: {
+                    data
+                    {
+                    'S1' : 0.25,
+                    'S2' : 0.25,
+                    'S3' : 0.25,
+                    'S4' : 0.25
+                    }
+                }
+            }
+            StringParameter SPRoot_Name {
+                Definition: "DetOrExp";
+            }
+            ElementParameter SP_DetOrExp_AuxScen {
+                Range: AllStochasticScenarios;
+                Definition: StringToElement( AllStochasticScenarios, SPRoot_Name, 1);
+            }
+            ElementParameter SP_GMP_PowerExpModel {
+                Range: AllGeneratedMathematicalPrograms;
+            }
+        }
+    }
+    Section SP_GMP_Procedures {
+        Procedure CreateScenarioTree {
+            Body: {
+                empty AllStochasticScenarios;
+                cleandependents AllStochasticScenarios;
+                
+                ScenGen::InitializeChildBranchesCallbackFunction   := 'InitializeBranchesCallback';
+                ScenGen::InitializeStochasticDataCallbackFunction  := 'InitializeStochDataCallback';
+                ScenGen::InitializeNewScenarioCallbackFunction     := 'InitializeNewScenarioCallback';
+                
+                option seed := 1234567;
+                
+                ScenGen::CreateScenarioTree( Stages, Scenarios, ScenarioProbability, ScenarioTreeMapping );
+            }
+        }
+        Procedure SolveSP_GMPmodel {
+            Body: {
+                
+                SP_GMP_PowerExpModel := GMP::Instance::GenerateStochasticProgram(
+                                          PowerExpModel,
+                                          AllStochasticParameters,
+                                          AllStochasticVariables,
+                                          Scenarios,
+                                          ScenarioProbability,
+                                          ScenarioTreeMapping,
+                                          SPRoot_Name,
+                                          GenerationMode : 'SubstituteStochasticVariables',
+                                          Name : "StochasticGMP_PowerExpModel" );
+                
+                GMP::Instance::Solve( SP_GMP_PowerExpModel );
+            }
+        }
+        Procedure SolveSP_GMPmodel_Benders {
+            Body: {
+                
+                SP_GMP_PowerExpModel := GMP::Instance::GenerateStochasticProgram(
+                                          PowerExpModel,
+                                          AllStochasticParameters,
+                                          AllStochasticVariables,
+                                          Scenarios,
+                                          ScenarioProbability,
+                                          ScenarioTreeMapping,
+                                          SPRoot_Name,
+                                          GenerationMode : 'SubstituteStochasticVariables',
+                                          Name : "StochasticGMP_PowerExpModel" );
+                
+                StochDecom::DoStochasticDecomposition( SP_GMP_PowerExpModel, Stages, Scenarios);
+            }
+        }
+        Procedure EmptySP_GMPVariables {
+            Body: {
+                empty ScenarioTreeMapping;
+                empty ScenarioProbability;
+                empty NewCap.Stochastic;
+                empty TotalCapitalCosts.Stochastic;
+                empty CapAllocation.Stochastic;
+                empty ImportCap.Stochastic;
+                empty TotalImportCosts.Stochastic;
+                empty TotalOperationCosts.Stochastic;
+                empty TotalCosts.Stochastic;
+                empty Scenarios;
+            }
+        }
+    }
+    Section SP_GMP_Results {
+        Parameter TotalCap_GMP {
+            IndexDomain: (p);
+            Unit: GW;
+            Definition: ExistingCap(p) + NewCap.Stochastic( SP_DetOrExp_AuxScen, p);
+        }
+    }
+    Section Scenario_Generation_Callbacks {
+        Procedure InitializeBranchesCallback {
+            Arguments: (SomeStage,Scenario,ChildBranches,ChildBranchName);
+            Body: {
+                ChildBranches := { 1 .. card(StageBranches) };
+                
+                ChildBranchName(cb) := FormatString( "%e", Element( StageBranches, ord(cb) ) );
+            }
+            ElementParameter SomeStage {
+                Range: Integers;
+                Property: Input;
+            }
+            ElementParameter Scenario {
+                Range: AllStochasticScenarios;
+                Property: Input;
+            }
+            Set ChildBranches {
+                SubsetOf: Integers;
+                Index: cb;
+                Property: Output;
+            }
+            StringParameter ChildBranchName {
+                IndexDomain: (cb);
+                Property: Output;
+            }
+        }
+        Procedure InitializeStochDataCallback {
+            Arguments: (CurrentStage,CurrentScenario,CurrentChildBranch, CurrentChildBranchName);
+            Body: {
+                
+                CurrentChildBranchElem := StringToElement(StageBranches, CurrentChildBranchName, 0);
+                
+                if CurrentChildBranchElem <> ''
+                       then
+                          CurrentSPScenario := First( s | Ord(s) = Ord(CurrentChildBranchElem)  );
+                          InstDemandValue(k) := SPInstDemand(k, CurrentSPScenario)
+                       else
+                          InstDemandValue(k) := AverageSPInstDemand(k)
+                     endif;
+                
+                InstDemand.Stochastic( CurrentScenario, k) := InstDemandValue(k);
+                
+                DemandDuration.Stochastic ( CurrentScenario, k) := DemandDuration(k);
+                
+                !RequiredElectr.Stochastic( CurrentScenario, k):=
+                !  if k = First(DemandCateg)
+                !     then InstDemand.Stochastic( CurrentScenario, k)
+                !          * DemandDuration.Stochastic( CurrentScenario, k)
+                !     else (InstDemand.Stochastic( CurrentScenario, k) - InstDemand.Stochastic( CurrentScenario, k-1))
+                !          * DemandDuration.Stochastic( CurrentScenario, k)
+                !  endif;
+                
+                
+                RelativeScenarioWeight := BranchChance(CurrentChildBranchElem);
+                
+                return /*relative weight*/ RelativeScenarioWeight;
+            }
+            ElementParameter CurrentStage {
+                Range: Integers;
+                Property: Input;
+            }
+            ElementParameter CurrentScenario {
+                Range: AllStochasticScenarios;
+                Property: Input;
+            }
+            ElementParameter CurrentChildBranch {
+                Range: Integers;
+                Property: Input;
+            }
+            StringParameter CurrentChildBranchName {
+                Property: Input;
+            }
+            ElementParameter CurrentChildBranchElem {
+                Range: StageBranches;
+            }
+            ElementParameter CurrentSPScenario {
+                Range: SPScenarios;
+            }
+            Parameter InstDemandValue {
+                IndexDomain: (k);
+                Unit: GW;
+            }
+            Parameter RelativeScenarioWeight;
+        }
+        Procedure InitializeNewScenarioCallback {
+            Arguments: (SomeStage,NewScenario,RepresentativeScenario);
+            Body: {
+                InstDemand.Stochastic( NewScenario, k) := InstDemand.Stochastic( RepresentativeScenario, k);
+                
+                DemandDuration.Stochastic ( NewScenario, k) := DemandDuration.Stochastic( RepresentativeScenario, k);
+                
+                !RequiredElectr.Stochastic( NewScenario, k):= RequiredElectr.Stochastic( RepresentativeScenario, k);
+            }
+            Comment: "(SomeStage,NewScenario,RepresentativeScenario)";
+            ElementParameter SomeStage {
+                Range: Integers;
+                Property: Input;
+            }
+            ElementParameter NewScenario {
+                Range: AllStochasticScenarios;
+                Property: Input;
+            }
+            ElementParameter RepresentativeScenario {
+                Range: AllStochasticScenarios;
+                Property: Input;
+            }
+        }
+    }
+    Section GUI_Support_Section {
+        DeclarationSection GUI_Declarations {
+            StringParameter DescriptionFile {
+                Definition: "Description.txt";
+            }
+        }
+        Procedure Restart {
+            Body: {
+                EmptyDetVariables;
+                EmptySPVariables;
+                EmptySP_GMPVariables;
+                EmptyResults;
+                UnfixNewCapVariables;
+            }
+        }
+        Procedure EmptyResults {
+            Body: {
+                empty PlanNewCap, PlanTotalCap, PlanTotalCosts, PlanCapImportedInScenario, PlanTotalCostsInScenario;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            CapAllocation('nuclear','peak')         := 0;
+            CapAllocation.NonVar( 'nuclear','peak') := 1;
+            
+            SPCapAllocation('nuclear','peak',s)         := 0;
+            SPCapAllocation.NonVar( 'nuclear','peak',s) := 1;
+            
+            SelectedPlan := First( AllPlans );
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+                return 1;
+        }
+    }
+    Module Scenario_Generation_Module {
+        SourceFile: "%AIMMSMODULES%\\ScenarioGeneration.aim";
+    }
+    Module Stochastic_Decomposition_Module {
+        SourceFile: "%AIMMSMODULES%\\StochasticDecomposition.aim";
+        Comment: {
+            "This module contains an implementation of the Nested Benders algorithm using
+            the functions from the GMP library. It can be used to solve linear stochastic
+            models without integer/binary variables.
+            
+            The Nested Benders algorithm is based on a reformulation of the original model
+            as a sequence of smaller models. The solution of the original model can be
+            achieved by solving the sequence of models iteratively until a terminating
+            condition is reached. A detailed discussion of the Nested Benders algorithm
+            can be found in the AIMMS Language Reference, and in the following references:
+            
+            - F. Altenstedt, Memory consumption versus computational time in
+              nested benders decompostion for stochastic linear programmings, Tech.
+              report, Chalmers University of Technology, Goteborg, Sweden, 2003.
+            
+            - M. Dempster and R. Thompson, Parallelization and aggregation of
+              nested benders decomposition, Annals of Operations Research 81
+              (1998), pp. 163-187."
+        }
+    }
+}

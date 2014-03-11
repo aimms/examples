@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Modified Size Template" PageGUID="F2BA2ADE-A28D-4EE6-A874-7C65147E6C8C">
+		<Template Name="Modified Navigation Template" PageGUID="0157C375-D6AA-4E9F-A634-011A6F1D7C19">
+			<Page Name="Strategic Investment Model" PageGUID="7B54DB4C-C5C7-4F00-B2F4-49748FF326B3" />
+			<Page Name="Tactical Investment Model" PageGUID="12116458-45EA-4FAA-A7B7-C15EF7953091" />
+		</Template>
+	</Template>
+	<Template Name="Size Template" PageGUID="DC9FE47E-646C-4179-861F-0F4A96632713" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|88EB2BE8-5FDB-47FF-8595-9EFBE2D27734|Size Template">
+		<Template Name="Navigation Template" PageGUID="E2166FB6-E45E-45B9-8B8E-D3BBEE90042F" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|FD0944ED-B1DF-4425-BE00-DCC3900D6F3E|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="181CDC29-5BFB-4B3F-96FB-37F5A0DC0A53" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|CA0BF70D-4421-44EC-A2D7-3C7C88367E97|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="488D6843-09B6-4FCF-9CE6-DCF894841F2C" />
+			</Template>
+		</Template>
+	</Template>
+</TemplateManager>

@@ -1,0 +1,988 @@
+## ams_version=1.0
+
+Model Main_Model_Edit_Functions {
+    Parameter KeepRuntimeLibraries {
+        InitialData: 1;
+    }
+    DeclarationSection General_demo_data_identifiers {
+        Set Cities {
+            Text: "Cities";
+            Index: City, FromCity, ToCity;
+        }
+        Set Ships {
+            Text: "Ships";
+            Index: Ship;
+        }
+        Set Docks {
+            Text: "Docks";
+            Index: Dock;
+        }
+        Parameter ShipAllowedAtDock {
+            IndexDomain: (City,Ship,Dock);
+            Text: "Ship Allowed at Dock";
+        }
+        Parameter ShipMinimumTimeAtDock {
+            IndexDomain: (Dock,Ship,City);
+            Text: "Ship Minimum Time at Dock";
+        }
+        Parameter NumberOfDocks {
+            IndexDomain: (City);
+            Text: "Number of Docks";
+        }
+        Parameter ShipAllowedInCity {
+            IndexDomain: (Ship,City);
+            Text: "Ship Allowed in City";
+        }
+        Parameter CityDistance {
+            IndexDomain: (FromCity,ToCity);
+            Text: "City Distance";
+        }
+        Parameter NumberOfCities {
+            Text: "Number of Cities";
+        }
+        Parameter NumberOfShips {
+            Text: "Number of Ships";
+        }
+        StringParameter CityName {
+            IndexDomain: (City);
+            Text: "City Name";
+        }
+    }
+    Section General_ME_related_parameters_and_procedures {
+        Comment: "This section contains some general Model Edit related parameters and procedures, which you could export to your own project, to use it there as well.";
+        ElementParameter epRuntimeLibrary {
+            Range: AllIdentifiers;
+        }
+        ElementParameter epRuntimeProcedure {
+            Range: AllIdentifiers;
+        }
+        StringParameter psRuntimeProcedureBody;
+        ElementParameter epRuntimeParameter {
+            Range: AllIdentifiers;
+        }
+        ElementParameter epRuntimeDeclaration {
+            Range: AllIdentifiers;
+        }
+        ElementParameter epRuntimeSection {
+            Range: AllIdentifiers;
+        }
+        ElementParameter epRuntimeSet {
+            Range: AllIdentifiers;
+        }
+        ElementParameter epRuntimeCallableProcedure {
+            Range: AllProcedures;
+            Default: 'dummyProcedure';
+        }
+        StringParameter errorMessage;
+        Procedure DeleteRuntimeLibrary {
+            Arguments: (psRuntimeLibraryName);
+            Body: {
+                epLocalRuntimeLibrary := StringToElement(AllIdentifiers, psRuntimeLibraryName, 0) ;
+                
+                !if the library exists, delete it
+                if epLocalRuntimeLibrary <> '' then
+                        if not IsRuntimeIdentifier( epLocalRuntimeLibrary ) then
+                                raise error formatstring("%e is not a runtime identifier and can therefore not be deleted.", epLocalRuntimeLibrary ) ;
+                        endif ;
+                
+                        if IdentifierType( epLocalRuntimeLibrary ) <> 'LibraryModule' then
+                        	raise error FormatString("%e is not a Library type runtime identifier and can therefore not be deleted.", epLocalRuntimeLibrary ) ;
+                        endif ;
+                
+                        me::Delete( epLocalRuntimeLibrary ) ;
+                endif ;
+            }
+            Comment: "This procedure deletes a previously created runtime library.";
+            StringParameter psRuntimeLibraryName {
+                Property: Input;
+            }
+            ElementParameter epLocalRuntimeLibrary {
+                Range: AllIdentifiers;
+            }
+        }
+        Procedure ShowErrorMessage {
+            Arguments: (TheError);
+            Body: {
+                errorMessage := errh::Message( TheError );
+                PageOpen("Error Window");
+                errh::MarkAsHandled(TheError);
+                empty errorMessage;
+            }
+            ElementParameter TheError {
+                Range: errh::PendingErrors;
+                Property: Input;
+            }
+        }
+        Procedure dummyProcedure {
+            Comment: "This procedure exists to allow for using the apply statement for the runtime procedures.";
+        }
+    }
+    Section Empty_Slice_Section {
+        Procedure DoEmptySlice {
+            Body: {
+                EmptySlice( SelectedParameters , SelectedElements  ) ;
+            }
+        }
+        Procedure EmptySlice {
+            Arguments: (listOfParameters,listOfIndexValues);
+            Body: {
+                !If the temporary runtime library we need already exists, first delete it
+                !to ensure that we start with clean library.
+                DeleteRuntimeLibrary("EmptySliceRuntimeLibrary") ;
+                
+                epRuntimeLibrary := me::CreateLibrary("EmptySliceRuntimeLibrary", "esrl") ;
+                
+                !Create the runtime procedure that we need
+                epRuntimeProcedure := me::Create("runtime_EmptySliceProcedure", 'procedure', epRuntimeLibrary , 0) ;
+                
+                psRuntimeProcedureBody := "" ;
+                
+                for indexParameters in listOfParameters do
+                	hasMatchingIndex := 0 ;
+                	indexIterator := 1 ;
+                	!Determine whether the current parameter contains the index in its index domain.
+                	while indexIterator <=  IdentifierDimension(indexParameters) do
+                		if listOfIndexValues(DomainIndex( indexParameters, indexIterator)) then
+                			hasMatchingIndex := 1 ;
+                		endif ;
+                		indexIterator += 1 ;
+                	endwhile ;
+                
+                	!If the current parameter contains the index in its domain, we have to create
+                	!a line containing the empty statement for the specific slice and add this to
+                	!the body of the procedure.
+                	if hasmatchingIndex then
+                		psRuntimeProcedureBody += formatstring("empty %e(", indexParameters) ;
+                
+                		indexIterator := 1 ;
+                
+                		while indexIterator <= IdentifierDimension(IndexParameters) do
+                			if listOfIndexValues(DomainIndex( indexParameters, indexIterator)) then
+                				psRuntimeProcedureBody += formatstring("'%s',", listOfIndexValues(DomainIndex( indexParameters, indexIterator))  ) ;
+                			else
+                				psRuntimeProcedureBody += formatstring("%e,", domainIndex(indexParameters, indexIterator) ) ;
+                			endif ;
+                			indexIterator += 1 ;
+                		endwhile ;
+                
+                		!Remove the last trailing ','.
+                		psRuntimeProcedureBody := SubString(psRuntimeProcedureBody , 1, StringLength(psRuntimeProcedureBody) -1 ) ;
+                		psRuntimeProcedureBody += ") ; \n" ;
+                	endif ;
+                endfor ;
+                
+                !Now that we created the lines for the body of the procedure, we must add it to the runtime procedure identifier.
+                me::SetAttribute( epRuntimeProcedure , 'body', psRuntimeProcedureBody ) ;
+                
+                me::Compile( epRuntimeLibrary ) ;
+                
+                epRuntimeCallableProcedure := epRuntimeProcedure ;
+                
+                !Only apply the procedure if there is a procedure body.
+                if psRuntimeProcedureBody <> "" then
+                	apply(epRuntimeCallableProcedure ) ;
+                endif ;
+                
+                
+                if not KeepRuntimeLibraries then
+                	DeleteRuntimeLibrary("EmptySliceRuntimeLibrary") ;
+                endif ;
+            }
+            Set listOfParameters {
+                SubsetOf: AllParameters;
+                Property: Input;
+            }
+            StringParameter listOfIndexValues {
+                IndexDomain: indexIndices;
+                Property: Input;
+            }
+            Parameter hasMatchingIndex;
+            Parameter indexIterator;
+            Parameter indexToBeEmptied;
+        }
+        Procedure AddIndexElement {
+            Body: {
+                SelectedElements( SelectedIndex ) := formatstring("%e", SelectedElement) ;
+            }
+        }
+        Procedure RemoveIndexElement {
+            Body: {
+                empty SelectedElements( SelectedIndex ) ;
+                PageGetActive( CurrentPage );
+                FirstSlice := first( ri | SelectedElements(ri) );
+                PageSetCursor( CurrentPage, "Slice Selection", SelectedElements( FirstSlice ) );
+            }
+            StringParameter CurrentPage;
+            ElementParameter FirstSlice {
+                Range: RelevantIndices;
+            }
+        }
+    }
+    Section Assign_Value_Section {
+        ElementParameter AssignValueSourceParameter {
+            Range: SelectableParameters;
+            InitialData: {
+                'ShipAllowedAtDock' ;
+            }
+        }
+        ElementParameter AssignValueDestinationParameter {
+            Range: SelectableParameters;
+            InitialData: {
+                'ShipMinimumTimeAtDock' ;
+            }
+        }
+        Set AssignValueSourceParameterSet {
+            SubsetOf: SelectableParameters;
+            Definition: AssignValueSourceParameter;
+        }
+        Set AssignValueDestinationParameterSet {
+            SubsetOf: SelectableParameters;
+            Definition: AssignValueDestinationParameter;
+        }
+        Procedure AssignValue {
+            Arguments: (sourceParameter,listOfIndexValues,destinationParameter);
+            Body: {
+                !== We start with some sanity checking ==
+                
+                !Verify if the type for sourceParameter and destinationParameter are the same
+                !i.e., you are not trying to assign a string parameter to a parameter.
+                if IdentifierType(sourceParameter) <> IdentifierType(destinationParameter) then
+                	raise error formatstring("You cannot assign %e of type '%e' to %e of type '%e'", sourceParameter, IdentifierType(sourceParameter), destinationParameter, IdentifierType(destinationParameter))  ;
+                	return;
+                endif ;
+                
+                indicesUsedByDestinationParameter := {} ;
+                indicesUsedBySourceParameter  := {} ;
+                
+                
+                !Then verify that the index domains of the source parameter, destination parameter and slice selection match with each other:
+                
+                !List the indices in resp. slice selection, source parameter and destination parameter
+                indicesWithProvidedValue := {indexIndices | listOfIndexValues(indexIndices) } ;
+                indexIterator := 1 ;
+                while indexIterator <= IdentifierDimension(sourceParameter) do
+                	indicesUsedBySourceParameter += domainindex(sourceParameter, indexIterator) ;
+                	indexIterator += 1 ;
+                endwhile ;
+                indexIterator := 1 ;
+                while indexIterator <= IdentifierDimension(destinationParameter) do
+                	indicesUsedByDestinationParameter += domainindex(destinationParameter, indexIterator) ;
+                	indexIterator += 1 ;
+                endwhile ;
+                
+                !Determine the indices at the source parameter that are free after substracting the fixed indices in the slice selection
+                indicesFreeAtSourceParameter := indicesUsedBySourceParameter - indicesWithProvidedValue;
+                
+                !The free indices should be in the index domain of the destination parameter as well, otherwise raise an error
+                if exists( indexIndices | indexIndices in indicesFreeAtSourceParameter and
+                                          not (indexIndices in indicesUsedByDestinationParameter) ) then
+                	errorMessage := "The source parameter should not have any free indices that are not in the domain of the destination parameter. ";
+                	errorMessage += "However, the following index/indices are in the domain of the source parameter and not in the domain of the destination parameter, while they are not fixed via the slice selection:\n\n";
+                	for indexIndices | indexIndices in indicesFreeAtSourceParameter and
+                	                   not (indexIndices in indicesUsedByDestinationParameter) do
+                		errorMessage += formatstring("   %e\n", indexIndices);
+                	endfor;
+                	errorMessage += "\nYou either need to fix these indices with the Slice Selection, or select a different source and/or destination parameter ";
+                	errorMessage += "such that the source parameter does not have any free indices that are not in the domain of the destination parameter.";
+                	raise error errorMessage;
+                	return ;
+                endif ;
+                
+                !Now sanity checking is done, only thing left to do is write the actual assignment statement.
+                
+                !If the temporary runtime library that we need already exists, first delete it
+                !to ensure that we start with a clean library.
+                DeleteRuntimeLibrary("AssignValueRuntimeLibrary") ;
+                
+                !Then create the library.
+                epRuntimeLibrary := me::CreateLibrary("AssignValueRuntimeLibrary", "avrl") ;
+                
+                !Create the required runtime procedure.
+                epRuntimeProcedure := me::Create("runtime_AssignValue", 'procedure',  epRuntimeLibrary , 0) ;
+                
+                !Write the actual assignment statement.
+                psRuntimeProcedureBody := "" ;
+                
+                !First the left-hand side of the assignment statement.
+                psRuntimeProcedureBody += formatstring("%e", destinationParameter) ;
+                if identifierDimension(destinationParameter) > 0 then
+                	psRuntimeProcedureBody += "(" ;
+                
+                	indexIterator := 1 ;
+                	while indexIterator <= identifierDimension(destinationParameter) do
+                		if indexIterator > 1 then
+                			psRuntimeProcedureBody += "," ;
+                		endif ;
+                
+                		if listOfIndexValues( domainIndex(destinationParameter, indexIterator)) then
+                			psRuntimeProcedureBody += formatstring("'%s'", listOfIndexValues(domainIndex(destinationParameter,indexIterator))) ;
+                		else
+                			psRuntimeProcedureBody += formatstring("%e", DomainIndex( destinationParameter, indexIterator)) ;
+                		endif ;
+                
+                		indexIterator += 1 ;
+                	endwhile ;
+                
+                	psRuntimeProcedureBody += ")" ;
+                endif ;
+                
+                psRuntimeProcedureBody += " := " ;
+                
+                !Then the right-hand side.
+                !If no value is provided for an index, write the index itself, otherwise write the element.
+                psRuntimeProcedureBody +=  formatstring("%e", sourceParameter) ;
+                if identifierDimension(sourceParameter) > 0 then
+                	psRuntimeProcedureBody += "(" ;
+                
+                	indexIterator := 1 ;
+                	while indexIterator <= identifierDimension(sourceParameter) do
+                		if indexIterator > 1 then
+                			psRuntimeProcedureBody += "," ;
+                		endif ;
+                
+                		if listOfIndexValues( domainIndex(sourceParameter, indexIterator)) then
+                			psRuntimeProcedureBody += formatstring("'%s'", listOfIndexValues(domainIndex(sourceParameter,indexIterator))) ;
+                		else
+                			psRuntimeProcedureBody += formatstring("%e", DomainIndex( sourceParameter, indexIterator)) ;
+                		endif ;
+                
+                		indexIterator += 1 ;
+                	endwhile ;
+                
+                
+                	psRuntimeProcedureBody += ")" ;
+                endif ;
+                
+                psRuntimeProcedureBody += " ; " ;
+                
+                
+                !Set the body of the procedure to the empty statements just created.
+                me::SetAttribute( epRuntimeProcedure  , 'body', psRuntimeProcedureBody ) ;
+                
+                !Compile the complete library.
+                me::Compile(epruntimelibrary) ;
+                
+                
+                !Set the value of the element parameter that can be used with the apply statement.
+                epRuntimeCallableProcedure := epruntimeProcedure ;
+                
+                if psRuntimeProcedureBody  <> "" then
+                	!and run the just created run-time procedure
+                	apply( epRuntimeCallableProcedure ) ;
+                endif ;
+                
+                if not KeepRuntimeLibraries then
+                	DeleteRuntimeLibrary("AssignValueRuntimeLibrary") ;
+                endif ;
+            }
+            DeclarationSection Argument_Declaration {
+                ElementParameter sourceParameter {
+                    Range: AllParameters;
+                    Property: Input;
+                }
+                StringParameter listOfIndexValues {
+                    IndexDomain: indexIndices;
+                    Property: Input;
+                }
+                ElementParameter destinationParameter {
+                    Range: AllParameters;
+                    Property: Input;
+                }
+            }
+            DeclarationSection Local_Identifiers {
+                Parameter indexIterator {
+                    Range: integer;
+                }
+                Set indicesUsedBySourceParameter {
+                    SubsetOf: AllIndices;
+                }
+                Set indicesUsedByDestinationParameter {
+                    SubsetOf: AllIndices;
+                }
+                Set indicesWithProvidedValue {
+                    SubsetOf: AllIndices;
+                }
+                Set indicesFreeAtSourceParameter {
+                    SubsetOf: AllIndices;
+                }
+            }
+        }
+        Procedure DoAssignValue {
+            Body: {
+                AssignValue(AssignValueSourceParameter , SelectedElements , AssignValueDestinationParameter ) ;
+            }
+        }
+    }
+    Section Read_From_Excel_Section {
+        DeclarationSection Read_From_Excel_related_identifiers {
+            Parameter OK;
+            StringParameter ExcelFile {
+                IndexDomain: (selp);
+                Text: "Excel File";
+            }
+            StringParameter ExcelSheet {
+                IndexDomain: (selp);
+                Text: "Excel Sheet";
+            }
+            StringParameter psMappingIndexToExcelName {
+                IndexDomain: ri;
+                InitialData: data { City : "Cities",  Ship : "Ships",  Dock : "Docks" };
+            }
+            Set sRowDescriptions {
+                Index: i_rowdesc;
+            }
+            Set sColumnDescriptions {
+                Index: i_coldesc;
+            }
+            StringParameter psExcelRowDescriptionRange {
+                IndexDomain: (selp);
+                Text: "Row Description Range";
+                Comment: "This is the range in Excel in which the description (= header title) of the rows is written.";
+            }
+            StringParameter psExcelColumnDescriptionRange {
+                IndexDomain: (selp);
+                Text: "Column Description Range";
+                Comment: "This is the range in Excel in which the description (= header title) of the columns is written.";
+            }
+            StringParameter psExcelRowRange {
+                IndexDomain: (selp);
+                Text: "Row Range";
+            }
+            StringParameter psExcelColumnRange {
+                IndexDomain: (selp);
+                Text: "Column Range";
+            }
+            StringParameter psExcelDataRange {
+                IndexDomain: (selp);
+                Text: "Data Range";
+            }
+            ElementParameter epRowIndex {
+                IndexDomain: (i_rowdesc)| not ExcelFileSheetRangeChanged;
+                Range: RelevantIndices;
+                InitialData: '';
+            }
+            ElementParameter epColumnIndex {
+                IndexDomain: (i_coldesc)| not ExcelFileSheetRangeChanged;
+                Range: RelevantIndices;
+                InitialData: '';
+            }
+            Set ReadFromExcelParameters {
+                SubsetOf: SelectableParameters;
+                Definition: {
+                    {selp | Identifierdimension(selp) >= 2 }
+                }
+                Comment: "Only parameters with dimension > 2 can be used in this example.";
+            }
+            ElementParameter ReadFromExcelParameter {
+                Range: ReadFromExcelParameters;
+                InitialData: 'ShipMinimumTimeAtDock';
+                Comment: "Selected parameter to which the Excel data should be assigned.";
+            }
+            Set ReadFromExcelPivotTableData {
+                SubsetOf: SelectableParameters;
+                Definition: ReadFromExcelParameter;
+                Comment: "This set is used as implicit set in the Pivot Table on the Read From Excel page, to show the data of the selected parameter \'ReadFromExcelParameter\'.";
+            }
+        }
+        Procedure DoReadFromExcel {
+            Body: {
+                ImportParameterFromExcel(ExcelFile(ReadFromExcelParameter),
+                                         ExcelSheet(ReadFromExcelParameter),
+                                         ReadFromExcelParameter,
+                                         psExcelDataRange(ReadFromExcelParameter),
+                                         psExcelRowRange(ReadFromExcelParameter),
+                                         psExcelColumnRange(ReadFromExcelParameter),
+                                         psExcelRowDescriptionRange(ReadFromExcelParameter),
+                                         psExcelColumnDescriptionRange(ReadFromExcelParameter)) ;
+            }
+        }
+        Procedure DoReadRowColumnDescriptionFromExcel {
+            Body: {
+                !We retrieve the descriptions for the row and column areas. These are needed to
+                !map the AIMMS indices to.
+                
+                !We use sets for this, because double indices cannot be used anyway and it is easier
+                !to read in a set directly, then to use an artificial set for each element and read the
+                !descriptions into stringparameters defined over this artificial set.
+                OK := Spreadsheet::RetrieveSet( ExcelFile(ReadFromExcelParameter), sRowDescriptions, psExcelRowDescriptionRange(ReadFromExcelParameter), ExcelSheet(ReadFromExcelParameter)) ;
+                ExcelCheckError(OK);
+                OK := Spreadsheet::RetrieveSet( ExcelFile(ReadFromExcelParameter), sColumnDescriptions, psExcelColumnDescriptionRange(ReadFromExcelParameter), ExcelSheet(ReadFromExcelParameter)) ;
+                ExcelCheckError(OK);
+                OK := Spreadsheet::CloseWorkbook( ExcelFile(ReadFromExcelParameter), 0);
+                ExcelCheckError(OK);
+                
+                ! Now that we have read in the Excel dimension information, we can set this parameter to 0.
+                ExcelFileSheetRangeChanged := 0;
+            }
+        }
+        Procedure WizardRowColumnDescription {
+            Body: {
+                !We ask the user to provide the mapping between the Excel Row/Column Descriptions and
+                !the AIMMS indices.
+                
+                for i_rowdesc do
+                	DialogMessage(i_rowdesc + ": Please select the corresponding AIMMS index.", epRowIndex(i_rowdesc));
+                	DialogGetElement(i_rowdesc + ": Please select the corresponding AIMMS index.", epRowIndex(i_rowdesc));
+                endfor;
+                
+                for i_coldesc do
+                	DialogMessage(i_coldesc + ": Please select the corresponding AIMMS index.", epColumnIndex(i_coldesc));
+                	DialogGetElement(i_coldesc + ": Please select the corresponding AIMMS index.", epColumnIndex(i_coldesc));
+                endfor;
+            }
+        }
+        Procedure OpenExcelFile {
+            Body: {
+                OpenDocument(ExcelFile(ReadFromExcelParameter));
+            }
+            Comment: "This procedure opens the Excel file, such that you can easily have a look at its content.";
+        }
+        Procedure ImportParameterFromExcel {
+            Arguments: {
+                (psExcelWorkbook,psExcelsheet,readParameter,DataRange,RowRange,ColumnRange,RowDescriptionRange,
+                 ColumnDescriptionRange)
+            }
+            Body: {
+                !Set the active sheet
+                OK := Spreadsheet::SetActiveSheet(psExcelWorkbook, psExcelSheet) ;
+                ExcelCheckError(OK);
+                
+                !First assure that the user provided a mapping from each of the Excel dimension descriptions to
+                !an AIMMS index.
+                if exists(i_rowdesc | not(epRowIndex(i_rowdesc)) ) then
+                	raise error formatstring("There is no index corresponding to the row dimension description \"%e\"", first(i_rowdesc | not(epRowIndex(i_rowdesc) ))) ;
+                endif ;
+                if exists(i_coldesc | not(epColumnIndex(i_coldesc)) ) then
+                	raise error formatstring("There is no index corresponding to the column dimension description \"%e\"", first(i_coldesc | not(epColumnIndex(i_coldesc) ))) ;
+                endif ;
+                
+                
+                !First simple check, does dimensionality match?
+                if (  card(epRowIndex) + card(epColumnIndex) ) <> IdentifierDimension(readParameter) then
+                	OK := Spreadsheet::CloseWorkbook( psExcelWorkbook, 0) ;
+                	ExcelCheckError(OK);
+                	raise error formatstring("There is a mismatch between dimension of parameter \"%e\" (%n) and dimension of parameter in Excel (%n).",readParameter,  IdentifierDimension(readParameter), card(epRowIndex) + card(epColumnIndex)) ;
+                endif ;
+                
+                
+                !If the dimensionality matches, check the existence of each dimension.
+                iterator := 1 ;
+                while iterator <= IdentifierDimension(readParameter) do
+                
+                	!There must either exist an i_rowdesc, or an i_coldesc for which the index matches the iterator-th index of the index domain of the parameter.
+                	if not exists( (i_rowdesc, i_coldesc) |  (DomainIndex( readParameter, iterator) = epRowIndex(i_rowdesc)) or (DomainIndex( readParameter, iterator) = epColumnIndex(i_coldesc)) ) then
+                		OK := Spreadsheet::CloseWorkbook( psExcelWorkbook, 0) ;
+                		ExcelCheckError(OK);
+                		raise error formatstring("There is no reference to index \"%e\" of parameter \"%e\" in Excel.",DomainIndex( readParameter, iterator),  readParameter ) ;
+                	endif ;
+                	iterator +=1 ;
+                endwhile ;
+                
+                
+                !We now have checked all arguments and Excel information and everything is sane. The only thing left
+                !to do now is to write a runtime procedure that reads in the Excel data into a runtime parameter.
+                !After the data has been read into the runtime parameter, we still need to copy it to the actual
+                !parameter in the model.
+                
+                !If the library already exists, delete it.
+                DeleteRuntimeLibrary("ReadFromExcelRuntimeLibrary") ;
+                
+                epRuntimelibrary := me::CreateLibrary("ReadFromExcelRuntimeLibrary", "rferl") ;
+                
+                !Create the runtime procedure that will be called later on.
+                epRuntimeProcedure := me::create("runtime_ReadFromExcel",'procedure', epRuntimeLibrary) ;
+                
+                !Create the runtime parameter that initially will hold the data read from Excel. We can use the
+                !IdentifierType function to create a parameter that has the same type as the readParameter from the arguments.
+                epRuntimeDeclaration := me::Create("runtime_declaration", 'declaration', epRuntimeLibrary) ;
+                epRuntimeParameter := me::Create("runtime_parameter", IdentifierType( readParameter) , epRuntimeDeclaration ) ;
+                
+                
+                !Now build up the index domain of the new runtime parameter, based on the information taken from
+                !the Excel file from the row range description and column range description.
+                
+                psIndexDomainRHS := "" ;
+                
+                for i_rowdesc do
+                	psIndexDomainRHS += formatstring("%e , ", epRowIndex(i_rowdesc)) ;
+                endfor ;
+                
+                for i_coldesc do
+                	psIndexDomainRHS += formatstring("%e , ", epColumnIndex(i_coldesc)) ;
+                endfor ;
+                
+                
+                if (card( i_rowdesc )  + card(i_coldesc)) then
+                	!Because of the way the psIndexDomainRHS has been built up, if there are any row or column descriptions
+                	!there will be a trailing ", " which must be removed.
+                
+                	psIndexDomainRHS := substring(psIndexDomainRHS, 1, StringLength(psIndexDomainRHS) -2 ) ;
+                
+                	!Also add the parentheses around the string.
+                	psIndexDomainRHS := "(" + psIndexDomainRHS + ")" ;
+                endif ;
+                !Set the just built string as the index domain attribute of the runtime parameter.
+                me::SetAttribute( epRuntimeParameter, 'index domain', psIndexDomainRHS ) ;
+                
+                
+                psRuntimeProcedureBody := formatstring("OK := Spreadsheet::RetrieveTable(\"%s\", %e, \"%s\", \"%s\", \"%s\", \"%s\", 1) ; \nExcelCheckError(OK);\n", psExcelWorkbook, epRuntimeParameter, dataRange, RowRange, ColumnRange, psExcelSheet) ;
+                
+                !And finally, we have to create the assignment statement.
+                !First we have to create a string holding the index domain of the model parameter.
+                
+                psIndexDomainLHS := "" ;
+                iterator := 1 ;
+                while iterator <= IdentifierDimension( readParameter ) do
+                	psIndexDomainLHS += formatstring("%e , ", DomainIndex( readParameter, iterator) ) ;
+                	iterator += 1 ;
+                endwhile ;
+                
+                if IdentifierDimension( readParameter ) then
+                	!Remove the trailing ", " that were added.
+                	psIndexDomainLHS := substring(psIndexDomainLHS, 1, StringLength(psIndexDomainLHS) -2 ) ;
+                
+                	!and add the surrounding parentheses.
+                	psIndexDomainLHS := "(" + psIndexDomainLHS + ")" ;
+                endif ;
+                
+                !We now have all the information to write down the assignment statement of the runtime parameter to the model parameter.
+                psRuntimeProcedureBody += formatstring("%e%s := %e%s ; \n", readParameter, psIndexDomainLHS, epRuntimeParameter, psIndexDomainRHS) ;
+                
+                
+                me::SetAttribute(epRuntimeProcedure, 'body', psRuntimeProcedureBody) ;
+                
+                
+                !Compile the library.
+                me::Compile(epRuntimeLibrary) ;
+                
+                
+                epRuntimeCallableProcedure := epRuntimeProcedure ;
+                !Now we can run the just created run-time procedure.
+                !Only apply the procedure if there is a procedure body.
+                if psRuntimeProcedureBody <> "" then
+                	apply(epRuntimeCallableProcedure ) ;
+                endif ;
+                
+                
+                if not KeepRuntimeLibraries then
+                	DeleteRuntimeLibrary("ReadFromExcelRuntimeLibrary") ;
+                endif ;
+                
+                !Finally, close the Excel workbook, to ensure we do not keep anything open.
+                OK := Spreadsheet::CloseWorkbook( psExcelWorkbook, 0) ;
+                ExcelCheckError(OK);
+            }
+            DeclarationSection Argument_declarations {
+                ElementParameter readParameter {
+                    Range: AllParameters;
+                    Property: Input;
+                }
+                StringParameter DataRange {
+                    Property: Input;
+                }
+                StringParameter RowRange {
+                    Property: Input;
+                }
+                StringParameter ColumnRange {
+                    Property: Input;
+                }
+                StringParameter RowDescriptionRange {
+                    Property: Input;
+                }
+                StringParameter ColumnDescriptionRange {
+                    Property: Input;
+                }
+                StringParameter psExcelWorkbook {
+                    Property: Input;
+                }
+                StringParameter psExcelsheet {
+                    Property: Input;
+                }
+            }
+            DeclarationSection Local_identifier_declarations {
+                StringParameter psIndexDomainRHS;
+                StringParameter psIndexDomainLHS;
+                Set sReferencedIndices {
+                    SubsetOf: AllIndices;
+                }
+                Parameter iterator;
+            }
+        }
+        Procedure EmptyModelData {
+            Body: {
+                empty Cities, Ships, Docks;
+                cleandependents Cities, Ships, Docks;
+            }
+        }
+        Procedure DoEmptyRowColumnDescriptionMapping {
+            Body: {
+                empty sRowDescriptions, sColumnDescriptions ;
+                cleandependents  sRowDescriptions, sColumnDescriptions ;
+            }
+        }
+        Procedure ExcelCheckError {
+            Arguments: (OK);
+            Body: {
+                if not OK then
+                	raise error CurrentErrorMessage;
+                	empty CurrentErrorMessage;
+                endif;
+            }
+            Comment: "This procedure is used to check the return value of the Excel functions. In case of failure, it displays the current error message.";
+            Parameter OK {
+                Property: InOut;
+            }
+        }
+    }
+    Section GUI_Section {
+        DeclarationSection Common_GUI_declarations {
+            StringParameter ProblemDescriptionFile {
+                Definition: "Description.txt";
+            }
+            Set SelectableParameters {
+                SubsetOf: AllParameters;
+                Index: selp;
+                Definition: General_demo_data_identifiers * AllParameters;
+            }
+            Set SelectedParameters {
+                SubsetOf: SelectableParameters;
+                InitialData: data { ShipAllowedAtDock };
+            }
+            Parameter NoSliceOrParameterSelected {
+                Range: binary;
+                Definition: not ( exists(ri | SelectedElements(ri)) AND exists(selp | SelectedParameters(selp) ) );
+                Comment: "This parameter is used to check whether a slice and a parameter have been selected. If not, the Empty Slice button is not available.";
+            }
+            StringParameter ParameterName {
+                IndexDomain: selp;
+                Definition: FormatString("%e%s", selp, AttributeToString(selp, 'Index domain') );
+                Comment: "Name + index domain of parameter, displayed in the GUI";
+            }
+            Set RelevantIndices {
+                SubsetOf: AllIndices;
+                Index: ri;
+                Definition: General_demo_data_identifiers * AllIndices;
+            }
+            ElementParameter SelectedIndex {
+                Range: RelevantIndices;
+            }
+            Set SelectableElementsPerIndex {
+                IndexDomain: (ri);
+                SubsetOf: AllIndexElements;
+            }
+            Set SelectableElements {
+                SubsetOf: AllIndexElements;
+                Definition: SelectableElementsPerIndex(SelectedIndex );
+            }
+            Set AllIndexElements {
+                Index: aiv;
+                Parameter: newElement;
+            }
+            StringParameter SelectedElements {
+                IndexDomain: (ri);
+                InitialData: "";
+            }
+            ElementParameter SelectedElement {
+                Range: SelectableElements;
+            }
+            Parameter AssignValueButtonInactive {
+                Definition: not AssignValueSourceParameter OR not AssignValueDestinationParameter;
+            }
+            Parameter ExcelDimensionsCannotYetBeRead {
+                Definition: {
+                    not ExcelFile(ReadFromExcelParameter) OR
+                    not ExcelSheet(ReadFromExcelParameter) OR
+                    not psExcelRowRange(ReadFromExcelParameter) OR
+                    not psExcelColumnRange(ReadFromExcelParameter) OR
+                    not psExcelDataRange(ReadFromExcelParameter) OR
+                    not psExcelRowDescriptionRange(ReadFromExcelParameter) OR
+                    not psExcelColumnDescriptionRange(ReadFromExcelParameter)
+                }
+            }
+            Parameter ExcelDataCannotYetBeRead {
+                Definition: {
+                    exists(i_rowdesc | not(epRowIndex(i_rowdesc)) ) OR
+                    exists(i_coldesc | not(epColumnIndex(i_coldesc)) ) OR
+                    card(i_rowdesc) + card(i_coldesc) <> IdentifierDimension(ReadFromExcelParameter) OR
+                    ExcelFileSheetRangeChanged
+                }
+                Comment: {
+                    "This parameter is used to check whether
+                    - for all Excel dimensions an AIMMS index is provided,
+                    - the dimension in Excel matches the dimension of the AIMMS parameter.
+                    If not, you cannot read the Excel data yet.
+                    
+                    Furthermore, if the Excel file/sheet/range input has changed, you need to read in the dimensions first before you can read the Excel data."
+                }
+            }
+            Parameter ExcelFileSheetRangeChanged {
+                Range: binary;
+                InitialData: 1;
+                Comment: "This parameter is used to indicate whether the Excel file/sheet/range has changed since the last time the Excel dimensions have been read in.";
+            }
+            ElementParameter DimensionColor {
+                Range: AllColors;
+                Definition: {
+                    if card(i_rowdesc) + card(i_coldesc) <> IdentifierDimension(ReadFromExcelParameter) then
+                    	'red'
+                    else
+                    	'text blue'
+                    endif;
+                }
+            }
+            StringParameter ExcelErrorMessage {
+                Definition: {
+                    if not ExcelFile(ReadFromExcelParameter) OR
+                       not ExcelSheet(ReadFromExcelParameter) OR
+                       not psExcelRowRange(ReadFromExcelParameter) OR
+                    	not psExcelColumnRange(ReadFromExcelParameter) OR
+                    	not psExcelDataRange(ReadFromExcelParameter) OR
+                    	not psExcelRowDescriptionRange(ReadFromExcelParameter) OR
+                       not psExcelColumnDescriptionRange(ReadFromExcelParameter) then
+                    
+                    	"Please make sure that the Excel file, sheet and all ranges are specified."
+                    
+                    elseif ExcelFileSheetRangeChanged then
+                    
+                    	"The Excel Dimensions information is out of date. Please use the Read Excel Dimensions button."
+                    
+                    elseif exists(i_rowdesc | not(epRowIndex(i_rowdesc)) ) OR exists(i_coldesc | not(epColumnIndex(i_coldesc)) ) then
+                    
+                    	"Not all Excel dimensions have been mapped to AIMMS indices. Please fill in the corresponding AIMMS indices in the upper Pivot Table, or use the wizard at the left to do so."
+                    
+                    elseif card(i_rowdesc) + card(i_coldesc) <> IdentifierDimension(ReadFromExcelParameter) then
+                    
+                    "The dimension of the index domain of the selected parameter (" +
+                    IdentifierDimension(ReadFromExcelParameter) +
+                    ") is not equal to the number of dimensions in Excel (" +
+                    (card(i_rowdesc) + card(i_coldesc)) +
+                    "). Please make sure these two are equal."
+                    
+                    else
+                    
+                    	"You can now use the Read Excel Data button."
+                    
+                    endif
+                }
+            }
+        }
+        Procedure UpdateSelectedElement {
+            Body: {
+                SelectedElement := StringToElement(SelectableElements, SelectedElements(SelectedIndex));
+            }
+        }
+        Procedure UpdateSelectedElementCT {
+            Arguments: (ri);
+            Body: {
+                SelectedElement := StringToElement(SelectableElements, SelectedElements(ri));
+            }
+            ElementParameter ri {
+                Range: RelevantIndices;
+                Property: Input;
+            }
+        }
+        Procedure ExcelFileSheetRangeChange {
+            Body: {
+                ExcelFileSheetRangeChanged := 1;
+                empty sRowDescriptions, sColumnDescriptions;
+            }
+        }
+        Procedure EmptySliceSelection {
+            Body: {
+                empty SelectedElements;
+            }
+        }
+        Procedure ResetExcelFileSheetRange {
+            Body: {
+                CaseFind("ExcelInput", ExcelInputCase);
+                CaseSetChangedStatus(0);
+                CaseLoadCurrent(ExcelInputCase,0);
+                
+                ExcelFileSheetRangeChange;
+            }
+            Comment: "This procedure is used to set the Excel file, sheet and ranges back to their defaults.";
+            ElementParameter ExcelInputCase {
+                Range: AllCases;
+            }
+        }
+    }
+    Procedure InitializeData {
+        Body: {
+            empty Cities, Ships, Docks ;
+            cleandependents ;
+            
+            
+            !Just fill  the sets and parameters with some random data.
+            Cities := { 'Amsterdam', 'New York', 'Cape Town' } ;
+            Ships := { 'Gloria', 'Victoria', 'Beautiful Day' } ;
+            Docks := { 'A', 'B', 'C', 'D', 'E', 'F' } ;
+            
+            ShipAllowedAtDock(City, Ship, Dock) := round(Uniform(0,1)) ;
+            ShipMinimumTimeAtDock(Dock, Ship, City) := 100 * ord(City) + 10*ord(Ship) + ord(Dock) ;
+            NumberOfDocks(City) := 2*ord(City) ;
+            ShipAllowedInCity(Ship, City) := round(Uniform(0,1)) ;
+            CityDistance(City, ToCity) := 25*Ord(City) + 3*ord(ToCity) ;
+            NumberOfCities := 3;
+            NumberOfShips := 3;
+            CityName(City) := FormatString("%e", City);
+            
+            
+            !Now use MEF to create the required parameters to have the enduser dynamically select
+            !indices and corresponding elements in the GUI.
+            DeleteRuntimeLibrary("MEF_TEMP_LIB") ;
+            epRuntimelibrary := me::CreateLibrary( "MEF_TEMP_LIB", "mtl") ;
+            
+            epRuntimeProcedure := me::Create("MEF_TEMP_PROC", 'procedure', epRuntimeLibrary)  ;
+            psRuntimeProcedureBody := "" ;
+            
+            !First empty the set of AllIndexElements.
+            psRuntimeProcedureBody += "empty AllIndexElements ; \n" ;
+            
+            !For each relevant index ri (i.e. one of the indices for the parameters), we add all values
+            !to a AllIndexElements set. We do this by creating a for loop for each index that runtime will
+            !loop over all elements of the index.
+            !
+            !We also save which elements correspond to which index in an indexed set, which is used in the GUI
+            !to show the user only the correct elements after an index has been selected.
+            for (ri) do
+            	psRuntimeProcedureBody += formatstring("for (%e) do\n", ri) ;
+            	psRuntimeProcedureBody += formatstring("    setElementAdd( AllIndexElements, newElement, formatstring(\"%%e\",%e )) ; \n",ri) ;
+            	psruntimeProcedureBody += formatstring("    SelectableElementsPerIndex('%e') += newElement; \n",ri) ;
+            	psRuntimeProcedureBody += "endfor ;\n" ;
+            endfor ;
+            
+            !Set the created string as the body attribute.
+            me::SetAttribute( epRuntimeProcedure, 'body', psRuntimeProcedureBody ) ;
+            !Compile the runtime library.
+            me::Compile( epRuntimeLibrary ) ;
+            
+            !And call the runtime library via the apply statement.
+            epRuntimeCallableProcedure := epRuntimeProcedure ;
+            apply(epRuntimeCallableProcedure) ;
+            
+            
+            !If runtime libraries should not be saved, then remove the temporary library.
+            if not KeepRuntimeLibraries then
+            	DeleteRuntimeLibrary("MEF_TEMP_LIB") ;
+            endif ;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            InitializeData;
+        }
+    }
+    Procedure MainExecution {
+        ElementParameter err {
+            Range: errh::PendingErrors;
+        }
+        ElementParameter activeNode {
+            Range: AllSymbols;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1 ;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:48:09">
+	<Location bottom="651" right="624" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>8E4A45FB-800D-42D3-B2B2-0F91CF032D28</ProjectUUID>
+	<Title>"AIMMS 3 Demo: Railway Stock"</Title>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<Action>
+		<EntryProcedure>MainInitialization</EntryProcedure>
+	</Action>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="189" left="207" bottom="612" right="762" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Description.txt"</FileName>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainInitialization</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

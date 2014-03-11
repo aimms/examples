@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="911E8D88-0FB5-447F-ABC8-1053330CF8F7">
+	<ModelFileName>RollingHorizon.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

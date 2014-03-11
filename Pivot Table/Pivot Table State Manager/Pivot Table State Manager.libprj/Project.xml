@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<LibraryProject FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="A1F8CE36-288A-458E-B979-D4F672A5C413">
+	<ModelFileName>Pivot Table State Manager.ams</ModelFileName>
+	<Prefix>PTStateManager</Prefix>
+	<DisplayName>Pivot Table State Manager</DisplayName>
+</LibraryProject>

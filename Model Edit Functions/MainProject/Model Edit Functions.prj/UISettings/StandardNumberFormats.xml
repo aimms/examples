@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<StandardNumberFormat Name="Excel Input" InternalID="0">
+	<NumberFormat Width="9" Decimals="0" />
+</StandardNumberFormat>

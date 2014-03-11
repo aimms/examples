@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<PrintTemplate Name="Front PrintTemplate" PageGUID="8170F9BB-A51D-4E4F-9552-888573E91F4F">
+		<Page Name="Front Page" PageGUID="3E1987A9-98DC-47D7-98CC-B5BF48F45487" />
+	</PrintTemplate>
+	<PrintTemplate Name="Print Template" PageGUID="79C643AA-A9A9-4EEB-8687-8297B416C1E8">
+		<Page Name="Report Page 1" PageGUID="98A7AD93-5C70-480E-B14B-A370623707B9" />
+		<Page Name="Report Page 2" PageGUID="E617E132-BF7D-4AF5-9CB4-026946E8F45A" />
+	</PrintTemplate>
+	<Template Name="Size Template" PageGUID="5A748CB4-7715-4BAD-9EE0-F66E823C55BE" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|8520B462-938B-4C34-99AB-F2C06EF04546|Size Template">
+		<Template Name="Navigation Template" PageGUID="C990AFC1-681D-47FD-A0AA-A36546F1F01D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3D96F119-51C4-4DB0-A606-74F72684930E|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="7596CD04-C908-4ABC-8E3D-6DD90219B34C" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|868FFD9D-56F1-4F73-93B1-61801B217051|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="D1440791-AC87-4F1E-BCE7-3D4E71175F50" />
+			</Template>
+			<Page Name="Example Page" PageGUID="A74ED4B1-7052-41F4-8D4F-089190182A7F" />
+		</Template>
+	</Template>
+</TemplateManager>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="8122218E-B00F-479E-A6AF-F2CCB5DBE628">
+	<ModelFileName>Templates and Navigation.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

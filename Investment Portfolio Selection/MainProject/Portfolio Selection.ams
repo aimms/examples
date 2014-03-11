@@ -1,0 +1,492 @@
+## ams_version=1.0
+
+Model Main_Portfolio_Selection {
+    Section Strategic_Investment_Model {
+        Set InvestmentCategories {
+            Index: j, k;
+            Definition: data { 'Stocks', 'Bonds', 'Real estate' };
+        }
+        Parameter ExpectedValueOfReturn {
+            IndexDomain: (j);
+            Definition: data { Stocks : 10.8,  Bonds : 7.6,  'Real estate' : 9.5 };
+        }
+        Parameter DesiredExpectedPortfolioReturn {
+            Text: "Desired Expected Portfolio Return";
+            InitialData: 9;
+        }
+        Variable InvestedFraction {
+            IndexDomain: (j);
+            Range: nonnegative;
+        }
+        Parameter Covariance {
+            IndexDomain: (j,k);
+            InitialData: {
+                data
+                { ( Stocks       , Stocks        ) :  2.250,  ( Stocks       , Bonds         ) : -0.120,
+                  ( Stocks       , 'Real estate' ) :  0.450,  ( Bonds        , Stocks        ) : -0.120,
+                  ( Bonds        , Bonds         ) :  0.640,  ( Bonds        , 'Real estate' ) :  0.336,
+                  ( 'Real estate', Stocks        ) :  0.450,  ( 'Real estate', Bonds         ) :  0.336,
+                  ( 'Real estate', 'Real estate' ) :  1.440 }
+            }
+        }
+        Variable TotalRisk {
+            Definition: sum[ (j,k), InvestedFraction(j) * Covariance(j,k) * InvestedFraction(k) ];
+        }
+        Constraint MinimalLevelOfDesiredReturn {
+            Definition: sum[ j, ExpectedValueOfReturn(j) * InvestedFraction(j) ] >= DesiredExpectedPortfolioReturn;
+        }
+        Constraint InvestedFractionDefinition {
+            Definition: sum[ j, InvestedFraction(j) ] = 1;
+        }
+        Set StrategicInvestmentVariables {
+            SubsetOf: AllVariables;
+            Definition: data { InvestedFraction, TotalRisk };
+        }
+        Set StrategicInvestmentConstraints {
+            SubsetOf: AllConstraints;
+            Definition: data { TotalRisk, MinimalLevelOfDesiredReturn, InvestedFractionDefinition };
+        }
+        MathematicalProgram StrategicInvestment {
+            Objective: TotalRisk;
+            Direction: minimize;
+            Constraints: StrategicInvestmentConstraints;
+            Variables: StrategicInvestmentVariables;
+        }
+        Procedure SolveStrategicInvestmentModel {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	solve StrategicInvestment;
+                
+                else
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution in read from a case.");
+                	CaseFind("Strategic Model Solution",ACase);
+                	CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+    }
+    Section Tactical_Investment_Model {
+        DeclarationSection Input_Data_Declarations {
+            Set Securities {
+                Index: s;
+            }
+            Set Periods {
+                Index: tt;
+            }
+            Set Scenarios {
+                SubsetOf: Periods;
+                Index: t;
+                Definition: {
+                    { tt | Ord(tt) > 1 }
+                }
+            }
+            Parameter SecurityValue {
+                IndexDomain: (s,tt);
+            }
+            Parameter SecurityReturn {
+                IndexDomain: (s,tt)| ( tt in Scenarios );
+                Definition: ( SecurityValue(s,tt) - SecurityValue(s,tt-1) ) / SecurityValue(s,tt-1) * 100;
+            }
+            Parameter ExpectedSecurityReturn {
+                IndexDomain: (s);
+                Definition: Mean[ t, SecurityReturn(s,t) ];
+            }
+            Parameter Probability {
+                IndexDomain: (t);
+                Definition: 1/card(Scenarios);
+            }
+        }
+        DeclarationSection Model_Declarations {
+            Variable TacticalInvestedFraction {
+                IndexDomain: (s);
+                Range: [1e-012, inf);
+                Default: 1e-012;
+            }
+            Variable y {
+                IndexDomain: (t);
+                Definition: sum[ s, ( SecurityReturn(s,t) - ExpectedSecurityReturn(s) ) * TacticalInvestedFraction(s) ];
+            }
+            Variable TacticalTotalRisk {
+                Definition: sum[ t, Probability(t) * Sqr(y(t)) ];
+            }
+            Parameter DesiredExpectedSecurityReturn {
+                InitialData: 0.2;
+            }
+            Constraint TacticalMinimalLevelOfDesiredReturn {
+                Definition: sum[ s, ExpectedSecurityReturn(s) * TacticalInvestedFraction(s) ] >= DesiredExpectedSecurityReturn;
+            }
+            Constraint TacticalInvestedFractionDefinition {
+                Definition: sum[ s, TacticalInvestedFraction(s) ] = 1;
+            }
+            Set TacticalInvestmentVariables {
+                SubsetOf: AllVariables;
+                Definition: data { TacticalInvestedFraction, y, TacticalTotalRisk };
+            }
+            Set TacticalInvestmentConstraints {
+                SubsetOf: AllConstraints;
+                Definition: data { y, TacticalTotalRisk, TacticalMinimalLevelOfDesiredReturn, TacticalInvestedFractionDefinition };
+            }
+            MathematicalProgram TacticalInvestment {
+                Objective: TacticalTotalRisk;
+                Direction: minimize;
+                Constraints: TacticalInvestmentConstraints;
+                Variables: TacticalInvestmentVariables;
+            }
+        }
+        Procedure ReadSecurityValues {
+            Body: {
+                read from file "<prj>:Security Values.txt";
+            }
+        }
+        Procedure SolveTacticalInvestmentModel {
+            Body: {
+                solve TacticalInvestment;
+            }
+        }
+        Section Downside_Risk {
+            DeclarationSection Downside_Risk_Declarations {
+                Variable q {
+                    IndexDomain: (t);
+                    Range: nonnegative;
+                }
+                Constraint DownsideRiskDetermination {
+                    IndexDomain: (t);
+                    Definition: q(t) >= DesiredExpectedSecurityReturn - sum[ s, SecurityReturn(s,t) * TacticalInvestedFraction(s) ];
+                }
+                Variable TacticalDownsideRisk {
+                    Definition: sum[ t, Probability(t) * Sqr(q(t)) ];
+                }
+                Set TacticalDownsideInvestmentVariables {
+                    SubsetOf: AllVariables;
+                    Definition: data { TacticalInvestedFraction, q, TacticalDownsideRisk };
+                }
+                Set TacticalDownsideInvestmentConstraints {
+                    SubsetOf: AllConstraints;
+                    Definition: data { TacticalMinimalLevelOfDesiredReturn, TacticalInvestedFractionDefinition, DownsideRiskDetermination, TacticalDownsideRisk };
+                }
+                MathematicalProgram TacticalDownsideInvestment {
+                    Objective: TacticalDownsideRisk;
+                    Direction: minimize;
+                    Constraints: TacticalDownsideInvestmentConstraints;
+                    Variables: TacticalDownsideInvestmentVariables;
+                }
+            }
+            Procedure SolveTacticalDownsideInvestmentModel {
+                Body: {
+                    solve TacticalDownsideInvestment;
+                }
+            }
+        }
+        Section Minimum_Fraction {
+            DeclarationSection Minimum_Fraction_Declarations {
+                Variable IsIncluded {
+                    IndexDomain: (s);
+                    Range: binary;
+                }
+                Parameter MinimumFraction {
+                    InitialData: 0.1;
+                }
+                Constraint InvestAtLeastMinimumFraction {
+                    IndexDomain: (s);
+                    Definition: TacticalInvestedFraction(s) >= MinimumFraction * IsIncluded(s);
+                }
+                Constraint NoInvestmentIfNotIncluded {
+                    IndexDomain: (s);
+                    Definition: TacticalInvestedFraction(s) <= IsIncluded(s);
+                }
+                Set MinimumFractionTacticalInvestmentVariables {
+                    SubsetOf: AllVariables;
+                    Definition: TacticalInvestmentVariables + 'IsIncluded';
+                }
+                Set MinimumFractionTacticalInvestmentConstraints {
+                    SubsetOf: AllConstraints;
+                    Definition: {
+                        TacticalInvestmentConstraints + 'InvestAtLeastMinimumFraction' +
+                        'NoInvestmentIfNotIncluded'
+                    }
+                }
+                MathematicalProgram MinimumFractionTacticalInvestment {
+                    Objective: TacticalTotalRisk;
+                    Direction: minimize;
+                    Constraints: MinimumFractionTacticalInvestmentConstraints;
+                    Variables: MinimumFractionTacticalInvestmentVariables;
+                }
+            }
+            Procedure SolveMinimumFractionTacticalInvestment {
+                Body: {
+                    if SelectedMIQPsolver = 'AOA' then
+                    
+                            ! The following combination (Generate and DoOuterApproximation) is always
+                            ! necessary to solve your model with AOA:
+                            GenMP := GMP::Instance::Generate( MinimumFractionTacticalInvestment ) ;
+                            GMPOuterApprox::DoOuterApproximation( GenMP ) ;
+                    
+                    else
+                    
+                            solve MinimumFractionTacticalInvestment where solver := SelectedMIQPsolver ;
+                    
+                    endif;
+                }
+                ElementParameter GenMP {
+                    Range: AllGeneratedMathematicalPrograms;
+                }
+            }
+        }
+        Section Investment_Budget {
+            DeclarationSection Investment_Budget_Declaration {
+                Parameter CostBudget {
+                    InitialData: 11;
+                }
+                Parameter CostInvestment {
+                    IndexDomain: (s);
+                }
+                Variable TotalCost {
+                    Definition: sum( s, ( CostInvestment(s) * TacticalInvestedFraction(s) )^(1/3) );
+                    Comment: "The cost function is non-linear in the fraction that is invested.";
+                }
+                Constraint TotalCostAtMostCostBudget {
+                    Definition: TotalCost <= CostBudget;
+                }
+                Set BudgetMinimumFractionTacticalInvestmentConstraints {
+                    SubsetOf: AllConstraints;
+                    Definition: {
+                        MinimumFractionTacticalInvestmentConstraints
+                        + 'TotalCostAtMostCostBudget'
+                        + 'TotalCost'
+                    }
+                }
+                Set BudgetMinimumFractionTacticalInvestmentVariables {
+                    SubsetOf: AllVariables;
+                    Definition: MinimumFractionTacticalInvestmentVariables + 'TotalCost';
+                }
+                MathematicalProgram BudgetMinimumFractionTacticalInvestment {
+                    Objective: TacticalTotalRisk;
+                    Direction: minimize;
+                    Constraints: BudgetMinimumFractionTacticalInvestmentConstraints;
+                    Variables: BudgetMinimumFractionTacticalInvestmentVariables;
+                }
+            }
+            Procedure SolveBudgetMinimumFractionTacticalInvestment {
+                Body: {
+                    ! Initialize cost investment data:
+                    
+                       CostInvestment(s) := data { RD : 95,
+                                                   AKZ : 40,
+                                                   KLM : 130,
+                                                   PHI : 50,
+                                                   UN : 125 } ;
+                    
+                    ! Initialize solution
+                    
+                       empty AllVariables ;
+                       TacticalInvestedFraction(s) := 1/card(s) ;
+                    
+                    ! Solve the MINLP:
+                    
+                       if SelectedMINLPsolver = 'AOA' then
+                    
+                            ! The following combination (Generate and DoOuterApproximation) is always
+                            ! necessary to solve your model with AOA:
+                            GenMP := GMP::Instance::Generate( BudgetMinimumFractionTacticalInvestment ) ;
+                            GMPOuterApprox::DoOuterApproximation( GenMP ) ;
+                    
+                       else
+                    
+                            solve BudgetMinimumFractionTacticalInvestment where solver := SelectedMINLPsolver ;
+                    
+                       endif;
+                }
+                ElementParameter GenMP {
+                    Range: AllGeneratedMathematicalPrograms;
+                }
+            }
+        }
+    }
+    Section Interface_Support {
+        Set TacticalModels {
+            Index: m;
+            Parameter: CurrentTacticalModel;
+            Definition: {
+                data { 'Minimizing two-sided variance',
+                       'Minimizing down-sided variance',
+                       'Minimizing two-sided variance (minimal investment fraction)',
+                       'Minimizing two-sided variance (minimal investment fraction, cost budget)' }
+            }
+        }
+        ElementParameter SecurityColors {
+            IndexDomain: (s);
+            Range: AllColors;
+        }
+        ElementParameter CategoryColor {
+            IndexDomain: (j);
+            Range: AllColors;
+        }
+        Parameter HideMinimalInvestment {
+            Definition: {
+                1 onlyif ( Ord(CurrentTacticalModel) <> 3 AND
+                           Ord(CurrentTacticalModel) <> 4 )
+            }
+        }
+        Parameter HideMINLPSolvers {
+            Definition: 1 onlyif ( Ord(CurrentTacticalModel) <> 4 );
+        }
+        Parameter HideMIQPSolvers {
+            Definition: 1 onlyif ( Ord(CurrentTacticalModel) <> 3 );
+        }
+        Set AvailableSolvers {
+            SubsetOf: AllSolvers;
+            Index: sol;
+            Definition: AllSolvers;
+        }
+        Set MINLPSolvers {
+            SubsetOf: AllSolvers;
+            Index: MINLPs;
+            Parameter: SelectedMINLPsolver;
+        }
+        Set MIQPSolvers {
+            SubsetOf: AllSolvers;
+            Index: MIQPs;
+            Parameter: SelectedMIQPsolver;
+        }
+        Parameter HideAOAoption {
+            Definition: {
+                1 - [( not HideMINLPSolvers and SelectedMINLPsolver = 'AOA' ) OR
+                	( not HideMIQPSolvers and SelectedMIQPsolver = 'AOA' ) ]
+            }
+        }
+        Procedure InitializeInterfaceIdentifiers {
+            Body: {
+                CurrentTacticalModel        := first(TacticalModels);
+                InvestedFraction(j)         := 1/Card(j);
+                CategoryColor(j)            := data { 'Stocks' : red, 'Bonds' : blue, 'Real estate' : green };
+                TacticalInvestedFraction(s) := 1/Card(s);
+                SecurityColors(s)           := data { RD : red,  AKZ : blue,  KLM : green,  PHI : magenta,  UN : grey };
+            }
+        }
+        Procedure SolveTacticalModel {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	switch ( CurrentTacticalModel ) do
+                
+                	'Minimizing two-sided variance':
+                		SolveTacticalInvestmentModel;
+                
+                	'Minimizing down-sided variance':
+                		SolveTacticalDownsideInvestmentModel;
+                
+                	'Minimizing two-sided variance (minimal investment fraction)':
+                		SolveMinimumFractionTacticalInvestment;
+                
+                	'Minimizing two-sided variance (minimal investment fraction, cost budget)':
+                		SolveBudgetMinimumFractionTacticalInvestment;
+                
+                	endswitch;
+                
+                else
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution in read from a case.");
+                
+                	switch ( CurrentTacticalModel ) do
+                
+                		'Minimizing two-sided variance':
+                			CaseFind("Tactical Model Solution - two sided variance",ACase);
+                
+                		'Minimizing down-sided variance':
+                			CaseFind("Tactical Model Solution - two sided variance",ACase);
+                
+                		'Minimizing two-sided variance (minimal investment fraction)':
+                			CaseFind("Tactical Model Solution - two sided variance (min investment fraction)",ACase);
+                
+                		'Minimizing two-sided variance (minimal investment fraction, cost budget)':
+                			CaseFind("Tactical Model Solution - two sided variance (min investment fraction, cost budget)",ACase);
+                
+                	endswitch;
+                
+                	CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+        Procedure InitializeSolvers {
+            Body: {
+                empty MINLPSolvers ;
+                empty MIQPSolvers ;
+                
+                for sol do
+                
+                    if FindString( FormatString( "%e",sol ), "AOA" ) or
+                       FindString( FormatString( "%e",sol ), "BARON" )
+                
+                    then
+                
+                        MINLPSolvers += sol ;
+                
+                    endif ;
+                
+                    if FindString( FormatString( "%e",sol ), "CPLEX" ) or
+                       FindString( FormatString( "%e",sol ), "BARON" ) or
+                       FindString( FormatString( "%e",sol ), "AOA" ) or
+                       FindString( FormatString( "%e",sol ), "KNITRO 6" ) or
+                       FindString( FormatString( "%e",sol ), "MOSEK" )
+                
+                    then
+                
+                        MIQPSolvers += sol ;
+                
+                    endif ;
+                
+                
+                endfor ;
+                
+                SelectedMINLPsolver := First( MINLPSolvers ) ;
+                SelectedMIQPsolver  := First( MIQPSolvers ) ;
+            }
+        }
+    }
+    ElementParameter ACase {
+        Range: AllCases;
+    }
+    Procedure MainInitialization {
+        Body: {
+            ReadSecurityValues;
+            InitializeInterfaceIdentifiers;
+            InitializeSolvers;
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Module GMP_Outer_Approximation_Module {
+        SourceFile: "%AIMMSMODULES%\\GMPOuterApproximation.aim";
+        Comment: {
+            "This module contains two outer approximation algorithms for solving Mixed Integer
+            Nonlinear Problems (MINLP). The basic algorithm can be found in the section \'AOA
+            Basic Algorithm\' and is based on the following two papers:
+            
+             M.A. Duran and I.E. Grossmann, An outer-approximation algorithm for a class of
+             mixed-integer nonlinear programs, Mathematical Programming 36 (1986), pp. 307-339.
+            
+             J. Viswanathan and I.E. Grossmann, A combined penalty function and outer-approximation
+             method for MINLP optimization, Computers and Chemical Engineering 14 (1990), pp. 769-778.
+            
+            The basic algorithm can be used for convex and non-convex problems with general integer
+            variables.
+            
+            The section \'AOA Convex Algorithm\' contains a variant of the outer approximation algorithm
+            that uses a single tree search. In this way the sequential solving of several MIP\'s is
+            avoided. The algorithm is based on the paper:
+            
+             I. Quesada and I.E. Grossmann, An LP/NLP Based Branch and Bound Algorithm for Convex MINLP
+             Optimization Problems, Computers and Chemical Engineering 16 (1992), pp. 937-947.
+            
+            This algorithm can only be used for convex problems (with general integer variables)."
+        }
+    }
+}

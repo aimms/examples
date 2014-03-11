@@ -1,0 +1,74 @@
+﻿Converting Main project
+Converting Pivot Table.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Pivot Table.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Aggregators.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Rearranged.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Outer Indices.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Multiple Cases.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Two Identifiers.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Different Format.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Artificial Indices.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Sorting.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Domain.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Templates\Copy Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Templates\Copy Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Navigation.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Indexed Column Widths.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Colored Bars.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\All Data Pages.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\[Data Page] SelectedCell.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\State Manager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Assertions.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Insert a Row.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Filter.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\Pages\Indentation Mode.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\User Files\PivotTableOptions.jpg
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Converting Library project: Pivot Table State Manager
+Converting Pivot Table State Manager.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager\Pivot Table State Manager.ams
+Converting .\Pivot Table State Manager\Pivot Table State Manager.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager\Pivot Table State Manager.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager\Pivot Table State Manager.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager\Pivot Table State Manager.libprj\Pages\StateSelector.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager\Pivot Table State Manager.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager\Pivot Table State Manager.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager\Pivot Table State Manager.libprj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager\Pivot Table State Manager.libprj\DataManagementSetup.xml
+Copying file: Pivot Table.nch to C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.nch
+Copying file: Pivot Table.DeveloperState to C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\MainProject\Pivot Table.DeveloperState
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Description.txt
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\log
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table State Manager
+Copying file: Pivot Table.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table.dat
+Copying file: Pivot Table.UserState to C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table.UserState
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Pivot Table\Pivot Table.aimms
+Successfully converted the whole project.

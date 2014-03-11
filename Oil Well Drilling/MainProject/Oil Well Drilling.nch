@@ -1,0 +1,6 @@
+* The timestamps in this namechange file are stored in Coordinated universal time (UTC).
+"IV_DoSurvey" "DoSurvey" "2010-07-22 22:04:46"
+"IV_Drill" "Drill" "2010-07-22 22:04:48"
+"PayOff" "PayOffForOil" "2010-07-22 22:25:55"
+"InputExpression_PayOff" "InputExpression_PayOffForOil" "2010-07-22 22:28:54"
+"Copy_Status_MessageForPayOff" "Status_MessageForProbability" "2010-07-23 00:22:32"

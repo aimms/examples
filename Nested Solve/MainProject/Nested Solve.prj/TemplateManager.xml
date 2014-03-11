@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="D4671CEE-DEAF-4836-B503-BC5F88A2A05C" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6AB2E18D-C530-40A9-B44F-7D159415D76E|Size Template">
+		<Template Name="Navigation Template" PageGUID="ED6A0178-A823-4ECC-B100-802A98A9B828" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|71CAB56A-6494-4F31-809A-6245B0221EF5|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="F7FB041B-00B3-4652-957A-0089C6359A04" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|42ED7E41-4D3A-463D-A06A-8609631EA689|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="15AFE806-D90F-42E7-82CC-A77CE56B520B" />
+			</Template>
+			<Page Name="Example Page" PageGUID="4D8F7C35-8321-4A05-8397-EB132EAFFDFC" />
+			<Page Name="Source Article" PageGUID="0E4CD6D5-45A2-4FCF-8A56-7993C9E18BBC" />
+		</Template>
+	</Template>
+	<Page Name="All Data Pages" PageGUID="A8570906-E01A-4141-A2A1-52049293486B" />
+</TemplateManager>

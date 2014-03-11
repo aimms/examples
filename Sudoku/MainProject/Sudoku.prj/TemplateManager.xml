@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="CB7D432E-3267-433B-9E73-E31A59084904" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3992D682-CAFD-4676-8A19-2911EBF5BF61|Size Template">
+		<Template Name="Navigation Template" PageGUID="07B943C0-BA87-429D-A4FC-1AA31D8B47C3" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|173B118C-052A-46BE-969C-850028BF63F8|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="A7AE04B0-CF37-4BE7-AE0E-C938B2B582F3" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|02804D93-D894-47B4-B736-7ADE04720E67|Background Info Template">
+				<Page Name="AIMMS 3 Demo - Sudoku" PageGUID="A9E806F2-4E5C-4ABB-B531-203D7C508938" />
+			</Template>
+			<Page Name="Sudoku Puzzle" PageGUID="F1CF7133-A799-455E-ACA5-139DEFF5E01A" />
+		</Template>
+	</Template>
+	<Template Name="Size Template" PageGUID="CB7D432E-3267-433B-9E73-E31A59084904" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3992D682-CAFD-4676-8A19-2911EBF5BF61|Size Template">
+		<Template Name="Navigation" PageGUID="7851A79D-7DE7-47A1-BF49-3463D43FDD5F" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|173B118C-052A-46BE-969C-850028BF63F8|Navigation Template">
+			<Template Name="Info Background" PageGUID="6491CFC4-35F5-40C2-906A-C78BC34B7308" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|02804D93-D894-47B4-B736-7ADE04720E67|Background Info Template" />
+		</Template>
+	</Template>
+	<Page Name="All Data Pages" PageGUID="9D99AB58-F685-458F-B8AD-F4710D91B891" />
+	<Page Name="[Data Page] Solution" PageGUID="A052BBEB-0230-4A77-96BE-171C1E67A265" />
+</TemplateManager>

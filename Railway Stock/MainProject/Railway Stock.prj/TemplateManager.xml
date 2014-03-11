@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Schedules Template" PageGUID="8E29CF32-8881-417F-9BD1-96379E37D591">
+		<Page Name="Schedule 1" PageGUID="581B946A-3DE4-477F-9B08-527ECE5D7227" />
+		<Page Name="Schedule 2" PageGUID="43A59409-5B92-41B7-9660-83FA81B25270" />
+	</Template>
+	<Template Name="Size Template" PageGUID="2BC03836-15B1-4BDD-9231-1B2121033FB0" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|AB07D171-D9BD-4468-A36A-BB21866E17C6|Size Template">
+		<Template Name="Navigation" PageGUID="6418CB00-D6A2-4714-B49C-CEA1190C30F9" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|9B706034-5F00-4AF6-88BF-4C78359DDAE4|Navigation Template">
+			<Template Name="Train Schedule Template" PageGUID="1D2FACC3-0C50-4EB8-A50F-A08DA88EB506">
+				<Page Name="Train Schedule" PageGUID="22AF2847-1000-4F52-A574-28F3394B3A0A" />
+			</Template>
+			<Template Name="Info Background" PageGUID="1DA6E48F-CBEB-496F-83D3-888248A02777" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|0252CF11-7725-4EE2-B9AA-A1C2AFB9071C|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="3E0EE8AA-1F92-4055-B48D-636133E53745" />
+			</Template>
+			<Page Name="Network Page" PageGUID="3788F189-BDB0-4B92-AC76-F28AAC67F282" />
+		</Template>
+	</Template>
+	<Template Name="Page Size" PageGUID="E8E2570D-313A-4613-898A-3D9342487027" />
+</TemplateManager>

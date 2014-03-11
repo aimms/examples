@@ -1,0 +1,15 @@
+This example illustrates how you can work with multi developers on a single AIMMS project. 
+
+In the File menu, you can open the Library Manager. You can add libraries for each part of the project that can be modified by a single developer. Every library is saved in seperate files, and every library has an interface in which the developer can specify which identifiers of the library can be used outside the library.
+
+To work together on the same application, each developer works in an environment in which only his/her own library is writable, while the other libraries are readonly. When a developer has finished the modifications to his/her library, he/she must make sure that the other developers get a (readonly) copy of this modified library.
+
+This exchange of libraries between developers is best handled by a version control program (like SourceSafe or SVN). In this example we mimic a version control system by simply copying files to and from a common folder, and setting the appropriate readonly flags.
+
+In this example we have two libraries, one for each developer. In the directory of this example you can see three folders. One folder containing the latest version of the project, and two folders that represent the working environment of the two developers.
+
+When a developer is satisfied with the changes he/she made, the batch file check-in.bat in the project folder of the developer, can be run to apply the changes to the Latest Version project. When a developer wants to get the latest version of the project (which reflects the changes made by all developers) in his/her own developer project, he/she can run the batch file check-out.bat.
+
+The check-in.bat file copies the developer library files to the latest version folder and makes these files read-only. The check-out.bat file copies all files from the latest version folder to the developer project folder, except for the library files for which this developer is responsible.
+
+Multi Development aspects are reflected in the Model Explorer, Page Manager, Template Manager, Menu Builder, Data Manager, Data Management Setup, User Colors, Project User Files and Fonts. More information can be found in the AIMMS User's Guide (available via Help menu), chapter Organizing a Project into Libraries.

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="FB5265FA-E401-4E9B-B10A-AFC7393DFB4B">
+	<ModelFileName>Media Selection Problem.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

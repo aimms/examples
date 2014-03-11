@@ -1,0 +1,39 @@
+﻿Converting Main project
+Converting GoalProgramming.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\Pages\Example Page.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\Pages\Source Article.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.prj\User Files\bitmaps\construct.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: GoalProgramming.DeveloperState to C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\MainProject\GoalProgramming.DeveloperState
+Copying file: description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\description.txt
+Copying file: GoalProgEx.pdf to C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\GoalProgEx.pdf
+Copying file: GoalProgramming.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\GoalProgramming.dat
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\log
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Goal Programming\GoalProgramming.aimms
+Successfully converted the whole project.

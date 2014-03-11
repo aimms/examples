@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<TrainScheduleSchema xmlns="http://www.Aimms.com/RailWayStock" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.Aimms.com/RailWayStock TrainSchedule.xsd">
+	<Origin Name="Rotterdam" CityID="2">
+		<Destination Name="Roosendaal">
+			<TrainScheduleID ID="2123" Arrival="7:40" Departure="7:00" Minimal="2"/>
+			<TrainScheduleID ID="2127" Arrival="8:41" Departure="8:01" Minimal="3"/>
+			<TrainScheduleID ID="2131" Arrival="9:41" Departure="9:02" Minimal="4"/>
+			<TrainScheduleID ID="2135" Arrival="10:43" Departure="10:03" Minimal="4"/>
+			<TrainScheduleID ID="2139" Arrival="11:41" Departure="11:02" Minimal="2"/>
+			<TrainScheduleID ID="2143" Arrival="12:41" Departure="12:03" Minimal="3"/>
+			<TrainScheduleID ID="2147" Arrival="13:41" Departure="13:02" Minimal="3"/>
+			<TrainScheduleID ID="2151" Arrival="14:41" Departure="14:02" Minimal="3"/>
+			<TrainScheduleID ID="2155" Arrival="15:41" Departure="15:02" Minimal="3"/>
+			<TrainScheduleID ID="2159" Arrival="16:43" Departure="16:00" Minimal="4"/>
+			<TrainScheduleID ID="2163" Arrival="17:43" Departure="17:01" Minimal="5"/>
+			<TrainScheduleID ID="2167" Arrival="18:42" Departure="18:01" Minimal="5"/>
+			<TrainScheduleID ID="2171" Arrival="19:41" Departure="19:02" Minimal="5"/>
+			<TrainScheduleID ID="2175" Arrival="20:41" Departure="20:02" Minimal="2"/>
+			<TrainScheduleID ID="2179" Arrival="21:41" Departure="21:02" Minimal="2"/>
+			<TrainScheduleID ID="2183" Arrival="22:41" Departure="22:02" Minimal="2"/>
+			<TrainScheduleID ID="2187" Arrival="23:54" Departure="23:02" Minimal="1"/>
+		</Destination>
+		<Destination Name="Amsterdam">
+			<TrainScheduleID ID="2108" Arrival="6:39" Departure="5:31" Minimal="1"/>
+			<TrainScheduleID ID="2112" Arrival="7:38" Departure="6:29" Minimal="3"/>
+			<TrainScheduleID ID="2116" Arrival="8:38" Departure="7:32" Minimal="5"/>
+			<TrainScheduleID ID="2120" Arrival="9:40" Departure="8:35" Minimal="4"/>
+			<TrainScheduleID ID="2124" Arrival="10:38" Departure="9:34" Minimal="4"/>
+			<TrainScheduleID ID="2128" Arrival="11:38" Departure="10:34" Minimal="5"/>
+			<TrainScheduleID ID="2132" Arrival="12:38" Departure="11:34" Minimal="3"/>
+			<TrainScheduleID ID="2136" Arrival="13:38" Departure="12:34" Minimal="3"/>
+			<TrainScheduleID ID="2140" Arrival="14:38" Departure="13:35" Minimal="3"/>
+			<TrainScheduleID ID="2144" Arrival="15:38" Departure="14:35" Minimal="3"/>
+			<TrainScheduleID ID="2148" Arrival="16:40" Departure="15:34" Minimal="3"/>
+			<TrainScheduleID ID="2152" Arrival="17:38" Departure="16:34" Minimal="4"/>
+			<TrainScheduleID ID="2156" Arrival="18:38" Departure="17:35" Minimal="5"/>
+			<TrainScheduleID ID="2160" Arrival="19:38" Departure="18:34" Minimal="3"/>
+			<TrainScheduleID ID="2164" Arrival="20:38" Departure="19:34" Minimal="2"/>
+			<TrainScheduleID ID="2168" Arrival="21:38" Departure="20:35" Minimal="2"/>
+			<TrainScheduleID ID="2172" Arrival="22:38" Departure="21:32" Minimal="2"/>
+			<TrainScheduleID ID="2176" Arrival="23:38" Departure="22:34" Minimal="2"/>
+		</Destination>
+	</Origin>
+	<Origin Name="Roosendaal" CityID="3">
+		<Destination Name="Rotterdam">
+			<TrainScheduleID ID="2112" Arrival="6:28" Departure="5:29" Minimal="2"/>
+			<TrainScheduleID ID="2116" Arrival="7:26" Departure="6:43" Minimal="4"/>
+			<TrainScheduleID ID="2120" Arrival="8:32" Departure="7:52" Minimal="5"/>
+			<TrainScheduleID ID="2124" Arrival="9:32" Departure="8:53" Minimal="4"/>
+			<TrainScheduleID ID="2128" Arrival="10:32" Departure="9:53" Minimal="5"/>
+			<TrainScheduleID ID="2132" Arrival="11:32" Departure="10:53" Minimal="3"/>
+			<TrainScheduleID ID="2136" Arrival="12:32" Departure="11:53" Minimal="3"/>
+			<TrainScheduleID ID="2140" Arrival="13:32" Departure="12:53" Minimal="3"/>
+			<TrainScheduleID ID="2144" Arrival="14:32" Departure="13:53" Minimal="2"/>
+			<TrainScheduleID ID="2148" Arrival="15:32" Departure="14:53" Minimal="3"/>
+			<TrainScheduleID ID="2152" Arrival="16:32" Departure="15:53" Minimal="3"/>
+			<TrainScheduleID ID="2156" Arrival="17:33" Departure="16:53" Minimal="4"/>
+			<TrainScheduleID ID="2160" Arrival="18:32" Departure="17:53" Minimal="3"/>
+			<TrainScheduleID ID="2164" Arrival="19:32" Departure="18:53" Minimal="2"/>
+			<TrainScheduleID ID="2168" Arrival="20:32" Departure="19:53" Minimal="2"/>
+			<TrainScheduleID ID="2172" Arrival="21:30" Departure="20:52" Minimal="2"/>
+			<TrainScheduleID ID="2176" Arrival="22:32" Departure="21:53" Minimal="2"/>
+		</Destination>
+		<Destination Name="Vlissingen">
+			<TrainScheduleID ID="2123" Arrival="8:38" Departure="7:43" Minimal="3"/>
+			<TrainScheduleID ID="2127" Arrival="9:38" Departure="8:43" Minimal="2"/>
+			<TrainScheduleID ID="2131" Arrival="10:38" Departure="9:43" Minimal="2"/>
+			<TrainScheduleID ID="2135" Arrival="11:38" Departure="10:45" Minimal="2"/>
+			<TrainScheduleID ID="2139" Arrival="12:38" Departure="11:43" Minimal="2"/>
+			<TrainScheduleID ID="2143" Arrival="13:38" Departure="12:43" Minimal="3"/>
+			<TrainScheduleID ID="2147" Arrival="14:38" Departure="13:43" Minimal="2"/>
+			<TrainScheduleID ID="2151" Arrival="15:38" Departure="14:43" Minimal="3"/>
+			<TrainScheduleID ID="2155" Arrival="16:38" Departure="15:43" Minimal="3"/>
+			<TrainScheduleID ID="2159" Arrival="17:40" Departure="16:45" Minimal="3"/>
+			<TrainScheduleID ID="2163" Arrival="18:40" Departure="17:45" Minimal="4"/>
+			<TrainScheduleID ID="2167" Arrival="19:39" Departure="18:44" Minimal="4"/>
+			<TrainScheduleID ID="2171" Arrival="20:38" Departure="19:43" Minimal="3"/>
+			<TrainScheduleID ID="2175" Arrival="21:38" Departure="20:43" Minimal="2"/>
+			<TrainScheduleID ID="2179" Arrival="22:38" Departure="21:43" Minimal="1"/>
+		</Destination>
+	</Origin>
+	<Origin Name="Vlissingen" CityID="4">
+		<Destination Name="Roosendaal">
+			<TrainScheduleID ID="2116" Arrival="6:35" Departure="5:30" Minimal="2"/>
+			<TrainScheduleID ID="2120" Arrival="7:48" Departure="6:54" Minimal="4"/>
+			<TrainScheduleID ID="2124" Arrival="8:50" Departure="7:56" Minimal="4"/>
+			<TrainScheduleID ID="2128" Arrival="9:50" Departure="8:56" Minimal="4"/>
+			<TrainScheduleID ID="2132" Arrival="10:50" Departure="9:56" Minimal="2"/>
+			<TrainScheduleID ID="2136" Arrival="11:50" Departure="10:56" Minimal="2"/>
+			<TrainScheduleID ID="2140" Arrival="12:50" Departure="11:56" Minimal="3"/>
+			<TrainScheduleID ID="2144" Arrival="13:50" Departure="12:56" Minimal="2"/>
+			<TrainScheduleID ID="2148" Arrival="14:50" Departure="13:56" Minimal="2"/>
+			<TrainScheduleID ID="2152" Arrival="15:50" Departure="14:56" Minimal="2"/>
+			<TrainScheduleID ID="2156" Arrival="16:50" Departure="15:56" Minimal="3"/>
+			<TrainScheduleID ID="2160" Arrival="17:50" Departure="16:56" Minimal="3"/>
+			<TrainScheduleID ID="2164" Arrival="18:50" Departure="17:56" Minimal="2"/>
+			<TrainScheduleID ID="2168" Arrival="19:50" Departure="18:56" Minimal="2"/>
+			<TrainScheduleID ID="2172" Arrival="20:49" Departure="19:55" Minimal="2"/>
+		</Destination>
+	</Origin>
+	<Origin Name="Amsterdam" CityID="1">
+		<Destination Name="Rotterdam">
+			<TrainScheduleID ID="2127" Arrival="7:55" Departure="6:48" Minimal="3"/>
+			<TrainScheduleID ID="2131" Arrival="8:58" Departure="7:55" Minimal="5"/>
+			<TrainScheduleID ID="2135" Arrival="9:58" Departure="8:56" Minimal="4"/>
+			<TrainScheduleID ID="2139" Arrival="10:58" Departure="9:56" Minimal="3"/>
+			<TrainScheduleID ID="2143" Arrival="11:58" Departure="10:56" Minimal="3"/>
+			<TrainScheduleID ID="2147" Arrival="12:58" Departure="11:56" Minimal="3"/>
+			<TrainScheduleID ID="2151" Arrival="13:58" Departure="12:56" Minimal="3"/>
+			<TrainScheduleID ID="2155" Arrival="14:58" Departure="13:56" Minimal="3"/>
+			<TrainScheduleID ID="2159" Arrival="15:59" Departure="14:56" Minimal="3"/>
+			<TrainScheduleID ID="2163" Arrival="16:58" Departure="15:56" Minimal="4"/>
+			<TrainScheduleID ID="2167" Arrival="17:58" Departure="16:56" Minimal="5"/>
+			<TrainScheduleID ID="2171" Arrival="18:58" Departure="17:56" Minimal="5"/>
+			<TrainScheduleID ID="2175" Arrival="19:58" Departure="18:56" Minimal="3"/>
+			<TrainScheduleID ID="2179" Arrival="20:58" Departure="19:56" Minimal="2"/>
+			<TrainScheduleID ID="2183" Arrival="21:58" Departure="20:56" Minimal="2"/>
+			<TrainScheduleID ID="2187" Arrival="22:58" Departure="21:56" Minimal="2"/>
+			<TrainScheduleID ID="2191" Arrival="23:58" Departure="22:56" Minimal="1"/>
+		</Destination>
+	</Origin>
+</TrainScheduleSchema>

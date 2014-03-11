@@ -1,0 +1,111 @@
+    Locations := data { Amsterdam, Rotterdam, 'Den Haag', Gouda } ;
+
+    RoadSegment := data 
+    { (Amsterdam, Rotterdam) , (Amsterdam, 'Den Haag'), (Rotterdam, Amsterdam) , (Rotterdam, 'Den Haag'), (Rotterdam, Gouda)     ,
+      ('Den Haag', Amsterdam), ('Den Haag', Rotterdam), ('Den Haag', Gouda)    , (Gouda, Rotterdam)     , (Gouda, 'Den Haag')    } ;
+
+    Routes := data 
+    { P-1 , P-2 , P-3 , P-4 , P-5 , P-6 , P-7 , P-8 , P-9 , P-10, P-11, P-12, P-13, P-14, P-15, P-16, P-17, P-18, P-19, P-20, P-21,
+      P-22, P-23, P-24, P-25, P-26, P-27, P-28, P-29, P-30, P-31, P-32, P-33, P-34, P-35, P-36, P-37, P-38 } ;
+
+
+    Demand(o,d) := data table 
+             Amsterdam   Rotterdam  'Den Haag'       Gouda
+         !  ----------  ----------  ----------  ----------
+ Amsterdam                       5           5           4
+ Rotterdam           6                      12           4
+'Den Haag'          12           8                       3
+     Gouda          20          12          14            
+    ;
+
+
+
+    RoadPathIncidence(a,r) := data table 
+                          P-1   P-2   P-3   P-4   P-5   P-6   P-7   P-8   P-9  P-10  P-11  P-12  P-13  P-14  P-15  P-16  P-17  P-18
+                      !  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----
+ (Amsterdam, Rotterdam)     1                       1     1     1     1                                                            
+(Amsterdam, 'Den Haag')           1     1     1                             1                             1                       1
+ (Rotterdam, Amsterdam)                                                           1                       1                       1
+(Rotterdam, 'Den Haag')                             1                 1                 1           1                       1      
+     (Rotterdam, Gouda)                                   1     1                             1                 1     1            
+('Den Haag', Amsterdam)                                                                 1     1                                    
+('Den Haag', Rotterdam)           1                                                                                                
+    ('Den Haag', Gouda)                 1                             1     1                                               1     1
+     (Gouda, Rotterdam)                 1                                                                                          
+    (Gouda, 'Den Haag')                                   1                                   1                 1                  
+
+                      +  P-19  P-20  P-21  P-22  P-23  P-24  P-25  P-26  P-27  P-28  P-29  P-30  P-31  P-32  P-33  P-34  P-35  P-36
+                      !  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----
+ (Amsterdam, Rotterdam)                             1                       1                                   1                  
+(Amsterdam, 'Den Haag')                                                                                                           1
+ (Rotterdam, Amsterdam)           1     1                                         1     1                                         1
+(Rotterdam, 'Den Haag')                                                                                                     1      
+     (Rotterdam, Gouda)                                               1     1                                                      
+('Den Haag', Amsterdam)     1                       1                       1                 1                 1                  
+('Den Haag', Rotterdam)           1           1                       1                 1                 1                        
+    ('Den Haag', Gouda)                 1                 1     1                                                                  
+     (Gouda, Rotterdam)                 1                 1                       1                 1                       1     1
+    (Gouda, 'Den Haag')                                                                 1     1           1     1     1            
+
+                      +  P-37  P-38
+                      !  ----  ----
+(Amsterdam, 'Den Haag')     1      
+(Rotterdam, 'Den Haag')           1
+     (Rotterdam, Gouda)     1      
+('Den Haag', Amsterdam)           1
+('Den Haag', Rotterdam)     1      
+     (Gouda, Rotterdam)           1
+    ;
+
+
+
+    ODPathIncidence(o,d,r) := data table 
+                             P-1   P-2   P-3   P-4   P-5   P-6   P-7   P-8   P-9  P-10  P-11  P-12  P-13  P-14  P-15  P-16  P-17
+                         !  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----
+( Amsterdam,  Rotterdam  )     1     1     1                                                                                    
+( Amsterdam,  'Den Haag' )                       1     1     1                                                                  
+( Amsterdam,  Gouda      )                                         1     1     1                                                
+( Rotterdam,  Amsterdam  )                                                           1     1     1                              
+( Rotterdam,  'Den Haag' )                                                                             1     1     1            
+( Rotterdam,  Gouda      )                                                                                               1     1
+
+                         +  P-18  P-19  P-20  P-21  P-22  P-23  P-24  P-25  P-26  P-27  P-28  P-29  P-30  P-31  P-32  P-33  P-34
+                         !  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----  ----
+( Rotterdam,  Gouda      )     1                                                                                                
+( 'Den Haag', Amsterdam  )           1     1     1                                                                              
+( 'Den Haag', Rotterdam  )                             1     1     1                                                            
+( 'Den Haag', Gouda      )                                               1     1     1                                          
+( Gouda,      Amsterdam  )                                                                 1     1     1                        
+( Gouda,      Rotterdam  )                                                                                   1     1     1      
+( Gouda,      'Den Haag' )                                                                                                     1
+
+                         +  P-35  P-36  P-37  P-38
+                         !  ----  ----  ----  ----
+( Amsterdam,  Gouda      )                 1      
+( Gouda,      Amsterdam  )                       1
+( Gouda,      'Den Haag' )     1     1            
+    ;
+
+
+
+    RoadLength(a) := data 
+    { (Amsterdam, Rotterdam)  : 25,  (Amsterdam, 'Den Haag') : 30,  (Rotterdam, Amsterdam)  : 25,  (Rotterdam, 'Den Haag') : 10,
+      (Rotterdam, Gouda)      : 50,  ('Den Haag', Amsterdam) : 30,  ('Den Haag', Rotterdam) : 10,  ('Den Haag', Gouda)     : 40,
+      (Gouda, Rotterdam)      : 50,  (Gouda, 'Den Haag')     : 10 } ;
+
+
+    RoadCapacity(a) := data 
+    { (Amsterdam, Rotterdam)  : 10,  (Amsterdam, 'Den Haag') :  3,  (Rotterdam, Amsterdam)  : 10,  (Rotterdam, 'Den Haag') : 10,
+      (Rotterdam, Gouda)      :  5,  ('Den Haag', Amsterdam) :  5,  ('Den Haag', Rotterdam) :  5,  ('Den Haag', Gouda)     : 10,
+      (Gouda, Rotterdam)      :  5,  (Gouda, 'Den Haag')     : 10 } ;
+    
+    TolledArcs(a) := data { (Rotterdam, 'Den Haag') : 1,  ('Den Haag', Rotterdam) : 1 };
+
+    TollFeeLowerBound := 1 ;
+
+    TollFeeUpperBound := 3 ;
+
+    Xnode(o) := data { Amsterdam : -0.250,  Gouda : 0.250 } ;
+
+    Ynode(o) := data { Rotterdam : 0.250,  'Den Haag' : -0.250 } ;
+

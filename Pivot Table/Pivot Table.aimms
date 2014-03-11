@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<References>
+	<MainProject Path="MainProject\Pivot Table.prj" />
+	<Library Path=".\_Example Style Library\Example Style Library.libprj" />
+	<Library Path=".\Pivot Table State Manager\Pivot Table State Manager.libprj" />
+</References>

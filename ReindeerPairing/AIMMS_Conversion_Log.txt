@@ -1,0 +1,38 @@
+﻿Converting Main project
+Converting ReindeerPairing.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\Pages\Santa Claus Sleigh Pulled by Magic Reindeer.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: ReindeerPairing.nch to C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\MainProject\ReindeerPairing.nch
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\Description.txt
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\log
+Copying file: ReindeerPairing.dat to C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\ReindeerPairing.dat
+Copying file: Up-Up-and-Away.jpg to C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\Up-Up-and-Away.jpg
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library
+Copying file: _Example Style Library\Example Style Library.nch to C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\_Example Style Library\Example Style Library.nch
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\ReindeerPairing\ReindeerPairing.aimms
+Successfully converted the whole project.

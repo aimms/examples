@@ -1,0 +1,14 @@
+In this example a life-cycle consumption optimization problem has been modeled, including labor and assets.
+
+Users of this application can make changes to the model from the user interface. Two types of utility functions are available:
+
+* Exponential utility: Utility = - Exp( - Consumption ) - Labor^2
+
+* Square root utility: Utility = Sqrt( Consumption ) - Labor^2
+
+In addition, the user can choose to allow borrowing up to a chosen level, adding explicit modeling of assets to the model.
+
+Please use the navigation in the left column to browse this example application.
+
+Keywords:
+Utility Function, Discount Factor, Present Value, Futrue Value, Nonlinear Programming, Nonlinear Solvers, Curve Object

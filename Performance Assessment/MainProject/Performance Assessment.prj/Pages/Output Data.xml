@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:45:33">
+	<Location top="239" left="209" bottom="877" right="1018" />
+	<PageEditSize Type="Inherited">
+		<Size Width="628" Height="453" />
+	</PageEditSize>
+	<ProjectUUID>63C0B03F-C6A2-433C-9194-0CA43285BB2E</ProjectUUID>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.498408" />
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Pivot Table">
+		<Location top="24" left="6" bottom="444" right="240" />
+		<TabOrder>1</TabOrder>
+		<ObjectUUID>305C25ED-C3E0-4537-8E25-8C87FA316506</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RelativeEfficiency( d )</Identifier>
+				<Title ID="4120">"Relative Efficiency"</Title>
+				<Format>
+					<Decimal_Places ID="4312">3</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">d</Index>
+				<Header_Title ID="6530">"DMU"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<Background_Color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="1010">"Background yellow"</Background_Color>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="5045">"Legend"</Font>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="6" left="6" bottom="24" right="150" />
+		<StaticText>Relative Efficiency</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="24" left="252" bottom="444" right="618" />
+		<TabOrder>3</TabOrder>
+		<Border Style="InShadow" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">d</Domain>
+			<Annotation>
+				<Rotation_angle ID="1010">90</Rotation_angle>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Chart_type ID="2001">"Bar"</Chart_type>
+			<Identifier>
+				<Value ID="2007">RelativeEfficiency( d )</Value>
+				<Appearance>
+					<Fill>
+						<Foreground_color ID="2013">23F33851-505F-45B5-AA1F-5360CB8B3EFB Text Blue</Foreground_color>
+					</Fill>
+				</Appearance>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>d</Symbol>
+			<Symbol>RelativeEfficiency</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

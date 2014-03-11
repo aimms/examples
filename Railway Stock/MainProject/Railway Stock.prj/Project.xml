@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="8E4A45FB-800D-42D3-B2B2-0F91CF032D28">
+	<ModelFileName>Railway Stock.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup AtRegularInterval="true" EveryNMinutes="30" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

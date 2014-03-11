@@ -1,0 +1,42 @@
+﻿Converting Main project
+Converting Indexed Page.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\Pages\Example Page.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\Pages\CityInformation.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\Pages\OverviewPerYear.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\Pages\Example Page 2.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\MainProject\Indexed Page.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\Description.txt
+Copying file: Indexed Page.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\Indexed Page.dat
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\log
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Indexed Page\Indexed Page.aimms
+Successfully converted the whole project.

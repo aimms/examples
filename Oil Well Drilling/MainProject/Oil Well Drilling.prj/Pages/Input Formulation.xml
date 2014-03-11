@@ -1,0 +1,606 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:42:45">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>2B7E71F6-A21C-40EE-A485-B75A84B1EEB2</ProjectUUID>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="123" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="35">
+						<BottomArea Line="PercentageFromTop" Value="0.240695">
+							<TopArea Line="FixedFromBottom" Value="33" />
+							<BottomArea Line="PercentageFromTop" Value="0.359477">
+								<TopArea Line="FixedFromBottom" Value="36" />
+							</BottomArea>
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Rectangle">
+		<Location top="192" left="207" bottom="216" right="504" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="195" left="219" bottom="213" right="387" />
+		<StaticText>Cost of drilling</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="225" left="207" bottom="282" right="648" />
+		<TabOrder>25</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>MultipleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>InputExpression_CostOfDrilling</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="195" left="513" bottom="216" right="573" />
+		<TabOrder>16</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Clean"</Title>
+		<TooltipText>"Removes this definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CleanFormulation( 'Cost' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="195" left="639" bottom="216" right="699" />
+		<TabOrder>14</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Check"</Title>
+		<TooltipText>"Checks the correctness of this definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CheckButtonProcedure( 'Cost' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="195" left="576" bottom="216" right="636" />
+		<TabOrder>19</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Default"</Title>
+		<TooltipText>"Enters the default definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>AssignDefaultFormulation( 'Cost' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="195" left="702" bottom="216" right="762" />
+		<TabOrder>20</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Apply"</Title>
+		<TooltipText>"Applies this definition to the model"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CreateConstraint( 'Cost' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="288" left="207" bottom="312" right="504" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="291" left="219" bottom="309" right="387" />
+		<StaticText>Pay Off</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="399" left="207" bottom="423" right="504" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="402" left="219" bottom="420" right="501" />
+		<StaticText>Probability of Oil, by results of survey</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="321" left="207" bottom="378" right="648" />
+		<TabOrder>24</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>MultipleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>InputExpression_PayOffForOil</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="429" left="282" bottom="486" right="648" />
+		<TabOrder>21</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>MultipleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>InputExpression_ProbabilityOfOutcome( 'Positive' )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="492" left="282" bottom="549" right="648" />
+		<TabOrder>22</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>MultipleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>InputExpression_ProbabilityOfOutcome( 'Negative' )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="555" left="282" bottom="612" right="648" />
+		<TabOrder>23</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>MultipleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>InputExpression_ProbabilityOfOutcome( 'NoSurvey' )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="291" left="513" bottom="312" right="573" />
+		<TabOrder>15</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Clean"</Title>
+		<TooltipText>"Removes this definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CleanFormulation( 'PayOff' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="291" left="639" bottom="312" right="699" />
+		<TabOrder>13</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Check"</Title>
+		<TooltipText>"Checks the correctness of this definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CheckButtonProcedure( 'PayOff' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="291" left="576" bottom="312" right="636" />
+		<TabOrder>17</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Default"</Title>
+		<TooltipText>"Enters the default definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>AssignDefaultFormulation( 'PayOff' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="291" left="702" bottom="312" right="762" />
+		<TabOrder>18</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Apply"</Title>
+		<TooltipText>"Applies this definition to the model"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CreateConstraint( 'PayOff' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="402" left="513" bottom="423" right="573" />
+		<TabOrder>27</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Clean"</Title>
+		<TooltipText>"Removes this definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CleanFormulation( 'Probability' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="402" left="639" bottom="423" right="699" />
+		<TabOrder>26</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Check"</Title>
+		<TooltipText>"Checks the correctness of this definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CheckButtonProcedure( 'Probability' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="402" left="576" bottom="423" right="636" />
+		<TabOrder>28</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Default"</Title>
+		<TooltipText>"Enters the default definition"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>AssignDefaultFormulation( 'Probability' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="402" left="702" bottom="423" right="762" />
+		<TabOrder>29</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Apply"</Title>
+		<TooltipText>"Applies this definition to the model"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CreateConstraint( 'Probability' )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="249" left="654" bottom="270" right="762" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>Status_MessageForCost</StringParameter>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<Symbol>Color_BackgroundForCost</Symbol>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="345" left="654" bottom="366" right="762" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>Status_MessageForPayOff</StringParameter>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<Symbol>Color_BackgroundForPayOff</Symbol>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="462" left="654" bottom="483" right="762" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>Status_MessageForProbability( 'Positive' )</StringParameter>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<Symbol>Color_BackgroundForProbability( 'Positive' )</Symbol>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="525" left="654" bottom="546" right="762" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>Status_MessageForProbability( 'Negative' )</StringParameter>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<Symbol>Color_BackgroundForProbability( 'Negative' )</Symbol>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="588" left="654" bottom="609" right="762" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>Status_MessageForProbability( 'NoSurvey' )</StringParameter>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<Symbol>Color_BackgroundForProbability( 'NoSurvey' )</Symbol>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="225" left="654" bottom="246" right="762" />
+		<StaticText>Status</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="321" left="654" bottom="342" right="762" />
+		<StaticText>Status</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="438" left="654" bottom="459" right="762" />
+		<StaticText>Status</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="501" left="654" bottom="522" right="762" />
+		<StaticText>Status</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="564" left="654" bottom="585" right="762" />
+		<StaticText>Status</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Problem Description"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="3BB4CC77-0E89-4F66-A280-77BE9CFCB3CC" Name="Problem Description" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="336" left="6" bottom="360" right="192" />
+		<TabOrder>30</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="309" left="6" bottom="333" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="312" left="18" bottom="330" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="450" left="207" bottom="471" right="282" />
+		<StaticText>Positive</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="513" left="207" bottom="534" right="282" />
+		<StaticText>Negative</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="576" left="207" bottom="597" right="282" />
+		<StaticText>NoSurvey</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" Name="Status Font" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solutions"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="C364FFAC-1669-4CF3-88DC-EE89DD1BB445" Name="Solutions" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Quit AIMMS"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>File-Exit</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Status_MessageForProbability</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>Status_MessageForPayOff</Symbol>
+			<Symbol>Status_MessageForCost</Symbol>
+			<Symbol>CreateConstraint</Symbol>
+			<Symbol>CleanFormulation</Symbol>
+			<Symbol>Color_BackgroundForPayOff</Symbol>
+			<Symbol>Color_BackgroundForCost</Symbol>
+			<Symbol>InputExpression_CostOfDrilling</Symbol>
+			<Symbol>CheckButtonProcedure</Symbol>
+			<Symbol>AssignDefaultFormulation</Symbol>
+			<Symbol>InputExpression_ProbabilityOfOutcome</Symbol>
+			<Symbol>InputExpression_PayOffForOil</Symbol>
+			<Symbol>Color_BackgroundForProbability</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

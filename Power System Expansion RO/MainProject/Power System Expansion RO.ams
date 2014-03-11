@@ -1,0 +1,957 @@
+## ams_version=1.0
+
+Model Main_Power_System_Expansion_RO {
+    Section Quantities_and_Units {
+        DeclarationSection Declaration_Units {
+            Quantity SI_Time_Duration {
+                BaseUnit: hour;
+                Comment: "Expresses the value for the duration of periods.";
+            }
+            Quantity SI_Power {
+                BaseUnit: W;
+                Conversions: GW -> W : # -> # * 1000000000;
+                Comment: "Expresses the value for the amount of energy per time unit.";
+            }
+            Quantity Energy {
+                BaseUnit: GWh = hour*GW;
+            }
+            Quantity Monetary {
+                BaseUnit: $;
+            }
+        }
+    }
+    Section Common_Sets {
+        DeclarationSection Declarations_Common {
+            Set PlantTypes {
+                Index: p;
+                Definition: data { coal, hydro, nuclear};
+            }
+            Set DemandCateg {
+                Index: k, k_;
+                Definition: data { base, peak };
+            }
+        }
+    }
+    Section Deterministic_Model {
+        DeclarationSection Declaration_Deterministic_Model {
+            Parameter ExistingCap {
+                IndexDomain: p;
+                Range: nonnegative;
+                Unit: GW;
+                Definition: data { coal : 1.75, hydro : 2};
+            }
+            Parameter CapitalCosts {
+                IndexDomain: (p);
+                Range: nonnegative;
+                Unit: 1000 * $/GW;
+                Definition: data { coal : 200, hydro : 500, nuclear : 300 };
+            }
+            Parameter ImportCosts {
+                IndexDomain: k;
+                Range: nonnegative;
+                Unit: 1000 * $/GWh;
+                Definition: data { base : 200, peak : 200 };
+            }
+            Parameter OperatingCosts {
+                IndexDomain: (p);
+                Range: nonnegative;
+                Unit: 1000 * $/GWh;
+                Definition: data { coal : 30, hydro : 10, nuclear : 20 };
+            }
+            Variable NewCap {
+                IndexDomain: (p);
+                Range: [0, 100];
+                Unit: GW;
+            }
+            Parameter TotalCap {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: ExistingCap(p) + NewCap(p);
+            }
+            Variable TotalCapitalCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Definition: sum( p, CapitalCosts(p) * (ExistingCap(p) + NewCap(p)) );
+            }
+            Parameter InstDemand {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: GW;
+                InitialData: data { base : 8.25, peak : 10.75 };
+            }
+            Parameter DemandDuration {
+                IndexDomain: (k);
+                Range: [0, 24];
+                Unit: hour;
+                InitialData: data { base : 24, peak : 6 };
+            }
+            Parameter RequiredElectr {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: hour*GW;
+                Definition: {
+                    if k = First(DemandCateg)
+                       then InstDemand(k) * DemandDuration(k)
+                       else (InstDemand(k) - InstDemand(k-1)) * DemandDuration(k)
+                    endif
+                }
+            }
+            Parameter CapImported {
+                Range: nonnegative;
+                Unit: GW;
+                Definition: sum(k, ImportCap(k) /$ DemandDuration(k));
+            }
+            Variable CapAllocation {
+                IndexDomain: (p,k);
+                Range: nonnegative;
+                Unit: GW;
+            }
+            Variable ImportCap {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: GWh;
+            }
+            Variable TotalImportCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Definition: sum (k, ImportCosts(k) * ImportCap(k) );
+            }
+            Variable TotalOperationCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Definition: sum( k, DemandDuration(k) *  sum( p, OperatingCosts(p) * CapAllocation(p,k)) );
+            }
+            Variable TotalCosts {
+                Unit: 1000 * $;
+                Definition: TotalCapitalCosts + TotalImportCosts + TotalOperationCosts;
+            }
+            Constraint MaxAllocation {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: sum(k, CapAllocation(p,k)) <= ExistingCap(p) + NewCap(p);
+            }
+            Constraint SatisfyRequirements {
+                IndexDomain: (k);
+                Unit: hour*GW;
+                Definition: ImportCap(k) + DemandDuration(k) * sum(p, CapAllocation(p,k)) = RequiredElectr(k);
+            }
+            Constraint NoNuclearForPeak {
+                Unit: GW;
+                Definition: {
+                    CapAllocation('nuclear','peak') = 0 [GW];
+                }
+            }
+            Set DetVariables {
+                SubsetOf: AllVariables;
+                Definition: Deterministic_Model * AllVariables;
+                Comment: {
+                    "{
+                    \'NewCap\',
+                    \'CapAllocation\',
+                    \'ImportCap\',
+                    \'TotalCapitalCosts\',
+                    \'TotalImportCosts\',
+                    \'TotalOperationCosts\',
+                    \'TotalCosts\'
+                    }"
+                }
+            }
+            Set DetConstraints {
+                SubsetOf: AllConstraints;
+                Definition: Deterministic_Model * AllConstraints;
+                Comment: {
+                    "{
+                    \'MaxAllocation\',
+                    \'SatisfyRequirements\',
+                    \'NoNuclearForPeak\',
+                    \'TotalCapitalCosts\',
+                    \'TotalImportCosts\',
+                    \'TotalOperationCosts\',
+                    \'TotalCosts\'
+                    }"
+                }
+            }
+            MathematicalProgram PowerExpModel {
+                Objective: TotalCosts;
+                Direction: minimize;
+                Constraints: DetConstraints;
+                Variables: DetVariables;
+                Type: LP;
+            }
+        }
+    }
+    Section Deterministic_Procedures {
+        Procedure SolveDet_PowerExpModel {
+            Body: {
+                
+                solve PowerExpModel;
+            }
+        }
+    }
+    Section Robust_Optimization_Model {
+        DeclarationSection Declaration_RO_Model {
+            Parameter RO_ExistingCap {
+                IndexDomain: p;
+                Range: nonnegative;
+                Unit: GW;
+                Definition: data { coal : 1.75, hydro : 2, nuclear : 0 };
+                Comment: "Existing power capacity";
+            }
+            Parameter RO_CapitalCosts {
+                IndexDomain: (p);
+                Range: nonnegative;
+                Unit: 1000 * $/GW;
+                Definition: data { coal : 200, hydro : 500, nuclear : 300 };
+                Comment: "Capital unit costs for each power plant type";
+            }
+            Parameter RO_OperatingCosts {
+                IndexDomain: (p);
+                Range: nonnegative;
+                Unit: 1000 * $/GWh;
+                Definition: data { coal : 30, hydro : 10, nuclear : 20 };
+                Comment: "Operation unit costs for each power plant type";
+            }
+            Parameter RO_ImportCosts {
+                IndexDomain: k;
+                Range: nonnegative;
+                Unit: 1000 * $/GWh;
+                Definition: data { base : 200, peak : 200 };
+                Comment: "Import unit costs for each demand category";
+            }
+            Parameter RO_TotalCap {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: RO_ExistingCap(p) + RO_NewCap(p);
+                Comment: "Total capacity defined as the sum of the (fixed) existing power capacity plus the (variable) new capacity design.";
+            }
+            Variable RO_NewCap {
+                IndexDomain: (p);
+                Range: [0, 100];
+                Unit: GW;
+                Comment: {
+                    "This variable corresponds to the decisions for new capacity design.
+                    This variable is non-adjustable in the Robust Optimization model."
+                }
+            }
+            Variable RO_TotalCapitalCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Definition: sum( p, RO_CapitalCosts(p) * (RO_ExistingCap(p) + RO_NewCap(p)) );
+                Comment: {
+                    "Total costs for the total capacity.
+                    This is a non-adjustable variable in the Robust Optimization model."
+                }
+            }
+            Parameter RO_InstDemand {
+                IndexDomain: (k);
+                Range: [LowestInstDemand(k), HighestInstDemand(k)];
+                Unit: GW;
+                Property: Uncertain;
+                InitialData: data { base : 7.50, peak : 10.00 };
+                Uncertainty: {
+                    RO_InstDemand_Box(k)        | (UncertaintyChoice = 'Box')
+                    +
+                    RO_InstDemand_Ellipsoid(k)  | (UncertaintyChoice = 'Ellipsoid')
+                    +
+                    RO_InstDemand_ConvexHull(k) | (UncertaintyChoice = 'ConvexHull')
+                }
+                Comment: {
+                    "This is the primary uncertain parameter in the model.
+                    Depending on the uncertainty choice, it will equal just one of the auxiliary uncertain parameters corresponding to each uncertainty set."
+                }
+            }
+            Parameter RO_DemandDuration {
+                IndexDomain: (k);
+                Range: [0, 24];
+                Unit: hour;
+                InitialData: data { base : 24, peak : 6 };
+                Comment: {
+                    "Duration of each demand category.
+                    This parameter is assumed to be known (certain) in the Robust Optimization model."
+                }
+            }
+            Parameter RO_RequiredElectr {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: hour*GW;
+                Property: Uncertain;
+                Definition: {
+                    if k = First(DemandCateg)
+                       then RO_InstDemand(k) * RO_DemandDuration(k)
+                       else (RO_InstDemand(k) - RO_InstDemand(k-1)) * RO_DemandDuration(k)
+                    endif
+                }
+                Comment: {
+                    "This uncertain parameter is the one that is actually used in constraints.
+                    The uncertainty in this parameter is inherited from the uncertain parameter for instantaneous demand through its definition."
+                }
+            }
+            Variable RO_ImportCap {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: GWh;
+                Property: Adjustable;
+                Dependency: RO_RequiredElectr(k_) : Mask_ImportCap(k);
+                Comment: {
+                    "This variable corresponds to decisions for importing some capacity, if necessary, for satisfying (excess) demand.
+                    This variable is an adjustable variable in the Robust Optimization model.
+                    It follows a linear decision rule depending on the required electricity parameter.
+                    The mask specifies a mapping for the entries of the required electricity parameters that are to be considered in the linear decision rule."
+                }
+            }
+            Parameter Mask_ImportCap {
+                IndexDomain: (k);
+                InitialData: 1;
+                Comment: "A mask that specifies a mapping for the entries of the required electricity parameters (RO_RequiredElectr) that are to be considered in the linear decision rule for the adjustable variable RO_ImportCap.";
+            }
+            Variable RO_TotalImportCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Comment: {
+                    "Total cost for importing capacity.
+                    This is a non-adjustable variable in the Robust Optimization model."
+                }
+            }
+            Constraint Def_RO_TotalImportCosts {
+                Unit: 1000 * $;
+                Definition: {
+                    sum (k, RO_ImportCosts(k) * RO_ImportCap(k) )
+                    <=
+                    RO_TotalImportCosts
+                }
+                Comment: "This constraint describes the defining condition for the total import costs.";
+            }
+            Variable RO_CapAllocation {
+                IndexDomain: (p,k);
+                Range: [0, 150];
+                Unit: GW;
+                Property: Adjustable;
+                Dependency: RO_RequiredElectr(k_) : Mask_CapAllocation(k_);
+                Comment: {
+                    "This variable corresponds to decisions for allocating total capacity to the demand categories.
+                    This variable is an adjustable variable in the Robust Optimization model.
+                    It follows a linear decision rule depending on the required electricity parameter.
+                    The mask specifies a mapping for the entries of the required electricity parameters that are to be considered in the linear decision rule."
+                }
+            }
+            Parameter Mask_CapAllocation {
+                IndexDomain: (k_);
+                InitialData: 1;
+                Comment: "A mask that specifies a mapping for the entries of the required electricity parameters (RO_RequiredElectr) that are to be considered in the linear decision rule for the adjustable variable RO_CapAllocation.";
+            }
+            Variable RO_TotalOperationCosts {
+                Range: nonnegative;
+                Unit: 1000 * $;
+                Comment: {
+                    "Total costs for operating the capacity.
+                    This is a non-adjustable variable in the Robust Optimization model."
+                }
+            }
+            Constraint Def_RO_TotalOperationCosts {
+                Unit: 1000 * $;
+                Definition: {
+                    sum( k, RO_DemandDuration(k) *  sum( p, RO_OperatingCosts(p) * RO_CapAllocation(p,k)) )
+                    <=
+                    RO_TotalOperationCosts
+                }
+                Comment: "This constraint describes the defining condition for the total operation costs.";
+            }
+            Variable RO_TotalCosts {
+                Unit: 1000 * $;
+                Comment: {
+                    "Total costs
+                    This is a non-adjustable variable in the Robust Optimization model."
+                }
+            }
+            Constraint Def_RO_TotalCosts {
+                Unit: 1000 * $;
+                Definition: {
+                    RO_TotalCapitalCosts + RO_TotalImportCosts + RO_TotalOperationCosts
+                    <=
+                    RO_TotalCosts
+                }
+                Comment: "This constraint describes the defining condition for the total costs.";
+            }
+            Constraint RO_MaxAllocation {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: sum(k, RO_CapAllocation(p,k)) <= RO_ExistingCap(p) + RO_NewCap(p);
+                Comment: "This constraint sets the upper limit on the allocated capacity to the total available capacity.";
+            }
+            Constraint RO_SatisfyRequirements {
+                IndexDomain: (k);
+                Unit: hour*GW;
+                Definition: {
+                    RO_RequiredElectr(k)
+                    =
+                    RO_ImportCap(k)
+                    +
+                    RO_DemandDuration(k) * sum(p, RO_CapAllocation(p,k))
+                }
+                Comment: "This constraint makes sure that electricity requirements are satisfied, either by allocation or by import.";
+            }
+            Constraint RO_NoNuclearForPeak {
+                Unit: GW;
+                Definition: RO_CapAllocation('nuclear','peak') = 0 [GW];
+                Comment: "The nuclear power may not be allocated to peak demand.";
+            }
+            MathematicalProgram PowerExpModelForRO {
+                Objective: RO_TotalCosts;
+                Direction: minimize;
+                Constraints: ConstraintsForRO;
+                Variables: VariablesForRO;
+                Type: LP;
+                Comment: {
+                    "This symbolic MP describes the nominal problem.
+                    It is the basis for extending to the Robust Optimization model."
+                }
+            }
+            Set VariablesForRO {
+                SubsetOf: AllVariables;
+                Definition: AllVariables * Robust_Optimization_Model;
+            }
+            Set ConstraintsForRO {
+                SubsetOf: AllConstraints;
+                Definition: AllConstraints * Robust_Optimization_Model;
+            }
+            ElementParameter RO_PowerExpModel {
+                Range: AllGeneratedMathematicalPrograms;
+                Comment: "This generated MP is the actual robust counterpart of the nominal problem.";
+            }
+            Set PowerExpUncertainParameters {
+                SubsetOf: AllUncertainParameters;
+                Index: iup;
+                Comment: "This is the set of uncertain parameters that are to be considered upon the generation of the robust counterpart.";
+            }
+            Set PowerExpUncertainConstraints {
+                SubsetOf: AllUncertaintyConstraints;
+                Index: iuc;
+                Comment: {
+                    "This is the set of uncertain constraints that are to be considered upon the generation of the robust counterpart.
+                    An uncertainty constraint imposes a restriction on some uncertainty parameters."
+                }
+            }
+        }
+        DeclarationSection Declaration_Uncertainty_Choices {
+            Set UncertaintyChoicesSet {
+                Index: uch;
+                Definition: {
+                    data
+                    {
+                     'Box',
+                     'Ellipsoid',
+                     'ConvexHull'
+                    }
+                }
+            }
+            ElementParameter UncertaintyChoice {
+                Range: UncertaintyChoicesSet;
+                InitialData: 'Box';
+            }
+        }
+        DeclarationSection Declaration_Box_Uncertainty {
+            Parameter RO_InstDemand_Box {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: GW;
+                Property: Uncertain;
+                InitialData: data { base : 7.50, peak : 10.00 };
+                Region: Box( LowestInstDemand(k), HighestInstDemand(k) );
+                Comment: "This (auxiliary) uncertain parameter is used in the situation with box uncertainty.";
+            }
+            Parameter LowestInstDemand {
+                IndexDomain: (k);
+                Unit: GW;
+                Definition: min(s, RO_InstDemandScenario(k, s));
+                Comment: "Lower extreme point of the box";
+            }
+            Parameter HighestInstDemand {
+                IndexDomain: (k);
+                Unit: GW;
+                Definition: max(s, RO_InstDemandScenario(k, s));
+                Comment: "Upper extreme point of the box";
+            }
+        }
+        DeclarationSection Declaration_Ellipsoidal_Uncertainty {
+            Parameter RO_InstDemand_Ellipsoid {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: GW;
+                Property: Uncertain;
+                InitialData: data { base : 8.75, peak : 11.00 };
+                Region: Ellipsoid(CenterInstDemand(k), r * DistanceInstDemand(k));
+                Comment: "This (auxiliary) uncertain parameter is used in the situation with ellipsoidal uncertainty.";
+            }
+            Parameter CenterInstDemand {
+                IndexDomain: (k);
+                Unit: GW;
+                Definition: {
+                    data
+                    {
+                    base :  8.75,
+                    peak : 11.00
+                    }
+                }
+                Comment: "Center of the ellipsoid.";
+            }
+            Parameter DistanceInstDemand {
+                IndexDomain: (k);
+                Unit: GW;
+                InitialData: {
+                    data
+                    {
+                    base : 1.25,
+                    peak : 1.00
+                    }
+                }
+                Comment: "The (initial) radiuses of the ellipsoid along the axes.";
+            }
+            Parameter r {
+                Definition: 1/r_;
+                Comment: "A scaling parameter for the ellipsoid radiuses";
+            }
+            Parameter r_ {
+                Range: [1, 50];
+                InitialData: 1;
+                Comment: "The inverse of the scaling parameter for ellipsoid radiuses";
+            }
+        }
+        DeclarationSection Declaration_Scenarios_Uncertainty {
+            Parameter RO_InstDemand_ConvexHull {
+                IndexDomain: (k);
+                Range: nonnegative;
+                Unit: GW;
+                Property: Uncertain;
+                InitialData: data { base : 7.50, peak : 10.00 };
+                Region: ConvexHull( s, RO_InstDemandScenario(k, s) );
+                Comment: {
+                    "This (auxiliary) uncertain parameter is used in the situation where
+                    the uncertainty is described by the convex hull of a number of discrete values (scenarios)."
+                }
+            }
+            Set ROScenarios {
+                Index: s;
+                Definition: data{ s1, s2, s3, s4 };
+            }
+            ElementParameter CurrentScenario {
+                Range: ROScenarios;
+                InitialData: 's1';
+            }
+            Parameter RO_InstDemandScenario {
+                IndexDomain: (k,s);
+                Range: nonnegative;
+                Unit: GW;
+                Definition: {
+                    data {
+                    (base,s1) :  8.25, (peak,s1) : 10.75,
+                    (base,s2) : 10.00, (peak,s2) : 12.00,
+                    (base,s3) :  7.50, (peak,s3) : 10.00,
+                    (base,s4) :  9.00, (peak,s4) : 10.50
+                    }
+                }
+                Comment: "The values of instantaneous demand for the (original) individual scenarios";
+            }
+            Parameter RO_RequiredElectrScenario {
+                IndexDomain: (k,s);
+                Range: nonnegative;
+                Unit: hour*GW;
+                Definition: (RO_InstDemandScenario(k,s) - RO_InstDemandScenario(k-1,s)) * RO_DemandDuration(k);
+                Comment: "Required electricity in individual scenario";
+            }
+            Parameter RO_DemandDurationScenarion {
+                IndexDomain: (k,s);
+                Unit: hour;
+                Definition: RO_DemandDuration(k);
+                Comment: "The duration of demand for each demand category in each scenario";
+            }
+        }
+        DeclarationSection Declaration_Auxiliary_Uncertainty {
+            UncertaintyConstraint InstDemand_Box_lower {
+                IndexDomain: k;
+                Unit: GW;
+                Definition: LowestInstDemand(k) <= RO_InstDemand(k);
+                Comment: "Uncertanity constraint giving the lower bound of the box explicitly";
+            }
+            UncertaintyConstraint InstDemand_Box_upper {
+                IndexDomain: k;
+                Unit: GW;
+                Definition: RO_InstDemand(k) <= HighestInstDemand(k);
+                Comment: "Uncertanity constraint giving the upper bound of the box explicitly";
+            }
+            UncertaintyConstraint InstDemand_Ellipsoid_def {
+                Definition: {
+                    ( (RO_InstDemand('base') - CenterInstDemand('base')) / (r * DistanceInstDemand('base')) )^2
+                    +
+                    ( (RO_InstDemand('peak') - CenterInstDemand('peak')) / (r * DistanceInstDemand('peak')) )^2
+                    <=
+                    1
+                }
+                Comment: "Uncertainty constraint describing the ellipsoid explicitly";
+            }
+            UncertaintyConstraint ConvexHull_1 {
+                Unit: GW;
+                Definition: {
+                    
+                    RO_InstDemand('peak') <= RO_InstDemand('base') + 2.5 [GW]
+                }
+                Comment: "One of the uncertainty constraints that could be used to describe the convex hull explicitly";
+            }
+            UncertaintyConstraint ConvexHull_2 {
+                Unit: GW;
+                Definition: {
+                    
+                    3*RO_InstDemand('peak') >= RO_InstDemand('base') + 22.5 [GW]
+                }
+                Comment: "One of the uncertainty constraints that could be used to describe the convex hull explicitly";
+            }
+            UncertaintyConstraint ConvexHull_3 {
+                Unit: GW;
+                Definition: {
+                    
+                    2*RO_InstDemand('peak') >= 3*RO_InstDemand('base') - 6 [GW]
+                }
+                Comment: "One of the uncertainty constraints that could be used to describe the convex hull explicitly";
+            }
+            UncertaintyConstraint ConvexHull_4 {
+                Unit: GW;
+                Definition: {
+                    
+                    7*RO_InstDemand('peak') <= 5*RO_InstDemand('base') + 34 [GW]
+                }
+                Comment: "One of the uncertainty constraints that could be used to describe the convex hull explicitly";
+            }
+            UncertaintyConstraint RequiredElectr_base_def {
+                Unit: hour*GW;
+                Definition: {
+                    RO_RequiredElectr('base')
+                    =
+                    RO_InstDemand('base') * RO_DemandDuration('base')
+                }
+                Comment: "Uncertainty constraint that could be used to explicitly describe the definition of the base required electricity";
+            }
+            UncertaintyConstraint RequiredElectr_peak_def {
+                Unit: hour*GW;
+                Definition: {
+                    RO_RequiredElectr('peak')
+                    =
+                    (RO_InstDemand('peak') - RO_InstDemand('base'))* RO_DemandDuration('peak')
+                }
+                Comment: "Uncertainty constraint that could be used to explicitly describe the definition of the peak required electricity";
+            }
+        }
+        DeclarationSection Declaration_Results {
+            Parameter RO_SolutionTotalCosts {
+                Unit: 1000 * $;
+                Comment: "Result parameter corresponding to the total costs variable";
+            }
+            Parameter RO_SolutionCapitalCosts {
+                Unit: 1000 * $;
+                Comment: "Result parameter corresponding to the total capital costs variable";
+            }
+            Parameter RO_SolutionImportCosts {
+                Unit: 1000 * $;
+                Comment: "Result parameter corresponding to the total import costs variable";
+            }
+            Parameter RO_SolutionOperationCosts {
+                Unit: 1000 * $;
+                Comment: "Result parameter corresponding to the total operation costs variable";
+            }
+            Parameter RO_SolutionTotalCap {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: RO_ExistingCap(p) + RO_NewCap.robust(p);
+                Comment: "Result parameter corresponding to the total capacity variable";
+            }
+            Parameter RO_SolutionTotalCostsScenario {
+                IndexDomain: (s);
+                Unit: 1000 * $;
+                Comment: "Result parameter describing the total solution costs in one scenario, computed after the scenario realization";
+            }
+            Parameter RO_SolutionCapAllocation {
+                IndexDomain: (p,k);
+                Unit: GW;
+                Definition: {
+                    Const_CapAllocation_RequiredElectr(p,k)
+                    +
+                    sum( k_ ,
+                    Coeffs_CapAllocation_RequiredElectr(p,k,k_)
+                    *
+                    RO_RequiredElectr(k_)
+                    )
+                }
+                Comment: {
+                    "Result parameter describing the actual allocation of capacity, after the data realization,
+                    according to the linear decision rule provided by the solution of the robust counterpart."
+                }
+            }
+            Parameter Const_CapAllocation_RequiredElectr {
+                IndexDomain: (p,k);
+                Unit: GW;
+                Comment: "Result parameter bearing the affine constant involved in the linear decision rule for the capacity allocation variable";
+            }
+            Parameter Coeffs_CapAllocation_RequiredElectr {
+                IndexDomain: (p,k,k_);
+                Unit: 1/hour;
+                Comment: "Result parameter bearing the affine coefficients involved in the linear decision rule for the capacity allocation variable";
+            }
+            Parameter RO_SolutionUsedCap {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: sum(k, RO_SolutionCapAllocation(p,k));
+                Comment: {
+                    "Result parameter corresponding to the actual capacity allocation (usage) variable,
+                    after data realization and after the application of the linear decision rule"
+                }
+            }
+            Parameter RO_SolutionSurplusCap {
+                IndexDomain: (p);
+                Unit: GW;
+                Definition: RO_SolutionTotalCap(p) - RO_SolutionUsedCap(p);
+                Comment: {
+                    "Result parameter corresponding to the surplus capacity, after data realization,
+                    and after the application of the linear decision rule for capacity allocation"
+                }
+            }
+            Parameter RO_SolutionImportCap {
+                IndexDomain: (k);
+                Unit: GWh;
+                Comment: {
+                    "Result parameter describing the actual import of capacity, after the data realization,
+                    according to the linear decision rule provided by the solution of the robust counterpart."
+                }
+            }
+            Parameter Const_ImportCap_RequiredElectr {
+                IndexDomain: (k);
+                Unit: GWh;
+                Comment: "Result parameter bearing the affine constant involved in the linear decision rule for the import capacity variable";
+            }
+            Parameter Coeffs_ImportCap_RequiredElectr {
+                IndexDomain: (k,k_);
+                Comment: "Result parameter bearing the affine coefficients involved in the linear decision rule for the import capacity variable";
+            }
+            Parameter RO_SolutionCapImported {
+                Range: nonnegative;
+                Unit: GW;
+                Definition: sum(k, RO_SolutionImportCap(k) /$ RO_DemandDuration(k));
+                Comment: "Result parameter showing the import in terms of instantaneous power";
+            }
+        }
+    }
+    Section Robust_Optimization_Procedures {
+        Procedure SolveRobust {
+            Body: {
+                
+                if not IsRunningAsViewer then
+                
+                	PowerExpUncertainParameters := AllUncertainParameters;
+                
+                	switch UncertaintyChoice do
+                	'Box'       : PowerExpUncertainParameters -= {'RO_InstDemand_Ellipsoid', 'RO_InstDemand_ConvexHull' };
+                	'Ellipsoid' : PowerExpUncertainParameters -= {'RO_InstDemand_Box', 'RO_InstDemand_ConvexHull' };
+                	'ConvexHull': PowerExpUncertainParameters -= {'RO_InstDemand_Box', 'RO_InstDemand_Ellipsoid' };
+                	default     :
+                	endswitch;
+                
+                	PowerExpUncertainConstraints -=  AllUncertaintyConstraints;
+                
+                	!Some of the statements below could be alternatively used in case some explicit uncertainty constraints
+                	!are employed instead of the Dependency attribute of uncertain parameter RO_InstDemand
+                
+                	!PowerExpUncertainConstraints :=  AllUncertaintyConstraints;
+                	!PowerExpUncertainConstraints += data{'InstDemand_Box_lower','InstDemand_Box_upper'};
+                	!PowerExpUncertainConstraints += data{'InstDemand_Ellipsoid_def'};
+                	!PowerExpUncertainConstraints += data{'ConvexHull_1','ConvexHull_2','ConvexHull_3','ConvexHull_4'};
+                	!PowerExpUncertainConstraints += data{'RequiredElectr_base_def','RequiredElectr_peak_def'};
+                
+                	RO_PowerExpModel := GMP::Instance::GenerateRobustCounterpart(
+                			MP:                      PowerExpModelForRO,
+                			UncertainParameters:     PowerExpUncertainParameters,
+                			UncertaintyConstraints : PowerExpUncertainConstraints
+                			);
+                
+                	GMP::Instance::Solve( RO_PowerExpModel );
+                
+                	GMP::Instance::Delete( RO_PowerExpModel );
+                
+                	ComputeResults;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
+                    CaseFind("Viewer Case", ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+            Comment: "This procedure generates the robust counterpart, solves it and computes results parameters based on its solution.";
+        }
+        Procedure Solve_DetROmodel {
+            Body: {
+                
+                solve PowerExpModelForRO;
+            }
+            Comment: "This procedure solves the nominal problem.";
+        }
+        Procedure Assign_RO_InstDemand {
+            Body: {
+                switch UncertaintyChoice do
+                       'Box'       : RO_InstDemand(k) := RO_InstDemand_Box(k);
+                       'Ellipsoid' : RO_InstDemand(k) := RO_InstDemand_Ellipsoid(k);
+                       'ConvexHull': RO_InstDemand(k) := RO_InstDemand_ConvexHull(k);
+                       default     :
+                endswitch;
+            }
+        }
+        Procedure Set_RO_InstDemand_AsInCurrentScenario {
+            Body: {
+                RO_InstDemand(k) := RO_InstDemandScenario(k,CurrentScenario) ;
+            }
+            Comment: "This procedure sets the instantaneous demand equal to the values corresponding to the current (selected) scenario.";
+        }
+    }
+    Section GUI_Support_Section {
+        DeclarationSection GUI_Declarations {
+            StringParameter DescriptionFile {
+                Definition: "Description.txt";
+            }
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+        Procedure ComputeResults {
+            Body: {
+                RO_SolutionTotalCosts
+                :=
+                sum(p, RO_CapitalCosts(p)*( RO_ExistingCap(p) +  RO_NewCap.robust(p) ))
+                +
+                sum(k,
+                  RO_ImportCosts(k)
+                  *
+                  ( RO_ImportCap.adjustable.constant(k) + sum(k_, RO_ImportCap.adjustable.RO_RequiredElectr(k,k_) * RO_RequiredElectr(k_)))
+                  +
+                  RO_DemandDuration(k)
+                  *
+                  sum(p,
+                    RO_OperatingCosts(p)
+                    *
+                    ( RO_CapAllocation.adjustable.constant(p,k) + sum(k_, RO_CapAllocation.adjustable.RO_RequiredElectr(p,k,k_) * RO_RequiredElectr(k_)) )
+                  )
+                );
+                
+                RO_SolutionCapitalCosts
+                :=
+                sum(p, RO_CapitalCosts(p)*( RO_ExistingCap(p) +  RO_NewCap.robust(p) ));
+                
+                RO_SolutionImportCosts
+                :=
+                sum(k,
+                  RO_ImportCosts(k)
+                  *
+                  ( RO_ImportCap.adjustable.constant(k)
+                    +
+                    sum(k_, RO_ImportCap.adjustable.RO_RequiredElectr(k,k_) * RO_RequiredElectr(k_))
+                   )
+                 );
+                
+                RO_SolutionOperationCosts
+                :=
+                sum(k,
+                RO_DemandDuration(k)
+                  *
+                  sum(p,
+                    RO_OperatingCosts(p)
+                    *
+                    ( RO_CapAllocation.adjustable.constant(p,k) + sum(k_, RO_CapAllocation.adjustable.RO_RequiredElectr(p,k,k_) * RO_RequiredElectr(k_)) )
+                  )
+                );
+                
+                RO_SolutionTotalCostsScenario(s)
+                :=
+                sum(p, RO_CapitalCosts(p)*( RO_ExistingCap(p) +  RO_NewCap.robust(p) ))
+                +
+                sum(k,
+                  RO_ImportCosts(k)
+                  *
+                  ( RO_ImportCap.adjustable.constant(k) + sum(k_, RO_ImportCap.adjustable.RO_RequiredElectr(k,k_) * RO_RequiredElectrScenario(k,s)) )
+                  +
+                  RO_DemandDuration(k)
+                  *
+                  sum(p,
+                    RO_OperatingCosts(p)
+                    *
+                    ( RO_CapAllocation.adjustable.constant(p,k) + sum(k_, RO_CapAllocation.adjustable.RO_RequiredElectr(p,k,k_) * RO_RequiredElectrScenario(k_,s)) )
+                  )
+                );
+                
+                Const_CapAllocation_RequiredElectr(p, k)
+                :=
+                RO_CapAllocation.adjustable.constant(p,k);
+                
+                Coeffs_CapAllocation_RequiredElectr(p, k, k_)
+                :=
+                RO_CapAllocation.adjustable.RO_RequiredElectr(p,k,k_);
+                
+                RO_SolutionImportCap(k)
+                :=
+                Const_ImportCap_RequiredElectr(k)
+                +
+                sum( k_ ,
+                 Coeffs_ImportCap_RequiredElectr(k,k_)
+                 *
+                 RO_RequiredElectr(k_)
+                );
+                
+                Const_ImportCap_RequiredElectr(k)
+                :=
+                RO_ImportCap.adjustable.constant(k);
+                
+                Coeffs_ImportCap_RequiredElectr(k, k_)
+                :=
+                RO_ImportCap.adjustable.RO_RequiredElectr(k, k_);
+            }
+            Comment: {
+                "This procedure computes some of the results parameters based on the solution of the robust counterpart.
+                The computation of each parameter takes into account the definition of the model variable with the same meaning,
+                as well as the explicit linear decision rules that apply to the adjustable variables.
+                These involve the .adjustable. suffices that AIMMS uses for the constants describing the linear decision rules."
+            }
+        }
+        Procedure ComputeResultsInScenario {
+            Body: {
+                Set_RO_InstDemand_AsInCurrentScenario;
+                ComputeResults;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            
+            !The following statements impose some lower and upper bounds on the .adjustable. suffices
+            !of the adjustable variables. These suffices are the coefficients involved in the linear
+            !decision rules for the adjustable variables. They become variables in the generated
+            !robust counterpart. If provided as below, the bounds will be used during the generation
+            !of the Robust Optimization model.
+            
+            RO_ImportCap.adjustable.constant(k).lower := -500;
+            RO_ImportCap.adjustable.constant(k).upper :=  500;
+            RO_ImportCap.adjustable.RO_RequiredElectr(k,k_).lower := -500;
+            RO_ImportCap.adjustable.RO_RequiredElectr(k,k_).upper :=  500;
+            RO_CapAllocation.adjustable.constant(p,k).lower := -500;
+            RO_CapAllocation.adjustable.constant(p,k).upper :=  500;
+            RO_CapAllocation.adjustable.RO_RequiredElectr(p,k,k_).lower := -500;
+            RO_CapAllocation.adjustable.RO_RequiredElectr(p,k,k_).upper :=  500;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            
+            ShowProgressWindow;
+            SolveRobust;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

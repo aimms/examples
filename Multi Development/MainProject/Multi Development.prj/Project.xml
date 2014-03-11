@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="1D94A2AA-C31E-4F8B-8F93-C9E23A46A14F">
+	<ModelFileName>Multi Development.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

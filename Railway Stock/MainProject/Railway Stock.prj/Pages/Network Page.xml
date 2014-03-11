@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:48:09">
+	<Location top="29" left="4" bottom="888" right="1274" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>8E4A45FB-800D-42D3-B2B2-0F91CF032D28</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromLeft" Value="469">
+						<LeftArea Line="FixedFromTop" Value="430" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Network Object">
+		<Location top="189" left="210" bottom="612" right="660" />
+		<TabOrder>8</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ScrollControl>NoScrolling</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-105</Left>
+			<Right>118.863080685</Right>
+			<Top>105</Top>
+			<Bottom>-105</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>n</Identifier>
+			<XCoordinate>Network_XCoordinateNode( n -&gt; Network_OriginNode )</XCoordinate>
+			<YCoordinate>Network_YCoordinateNode( n -&gt; Network_DestinationNode )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>2</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Text>GUI_TextNodesDescription( n )</Text>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>Network_UsedTrains( dn -&gt; Network_OriginNode, an -&gt; Network_DestinationNode )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>2</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Color>Network_UsedTrainColor( dn, an )</Color>
+			<Size>Network_UsedTrains( dn, an )</Size>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+		<Arc>
+			<Identifier>Network_UnusedTrains( dn -&gt; Network_OriginNode, an -&gt; Network_DestinationNode )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Color>Network_UnusedTrainColor</Color>
+			<Size>Network_UnusedTrains( dn, an )</Size>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="411" left="6" bottom="438" right="192" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="F6AC9214-33C1-4250-9ABF-15B57D1091A0" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="B4AC1BCC-F10A-4FD6-8206-B268B3249783">white</UserColor>
+		</BackgroundColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Rw_TotalTrainsNeeded</Identifier>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total trains"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="513" left="6" bottom="570" right="192" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="F6AC9214-33C1-4250-9ABF-15B57D1091A0" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="B4AC1BCC-F10A-4FD6-8206-B268B3249783">white</UserColor>
+		</BackgroundColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Network_OriginNode</Identifier>
+			<NumberFormat Width="16" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"From"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Network_DestinationNode</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"To"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="570" left="6" bottom="612" right="192" />
+		<TabOrder>11</TabOrder>
+		<Font GUID="F6AC9214-33C1-4250-9ABF-15B57D1091A0" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="B4AC1BCC-F10A-4FD6-8206-B268B3249783">white</UserColor>
+		</BackgroundColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Network_UnusedTrains( Network_OriginNode, Network_DestinationNode )</Identifier>
+			<FirstColumn>2</FirstColumn>
+			<HeaderText>"Empty Trains"</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Network_UsedTrains( Network_OriginNode, Network_DestinationNode )</Identifier>
+			<FirstColumn>2</FirstColumn>
+			<HeaderText>"Used Trains"</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="381" left="6" bottom="405" right="192" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Results -&gt; XML"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>Create_XMLResultFile</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="354" left="6" bottom="378" right="192" />
+		<TabOrder>4</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="324" left="6" bottom="348" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="327" left="18" bottom="345" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="213" bottom="177" right="561" />
+		<StaticText>Flow of trains in circular network</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="447" left="6" bottom="471" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="450" left="18" bottom="468" right="186" />
+		<StaticText>Linked Tables</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Train Schedule</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="213" left="669" bottom="420" right="768" />
+		<StaticText>Blue arrow: The number of trains is the required minimum.
+
+Black arrow: The number of trains is more than the required minimum.
+
+Green line: Trains currently not in use.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="669" bottom="207" right="747" />
+		<StaticText>Explanation:</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="477" left="6" bottom="513" right="192" />
+		<StaticText>Click on a link in the network to see details below</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Network_XCoordinateNode</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>n</Symbol>
+			<Symbol>an</Symbol>
+			<Symbol>dn</Symbol>
+			<Symbol>Create_XMLResultFile</Symbol>
+			<Symbol>Network_UsedTrains</Symbol>
+			<Symbol>GUI_TextNodesDescription</Symbol>
+			<Symbol>Network_OriginNode</Symbol>
+			<Symbol>Network_UsedTrainColor</Symbol>
+			<Symbol>Network_DestinationNode</Symbol>
+			<Symbol>Network_UnusedTrainColor</Symbol>
+			<Symbol>Rw_TotalTrainsNeeded</Symbol>
+			<Symbol>Network_YCoordinateNode</Symbol>
+			<Symbol>Network_UnusedTrains</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,14 @@
+When you want to work with multi developers on a single AIMMS project, you need to have separate source files for each developer. You can do that by splitting your project into a main project and one or more libraries, each having its own source files. 
+
+Each developer works in a copy of the project in which only the library he/she is working on, is writable, while the other libraries are readonly. When a developer has finished the modifications to his/her library, he/she must make sure that the other developers get a (readonly) copy of this modified library.
+
+This exchange of libraries between developers is best handled by a version control program (like SourceSafe or SVN). In this example we mimic a version control system by simply copying files to and from a common folder, and setting the appropriate readonly flags.
+
+In a subdirectory of this example (Projects Multi Development) we have three copies of the same project, located in three separate folders: One folder containing the latest version of the project (Latest Version), and two folders that represent the working environment of the two developers (Project Developer 1 and Project Developer 2). Furthermore, in the developer folders you can find the version control batch files. You can find the projects via the Open Explorer button on this page.
+
+In the description of the three project versions you will find more information regarding working with multi developers on a single project.
+
+Multi Development aspects are reflected in the Model Explorer, Page Manager, Template Manager, Menu Builder, Data Manager, Data Management Setup, User Colors, Project User Files and Fonts. More information can be found in the AIMMS User's Guide (available via Help menu), chapter Organizing a Project into Libraries.
+
+Keywords:
+Multi Development, AIMMS Library, Version Control

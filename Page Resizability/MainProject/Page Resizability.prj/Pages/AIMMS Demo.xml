@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:44:04">
+	<Location bottom="651" right="624" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>310D2727-A0A0-4B94-8F0B-A6D7E354D17A</ProjectUUID>
+	<Title>"AIMMS 3 Demo: Page resizability"</Title>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<Action>
+		<EntryProcedure>MainInitialization</EntryProcedure>
+	</Action>
+	<HorizontalGridDistance>1</HorizontalGridDistance>
+	<VerticalGridDistance>1</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="190" left="207" bottom="485" right="762" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Description.txt"</FileName>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Navigation Object">
+		<Location top="497" left="353" bottom="603" right="620" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<Border Style="Line" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Display>Tree</Display>
+		<Spacing>6</Spacing>
+		<BackgroundColor RGB="#ffffff" />
+		<NavigationData>
+			<ReferencePage>ThisPage</ReferencePage>
+			<NumberOfGenerations>1</NumberOfGenerations>
+			<NumberOfAncestors>1</NumberOfAncestors>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainInitialization</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

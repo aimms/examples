@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<UserColors LastKnownInternalId="47">
+	<UserColor Name="default background" RGB="#f0f0f0" IsSystemBackground="true" UUID="31A810E4-36D3-4091-A32C-0B75C8C9A3BA" InternalID="1" />
+	<UserColor Name="default foreground" RGB="#000000" UUID="E58DAB72-6340-4064-9494-3191E3AF7542" InternalID="2" />
+	<UserColor Name="default selection" RGB="#000080" UUID="7F2098EF-7B0D-4DE8-A899-6EAD844D7D63" InternalID="3" />
+	<UserColor Name="black" RGB="#000000" UUID="D0F34F94-8229-46B9-8A68-1216E96B10DF" InternalID="4" />
+	<UserColor Name="white" RGB="#ffffff" UUID="346165FC-6727-452D-82FE-05E983C2452C" InternalID="5" />
+	<UserColor Name="red" RGB="#ff0000" UUID="BDE94972-EBB0-42F9-9595-32B23B5A1426" InternalID="6" />
+	<UserColor Name="green" RGB="#00ff00" UUID="2177646F-5A7E-41C2-9A82-8869F07A7C93" InternalID="7" />
+	<UserColor Name="blue" RGB="#0000ff" UUID="C4200AC4-42BC-4C93-BD38-F440E3EC87E4" InternalID="8" />
+	<UserColor Name="yellow" RGB="#ffff00" UUID="187908F8-4FFD-4E63-B1E3-EC8B92DCC289" InternalID="9" />
+	<UserColor Name="magenta" RGB="#ff00ff" UUID="D58D3DB6-B671-4E28-86CC-0FA2FEC12728" InternalID="10" />
+	<UserColor Name="cyan" RGB="#00ffff" UUID="F16EB595-5993-4084-9E00-F8BDFD3E86B0" InternalID="11" />
+	<UserColor Name="navy blue" RGB="#000080" UUID="E1BA33BB-A29D-431D-8435-0A65753BCA69" InternalID="12" />
+	<UserColor Name="light grey" RGB="#c0c0c0" UUID="2AED8D33-A450-4649-8D39-1CE662E14F5D" InternalID="13" />
+	<UserColor Name="grey" RGB="#808080" UUID="272FB77F-688D-4CEA-8029-2BB52559C20B" InternalID="14" />
+	<UserColor Name="dark grey" RGB="#404040" UUID="24F06D40-7D83-48CE-BA70-CFC0426DAF93" InternalID="15" />
+	<UserColor Name="Very light grey" RGB="#e4e4e4" UUID="589E2CD1-E58E-4E0B-AE37-B815B8721D8F" InternalID="18" />
+</UserColors>

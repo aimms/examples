@@ -1,0 +1,77 @@
+## ams_version=1.0
+
+Model Page_Resizability {
+    Set Points {
+        Text: "Set with all available points";
+        Index: i, j;
+        Definition: Data{P-1..P-250};
+    }
+    Set UsedPoints {
+        SubsetOf: Points;
+        Text: "Subset with all used points";
+        Index: s;
+        Definition: {
+            { i | FirstUsedPoint <= ord(i) <= FirstUsedPoint + UsedPointSize }
+        }
+    }
+    Set Functions {
+        Text: "All available functions";
+        Index: f;
+        Definition: Data{Sin, Cos, Root, Line};
+    }
+    Set UsedFunctions {
+        SubsetOf: Functions;
+        Text: "All used functions";
+        Index: sf;
+        Definition: {
+            {f | SelectedFunction(f)}
+        }
+    }
+    Parameter FirstUsedPoint {
+        Text: "Number of first point in UsedPoints";
+        Range: integer;
+    }
+    Parameter UsedPointSize {
+        Text: "Size of UsedPoints";
+        Range: integer;
+        InitialData: 25;
+    }
+    Parameter FunctionValue {
+        IndexDomain: (i,f);
+        Text: "The value of function f at ord(i)";
+        Definition: {
+            IF     ( f = 'Sin'  ) THEN
+                sin((ord(i) - 1)/10)
+            ELSEIF ( f = 'cos'  ) THEN
+                cos((ord(i) - 1)/10)
+            ELSEIF ( f = 'root' ) THEN
+                sqrt((ord(i) - 1)/10)
+            ELSEIF ( f = 'line' ) THEN
+                1/3*(ord(i) - 1)/10
+            ENDIF;
+        }
+    }
+    Parameter SelectedFunction {
+        IndexDomain: (f);
+        Text: "Selected functions";
+        Range: binary;
+        InitialData: data { Sin : 1,  Cos : 1 };
+    }
+    StringParameter CurrentDay {
+        Text: "Current Date";
+        Definition: CurrentToString("%Am|AllAbbrMonths| %d, %c%y");
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure ButtonProcedure {
+        Body: {
+            DialogMessage("These buttons can be used to navigate to the next, the previous,\n the parent or the child page of the current page");
+        }
+        Comment: "Dummy procedure behind a button";
+    }
+}

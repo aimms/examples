@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="83C27EE4-06E5-4D27-91E0-3D49ACD07F22">
+		<Page Name="Empty Slice" PageGUID="C78D25D1-E2BA-44C9-B796-DFA601F28E5B" />
+		<Page Name="Assign Value" PageGUID="2CDFEED2-91D2-42EA-9607-1506464B47B7" />
+		<Page Name="Read From Excel" PageGUID="C73C8BA7-3F7D-44A5-A232-9562D6741827" />
+	</Page>
+	<Page Name="Error Window" PageGUID="89236592-1CB3-4D3B-9F56-B3D2971F8CE7" />
+</PageManager>

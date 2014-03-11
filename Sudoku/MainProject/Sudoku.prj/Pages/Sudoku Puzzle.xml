@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:51:52">
+	<Location top="29" left="8" bottom="668" right="1270" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>B44CF371-E234-4779-8ED8-39CE783098DD</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="223" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="197">
+						<BottomArea Line="PercentageFromLeft" Value="0.5">
+							<LeftArea Line="FixedFromTop" Value="33" />
+							<RightArea Line="FixedFromTop" Value="34" />
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="648" left="642" bottom="672" right="798" />
+		<TabOrder>8</TabOrder>
+		<TabStop>false</TabStop>
+		<ButtonType>Text</ButtonType>
+		<Title>"Problem Description"</Title>
+		<Font GUID="553F1704-CABB-42E7-9493-56D9153D810C" Name="Button font" />
+		<ActionSequence>
+			<Action Type="GotoPage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="186" left="204" bottom="384" right="762" />
+		<TabOrder>5</TabOrder>
+		<ObjectUUID>65D90613-9BF5-4B48-B509-87A4F22F4F4B</ObjectUUID>
+		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
+		<Border Style="None" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">FixedValues( r, c )</Identifier>
+				<Colors>
+					<Background_Color ID="4160">ColorGroups( r, c )</Background_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Alignment ID="4230">"Center"</Alignment>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">r</Index>
+				<Header_Title ID="6530">"row"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"column"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<Font ExtraInfo="C68CD5D8-01D0-44A3-947E-5376793BAB34" ID="1030">"Text Font Bold"</Font>
+			<User_Modifications>
+				<User_Dialog ID="1210">"Not Allowed"</User_Dialog>
+			</User_Modifications>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D" ID="2020">"default selection"</Text_Color>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="2045">"Table Text"</Font>
+			<Headers>
+				<Background_Color ExtraInfo="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Text_Color ExtraInfo="C1520ADC-BB9D-41BE-9507-5606F5495E7A" ID="5020">"blue"</Text_Color>
+			<Font ExtraInfo="C68CD5D8-01D0-44A3-947E-5376793BAB34" ID="5045">"Text Font Bold"</Font>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="417" left="204" bottom="594" right="480" />
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<ObjectUUID>925B5F8C-A2AE-49AF-BECF-AED1F9F8DBD4</ObjectUUID>
+		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
+		<Border Style="None" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">GUISolution( GUIFirstSolution, r, c )</Identifier>
+				<Colors>
+					<Background_Color ID="4160">ColorGroups( r, c )</Background_Color>
+					<Text_Color ID="4165">InputDataColor( r, c )</Text_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Alignment ID="4230">"Center"</Alignment>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"column"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">r</Index>
+				<Header_Title ID="6530">"row"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<Font ExtraInfo="C68CD5D8-01D0-44A3-947E-5376793BAB34" ID="1030">"Text Font Bold"</Font>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D" ID="2020">"default selection"</Text_Color>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="2045">"Table Text"</Font>
+			<Headers>
+				<Background_Color ExtraInfo="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Font ExtraInfo="C68CD5D8-01D0-44A3-947E-5376793BAB34" ID="5045">"Text Font Bold"</Font>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Puzzle as MIP"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="417" left="492" bottom="609" right="765" />
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<ObjectUUID>546D1CCE-F015-48FB-81BA-F317426AF8CC</ObjectUUID>
+		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
+		<Border Style="None" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">GUISolution( ags_s, r, c )</Identifier>
+				<Colors>
+					<Background_Color ID="4160">ColorGroups( r, c )</Background_Color>
+					<Text_Color ID="4165">InputDataColor( r, c )</Text_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Alignment ID="4230">"Center"</Alignment>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">ags_s</Index>
+				<Header_Title ID="6530">"Solution"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"column"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">r</Index>
+				<Header_Title ID="6530">"row"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<Font ExtraInfo="C68CD5D8-01D0-44A3-947E-5376793BAB34" ID="1030">"Text Font Bold"</Font>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D" ID="2020">"default selection"</Text_Color>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="2045">"Table Text"</Font>
+			<Headers>
+				<Background_Color ExtraInfo="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Font ExtraInfo="C68CD5D8-01D0-44A3-947E-5376793BAB34" ID="5045">"Text Font Bold"</Font>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="387" left="204" bottom="411" right="483" />
+		<FillColor RGB="#e0e0ff" />
+		<LineColor RGB="#e0e0ff" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="390" left="207" bottom="408" right="429" />
+		<StaticText>Solution 1</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="387" left="492" bottom="411" right="768" />
+		<FillColor RGB="#e0e0ff" />
+		<LineColor RGB="#e0e0ff" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="390" left="495" bottom="408" right="633" />
+		<StaticText>Solution 2, 3, ...</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="306" left="6" bottom="330" right="192" />
+		<TabOrder>4</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Find Multiple Solutions"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MultipleSolve</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<FillColor RGB="#e0e0ff" />
+		<LineColor RGB="#e0e0ff" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="249" left="18" bottom="267" right="180" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="207" right="189" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="207" bottom="177" right="369" />
+		<StaticText>Problem</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="363" left="6" bottom="387" right="192" />
+		<FillColor RGB="#e0e0ff" />
+		<LineColor RGB="#e0e0ff" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="366" left="18" bottom="384" right="180" />
+		<StaticText>Information</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="396" left="6" bottom="513" right="192" />
+		<StaticText>Blue indicates the problem.
+
+Black indicates fixed values.
+
+Red indicates values that can be placed in other places. </StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="336" left="6" bottom="363" right="192" />
+		<TabOrder>20</TabOrder>
+		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SelectedSolver</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>MultiSolutionSolvers</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>r</Symbol>
+			<Symbol>ColorGroups</Symbol>
+			<Symbol>SelectedSolver</Symbol>
+			<Symbol>GUISolution</Symbol>
+			<Symbol>MultipleSolve</Symbol>
+			<Symbol>FixedValues</Symbol>
+			<Symbol>ags_s</Symbol>
+			<Symbol>InputDataColor</Symbol>
+			<Symbol>GUIFirstSolution</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

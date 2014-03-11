@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:36:28" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>028CE13F-55AC-4B2A-A6C3-E534F411FECB</ProjectUUID>
+	<Title>"AIMMS Demo: Life Cycle Consumption"</Title>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="189" left="207" bottom="594" right="765" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Description.txt"</FileName>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="594" left="207" bottom="615" right="762" />
+		<StaticText>This example was made in collaboration with Professor Kenneth Judd</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

@@ -1,0 +1,230 @@
+## ams_version=1.0
+
+Model Main_Traffic_Equilibrium {
+    DeclarationSection Traffic_Equilibrium_Declaration {
+        Set Locations {
+            Text: "Set containing all locations";
+            Index: o, d, i, j;
+            Parameter: Origin, Destination;
+        }
+        Set RoadSegment {
+            SubsetOf: (Locations, Locations);
+            Text: "The set containing all roadsegments";
+            Index: a;
+        }
+        Set Routes {
+            Text: "The set of all routes between all locations";
+            Index: r;
+        }
+        Parameter Demand {
+            IndexDomain: (o,d);
+            Text: "The amount of traffic between o and d";
+        }
+        Parameter RoadPathIncidence {
+            IndexDomain: (a,r);
+            Text: "Road a is on route r";
+        }
+        Parameter ODPathIncidence {
+            IndexDomain: (o,d,r);
+            Text: "r is a route between o and d";
+        }
+        Parameter RoadLength {
+            IndexDomain: (a);
+            Text: "The length of road a";
+        }
+        Parameter RoadCapacity {
+            IndexDomain: (a);
+            Text: "The capacity of road a";
+        }
+        ComplementarityVariable Traffic {
+            IndexDomain: (r);
+            Text: "The traffic that flows along route r";
+            Range: nonnegative;
+            Complement: {
+                sum( a | RoadPathIncidence(a,r), RoadLength(a) * exp[ RoadTraffic(a) / RoadCapacity(a)] +
+                         if IncludeTollRoads then 500 * TollFee(a) endif )
+                	 >= sum( (o,d) | ODPathIncidence(o,d,r), MinCost(o,d))
+            }
+        }
+        Variable RoadTraffic {
+            IndexDomain: (a);
+            Text: "The traffic that flows along road a";
+            Range: nonnegative;
+            Definition: sum( r | RoadPathIncidence(a,r),Traffic(r));
+        }
+        Parameter RoadCost {
+            IndexDomain: (a);
+            Text: "Cost of using road a";
+            Definition: RoadLength(a) * exp[ RoadTraffic(a) / RoadCapacity(a)];
+        }
+        Variable MinCost {
+            IndexDomain: (o,d) | Demand(o,d);
+            Text: "The minimal costs for traffic between o and d";
+            Range: nonnegative;
+        }
+        Constraint SatisfyDemand {
+            IndexDomain: (o,d) | Demand(o,d);
+            Definition: sum( r | ODPathIncidence(o,d,r) , Traffic(r)) = Demand(o,d);
+        }
+        MathematicalProgram TrafficEquilibrium {
+            Constraints: TrafficEquilibriumConstraints;
+            Variables: TrafficEquilibriumVariables;
+            Type: MCP;
+        }
+        Set TrafficEquilibriumConstraints {
+            SubsetOf: AllConstraints;
+            Text: "The set of constraints that are used in TrafficEquilibrium";
+            Definition: data { Traffic, RoadTraffic, SatisfyDemand };
+        }
+        Set TrafficEquilibriumVariables {
+            SubsetOf: AllVariables;
+            Text: "The set of variables that are used in TrafficEquilibrium";
+            Definition: data { Traffic, RoadTraffic, MinCost };
+        }
+        StringParameter NetworkDescription {
+            Text: "Title of newtork object";
+            Definition: {
+                FormatString("Distribution of the traffic (%n units) that goes from %e to %e",
+                	demand(Origin, Destination),Origin, Destination);
+            }
+        }
+    }
+    DeclarationSection Traffic_Equilibrium_with_Toll_Roads_Declaration {
+        Parameter IncludeTollRoads {
+            Text: "This flag is t indicate that the current model includes toll roads";
+        }
+        MathematicalProgram TrafficEquilibriumWithToll {
+            Objective: TotalFeeIncome;
+            Direction: maximize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: MPCC;
+        }
+        Variable TollFee {
+            IndexDomain: (a) | TolledArcs(a);
+            Text: "The toll fee for the arcs on which it is allowed to obtain toll fee";
+            Range: [TollFeeLowerBound, TollFeeUpperBound];
+        }
+        Variable TotalFeeIncome {
+            Text: "The total income of the toll fees";
+            Definition: {
+                sum( a | TolledArcs(a), TollFee(a) * RoadTraffic(a) );
+            }
+        }
+        Parameter TollFeeLowerBound {
+            Text: "The lower bound of the toll fee";
+        }
+        Parameter TollFeeUpperBound {
+            Text: "The upper bound of the toll fee";
+        }
+        Parameter TolledArcs {
+            IndexDomain: (a);
+            Text: "The arcs on which it is allowed to obtain a toll fee";
+        }
+        Parameter RoadTrafficWithToll {
+            IndexDomain: (a);
+            Text: "The actual traffic in the solution of the model with toll";
+        }
+        Parameter RoadTrafficWithoutToll {
+            IndexDomain: (a);
+            Text: "The actual traffic in the solution of the model without toll";
+        }
+        Parameter AverageCostWithToll {
+            IndexDomain: (o,d);
+            Text: "The average travel cost in the solution of the model with toll";
+        }
+        Parameter AverageCostWithoutToll {
+            IndexDomain: (o,d);
+            Text: "The average travel cost in the solution of the model with toll";
+        }
+    }
+    DeclarationSection Interface_Declaration {
+        Comment: "The declaration in this section are only used for display in the network object";
+        Parameter ArcTraffic {
+            IndexDomain: (i,j,o,d);
+            Text: "Traffic that goes along (i,j) for demand between o and d";
+            Definition: sum[(r) | RoadPathIncidence(i,j,r) and ODPathIncidence(o,d,r), Traffic(r)];
+        }
+        Parameter Xnode {
+            IndexDomain: (o);
+            Text: "X-coordinate for node o in network";
+        }
+        Parameter Ynode {
+            IndexDomain: (o);
+            Text: "Y-coordinate for node o in network";
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            empty Main_Traffic_Equilibrium;
+            read from file "Initial Data.txt";
+            Origin := first(Locations);
+            Destination := last(Locations);
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	for IndexSolvers do
+            		if FindString(SearchString : FormatString("%e",IndexSolvers),Key : "PATH",CaseSensitive : 0) or
+            		   FindString(SearchString : FormatString("%e",IndexSolvers),Key : "KNITRO",CaseSensitive : 0)	then
+            			IncludeTollRoads := 0;
+            			solve TrafficEquilibrium;
+            			RoadTrafficWithoutToll(a) := RoadTraffic(a);
+            			AverageCostWithoutToll((o,d) | Demand(o,d))   := average( r  | Traffic(r) and ODPathIncidence(o,d,r),
+            					sum((a) | RoadPathIncidence(a,r), RoadLength(a) * exp[ RoadTraffic(a) / RoadCapacity(a)]));
+            			return;
+            		endif;
+            	endfor;
+            
+            	DialogMessage("Please install Path or Knitro in order to solve MCP.", "No Valid Solver Found");
+            else
+            
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+            	CaseFind("Solution Traffic Equilibrium", ACase);
+            	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure SolveTrafficEquilibriumWithToll {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	for IndexSolvers do
+            		if FindString(FormatString("%e",IndexSolvers),"KNITRO",CaseSensitive : 0) then
+            			TollFee(a) := (TollFeeUpperBound + TollFeeLowerBound)/2;
+            			TollFee.nonvar(a) := 0;
+            
+            			IncludeTollRoads := 1;
+            			solve TrafficEquilibriumWithToll;
+            
+            			RoadTrafficWithToll(a) := RoadTraffic(a) ;
+            			AverageCostWithToll((o,d) | Demand(o,d))   := average( r  | Traffic(r) and ODPathIncidence(o,d,r),
+            					sum((a) | 	 RoadPathIncidence(a,r), RoadLength(a) * exp[ RoadTraffic(a) / RoadCapacity(a)]));
+            
+            			IncludeTollRoads := 0;
+            			return;
+            		endif;
+            	endfor;
+            	DialogMessage("Please install Knitro in order to solve MPCC.", "No Valid Solver Found");
+            
+            else
+            
+            		DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+            		CaseFind("Solution with toll roads", ACase);
+            		CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

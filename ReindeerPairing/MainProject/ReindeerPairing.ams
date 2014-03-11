@@ -1,0 +1,292 @@
+## ams_version=1.0
+
+Model Main_ReindeerPairing {
+    Comment: {
+        "Original problem descritpion at http://orbythebeach.wordpress.com/2011/12/20/how-should-santa-pair-up-his-reindeer/
+        
+        Perhaps
+        http://webclipart.about.com/od/holida1/ss/How-Do-Those-Reindeer-Fly.htm
+        can be used for a background picture when presenting the solutions in the GUI."
+    }
+    Section Model_Section {
+        Set Lefty {
+            Index: iL, iLa;
+            Definition: data { Dasher, Prancer, Comet, Donner };
+            Comment: "The names of the reindeer on the left.";
+        }
+        Set Righty {
+            Index: iR, iRa;
+            Definition: data { Dancer, Vixen, Cupid, Blitzen };
+        }
+        Set favRighty {
+            IndexDomain: (iL);
+            SubsetOf: Righty;
+            OrderBy: User;
+            Definition: {
+                data {
+                 Dasher   : { Dancer,  Cupid,   Vixen,   Blitzen },
+                 Prancer  : { Vixen,   Blitzen, Dancer,  Cupid   },
+                 Comet    : { Cupid,   Dancer,  Blitzen, Vixen   },
+                 Donner   : { Blitzen, Vixen,   Dancer,  Cupid   } }
+            }
+            Comment: {
+                "For each reindeer on the left, an ordered specification of which reindeer it favors to be next to.
+                The keyword \'user\' in the order by attribute indicates that the element ordering is meaningful."
+            }
+        }
+        Set favLefty {
+            IndexDomain: (iR);
+            SubsetOf: Lefty;
+            OrderBy: User;
+            Definition: {
+                data {
+                  Dancer  : { Prancer, Comet,   Dasher,  Donner },
+                  Vixen   : { Dasher,  Donner,  Prancer, Comet  },
+                  Cupid   : { Prancer, Dasher,  Comet,   Donner },
+                  Blitzen : { Comet,   Prancer, Donner,  Dasher } }
+            }
+            Comment: "For each reindeer on the right, an ordered specification of which reindeer it favors to be next to.";
+        }
+        Parameter rankLefty {
+            IndexDomain: (iL,iR);
+            Definition: ord(iR,favRighty(iL));
+            Comment: "An intermediate parameter, translating the ordering in favRighty into numbers.";
+        }
+        Parameter rankRighty {
+            IndexDomain: (iR,iL);
+            Definition: ord(iL,favLefty(iR));
+        }
+        ElementVariable rightPartner {
+            IndexDomain: (iL);
+            Range: Righty;
+            Comment: "For each reindeer on the left, which reindeer on the right will it be pulling the sleigh next to.";
+        }
+        ElementVariable leftPartner {
+            IndexDomain: (iR);
+            Range: Lefty;
+        }
+        Constraint MatchEachUniquely {
+            Definition: {
+                cp::Channel(
+                	mapBinding        :  iL,
+                	map               :  rightPartner(iL),
+                	inverseMapBinding :  iR,
+                	inverseMap        :  leftPartner(iR))
+            }
+            Comment: {
+                "The channel constraint enforces both:
+                - leftPartner(rightPartner(iL)) = iL for all iL, and
+                - rightPartner(leftPartner(iR)) = iR for all iR.
+                
+                The channel constraint allows us to view the problem equivalently from the left perspective and from the right perspective:
+                - The left  perspective: the problem is to assign to each reindeer on the left  a reindeer on the right
+                - The right perspective: the problem is to assign to each reindeer on the right a reindeer on the left.
+                
+                The channel constraint is present in many constraint programming systems (though perhaps with different names).
+                The global constraint catalog provides an overview:
+                   http://www.emn.fr/z-info/sdemasse/gccat/Cinverse.html"
+            }
+        }
+        Constraint LeftStable {
+            IndexDomain: (iL,iR);
+            Definition: {
+                if rankLefty( iL, iR ) < rankLefty( iL, rightPartner( iL ) ) then
+                   rankRighty( iR, leftPartner( iR ) ) < rankRighty( iR, iL )
+                endif
+            }
+            Comment: {
+                "In a stable solution the following should hold:
+                for each reindeer on the left iL,
+                    if iL prefers reindeer on the right iR to her currently assigned partner rightPartner( iL ) then
+                    that reindeer iR does NOT prefer iL as her partner on the left."
+            }
+        }
+        Constraint RightStable {
+            IndexDomain: (iL,iR);
+            Definition: {
+                if rankRighty( iR, iL ) < rankRighty( iR, leftPartner( iR ) ) then
+                   rankLefty( iL, rightPartner( iL ) ) < rankLefty( iL, iR )
+                endif
+            }
+        }
+        MathematicalProgram StableReindeerPairings {
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: Automatic;
+        }
+        ElementParameter srp {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+        Parameter maxSolutions {
+            InitialData: 1000;
+        }
+        Parameter noSolutionsFound;
+        Set solutionSet {
+            SubsetOf: Integers;
+            Index: s;
+        }
+        ElementParameter variousLeftPartners {
+            IndexDomain: (s,iR);
+            Range: Lefty;
+        }
+        ElementParameter variousRightPartners {
+            IndexDomain: (s,iL);
+            Range: Righty;
+        }
+        Procedure SolveRaindeerPairing {
+            Body: {
+                ! Call the CP solver to find all possible solutions and store them in the
+                ! solution repository of the generated mathematical program 'StableReindeerPairings'
+                solve StableReindeerPairings where solution_limit := maxSolutions, time_limit := 10 ;
+                
+                ! Visit each solution in the solution repository of that generated mathematical program
+                ! and store these solutions in element parameters.
+                ! These element parameters can then be displayed in the GUI.
+                srp := 'StableReindeerPairings';
+                solutionSet := gmp::Solution::GetSolutionsSet(srp);
+                for ( s ) do
+                	GMP::Solution::SendToModel( srp, s );
+                	variousLeftPartners(s,iR)  := leftPartner(iR);
+                	variousRightPartners(s,iL) := rightPartner(iL);
+                endfor;
+            }
+        }
+    }
+    Section GUI_Section {
+        DeclarationSection Gui_Declarations {
+            ElementParameter aCase {
+                Range: AllCases;
+            }
+            Set ReindeerPositions {
+                SubsetOf: Integers;
+                Index: rd;
+                Definition: data { 1 .. 4 };
+            }
+            StringParameter LeftName {
+                IndexDomain: rd;
+            }
+            StringParameter RightName {
+                IndexDomain: (rd);
+            }
+            StringParameter LeadingReindeer {
+                IndexDomain: ldrs;
+                Definition: data { the : "Rudolph" };
+            }
+            Parameter leftPosX {
+                IndexDomain: (rd);
+                InitialData: data { 1 : 27.180,  2 : 16.134,  3 : 13.227,  4 : 25.000 };
+            }
+            Parameter leftPosY {
+                IndexDomain: (rd);
+                InitialData: data { 1 : 82.849,  2 : 72.820,  3 : 57.703,  4 : 33.866 };
+            }
+            Parameter rghtPosX {
+                IndexDomain: (rd);
+                InitialData: data { 1 : 31.105,  2 : 24.564,  3 : 21.657,  4 : 34.593 };
+            }
+            Parameter rightPosY {
+                IndexDomain: (rd);
+                InitialData: data { 1 : 81.105,  2 : 72.674,  3 : 62.064,  4 : 38.081 };
+            }
+            Set Leaders {
+                Index: ldrs;
+                Definition: data { the };
+            }
+            Parameter leaderPosX {
+                IndexDomain: (ldrs);
+                InitialData: data { the : 40.698 };
+            }
+            Parameter leaderPoxY {
+                IndexDomain: (ldrs);
+                InitialData: data { the : 84.738 };
+            }
+            Set copyRightHolders {
+                Index: crh;
+                Definition: data { Dixie };
+            }
+            StringParameter copyRightHoldersName {
+                IndexDomain: (crh);
+                InitialData: data { Dixie : "Art © Dixie Allan, webclipart.about.com" };
+            }
+            Parameter crhPosX {
+                IndexDomain: (crh);
+                InitialData: data { Dixie : 98 };
+            }
+            Parameter crhPoxY {
+                IndexDomain: (crh);
+                InitialData: data { Dixie : 5 };
+            }
+            Set Perspectives {
+                Index: p;
+                Parameter: viewedPerspective;
+                Definition: data { Left, Right };
+                Comment: {
+                    "The problem has two perspectives:
+                    - Left : a righty reindeer is assigned to one on the left  and the order of the reindeer is the order in the set Lefty.
+                    - Right: a lefty  reindeer is assigned to one on the right and the order of the reindeer is the order in the set Righty."
+                }
+            }
+            ElementParameter viewedSolution {
+                Range: solutionSet;
+                InitialData: '';
+            }
+            ElementParameter reindeerNameColor {
+                Range: AllColors;
+                InitialData: 'cyan';
+            }
+        }
+        Procedure openDemoPage {
+            Body: {
+                assignNames ;
+            }
+        }
+        Procedure AssignNames {
+            Body: {
+                if ( card( solutionSet ) ) then
+                	if not viewedSolution then
+                		viewedSolution := first( solutionSet );
+                	endif ;
+                	if viewedPerspective = 'right' then
+                		leftName(rd)  := variousLeftPartners(viewedSolution,element(Righty,ord(rd)));
+                		rightName(rd) := element(Righty,ord(rd));
+                	else
+                		leftName(rd)  := element(Lefty,ord(rd));
+                		rightName(rd) := variousRightPartners(viewedSolution,element(Lefty,ord(rd)));
+                	endif ;
+                else
+                	! no solutions yet:
+                	leftName(rd)  := element(lefty,ord(rd));
+                	rightName(rd) := element(Righty,ord(rd));
+                endif
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            viewedPerspective := first( Perspectives );
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            
+            if IsRunningAsViewer then
+            
+                DialogMessage("In AIMMS Viewer, the SOLVE statement is disabled. Therefore the output data is read from a case");
+                CaseFind("Solved Raindeer pairing",ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            else
+            
+                SolveRaindeerPairing ;
+                AssignNames ;
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

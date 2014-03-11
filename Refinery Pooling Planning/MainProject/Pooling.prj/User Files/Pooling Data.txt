@@ -1,0 +1,90 @@
+    Intermediates :=
+    { 'HS1-SR',  ! High Sulphur 1 - Short Residu
+      'HS1-CR',  ! High Sulphur 1 - Cracked Residu
+      'HS1-HGO', ! High Sulphur 1 - Heavy Gas Oil
+      'HS1-VGO', ! High Sulphur 1 - Visbroken Gas Oil
+      'HS2-SR',  ! High Sulphur 2 - Short Residu
+      'HS2-CR',  ! High Sulphur 2 - Cracked Residu
+      'HS2-HGO', ! High Sulphur 2 - Heavy Gas Oil
+      'HS2-VGO', ! High Sulphur 2 - Visbroken Gas Oil
+      'LS1-SR',  ! Low  Sulphur 1 - Short Residu
+      'LS1-CR',  ! Low  Sulphur 1 - Cracked Residu
+      'LS1-HGO', ! Low  Sulphur 1 - Heavy Gas Oil
+      'LS1-VGO', ! Low  Sulphur 1 - Visbroken Gas Oil
+      'LS2-SR',  ! Low  Sulphur 2 - Short Residu
+      'LS2-CR',  ! Low  Sulphur 2 - Cracked Residu
+      'LS2-HGO', ! Low  Sulphur 2 - Heavy Gas Oil
+      'LS2-VGO'  ! Low  Sulphur 2 - Visbroken Gas Oil
+     } ;
+
+    PoolTanks := data
+    { 'Tank1',
+      'Tank2'
+    } ;
+
+    FinalProducts :=
+    { 'LSFO', ! Low Sulphur Fuel Oil
+      'HSFO'  ! High Sulphur Fuel Oil
+    } ;
+
+    ProductProperties :=
+    { 'Sulphur',
+      'V50'
+    } ;
+  
+    XCoordinate_Intermediates := data 
+    { HS1-SR  : 5,
+      HS1-CR  : 5,
+      HS1-HGO : 5,
+      HS1-VGO : 5,
+      HS2-SR  : 5,
+      HS2-CR  : 5,
+      HS2-HGO : 5,
+      HS2-VGO : 5,
+      LS1-SR  : 5,
+      LS1-CR  : 5,
+      LS1-HGO : 5,
+      LS1-VGO : 5,
+      LS2-SR  : 5,
+      LS2-CR  : 5,
+      LS2-HGO : 5,
+      LS2-VGO : 5 } ;
+
+
+    YCoordinate_Intermediates := data 
+    { HS1-SR  :  3,
+      HS1-CR  :  4,
+      HS1-HGO :  5,
+      HS1-VGO :  6,
+      HS2-SR  :  7,
+      HS2-CR  :  8,
+      HS2-HGO :  9,
+      HS2-VGO : 10,
+      LS1-SR  : 11,
+      LS1-CR  : 12,
+      LS1-HGO : 13,
+      LS1-VGO : 14,
+      LS2-SR  : 15,
+      LS2-CR  : 16,
+      LS2-HGO : 17,
+      LS2-VGO : 18 } ;
+
+    XCoordinate_PoolTanks := data
+    { Tank1 : 16,
+      Tank2 : 16 } ;
+
+    YCoordinate_PoolTanks := data
+    { Tank1 : 8,
+      Tank2 : 13 } ;
+
+    XCoordinate_FinalProducts := data
+    { LSFO : 28,
+      HSFO : 28 } ;
+
+    YCoordinate_FinalProducts := data
+    { LSFO : 8,
+      HSFO : 13 } ;
+
+
+
+

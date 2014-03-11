@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>description.txt.bak</ExcludedFile>
+	<ExcludedFile>SmallDataSet.txt</ExcludedFile>
+</ExportSettings>

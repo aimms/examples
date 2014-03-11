@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="9AE6DA6D-175F-47DA-A7D4-02BF52CEBB2F">
+	<ModelFileName>SPprod.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

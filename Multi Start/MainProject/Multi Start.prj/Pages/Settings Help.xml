@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:40:07" NeedsCompiledModel="false">
+	<Location top="29" left="8" bottom="694" right="785" />
+	<PageEditSize Type="Inherited">
+		<Size Width="775" Height="664" />
+	</PageEditSize>
+	<ProjectUUID>61630490-7AD4-48A2-B4EA-BEE62479E224</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99" />
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Rectangle">
+		<Location top="192" left="102" bottom="516" right="708" />
+		<Shape>In-Shadow</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="204" left="120" bottom="510" right="690" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Algorithm.TXT"</FileName>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="618" left="300" bottom="648" right="462" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"OK"</Title>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="150" left="102" bottom="186" right="714" />
+		<StaticText>How setting paramters MaxInterations, SamplePoints and SelectedSamplePoints work can be shown in the following multi-start algorithm.</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="522" left="102" bottom="624" right="714" />
+		<StaticText>Setting "Show Multistart Progress" shows the algorithm solving progress; "Show Assigned Points" shows the sample points assigned to an existing cluster; "Show Solved Points" shows the actual solved sample points. 
+
+All the settings only take effect during the solve procedure.</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

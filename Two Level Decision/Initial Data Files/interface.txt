@@ -1,0 +1,11 @@
+TaxesSubsidies := data { Tax, Subsidy } ;
+
+TaxSubsidyColor := data { Tax : magenta,  Subsidy : cyan } ;
+
+TotalCostsColor := data { Company1 : red,  Company2 : yellow,  Company3 : blue,  Company4 : green } ;
+
+SensitivityGraphs := data { RemovedWasteGraph, TaxMinSubsidyGraph, TaxAndSubsidyGraph };
+
+GraphName := data { RemovedWasteGraph : "Removed Waste Analysis", TaxMinSubsidyGraph : "Tax Revenue minus Subsidy Expense Analysis", TaxAndSubsidyGraph : "Tax and Subsidy Analysis" };
+
+GraphtoShow := 'RemovedWasteGraph';

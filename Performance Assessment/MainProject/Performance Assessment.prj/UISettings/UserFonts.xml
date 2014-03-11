@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Title" FaceName="Arial" PointSize="140" Bold="true" UUID="07C61B61-D82B-415C-927A-5A7F95F300D4" InternalID="1" />
+	<UserFont Name="Demo Title" FaceName="Arial" PointSize="200" Bold="true" Italic="true" UUID="59D32CB5-31E4-4BBF-9F05-751402BA9523" InternalID="2" />
+	<UserFont Name="Button" FaceName="Arial" PointSize="100" Bold="true" Italic="true" UUID="D82EE281-1A8A-4C56-9F21-B6E86AC3B763" InternalID="3" />
+	<UserFont Name="Problem description" FaceName="Verdana" PointSize="100" Bold="true" UUID="A8D79722-0ADF-486C-9C34-F0C857E71775" InternalID="4" />
+</UserFonts>

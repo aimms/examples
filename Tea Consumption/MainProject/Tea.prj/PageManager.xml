@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="A6C508D8-2A84-43F8-BB9C-FC6859831EC3">
+		<Page Name="Tea Consumption Overview" PageGUID="9E901BA7-DE46-457A-8771-1F935606B818" />
+	</Page>
+</PageManager>

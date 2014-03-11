@@ -1,0 +1,11 @@
+The possibilities to select individual securities from within a particular investment category are enormous. If the underlying decision model at this level was the same as the strategic decision model, the corresponding covariance matrix would become very large. That is why an alternative modeling approach is proposed to deal with securities at the tactical level.
+
+At the tactical level, historical return values for each security will be used to express the overall portfolio risk. Four different model variants will be investigated
+
+1) A model that tries to minimize the sum of upside and downside risk (two-sided risk),
+
+2) A model that only tries to minimize the total downside risk,
+
+3) A model that tries to minimize two-sided, while requiring a minimal invested fraction. The resulting model will become a mixed-integer quadratic program. Depending on the available solvers, you can choose whether you want to solve the underlying problem with a global MIQP solver or a local MINLP solver. 
+
+4) A model that tries to minimize two-sided, while requiring a minimal invested fraction and a maximum on the non-linear cost associated with the investments. The resulting model will become a mixed-integer non-linear program. Depending on the available solvers, you can choose whether you want to solve the underlying problem with the global solver BARON, or the local solver AOA.

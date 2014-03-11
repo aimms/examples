@@ -1,0 +1,315 @@
+## ams_version=1.0
+
+Model Main_Media_Selection_Problem {
+    DeclarationSection General_Declaration {
+        Quantity Currency {
+            BaseUnit: $;
+            Conversions: k$ -> $ : # -> # * 1000;
+        }
+        Set TargetAudiences {
+            Index: t;
+            Definition: elementrange(1, 6, 1, "Type - ");
+        }
+        Set AdvertisingMedia {
+            Index: m;
+            Definition: {
+                data
+                    { 'Glossy magazine', 'TV late night'  , 'TV prime time'  , 'Billboard train', 'Billboard bus'  , 'National paper' ,
+                      'Financial paper', 'Regional paper' }
+            }
+        }
+        Parameter Incidence {
+            IndexDomain: (t,m);
+            InitialData: {
+                data
+                { ( 'Type - 1', 'Glossy magazine' ) : 1,  ( 'Type - 1', 'Billboard train' ) : 1,  ( 'Type - 1', 'Regional paper'  ) : 1,
+                  ( 'Type - 2', 'TV late night'   ) : 1,  ( 'Type - 2', 'TV prime time'   ) : 1,  ( 'Type - 2', 'Financial paper' ) : 1,
+                  ( 'Type - 3', 'TV late night'   ) : 1,  ( 'Type - 3', 'Billboard bus'   ) : 1,  ( 'Type - 4', 'Glossy magazine' ) : 1,
+                  ( 'Type - 4', 'National paper'  ) : 1,  ( 'Type - 5', 'Financial paper' ) : 1,  ( 'Type - 5', 'Regional paper'  ) : 1,
+                  ( 'Type - 6', 'TV prime time'   ) : 1,  ( 'Type - 6', 'Billboard train' ) : 1,  ( 'Type - 6', 'National paper'  ) : 1 }
+            }
+        }
+        Parameter CostOfMedia {
+            IndexDomain: (m);
+            Unit: $;
+            InitialData: {
+                data
+                { 'Glossy magazine' : 20000,  'TV late night'   : 50000,  'TV prime time'   : 60000,  'Billboard train' : 45000,
+                  'Billboard bus'   : 30000,  'National paper'  : 55000,  'Financial paper' : 60000,  'Regional paper'  : 52500 }
+            }
+        }
+    }
+    Section MIP_Programming {
+        Variable IsSelectedMIP {
+            IndexDomain: (m);
+            Range: binary;
+        }
+        Constraint AudiencesAreCoveredMIP {
+            IndexDomain: t;
+            Definition: sum[m,Incidence(t,m)*IsSelectedMIP(m)] >=1;
+        }
+        Variable TotalCostMIP {
+            Unit: $;
+            Definition: sum[m, CostOfMedia(m) * IsSelectedMIP(m)];
+        }
+        Set ConstraintsMIP {
+            SubsetOf: AllConstraints;
+            InitialData: data { AudiencesAreCoveredMIP };
+        }
+        Set VariablesMIP {
+            SubsetOf: AllVariables;
+            InitialData: data { IsSelectedMIP, TotalCostMIP };
+        }
+        MathematicalProgram MinimizeCostMIP {
+            Objective: TotalCostMIP;
+            Direction: minimize;
+            Constraints: ConstraintsMIP;
+            Variables: VariablesMIP;
+            Type: MIP;
+        }
+        Procedure SolveMIP {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	VariablesMIP   := data { IsSelectedMIP, TotalCostMIP };
+                	ConstraintsMIP := data { TotalCostMIP, AudiencesAreCoveredMIP };
+                
+                	Solve MinimizeCostMIP;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
+                    CaseFind("LP Solution",ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+    }
+    Section LP_Programming {
+        Variable IsSelectedLP {
+            IndexDomain: (m);
+            Range: nonnegative;
+        }
+        Constraint AudiencesAreCoveredLP {
+            IndexDomain: t;
+            Definition: sum[m,Incidence(t,m)*IsSelectedLP(m)] >=1;
+        }
+        Variable TotalCostLP {
+            Unit: $;
+            Definition: sum[m, CostOfMedia(m) * IsSelectedLP(m)];
+        }
+        Set ConstraintsLP {
+            SubsetOf: AllConstraints;
+            InitialData: data { AudiencesAreCoveredLP };
+        }
+        Set VariablesLP {
+            SubsetOf: AllVariables;
+            InitialData: data { IsSelectedLP, TotalCostLP };
+        }
+        MathematicalProgram MinimizeCostLP {
+            Objective: TotalCostLP;
+            Direction: minimize;
+            Constraints: ConstraintsLP;
+            Variables: VariablesLP;
+            Type: LP;
+        }
+        Procedure SolveLP {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	Solve MinimizeCostLP;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
+                    CaseFind("MIP Solution",ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+    }
+    Section Logical_Constraints {
+        Procedure UpdateConstraintsAndVariables {
+            Body: {
+                VariablesMIP   := data { IsSelectedMIP, TotalCostMIP };
+                ConstraintsMIP := data { TotalCostMIP, AudiencesAreCoveredMIP };
+                
+                if (LogicalConstraintsIsSelected('Must include TV commercials')) then
+                	ConstraintsMIP += 'MustIncludeTVCommercials';
+                endif;
+                
+                if (LogicalConstraintsIsSelected('If billboard then TV') or
+                    LogicalConstraintsIsSelected('Must include TV commercials')) then
+                	ConstraintsMIP += { 'IfBillboardTrainThenTV','IfBillboardBusThenTV'};
+                endif;
+                
+                if (LogicalConstraintsIsSelected('Billboard if and only if TV')) then
+                	ConstraintsMIP += { 'IfTVLateNightThenBillboard', 'IfTVPrimeTimeThenBillboard'};
+                endif;
+                
+                if (LogicalConstraintsIsSelected('If TV prime time, then no billboards')) then
+                	ConstraintsMIP += { 'IfTVPrimeTimeThenNOBillboards' };
+                endif;
+                
+                if (LogicalConstraintsIsSelected('If late night TV and magazine, then financial paper')) then
+                	ConstraintsMIP += { 'IfTVLateNightAndMagazineThenFinPaper' };
+                endif;
+                
+                if (LogicalConstraintsIsSelected('At least 3 audiences should be covered more than once')) then
+                	ConstraintsMIP += { 'AudiencesCoveredMoreThanOnce', 'ThreeAudiencesCovered' };
+                	VariablesMIP += { 'CoveredAudiencesMoreThanOnce' };
+                endif;
+                
+                if (LogicalConstraintsIsSelected('If one billboard, then TV late night and TV prime time')) then
+                	ConstraintsMIP += { 'IfBillboardThenTVLateNight', 'IfBillboardThenTVPrimeTime' };
+                endif;
+                
+                if (LogicalConstraintsIsSelected('At least 5 audiences should be covered') or
+                    LogicalConstraintsIsSelected('At least 5 audiences should be covered, if 5 then paper'))then
+                    	VariablesMIP   += 'CoveredAudiencesAtLeastOnce';
+                    	ConstraintsMIP -= 'AudiencesAreCoveredMIP';
+                   	ConstraintsMIP += { 'CoveredAudiencesAtLeastOnceIfCovered',
+                                            'AudiencesCoveredAtLeastOnce', 'FiveAudiencesCovered' };
+                endif;
+                
+                if (LogicalConstraintsIsSelected('At least 5 audiences should be covered, if 5 then paper')) then
+                	VariablesMIP += 'ExactlyFiveAudiencesCovered';
+                	ConstraintsMIP += { 'CoveringExactlyFive', 'IfFiveAudiencesThenPaper' };
+                endif;
+            }
+        }
+        Procedure SolveLogicalConstraints {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	UpdateConstraintsAndVariables;
+                	Solve MinimizeCostMIP;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
+                    CaseFind("Logical Condition Solution",ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+        Set LogicalConstraintsSet {
+            Index: l;
+            Definition: {
+                data
+                    { 'Must include TV commercials'                          , 'If billboard then TV'                                 ,
+                      'Billboard if and only if TV'                          , 'If TV prime time, then no billboards'                 ,
+                      'If late night TV and magazine, then financial paper'  , 'At least 3 audiences should be covered more than once',
+                      'If one billboard, then TV late night and TV prime time',
+                      'At least 5 audiences should be covered'		     , 'At least 5 audiences should be covered, if 5 then paper' }
+            }
+        }
+        Parameter LogicalConstraintsIsSelected {
+            IndexDomain: (l);
+            Range: binary;
+        }
+        Constraint MustIncludeTVCommercials {
+            Definition: IsSelectedMIP('TV late night') + IsSelectedMIP('TV prime time') >= 1;
+        }
+        Constraint IfBillboardTrainThenTV {
+            Definition: {
+                IsSelectedMIP('TV late night') + IsSelectedMIP('TV prime time') >= IsSelectedMIP('Billboard train');
+            }
+        }
+        Constraint IfBillboardBusThenTV {
+            Definition: {
+                IsSelectedMIP('TV late night') + IsSelectedMIP('TV prime time') >= IsSelectedMIP('Billboard bus');
+            }
+        }
+        Constraint IfTVLateNightThenBillboard {
+            Definition: IsSelectedMIP('Billboard train') + IsSelectedMIP('Billboard bus') >= IsSelectedMIP('TV late night');
+        }
+        Constraint IfTVPrimeTimeThenBillboard {
+            Definition: IsSelectedMIP('Billboard train') + IsSelectedMIP('Billboard bus') >= IsSelectedMIP('TV prime time');
+        }
+        Constraint IfTVPrimeTimeThenNOBillboards {
+            Definition: IsSelectedMIP('Billboard train') + IsSelectedMIP('Billboard bus') <= 2 * (1 - IsSelectedMIP('TV prime time'));
+        }
+        Constraint IFTVLateNightAndMagazineThenFinPaper {
+            Definition: IsSelectedMIP('Financial paper') >= IsSelectedMIP('TV late night') + IsSelectedMIP('Glossy magazine') - 1;
+        }
+        Variable CoveredAudiencesMoreThanOnce {
+            IndexDomain: (t);
+            Range: binary;
+        }
+        Constraint AudiencesCoveredMoreThanOnce {
+            IndexDomain: t;
+            Definition: 2 * CoveredAudiencesMoreThanOnce(t) <= sum[m, Incidence(t,m) * IsSelectedMIP(m)];
+        }
+        Constraint ThreeAudiencesCovered {
+            Definition: sum[t, CoveredAudiencesMoreThanOnce(t)] >= 3;
+        }
+        Constraint IfBillboardThenTVLateNight {
+            Definition: 0.5 * (IsSelectedMIP('Billboard train') + IsSelectedMIP('Billboard bus')) <= IsSelectedMIP ('TV late night');
+        }
+        Constraint IfBillboardThenTVPrimeTime {
+            Definition: 0.5 * (IsSelectedMIP('Billboard train') + IsSelectedMIP('Billboard bus')) <= IsSelectedMIP ('TV prime time');
+        }
+        Variable CoveredAudiencesAtLeastOnce {
+            IndexDomain: t;
+            Range: binary;
+        }
+        Constraint CoveredAudiencesAtLeastOnceIfCovered {
+            IndexDomain: t;
+            Definition: CoveredAudiencesAtLeastOnce(t) >= sum[ m, Incidence(t,m) * IsSelectedMIP(m) ] / Card(AdvertisingMedia);
+        }
+        Constraint AudiencesCoveredAtLeastOnce {
+            IndexDomain: t;
+            Definition: CoveredAudiencesAtLeastOnce(t) <= sum[m, Incidence(t,m) * IsSelectedMIP(m)];
+        }
+        Constraint FiveAudiencesCovered {
+            Definition: sum[t, CoveredAudiencesAtLeastOnce(t)] >= 5;
+        }
+        Variable ExactlyFiveAudiencesCovered {
+            Range: binary;
+        }
+        Constraint CoveringExactlyFive {
+            Definition: ExactlyFiveAudiencesCovered >= 6 - sum[ t, CoveredAudiencesAtLeastOnce(t) ];
+        }
+        Constraint IfFiveAudiencesThenPaper {
+            Definition: IsSelectedMIP('Financial Paper') + IsSelectedMIP('Regional paper') >= ExactlyFiveAudiencesCovered;
+        }
+    }
+    Section Graphical_User_Interface {
+        ElementParameter IncidenceColor {
+            IndexDomain: (t,m);
+            Range: AllColors;
+            Definition: {
+                if ((Incidence(t,m) * IsSelectedMIP(m))) then
+                    'red'
+                else
+                    'navy blue'
+                endif
+            }
+        }
+        ElementParameter CostOfMediaColor {
+            IndexDomain: (m);
+            Range: AllColors;
+            Definition: {
+                if IsSelectedMIP(m) then
+                    'red'
+                else
+                    'navy blue'
+                endif
+            }
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+                return 1;
+        }
+    }
+}

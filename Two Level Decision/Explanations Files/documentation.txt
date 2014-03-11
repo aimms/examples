@@ -1,0 +1,1 @@
+On this page an extensive documentation for this example can be consulted. It offers details about the problem background, the formulation of the model, the algoritmic approach together with an alternative solution strategy and the reporting of the optimal solution.

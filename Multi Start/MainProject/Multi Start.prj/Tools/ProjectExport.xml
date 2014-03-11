@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Multi Start Example</ExcludedFile>
+	<ExcludedFile>Algorithm.TXT.bak</ExcludedFile>
+	<ExcludedFile>Demo Page</ExcludedFile>
+	<ExcludedFile>Description - Copy.txt</ExcludedFile>
+	<ExcludedFile>Description.txt.bak</ExcludedFile>
+	<ExcludedFile>Multi Start Example.rar</ExcludedFile>
+	<ExcludedFile>Multi Start.dat</ExcludedFile>
+	<ExcludedFile>Multi Start.nch</ExcludedFile>
+</ExportSettings>

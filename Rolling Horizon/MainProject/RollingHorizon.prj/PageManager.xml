@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="9F36836E-5DD0-4513-AB0D-F44238416BBA">
+		<Page Name="Rolling Horizon Illustrated" PageGUID="C2E88746-5578-44A5-8F44-56EC8E69D663" />
+		<Page Name="Rolling Horizon vs Calendar" PageGUID="52F4D76F-B39E-4844-A728-07A5C1B7669C">
+			<Page Name="ResultsPerProductHorizon" PageGUID="F17F4EB0-8C4C-458A-87D2-FF9C78965518" />
+			<Page Name="ResultsPerProductCalendar" PageGUID="477AA41F-E006-46A6-84D0-A57B9FABD8D0" />
+		</Page>
+	</Page>
+</PageManager>
