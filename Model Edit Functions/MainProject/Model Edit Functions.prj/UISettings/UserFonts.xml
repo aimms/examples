@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Header" FaceName="Verdana" PointSize="160" Bold="true" UUID="E986E7D5-0872-47BB-BE73-C71A1B95A2C7" InternalID="1" />
+	<UserFont Name="Small header" FaceName="Verdana" PointSize="80" Bold="true" UUID="6A6AF6A4-5538-42A5-B86A-0A714794F632" InternalID="2" />
+</UserFonts>

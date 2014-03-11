@@ -1,0 +1,513 @@
+## ams_version=1.0
+
+Model Main_template {
+    Section CalendarSection {
+        Procedure SolveCalendarModel {
+            Body: {
+                NonvarParameter := 0 ;
+                
+                empty Production(w,p) ;
+                empty ComputationalTime ;
+                
+                PageRefreshAll ;
+                
+                ProductionProblem.CallbackNewIncumbent := 'NewIncumbentCallBack' ;
+                
+                Begin_Time := CurrentToString("%c%y-%m-%d %H:%M:%S:%t") ;
+                
+                solve ProductionProblem ;
+                
+                ComputationalTime := CurrentToMoment([tick], Begin_Time) ;
+            }
+        }
+        DeclarationSection CalendarDeclaration {
+            Calendar WeeklyCalendar {
+                Index: w;
+                Unit: 7 * day;
+                BeginDate: Begin_Date;
+                EndDate: End_Date;
+                TimeslotFormat: "Week %W - %c%y";
+            }
+            Quantity SI_Time_Duration {
+                BaseUnit: day;
+                Conversions: {
+                    second -> day : # -> # * 1.157407407e-5,
+                    tick   -> day : # -> # * 1.157407407e-7
+                }
+            }
+            StringParameter Begin_Date {
+                InitialData: "2005-01-03";
+            }
+            StringParameter End_Date {
+                InitialData: "2005-06-30";
+            }
+        }
+        DeclarationSection ModelDeclaration {
+            Set Products {
+                Index: p;
+            }
+            Parameter Demand {
+                IndexDomain: (w,p);
+                Text: "Demand of product p in week w";
+                Range: nonnegative;
+            }
+            Parameter InitialStock {
+                IndexDomain: (p);
+                Range: nonnegative;
+            }
+            Parameter MaximumProduction {
+                IndexDomain: (p);
+                Text: "Maximum weekly production per product";
+                Range: nonnegative;
+            }
+            Parameter MaximumTotalProduction {
+                Text: "Maximum weekly total production";
+                Range: nonnegative;
+            }
+            Variable Stock {
+                IndexDomain: (w,p);
+                Text: "Stock of product p at the end of week w";
+                Range: nonnegative;
+                NonvarStatus: NonvarParameter;
+                Definition: {
+                    InitialStock(p) $ (ord(w) = 1) +
+                    Stock(w-1,p)	+
+                    Production(w,p) -
+                    Demand(w,p)
+                }
+            }
+            Variable Production {
+                IndexDomain: (w,p);
+                Text: "Production of product p during week w";
+                Range: nonnegative;
+                NonvarStatus: NonvarParameter;
+            }
+            Variable ProductProduced {
+                IndexDomain: (w,p);
+                Range: binary;
+                NonvarStatus: NonvarParameter;
+            }
+            Constraint ProductProducedRelation {
+                IndexDomain: (w,p);
+                Definition: ProductProduced(w,p) * MaximumProduction(p) >= Production(w,p);
+            }
+            Constraint ProductProducedRelation2 {
+                IndexDomain: (w,p);
+                Definition: ProductProduced(w,p) <= Production(w,p);
+            }
+            Constraint MaxProduction {
+                IndexDomain: (w,p);
+                Definition: Production(w,p) <= MaximumProduction(p);
+            }
+            Constraint MaxTotalProductionConstraint {
+                IndexDomain: w;
+                Definition: sum( p, Production(w,p) ) <= MaximumTotalProduction;
+            }
+            Constraint Max2ProductsInAWeek {
+                IndexDomain: (w);
+                Definition: sum( p, ProductProduced(w,p) ) <= 2;
+            }
+            Parameter StockCost {
+                IndexDomain: (p);
+                Range: nonnegative;
+            }
+            Variable TotalCost {
+                NonvarStatus: NonvarParameter;
+                Definition: sum( (w,p), StockCost(p) * Stock(w,p) );
+            }
+            MathematicalProgram ProductionProblem {
+                Objective: TotalCost;
+                Direction: minimize;
+                Constraints: ModelConstraints;
+                Variables: ModelVariables;
+                Type: MIP;
+            }
+            Set ModelConstraints {
+                SubsetOf: AllConstraints;
+                Definition: {
+                    data
+                        { Stock                       , ProductProducedRelation     , ProductProducedRelation2    , MaxProduction               ,
+                          MaxTotalProductionConstraint, Max2ProductsInAWeek         , TotalCost                   }
+                }
+            }
+            Set ModelVariables {
+                SubsetOf: AllVariables;
+                Definition: data { Stock, Production, TotalCost, ProductProduced };
+            }
+        }
+    }
+    Section HorizonSection {
+        Procedure InitializeHorizon {
+            Body: {
+                NumberOfPeriodsInPlanningInterval := InitialNumberOfPeriodsInPlanningInterval ;
+                
+                FirstWeekInPlanningInterval   := First(WeeklyCalendar) ;
+                FirstPeriodInPlanningInterval := First(Periods) ;
+                
+                CreateWeekPeriodsTimeTable ;
+                
+                AggregateInput ;
+            }
+        }
+        Procedure RollHorizonOnce {
+            Body: {
+                if ( - 1 +
+                     ord(FirstPeriodInPlanningInterval) +
+                     NumberOfPeriodsInPlanningInterval +
+                     StepSize ) > NumberOfPeriods then
+                	NumberOfPeriodsInPlanningInterval -= - 1 +
+                					     ord(FirstPeriodInPlanningInterval) +
+                					     NumberOfPeriodsInPlanningInterval +
+                					     StepSize -
+                					     NumberOfPeriods
+                endif ;
+                
+                FirstWeekInPlanningInterval       += StepSize ;
+                FirstPeriodInPlanningInterval     += StepSize ;
+                
+                CreateWeekPeriodsTimeTable ;
+                
+                AggregateInput ;
+            }
+        }
+        Procedure CreateWeekPeriodsTimeTable {
+            Body: {
+                CreateTimeTable( TimeTable         : WeekPeriodsTimeTable(h),
+                                 CurrentTimeSlot   : FirstWeekInPlanningInterval,
+                                 CurrentPeriod     : FirstPeriodInPlanningInterval,
+                                 PeriodLength      : PeriodLength,
+                                 LengthDominates   : LengthDominates,
+                                 InactiveTimeSlots : InactiveWeeks,
+                                 DelimiterSlots    : NewPeriodsStarts ) ;
+            }
+        }
+        Procedure AggregateInput {
+            Body: {
+                Aggregate( Demand(w,p), Horizon_Demand(h,p), WeekPeriodsTimeTable(h), 'summation' ) ;
+                
+                Horizon_MaximumProduction(p,h)    := MaximumProduction(p) ;
+                Horizon_MaximumTotalProduction(h) := MaximumTotalProduction ;
+                Horizon_StockCost(p,h)            := StockCost(p) ;
+            }
+        }
+        Procedure RunRollingHorizon {
+            Body: {
+                empty Horizon_Production(h,p) ;
+                empty Horizon_ProductProduced(h,p) ;
+                empty Horizon_Stock(h,p) ;
+                empty Horizon_TotalCost ;
+                empty Horizon_ComputationalTime ;
+                
+                PageRefreshAll ;
+                
+                Begin_Time := CurrentToString("%c%y-%m-%d %H:%M:%S:%t") ;
+                
+                	InitializeHorizon ;
+                
+                	Solve Horizon_ProductionProblem ;
+                
+                	while NotFinished do
+                		PageRefreshAll ;
+                		RollHorizonOnce ;
+                		Solve Horizon_ProductionProblem ;
+                	endwhile ;
+                
+                Horizon_ComputationalTime := CurrentToMoment([tick], Begin_Time) ;
+                
+                ! If you want to check whether the horizon solution is feasible for the Calendar model,
+                ! you can run the following procedure.
+                
+                ! CheckHorizonSolution ;
+            }
+        }
+        Procedure CheckHorizonSolution {
+            Body: {
+                Disaggregate( Horizon_Stock(h,p), Stock(w,p), WeekPeriodsTimeTable(h), 'summation' ) ;
+                Disaggregate( Horizon_Production(h,p), Production(w,p), WeekPeriodsTimeTable(h), 'summation' ) ;
+                Disaggregate( Horizon_ProductProduced(h,p), ProductProduced(w,p), WeekPeriodsTimeTable(h), 'summation' ) ;
+                TotalCost := Horizon_TotalCost ;
+                
+                NonvarParameter := -1 ;
+                
+                solve ProductionProblem ;
+            }
+        }
+        DeclarationSection HorizonDeclaration {
+            Horizon Periods {
+                Index: h;
+                CurrentPeriod: FirstPeriodInPlanningInterval;
+                IntervalLength: NumberOfPeriodsInPlanningInterval;
+                Definition: ElementRange(1,NumberOfPeriods,prefix:"period-",fill:0);
+            }
+            ElementParameter FirstPeriodInPlanningInterval {
+                Range: Periods;
+            }
+            Parameter NumberOfPeriodsInPlanningInterval {
+                Range: {
+                    {1..NumberOfPeriods}
+                }
+            }
+            Parameter NumberOfPeriods {
+                Definition: Card(WeeklyCalendar);
+            }
+            ElementParameter FirstWeekInPlanningInterval {
+                Range: WeeklyCalendar;
+            }
+            Parameter PeriodLength {
+                IndexDomain: h;
+                Text: "Length of the periods";
+                Default: 1;
+            }
+            Parameter LengthDominates {
+                IndexDomain: h;
+                Definition: 0;
+                Comment: {
+                    "if NewPeriodsStarts conflicts with PeriodLength(h)
+                    then LengthDominates(h) determines the period"
+                }
+            }
+            Set InactiveWeeks {
+                SubsetOf: WeeklyCalendar;
+                Text: "Weeks that are not part of the Horizon";
+                Definition: {
+                    {}
+                }
+            }
+            Set NewPeriodsStarts {
+                SubsetOf: WeeklyCalendar;
+                Text: "For these weeks a new period starts";
+                Definition: {
+                    {}
+                }
+            }
+            Set WeekPeriodsTimeTable {
+                IndexDomain: h;
+                SubsetOf: WeeklyCalendar;
+                Text: "Mapping of weeks to periods";
+            }
+            Parameter StepSize {
+                Range: {
+                    {1..InitialNumberOfPeriodsInPlanningInterval}
+                }
+            }
+            Parameter NotFinished {
+                Definition: {
+                    - 1 +
+                    ord(FirstPeriodInPlanningInterval) +
+                    NumberOfPeriodsInPlanningInterval
+                    <
+                    NumberOfPeriods
+                }
+            }
+            Parameter NonvarParameter;
+        }
+        DeclarationSection HorizonModelDeclaration {
+            Parameter Horizon_Demand {
+                IndexDomain: (h,p);
+                Text: "Demand of product p in period h";
+                Range: nonnegative;
+            }
+            Parameter Horizon_MaximumProduction {
+                IndexDomain: (p,h);
+                Text: "Maximum period production per product p";
+            }
+            Parameter Horizon_MaximumTotalProduction {
+                IndexDomain: (h);
+                Text: "Maximum total production in a period";
+            }
+            Variable Horizon_Stock {
+                IndexDomain: (h,p);
+                Text: "Stock of product p at the end of period h";
+                Range: nonnegative;
+                Definition: {
+                    InitialStock(p) $ (ord(h) = 1) +
+                    Horizon_Stock(h-1,p)	+
+                    Horizon_Production(h,p) -
+                    Horizon_Demand(h,p)
+                }
+            }
+            Variable Horizon_Production {
+                IndexDomain: (h,p);
+                Text: "Production of product p during period h";
+                Range: [0, Horizon_MaximumProduction(p, h)];
+            }
+            Variable Horizon_ProductProduced {
+                IndexDomain: (h,p);
+                Range: binary;
+            }
+            Constraint Horizon_ProductProducedRelation {
+                IndexDomain: (h,p);
+                Definition: Horizon_ProductProduced(h,p) * Horizon_MaximumProduction(p,h) >= Horizon_Production(h,p);
+            }
+            Constraint Horizon_ProductProducedRelation2 {
+                IndexDomain: (h,p);
+                Definition: Horizon_ProductProduced(h,p) <= Horizon_Production(h,p);
+            }
+            Constraint Horizon_MaxProduction {
+                IndexDomain: (h,p);
+                Definition: Horizon_Production(h,p) <= Horizon_MaximumProduction(p,h);
+            }
+            Constraint Horizon_MaxTotalProductionConstraint {
+                IndexDomain: (h);
+                Definition: sum( p, Horizon_Production(h,p) ) <= Horizon_MaximumTotalProduction(h);
+            }
+            Constraint Horizon_Max2ProductsInAWeek {
+                IndexDomain: (h);
+                Definition: sum( p, Horizon_ProductProduced(h,p) ) <= 2;
+            }
+            Parameter Horizon_StockCost {
+                IndexDomain: (p,h);
+            }
+            Set TotalPeriods {
+                SubsetOf: Periods;
+                Index: th;
+                Definition: Periods;
+            }
+            Variable Horizon_TotalCost {
+                Definition: sum( (th,p), Horizon_StockCost(p,th) * Horizon_Stock(th,p) );
+            }
+            MathematicalProgram Horizon_ProductionProblem {
+                Objective: Horizon_TotalCost;
+                Direction: minimize;
+                Constraints: Horizon_ModelConstraints;
+                Variables: Horizon_ModelVariables;
+                Type: MIP;
+            }
+            Set Horizon_ModelConstraints {
+                SubsetOf: AllConstraints;
+                Definition: {
+                    data
+                        { Horizon_Stock                       , Horizon_ProductProducedRelation     , Horizon_ProductProducedRelation2    ,
+                          Horizon_MaxProduction               , Horizon_MaxTotalProductionConstraint, Horizon_Max2ProductsInAWeek         ,
+                          Horizon_TotalCost                   }
+                }
+            }
+            Set Horizon_ModelVariables {
+                SubsetOf: AllVariables;
+                Definition: data { Horizon_Stock, Horizon_Production, Horizon_ProductProduced, Horizon_TotalCost };
+            }
+        }
+    }
+    Section GuiSection {
+        DeclarationSection GuiDeclaration {
+            ElementParameter ThisProduct {
+                Range: Products;
+            }
+            Set NewIncumbentSet {
+                SubsetOf: AllVariables;
+                Definition: data { Production, TotalCost };
+            }
+            ElementParameter StartPeriod {
+                IndexDomain: (th);
+                Range: WeeklyCalendar;
+                Definition: Nth(w in WeekPeriodsTimeTable(th),1);
+            }
+            ElementParameter ColorPeriod {
+                IndexDomain: th;
+                Range: AllColors;
+                Definition: {
+                    if th in Periods.past then 'red'
+                    elseif th in Periods.planning then 'green'
+                    else 'blue'
+                    endif
+                }
+            }
+            Parameter InitialNumberOfPeriodsInPlanningInterval {
+                Range: {
+                    {1..NumberOfPeriods}
+                }
+                InitialData: 10;
+            }
+            StringParameter Begin_Time;
+            Parameter ComputationalTime {
+                Unit: second;
+            }
+            Parameter Horizon_ComputationalTime {
+                Unit: second;
+            }
+        }
+        Procedure NewIncumbentCallBack {
+            Body: {
+                RetrieveCurrentVariableValues( NewIncumbentSet ) ;
+                
+                PageRefreshAll ;
+            }
+        }
+        Procedure IllustrateRollingHorizon {
+            Body: {
+                ! The horizon needs to be initialized:
+                
+                	NumberOfPeriodsInPlanningInterval := InitialNumberOfPeriodsInPlanningInterval ;
+                
+                	FirstWeekInPlanningInterval   := First(WeeklyCalendar) ;
+                	FirstPeriodInPlanningInterval := First(Periods) ;
+                
+                	CreateWeekPeriodsTimeTable ;
+                
+                ! Normally at this point the first submodel is solved.
+                
+                	Delay(0.5) ;
+                
+                ! The horizon is rolled forward, untill the end of the horizon is reached.
+                
+                	while NotFinished do
+                		PageRefreshAll ;
+                		Delay(0.5) ;		! Normally at this point the next submodel is solved.
+                		RollHorizonOnce ;
+                	endwhile ;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            Products := data { white_bar_2oz,
+            		   white_bar_4oz,
+            		   milk_bar_2oz ,
+            		   milk_bar_4oz } ;
+            
+            Demand(w,'white_bar_2oz') := Normal(200,50) ;
+            Demand(w,'white_bar_4oz') := Normal(300,100) ;
+            Demand(w,'milk_bar_2oz')  := Normal(400,100) ;
+            Demand(w,'milk_bar_4oz')  := Normal(450,100) ;
+            
+            InitialStock(p) := data { white_bar_2oz : 3000,
+                		          white_bar_4oz : 2800,
+            		     	  milk_bar_2oz  : 4200,
+            		     	  milk_bar_4oz  : 4400 } ;
+            
+            MaximumProduction(p) := data { white_bar_2oz : 20000,
+            			       white_bar_4oz : 60000,
+            			       milk_bar_2oz  : 70000,
+            			       milk_bar_4oz  : 90000 } ;
+            
+            MaximumTotalProduction := 1200000 ;
+            
+            StockCost(p) := data { white_bar_2oz : 0.100,
+            		       white_bar_4oz : 0.200,
+            		       milk_bar_2oz  : 0.100,
+            		       milk_bar_4oz  : 0.200 } ;
+            
+            StepSize := 3 ;
+            NumberOfPeriodsInPlanningInterval := 10 ;
+            FirstWeekInPlanningInterval   := First(WeeklyCalendar) ;
+            FirstPeriodInPlanningInterval := First(Periods) ;
+            CreateWeekPeriodsTimeTable ;
+            
+            ThisProduct := First(Products) ;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            ! Solve the model with rolling horizon (short time)
+            RunRollingHorizon ;
+            
+            ! Solve the original model on calendar basis (long time)
+            SolveCalendarModel ;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

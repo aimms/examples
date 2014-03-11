@@ -1,0 +1,11 @@
+* The timestamps in this namechange file are stored in Coordinated universal time (UTC).
+"Copy_AssertionOne" "Default_Assertion" "2009-09-23 21:16:40"
+"AssertionOne" "Explicit_Assertion" "2009-09-23 21:26:04"
+"AssertionTwo" "Default_Assertion" "2009-09-23 21:27:32"
+"Assertion_Two" "Default_Assertion" "2009-09-23 22:33:10"
+"Assertion_One" "Explicit_Assertion" "2009-09-23 22:35:28"
+"Assertion11" "Explicit_Assertion" "2009-09-23 22:35:40"
+"S_Set1" "S_AssertionSet" "2009-09-23 22:43:13"
+"Copy_MainRegionProfit" "A_MainRegionProfit" "2009-09-24 21:39:31"
+"P_Domain" "P_DomainOne" "2009-09-25 16:39:14"
+"Copy_P_DomainOne" "P_DomainTwo" "2009-09-25 16:41:42"

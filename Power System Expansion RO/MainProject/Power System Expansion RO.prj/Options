@@ -1,0 +1,38 @@
+﻿* AIMMS
+adjustable_bound 500
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+constraint_listing_printed_when 0
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+listing_number_precision 8
+rounding_compatibility Aimms_3_7
+seed 1234567
+Slater_condition_check 0
+solver_listing 3
+solver_listing_messages 4
+solver_window_messages 4
+warning_excluded_uncertain_parameter_referenced_in_uncertainty_constraints off
+* AOA
+* CBC 2.7.5
+* CBC 2.8.0
+* CONOPT 3.14V
+* GUROBI 5.0
+* GUROBI 5.5
+* GUROBI 5.6
+* IPOPT 3.10.1
+* IPOPT 3.11
+* XA 15
+* MOSEK 6.0
+"MOSEK 6.0".Create_status_file 1
+* CPLEX 12.1
+"CPLEX 12.1".barrier_convergence_tolerance_for_QCP 1e-009
+* MOSEK 5.0
+"MOSEK 5.0".Create_status_file 1
+* NETSOL
+* Environment
+Project_Title "AIMMS 3 - Power System Expansion RO"
+Startup_Page "AIMMS Demo"

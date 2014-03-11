@@ -1,0 +1,42 @@
+﻿Converting Main project
+Converting RollingHorizon.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\Pages\Rolling Horizon Illustrated.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\Pages\ResultsPerProductHorizon.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\Pages\ResultsPerProductCalendar.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\Pages\Rolling Horizon vs Calendar.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\MainProject\RollingHorizon.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\Description.txt
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\log
+Copying file: RollingHorizon.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\RollingHorizon.dat
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Rolling Horizon\RollingHorizon.aimms
+Successfully converted the whole project.

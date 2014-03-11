@@ -1,0 +1,50 @@
+## ams_version=1.0
+
+Model Main_template {
+    Module Interrupt_Module {
+        SourceFile: "InterruptModule.ams";
+    }
+    Parameter Counter;
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            im::InstallInterruptEvent;
+            PageRefreshAll;
+            
+            Counter := 0;
+            while ( Counter <= 30 ) do
+               Delay(1);
+               Counter += 1;
+               PageRefreshAll;
+            endwhile;
+            
+            DialogMessage("We're getting here");
+            
+            im::UninstallInterruptEvent;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            /*
+            The call to im::InstallInterruptEvent starts a separate thread that checks the signaling of events.
+            A call to im::UninstallInterruptEvent ends this thread.
+            Some operating systems give errors if a thread still runs at program exit, so here we make sure
+            that this thread is stopped
+            */
+            im::UninstallInterruptEvent;
+            
+            return 1;
+        }
+    }
+    Procedure OpenExplorer {
+        Body: {
+            if DialogAsk("This will open the Windows Explorer where the example project is extracted. Do you want to continue?", Button1:"Yes", Button2:"No") = 1 then
+            
+                    DirectoryGetCurrent(CurrentDirectory);
+                    OpenDocument(CurrentDirectory);
+            
+            endif;
+        }
+        StringParameter CurrentDirectory;
+    }
+}

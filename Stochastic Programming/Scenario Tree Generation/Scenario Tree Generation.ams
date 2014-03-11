@@ -1,0 +1,795 @@
+## ams_version=1.0
+
+LibraryModule Scenario_Tree_Generation_Library {
+    Prefix: ScenGen;
+    Interface: {
+        data { InitializeStochasticDataCallbackFunction, InitializeChildBranchesCallbackFunction,
+               InitializeNewScenarioCallbackFunction, InitializeStochasticScenarioDataCallbackFunction,
+               CompareScenariosCallbackFunction, DetermineScenarioGroupsCallbackFunction,
+               AssignStochasticDataForScenarioGroupCallbackFunction, CreateScenarioTree,
+               CreateScenarioData, BuildScenarioTreeViewFromMapping, CreateNewScenarioTreeView,
+               DeleteExistingScenarioTreeView, EmptyScenarioTreeDataView, AllScenarioTrees }
+    }
+    Section Callback_Function_References {
+        DeclarationSection Declaration_Scenario_Generation_by_Tree {
+            ElementParameter InitializeStochasticDataCallbackFunction {
+                Range: AllIdentifiers;
+                Default: 'ScenGen::InitializeStochasticDataCallback';
+            }
+            ElementParameter InitializeChildBranchesCallbackFunction {
+                Range: AllIdentifiers;
+                Default: 'ScenGen::InitializeChildBranchesCallback';
+            }
+            ElementParameter InitializeNewScenarioCallbackFunction {
+                Range: AllIdentifiers;
+                Default: 'ScenGen::InitializeNewScenarioCallback';
+            }
+        }
+        DeclarationSection Declaration_Scenario_Generation_by_Data {
+            ElementParameter InitializeStochasticScenarioDataCallbackFunction {
+                Range: AllIdentifiers;
+                Default: 'ScenGen::InitializeStochasticScenarioDataCallback';
+            }
+            ElementParameter CompareScenariosCallbackFunction {
+                Range: AllIdentifiers;
+                Default: 'ScenGen::CompareScenariosCallback';
+            }
+            ElementParameter DetermineScenarioGroupsCallbackFunction {
+                Range: AllIdentifiers;
+                Default: 'ScenGen::DetermineScenarioGroupsCallback';
+            }
+            ElementParameter AssignStochasticDataForScenarioGroupCallbackFunction {
+                Range: AllIdentifiers;
+                Default: 'ScenGen::AssignStochasticDataForScenarioGroupCallback';
+            }
+        }
+    }
+    Section Public_Section {
+        DeclarationSection Public_Declarations {
+            Set AllScenarios {
+                SubsetOf: AllStochasticScenarios;
+                Index: s, s2;
+                OrderBy: user;
+                Comment: "AllStochasticScenarios";
+            }
+            Set AllStages {
+                SubsetOf: Integers;
+                Index: st, st2;
+            }
+            ElementParameter ScenarioGenerationTreeMapping {
+                IndexDomain: (s,::st);
+                Range: AllScenarios;
+            }
+            Parameter ScenarioGenerationProbability {
+                IndexDomain: (s);
+                Default: 0;
+            }
+        }
+    }
+    Section Scenario_Generation_by_Tree {
+        Section Scenarion_Tree_Creation_Procedures_by_Tree {
+            Procedure CreateScenarioTree {
+                Arguments: (Stages,Scenarios,ScenarioProbability,ScenarioTreeMapping);
+                Body: {
+                    empty AllScenarios;
+                    cleandependents AllScenarios;
+                    
+                    AllStages := Stages;
+                    
+                    ScenarioCount := 1;
+                    
+                    SetElementAdd( AllScenarios, RootScenario, "root" );
+                    FirstStage := first(AllStages);
+                    ScenarioGenerationTreeMapping(RootScenario,FirstStage) := RootScenario;
+                    ScenarioGenerationProbability(s) := 1;
+                    PreviousStages := first(AllStages);
+                    ChildBranchAdded := 0;
+                    
+                    Apply( InitializeStochasticDataCallbackFunction, FirstStage, RootScenario, 0, "root" );
+                    
+                    for ( st | Ord(st) > 1 ) do
+                        CurrentScenarios := AllScenarios;
+                        Scenario := first(CurrentScenarios);
+                        while ( Scenario ) do
+                            ! body of callback to be completed by user
+                            Apply( InitializeChildBranchesCallbackFunction, st, Scenario, ChildBranches, ChildBranchNames );
+                            FirstChildBranch := first(ChildBranches);
+                            break when not FirstChildBranch;
+                            empty SumChildProbabilities, ScenarioProbabilityToBeAdapted;
+                            ParentScenarioName := FormatString( "%e", Scenario );
+                            for ( cb in ChildBranches ) do
+                                if ( card(CurrentScenarios) = 1 ) then
+                                    ScenarioName := FormatString( "[%s", ChildBranchNames(cb) );
+                                else
+                                    ScenarioName := FormatString( "%s,%s", ParentScenarioName, ChildBranchNames(cb) );
+                                endif;
+                                if ( Ord(st) = Card(AllStages) ) then
+                                    ScenarioName += "]";
+                                endif;
+                                if ( cb = FirstChildBranch ) then
+                                    NewScenario              := Scenario;
+                                    FirstScenarioProbability := ScenarioGenerationProbability(Scenario);
+                                    ChildBranchAdded := 1;
+                                    SetElementRename( AllScenarios, NewScenario, ScenarioName );
+                                else
+                                    SetElementAdd( AllScenarios, NewScenario, ScenarioName );
+                                    for ( st2 | st2 < st ) do
+                        		    		  Apply( InitializeNewScenarioCallbackFunction, st2, NewScenario, Scenario );
+                    					 endfor;
+                                endif;
+                                ScenarioOrder(NewScenario) := ScenarioCount;
+                                ScenarioCount += 1;
+                                ScenarioGenerationTreeMapping(NewScenario,st) := NewScenario;
+                                ScenarioGenerationTreeMapping(NewScenario,pt) := ScenarioGenerationTreeMapping(Scenario,pt);
+                                ! body of callback to be completed by user
+                                ScenarioGenerationProbability(NewScenario) := Apply( InitializeStochasticDataCallbackFunction, st, NewScenario, cb, ChildBranchNames(cb) );
+                                ScenarioProbabilityToBeAdapted(NewScenario) := 1;
+                                SumChildProbabilities += ScenarioGenerationProbability(NewScenario);
+                            endfor;
+                            ScenarioGenerationProbability( s | ScenarioProbabilityToBeAdapted(s) ) *= ( FirstScenarioProbability /$ SumChildProbabilities );
+                            Scenario += 1;
+                        endwhile;
+                        if ( card(AllScenarios) > 1 ) then
+                            AllScenarios := Sort( s, ScenarioOrder(s) );
+                        endif;
+                        PreviousStages += st;
+                    endfor;
+                    
+                    if ( not ChildBranchAdded ) then
+                        AllStochasticScenarios -= first(AllScenarios);
+                    endif;
+                    
+                    Scenarios := AllScenarios;
+                    ScenarioProbability(sosc) := ScenarioGenerationProbability(sosc);
+                    ScenarioTreeMapping(sosc,sost) := ScenarioGenerationTreeMapping(sosc,sost);
+                }
+                Set Stages {
+                    SubsetOf: Integers;
+                    Index: sost;
+                    Property: Input;
+                }
+                Set Scenarios {
+                    SubsetOf: AllStochasticScenarios;
+                    Index: sosc;
+                    Property: Output;
+                    OrderBy: user;
+                }
+                Parameter ScenarioProbability {
+                    IndexDomain: sosc;
+                    Property: Output;
+                }
+                ElementParameter ScenarioTreeMapping {
+                    IndexDomain: (sosc,sost);
+                    Range: Scenarios;
+                    Property: Output;
+                }
+                Set ChildBranches {
+                    SubsetOf: Integers;
+                    Index: cb;
+                }
+                StringParameter ChildBranchNames {
+                    IndexDomain: (cb);
+                }
+                ElementParameter FirstChildBranch {
+                    Range: Integers;
+                }
+                ElementParameter FirstStage {
+                    Range: AllStages;
+                }
+                Parameter ScenarioOrder {
+                    IndexDomain: (s);
+                }
+                Parameter ScenarioCount;
+                ElementParameter RootScenario {
+                    Range: AllScenarios;
+                }
+                Set PreviousStages {
+                    SubsetOf: AllStages;
+                    Index: pt;
+                }
+                Set CurrentScenarios {
+                    SubsetOf: AllScenarios;
+                    OrderBy: user;
+                }
+                ElementParameter Scenario {
+                    Range: CurrentScenarios;
+                }
+                StringParameter ScenarioName;
+                ElementParameter NewScenario {
+                    Range: AllScenarios;
+                }
+                StringParameter ParentScenarioName;
+                Parameter FirstScenarioProbability;
+                Parameter SumChildProbabilities;
+                Parameter ScenarioProbabilityToBeAdapted {
+                    IndexDomain: (s);
+                }
+                Parameter ChildBranchAdded {
+                    Range: binary;
+                }
+            }
+        }
+        Section Callback_Procedures_by_Tree {
+            Procedure InitializeNewScenarioCallback {
+                Arguments: (CurrentStage,Scenario,RepresentativeScenario);
+                ElementParameter CurrentStage {
+                    Range: AllStages;
+                    Property: Input;
+                }
+                ElementParameter Scenario {
+                    Range: AllScenarios;
+                    Property: Input;
+                }
+                ElementParameter RepresentativeScenario {
+                    Range: AllScenarios;
+                    Property: Input;
+                }
+            }
+            Procedure InitializeStochasticDataCallback {
+                Arguments: (CurrentStage,Scenario,ChildBranch,ChildBranchName);
+                Body: {
+                    ! Initialize stochastic data for all periods corresponding to the current stage (and scenario)
+                    
+                    return /*relative weight*/ 1;
+                }
+                ElementParameter CurrentStage {
+                    Range: AllStages;
+                    Property: Input;
+                }
+                ElementParameter Scenario {
+                    Range: AllScenarios;
+                    Property: Input;
+                }
+                ElementParameter ChildBranch {
+                    Range: Integers;
+                    Property: Input;
+                }
+                StringParameter ChildBranchName {
+                    Property: Input;
+                }
+            }
+            Procedure InitializeChildBranchesCallback {
+                Arguments: (CurrentStage,Scenario,ChildBranches,ChildBranchNames);
+                Set ChildBranches {
+                    SubsetOf: Integers;
+                    Index: cb;
+                    Property: Output;
+                }
+                ElementParameter Scenario {
+                    Range: AllScenarios;
+                    Property: Input;
+                }
+                ElementParameter CurrentStage {
+                    Range: AllStages;
+                    Property: Input;
+                }
+                StringParameter ChildBranchNames {
+                    IndexDomain: cb;
+                    Property: Output;
+                }
+            }
+        }
+    }
+    Section Scenario_Generation_by_Data {
+        Section Scenarion_Tree_Creation_Procedures_by_Data {
+            Procedure CreateScenarioData {
+                Arguments: (Stages,Scenarios,ScenarioProbability,ScenarioTreeMapping);
+                Body: {
+                    empty AllScenarios;
+                    cleandependents AllScenarios;
+                    
+                    AllStages := Stages;
+                    
+                    while ( 1 ) do
+                        SetElementAdd( AllScenarios, NewScenario, FormatString("Scen-%n",card(AllScenarios)+1) );
+                        GeneratedScenario := NewScenario;
+                    
+                        ScenarioWeight := Apply( InitializeStochasticScenarioDataCallbackFunction, NewScenario, AllScenarios );
+                        break when not ScenarioWeight;
+                    
+                        if ( NewScenario <> GeneratedScenario ) then
+                            AllScenarios -= GeneratedScenario;
+                        endif;
+                    
+                        ScenarioGenerationProbability(NewScenario) := ScenarioWeight;
+                    endwhile;
+                    
+                    AllStochasticScenarios -= NewScenario;
+                    
+                    block ! Normalize scenario probabilities
+                        SumOfScenarioProbabilities := sum( s, ScenarioGenerationProbability(s) );
+                    
+                        if ( SumOfScenarioProbabilities > 0 ) then
+                            ScenarioGenerationProbability(s) /= SumOfScenarioProbabilities;
+                        endif;
+                    endblock;
+                    
+                    GenerateScenarioTree;
+                    
+                    Scenarios := AllScenarios;
+                    ScenarioProbability(sosc) := ScenarioGenerationProbability(sosc);
+                    ScenarioTreeMapping(sosc,sost) := ScenarioGenerationTreeMapping(sosc,sost);
+                }
+                Set Stages {
+                    SubsetOf: Integers;
+                    Index: sost;
+                    Property: Input;
+                }
+                Set Scenarios {
+                    SubsetOf: AllStochasticScenarios;
+                    Index: sosc;
+                    Property: Output;
+                    OrderBy: user;
+                }
+                Parameter ScenarioProbability {
+                    IndexDomain: sosc;
+                    Property: Output;
+                }
+                ElementParameter ScenarioTreeMapping {
+                    IndexDomain: (sosc,sost);
+                    Range: Scenarios;
+                    Property: Output;
+                }
+                ElementParameter NewScenario {
+                    Range: AllScenarios;
+                }
+                ElementParameter GeneratedScenario {
+                    Range: AllScenarios;
+                }
+                Parameter ScenarioWeight;
+                Parameter SumOfScenarioProbabilities;
+            }
+            Procedure GenerateScenarioTree {
+                Body: {
+                    ScenarioOrder(s) := 1;
+                    
+                    for ( st ) do
+                        Scenario := First(AllScenarios);
+                    
+                        block !Subdivide all branches in stage st into child branches
+                        while ( Scenario ) do
+                            CurrentScenarioOrder := ScenarioOrder(Scenario);
+                            NextScenario := First( s | ScenarioOrder(s) > CurrentScenarioOrder );
+                            CurrentScenarioGroup := { s | ScenarioOrder(s) = CurrentScenarioOrder };
+                            ! Callback to fill ScenarioOrder for all elements in CurrentScenarioGroup.
+                            Apply( DetermineScenarioGroupsCallbackFunction, st, CurrentScenarioGroup, ScenarioOrder );
+                            ScenarioOrder( s in CurrentScenarioGroup ) += CurrentScenarioOrder - 1;
+                            Scenario := NextScenario;
+                        endwhile;
+                        endblock;
+                    
+                        ! Resort to group all scenarios that belong to the same group
+                        AllScenarios := Sort( s, ScenarioOrder(s) );
+                        Scenario := First(AllScenarios);
+                        CurrentScenarioGroupCount := 0;
+                        NewScenarioOrder(s) := ScenarioOrder(s);
+                    
+                        block !Assign identical stochastic data to all scenarios in the same group in stage st
+                        while ( Scenario ) do
+                            CurrentScenarioOrder := ScenarioOrder(Scenario);
+                            NextScenario := First( s | ScenarioOrder(s) > CurrentScenarioOrder );
+                            CurrentScenarioGroup := { s | ScenarioOrder(s) = CurrentScenarioOrder };
+                            Apply( AssignStochasticDataForScenarioGroupCallbackFunction, st, CurrentScenarioGroup );
+                            NewScenarioOrder( s in CurrentScenarioGroup ) += CurrentScenarioGroupCount - CurrentScenarioOrder + 1;
+                            CurrentScenarioGroupCount += card( CurrentScenarioGroup );
+                            Scenario := NextScenario;
+                        endwhile;
+                        endblock;
+                    
+                        ScenarioOrder(s) := NewScenarioOrder(s);
+                    endfor;
+                    
+                    RemoveIdenticalScenarios;
+                }
+                ElementParameter NextScenario {
+                    Range: AllScenarios;
+                }
+                Parameter ScenarioCount;
+                Parameter ScenarioOrder {
+                    IndexDomain: (s);
+                }
+                ElementParameter Scenario {
+                    Range: AllScenarios;
+                }
+                ElementParameter FirstDifferentStage {
+                    Range: AllStages;
+                }
+                Parameter NewScenarioOrder {
+                    IndexDomain: (s);
+                }
+                Parameter CurrentScenarioOrder;
+                Set CurrentScenarioGroup {
+                    SubsetOf: AllScenarios;
+                }
+                Parameter CurrentScenarioGroupCount;
+            }
+            Procedure RemoveIdenticalScenarios {
+                Arguments: ReorderScenarios;
+                Body: {
+                    for (s) do
+                        if ( Apply( CompareScenariosCallbackFunction, s, s+1, AllStages, FirstDifferentStage ) = 0 ) then
+                            ScenarioGenerationProbability(s+1) += ScenarioGenerationProbability(s);
+                            ScenarioGenerationProbability(s) := 0;
+                        endif
+                    endfor;
+                    
+                    AllScenarios -= { s | ScenarioGenerationProbability(s) = 0 };
+                    
+                    if ( ReorderScenarios ) then
+                        for (s) do
+                            SetElementRename( AllScenarios, s, FormatString("Scenario-%n",ord(s)) );
+                        endfor;
+                    endif;
+                    
+                    ScenarioGenerationTreeMapping(s,st) := s;
+                    
+                    for (s | ord(s) > 1) do
+                        Apply( CompareScenariosCallbackFunction, s-1, s, AllStages, FirstDifferentStage );
+                        ScenarioGenerationTreeMapping((s,st) | st<FirstDifferentStage) := ScenarioGenerationTreeMapping(s-1,st);
+                    endfor;
+                }
+                ElementParameter FirstDifferentStage {
+                    Range: AllStages;
+                }
+                Parameter ReorderScenarios {
+                    Range: binary;
+                    Default: 0;
+                    Property: Optional;
+                }
+            }
+        }
+        Section Callback_Procedures_by_Data {
+            Procedure InitializeStochasticScenarioDataCallback {
+                Arguments: (Scenario,Scenarios);
+                Body: {
+                    return /*last scenario  */ 0;
+                }
+                Comment: {
+                    "Initialize stochastic data for all periods corresponding to the current stage
+                    (and scenario). The stochastic data for the first stage should be equal for all
+                    scenarios."
+                }
+                ElementParameter Scenario {
+                    Range: AllScenarios;
+                    Property: InOut;
+                }
+                Set Scenarios {
+                    SubsetOf: AllStochasticScenarios;
+                    Index: cs;
+                    Property: Input;
+                }
+            }
+            Procedure DetermineScenarioGroupsCallback {
+                Arguments: (CurrentStage,ScenarioGroup,ScenarioGroupOrder);
+                Comment: {
+                    "This function should subdivide all scenarios into the set CurrentScenarioGroup into subgroups.
+                    To do so the parameter CurrentScenarioGroupOrder should be initialized for every scenario in
+                    this group with an integer number between 1 and the number of subgroups."
+                }
+                Parameter ScenarioOrder;
+                Parameter ScenarioAssignedToGroup {
+                    IndexDomain: (sg);
+                }
+                ElementParameter CurrentStage {
+                    Range: AllStages;
+                    Property: Input;
+                }
+                ElementParameter Scenario {
+                    Range: AllScenarios;
+                }
+                Set ScenarioGroup {
+                    SubsetOf: AllScenarios;
+                    Index: sg;
+                    Property: Input;
+                }
+                Parameter ScenarioGroupOrder {
+                    IndexDomain: (sg);
+                    Range: {
+                        {1..ScenarioGroupSize}
+                    }
+                    Property: Output;
+                }
+                Parameter ScenarioGroupSize;
+            }
+            Procedure AssignStochasticDataForScenarioGroupCallback {
+                Arguments: (CurrentStage,ScenarioGroup);
+                ElementParameter CurrentStage {
+                    Range: AllStages;
+                    Property: Input;
+                }
+                Set ScenarioGroup {
+                    SubsetOf: AllScenarios;
+                    Index: sg;
+                    Property: Input;
+                }
+                Parameter StochasticDateScenarioGroup;
+            }
+            Procedure CompareScenariosCallback {
+                Arguments: (Scenario1,Scenario2,Stages,FirstDifferentStage);
+                Body: {
+                    return 0;
+                }
+                Comment: {
+                    "This function should return 0 if the stochastic data for scenario1 and scenario2
+                    is identical. Otherwise it should return nonzero and the first stage at which
+                    both scenarios differ"
+                }
+                ElementParameter Scenario1 {
+                    Range: AllScenarios;
+                    Property: Input;
+                }
+                ElementParameter Scenario2 {
+                    Range: AllScenarios;
+                    Property: Input;
+                }
+                Set Stages {
+                    SubsetOf: Integers;
+                    Index: cs;
+                    Property: Input;
+                }
+                ElementParameter FirstDifferentStage {
+                    Range: Integers;
+                    Property: Output;
+                }
+            }
+        }
+    }
+    Section Descriptive_Sampling {
+        Set Distributions {
+            Index: d;
+            Parameter: SampledDistribution;
+            Definition: {
+                data { Binomial, NegativeBinomial, Poisson, Geometric, HyperGeometric, Uniform, Trinagular,
+                       Beta, LogNormal, Exponential, Gamma, Weibull, 	Pareto, Normal, Logistic, ExtremeValue }
+            }
+        }
+        Parameter Prob;
+        Parameter Trials;
+        Parameter Successes;
+        Parameter Rate;
+        Parameter PopulationSize;
+        Parameter LowerBound;
+        Parameter UpperBound;
+        Parameter Shape;
+        Parameter Scale;
+        Parameter Location;
+        Parameter MeanValue;
+        Parameter StandardDeviation;
+        Function DescriptiveSampledValue {
+            Arguments: (CummulativeProbability);
+            Parameter CummulativeProbability {
+                Property: Input;
+            }
+        }
+        Section Descriptive_Sampling_Callback_Procedures;
+    }
+    Section Scenario_Tree_Visualization {
+        Set AllScenarioTrees {
+            Index: ast;
+            Parameter: CurrentScenarioTree;
+        }
+        Set AllScenarioTreeNodes {
+            Index: astn, astn_from, astn_to;
+        }
+        Set CurrentScenarioTreeNodes {
+            SubsetOf: AllScenarioTreeNodes;
+            Index: cstn, cstn_from, cstn_to;
+            Definition: {
+                { astn | ScenarioTreeNodeInTree(CurrentScenarioTree,astn) }
+            }
+        }
+        Parameter ScenarioTreeNodeInTree {
+            IndexDomain: (ast,astn);
+        }
+        Set ScenarioTreeNodes {
+            SubsetOf: AllScenarioTreeNodes;
+            Index: stn, stn_from, stn_to;
+            Parameter: SelectedNode;
+        }
+        Parameter ScenarioTreeXCoordinate {
+            IndexDomain: (ast,astn);
+        }
+        Parameter ScenarioTreeYCoordinate {
+            IndexDomain: (ast,astn);
+        }
+        Parameter ScenarioTreeArcIndicator {
+            IndexDomain: (ast,astn_from,astn_to);
+        }
+        StringParameter ScenarioTreeNodeText {
+            IndexDomain: (ast,astn);
+        }
+        Parameter ScenarioTreeArcProbability {
+            IndexDomain: (ast,astn_from,astn_to)| ScenarioTreeArcIndicator(ast,astn_from,astn_to);
+        }
+        StringParameter ScenarioTreeArcText {
+            IndexDomain: (ast,astn_from,astn_to)| ScenarioTreeArcIndicator(ast,astn_from,astn_to);
+        }
+        ElementParameter ScenarioTreeNodeMapping {
+            IndexDomain: (s,st);
+            Range: ScenarioTreeNodes;
+        }
+        Parameter ScenarioTreeLeft {
+            IndexDomain: (ast);
+        }
+        Parameter ScenarioTreeRight {
+            IndexDomain: (ast);
+        }
+        Parameter ScenarioTreeTop {
+            IndexDomain: (ast);
+        }
+        Parameter ScenarioTreeBottom {
+            IndexDomain: (ast);
+        }
+        Parameter ScenarioTreeVisibleAreaLeft {
+            IndexDomain: (ast);
+        }
+        Parameter ScenarioTreeVisibleAreaRight {
+            IndexDomain: (ast);
+        }
+        Parameter ScenarioTreeVisibleAreaTop {
+            IndexDomain: (ast);
+        }
+        Parameter ScenarioTreeVisibleAreaBottom {
+            IndexDomain: (ast);
+        }
+        Procedure BuildScenarioTreeViewFromMapping {
+            Arguments: (ScenarioTreeName,Stages,Scenarios,Scenarioprobability,ScenarioTreeMapping);
+            Body: {
+                empty ScenarioTreeNodeMapping;
+                
+                CreateNewScenarioTreeView(ScenarioTreeName);
+                EmptyScenarioTreeDataView(CurrentScenarioTree);
+                
+                ScenarioTreeLeft(CurrentScenarioTree) := 0;
+                ScenarioTreeTop(CurrentScenarioTree) := -1;
+                
+                !Create scenario tree nodes
+                for (sosc,sost) do
+                    if ( ScenarioTreeMapping(sosc,sost) <> ScenarioTreeMapping(sosc-1,sost) ) then
+                    	SetElementAdd( ScenarioTreeNodes, ScenarioTreeNode, FormatString("(%e,%e)",sosc,sost) );
+                    	ScenarioTreeNodeMapping(sosc,sost) := ScenarioTreeNode;
+                    	ScenarioTreeNodeInTree(CurrentScenarioTree,ScenarioTreeNode) := 1;
+                    	ScenarioTreeXCoordinate(CurrentScenarioTree,ScenarioTreeNode) := Ord(sost);
+                    	if ( sost =last(Stages) ) then
+                    	    ScenarioTreeYCoordinate(CurrentScenarioTree,ScenarioTreeNode) := Ord(sosc);
+                    	endif;
+                    endif;
+                endfor;
+                ScenarioTreeBottom(CurrentScenarioTree) := max[ astn, ScenarioTreeYCoordinate(CurrentScenarioTree,astn) ] + 1;
+                
+                !Create scenario tree arcs
+                for ( (sosc,sost) | ScenarioTreeNodeMapping(sosc,sost) ) do
+                    Scenario := first( sosc2 | ScenarioTreeNodeMapping(sosc2,sost+1) and ( Ord(sosc2,AllScenarios) >= Ord(sosc,AllScenarios) ) );
+                    while ( Scenario ) do
+                    	ScenarioTreeArcIndicator( CurrentScenarioTree, ScenarioTreeNodeMapping(sosc,sost), ScenarioTreeNodeMapping(Scenario,sost+1) ) := 1;
+                    	Scenario := first( sosc2 | ScenarioTreeNodeMapping(sosc2,sost+1) and ( Ord(sosc2,AllScenarios) > Ord(Scenario,AllScenarios) ) );
+                    	break when ScenarioTreeNodeMapping(Scenario,sost);
+                    endwhile;
+                endfor;
+                
+                !Compute node y-coordinates and arc probabilities
+                CurrentStage := last( sost | Exists[ sosc | ScenarioTreeNodeMapping(sosc,sost) ] );
+                ScenarioTreeRight(CurrentScenarioTree) := ord(CurrentStage) + 2;
+                for (s | ScenarioTreeNodeMapping(s,CurrentStage) ) do
+                    ScenarioTreeNode := ScenarioTreeNodeMapping(s,CurrentStage);
+                    ScenarioTreeNodeText(CurrentScenarioTree,ScenarioTreeNode) := FormatString("%e (p=%n)",s,ScenarioProbability(s));
+                    ScenarioTreeArcProbability(CurrentScenarioTree,stn_from,ScenarioTreeNode) := ScenarioProbability(s);
+                endfor;
+                while ( CurrentStage ) do
+                    CurrentStage -= 1;
+                    break when not CurrentStage;
+                    for ( s | ScenarioTreeNodeMapping(s,CurrentStage) ) do
+                        ScenarioTreeNode := ScenarioTreeNodeMapping(s,CurrentStage);
+                        ScenarioTreeYCoordinate(CurrentScenarioTree,ScenarioTreeNode) :=
+                            mean[ astn_to | ScenarioTreeNodeInTree(CurrentScenarioTree,astn_to) and ScenarioTreeArcIndicator(CurrentScenarioTree,ScenarioTreeNode,astn_to), ScenarioTreeYCoordinate(CurrentScenarioTree,astn_to) ];
+                        ScenarioTreeArcProbability(CurrentScenarioTree,stn_from,ScenarioTreeNode) :=
+                            sum[ astn_to, ScenarioTreeArcProbability(CurrentScenarioTree,ScenarioTreeNode,astn_to) ];
+                    endfor;
+                endwhile;
+                
+                !Normalize arc probabilities
+                ScenarioTreeNodeProbability(astn) := sum[ astn_to, ScenarioTreeArcProbability(CurrentScenarioTree,astn,astn_to) ];
+                ScenarioTreeArcProbability(CurrentScenarioTree,astn_from,astn_to) /= ScenarioTreeNodeProbability(astn_from);
+                ScenarioTreeArcText(CurrentScenarioTree,astn_from,astn_to) := FormatString("%.2n", ScenarioTreeArcProbability(CurrentScenarioTree,astn_from,astn_to) );
+                
+                !Initialize visible area
+                ScenarioTreeVisibleAreaLeft(CurrentScenarioTree)   := ScenarioTreeLeft(CurrentScenarioTree);
+                ScenarioTreeVisibleAreaTop(CurrentScenarioTree)    := ScenarioTreeTop(CurrentScenarioTree);
+                ScenarioTreeVisibleAreaRight(CurrentScenarioTree)  := min( ScenarioTreeRight(CurrentScenarioTree), 10 );
+                ScenarioTreeVisibleAreaBottom(CurrentScenarioTree) := min( ScenarioTreeBottom(CurrentScenarioTree), 35 );
+            }
+            Set Stages {
+                SubsetOf: Integers;
+                Index: sost;
+                Property: Input;
+            }
+            Set Scenarios {
+                SubsetOf: AllStochasticScenarios;
+                Index: sosc, sosc2;
+                Property: Input;
+            }
+            Parameter ScenarioProbability {
+                IndexDomain: (sosc);
+                Property: Input;
+            }
+            ElementParameter ScenarioTreeMapping {
+                IndexDomain: (sosc,sost);
+                Range: Scenarios;
+                Property: Input;
+            }
+            ElementParameter ScenarioTreeNodeMapping {
+                IndexDomain: (sosc,sost);
+                Range: AllScenarioTreeNodes;
+            }
+            StringParameter ScenarioTreeName {
+                Property: Input;
+            }
+            ElementParameter Scenario {
+                Range: AllScenarios;
+            }
+            ElementParameter NextScenario {
+                Range: AllScenarios;
+            }
+            ElementParameter ScenarioTreeNode {
+                Range: ScenarioTreeNodes;
+            }
+            ElementParameter CurrentStage {
+                Range: AllStages;
+            }
+            Parameter ScenarioTreeNodeProbability {
+                IndexDomain: (stn);
+            }
+        }
+        Procedure CreateNewScenarioTreeView {
+            Arguments: (ScenarioTreeName);
+            Body: {
+                CurrentScenarioTree := StringToElement( AllScenarioTrees, ScenarioTreeName, 0 );
+                
+                if ( CurrentScenarioTree ) then
+                    EmptyScenarioTreeDataView( CurrentScenarioTree );
+                else
+                    CurrentScenarioTree := StringToElement( AllScenarioTrees, ScenarioTreeName, 1 );
+                endif;
+            }
+            StringParameter ScenarioTreeName {
+                Property: Input;
+            }
+        }
+        Procedure DeleteExistingScenarioTreeView {
+            Arguments: (ScenarioTreeName);
+            StringParameter ScenarioTreeName {
+                Property: Input;
+            }
+        }
+        Procedure EmptyScenarioTreeDataView {
+            Arguments: (ScenarioTree);
+            Body: {
+                ScenarioTreeNodeInTree(ScenarioTree,astn) := 0;
+                ScenarioTreeArcIndicator(ScenarioTree,astn_from,astn_to) := 0;
+                
+                ScenarioTreeXCoordinate(ScenarioTree,astn) := 0;
+                ScenarioTreeYCoordinate(ScenarioTree,astn) := 0;
+                
+                ScenarioTreeArcProbability(ScenarioTree,astn_from,astn_to) := 0;
+                
+                ScenarioTreeArcText(ScenarioTree,astn_from,astn_to) := "";
+                ScenarioTreeNodeText(ScenarioTree,astn) := "";
+                
+                ScenarioTreeLeft(ScenarioTree) := 0;
+                ScenarioTreeRight(ScenarioTree) := 0;
+                ScenarioTreeTop(ScenarioTree) := 0;
+                ScenarioTreeBottom(ScenarioTree) := 0;
+            }
+            ElementParameter ScenarioTree {
+                Range: AllScenarioTrees;
+                Property: Input;
+            }
+        }
+    }
+    Procedure LibraryInitialization;
+    Procedure LibraryTermination {
+        Body: {
+            return 1 ;
+        }
+    }
+}

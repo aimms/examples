@@ -1,0 +1,43 @@
+﻿Converting Main project
+Converting Nested Solve.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\Pages\Example Page.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\Pages\All Data Pages.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\Pages\Source Article.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\MainProject\Nested Solve.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Berlin data.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\Berlin data.txt
+Copying file: Brasil data.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\Brasil data.txt
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\Description.txt
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\log
+Copying file: Nested Solve.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\Nested Solve.dat
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Nested Solve\Nested Solve.aimms
+Successfully converted the whole project.

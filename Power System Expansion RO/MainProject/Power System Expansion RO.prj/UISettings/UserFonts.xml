@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Big Font" FaceName="Verdana" PointSize="240" Bold="true" UUID="782281DF-B022-4219-BECE-9D7A2C1EF71D" InternalID="1" />
+	<UserFont Name="Medium Font" FaceName="Arial" PointSize="90" UUID="D9655227-ADFC-4833-B108-B87CB18F06C6" InternalID="2" />
+	<UserFont Name="Tiny Font" FaceName="Arial" PointSize="70" UUID="F1906DCF-33DA-425C-BA90-F048A7129705" InternalID="3" />
+</UserFonts>

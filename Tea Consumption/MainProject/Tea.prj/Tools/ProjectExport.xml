@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>ErrorReports</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>_iofile_.log</ExcludedFile>
+	<ExcludedFile>Tea.dat</ExcludedFile>
+</ExportSettings>

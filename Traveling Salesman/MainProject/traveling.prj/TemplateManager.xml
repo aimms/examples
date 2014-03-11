@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="81E5652C-0080-4CAB-91FD-7024F5C74D6A" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|BF2E3719-40A8-48F7-867C-CA50308FE98C|Size Template">
+		<Template Name="Navigation Template" PageGUID="760DEF3B-3879-4D0C-AB3D-1461490BA330" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|FF157552-DD32-4CA8-A215-A69ADF68B040|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="33CED232-A229-41A3-86E8-DF895FB0330D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|4B72E5F2-F53B-49A5-BF2B-2892189B8665|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="331B6BE2-E8A9-4FD6-9078-937C7DCB87E6" />
+			</Template>
+			<Page Name="City Tour" PageGUID="3A5E6E17-2483-4037-8934-56E0EFECA1C9" />
+		</Template>
+	</Template>
+	<Template Name="Page Size" PageGUID="9EE800B3-6EAB-42F7-859F-B80989D7AAAF" />
+</TemplateManager>

@@ -1,0 +1,200 @@
+## ams_version=1.0
+
+Model Main_Inventory_Control {
+    Quantity Currency {
+        BaseUnit: $;
+        Conversions: k$ -> $ : # -> # * 1000;
+    }
+    Quantity BeerUnit {
+        BaseUnit: hl;
+    }
+    Set beerTypes {
+        Index: b;
+        InitialData: data { light, regular };
+    }
+    Set states {
+        Index: s, ss;
+        InitialData: {
+            data
+                { I   , O  , OO   , OOO , OOOO, OOOP, OOP , OOPO, OOPP, OP  , OPO , OPOO, OPOP, OPP , OPPO, OPPP, P   , PO  , POO , POOO, POOP,
+                  POP , POPO, POPP, PP  , PPO , PPOO, PPOP, PPP , PPPO, PPPP }
+        }
+    }
+    Parameter sellingPrice {
+        IndexDomain: b;
+        Unit: $/hl;
+        InitialData: data { light : 300,  regular : 400 };
+    }
+    Parameter productionCost {
+        IndexDomain: b;
+        Unit: $/hl;
+        InitialData: data { light : 12,  regular : 10 };
+    }
+    Parameter inventoryCost {
+        IndexDomain: (b);
+        Unit: $/hl;
+        InitialData: data { light : 5,  regular : 5 };
+    }
+    Parameter externalSupplyCost {
+        IndexDomain: (b);
+        Unit: $/hl;
+        InitialData: data { light : 195,  regular : 200 };
+    }
+    Parameter overallCapacity {
+        Unit: hl;
+        InitialData: {
+            46;
+        }
+    }
+    Parameter maximumInventory {
+        Unit: hl;
+        InitialData: {
+            52;
+        }
+    }
+    Parameter demandOfBeerInState {
+        IndexDomain: (b,s);
+        Unit: hl;
+        InitialData: {
+            data
+            { ( light  , I    ) : 20,  ( light  , OO   ) : 22,  ( light  , O    ) : 23,  ( light  , OOO  ) : 24,  ( light  , OOOO ) : 25,
+              ( light  , OOOP ) : 24,  ( light  , OOP  ) : 18,  ( light  , OOPO ) : 20,  ( light  , OOPP ) : 18,  ( light  , OP   ) : 18,
+              ( light  , OPO  ) : 21,  ( light  , OPOO ) : 23,  ( light  , OPOP ) : 20,  ( light  , OPP  ) : 18,  ( light  , OPPO ) : 19,
+              ( light  , OPPP ) : 16,  ( light  , P    ) : 17,  ( light  , PO   ) : 20,  ( light  , POO  ) : 24,  ( light  , POOO ) : 26,
+              ( light  , POOP ) : 23,  ( light  , POP  ) : 19,  ( light  , POPO ) : 21,  ( light  , POPP ) : 18,  ( light  , PP   ) : 17,
+              ( light  , PPO  ) : 20,  ( light  , PPOO ) : 22,  ( light  , PPOP ) : 19,  ( light  , PPP  ) : 18,  ( light  , PPPO ) : 20,
+              ( light  , PPPP ) : 17,  ( regular, I    ) : 30,  ( regular, OO   ) : 33,  ( regular, O    ) : 33,  ( regular, OOO  ) : 34,
+              ( regular, OOOO ) : 35,  ( regular, OOOP ) : 33,  ( regular, OOP  ) : 28,  ( regular, OOPO ) : 30,  ( regular, OOPP ) : 26,
+              ( regular, OP   ) : 27,  ( regular, OPO  ) : 31,  ( regular, OPOO ) : 32,  ( regular, OPOP ) : 29,  ( regular, OPP  ) : 26,
+              ( regular, OPPO ) : 29,  ( regular, OPPP ) : 25,  ( regular, P    ) : 30,  ( regular, PO   ) : 32,  ( regular, POO  ) : 34,
+              ( regular, POOO ) : 34,  ( regular, POOP ) : 32,  ( regular, POP  ) : 29,  ( regular, POPO ) : 30,  ( regular, POPP ) : 29,
+              ( regular, PP   ) : 27,  ( regular, PPO  ) : 33,  ( regular, PPOO ) : 34,  ( regular, PPOP ) : 30,  ( regular, PPP  ) : 27,
+              ( regular, PPPO ) : 28,  ( regular, PPPP ) : 25 }
+        }
+    }
+    Parameter probabilityOfReachingState {
+        IndexDomain: (s);
+        InitialData: {
+            data
+            { I    : 1.0000,  OO   : 0.4200,  O    : 0.7000,  OOO  : 0.2100,  OOOO : 0.0840,  OOOP : 0.1260,  OOP  : 0.2100,
+              OOPO : 0.1050,  OOPP : 0.1050,  OP   : 0.2800,  OPO  : 0.1680,  OPOO : 0.0336,  OPOP : 0.1344,  OPP  : 0.1120,
+              OPPO : 0.0560,  OPPP : 0.0560,  P    : 0.3000,  PO   : 0.2100,  POO  : 0.1470,  POOO : 0.0882,  POOP : 0.0588,
+              POP  : 0.0630,  POPO : 0.0378,  POPP : 0.0252,  PP   : 0.0900,  PPO  : 0.0540,  PPOO : 0.0324,  PPOP : 0.0216,
+              PPP  : 0.0360,  PPPO : 0.0252,  PPPP : 0.0108 }
+        }
+    }
+    ElementParameter previousStateofStateinEvent {
+        IndexDomain: (s);
+        Range: states;
+        InitialData: {
+            data
+            { OO   : O  ,  O    : I  ,  OOO  : OO ,  OOOO : OOO,  OOOP : OOO,  OOP  : OO ,  OOPO : OOP,  OOPP : OOP,  OP   : O  ,
+              OPO  : OP ,  OPOO : OPO,  OPOP : OPO,  OPP  : OP ,  OPPO : OPP,  OPPP : OPP,  P    : I  ,  PO   : P  ,  POO  : PO ,
+              POOO : POO,  POOP : POO,  POP  : PO ,  POPO : POP,  POPP : POP,  PP   : P  ,  PPO  : PP ,  PPOO : PPO,  PPOP : PPO,
+              PPP  : PP ,  PPPO : PPP,  PPPP : PPP }
+        }
+    }
+    Parameter beerStoredStateNonVar {
+        IndexDomain: (b,s);
+        InitialData: data { ( light, I ) : 1,  ( regular, I ) : 1 };
+    }
+    Variable beerTypeBBottledAtState {
+        IndexDomain: (b,s)| Exists(ss | previousStateofStateinEvent(ss) = s);
+        Range: nonnegative;
+        Unit: hl;
+    }
+    Variable beerTypeBStoredAtState {
+        IndexDomain: (b,s);
+        Range: nonnegative;
+        Unit: hl;
+        NonvarStatus: beerStoredStateNonVar(b, s);
+    }
+    Variable externalSupplyOfBeerTypeAtState {
+        IndexDomain: (b,s);
+        Range: nonnegative;
+        Unit: hl;
+    }
+    Variable stateSpecificProfitContribution {
+        IndexDomain: s;
+        Unit: $;
+    }
+    Variable totalExpectedNetProfit {
+        Unit: $;
+        Definition: sum[s, probabilityOfReachingState(s) * stateSpecificProfitContribution(s)];
+    }
+    Constraint bottlingCapacityConstraint {
+        IndexDomain: s;
+        Definition: sum[b, beerTypeBBottledAtState(b,s)] <= overallCapacity;
+    }
+    Constraint inventoryDeterminant {
+        IndexDomain: (b,s) | previousStateofStateinEvent(s);
+        Unit: hl;
+        Definition: {
+            beerTypeBStoredAtState(b, s) = beerTypeBStoredAtState(b, previousStateofStateinEvent(s)) +
+            				beerTypeBBottledAtState(b, previousStateofStateinEvent(s)) +
+            				externalSupplyOfBeerTypeAtState(b, s) - demandOfBeerInState(b, s)
+        }
+    }
+    Constraint inventoryCapacity {
+        IndexDomain: s;
+        Unit: hl;
+        Definition: sum[b, beerTypeBStoredAtState(b, s)] <= maximumInventory;
+    }
+    Constraint demandRequirement {
+        IndexDomain: (b, s);
+        Definition: beerTypeBStoredAtState(b, previousStateofStateinEvent(s)) + externalSupplyOfBeerTypeAtState(b, s) >= demandOfBeerInState(b, s);
+    }
+    Constraint profitDetermination {
+        IndexDomain: s;
+        Unit: $;
+        Definition: {
+            stateSpecificProfitContribution(s) = sum[b, sellingPrice(b) * demandOfBeerInState(b, s)] -
+            					sum[b, (productionCost(b) * beerTypeBBottledAtState(b, previousStateofStateinEvent(s)) +
+            						inventoryCost(b) * beerTypeBStoredAtState(b, s) +
+            						externalSupplyCost(b) * externalSupplyOfBeerTypeAtState(b, s))]
+        }
+    }
+    MathematicalProgram profitMaximization {
+        Objective: totalExpectedNetProfit;
+        Direction: maximize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: LP;
+    }
+    ElementParameter ACase {
+        Range: AllCases;
+    }
+    Procedure MainInitialization {
+        Body: {
+            Empty beerTypeBBottledAtState, beerTypeBStoredAtState, externalSupplyOfBeerTypeAtState, stateSpecificProfitContribution,
+            	totalExpectedNetProfit;
+            
+            beerTypeBStoredAtState('light', 'I') := 17;
+            beerTypeBStoredAtState('regular','I') := 35;
+            externalSupplyOfBeerTypeAtState('light', 'I') := 0;
+            externalSupplyOfBeerTypeAtState('regular', 'I') := 0;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	MainInitialization;
+            
+            	solve profitMaximization;
+            
+            else
+            
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a acase.");
+            	CaseFind("Solution",ACase);
+            	CaseLoadCurrent(ACase, 0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+                return 1;
+        }
+    }
+}

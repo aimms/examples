@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:53:21" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>8122218E-B00F-479E-A6AF-F2CCB5DBE628</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<TopArea Line="FixedFromTop" Value="196" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Button">
+		<Location top="588" left="6" bottom="612" right="60" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:prev_.bmp"</BitmapFile>
+		<Font GUID="F30F0742-329C-4133-B10C-5C351F013D57" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage" />
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="588" left="138" bottom="612" right="192" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:next_.bmp"</BitmapFile>
+		<Font GUID="F30F0742-329C-4133-B10C-5C351F013D57" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="588" left="72" bottom="612" right="126" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:up_.bmp"</BitmapFile>
+		<Font GUID="F30F0742-329C-4133-B10C-5C351F013D57" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Navigation Object">
+		<Location top="186" left="6" bottom="480" right="192" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="None" Width="2" />
+		<Display>Text</Display>
+		<NumberVisible>8</NumberVisible>
+		<Spacing>3</Spacing>
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="3D4B457F-7513-47E9-8228-8120838FC89A">default selection</UserColor>
+		</TextColor>
+		<InputColor>
+			<UserColor GUID="1EFA6A2C-38C9-40E6-8AE6-8AA73C50C4C2">dark grey</UserColor>
+		</InputColor>
+		<NavigationData>
+			<ReferencePage>NthParent</ReferencePage>
+			<NthParentNumber>1</NthParentNumber>
+			<NumberOfGenerations>1</NumberOfGenerations>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+				<Action Type="ClosePage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

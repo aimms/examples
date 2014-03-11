@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>_Example Style Library\Example Style Library.nch</ExcludedFile>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+</ExportSettings>

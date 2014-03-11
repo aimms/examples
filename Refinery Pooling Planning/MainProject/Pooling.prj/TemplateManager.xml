@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="C51EAE0D-83A5-45D3-9BE5-F8E8B32848BD" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|C042B305-4537-4B14-8965-BA69A28B9BF1|Size Template">
+		<Template Name="Tab Navigation Template" PageGUID="81AD19CD-1D67-4365-A303-7FF832DED0CF">
+			<Page Name="Results" PageGUID="B7BCECE5-726A-423F-BBA5-FF547EEDE69B" />
+			<Page Name="Details" PageGUID="A1BE351E-037B-4D42-8D49-6061822586F6" />
+			<Page Name="Case Compare" PageGUID="A281B958-66FC-4586-93D8-A3BF00D4A88F" />
+		</Template>
+		<Template Name="Navigation Template" PageGUID="680CBF28-2959-4225-B51E-F30D49FB2DF3" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B27C3625-4F0D-4589-8D15-A4D43E022F88|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="FE2EAF93-B99F-49B9-9B22-0B3C9F6187F9" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|33445522-5CEA-45A1-B279-4C62660284D7|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="25251CE2-2A9D-4E3A-A950-BEFE25974E12" />
+			</Template>
+			<Page Name="Solver Comparison" PageGUID="4D6DF083-AAC4-4903-ACEC-0ECCE7510976" />
+		</Template>
+	</Template>
+</TemplateManager>

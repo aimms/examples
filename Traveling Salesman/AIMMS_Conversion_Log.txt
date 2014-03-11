@@ -1,0 +1,41 @@
+﻿Converting Main project
+Converting traveling.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\Pages\City Tour.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\Templates\Page Size.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\MainProject\traveling.prj\User Files\bitmaps\construct.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying folder: backup to C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\backup
+Copying file: description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\description.txt
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\log
+Copying file: traveling.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\traveling.dat
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Traveling Salesman\traveling.aimms
+Successfully converted the whole project.

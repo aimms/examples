@@ -1,0 +1,60 @@
+﻿Converting Main project
+Converting Templates and Navigation.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Aimms Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-1.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-2.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-3.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-1-1.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-1-2.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-1-3.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-1-4.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-2-1.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-2-2.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-2-3.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-3-1.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-3-2.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-3-3.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-3-4.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Pages\Page 1-3-5.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Templates\Navigation Template Level 2-1.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Templates\Navigation Template Level 2-2.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\Templates\Navigation Template Level 3.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\MenuBuilder.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\up_.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\prev_.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\next_.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\down_.bmp
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\MainProject\Templates and Navigation.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\Description.txt
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\log
+Copying file: Templates and Navigation.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\Templates and Navigation.dat
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Templates and Navigation\Templates and Navigation.aimms
+Successfully converted the whole project.

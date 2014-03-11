@@ -1,0 +1,31 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+always_store_marginals 1
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+warning_derivative_evaluation_errors off
+* AOA
+"AOA".NLP_starting_point_strategy 1
+"AOA".Create_status_file 1
+* CBC 2.7.5
+* CBC 2.8.0
+* CONOPT 3.14V
+* GUROBI 5.0
+* GUROBI 5.5
+* GUROBI 5.6
+* IPOPT 3.10.1
+* IPOPT 3.11
+* XA 15
+* BARON 7.5
+"BARON 7.5".LP_solver 0
+"BARON 7.5".NLP_solver 0
+* BARON 7.2
+"BARON 7.2".Maximal_variable_bound 100000
+* NETSOL
+* Environment
+Project_Title "AIMMS 3 - Investment Portfolio Selection "
+Startup_Page "AIMMS Demo"

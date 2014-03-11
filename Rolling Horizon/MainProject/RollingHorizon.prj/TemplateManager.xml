@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="FC6E6AC2-4338-4C53-B8EF-489814D2AB7E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|D94DEC65-A4E4-4725-AA38-99E95C715E6C|Size Template">
+		<Template Name="Navigation Template" PageGUID="B84BAFC5-B4B8-43CB-BBBF-8FBC633B6283" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|F42D522A-8B7C-419E-8445-92172AD0C0AA|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="1B59F843-9803-46A3-BE1C-8B715225C03E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|4231560D-9618-4BF5-9002-CFC677138C3E|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="9F36836E-5DD0-4513-AB0D-F44238416BBA" />
+			</Template>
+			<Page Name="Rolling Horizon Illustrated" PageGUID="C2E88746-5578-44A5-8F44-56EC8E69D663" />
+			<Page Name="Rolling Horizon vs Calendar" PageGUID="52F4D76F-B39E-4844-A728-07A5C1B7669C" />
+		</Template>
+	</Template>
+	<Page Name="ResultsPerProductHorizon" PageGUID="F17F4EB0-8C4C-458A-87D2-FF9C78965518" />
+	<Page Name="ResultsPerProductCalendar" PageGUID="477AA41F-E006-46A6-84D0-A57B9FABD8D0" />
+</TemplateManager>

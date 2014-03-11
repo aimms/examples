@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="default" FaceName="Arial" PointSize="80" UUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" />
+	<UserFont Name="Table Text Bold" FaceName="Verdana" PointSize="80" Bold="true" UUID="4C67D5F6-478A-4A2D-A5DE-A3CB10275385" InternalID="1" />
+	<UserFont Name="Table Header" FaceName="Verdana" PointSize="100" Bold="true" Italic="true" UUID="3EA35367-19F9-422F-B73F-89DB5DEAFDA1" InternalID="2" />
+</UserFonts>

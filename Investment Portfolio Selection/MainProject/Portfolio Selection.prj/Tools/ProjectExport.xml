@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Security Values.txt</ExcludedFile>
+	<ExcludedFile>strategical.txt</ExcludedFile>
+	<ExcludedFile>tactical.txt</ExcludedFile>
+</ExportSettings>

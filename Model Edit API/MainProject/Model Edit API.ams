@@ -1,0 +1,78 @@
+## ams_version=1.0
+
+Model Model_Edit_API {
+    StringParameter ProblemDescription {
+        Definition: "Description.txt";
+    }
+    StringParameter SourceFile {
+        Definition: "Source//Model Edit API.cpp";
+    }
+    StringParameter LogFile {
+        Definition: "Log.txt";
+    }
+    StringParameter DataOutput {
+        Definition: "Empty AIMMS Project\\Data Output.txt";
+    }
+    StringParameter ModelOutput {
+        Definition: "Empty AIMMS Project//TransportModel.aim";
+    }
+    ElementParameter TheLibrary {
+        Range: AllSymbols;
+    }
+    ElementParameter TheSection {
+        Range: AllSymbols;
+    }
+    Procedure RunModelEditAPI {
+        Body: {
+            if AimmsStringConstants('Architecture') = 'x86' then
+                    Execute("Model Edit API.exe", wait : 1);
+            else
+                    Execute("Model Edit API64.exe", wait : 1);
+            endif;
+            PageRefreshAll;
+        }
+        Comment: "This procedure executes the external program in which the Transport Model is build and solved.";
+    }
+    Procedure OpenExplorer {
+        Body: {
+            OpenDocument("");
+        }
+    }
+    Procedure ImportModelFile {
+        Body: {
+            ! If the runtime library has not been created yet, create it.
+            if not StringToElement(AllSymbols, "Transport_Model_Library") then
+                    TheLibrary := me::CreateLibrary("Transport_Model_Library", "TM");
+            endif;
+            
+            ! If the Transport_Model section has not been created yet, create it.
+            if not StringToElement(AllSymbols, "TM::Transport_Model_Section") then
+                    TheSection := me::Create("Transport_Model_Section", 'Section', TheLibrary);
+            endif;
+            
+            ! Import the TransportModel.aim file that has been created using the external program.
+            ok := me::ImportNode(TheSection, "Empty AIMMS Project\\TransportModel.aim");
+            
+            if ok then
+                    ok := me::Compile(TheSection);
+                    if not ok then
+                            DialogMessage("An error occured during the model compilation.");
+                    endif;
+            else
+                    DialogMessage("An error occured during the model import.");
+            endif;
+            
+            DialogMessage("The Model Explorer will be opened. The imported Transport Model can be found almost at the bottom in the runtime Transport Model Library.");
+            ! The Model Explorer is opened via another action behind the Import Transport Model button.
+        }
+        Comment: "This procedure imports the created Transport Model into a section in a runtime library.";
+        Parameter ok;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="D20DC682-AABF-4233-B96F-9021C559D70A" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|9F6C4D07-4648-430A-82A3-EB5C5F7E7955|Size Template">
+		<Template Name="Navigation Template" PageGUID="89EA6D00-20EC-4B6F-B053-9B10C89A7DBC" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|510391AE-06CC-4B12-AAE7-63231FCA6FAD|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="9718AFE9-1025-43A4-A8DA-DBD643DB6E64" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B833634A-008A-4249-BB6B-F37247CE72EC|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="DA63843B-8C2C-467D-8B4E-93707B8D0EDB" />
+			</Template>
+			<Page Name="The Netherlands" PageGUID="D50B44A1-7947-4906-ACF6-90AA2EB01CEF" />
+			<Page Name="USA" PageGUID="DD5BCD73-53DB-4CC5-8085-710A73E48470" />
+			<Page Name="Paragon Offices" PageGUID="38A90BDD-C605-487C-AFDE-40F53F58C4A5" />
+		</Template>
+	</Template>
+	<Page Name="Legend" PageGUID="DA3AFBD2-3CCF-4498-9604-9DC6C416638B" />
+</TemplateManager>

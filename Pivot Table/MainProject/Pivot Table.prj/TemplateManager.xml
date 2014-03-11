@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="707C220D-E3FE-4957-B3C2-1AA9D2AFBE5E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|1CE102C8-6CF4-46D9-817D-C20B8BBFDFF4|Size Template">
+		<Template Name="Navigation Template" PageGUID="FFA8A30E-1B75-42A1-BB16-31311606FC4E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|CA57A6BC-4321-49A4-8C34-0790C2C1B1CD|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="229E8E6C-E769-448F-9562-1843BE744AB9" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|DB2FBC30-4282-4985-A035-0A3239272039|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="9F76B917-8413-445A-96EE-2CC1ABFED9C9" />
+			</Template>
+		</Template>
+	</Template>
+	<Template Name="Copy Size Template" PageGUID="BD73430C-FD73-4AC2-A433-4E26C2CECFF6">
+		<Template Name="Copy Navigation Template" PageGUID="8C82D9A8-B394-4CDA-9542-33AD19B8B547">
+			<Page Name="Pivot Table" PageGUID="8ECC4315-D791-4C2A-A127-F78D6BB8AA3B" />
+			<Page Name="Indentation Mode" PageGUID="E235BB65-161D-47DC-91DA-19B7C724F4EB" />
+			<Page Name="Insert a Row" PageGUID="A6BA7E52-80A1-43B7-850E-993FB5736271" />
+			<Page Name="Filter" PageGUID="AC39AF10-0B05-4932-BBDE-3C081295CEF7" />
+			<Page Name="Indexed Column Widths" PageGUID="F0A56DE5-40CD-4C2B-B1FB-56895AB2B369" />
+			<Page Name="Colored Bars" PageGUID="FCDC2A01-B29F-4B81-B7C4-0118E49C1D0D" />
+			<Page Name="Artificial Indices" PageGUID="5C0FEA8B-B155-4ADF-9900-4EC03CE347B6" />
+			<Page Name="Sorting" PageGUID="4406A5BC-BFC3-47AF-8531-24409C82C2A8" />
+			<Page Name="Multiple Cases" PageGUID="11149DA6-6EE3-4FAA-B9CE-909B389336B8" />
+			<Page Name="Outer Indices" PageGUID="4C1A6887-5C40-4EE7-AF38-6B57E4895662" />
+			<Page Name="Domain" PageGUID="B2C6F59D-6BD9-4979-AF9B-85225EB00F31" />
+			<Page Name="Rearranged" PageGUID="079C923A-BCF3-441D-A6D1-EB2DEA34A624" />
+			<Page Name="State Manager" PageGUID="41602EA7-5007-4075-A455-E9BACA48C72A" />
+			<Page Name="Aggregators" PageGUID="3B17F52E-419F-41BD-88A6-2E7064716F63" />
+			<Page Name="Two Identifiers" PageGUID="D5A7F5FF-5984-4567-939C-83C81118B299" />
+			<Page Name="Different Format" PageGUID="F2020F31-AF1F-4920-A676-5C605C783D1A" />
+			<Page Name="Assertions" PageGUID="BBFDED61-B29D-4348-A788-77CD16A9E260" />
+		</Template>
+	</Template>
+	<Page Name="Navigation" PageGUID="C6E71866-3D37-4E21-A360-67A50E79BD91" />
+	<Page Name="All Data Pages" PageGUID="0EDFA873-EC01-4072-B023-5D3654DF5835" />
+	<Page Name="[Data Page] SelectedCell" PageGUID="06D93C71-1F1E-4B80-A19A-1936CC670302" />
+</TemplateManager>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Formulation Font" FaceName="Verdana" PointSize="100" UUID="62C14667-D15F-4531-8B62-EB7A584408E7" InternalID="1" />
+	<UserFont Name="Status Font" FaceName="Verdana" PointSize="100" Bold="true" UUID="05B54D49-26AA-4220-9317-A61F3FDB0BD7" InternalID="2" />
+</UserFonts>

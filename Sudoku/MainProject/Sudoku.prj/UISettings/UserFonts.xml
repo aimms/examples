@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="default" FaceName="Arial" PointSize="80" UUID="CE4C1BB5-668F-44B4-B957-75D961205B69" />
+	<UserFont Name="Header Font" FaceName="Verdana" PointSize="160" Bold="true" Italic="true" UUID="40426690-CC22-4DB1-A6E6-987A116E2F6B" InternalID="1" />
+	<UserFont Name="Text Font" FaceName="Verdana" PointSize="110" UUID="8579DCA1-4C0B-402E-AE12-B379CE4BF1EB" InternalID="2" />
+	<UserFont Name="Text Font Bold" FaceName="Verdana" PointSize="90" Bold="true" UUID="C68CD5D8-01D0-44A3-947E-5376793BAB34" InternalID="3" />
+	<UserFont Name="Button font" FaceName="Arial" PointSize="80" UUID="553F1704-CABB-42E7-9493-56D9153D810C" InternalID="4" />
+	<UserFont Name="Description" FaceName="Verdana" PointSize="80" UUID="C385B3DF-0280-44EF-95CA-D62834B4CD35" InternalID="5" />
+</UserFonts>

@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:44:05">
+	<Location top="30" left="9" bottom="680" right="1081" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="475" />
+	</PageEditSize>
+	<ProjectUUID>310D2727-A0A0-4B94-8F0B-A6D7E354D17A</ProjectUUID>
+	<DockAlways>true</DockAlways>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="50">
+			<TopArea Line="FixedFromLeft" Value="126">
+				<RightArea Line="FixedFromRight" Value="123" />
+			</TopArea>
+			<BottomArea Line="FixedFromBottom" Value="74">
+				<TopArea Line="FixedFromLeft" Value="381">
+					<LeftArea Line="FixedFromTop" Value="133">
+						<BottomArea Line="FixedFromLeft" Value="218">
+							<RightArea Line="FixedFromTop" Value="58" />
+						</BottomArea>
+					</LeftArea>
+				</TopArea>
+				<BottomArea Line="FixedFromRight" Value="123">
+					<LeftArea Line="FixedFromLeft" Value="130" />
+				</BottomArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="52FCA5EC-AE18-4B3B-A405-11261A387E41">white</UserColor>
+	</Background>
+	<PageObject Type="Navigation Object">
+		<Location top="0" left="126" bottom="48" right="648" />
+		<TabOrder>1</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Display>Text</Display>
+		<Spacing>6</Spacing>
+		<BackgroundColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</TextColor>
+		<InputColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</InputColor>
+		<NavigationData>
+			<ReferencePage>ThisPage</ReferencePage>
+			<NumberOfAncestors>1</NumberOfAncestors>
+			<CenterText>true</CenterText>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="0" left="0" bottom="48" right="126" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="192" left="6" bottom="390" right="216" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>FunctionValue( s, sf )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="60" left="390" bottom="390" right="768" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<HorizontalLine>
+			<Identifier>0</Identifier>
+		</HorizontalLine>
+		<ExplicitIdentifier>
+			<Identifier>FunctionValue( s, sf )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="192" left="222" bottom="234" right="372" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FirstUsedPoint</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"First element"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>UsedPointSize</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Number of elements"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="246" left="222" bottom="318" right="372" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>SelectedFunction( f )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="12" left="6" bottom="36" right="126" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>CurrentDay</StringParameter>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="0" left="648" bottom="48" right="774" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="6" left="648" bottom="48" right="774" />
+		<StaticText>AIMMS 3 Demo</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="402" left="0" bottom="477" right="774" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="438" left="138" bottom="456" right="642" />
+		<StaticText>(c) Paragon Decision Technology</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="426" left="654" bottom="456" right="690" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:Arrows\prev.bmp"</BitmapFile>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ButtonProcedure</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="426" left="738" bottom="456" right="774" />
+		<TabOrder>9</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:Arrows\next.bmp"</BitmapFile>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ButtonProcedure</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="444" left="696" bottom="474" right="732" />
+		<TabOrder>10</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:Arrows\down.bmp"</BitmapFile>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ButtonProcedure</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="408" left="696" bottom="438" right="732" />
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:Arrows\up.bmp"</BitmapFile>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="54" left="6" bottom="180" right="372" />
+		<StaticText>On this page we have used several split lines, all with a fixed distance from, left, right, top or bottom. Due to the positions of the split lines only the curve, the table and the selection object will change while resizing the page.
+
+In large applications it is better to use templates for the header and the footer, as is illustrated in the demo "Templates and Navigation".</StaticText>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="426" left="6" bottom="450" right="126" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Problem Description"</Title>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>f</Symbol>
+			<Symbol>s</Symbol>
+			<Symbol>SelectedFunction</Symbol>
+			<Symbol>UsedPointSize</Symbol>
+			<Symbol>ButtonProcedure</Symbol>
+			<Symbol>FirstUsedPoint</Symbol>
+			<Symbol>sf</Symbol>
+			<Symbol>CurrentDay</Symbol>
+			<Symbol>FunctionValue</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Pivot Table State Manager\_Pivot Table State Manager.nch</ExcludedFile>
+</ExportSettings>

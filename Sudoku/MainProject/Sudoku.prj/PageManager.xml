@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS 3 Demo - Sudoku" PageGUID="A9E806F2-4E5C-4ABB-B531-203D7C508938">
+		<Page Name="Sudoku Puzzle" PageGUID="F1CF7133-A799-455E-ACA5-139DEFF5E01A" />
+	</Page>
+	<Page Name="All Data Pages" PageGUID="9D99AB58-F685-458F-B8AD-F4710D91B891">
+		<Page Name="[Data Page] Solution" PageGUID="A052BBEB-0230-4A77-96BE-171C1E67A265" />
+	</Page>
+</PageManager>

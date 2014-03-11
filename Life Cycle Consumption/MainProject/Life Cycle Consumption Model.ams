@@ -1,0 +1,196 @@
+## ams_version=1.0
+
+Model Main_Life_Cycle_Consumption_Model {
+    Section Model_Section {
+        DeclarationSection Input_Parameters {
+            Set Time {
+                SubsetOf: Integers;
+                Text: "Defines the time elements";
+                Index: t;
+                Definition: ElementRange(1, TotalTimePeriods+1);
+            }
+            Parameter TotalTimePeriods {
+                Text: "Total number of periods (between 2 and 50)";
+                Range: {
+                    {2..50}
+                }
+                InitialData: 15;
+            }
+            Parameter InterestRate {
+                Text: "Interest rate";
+                InitialData: 0.10;
+            }
+            Parameter DiscountFactor {
+                Text: "Discount factor";
+                InitialData: 0.96;
+            }
+            Parameter Wages {
+                IndexDomain: t | t <= TotalTimePeriods;
+                Text: "We use a common parabolic pattern of life cycle earnings";
+                Definition: [TotalTimePeriods - t] * t / TotalTimePeriods;
+            }
+            Parameter PresentValueWages {
+                Text: "The present value of wages income";
+                Definition: Sum(t, Wages(t)*(1+InterestRate)^(-t+1));
+            }
+        }
+        DeclarationSection Lower_Bounds {
+            Parameter ConsumptionLowerBound {
+                Text: "Lower bound on consumption";
+                Definition: 0.0001;
+            }
+            Parameter LaborLowerBound {
+                Definition: 0.0001;
+            }
+            Parameter MinimumAsset {
+                Definition: {
+                    if Allow_Borrowing = 1 then
+                           UserMinAsset
+                    else
+                           0
+                    endif;
+                }
+                Comment: "A negative amount denotes that borrowing is allowed.";
+            }
+        }
+        DeclarationSection Math_Model {
+            Variable Labor {
+                IndexDomain: t | t <= TotalTimePeriods;
+                Text: "Labor ";
+                Range: [LaborLowerBound, inf);
+                Comment: "Note that the lower bound for Labor is included in the range. It is also possible but less efficient to create an extra constraint for this.";
+            }
+            Variable Assets {
+                IndexDomain: t | t > 1;
+                Text: "Assets";
+                Range: [MinimumAsset, inf);
+                Definition: (1+InterestRate)*(Assets(t-1) + Wages(t-1)*Labor(t-1) - Consumption(t-1));
+            }
+            Constraint TerminalAssetsConstraint {
+                Text: "Nonnegative terminal Assets including Labor earnings";
+                Definition: Assets(TotalTimePeriods + 1) >=0;
+                Comment: {
+                    "Terminal Wealth (Assets in the period after TotalTimePeriods) should not be negative:
+                    all debts must be re-paid"
+                }
+            }
+            Variable Consumption {
+                IndexDomain: t | t <= TotalTimePeriods;
+                Text: "Consumption ";
+                Range: [ConsumptionLowerBound, inf);
+                Comment: {
+                    "Note that the lower bound is included in the range.
+                    It is also possible but less efficient to create an extra constraint for this."
+                }
+            }
+            Variable PresentValueConsumption {
+                Text: "Present value of consumption";
+                Range: [0, PresentValueWages];
+                Definition: Sum(t, Consumption(t)*(1+InterestRate)^(-t+1));
+                Comment: "Note that the upper bound (PresentValueWages) is used to set the range for PresentValueConsumption.";
+            }
+            Variable Utility {
+                IndexDomain: t | t <= TotalTimePeriods;
+                Text: "The utility function defined over consumption and labor";
+                Definition: {
+                    if SelectedUtilityFunction='Exp' then
+                            -Exp(-Consumption(t)) - Labor(t)^2
+                    else
+                            Sqrt(Consumption(t)) - Labor(t)^2
+                    endif
+                }
+            }
+            Variable Life_Cycle_Utility {
+                Text: "The life-cycle utility function objective";
+                Definition: Sum(t, DiscountFactor^(-1+t) * Utility(t) );
+                Comment: "Only one Utility variable will have a value";
+            }
+            MathematicalProgram ConsumptionModel_Exp {
+                Objective: Life_Cycle_Utility;
+                Direction: maximize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: NLP;
+                Comment: {
+                    "This is the Mathematical program that ties everything together:
+                    - The variable Life_Cycle_Utility is chosen as the objective function to be maximized,
+                    - All Constraints and all Variables that are present in the model tree are taken into account."
+                }
+            }
+        }
+    }
+    Section GUI_Part {
+        DeclarationSection GUI_Declaration_Section {
+            Parameter Allow_Borrowing;
+            Set AvailableUtilityFunctions {
+                Definition: {
+                    data
+                    { 'Sqrt', 'Exp' }
+                }
+            }
+            ElementParameter SelectedUtilityFunction {
+                Range: AvailableUtilityFunctions;
+                InitialData: 'Sqrt';
+            }
+            Set SubsetTime {
+                SubsetOf: Time;
+                Text: "Defines the time elements to be displayed in the graphs";
+                Index: ct;
+                Definition: Time- last(time);
+            }
+            Parameter UserMinAsset {
+                InitialData: -0.5;
+            }
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+        DeclarationSection Solver_Declaration_Section {
+            Set AvailableNLPSolvers {
+                SubsetOf: AllSolvers;
+                Comment: "The performance and solution of the solvers differs in this model";
+            }
+            ElementParameter SelectedNLPSolver {
+                Range: AvailableNLPSolvers;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            AvailableNLPSolvers := {IndexSolvers |
+            	FindString( FormatString( "%e",IndexSolvers), "CONOPT" ) or
+                   	FindString( FormatString( "%e",IndexSolvers), "BARON" ) or
+                   	FindString( FormatString( "%e",IndexSolvers), "KNITRO" ) or
+                   	FindString( FormatString( "%e",IndexSolvers), "MINOS" ) or
+                   	FindString( FormatString( "%e",IndexSolvers), "SNOPT" )
+                   	};
+            
+            SelectedNLPSolver := last({IndexSolvers | FindString( FormatString( "%e",IndexSolvers), "BARON" )});
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            
+            
+            
+            if not IsRunningAsViewer then
+            
+               	empty Utility, Assets, Labor;
+            	Assets(1):=0;
+            	solve ConsumptionModel_Exp where solver= SelectedNLPSolver;
+            
+            else
+            
+                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+                CaseFind("Solution",ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

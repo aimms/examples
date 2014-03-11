@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="9F76B917-8413-445A-96EE-2CC1ABFED9C9">
+		<Page Name="Pivot Table" PageGUID="8ECC4315-D791-4C2A-A127-F78D6BB8AA3B" />
+		<Page Name="Artificial Indices" PageGUID="5C0FEA8B-B155-4ADF-9900-4EC03CE347B6" />
+		<Page Name="Rearranged" PageGUID="079C923A-BCF3-441D-A6D1-EB2DEA34A624" />
+		<Page Name="Sorting" PageGUID="4406A5BC-BFC3-47AF-8531-24409C82C2A8" />
+		<Page Name="Insert a Row" PageGUID="A6BA7E52-80A1-43B7-850E-993FB5736271" />
+		<Page Name="Filter" PageGUID="AC39AF10-0B05-4932-BBDE-3C081295CEF7" />
+		<Page Name="Aggregators" PageGUID="3B17F52E-419F-41BD-88A6-2E7064716F63" />
+		<Page Name="Outer Indices" PageGUID="4C1A6887-5C40-4EE7-AF38-6B57E4895662" />
+		<Page Name="Domain" PageGUID="B2C6F59D-6BD9-4979-AF9B-85225EB00F31" />
+		<Page Name="Multiple Cases" PageGUID="11149DA6-6EE3-4FAA-B9CE-909B389336B8" />
+		<Page Name="Two Identifiers" PageGUID="D5A7F5FF-5984-4567-939C-83C81118B299" />
+		<Page Name="Different Format" PageGUID="F2020F31-AF1F-4920-A676-5C605C783D1A" />
+		<Page Name="Indexed Column Widths" PageGUID="F0A56DE5-40CD-4C2B-B1FB-56895AB2B369" />
+		<Page Name="Colored Bars" PageGUID="FCDC2A01-B29F-4B81-B7C4-0118E49C1D0D" />
+		<Page Name="State Manager" PageGUID="41602EA7-5007-4075-A455-E9BACA48C72A" />
+		<Page Name="Assertions" PageGUID="BBFDED61-B29D-4348-A788-77CD16A9E260" />
+		<Page Name="Indentation Mode" PageGUID="E235BB65-161D-47DC-91DA-19B7C724F4EB" />
+	</Page>
+	<Page Name="Navigation" PageGUID="C6E71866-3D37-4E21-A360-67A50E79BD91" />
+	<Page Name="All Data Pages" PageGUID="0EDFA873-EC01-4072-B023-5D3654DF5835">
+		<Page Name="[Data Page] SelectedCell" PageGUID="06D93C71-1F1E-4B80-A19A-1936CC670302" />
+	</Page>
+</PageManager>

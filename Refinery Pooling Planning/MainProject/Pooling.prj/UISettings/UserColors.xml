@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<UserColors LastKnownInternalId="51">
+	<UserColor Name="default background" RGB="#f0f0f0" IsSystemBackground="true" UUID="046830E7-4B48-434F-88A2-FF4CCF31DAB6" InternalID="1" />
+	<UserColor Name="default foreground" RGB="#000000" UUID="9258023E-778B-46DB-A9B9-4644EB1E69FA" InternalID="2" />
+	<UserColor Name="default selection" RGB="#000080" UUID="28915E7B-E9D1-41B0-BBC9-F654B9F94007" InternalID="3" />
+	<UserColor Name="black" RGB="#000000" UUID="32DEACD0-5037-4DD4-BC2B-CA8E8D04AB71" InternalID="4" />
+	<UserColor Name="white" RGB="#ffffff" UUID="8AC7590F-4549-4E19-A63E-8B3058966075" InternalID="5" />
+	<UserColor Name="red" RGB="#ff0000" UUID="C019B3C7-1DDA-423B-A87E-ADDEC117A4C4" InternalID="6" />
+	<UserColor Name="green" RGB="#00ff00" UUID="90EB54D7-AC16-4FB7-B359-ED065F8DC260" InternalID="7" />
+	<UserColor Name="blue" RGB="#0000ff" UUID="2EBD2C20-5306-4BDF-AEE9-2CCE8206D415" InternalID="8" />
+	<UserColor Name="yellow" RGB="#ffff00" UUID="DD4298AF-5B1D-4DDD-9241-4C7D8910C509" InternalID="9" />
+	<UserColor Name="magenta" RGB="#ff00ff" UUID="E7B59C76-471D-4F56-9396-CE7BA7D85228" InternalID="10" />
+	<UserColor Name="cyan" RGB="#00ffff" UUID="C18F353E-D438-4BE9-8FFE-6F27C792FC6F" InternalID="11" />
+	<UserColor Name="navy blue" RGB="#000080" UUID="644559A6-6299-4CE8-B4C7-8A565E1F4293" InternalID="12" />
+	<UserColor Name="light grey" RGB="#c0c0c0" UUID="1F03A6C0-5AC9-47BD-8BD9-F5B3D53EA29A" InternalID="13" />
+	<UserColor Name="grey" RGB="#808080" UUID="76FD22B6-422F-4D29-98BB-4B65D671400C" InternalID="14" />
+	<UserColor Name="dark grey" RGB="#404040" UUID="6A644FD4-37ED-48F7-ACF4-30CD08D1FDCB" InternalID="15" />
+	<UserColor Name="indian red" RGB="#cd5c5c" UUID="30C58892-5130-4217-B3E7-593507A3BCDA" InternalID="48" />
+	<UserColor Name="lime green" RGB="#32cd32" UUID="60C77140-D86F-469B-8421-CC2F4A720300" InternalID="49" />
+	<UserColor Name="gold" RGB="#ffd700" UUID="95F09730-287E-4468-AD7B-984147D67CE0" InternalID="50" />
+	<UserColor Name="dark green" RGB="#004000" UUID="AE89EC86-7583-449B-9BBB-CB94E25E63B3" InternalID="51" />
+</UserColors>

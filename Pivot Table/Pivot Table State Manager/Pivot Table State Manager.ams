@@ -1,0 +1,310 @@
+## ams_version=1.0
+
+LibraryModule Pivot_Table_State_Manager {
+    Prefix: PTStateManager;
+    Interface: data { LoadState, SaveState, DeleteState, CurrentStateFile, InitializeStateData };
+    Comment: {
+        "===How to use this library in your own project===
+        
+        This library contains the identifiers and procedures that can be used to manage
+        the state files of Pivot Tables. Each state of a Pivot Table can be stored using
+        a unique name. With the procedures in this library, you can easily save, load
+        and delete states from your project.
+        
+        The state related data is automatically stored in the dataset \"StateDataset\",
+        which you can export to another version of your project together with the
+        corresponding .DeveloperState and/or .UserState statefile(s).
+        
+        This library also contains a menu consisting of Load, Save and Delete State. You
+        can use this menu in your own menubar, or as right-mouse menu.
+        
+        When you want to use the procedures in this library in a specific Pivot Table,
+        you need to do the following steps:
+        
+        Only once:
+        1. Include the library in your own project.
+        2. Specify the procedure InitializeStateData as your startup procedure (via
+        Project Options), or include it in your own startup procedure.
+        
+        For each Pivot Table:
+        1. Specify a tag for the Pivot Table object on the Misc tab of the object.
+        2. Add this tag to the set AllTags that can be found in the Pivot Table State
+        Manager library.
+        3. In the Pivot Table properties, on the General tab at \'Save Layout/State\',
+        specify
+        	- for the properties \'by End User\' and/or \'by Developer\': \"On Demand\"
+        	- for the property \'Specific State Name\':
+        PTStateManager::CurrentStateFile(\'<Tag Name>\' ), where you should fill in the
+        tag name at <Tag Name>.
+        4. In the Pivot Table properties, on the Menu tab, select the \'States\' menu that
+        can be found in the Pivot Table State Manager library.
+        
+        Please note that this library does not work for Indexed Page objects that
+        contain multiple pages (row wise/column wise or matrix)."
+    }
+    DeclarationSection State_Declaration {
+        StringParameter StateSource {
+            Default: "DeveloperState";
+            Property: NoSave;
+            Comment: "Expected one of the following state references: [ DeveloperState, UserState, None ]";
+        }
+        Set States {
+            Index: s;
+            Comment: "The set of states that are stored.";
+        }
+        StringParameter StateLastSaved {
+            IndexDomain: (s);
+            Default: "";
+            Comment: "The timestamp of the last moment that the state was saved.";
+        }
+        StringParameter StatePage {
+            IndexDomain: (s);
+            Default: "";
+            Comment: "The page on which the state is located.";
+        }
+        StringParameter StateTag {
+            IndexDomain: (s);
+            Default: "";
+            Comment: "The tag that corresponds with the state.";
+        }
+        StringParameter StateLocation {
+            IndexDomain: (s);
+            Default: "";
+            Comment: "The state file in which the state is stored (.userState or .developerState).";
+        }
+        Set StateFilesForCurrentPageTag {
+            SubsetOf: States;
+            Index: sp;
+            Parameter: SelectedState;
+            Definition: {
+                { s | StatePage(s) = CurrentPage AND StateTag(s) = CurrentTag }
+            }
+            Comment: "All available states for the current page and tag.";
+        }
+        ElementParameter SelectedStateFile {
+            Range: StateFilesForCurrentPageTag;
+            Default: '';
+            Comment: "The selected state file.";
+        }
+        StringParameter CurrentPage {
+            Comment: "The current page.";
+        }
+        StringParameter CurrentTag {
+            Comment: "The current tag (= page object).";
+        }
+        StringParameter CurrentStateFile {
+            IndexDomain: (IndexTags);
+            Comment: "The current state for each Pivot Table (tag).";
+        }
+        Set AllTags {
+            Index: IndexTags;
+            Parameter: CurrentTagElement;
+            Definition: Data{ 'State Manager PT' };
+            Comment: "The set of all tags.";
+        }
+        ElementParameter StateDataset {
+            Range: AllDataSets;
+            Property: NoSave;
+            Comment: "The state dataset.";
+        }
+        StringParameter StateDatasetName {
+            Definition: "StateDataset";
+            Comment: "The name of the state Dataset.";
+        }
+        ElementParameter StateDataCategory {
+            Range: AllDataCategories;
+            Definition: 'PTStateManager::Pivot Table State Data';
+            Comment: "The state Data Category.";
+        }
+        Parameter StateSelected;
+        StringParameter StateNameSelected;
+        Parameter HideEnterNameBox {
+            Default: 1;
+        }
+    }
+    Procedure InitializeStateData {
+        Body: {
+            OK := DatasetFind(StateDataCategory, StateDatasetName, StateDataset);
+            
+            if not OK then
+            
+            	DatasetCreate(StateDataCategory, StateDatasetName, StateDataset);
+            
+            endif;
+            
+            DatasetSetChangedStatus(StateDataCategory,0);
+            DatasetLoadCurrent(StateDataCategory, StateDataset, 0);
+        }
+        Comment: "This procedure is used to load the state data from the dataset, or create this dataset if it is not yet available.";
+        Parameter OK;
+    }
+    Procedure SelectState {
+        Arguments: (StateName);
+        Body: {
+            StateSelected := 0;
+            StateNameSelected := StateName;
+            PageSetCursor("StateSelector","StateList",SelectedState);
+            Return StateSelected;
+        }
+        Comment: "CurrentErrorMessage";
+        StringParameter StateName {
+            Property: InOut;
+        }
+    }
+    Procedure UpdateStateNameSelected {
+        Arguments: (_sp);
+        Body: {
+            StateNameSelected := _sp;
+        }
+        ElementParameter _sp {
+            Range: StateFilesForCurrentPageTag;
+            Property: Input;
+        }
+    }
+    Procedure DoubleClickStateNameSelector {
+        Body: {
+            UpdateStateNameSelected(SelectedState);
+            StateSelected := 1;
+            PageClose;
+        }
+    }
+    Procedure LoadState {
+        Body: {
+            InitializeStateData;
+            
+            !What is the current page and tag
+            PageGetFocus(CurrentPage, CurrentTag);
+            CurrentTagElement := StringToElement(AllTags, CurrentTag, 1);
+            
+            !Based on the current page/tag, a dialog with all states for the current page is shown, in which you can select a state.
+            HideEnterNameBox := 1;
+            if SelectState(CurrentStateFile(CurrentTagElement)) then
+            
+            	SelectedStateFile := SelectedState;
+            
+            	!Load the selected state.
+            	CurrentStateFile(CurrentTagElement) := SelectedStateFile;
+            	empty CurrentErrorMessage;
+            	PivotTableReloadState(CurrentPage, CurrentTag, StateLocation(SelectedStateFile));
+            	if CurrentErrorMessage then DialogMessage(CurrentErrorMessage) endif;
+            
+            endif;
+            
+            DatasetSave(StateDataCategory, 0);
+        }
+    }
+    Procedure SaveState {
+        Body: {
+            InitializeStateData;
+            
+            !Get the current page and tag
+            PageGetFocus(CurrentPage,CurrentTag);
+            
+            !Get the name for the state to be saved.
+            HideEnterNameBox := 0;
+            if SelectState(CurrentStateFile(CurrentTagElement)) then
+            
+            	StateName := StateNameSelected;
+            
+            	!Continue when a non-empty state name has been entered.
+            	if StateName then
+            
+            
+            		!Check whether StateName is already in the set of StateFiles
+            		State := StringToElement(States, StateName);
+            
+            		!If the state name is already used on a different page/tag then the current page/tag:
+            		if State <> '' AND ( StatePage(State) <> CurrentPage OR StateTag(State) <> CurrentTag ) then
+            
+            			!Check whether you want to overwrite the existing state.
+            			Answer := DialogAsk(FormatString("State with name '%s' already exists for another page/tag. Do you want to overwrite this state?", StateName), "Yes", "No");
+            
+            			!Stop when you don't want to overwrite.
+            			if Answer <> 1 then
+            				return;
+            			endif;
+            
+            		endif;
+            
+            		!Add the state to the set of StateFiles
+            		State := StringToElement(States, StateName, 1);
+            		CurrentTagElement := StringToElement(AllTags, CurrentTag, 1);
+            		!Specify the page and last saved date/time for the state.
+            		StatePage(State)      := CurrentPage;
+            		StateTag(State)       := CurrentTag;
+            		StateLastSaved(State) := CurrentToString("%c%y-%m-%d %H:%M:%S");
+            		StateLocation(State)  := StateSource;
+            
+            		!Save the state to the Pivot Table state file
+            		CurrentStateFile(CurrentTagElement) := StateName;
+            		empty CurrentErrorMessage;
+            		PivotTableSaveState(CurrentPage,CurrentTag, StateSource);
+            		if CurrentErrorMessage then DialogMessage(CurrentErrorMessage) endif;
+            
+            	else
+            
+            		!An empty state name has been provided.
+            		DialogMessage("No state name provided. The state has not been saved.");
+            
+            	endif;
+            
+            endif;
+            
+            DatasetSave(StateDataCategory, 0);
+        }
+        ElementParameter State {
+            Range: States;
+        }
+        StringParameter StateName {
+            InitialData: "";
+        }
+        Parameter Answer {
+            InitialData: 0;
+        }
+    }
+    Procedure DeleteState {
+        Body: {
+            InitializeStateData;
+            
+            !What is the current page and tag
+            PageGetFocus(CurrentPage,CurrentTag);
+            
+            !Based on the current page, a dialog with all states for the current page is shown, in which you can select a state.
+            HideEnterNameBox := 1;
+            if SelectState(CurrentStateFile(CurrentTagElement)) then !DialogGetElementByData("Select state file to delete", SelectedStateFile, StateInformation(sp,c)) AND SelectedStateFile then
+            
+            	SelectedStateFile := SelectedState;
+            
+            	!Check whether you're sure that you want to delete the selected state
+            	if DialogAsk(FormatString("Are you sure you want to delete state '%e'?", SelectedStateFile), "Yes", "No") = 1 then
+            
+            		!Delete the state from the set of StateFiles and the Pivot Table state file.
+            		empty CurrentErrorMessage;
+            		PivotTableDeleteState(SelectedStateFile,StateSource);
+            		if CurrentErrorMessage then
+            			DialogMessage(CurrentErrorMessage)
+            		endif;
+            		States -= SelectedStateFile;
+            
+            	endif;
+            
+            endif;
+            
+            DatasetSave(StateDataCategory, 0);
+        }
+    }
+    Procedure LibraryInitialization {
+        Body: {
+            if ProjectDeveloperMode then
+            
+            	StateSource := "DeveloperState";
+            
+            else
+            
+            	StateSource := "UserState";
+            
+            endif;
+        }
+    }
+    Procedure LibraryExecution;
+}

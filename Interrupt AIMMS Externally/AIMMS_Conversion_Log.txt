@@ -1,0 +1,43 @@
+﻿Converting Main project
+Converting Interrupt AIMMS Project.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.ams
+Converting InterruptModule.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\InterruptModule.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\Tools\ProjectExport.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\Options
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\DataManagementSetup.xml
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\User Files\bitmaps
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\MainProject\Interrupt AIMMS Project.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: AimmsInterrupt.dll to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\AimmsInterrupt.dll
+Copying file: AimmsInterrupt64.dll to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\AimmsInterrupt64.dll
+Copying file: Description.txt to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\Description.txt
+Copying file: Interrupt AIMMS Project.dat to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\Interrupt AIMMS Project.dat
+Copying file: InterruptProgram.exe to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\InterruptProgram.exe
+Copying folder: log to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\log
+Copying folder: Source AIMMSInterrupt to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\Source AIMMSInterrupt
+Copying folder: Source InterruptProgram to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\Source InterruptProgram
+Copying file: _AIMMSpackInfo to C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_AIMMSpackInfo
+Creating folder: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\_Example Style Library
+Writing file: C:\Users\FrN\SparkleShare\aimmsexamples\Interrupt AIMMS Externally\Interrupt AIMMS Project.aimms
+Successfully converted the whole project.

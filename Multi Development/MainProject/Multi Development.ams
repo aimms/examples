@@ -1,0 +1,21 @@
+## ams_version=1.0
+
+Model Main_Multi_Development {
+    StringParameter ProblemDescription {
+        Definition: "Description.txt";
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure OpenExplorer {
+        Body: {
+            CurrentDirectory := "Projects Multi Development";
+            OpenDocument(CurrentDirectory);
+        }
+        StringParameter CurrentDirectory;
+    }
+}

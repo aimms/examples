@@ -1,0 +1,756 @@
+## ams_version=1.0
+
+Model Main_Pooling {
+    Section Model_Formulation {
+        DeclarationSection Input_Data {
+            Set ProductProperties {
+                Index: p;
+            }
+            Set Intermediates {
+                Index: i;
+            }
+            Set PoolTanks {
+                Index: t;
+            }
+            Set FinalProducts {
+                Index: f;
+            }
+            Parameter IntermediatePropertyValue {
+                IndexDomain: (p,i);
+            }
+            Parameter MinimumFlow {
+                IndexDomain: (i);
+                Comment: "Minimal amount of intermediate i to be used";
+            }
+            Parameter MaximumFlow {
+                IndexDomain: (i);
+                Comment: "Maximal amount of intermediate i to be used";
+            }
+            Parameter MinimumFinalProductAmountRequirement {
+                IndexDomain: (f);
+            }
+            Parameter MaximumFinalProductAmountRequirement {
+                IndexDomain: (f);
+            }
+            Parameter MinimumFinalProductPropertyRequirement {
+                IndexDomain: (p,f);
+            }
+            Parameter MaximumFinalProductPropertyRequirement {
+                IndexDomain: (p,f);
+            }
+            Parameter MaximumPoolCapacity {
+                IndexDomain: (t);
+            }
+            Parameter AdmissableFlowToPool {
+                IndexDomain: (i,t);
+                Range: binary;
+            }
+            Parameter BasePrice {
+                IndexDomain: (f);
+            }
+        }
+        DeclarationSection Model_Declarations {
+            Variable FlowToPool {
+                IndexDomain: (i,t) | AdmissableFlowToPool(i,t);
+                Text: "Flow of intermediate i to pool tank t";
+                Range: nonnegative;
+            }
+            Variable FlowFromPool {
+                IndexDomain: (t,f);
+                Text: "Flow of pool tank t to final product f";
+                Range: nonnegative;
+            }
+            Variable PoolAmount {
+                IndexDomain: (t);
+                Text: "Stock level in pool tank t";
+                Range: [0, MaximumPoolCapacity(t)];
+                Definition: sum[ i, FlowToPool(i,t) ];
+            }
+            Variable PoolPropertyValue {
+                IndexDomain: (p,t);
+                Text: "Value of property p in pool tank t";
+            }
+            Variable FinalProductPropertyValue {
+                IndexDomain: (p,f);
+                Text: "Value of property p in final product f";
+                Range: [MinimumFinalProductPropertyRequirement(p, f), MaximumFinalProductPropertyRequirement(p, f)];
+            }
+            Variable FinalProductSalesPrice {
+                IndexDomain: (f);
+                Definition: {
+                    BasePrice(f) * ( 2 - FinalProductPropertyValue( 'Sulphur', f ) /
+                                     MaximumFinalProductPropertyRequirement( 'Sulphur', f ) )
+                }
+            }
+            Variable TotalFinalProductSalesPrice {
+                Definition: sum[ (t,f), FinalProductSalesPrice(f) * FlowFromPool(t,f) ];
+            }
+            Constraint FlowSupplyLowerBound {
+                IndexDomain: i | MinimumFlow(i);
+                Definition: {
+                    MinimumFlow(i)
+                    <=
+                    sum[ t, FlowToPool(i,t) ]
+                }
+            }
+            Constraint FlowSupplyUpperBound {
+                IndexDomain: i | MaximumFlow(i);
+                Definition: {
+                    sum[ t, FlowToPool(i,t) ]
+                    <=
+                    MaximumFlow(i)
+                }
+            }
+            Constraint FlowBalance {
+                IndexDomain: (t);
+                Definition: {
+                    PoolAmount(t)
+                    =
+                    sum[ f, FlowFromPool(t,f) ]
+                }
+            }
+            Constraint PoolPropertyValueDetermination {
+                IndexDomain: (p,t);
+                Definition: {
+                    PoolPropertyValue(p,t) * PoolAmount(t)
+                    =
+                    sum[ i, IntermediatePropertyValue(p,i) * FlowToPool(i,t) ]
+                }
+            }
+            Constraint FinalProductPropertyValueDetermination {
+                IndexDomain: (p,f);
+                Definition: {
+                    sum[ t, PoolPropertyValue(p,t) * FlowFromPool(t,f) ]
+                    =
+                    FinalProductPropertyValue(p,f) * sum[ t, FlowFromPool(t,f) ]
+                }
+            }
+            Constraint FinalProductAmountRequirementLowerBound {
+                IndexDomain: (f);
+                Definition: {
+                    MinimumFinalProductAmountRequirement(f)
+                    <=
+                    sum[ t, FlowFromPool(t,f) ]
+                }
+            }
+            Constraint FinalProductAmountRequirementUpperBound {
+                IndexDomain: (f);
+                Definition: {
+                    sum[ t, FlowFromPool(t,f) ]
+                    <=
+                    MaximumFinalProductAmountRequirement(f)
+                }
+            }
+            MathematicalProgram PoolingProblem {
+                Objective: TotalFinalProductSalesPrice;
+                Direction: maximize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: NLP;
+            }
+        }
+    }
+    Section GUI_Section {
+        DeclarationSection GUI_Section_declaration_1 {
+            ElementParameter UsedSolver {
+                IndexDomain: (e);
+                Range: NLPSolvers;
+            }
+            ElementParameter ExperimentColor {
+                IndexDomain: (e);
+                Range: AllColors;
+                Definition: {
+                    if UsedSolver(e) = SelectedSolverA then
+                            'blue'
+                    elseif UsedSolver(e) = SelectedSolverB then
+                            'lime green'
+                    else
+                            'grey'
+                    endif
+                }
+            }
+            Parameter ShowProgress {
+                InitialData: 0;
+            }
+            Set AllPages {
+                Index: IndexPages;
+                Parameter: ThePage;
+                Property: NoSave;
+                Definition: data { Results, Details, 'Case Compare','Solver Comparison' };
+            }
+            ElementParameter PageHeaderColor {
+                IndexDomain: (IndexPages);
+                Range: AllColors;
+                Property: NoSave;
+                Definition: {
+                    if IndexPages = CurrentPage then
+                    
+                            'white'
+                    
+                    else
+                    
+                            'Text Blue'
+                    
+                    endif
+                }
+            }
+            StringParameter CurrentPage {
+                Property: NoSave;
+            }
+        }
+        DeclarationSection GUI_Section_declaration_2 {
+            Parameter XCoordinate_Intermediates {
+                IndexDomain: (i);
+            }
+            Parameter YCoordinate_Intermediates {
+                IndexDomain: (i);
+            }
+            Parameter XCoordinate_PoolTanks {
+                IndexDomain: (t);
+            }
+            Parameter YCoordinate_PoolTanks {
+                IndexDomain: (t);
+            }
+            Parameter XCoordinate_FinalProducts {
+                IndexDomain: (f);
+            }
+            Parameter YCoordinate_FinalProducts {
+                IndexDomain: (f);
+            }
+            StringParameter ArcText_IntermediateFlow {
+                IndexDomain: (i);
+                Definition: FormatString("[%n,%n]",MinimumFlow(i),MaximumFlow(i));
+            }
+        }
+        Procedure UpdateCurrentPage {
+            Body: {
+                PageGetActive(CurrentPage);
+            }
+        }
+    }
+    Section Experiment_Section {
+        Section GMP_Section {
+            DeclarationSection Solver_Declarations {
+                Set AvailableSolvers {
+                    SubsetOf: AllSolvers;
+                    Index: s;
+                    Definition: AllSolvers;
+                }
+                Set NLPSolvers {
+                    SubsetOf: AllSolvers;
+                    Index: nlps, nlps1;
+                    Parameter: SelectedNLPSolver;
+                }
+                Parameter AllowedSolverCombinations {
+                    IndexDomain: (nlps, nlps1);
+                    Definition: {
+                        !data
+                        !{ ( 'CONOPT 3.14G', 'CONOPT 3.14G' ) : 1,  ( 'CONOPT 3.14G', 'CONOPT 3.14A' ) : 1,  ( 'CONOPT 3.14A', 'CONOPT 3.14G' ) : 1,
+                        !  ( 'CONOPT 3.14A', 'CONOPT 3.14A' ) : 1 }
+                    }
+                }
+                ElementParameter SelectedSolverA {
+                    Range: NLPSolvers;
+                    Definition: SelectedNLPSolver;
+                }
+                ElementParameter SelectedSolverB {
+                    Range: NLPSolvers;
+                }
+            }
+            DeclarationSection Timing_Declaration {
+                Quantity SI_Time_Duration {
+                    BaseUnit: s;
+                    Conversions: {
+                        second -> s : # -> #,
+                        tick   -> s : # -> # / 100
+                    }
+                    Comment: "Expresses the value for the duration of periods.";
+                }
+                Parameter SolutionTime {
+                    Unit: s;
+                }
+                Parameter SolutionTimeParallel {
+                    Unit: s;
+                }
+            }
+            DeclarationSection Parallel_Solving_Declaration {
+                ElementParameter PoolingProblemGMPA {
+                    Range: AllGeneratedMathematicalPrograms;
+                }
+                ElementParameter PoolingProblemGMPB {
+                    Range: AllGeneratedMathematicalPrograms;
+                }
+                ElementParameter ThisSessionA {
+                    Range: AllSolverSessions;
+                }
+                ElementParameter ThisSessionB {
+                    Range: AllSolverSessions;
+                }
+                ElementParameter SessionAColor {
+                    Range: AllColors;
+                    Definition: 'Blue';
+                }
+                ElementParameter SessionBColor {
+                    Range: AllColors;
+                    Definition: 'Green';
+                }
+                Set ActiveSolverSessions {
+                    SubsetOf: AllSolverSessions;
+                }
+                ElementParameter SolverSessionFinished {
+                    Range: AllSolverSessions;
+                }
+                ElementParameter SolverSessionToExperiment {
+                    IndexDomain: (IndexSolverSessions);
+                    Range: Experiments;
+                }
+                ElementParameter GMPofExperiment {
+                    IndexDomain: (e);
+                    Range: AllGeneratedMathematicalPrograms;
+                }
+                ElementParameter ExperimentOfSolverSessionA {
+                    Range: Experiments;
+                }
+                ElementParameter ExperimentOfSolverSessionB {
+                    Range: Experiments;
+                }
+            }
+        }
+        Procedure CreateCase {
+            Arguments: (CaseName);
+            Body: {
+                If not CaseFind(CaseName,CaseID) then
+                        CaseCreate(CaseName,CaseID)
+                endif;
+                
+                CaseSetCurrent(CaseID);
+                CaseSetChangedStatus(0);
+                CaseSave(0);
+            }
+            StringParameter CaseName {
+                Property: Input;
+            }
+            ElementParameter CaseID {
+                Range: AllCases;
+            }
+        }
+        DeclarationSection Statistical_Declarations {
+            Parameter NrExperiments {
+                InitialData: 20;
+            }
+            Set Experiments {
+                Index: e;
+                OrderBy: User;
+                Definition: ElementRange( 1, NrExperiments,fill:0 );
+            }
+            Parameter SessionNr;
+            Parameter SolutionValue {
+                IndexDomain: (e);
+            }
+            Parameter BestSoFar;
+            Parameter BestPoolAmount {
+                IndexDomain: (t);
+            }
+            Parameter BestFlowToPool {
+                IndexDomain: (i,t);
+            }
+            Parameter BestFlowFromPool {
+                IndexDomain: (t,f);
+            }
+            Parameter BestPoolPropertyValue {
+                IndexDomain: (p,t);
+            }
+            Parameter BestFinalProductPropertyValue {
+                IndexDomain: (p,f);
+            }
+            Parameter BestFinalProductPrice {
+                IndexDomain: (f);
+            }
+        }
+        Procedure RunExperiment {
+            Body: {
+                ! Cleanup and initialization
+                empty SolutionValue, UsedSolver;
+                BestSoFar := 0;
+                option seed := 1347;
+                
+                SolutionStartTime := CurrentToString("%c%y-%m-%d %H:%M:%S:%T");
+                for ( e ) do
+                        ! Generate the random start point
+                        EmptySolution;
+                        DetermineRandomStartingValues;
+                
+                        ! Start the execution synchronous, which means that the execution
+                        ! will not continue untill the solver is finished
+                
+                        solve PoolingProblem where solver := SelectedNLPSolver ;
+                
+                        SolutionValue(e) := TotalFinalProductSalesPrice;
+                        UsedSolver(e) := SelectedNLPSolver;
+                
+                        ! If we found a better solution, we will store this as the best solution
+                
+                        if (PoolingProblem.SolverStatus = 'NormalCompletion' and TotalFinalProductSalesPrice > BestSoFar ) then
+                                BestPoolAmount(t)                  := PoolAmount(t);
+                                BestFlowToPool(i,t)                := FlowToPool(i,t);
+                                BestFlowFromPool(t,f)              := FlowFromPool(t,f);
+                                BestPoolPropertyValue(p,t)         := PoolPropertyValue(p,t);
+                                BestFinalProductPropertyValue(p,f) := FinalProductPropertyValue(p,f);
+                                BestSoFar                          := TotalFinalProductSalesPrice;
+                                BestFinalProductPrice(f)           := FinalProductSalesPrice(f);
+                        endif;
+                
+                    ! This will update the current pages during the execution
+                    SolutionTime := CurrentToMoment([second],SolutionStartTime);
+                    if ShowProgress then
+                        PageRefreshAll;
+                    endif;
+                endfor;
+            }
+            StringParameter SolutionStartTime;
+        }
+        Procedure RunExperimentParallel {
+            Body: {
+                !If not AllowedSolverCombinations(SelectedSolverA,SelectedSolverB) then
+                !       DialogMessage("This combination of solvers is not allowed");
+                !       return;
+                !endif;
+                ! Cleanup and initialization
+                SessionNr := 1;
+                BestSoFar := 0;
+                empty SolutionValue,ThisSessionA,ThisSessionB, UsedSolver;
+                option seed := 1347;
+                
+                ! Create two GMPs and two solver sessions
+                SolutionStartTime := CurrentToString("%c%y-%m-%d %H:%M:%S:%T");
+                PoolingProblemGMPA := GMP::Instance::Generate( PoolingProblem, "Pooling Problem A" );
+                PoolingProblemGMPB := GMP::Instance::Copy(PoolingProblemGMPA, "Pooling Problem B");
+                
+                ThisSessionA := GMP::Instance::CreateSolverSession( PoolingProblemGMPA, Solver: SelectedSolverA, Name: "Session A");
+                ThisSessionB := GMP::Instance::CreateSolverSession( PoolingProblemGMPB, Solver: SelectedSolverB, Name: "Session B");
+                
+                ! Start the first two sessions
+                StartNextExperiment(PoolingProblemGMPA,ThisSessionA);
+                StartNextExperiment(PoolingProblemGMPB,ThisSessionB);
+                
+                while loopcount <= card(Experiments) do
+                        ! This logic determines the SolverSession that is finished.
+                        ! The function "WaitForSingleCompletion" does not return anything
+                        ! if the models were already solved.
+                        ActiveSolverSessions := ThisSessionA + ThisSessionB;
+                        SolverSessionFinished := GMP::SolverSession::WaitForSingleCompletion( ActiveSolverSessions );
+                
+                        ! Once a solver session is finished, the results will be retrieved
+                        ! and a next session will be started
+                        if SolverSessionFinished = ThisSessionA then
+                
+                                ! Solver Session A is finished
+                                GMP::Solution::RetrieveFromSolverSession(ThisSessionA,1000);
+                                GMP::solution::SendToModel(PoolingProblemGMPA,1000);
+                                SolutionValue(SolverSessionToExperiment(ThisSessionA)) := TotalFinalProductSalesPrice;
+                
+                                ! If we found a better solution, we will store this as the best solution
+                                if ( TotalFinalProductSalesPrice > BestSoFar ) then
+                                        BestPoolAmount(t)                  := PoolAmount(t);
+                                        BestFlowToPool(i,t)                := FlowToPool(i,t);
+                                        BestFlowFromPool(t,f)              := FlowFromPool(t,f);
+                                        BestPoolPropertyValue(p,t)         := PoolPropertyValue(p,t);
+                                        BestFinalProductPropertyValue(p,f) := FinalProductPropertyValue(p,f);
+                                        BestSoFar                          := TotalFinalProductSalesPrice;
+                                        BestFinalProductPrice(f)           := FinalProductSalesPrice(f);
+                                endif;
+                
+                                StartNextExperiment(PoolingProblemGMPA,ThisSessionA);
+                
+                        elseif SolverSessionFinished = ThisSessionB then
+                
+                                ! Solver Session B is finished
+                                GMP::Solution::RetrieveFromSolverSession(ThisSessionB,1000);
+                                GMP::solution::SendToModel(PoolingProblemGMPB,1000);
+                                SolutionValue(SolverSessionToExperiment(ThisSessionB)) := TotalFinalProductSalesPrice;
+                
+                                ! If we found a better solution, we will store this as the best solution
+                                if ( TotalFinalProductSalesPrice > BestSoFar ) then
+                                        BestPoolAmount(t)                  := PoolAmount(t);
+                                        BestFlowToPool(i,t)                := FlowToPool(i,t);
+                                        BestFlowFromPool(t,f)              := FlowFromPool(t,f);
+                                        BestPoolPropertyValue(p,t)         := PoolPropertyValue(p,t);
+                                        BestFinalProductPropertyValue(p,f) := FinalProductPropertyValue(p,f);
+                                        BestSoFar                          := TotalFinalProductSalesPrice;
+                                        BestFinalProductPrice(f)           := FinalProductSalesPrice(f);
+                                endif;
+                
+                                StartNextExperiment(PoolingProblemGMPB,ThisSessionB);
+                        else
+                                DialogMessage("This is an error");
+                        endif;
+                
+                    ! This will update the current pages during the execution
+                    SolutionTimeParallel := CurrentToMoment([second],SolutionStartTime);
+                    if ShowProgress then
+                        PageRefreshAll;
+                    endif;
+                endwhile;
+            }
+            StringParameter SolutionStartTime;
+            ElementParameter SolutionStatus {
+                Range: AllSolutionStates;
+            }
+        }
+        Procedure RunExperimentCases {
+            Body: {
+                ! Cleanup and initialization
+                empty SolutionValue, UsedSolver;
+                BestSoFar := 0;
+                option seed := 1347;
+                
+                SolutionStartTime := CurrentToString("%c%y-%m-%d %H:%M:%S:%T");
+                for ( e ) do
+                        ! Generate the random start point
+                        EmptySolution;
+                        DetermineRandomStartingValues;
+                
+                        ! Start the execution synchronous, which means that the execution
+                        ! will not continue untill the solver is finished
+                
+                        solve PoolingProblem where solver := SelectedNLPSolver ;
+                
+                        SolutionValue(e) := TotalFinalProductSalesPrice;
+                        UsedSolver(e) := SelectedNLPSolver;
+                
+                        ! If we found a better solution, we will store this as the best solution
+                        if ( TotalFinalProductSalesPrice > BestSoFar ) then
+                                BestPoolAmount(t)                  := PoolAmount(t);
+                                BestFlowToPool(i,t)                := FlowToPool(i,t);
+                                BestFlowFromPool(t,f)              := FlowFromPool(t,f);
+                                BestPoolPropertyValue(p,t)         := PoolPropertyValue(p,t);
+                                BestFinalProductPropertyValue(p,f) := FinalProductPropertyValue(p,f);
+                                BestSoFar                          := TotalFinalProductSalesPrice;
+                                BestFinalProductPrice(f)           := FinalProductSalesPrice(f);
+                        endif;
+                
+                        CreateCase(FormatString("Case Ex-%e",e));
+                
+                    ! This will update the current pages during the execution
+                    SolutionTime := CurrentToMoment([second],SolutionStartTime);
+                    PageRefreshAll;
+                endfor;
+            }
+            StringParameter SolutionStartTime;
+        }
+        Procedure StartNextExperiment {
+            Arguments: (ThisGMP,ThisSession);
+            Body: {
+                LocalExperiment := Element(Experiments,SessionNr);
+                
+                if LocalExperiment then
+                        ! Keep track of the experiment and session relationship
+                        SolverSessionToExperiment(ThisSession) := LocalExperiment;
+                        UsedSolver(LocalExperiment) := GMP::SolverSession::GetSolver(ThisSession);
+                        GMPofExperiment(LocalExperiment) := ThisGMP;
+                        LocalExperiment := LocalExperiment;
+                
+                        ! Generate the random start point and send this to the solver
+                        EmptySolution;
+                        DetermineRandomStartingValues;
+                        GMP::solution::RetrieveFromModel(ThisGMP,SessionNr);
+                        GMP::Solution::SendToSolverSession(ThisSession,SessionNr);
+                
+                        ! Start the execution Asynchronous, which means that the execution
+                        ! will continue, but the solver will continue to solve.
+                        GMP::SolverSession::AsynchronousExecute( ThisSession );
+                
+                        ! Advance the SessionNr such that it will hold the experiment number of the next experiment to be solved
+                        SessionNr += 1;
+                else
+                        ThisSession := '';
+                endif;
+            }
+            ElementParameter ThisSession {
+                Range: AllSolverSessions;
+                Property: InOut;
+            }
+            ElementParameter ThisGMP {
+                Range: AllGeneratedMathematicalPrograms;
+                Property: Input;
+            }
+            ElementParameter LocalExperiment {
+                Range: Experiments;
+            }
+        }
+    }
+    Procedure DetermineRandomStartingValues {
+        Body: {
+            FlowToPool(i,t)   := Uniform( MinimumFlow(i), MaximumFlow(i) );
+            
+            FlowFromPool(t,f) := sum[ i, FlowToPool(i,t) ] / card(FinalProducts);
+            
+            
+            PoolPropertyValue(p,t) :=
+                sum[ i, IntermediatePropertyValue(p,i) * FlowToPool(i,t) ] /$ sum[ i, FlowToPool(i,t) ];
+            
+            
+            FinalProductPropertyValue(p,f) :=
+                max( MinimumFinalProductPropertyRequirement(p,f),
+                     min( MaximumFinalProductPropertyRequirement(p,f),
+                            sum[ t, PoolPropertyValue(p,t) * FlowFromPool(t,f) ] /$ sum[ t, FlowFromPool(t,f) ] ) );
+        }
+        Comment: {
+            "! FlowToPool(i,t) := Uniform( 0, 30 );"
+        }
+    }
+    Procedure EmptySolution {
+        Body: {
+            empty FlowToPool,
+                  FlowFromPool,
+                  PoolPropertyValue,
+                  PoolAmount,
+                  FinalProductPropertyValue,
+                  FinalProductSalesPrice,
+                  TotalFinalProductSalesPrice,
+                  FlowSupplyLowerBound,
+                  FlowSupplyUpperBound,
+                  FlowBalance,
+                  PoolPropertyValueDetermination,
+                  FinalProductAmountRequirementLowerBound,
+                  FinalProductAmountRequirementUpperBound,
+                  FinalProductPropertyValueDetermination;
+        }
+    }
+    Procedure InitializeData {
+        Body: {
+            AdmissableFlowToPool(i,t) := data table
+                       'Tank1'  'Tank2'
+            !------------------------------
+             'HS1-SR'     1
+             'HS1-CR'     1
+             'HS1-HGO'    1
+             'HS1-VGO'    1
+             'HS2-SR'     1
+             'HS2-CR'     1
+             'HS2-HGO'    1
+             'HS2-VGO'    1
+             'LS1-SR'            1
+             'LS1-CR'            1
+             'LS1-HGO'           1
+             'LS1-VGO'           1
+             'LS2-SR'            1
+             'LS2-CR'            1
+             'LS2-HGO'           1
+             'LS2-VGO'           1
+            ;
+            
+            MaximumPoolCapacity('Tank1') := 15;
+            MaximumPoolCapacity('Tank2') := 15;
+            
+            
+            composite table:
+              i          MinimumFlow     MaximumFlow
+            !---------------------------------------
+             'HS1-SR'    1                  3
+             'HS1-CR'                       3
+             'HS1-HGO'                      3
+             'HS1-VGO'                      3
+             'HS2-SR'    1                  3
+             'HS2-CR'                       3
+             'HS2-HGO'                      3
+             'HS2-VGO'                      3
+             'LS1-SR'    1                  3
+             'LS1-CR'                       3
+             'LS1-HGO'                      3
+             'LS1-VGO'                      3
+             'LS2-SR'    1                  3
+             'LS2-CR'                       3
+             'LS2-HGO'                      3
+             'LS2-VGO'                      3
+            ;
+            
+                IntermediatePropertyValue := data table
+                      HS1-SR   HS1-CR  HS1-HGO  HS1-VGO   HS2-SR   HS2-CR  HS2-HGO
+                  !  -------  -------  -------  -------  -------  -------  -------
+            Sulphur    5.840    5.400    0.240    2.010    5.850    5.380    0.260
+                V50   43.700   36.800   12.800   15.400   47.300   39.200   13.100
+            
+                  +  HS2-VGO   LS1-SR   LS1-CR  LS1-HGO  LS1-VGO   LS2-SR   LS2-CR
+                  !  -------  -------  -------  -------  -------  -------  -------
+            Sulphur    2.040    0.640    0.570    0.020    0.140    0.930    0.850
+                V50   15.900   39.900   38.200   13.500   16.300   38.100   34.100
+            
+                  +  LS2-HGO  LS2-VGO
+                  !  -------  -------
+            Sulphur    0.030    0.260
+                V50   13.200   15.500
+                ;
+            
+            composite table:
+              p         f       MinimumFinalProductPropertyRequirement  MaximumFinalProductPropertyRequirement
+            !--------------------------------
+             'Sulphur' 'LSFO'                                                           1.5
+             'Sulphur' 'HSFO'                                                           3.5
+             'V50'     'LSFO'                   30                                     34
+             'V50'     'HSFO'                   32                                     40   ;
+            
+            composite table:
+              f       MinimumFinalProductAmountRequirement  MaximumFinalProductAmountRequirement  BasePrice
+            !--------------------------------
+             'LSFO'                   10                                    11                     150
+             'HSFO'                   11                                    17                     100 ;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            !read data from a project user file (see menu Tools - Project User Files)
+            read from file "<prj>:Pooling Data.txt";
+            
+            empty NLPSolvers ;
+            
+            for s do
+            
+                if FindString( FormatString( "%e",s ), "CONOPT" ) or
+                   FindString( FormatString( "%e",s ), "BARON" ) or
+                   FindString( FormatString( "%e",s ), "KNITRO" ) or
+                   FindString( FormatString( "%e",s ), "MINOS" ) or
+                   FindString( FormatString( "%e",s ), "SNOPT" )
+            
+                then
+            
+                    NLPSolvers += s ;
+            
+                endif ;
+            
+            endfor ;
+            
+            SelectedNLPSolver := First( NLPSolvers );
+            
+            
+            InitializeData ;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            EmptySolution ;
+            
+            DetermineRandomStartingValues ;
+            
+            solve PoolingProblem;
+            
+            display PoolingProblem.ProgramStatus;
+            
+            PoolingStatus := if ( PoolingProblem.ProgramStatus = 'LocallyInfeasible' ) then 1 else 0 endif;
+        }
+        Comment: "AllSolvers";
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Section Unused {
+        DeclarationSection Case_Declaration {
+            Parameter PoolingStatus;
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+    }
+}

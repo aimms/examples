@@ -1,0 +1,459 @@
+## ams_version=1.0
+
+Model Main_Transport {
+    Comment: {
+        "This AIMMS project illustrates how to formulate and solve a mathematical
+        program in AIMMS. It contains the declarations and procedures necessary
+        to formulate and solve a simple transportation model. The objective of
+        the model is to find an optimal distribution of transports from a given
+        set of depots to a given set of customers, such that:
+        - The demand of every customer is met.
+        - The amount supplied from each depot does not exceed the total amount
+          available for supply.
+        - The total cost associated with the totality of transports is minimal.
+        For illustration this demo uses a dataset containing Dutch cities."
+    }
+    Section Netherlands_Demo_Page {
+        DeclarationSection Netherlands_data {
+            Comment: {
+                "This section contains all the declarations which together represent
+                the input data of the transport model."
+            }
+            Set Locations {
+                Text: "The set of all depots and customer locations";
+                Index: l;
+                Parameter: Location;
+                Definition: Depots + Customers;
+            }
+            Set Depots {
+                SubsetOf: Locations;
+                Text: "The set of depots from which transports can emanate ";
+                Index: d;
+                Parameter: Depot;
+                OrderBy: d;
+            }
+            Set Customers {
+                SubsetOf: Locations;
+                Text: "The set of customers to which transport should take place";
+                Index: c;
+                Parameter: Customer;
+                OrderBy: c;
+            }
+            Parameter Supply {
+                IndexDomain: (d);
+                Text: "The total amount ready for supply from depot d";
+            }
+            Parameter Demand {
+                IndexDomain: (c);
+                Text: "The total demand of customer c";
+            }
+            Parameter UnitTransportCost {
+                IndexDomain: (d,c);
+                Text: "The transport cost per unit transported from depot d to customer c";
+            }
+        }
+        DeclarationSection Transport_Model_Formulation {
+            Variable Transport {
+                IndexDomain: (d,c);
+                Text: "The actual amount transported from depot d to customer c";
+                Range: nonnegative;
+                Comment: "Without specifying a nonnegative range, the optimization model becomes unbounded";
+            }
+            Constraint SatisfySupply {
+                IndexDomain: (d);
+                Text: "The amount supplied by depot d cannot exceed its supply amount";
+                Definition: sum(c, Transport(d,c)) <= Supply(d);
+            }
+            Constraint MeetDemand {
+                IndexDomain: (c);
+                Text: "The amount transported to customer c should meet its demand";
+                Definition: sum(d, Transport(d,c)) >= Demand(c);
+            }
+            Variable TotalCost {
+                Text: "The total cost associated with a particular distribution of transports";
+                Definition: sum((d,c), UnitTransportCost(d,c)*Transport(d,c));
+            }
+            MathematicalProgram TransportModel {
+                Objective: TotalCost;
+                Direction: minimize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Text: "The optimizing transportation model";
+                Type: LP;
+                Comment: {
+                    "The mathematical program contains all variables and all constraints
+                    declared in the model. To specify this, you can make use of the predefined
+                    set AllVariables and AllConstraints, which, at any time, contain the names
+                    of all variables and constraints in your model, respectively. If you want a
+                    mathematical program to be defined over a subset of the variables or
+                    constraints, you should declare subsets of these sets in your model, and
+                    specify these in the VARIABLES and CONSTRAINTS attributes."
+                }
+            }
+        }
+    }
+    Section USA_Demo_Page {
+        DeclarationSection USA_states_data {
+            Set USAStates {
+                Index: s;
+                Parameter: CurrentState;
+            }
+            StringParameter StateAbbreviation {
+                IndexDomain: (s);
+            }
+            StringParameter StateCapital {
+                IndexDomain: (s);
+            }
+            ElementParameter StateColor {
+                IndexDomain: (s);
+                Range: AllColors;
+                Definition: {
+                    if AnnualRainfall(s) < 5 then
+                        RainfallLevelColor('< 5')
+                    
+                    elseif AnnualRainfall(s) < 10 then
+                        RainfallLevelColor('5-10')
+                    
+                    elseif AnnualRainfall(s) < 15 then
+                        RainfallLevelColor('10-15')
+                    
+                    elseif AnnualRainfall(s) < 20 then
+                        RainfallLevelColor('15-20')
+                    
+                    elseif AnnualRainfall(s) < 30 then
+                        RainfallLevelColor('20-30')
+                    
+                    elseif AnnualRainfall(s) < 40 then
+                        RainfallLevelColor('30-40')
+                    
+                    elseif AnnualRainfall(s) < 50 then
+                        RainfallLevelColor('40-50')
+                    
+                    elseif AnnualRainfall(s) < 60 then
+                        RainfallLevelColor('50-60')
+                    
+                    elseif AnnualRainfall(s) < 80 then
+                        RainfallLevelColor('60-80')
+                    
+                    elseif AnnualRainfall(s) < 100 then
+                        RainfallLevelColor('80-100')
+                    
+                    else
+                            RainfallLevelColor('> 100')
+                    
+                    endif;
+                }
+            }
+            StringParameter StateSource {
+                IndexDomain: (s);
+                Definition: s;
+            }
+            StringParameter StateGMLFile {
+                IndexDomain: (s);
+                Definition: "US States GML Files\\" + s + ".gml";
+            }
+            StringParameter StateLayer {
+                IndexDomain: (s);
+                Definition: StateAbbreviation(s);
+            }
+        }
+        DeclarationSection USA_Rainfall_data {
+            Parameter AnnualRainfall {
+                IndexDomain: (s);
+                Comment: "in inches per year";
+            }
+            Set RainfallLevels {
+                Index: rl;
+                Parameter: ALevel;
+                Definition: data { '< 5', '5-10', '10-15', '15-20', '20-30', '30-40', '40-50', '50-60', '60-80', '80-100', '> 100' };
+            }
+            ElementParameter RainfallLevelColor {
+                IndexDomain: (rl);
+                Range: AllColors;
+                Definition: {
+                    data
+                    { '< 5'   : red             ,  5-10    : magenta         ,  10-15   : orange          ,  15-20   : 'navy blue',
+                      20-30   : yellow          ,  30-40   : green           ,  40-50   : 'dark green'    ,  50-60   : cyan            ,
+                      60-80   : blue            ,  80-100  : purple          ,  '> 100' : 'black' }
+                }
+            }
+            ElementParameter ThisLevel {
+                Range: RainfallLevels;
+            }
+        }
+    }
+    Section Paragon_Offices_Demo_Page {
+        Set ParagonOffices {
+            Index: po;
+            Definition: data{  NL,US,Sing };
+        }
+        ElementParameter AnOffice {
+            Range: ParagonOffices;
+        }
+        StringParameter ParagonOfficeAddress {
+            IndexDomain: (po);
+        }
+        Parameter ParagonOfficeLatitude {
+            IndexDomain: (po);
+        }
+        Parameter ParagonOfficeLongitude {
+            IndexDomain: (po);
+        }
+    }
+    Section GUI_Section {
+        DeclarationSection General_Identifiers {
+            Set NetworkBounds {
+                Index: nb;
+                Definition: data { Left, Right, Top, Bottom };
+            }
+            Parameter ActiveBounds {
+                IndexDomain: nb;
+            }
+            Parameter NLBounds {
+                IndexDomain: nb;
+                Definition: {
+                    data{ Left : 3.300,  Right : 7.300,  Top : 53.500,  Bottom : 50.680 };
+                }
+            }
+            Parameter USABounds {
+                IndexDomain: (nb);
+                Definition: {
+                    data{ Left : -139.045,  Right : 65.5,  Top : 74.754,  Bottom : -4.949 };
+                }
+            }
+            Parameter EURBounds {
+                IndexDomain: (nb);
+                Definition: {
+                    data{ Left : -14.185, Right : 37.348, Top : 71.471,  Bottom : 33.034 };
+                }
+            }
+            Parameter OfficeBounds {
+                IndexDomain: (nb);
+                Definition: data { Left : -125.000,  Right : 180.000,  Top : 90.000,  Bottom : -90.000 };
+            }
+            StringParameter NetworkInfo {
+                Definition: "<prj>:network.txt";
+            }
+            Parameter InternetConnectionExist {
+                Comment: "check whether there is internet connection";
+            }
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+        DeclarationSection NL_Demo_Page_Related_Identifiers {
+            Parameter XCoordinate {
+                IndexDomain: l;
+                Text: "The (geographical) X coordinate of location l";
+            }
+            Parameter YCoordinate {
+                IndexDomain: l;
+                Text: "The (geographical) Y coordinate of location l";
+            }
+            Parameter NLLatitude {
+                IndexDomain: (l);
+            }
+            Parameter NLLongitude {
+                IndexDomain: (l);
+            }
+            StringParameter NLPageTitle {
+                Definition: {
+                    if ZoomArea = 'NL' then
+                            "The Netherlands"
+                    
+                    elseif ZoomArea = 'USA' then
+                            "USA"
+                    
+                    else
+                            "Europe"
+                    
+                    endif;
+                }
+            }
+            Parameter DepotNameLong;
+            StringParameter DepotName {
+                IndexDomain: d;
+                Definition: {
+                    if DepotNameLong then
+                       FormatString("%e",d)
+                    else
+                      substring(FormatString("%e",d),1,2)
+                    endif
+                }
+            }
+            Parameter CustomerNameLong;
+            StringParameter CustomerName {
+                IndexDomain: c;
+                Definition: {
+                    if CustomerNameLong then
+                       FormatString("%e",c)
+                    else
+                      substring(FormatString("%e",c),1,2)
+                    endif
+                }
+            }
+            Parameter ShowRivers;
+            Parameter ShowHighways;
+            Parameter ShowGrids;
+            Parameter ShowNodesAndArcs;
+            Set DisplayedDepots {
+                SubsetOf: Depots;
+                Index: dd, dd1, dd2;
+                Definition: {
+                    if ShowNodesAndArcs then
+                    
+                        Depots
+                    
+                    else
+                    
+                            {}
+                    
+                    endif;
+                }
+            }
+            Set DisplayedCustomers {
+                SubsetOf: Customers;
+                Index: dc;
+                Definition: {
+                    if ShowNodesAndArcs then
+                    
+                        Customers
+                    
+                    else
+                    
+                            {}
+                    
+                    endif;
+                }
+            }
+            Set ZoomAreas {
+                Index: za;
+                Parameter: ZoomArea;
+                Definition: data { NL, USA, EU, Office };
+            }
+            Parameter CurveSetting {
+                IndexDomain: (d,c);
+                Definition: -1 * round(100*(XCoordinate(d) - XCoordinate(c)));
+            }
+        }
+        DeclarationSection USA_Demo_Page_Related_Identifiers {
+            ElementParameter AState {
+                Range: USAStates;
+            }
+            StringParameter city {
+                IndexDomain: (l);
+                Definition: FormatString("%e", l) + ", The Netherlands";
+            }
+            Parameter ReturnValue;
+            Parameter Latitude;
+            Parameter Longitude;
+            Parameter ShowRoad {
+                InitialData: 0;
+            }
+            Parameter YahooMapsBackground;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            read from file "<prj>:NL data.txt";
+            read from file "<prj>:Map data.txt";
+            read from file "<prj>:USA data.txt";
+            read from file "<prj>:OfficeData.txt";
+            
+            Customer := first(c);
+            Depot    := first(d);
+            Location := first(l);
+            InternetConnectionExist := TestInternetConnection("http://www.aimms.com");
+            ZoomArea := 'NL';
+            ActiveBounds(nb)  := NLBounds(nb);
+            
+            update DepotName, CustomerName;
+        }
+        Comment: {
+            "In this simple model, we obtain all input data from a single
+            ASCII data file called \"Map data.txt\". It contains the data
+            for depots and customers which both are a collection of Dutch cities."
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            if (IsRunningAsViewer) then
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+            	CaseFind("Solution",ACase);
+            	CaseLoadCurrent(ACase,0);
+            else
+            	Solve TransportModel;
+            endif;
+        }
+        Comment: {
+            "An mathematical program can be solved using the SOLVE statement.
+            It causes AIMMS to generate a matrix based on the current content
+            of the sets and parameters used in the declaration of the variables
+            and constraints in a model. This matrix is sent to a solver for
+            optimization, after which the result is read back in AIMMS."
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+        Comment: {
+            "The return value of 1 indicates that we are not interested in
+            saving the current data in a case."
+        }
+    }
+    Procedure ZoomToNetherlands {
+        Body: {
+            ZoomArea := 'NL';
+            ShowNodesAndArcs := 1;
+            
+            ActiveBounds(nb) := NLBounds(nb);
+        }
+        Comment: "Determines the bounds of the network object such that all locations are visible";
+    }
+    Procedure ZoomToUSA {
+        Body: {
+            ZoomArea := 'USA';
+            ShowNodesAndArcs := 0;
+            
+            ActiveBounds(nb) := USABounds(nb) ;
+        }
+    }
+    Procedure ZoomToEurope {
+        Body: {
+            ZoomArea := 'EU';
+            ShowNodesAndArcs := 0;
+            
+            ActiveBounds(nb) := EURBounds(nb) ;
+        }
+    }
+    Procedure ShowOffices {
+        Body: {
+            ZoomArea := 'Office';
+            ActiveBounds(nb) := OfficeBounds(nb);
+            
+            InternetConnectionExist := TestInternetConnection("http://www.aimms.com");
+            
+            if (InternetConnectionExist) then
+            	read from file "<prj>:OfficeAddresses.txt";
+            	for (po in ParagonOffices) do
+            		GeoFindCoordinates(ParagonOfficeAddress(po), ParagonOfficeLatitude(po), ParagonOfficeLongitude(po));
+            	endfor;
+            else
+            	read from file "<prj>:OfficeData.txt";
+            endif;
+        }
+    }
+    Procedure ResetNetworkArea {
+        Body: {
+            switch (ZoomArea) do
+            
+                    'NL'  : ZoomToNetherlands;
+                    'USA' : ZoomToUSA;
+                    'EU'  : ZoomToEurope;
+                    'Office' : ShowOffices;
+            
+            endswitch;
+        }
+    }
+}

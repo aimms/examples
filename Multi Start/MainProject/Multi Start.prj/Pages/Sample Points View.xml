@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:40:06">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="775" Height="664" />
+	</PageEditSize>
+	<ProjectUUID>61630490-7AD4-48A2-B4EA-BEE62479E224</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="353" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Network Object">
+		<Location top="426" left="207" bottom="654" right="768" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<AllowZoom>false</AllowZoom>
+		<EqualXYScale>false</EqualXYScale>
+		<ScrollControl>NoScrolling</ScrollControl>
+		<VisibleArea>
+			<Left>LeftBound</Left>
+			<Right>RightBound</Right>
+			<Top>125</Top>
+			<Bottom>-20</Bottom>
+		</VisibleArea>
+		<TotalArea>
+			<Left>LeftBound</Left>
+			<Right>RightBound</Right>
+			<Top>200</Top>
+			<Bottom>-100</Bottom>
+		</TotalArea>
+		<Node>
+			<Identifier>as</Identifier>
+			<XCoordinate>NW_StartPoint_x( as )</XCoordinate>
+			<YCoordinate>NW_StartPoint_y( as )</YCoordinate>
+			<NumberFormat Width="6" Decimals="3" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>6</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Color>BDFE7E86-A7C8-4FA3-BEA3-FA3B7D1374B7 dark grey</Color>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>as2</Identifier>
+			<XCoordinate>NW_EndPoint_x( as2 )</XCoordinate>
+			<YCoordinate>NW_EndPoint_y( as2 )</YCoordinate>
+			<NumberFormat Width="6" Decimals="3" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>6</ScaleFactor>
+			<TextPosition>Top</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>BDFE7E86-A7C8-4FA3-BEA3-FA3B7D1374B7 dark grey</Color>
+			<Text>EndPoint_y( as2 )</Text>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>lp</Identifier>
+			<XCoordinate>LP_x( lp )</XCoordinate>
+			<YCoordinate>LP_y( lp )</YCoordinate>
+			<NumberFormat Width="6" Decimals="3" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Node>
+			<Identifier>lb</Identifier>
+			<XCoordinate>Lable_x( lb )</XCoordinate>
+			<YCoordinate>Lable_y( lb )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>0</ScaleFactor>
+			<TextPosition>Bottom</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>RGB ff8000</Color>
+			<Text>Lables( lb )</Text>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>NW_Line( as, as2 )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Color>NW_LineColor( as )</Color>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+		<Arc>
+			<Identifier>LP_Line( lp, lp2 )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Color>8C1FFC91-A781-4272-831D-2D86F23592E4 red</Color>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="219" left="18" bottom="240" right="189" />
+		<StaticText>View Clusters</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="402" left="210" bottom="426" right="546" />
+		<StaticText>Sample points and the solution each reaches</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>NW_Line</Symbol>
+			<Symbol>as</Symbol>
+			<Symbol>Lables</Symbol>
+			<Symbol>lb</Symbol>
+			<Symbol>lp</Symbol>
+			<Symbol>NW_StartPoint_x</Symbol>
+			<Symbol>NW_StartPoint_y</Symbol>
+			<Symbol>LP_Line</Symbol>
+			<Symbol>LP_x</Symbol>
+			<Symbol>LP_y</Symbol>
+			<Symbol>LeftBound</Symbol>
+			<Symbol>RightBound</Symbol>
+			<Symbol>NW_LineColor</Symbol>
+			<Symbol>Lable_x</Symbol>
+			<Symbol>Lable_y</Symbol>
+			<Symbol>lp2</Symbol>
+			<Symbol>NW_EndPoint_x</Symbol>
+			<Symbol>NW_EndPoint_y</Symbol>
+			<Symbol>EndPoint_y</Symbol>
+			<Symbol>as2</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

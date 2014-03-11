@@ -1,0 +1,86 @@
+    COMPOSITE TABLE:
+    l                     XCoordinate  YCoordinate
+!   ------------------    -----------  -----------
+    Leeuwarden                  5.782       53.212
+    Groningen                   6.574       53.226
+    Veendam                     6.847       53.091
+    Drachten                    6.094       53.112
+    Sneek                       5.654       53.035
+    Heerenveen                  5.923       52.954
+    Assen                       6.561       53.011
+    Emmen                       6.885       52.788
+    Hoogeveen                   6.483       52.730
+    Zwolle                      6.090       52.522
+    Kampen                      5.908       52.560
+    Almelo                      6.649       52.365
+    Hengelo                     6.783       52.272
+    Enschede                    6.890       52.220
+    Zutphen                     6.196       52.141
+    Deventer                    6.158       52.263
+    Lelystad                    5.447       52.511
+    Harderwijk                  5.629       52.357
+    Apeldoorn                   5.953       52.213
+    Ede                         5.648       52.042
+    Arnhem                      5.917       51.982
+    Utrecht                     5.118       52.107
+    Hilversum                   5.179       52.228
+    Amersfoort                  5.377       52.158
+    Amsterdam                   4.880       52.376
+    Ijmuiden                    4.580       52.461
+    Alkmaar                     4.748       52.633
+    'Den Helder'                4.754       52.958
+    Hoorn                       5.060       52.652
+    Enkhuizen                   5.286       52.708
+    Haarlem                     4.618       52.382
+    Leiden                      4.493       52.166
+    'Den Haag'                  4.303       52.079
+    'Hoek van Holland'          4.123       51.985
+    Zoetermeer                  4.478       52.070
+    Delft                       4.364       52.008
+    Rotterdam                   4.482       51.929
+    Gouda                       4.703       52.017
+    Veenendaal                  5.551       52.026
+    Doetinchem                  6.297       51.973
+    Winterswijk                 6.721       51.979
+    Nijmegen                    5.845       51.840
+    Oss                         5.525       51.757
+    'Den Bosch'                 5.308       51.701
+    Veghel                      5.544       51.619
+    Venray                      5.969       51.529
+    Venlo                       6.158       51.374
+    Helmond                     5.655       51.482
+    Eindhoven                   5.461       51.432
+    Valkenswaard                5.457       51.355
+    Tilburg                     5.071       51.568
+    Breda                       4.778       51.588
+    Roozendaal                  4.461       51.535
+    'Bergen op Zoom'            4.285       51.497
+    Dordrecht                   4.679       51.794
+    Zierikzee                   3.927       51.655
+    Middelburg                  3.613       51.502
+    Terneuzen                   3.844       51.327
+    Goes                        3.892       51.512
+    Vlissingen                  3.571       51.458
+    Hellevoetssluis             4.127       51.836
+    Tiel                        5.449       51.902
+    Geldermalsen                5.297       51.883
+    Weert                       5.698       51.253
+    Roermond                    6.005       51.200
+    Geleen                      5.814       50.970
+    Heerlen                     6.028       50.914
+    Maastricht                  5.696       50.857
+    Sittard                     5.863       51.008
+    Delfzijl                    6.912       53.340
+    'Den Burg'                  4.799       53.050
+    Harlingen                   5.438       53.177
+    Franeker                    5.531       53.201
+    Dokkum                      5.997       53.329
+    Barneveld                   5.581       52.135
+    ;
+    
+
+
+
+
+
+

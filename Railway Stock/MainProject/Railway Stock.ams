@@ -1,0 +1,446 @@
+## ams_version=1.0
+
+Model Main_Railway_Stock {
+    Section RailWay_Model {
+        DeclarationSection Model_Declaration {
+            Quantity Time_Duration {
+                BaseUnit: minute;
+                Comment: "Expresses the value for the duration of periods.";
+            }
+            Set AllCities {
+                Text: "The set of all cities";
+                Index: c, cc, o, d;
+            }
+            Calendar AllMinutes {
+                Text: "A calendar containing all minutes of one day";
+                Index: t, tt;
+                Unit: minute;
+                BeginDate: "2001-01-01 00:00";
+                EndDate: "2001-01-01 23:59";
+                TimeslotFormat: "%sH:%M";
+            }
+            Set AllNodes {
+                SubsetOf: (AllCities, AllMinutes);
+                Tags: (Place, Time);
+                Text: "The set of all nodes to be displayed";
+                Index: n, an, dn;
+                Definition: AllEvents + GUI_NightNodes + GUI_TextNodes;
+            }
+            Set AllEvents {
+                SubsetOf: AllNodes;
+                Text: "All the events, a combination of time and place for which a train arrive or depart";
+                Index: e, ee, ae, de;
+                Parameter: Arrival, Departure;
+            }
+            Set AllRideIDs {
+                Text: "The ID of every train ride";
+                Index: nr, nr2;
+            }
+            Parameter Rw_RideExists {
+                IndexDomain: (nr,de,ae);
+                Text: "Indicator which rides exists between de and ae";
+            }
+            Parameter Rw_MinimalTrains {
+                IndexDomain: (nr,de,ae);
+                Text: "The minimal transport from the depart node (de) to arrival node (ae)";
+            }
+            Parameter Rw_LastEvent {
+                IndexDomain: (e);
+                Text: "Indicator which event is the last event of the day, for every city";
+            }
+            Variable Rw_UsedTrains {
+                IndexDomain: (nr,de,ae);
+                Text: "The number of trains that go from the depart node (de) to the arrival node (ae)";
+                Range: {
+                    {Rw_MinimalTrains(nr, de, ae)..5}
+                }
+            }
+            Variable Rw_UnUsedTrains {
+                IndexDomain: (e);
+                Text: "Number of trains that are unused after event e";
+                Range: {
+                    {0..inf}
+                }
+            }
+            Variable Rw_TotalTrainsNeeded {
+                Text: "Total number of trains that stay overnight at the different stations";
+                Definition: {
+                    sum(e | Rw_LastEvent(e), Rw_UnUsedTrains(e));
+                }
+            }
+            Constraint Rw_TrainConservation {
+                IndexDomain: (e);
+                Text: "Flow conservation at every event";
+                Definition: {
+                    Rw_UnUsedTrains(Rw_AllEventsPreviousCircular(e)) + sum((nr,de) | Rw_RideExists(nr,de,e), Rw_UsedTrains(nr,de,e))
+                    =
+                    Rw_UnUsedTrains(e) + sum((nr,ae) | Rw_RideExists(nr,e,ae), Rw_UsedTrains(nr,e,ae))
+                }
+            }
+            MathematicalProgram Rw_Schedule {
+                Objective: Rw_TotalTrainsNeeded;
+                Direction: minimize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: MIP;
+            }
+        }
+        DeclarationSection Preprocess_Declaration {
+            Set Rw_AllEventsSorted {
+                SubsetOf: AllEvents;
+                Text: "Sorted copy of AllEvents";
+                Index: sn;
+                OrderBy: Rw_AllEventsSortedOrdering(sn);
+                Definition: AllEvents;
+            }
+            Parameter Rw_AllEventsSortedOrdering {
+                IndexDomain: (e);
+                Text: "Determines the ordering of the set AllEvents";
+                Definition: ord(e.Place)*(2*card(AllMinutes)) + ord(e.Time);
+                Comment: {
+                    "The value of this parameter is the lowest for the event in the first
+                    city and then increasing based on the time of the event. Then followed
+                    by the events which take place in the second city and so on."
+                }
+            }
+            ElementParameter Rw_AllEventsPrevious {
+                IndexDomain: (e);
+                Text: "Contains the event previous (in the same city) to e, it is empty if e is the last event in that city";
+                Range: Rw_AllEventsSorted;
+            }
+            ElementParameter Rw_AllEventsPreviousCircular {
+                IndexDomain: (e);
+                Text: "Contains the event previous (in the same city) to e, where the first event is the previous of the last event";
+                Range: Rw_AllEventsSorted;
+            }
+            Parameter Rw_NumberOfEvents {
+                IndexDomain: (c);
+                Text: "Number of actions (departure/arrival) for every city";
+                Definition: count(t | (c,t) in AllEvents );
+            }
+        }
+        Procedure ProcessInputData {
+            Body: {
+                empty AllEvents, Rw_MinimalTrains, Rw_RideExists;
+                
+                for (nr,o,d) | input_TrainSchedule(nr,o,d,'arrival') do
+                	AllEvents 	+=     {(o, Input_TrainSchedule(nr,o,d,'departure')) };
+                	Departure 	:= tuple(o, Input_TrainSchedule(nr,o,d,'departure')) ;
+                
+                	AllEvents 	+=     {(d, Input_TrainSchedule(nr,o,d,'arrival')) };
+                	Arrival   	:= tuple(d, Input_TrainSchedule(nr,o,d,'arrival')) ;
+                
+                	Rw_RideExists(nr,Departure,Arrival) 	:= 1;
+                	Rw_MinimalTrains(nr,Departure,Arrival) 	:= Input_MinimalTrains(nr,o,d);
+                endfor;
+                
+                GUI_TextNodes := { (c,t) | (GUI_CityRank(c) = 1 and TimeslotCharacteristic(t,'minute') = 0) or (ord(t) = 155) };
+                
+                InitializeNetwork;
+            }
+        }
+        Procedure Preprocess {
+            Body: {
+                Rw_AllEventsPrevious(sn) := sn-1;
+                Rw_AllEventsPreviousCircular(e) := Rw_AllEventsPrevious(e);
+                
+                empty Rw_LastEvent;
+                
+                for (e | Rw_AllEventsSortedOrdering(e) - Rw_AllEventsSortedOrdering(Rw_AllEventsPrevious(e)) >= 1440) do
+                    empty Rw_AllEventsPrevious(e);
+                    Rw_AllEventsPreviousCircular(e) 	          := Element(Rw_AllEventsSorted, sum(c | c <= e.Place, Rw_NumberOfEvents(c)));
+                    Rw_LastEvent(Rw_AllEventsPreviousCircular(e)) := 1;
+                    TempEvent 				          := Rw_AllEventsPreviousCircular(e);
+                    GUI_LastStationEvent(TempEvent.Place) 	  := TempEvent.Time;
+                    GUI_FirstStationEvent(e.Place) 	          := e.Time;
+                endfor;
+            }
+            Comment: "Converts TrainSchedule to VertexSet and calculated the previous nodes.";
+            ElementParameter TempEvent {
+                Range: AllEvents;
+            }
+        }
+        Procedure SolveModel {
+            Body: {
+                solve Rw_Schedule;
+            }
+            Comment: "Determine the flow values for use in the network object";
+        }
+    }
+    Section Interface_Section {
+        DeclarationSection Input_Declaration {
+            Set DepartureArrival {
+                Text: "Type of action departure or arrival";
+                Index: da;
+                Definition: Data{Departure,Arrival};
+            }
+            ElementParameter Input_TrainSchedule {
+                IndexDomain: (nr,o,d,da);
+                Text: "The trainnumber, arrival and departure time for every ride as input";
+                Range: AllMinutes;
+                Default: '';
+            }
+            Parameter Input_MinimalTrains {
+                IndexDomain: (nr,o,d);
+                Text: "Minimal number of trains for every Ride en Ride segment as input";
+                Range: {
+                    {0..5}
+                }
+            }
+        }
+        DeclarationSection Declaration_Night_and_Display_Nodes {
+            Comment: {
+                "The identifiers in this section are used to display the trains that stay overnight
+                at the different cities."
+            }
+            Parameter GUI_NumberofTrains {
+                IndexDomain: (c);
+                Text: "Number of trains that stay overnight at station c";
+                Definition: sum(e | Rw_LastEvent(e) and e.Place = c, Rw_UnUsedTrains(e));
+            }
+            Parameter GUI_CityRank {
+                IndexDomain: (o);
+                Text: "Number that is used to order the cities in the network, the lowest number means outer ring";
+            }
+            Set GUI_TextNodes {
+                SubsetOf: AllNodes;
+                Text: "Set of nodes used to display the hours and the city names";
+                Index: n_dis;
+                OrderBy: GUI_NightNodesOrdering(n_dis);
+            }
+            StringParameter GUI_TextNodesDescription {
+                IndexDomain: (n);
+                Text: "Description of node n in the network";
+                Definition: {
+                    if GUI_CityRank(n.Place) = 1 and TimeslotCharacteristic(n.Time,'minute') = 0 then
+                    	FormatString("%e", n.Time)
+                    elseif n in GUI_TextNodes then
+                    	FormatString("%e", n.Place)
+                    endif
+                }
+            }
+            Set GUI_NightNodes {
+                SubsetOf: AllNodes;
+                Text: "Some extra nodes in order to draw the network for an overnight stay";
+                Index: nn, ann, dnn;
+                Definition: {
+                    { (c,t) | ([t < GUI_FirstStationEvent(c) or t > GUI_LastStationEvent(c)] and [TimeslotCharacteristic(t, 'minute') = 0])
+                    	                    or (GUI_LastStationEvent(c) = t or GUI_FirstStationEvent(c) = t) }
+                }
+            }
+            Set GUI_NightNodesSorted {
+                SubsetOf: GUI_NightNodes;
+                Text: "Sorted copy of GUI_NightNodes";
+                Index: snn;
+                OrderBy: GUI_NightNodesOrdering(snn);
+            }
+            Parameter GUI_NightNodesOrdering {
+                IndexDomain: (nn);
+                Text: "Used to orded the set SortedNightNodes";
+                Definition: ord(nn.Place)*(2*card(AllMinutes)) + ord(nn.Time) - 1440*[ord(nn.time) > 720];
+                Comment: {
+                    "This definition is the same as \'Rw_AllEventsSortedOrdering\' except for the last term.
+                    This term 1440*[ord(nn.time) > 720] = 24*60*[ord(nn.time) > 12*60] enforces that the
+                    value of this parameter is the lowest for the last 12 hours of a day."
+                }
+            }
+            ElementParameter GUI_NightNodesNext {
+                IndexDomain: (nn);
+                Text: "Contains the next node (in the same city) of v, it is empty is v is the first.";
+                Range: GUI_NightNodes;
+            }
+            ElementParameter GUI_FirstStationEvent {
+                IndexDomain: (c);
+                Text: "First action at station c";
+                Range: AllMinutes;
+            }
+            ElementParameter GUI_LastStationEvent {
+                IndexDomain: (c);
+                Text: "Last action at station c";
+                Range: AllMinutes;
+            }
+        }
+        DeclarationSection Result_Network_Declaration {
+            Parameter Network_XCoordinateNode {
+                IndexDomain: (n);
+                Text: "The X-coordinate in the network of node n";
+                Definition: (100 - 100/(card(AllCities))*(GUI_CityRank(n.Place)-1 )) * sin(2 * 3.14159 * ord(n.Time)/1440);
+            }
+            Parameter Network_YCoordinateNode {
+                IndexDomain: (n);
+                Text: "The Y-coordinate in the network of node n";
+                Definition: (100 - 100/(card(AllCities))*(GUI_CityRank(n.Place)-1 )) * cos(2 * 3.14159 * ord(n.Time)/1440);
+            }
+            Parameter Network_UsedTrains {
+                IndexDomain: (dn,an);
+                Text: "The flow in the network from dn to an";
+            }
+            Parameter Network_UnusedTrains {
+                IndexDomain: (dn,an);
+                Text: "The flow of trains that are not used from node dn to an";
+            }
+            ElementParameter Network_UsedTrainColor {
+                IndexDomain: (dn,an);
+                Text: "The color of the flow in the network from dn to an";
+                Range: AllColors;
+                Default: '';
+            }
+            ElementParameter Network_UnusedTrainColor {
+                Text: "The color to denode empty trains";
+                Range: AllColors;
+                Definition: 'green';
+            }
+            ElementParameter Network_OriginNode {
+                Text: "Used to link the network object with the tables";
+                Range: AllNodes;
+                Default: '';
+            }
+            ElementParameter Network_DestinationNode {
+                Text: "Used to link the network object with the tables";
+                Range: AllNodes;
+                Default: '';
+            }
+        }
+        DeclarationSection Result_Table_Declaration {
+            Set GUI_IncreasingDirection {
+                SubsetOf: AllRideIDs;
+                Index: inc_nr;
+                Definition: {
+                    {nr | exists[(o,d) | Input_MinimalTrains(nr,o,d) and GUI_CityRank(o) >= GUI_CityRank(d)]}
+                }
+            }
+            Set GUI_DecreasingDirection {
+                SubsetOf: AllRideIDs;
+                Index: decr_nr;
+                Definition: {
+                    {nr | exists[(o,d) | Input_MinimalTrains(nr,o,d) and GUI_CityRank(o) <= GUI_CityRank(d)]}
+                }
+            }
+            Set GUI_AllRoutes {
+                SubsetOf: (AllCities, AllCities);
+                Index: aid;
+                Definition: {
+                    {(o,d) | exists[(nr,da) | Input_TrainSchedule(nr,o,d,da)]}
+                }
+            }
+            Set GUI_AllRoutesOrdered {
+                SubsetOf: GUI_AllRoutes;
+                Index: oaid;
+                OrderBy: -OrderingRoute(oaid);
+                Definition: GUI_AllRoutes;
+            }
+            Parameter OrderingRoute {
+                IndexDomain: (o,d);
+                Definition: {
+                    ! if [GUI_CityRank(d) - GUI_CityRank(o)] > 0 then
+                    	[GUI_CityRank(d) - GUI_CityRank(o)] * [card(AllCities) - GUI_CityRank(d)]
+                    !else
+                    !	[GUI_CityRank(d) - GUI_CityRank(o)] * [GUI_CityRank(d)]
+                    !endif
+                }
+            }
+            Set GUI_AllRoutesIncreasingDirections {
+                SubsetOf: GUI_AllRoutes;
+                Index: incr_aid;
+                OrderBy: -OrderingRoute(incr_aid);
+                Definition: GUI_AllRoutes;
+            }
+            Set GUI_AllRoutesDecreasingDirections {
+                SubsetOf: GUI_AllRoutes;
+                Index: decr_aid;
+                OrderBy: -OrderingRoute(decr_aid);
+                Definition: GUI_AllRoutes;
+            }
+            Parameter Table_UsedTrains {
+                IndexDomain: (nr,o,d);
+                Definition: sum[(de,ae) | Rw_UsedTrains(nr,de,ae) and de.place=o and ae.place = d, Rw_UsedTrains(nr,de,ae)];
+            }
+        }
+        Procedure InitializeNetwork {
+            Body: {
+                GUI_NightNodesSorted := GUI_NightNodes;
+                
+                GUI_NightNodesNext(snn) := snn + 1;
+                
+                for  (nn | GUI_NightNodesOrdering(GUI_NightNodesNext(nn)) - GUI_NightNodesOrdering(nn) >= 1440) do
+                	empty GUI_NightNodesNext(nn);
+                endfor;
+                
+                empty Network_UsedTrains, Network_UsedTrainColor, Network_UnusedTrains;
+                
+                for (nr,de,ae) | Rw_UsedTrains(nr,de,ae) do
+                	Network_UsedTrains(de,ae) := Rw_UsedTrains(nr,de,ae);
+                
+                    if Rw_UsedTrains(nr,de,ae).lower = Rw_UsedTrains(nr,de,ae) then
+                		Network_UsedTrainColor(de,ae) 		:= 'blue';
+                	else
+                		Network_UsedTrainColor(de,ae) 		:= 'black';
+                	endif;
+                /*
+                	if Rw_UsedTrains(nr,de,ae).upper = Rw_UsedTrains(nr,de,ae) then
+                		Network_UsedTrainColor(de,ae) 		:= 'red';
+                	elseif Rw_UsedTrains(nr,de,ae).lower = Rw_UsedTrains(nr,de,ae) then
+                		Network_UsedTrainColor(de,ae) 		:= 'blue';
+                	else
+                		Network_UsedTrainColor(de,ae) 		:= 'black';
+                	endif;
+                */
+                endfor;
+                
+                Network_UnusedTrains(Rw_AllEventsPrevious(e),e) := Rw_UnUsedTrains(Rw_AllEventsPrevious(e));
+                Network_UnusedTrains(nn,GUI_NightNodesNext(nn)) := GUI_NumberofTrains(nn.Place) onlyif GUI_NightNodesNext(nn);
+                
+                if not Network_OriginNode then
+                	Network_OriginNode := first(AllEvents);
+                endif;
+                
+                if not Network_DestinationNode then
+                	Network_DestinationNode := Network_OriginNode;
+                endif;
+            }
+            Comment: "In this procedure the parameters that are used inside the Network object are calculated";
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            empty Main_Railway_Stock;
+            
+            ! read from file "Schedule.txt";
+            ReadXML("RailWay Input.xml","TrainSchedule.axm", Schemafile: "TrainSchedule.xsd");
+            
+            ProcessInputData;
+        }
+        Comment: "Data initialization";
+    }
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	ProcessInputData;
+            	Preprocess;
+            	SolveModel;
+            	InitializeNetwork;
+            
+            else
+            
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+            	CaseFind("Solution",ACase);
+            	CaseLoadCurrent(ACase);
+            
+            endif;
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure Create_XMLResultFile {
+        Body: {
+            WriteXML("Railway Results.xml","TrainSchedule.axm");
+        }
+    }
+}

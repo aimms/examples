@@ -1,0 +1,595 @@
+## ams_version=1.0
+
+Model Main_TelecomNetwork {
+    Section Capacity_Identification_Model {
+        DeclarationSection Topology {
+            Set TrafficLines {
+                SubsetOf: (SwitchingStations, SwitchingStations);
+                Index: a;
+                Parameter: CurrentArc, CriticalArc;
+            }
+            Set SwitchingStations {
+                Index: i, j, o, d, n;
+                Parameter: Origin,Destination,CriticalNode,CurrentNode,CurrentSrcNode,CurrentDstNode;
+                Comment: "Switching stations are nodes in the telecommunication network.";
+            }
+            Set TrafficPaths {
+                SubsetOf: Integers;
+                Index: p;
+                Parameter: CurrentPath;
+            }
+            Set OriginDestinationPaths {
+                IndexDomain: (o,d);
+                SubsetOf: TrafficPaths;
+            }
+            Parameter PathsOverview {
+                IndexDomain: (o,d,p);
+                Definition: 1 onlyif (p in OriginDestinationPaths(o,d));
+            }
+            Parameter ArcPathIncidence {
+                IndexDomain: (a,p);
+            }
+            Parameter NodePathIncidence {
+                IndexDomain: (n,p);
+            }
+            Parameter LastPath;
+        }
+        DeclarationSection Demand_and_Capacities {
+            Parameter TrafficDemand {
+                IndexDomain: (o,d);
+                Comment: "Initially, both directions.  Later, demand is aggregated for single direction.";
+            }
+            Parameter ArcCapacity {
+                IndexDomain: a;
+            }
+            Parameter NodeCapacity {
+                IndexDomain: n;
+                Range: nonnegative;
+            }
+        }
+        DeclarationSection Telecommunication_Model {
+            Variable Traffic {
+                IndexDomain: p;
+                Range: nonnegative;
+                Property: ReducedCost;
+            }
+            Variable ArcCapacityFraction {
+                IndexDomain: a | ArcCapacity(a);
+                Range: nonnegative;
+            }
+            Variable NodeCapacityFraction {
+                IndexDomain: n | NodeCapacity(n);
+                Range: nonnegative;
+            }
+            Variable MaximumFractionFound;
+            Constraint TrafficRequirement {
+                IndexDomain: (o,d) | TrafficDemand(o,d);
+                Property: ShadowPrice;
+                Definition: {
+                    sum [ p in OriginDestinationPaths(o,d), Traffic(p) ]
+                       =  TrafficDemand(o,d)
+                }
+            }
+            Constraint ArcCapacityConstraint {
+                IndexDomain: a | ArcCapacity(a);
+                Property: ShadowPrice;
+                Definition: {
+                    sum [ p, ArcPathIncidence(a,p) * Traffic(p)]
+                        = ArcCapacityFraction(a) * ArcCapacity(a)
+                }
+            }
+            Constraint NodeCapacityConstraint {
+                IndexDomain: n | NodeCapacity(n);
+                Property: ShadowPrice;
+                Definition: {
+                    sum [ p, NodePathIncidence(n,p) * Traffic(p)]
+                        = NodeCapacityFraction(n) * NodeCapacity(n)
+                }
+            }
+            Constraint UpperBoundOnArcCapacityFraction {
+                IndexDomain: a | ArcCapacity(a);
+                Definition: ArcCapacityFraction(a) <= MaximumFractionFound;
+            }
+            Constraint UpperBoundOnNodeCapacityFraction {
+                IndexDomain: n | NodeCapacity(n);
+                Definition: NodeCapacityFraction(n) <= MaximumFractionFound;
+            }
+            Set BottleneckModelConstraints {
+                SubsetOf: AllConstraints;
+                Definition: {
+                    data
+                      { TrafficRequirement              , ArcCapacityConstraint           ,
+                        NodeCapacityConstraint          , UpperBoundOnArcCapacityFraction ,
+                        UpperBoundOnNodeCapacityFraction }
+                }
+            }
+            Set BottleneckModelVariables {
+                SubsetOf: AllVariables;
+                Definition: {
+                    data
+                      { Traffic             , ArcCapacityFraction ,
+                        NodeCapacityFraction, MaximumFractionFound }
+                }
+            }
+            MathematicalProgram BottleneckIdentificationModel {
+                Objective: MaximumFractionFound;
+                Direction: minimize;
+                Constraints: BottleneckModelConstraints;
+                Variables: BottleneckModelVariables;
+                Type: LP;
+            }
+        }
+    }
+    Section Path_Finding_Model {
+        Set DirectedArcs {
+            SubsetOf: (SwitchingStations,SwitchingStations);
+            Definition: {
+                { (i,j) | (i <> destination) and (j <> origin) and
+                          ( (i,j) in TrafficLines or (j,i) in TrafficLines) }
+            }
+        }
+        Parameter ObjCoefficients {
+            IndexDomain: (i,j) in DirectedArcs;
+        }
+        Parameter NetFlow {
+            IndexDomain: i;
+            Definition: {
+                If (i = origin) then -1
+                  elseif (i = destination) then 1 else 0 endif
+            }
+        }
+        Variable ArcSelected {
+            IndexDomain: (i,j) in DirectedArcs;
+            Range: [0, 1];
+        }
+        ElementParameter ArcMap {
+            IndexDomain: (i,j);
+            Range: TrafficLines;
+        }
+        Variable OverallDistance {
+            Definition: sum [ (i,j), ObjCoefficients(i,j) * ArcSelected(i,j) ];
+        }
+        Constraint FlowConstraints {
+            IndexDomain: i;
+            Definition: sum (j, ArcSelected(j,i)) - sum (j, ArcSelected(i,j)) = NetFlow(i);
+        }
+        MathematicalProgram PathFindingModel {
+            Objective: OverallDistance;
+            Direction: minimize;
+            Constraints: PathFindingModelConstraints;
+            Variables: PathFindingModelVariables;
+            Type: LP;
+        }
+        Set PathFindingModelConstraints {
+            SubsetOf: AllConstraints;
+            Definition: data { FlowConstraints };
+        }
+        Set PathFindingModelVariables {
+            SubsetOf: AllVariables;
+            Definition: data { ArcSelected, OverallDistance };
+        }
+    }
+    Section Supporting_Procedures {
+        DeclarationSection Supporting_Declarations {
+            Parameter ContributionTolerance {
+                Definition: 1E-09;
+            }
+            Parameter ObjCoefficientTolerance {
+                Definition: 1E-3;
+            }
+            Parameter NewPathHasBeenAdded;
+            Parameter NewPathToBeAdded;
+            Parameter CriticalODpair {
+                IndexDomain: (o,d);
+                Range: binary;
+            }
+            Parameter NumberOfSolvesMainModel;
+            Parameter NumberOfSolvesAuxiliaryModel;
+            Parameter ReportMaxFraction {
+                IndexDomain: p;
+            }
+            Parameter ReportNumberOfSolvesMainModel {
+                IndexDomain: p;
+            }
+            Parameter ReportNumberOfSolvesAuxiliaryModel {
+                IndexDomain: p;
+            }
+        }
+        DeclarationSection Case_Declaration {
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+        Procedure ReadDataSetAndAdjustData {
+            Body: {
+                ! read data from a project user file (menu Tools - Project User Files)
+                Read from file "<prj>:SmallDataSet.txt" ;
+                
+                if (NOT OriginalDataRequired) then
+                  read TrafficDemand, ArcCapacity, NodeCapacity from file "datacopy.dat";
+                endif;
+                
+                TrafficDemand((o,d)|(o<d))  := TrafficDemand(o,d) + TrafficDemand(d,o);
+                TrafficDemand((o,d)|(o>=d)) := 0;
+                
+                ArcMap(a)         := a;
+                ArcMap(i,j)|(i>j) := ArcMap(j,i);
+                
+                DetermineDefaultNetworkBounds;
+            }
+        }
+        Procedure FindInitialShortestPaths {
+            Body: {
+                ! Find a single shortest path for each (o,d)-pair,
+                ! and add this path to the main model parameters.
+                
+                ObjCoefficients(i,j) := 1 ;
+                
+                FOR ((o,d) | TrafficDemand(o,d)) DO
+                  Origin      := o ;
+                  Destination := d ;
+                  Solve PathFindingModel ;
+                  NumberOfSolvesAuxiliaryModel += 1;
+                  LastPath     += 1;
+                  TrafficPaths += LastPath;
+                  OriginDestinationPaths(o,d) += { LastPath };
+                  NewPathInMainModel(LastPath);
+                  CurrentPath := LastPath;
+                  PathDescription(CurrentPath):=FormatString("%e - %e",o,d);
+                  PageRefreshAll;
+                ENDFOR;
+            }
+        }
+        Procedure FindImprovedShortestPathsForAllODpairs {
+            Body: {
+                REPEAT
+                
+                  Solve BottleneckIdentificationModel;
+                  NumberOfSolvesMainModel += 1;
+                  NewPathHasBeenAdded := 0;
+                
+                  FOR ((o,d) | TrafficDemand(o,d)) DO
+                      Origin      := o ;
+                      Destination := d ;
+                      SolvePathFindingModel(Origin,Destination);
+                  ENDFOR;
+                
+                  BREAK WHEN NOT(NewPathHasBeenAdded);
+                
+                ENDREPEAT;
+            }
+        }
+        Procedure FindImprovedShortestPathsForCriticalODpairs {
+            Body: {
+                REPEAT
+                
+                  Solve BottleneckIdentificationModel;
+                  NumberOfSolvesMainModel += 1;
+                  NewPathHasBeenAdded := 0;
+                
+                  FindCriticalODpairs;
+                
+                  FOR ((o,d) | CriticalODpair(o,d)) DO
+                      Origin      := o ;
+                      Destination := d ;
+                      SolvePathFindingModel(Origin,Destination);
+                  ENDFOR;
+                
+                  BREAK WHEN NOT(NewPathHasBeenAdded);
+                
+                ENDREPEAT;
+            }
+        }
+        Procedure SolvePathFindingModel {
+            Arguments: (i_o,i_d);
+            Body: {
+                DetermineObjCoefficientsMethod2;
+                
+                Solve PathFindingModel ;
+                
+                NumberOfSolvesAuxiliaryModel += 1;
+                CheckWhetherNewPathContributes(i_o,i_d);
+                
+                IF NewPathToBeAdded THEN
+                     LastPath     += 1;
+                     TrafficPaths += LastPath;
+                     OriginDestinationPaths(i_o,i_d) += { LastPath } ;
+                     NewPathInMainModel(LastPath);
+                     ReportMaxFraction(LastPath) := BottleneckIdentificationModel.objval;
+                     ReportNumberOfSolvesMainModel(LastPath) := NumberOfSolvesMainModel;
+                     ReportNumberOfSolvesAuxiliaryModel(LastPath) := NumberOfSolvesAuxiliaryModel;
+                     NewPathHasBeenAdded := 1;
+                     CurrentPath := LastPath;
+                     PathDescription(CurrentPath):=FormatString("%e - %e",i_o,i_d);
+                     PageRefreshAll;
+                ENDIF;
+            }
+            ElementParameter i_o {
+                Range: SwitchingStations;
+                Property: Input;
+            }
+            ElementParameter i_d {
+                Range: SwitchingStations;
+                Property: Input;
+            }
+        }
+        Procedure DetermineObjCoefficientsMethod1 {
+            Body: {
+                ! Special formulas to determine Objective Coefficients from
+                ! latest shadow prices.
+                
+                  ObjCoefficients((Origin,j) | j <> Destination) :=
+                     -  ArcCapacityConstraint.ShadowPrice(ArcMap(Origin,j))
+                     -  NodeCapacityConstraint.ShadowPrice(Origin)
+                     +  ObjCoefficientTolerance ;
+                
+                  ObjCoefficients(i,Destination)  :=
+                     -  ArcCapacityConstraint.ShadowPrice(ArcMap(i,Destination))
+                     -  NodeCapacityConstraint.ShadowPrice(i)
+                     -  NodeCapacityConstraint.ShadowPrice(Destination)
+                     +  ObjCoefficientTolerance ;
+                
+                  ObjCoefficients((i,j) | (i <> Origin) and (j <> Destination)) :=
+                     -  ArcCapacityConstraint.ShadowPrice(ArcMap(i,j))
+                     -  NodeCapacityConstraint.ShadowPrice(i)
+                     +  ObjCoefficientTolerance ;
+            }
+            Comment: {
+                "This is the first set of formulas (based on outgoing arcs) to determine
+                the objective function coefficients in the auxiliary path-finding model."
+            }
+        }
+        Procedure DetermineObjCoefficientsMethod2 {
+            Body: {
+                ! Special formulas to determine Objective Coefficients from
+                ! latest shadow prices.
+                
+                  ObjCoefficients(Origin,j) :=
+                     -  ArcCapacityConstraint.ShadowPrice(ArcMap(Origin,j))
+                     -  NodeCapacityConstraint.ShadowPrice(Origin)
+                     -  NodeCapacityConstraint.ShadowPrice(j)
+                     +  ObjCoefficientTolerance ;
+                
+                  ObjCoefficients((i,Destination) | (i <> Origin)) :=
+                     -  ArcCapacityConstraint.ShadowPrice(ArcMap(i,Destination))
+                     -  NodeCapacityConstraint.ShadowPrice(Destination)
+                     +  ObjCoefficientTolerance ;
+                
+                  ObjCoefficients((i,j) | (i <> Origin) and (j <> Destination)) :=
+                     -  ArcCapacityConstraint.ShadowPrice(ArcMap(i,j))
+                     -  NodeCapacityConstraint.ShadowPrice(i)
+                     +  ObjCoefficientTolerance ;
+            }
+            Comment: {
+                "This is the second set of formulas (based on incoming arcs) to determine
+                the objective function coefficients in the auxiliary path-finding model."
+            }
+        }
+        Procedure CheckWhetherNewPathContributes {
+            Arguments: (orig,dest);
+            Body: {
+                IF
+                  ( - TrafficRequirement.ShadowPrice(orig,dest)
+                    + sum [ (i,j), (ObjCoefficients(i,j) - ObjCoefficientTolerance) * ArcSelected(i,j)] )
+                    < - ContributionTolerance
+                THEN
+                  NewPathToBeAdded := 1;
+                ELSE
+                  NewPathToBeAdded := 0;
+                ENDIF;
+            }
+            ElementParameter orig {
+                Range: SwitchingStations;
+                Property: Input;
+            }
+            ElementParameter dest {
+                Range: SwitchingStations;
+                Property: Input;
+            }
+        }
+        Procedure NewPathInMainModel {
+            Arguments: (NewPathName);
+            Body: {
+                !  Translate newly found directed path into the proper
+                !  entries of the identiefiers
+                !  ArcPathIncidence and NodePathIncidence.
+                
+                FOR (i,j) | ArcSelected(i,j) DO
+                  CurrentArc                               := ArcMap(i,j);
+                  ArcPathIncidence(CurrentArc,NewPathName) := 1;
+                  NodePathIncidence(i,NewPathName)         := 1;
+                  NodePathIncidence(j,NewPathName)         := 1;
+                ENDFOR;
+            }
+            ElementParameter NewPathName {
+                Range: TrafficPaths;
+                Property: Input;
+            }
+        }
+        Procedure FindCriticalODpairs {
+            Body: {
+                Empty CriticalODpair;
+                
+                CriticalArc  :=  argmax[a, ArcCapacityFraction(a)];
+                CriticalNode :=  argmax[n, NodeCapacityFraction(n)];
+                
+                IF (ArcCapacityFraction(CriticalArc) > NodeCapacityFraction(CriticalNode))
+                THEN
+                     FOR ((o,d) | TrafficDemand(o,d)) DO
+                       FOR p in OriginDestinationPaths(o,d) DO
+                         FOR a | ArcPathIncidence(a,p) DO
+                           IF (a = CriticalArc)
+                             THEN CriticalODpair(o,d) := 1;
+                           ENDIF;
+                         ENDFOR;
+                       ENDFOR;
+                     ENDFOR;
+                ELSEIF (ArcCapacityFraction(CriticalArc) < NodeCapacityFraction(CriticalNode))
+                THEN
+                     FOR ((o,d) | TrafficDemand(o,d)) DO
+                       FOR p in OriginDestinationPaths(o,d) DO
+                         FOR n | NodePathIncidence(n,p) DO
+                           IF (n = CriticalNode)
+                          THEN CriticalODpair(o,d) := 1;
+                        ENDIF;
+                      ENDFOR;
+                    ENDFOR;
+                  ENDFOR;
+                ELSE
+                     FOR ((o,d) | TrafficDemand(o,d)) DO
+                       FOR p in OriginDestinationPaths(o,d) DO
+                         FOR a | ArcPathIncidence(a,p) DO
+                           IF (a = CriticalArc)
+                             THEN CriticalODpair(o,d) := 1;
+                           ENDIF;
+                         ENDFOR;
+                       ENDFOR;
+                     ENDFOR;
+                     FOR ((o,d) | TrafficDemand(o,d)) DO
+                       FOR p in OriginDestinationPaths(o,d) DO
+                         FOR n | NodePathIncidence(n,p) DO
+                           IF (n = CriticalNode)
+                          THEN CriticalODpair(o,d) := 1;
+                        ENDIF;
+                      ENDFOR;
+                    ENDFOR;
+                  ENDFOR;
+                ENDIF;
+            }
+        }
+    }
+    Procedure RunOverallModelGeneral {
+        Body: {
+            write TrafficDemand, ArcCapacity, NodeCapacity to file "datacopy.dat";
+            empty Capacity_Identification_Model;
+            ReadDataSetAndAdjustData;
+            MaximumFractionFound := inf;
+            FindInitialShortestPaths;
+        }
+    }
+    Procedure RunOverallModelForAllODpairs {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	RunOverallModelGeneral;
+            	FindImprovedShortestPathsForAllODpairs;
+            
+            else
+            
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+            	CaseFind("Solution All", ACase);
+            	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure RunOverallModelForCriticalODpairs {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	RunOverallModelGeneral;
+            	FindImprovedShortestPathsForCriticalODpairs;
+            
+            else
+            
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+            	CaseFind("Solution Critical", ACase);
+            	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Section Supporting_Interface {
+        DeclarationSection Additional_Interface_Identifiers {
+            Parameter XCoordinate {
+                IndexDomain: n;
+                Text: "The (geographical) X coordinate of switch station n";
+            }
+            Parameter YCoordinate {
+                IndexDomain: n;
+                Text: "The (geographical) Y coordinate of switch station n";
+            }
+            Parameter CityNameLong {
+                Default: 1;
+            }
+            StringParameter CityName {
+                IndexDomain: n;
+                Definition: {
+                    if CityNameLong then
+                       FormatString("%e",n)
+                    else
+                      substring(FormatString("%e",n),1,2)
+                    endif
+                }
+            }
+            Set NetworkBounds {
+                Index: nb;
+                Definition: data { Left, Right, Top, Bottom };
+            }
+            Parameter ActiveBounds {
+                IndexDomain: nb;
+            }
+            StringParameter NetworkInfo {
+                Definition: "network.txt";
+            }
+            Parameter BitmapBounds {
+                IndexDomain: nb;
+            }
+            StringParameter ArcDescription {
+                IndexDomain: (i,j);
+                Definition: formatstring("%e - %e",i,j);
+            }
+            Parameter NodeCapacityMax {
+                IndexDomain: n|(NodeCapacityFraction(n)=MaximumFractionFound);
+                Definition: NodeCapacity(n);
+            }
+            Parameter ArcCapacityMax {
+                IndexDomain: a|(ArcCapacityFraction(a)=MaximumFractionFound);
+                Definition: ArcCapacity(a);
+            }
+            Set CriticalNodes {
+                SubsetOf: SwitchingStations;
+                Index: cn;
+                Definition: {
+                    { n | NodeCapacityMax(n)}
+                }
+            }
+            StringParameter PathDescription {
+                IndexDomain: p;
+            }
+        }
+        Procedure DetermineDefaultNetworkBounds {
+            Body: {
+                ActiveBounds(nb) := BitmapBounds(nb);
+            }
+            Comment: "Determines the bounds of the network object such that all locations are visible";
+        }
+        DeclarationSection Data_Configuration {
+            Parameter OriginalDataRequired;
+        }
+        Procedure SetOriginalDataRequired {
+            Body: {
+                OriginalDataRequired := 1;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            SetOriginalDataRequired;
+            ReadDataSetAndAdjustData;
+            MaximumFractionFound := inf;
+            update CityName;
+            empty OriginalDataRequired;
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+        Comment: {
+            "The return value of 1 indicates that we are not interested in
+            saving the current data in a case."
+        }
+    }
+}

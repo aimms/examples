@@ -1,0 +1,20 @@
+NumberOfIterations := 1;
+while NumberOfIterations <= MaxInterations do
+	Generate # Of SamplePoints;
+	Calculate the penalized objective for all sample points;	
+	Select the best # Of SelectedSamplePoints sample points;	
+	for SelectedSamplePoints do	
+		if (the sample point is within any cluster radius) then
+			Update the cluster;
+		else		
+			Solve NLP by using the sample point as start point;			
+			if the solution is the same with any cluster then 
+				Update the cluster;			
+			else 
+				Create a new cluster; 
+			endif;			
+		endif;		
+	endfor;	
+	NumberOfIterations += 1;	
+endwhile;
+

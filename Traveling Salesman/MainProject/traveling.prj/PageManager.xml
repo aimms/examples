@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="331B6BE2-E8A9-4FD6-9078-937C7DCB87E6">
+		<Page Name="City Tour" PageGUID="3A5E6E17-2483-4037-8934-56E0EFECA1C9" />
+	</Page>
+</PageManager>
