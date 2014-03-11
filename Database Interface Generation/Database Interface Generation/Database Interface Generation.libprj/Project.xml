@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<LibraryProject FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="1AC72A39-F02E-43A1-B61B-CB31A3D6269F">
+	<ModelFileName>Database Interface Generation.ams</ModelFileName>
+	<Prefix>dig</Prefix>
+	<DisplayName>Database Interface Generation</DisplayName>
+</LibraryProject>

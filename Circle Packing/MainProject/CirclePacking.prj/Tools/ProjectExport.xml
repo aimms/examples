@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Circle Packing.zip</ExcludedFile>
+	<ExcludedFile>CirclePacking.aim</ExcludedFile>
+	<ExcludedFile>CirclePacking.put</ExcludedFile>
+	<ExcludedFile>CirclePacking.put_chk</ExcludedFile>
+	<ExcludedFile>Description.txt.bak</ExcludedFile>
+	<ExcludedFile>Navigation Buttons</ExcludedFile>
+	<ExcludedFile>options</ExcludedFile>
+	<ExcludedFile>pages</ExcludedFile>
+</ExportSettings>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS 3 Demo - A Facility Location Choice" PageGUID="2C7F4F58-0DB4-4EC4-9BE4-B2BD8EEEDE6A">
+		<Page Name="Solution Network" PageGUID="29B91F19-53C6-4FEB-B5FC-72554C151413" />
+		<Page Name="Benders Decomposition" PageGUID="B55242D3-2E6D-472E-9F43-1C8B63FBB216" />
+	</Page>
+</PageManager>

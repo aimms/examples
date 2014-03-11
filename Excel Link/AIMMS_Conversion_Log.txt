@@ -1,0 +1,46 @@
+﻿Converting Main project
+Converting ExcelLink.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\Pages\Transport Model Example.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\Pages\All Data Pages.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\Pages\[Data Page] DemandInput1.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\Pages\Read & Write Example.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\MainProject\ExcelLink.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: AIMMSExample.xls to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\AIMMSExample.xls
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\Description.txt
+Copying file: ExcelAddInExample.xls to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\ExcelAddInExample.xls
+Copying file: ExcelLink.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\ExcelLink.dat
+Copying file: jantje.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\jantje.dat
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library
+Copying file: _Example Style Library\Example Style Library.nch to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\_Example Style Library\Example Style Library.nch
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Excel Link\Excel Link_converted\ExcelLink.aimms
+Successfully converted the whole project.

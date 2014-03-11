@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:48:26" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>DF3BEC5E-9D0D-4DEE-8E27-EBE8628E79DA</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Navigation Object">
+		<Location top="102" left="207" bottom="139" right="769" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>3</TabOrder>
+		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Display>Text</Display>
+		<NumberVisible>1</NumberVisible>
+		<Spacing>6</Spacing>
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<InputColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</InputColor>
+		<NavigationData>
+			<ReferencePage>ThisPage</ReferencePage>
+			<NumberOfAncestors>1</NumberOfAncestors>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<Hidden>"Yes"</Hidden>
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<Hidden>"Yes"</Hidden>
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<Hidden>"Yes"</Hidden>
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<Hidden>"Yes"</Hidden>
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="156" left="204" bottom="180" right="768" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="156" left="6" bottom="180" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="18" bottom="177" right="186" />
+		<StaticText>Navigation</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Navigation Object">
+		<Location top="216" left="12" bottom="360" right="192" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Border Style="None" />
+		<Display>Text</Display>
+		<Spacing>6</Spacing>
+		<BackgroundColor>
+			<UserColor GUID="57AC877A-86C2-4F21-A11C-2AACE8CF2F89">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+		</TextColor>
+		<NavigationData>
+			<ReferencePage>Other</ReferencePage>
+			<OtherPage PageGUID="189D0F18-F34C-4007-B9C4-48C5B29A14CB" Name="Overview Page" />
+			<NumberOfGenerations>1</NumberOfGenerations>
+			<NumberOfAncestors>1</NumberOfAncestors>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+				<Action Type="ClosePage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="EF518061-44F9-4088-B4BE-80FE3D283004" Name="AIMMS Demo" />
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="12" bottom="210" right="189" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

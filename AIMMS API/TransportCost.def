@@ -1,0 +1,12 @@
+Identifier name: TransportCost
+Dimension      : 2
+
+Data values    : 
+           Cities           Cities     Double value
+ ---------------- ---------------- ----------------
+        Rotterdam        Rotterdam          1.00000
+        Rotterdam          Antwerp          2.50000
+        Rotterdam           Berlin         10.00000
+          Antwerp          Antwerp          1.20000
+          Antwerp           Berlin         10.00000
+           Berlin           Berlin         11.00000

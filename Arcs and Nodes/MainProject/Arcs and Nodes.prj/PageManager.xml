@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="4416B09A-4EFA-43FF-93D3-3C846A8BA77B">
+		<Page Name="Network Model" PageGUID="F2D3188D-89FA-4685-80BD-49770D30B7E4" />
+	</Page>
+</PageManager>

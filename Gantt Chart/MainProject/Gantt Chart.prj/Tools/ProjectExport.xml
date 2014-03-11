@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>aimms_x86_asc_3.9.0.10714_20081103_153637_2.dmp</ExcludedFile>
+	<ExcludedFile>crashes.log</ExcludedFile>
+	<ExcludedFile>Gantt Chart.nch</ExcludedFile>
+</ExportSettings>

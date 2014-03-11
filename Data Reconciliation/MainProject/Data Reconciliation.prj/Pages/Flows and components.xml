@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:46:32">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<Title>"Flows and Components"</Title>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromBottom" Value="70">
+						<TopArea Line="FixedFromTop" Value="232" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="170" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="189" left="207" bottom="321" right="762" />
+		<StaticText>On this page you must define the flow names of all flows in the chemical process. In addition, you must specify the chemical components that are contained in each flow. Alternatively, you can specify that the composition of a flow is identical to the composition of another flow. In that case, you do not have to specify its composition.
+
+The network linking flows to units is defined on a separate page.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="336" left="207" bottom="366" right="393" />
+		<StaticText>Add flows:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="336" left="423" bottom="366" right="609" />
+		<StaticText>Select flow components:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="360" left="423" bottom="570" right="768" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<MaxColWidth>10</MaxColWidth>
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<InputColor RGB="#000080" />
+		<RowIndentation>3</RowIndentation>
+		<InactiveData>true</InactiveData>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>MapCompositionTo( f )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Same as"</HeaderText>
+			<NumberFormat Width="12" Decimals="0" Alignment="Right" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>IndicatorFlowComponent( f, c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Components in flow"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Right" Binary="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<Location top="360" left="207" bottom="570" right="420" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<EditField>AtTop</EditField>
+		<AddAndRemoveButtons>true</AddAndRemoveButtons>
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>Flows(Flows)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>c</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>MapCompositionTo</Symbol>
+			<Symbol>IndicatorFlowComponent</Symbol>
+			<Symbol>Flows</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

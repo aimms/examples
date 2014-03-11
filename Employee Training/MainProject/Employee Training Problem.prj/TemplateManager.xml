@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="F2B54FDE-788C-4C3B-957B-D1FDFB9ACFD0" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|8E3B3F77-A314-4D11-AD10-08BC8D4DBF73|Size Template">
+		<Template Name="Navigation Template" PageGUID="3609239A-5CE7-40EA-A8D6-63DCFCAD9D57" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|77E82344-5716-4F4F-B4A5-EEABABD4A510|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="2F2F6453-157B-48EF-8B76-3A8A85607231" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|C498F3C2-B320-478E-9CD3-07931A4E8225|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="9F2436D2-007B-49AD-946F-F5A9B24481B6" />
+			</Template>
+			<Page Name="Input Data" PageGUID="647374CF-F10B-425E-BF4F-F0887AB95D5E" />
+			<Page Name="Employee Assignment" PageGUID="2E9BB25C-E034-470B-9F9B-990D8CDE2B87" />
+		</Template>
+	</Template>
+</TemplateManager>

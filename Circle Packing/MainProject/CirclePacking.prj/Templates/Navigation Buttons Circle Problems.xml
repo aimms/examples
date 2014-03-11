@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:43:26">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>815943C0-011E-4F24-88E2-47BBE23FE82D</ProjectUUID>
+	<TemplatesTabOrderPosition>3</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311">
+						<TopArea Line="FixedFromTop" Value="242" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="26">
+						<TopArea Line="FixedFromLeft" Value="428" />
+						<BottomArea Line="FixedFromLeft" Value="428">
+							<LeftArea Line="FixedFromTop" Value="404" />
+							<RightArea Line="FixedFromTop" Value="404" />
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Rectangle">
+		<Location top="312" left="6" bottom="336" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="582" left="6" bottom="606" right="192" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Clear Solutions"</Title>
+		<ForegroundColor RGB="#000000" />
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ClearSolutions</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Invisible</ButtonType>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="1791152C-5634-4899-9850-5D0D81B434D1" Name="Circle Packing in a Square" />
+			</Action>
+			<Action Type="Assignment">
+				<Identifier>SelectedCircle</Identifier>
+				<AssignedValue>''</AssignedValue>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="12" bottom="240" right="189" />
+		<StaticText>Circle Packing in a Square</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="C3C6DA85-EE31-4353-B23D-D34EB7DB2FF8" Name="Circle Packing in a Circle" />
+			</Action>
+			<Action Type="Assignment">
+				<Identifier>SelectedCircle</Identifier>
+				<AssignedValue>''</AssignedValue>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="12" bottom="270" right="189" />
+		<StaticText>Circle Packing in a Circle</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="FE53F721-5C9A-4F83-B11A-C9A41A750E40" Name="Various Size Circle Packing" />
+			</Action>
+			<Action Type="Assignment">
+				<Identifier>SelectedCircle</Identifier>
+				<AssignedValue>''</AssignedValue>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="282" left="12" bottom="300" right="189" />
+		<StaticText>Various Size Circle Packing</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="396" left="6" bottom="414" right="168" />
+		<StaticText>Number of Circles (1..30)</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="12" bottom="210" right="189" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="414" left="6" bottom="444" right="180" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>NoOfCircles</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Number of circles"</Title>
+			<ProcedureUponChange>ClearSolutions</ProcedureUponChange>
+			<Assertion>MaxCircles</Assertion>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="318" left="18" bottom="336" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="546" left="0" bottom="546" right="198" />
+		<Hidden>"Yes"</Hidden>
+		<LineColor RGB="#ff0000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="186" left="204" bottom="612" right="768" />
+		<Shape>In-Shadow</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="360" left="6" bottom="390" right="186" />
+		<TabOrder>17</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>PE_CurrentSolver</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="342" left="6" bottom="360" right="168" />
+		<StaticText>Select an NLP solver</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>NoOfCircles</Symbol>
+			<Symbol>SelectedCircle</Symbol>
+			<Symbol>PE_CurrentSolver</Symbol>
+			<Symbol>ClearSolutions</Symbol>
+			<Symbol>S_SuitableSolvers</Symbol>
+			<Symbol>MaxCircles</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

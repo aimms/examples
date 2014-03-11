@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:44:12">
+	<Location top="29" left="4" bottom="888" right="1274" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>815D62FB-6902-4E26-B758-332EBC8DDAA2</ProjectUUID>
+	<TemplatesTabOrderPosition>6</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="230" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="130" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="953D9DE2-0A27-4C06-87C3-4FC069A9B948">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Rectangle">
+		<Location top="309" left="6" bottom="528" right="192" />
+		<Shape>In-Shadow</Shape>
+		<FillColor>
+			<UserColor GUID="953D9DE2-0A27-4C06-87C3-4FC069A9B948">white</UserColor>
+		</FillColor>
+		<LineColor RGB="#000000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>1</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="210" bottom="306" right="762" />
+		<StaticText>View the results of modifying the object settings on the right of the page. All modifications to these settings are reflected (in the Properties dialog box of each object) in
+- the Visible tab
+- the subset index used for displaying
+- the Show Inactive Data setting
+- the Color and Input tabs</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="282" left="18" bottom="300" right="204" />
+		<StaticText>Modify object settings</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="351" left="134" bottom="525" right="187" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="953D9DE2-0A27-4C06-87C3-4FC069A9B948">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+		<SpreadVertically>false</SpreadVertically>
+		<ExplicitIdentifier>
+			<Identifier>ElementUpdatable( i_v )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="351" left="72" bottom="525" right="126" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="953D9DE2-0A27-4C06-87C3-4FC069A9B948">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+		<SpreadVertically>false</SpreadVertically>
+		<ExplicitIdentifier>
+			<Identifier>ElementActive( i_v )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="351" left="10" bottom="525" right="64" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="953D9DE2-0A27-4C06-87C3-4FC069A9B948">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+		<SpreadVertically>false</SpreadVertically>
+		<ExplicitIdentifier>
+			<Identifier>DataVisible( i )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="315" left="10" bottom="351" right="66" />
+		<StaticText>Element
+visible</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="315" left="122" bottom="351" right="188" />
+		<StaticText>Element
+updatable</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="315" left="66" bottom="351" right="122" />
+		<StaticText>Element
+active</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="249" left="18" bottom="267" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Tabbed Page Object">
+		<Location top="318" left="207" bottom="615" right="762" />
+		<TabOrder>5</TabOrder>
+		<PrintingOccurrence>Never</PrintingOccurrence>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<MultipleTabRows>true</MultipleTabRows>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>i</Symbol>
+			<Symbol>i_v</Symbol>
+			<Symbol>DataVisible</Symbol>
+			<Symbol>ElementActive</Symbol>
+			<Symbol>ElementUpdatable</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

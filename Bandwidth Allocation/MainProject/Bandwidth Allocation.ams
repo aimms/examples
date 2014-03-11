@@ -1,0 +1,116 @@
+## ams_version=1.0
+
+Model Main_Bandwidth_Allocation {
+    Set Links {
+        Index: l, l2;
+        Parameter: Link;
+        Definition: ElementRange(1, 3, 1, "Link ");
+    }
+    Set Channels {
+        Index: c, cc;
+        Definition: elementrange[1, 7, 1, "Channel "];
+    }
+    Parameter LinkLength {
+        IndexDomain: (l);
+        Range: {
+            {1..inf}
+        }
+        InitialData: data { 'Link 1' : 1,  'Link 2' : 3,  'Link 3' : 3 };
+    }
+    Parameter ChannelLinkInterference {
+        IndexDomain: (c,l);
+        InitialData: {
+            data
+            { ( 'Channel 1', 'Link 1' ) : 4,  ( 'Channel 1', 'Link 2' ) : 5,  ( 'Channel 1', 'Link 3' ) : 6,
+              ( 'Channel 2', 'Link 1' ) : 8,  ( 'Channel 2', 'Link 2' ) : 8,  ( 'Channel 2', 'Link 3' ) : 1,
+              ( 'Channel 3', 'Link 1' ) : 7,  ( 'Channel 3', 'Link 2' ) : 1,  ( 'Channel 3', 'Link 3' ) : 8,
+              ( 'Channel 4', 'Link 1' ) : 9,  ( 'Channel 4', 'Link 2' ) : 2,  ( 'Channel 4', 'Link 3' ) : 7,
+              ( 'Channel 5', 'Link 1' ) : 1,  ( 'Channel 5', 'Link 2' ) : 1,  ( 'Channel 5', 'Link 3' ) : 1,
+              ( 'Channel 6', 'Link 1' ) : 5,  ( 'Channel 6', 'Link 2' ) : 8,  ( 'Channel 6', 'Link 3' ) : 2,
+              ( 'Channel 7', 'Link 1' ) : 4,  ( 'Channel 7', 'Link 2' ) : 5,  ( 'Channel 7', 'Link 3' ) : 3 }
+        }
+    }
+    Parameter IntervalLinkInterference {
+        IndexDomain: (c,l) | ord(c) <= (card(channels) - linkLength(l) + 1);
+        Definition: 	max[(cc)| ord(c) <= ord(cc) <= (ord(c) + linkLength(l) - 1), channelLinkInterference(cc,l)];
+    }
+    Parameter ChannelCovers {
+        IndexDomain: (cc,c,l);
+        Range: binary;
+        Definition: (c <= cc and cc <= c+(LinkLength(l)-1));
+        Comment: {
+            "data
+            { ( \'Channel 1\', \'Channel 1\', \'Link 1\' ) : 1,  ( \'Channel 1\', \'Channel 1\', \'Link 2\' ) : 1,
+              ( \'Channel 1\', \'Channel 1\', \'Link 3\' ) : 1,  ( \'Channel 2\', \'Channel 1\', \'Link 2\' ) : 1,
+              ( \'Channel 2\', \'Channel 2\', \'Link 1\' ) : 1,  ( \'Channel 2\', \'Channel 2\', \'Link 2\' ) : 1,
+              ( \'Channel 2\', \'Channel 2\', \'Link 3\' ) : 1,  ( \'Channel 3\', \'Channel 1\', \'Link 2\' ) : 1,
+              ( \'Channel 3\', \'Channel 1\', \'Link 3\' ) : 1,  ( \'Channel 3\', \'Channel 2\', \'Link 2\' ) : 1,
+              ( \'Channel 3\', \'Channel 2\', \'Link 3\' ) : 1,  ( \'Channel 3\', \'Channel 3\', \'Link 1\' ) : 1,
+              ( \'Channel 3\', \'Channel 3\', \'Link 2\' ) : 1,  ( \'Channel 3\', \'Channel 3\', \'Link 3\' ) : 1,
+              ( \'Channel 4\', \'Channel 2\', \'Link 2\' ) : 1,  ( \'Channel 4\', \'Channel 2\', \'Link 3\' ) : 1,
+              ( \'Channel 4\', \'Channel 3\', \'Link 2\' ) : 1,  ( \'Channel 4\', \'Channel 3\', \'Link 3\' ) : 1,
+              ( \'Channel 4\', \'Channel 4\', \'Link 1\' ) : 1,  ( \'Channel 4\', \'Channel 4\', \'Link 2\' ) : 1,
+              ( \'Channel 4\', \'Channel 4\', \'Link 3\' ) : 1,  ( \'Channel 5\', \'Channel 3\', \'Link 2\' ) : 1,
+              ( \'Channel 5\', \'Channel 3\', \'Link 3\' ) : 1,  ( \'Channel 5\', \'Channel 4\', \'Link 2\' ) : 1,
+              ( \'Channel 5\', \'Channel 4\', \'Link 3\' ) : 1,  ( \'Channel 5\', \'Channel 5\', \'Link 1\' ) : 1,
+              ( \'Channel 5\', \'Channel 5\', \'Link 2\' ) : 1,  ( \'Channel 5\', \'Channel 5\', \'Link 3\' ) : 1,
+              ( \'Channel 6\', \'Channel 4\', \'Link 2\' ) : 1,  ( \'Channel 6\', \'Channel 4\', \'Link 3\' ) : 1,
+              ( \'Channel 6\', \'Channel 5\', \'Link 2\' ) : 1,  ( \'Channel 6\', \'Channel 5\', \'Link 3\' ) : 1,
+              ( \'Channel 6\', \'Channel 6\', \'Link 1\' ) : 1,  ( \'Channel 7\', \'Channel 5\', \'Link 2\' ) : 1,
+              ( \'Channel 7\', \'Channel 5\', \'Link 3\' ) : 1,  ( \'Channel 7\', \'Channel 7\', \'Link 1\' ) : 1 }"
+        }
+    }
+    Variable StartLink {
+        IndexDomain: (c,l) | IntervalLinkInterference(c,l);
+        Range: binary;
+    }
+    Variable TotalInterference {
+        Definition: sum[(c,l), IntervalLinkInterference(c,l) * StartLink(c,l)];
+    }
+    Constraint LinkAssignment {
+        IndexDomain: (l);
+        Definition: sum[c, StartLink(c,l)] = 1;
+    }
+    Constraint ChannelRestriction {
+        IndexDomain: (cc) in channels;
+        Definition: sum[(c,l), channelCovers(cc,c,l) * StartLink(c,l)] <= 1;
+    }
+    MathematicalProgram BandwidthAllocation {
+        Objective: TotalInterference;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+    }
+    ElementParameter ACase {
+        Range: AllCases;
+    }
+    Assertion CheckNumberOfChannels {
+        IndexDomain: (l);
+        Definition: sum(l2,LinkLength(l2)) <= Card(Channels);
+        Action: {
+            DialogError(FormatString("The total number of channels must be equal or lower than %i.",Card(Channels)));
+            LinkLength(l) := Card(Channels) - sum(l2 | l2 <> l,LinkLength(l2));
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            if IsRunningAsViewer then
+            
+                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+                CaseFind("Input and Output Data", ACase);
+                CaseLoadCurrent( ACase,0);
+            else
+            
+                StartLink(c,l):=0;
+                solve bandwidthAllocation;
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+                return 1;
+        }
+    }
+}

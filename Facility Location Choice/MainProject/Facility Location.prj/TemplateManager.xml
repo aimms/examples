@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="13E429E3-8CB5-4DD4-AF00-7057BF278C35" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|7839B0DE-8F4D-48A9-AFE4-7985D860C9FC|Size Template">
+		<Template Name="Navigation Template" PageGUID="21C9E598-4E8F-4BED-A9DE-2E8B50839D4C" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|2960A7EA-72E2-4E54-941D-CF5F1F153045|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="C171B6E4-7C71-4347-A667-53E01C8BE586" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|550765DC-F634-4B55-9563-B30C552A4A0E|Background Info Template">
+				<Page Name="AIMMS 3 Demo - A Facility Location Choice" PageGUID="2C7F4F58-0DB4-4EC4-9BE4-B2BD8EEEDE6A" />
+			</Template>
+			<Page Name="Solution Network" PageGUID="29B91F19-53C6-4FEB-B5FC-72554C151413" />
+			<Page Name="Benders Decomposition" PageGUID="B55242D3-2E6D-472E-9F43-1C8B63FBB216" />
+		</Template>
+	</Template>
+</TemplateManager>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS 3 Demo - Distribution Center Allocation" PageGUID="7087553B-0AF0-43AF-A48E-655DFD99C4AE">
+		<Page Name="Center of Gravity" PageGUID="46EBF035-25A0-405C-9690-AAE83764679A">
+			<Page Name="GIS Network" PageGUID="24D8B5E1-89FF-4CB9-8E6B-64686316C862" />
+			<Page Name="Model Description" PageGUID="8C36F51D-FA65-4727-939B-79F663BB7A21" />
+		</Page>
+		<Page Name="Minimize Expected Transportation Cost 1 DC" PageGUID="E86C03C8-EAD7-4D8F-81C7-160D8A0D4A11" />
+		<Page Name="Minimize Expected Transportation Cost Multi DCs" PageGUID="E0858199-4809-4687-957F-8B1DDD5BAD82" />
+		<Page Name="Maximize Service Level" PageGUID="42F91F5E-94FD-478D-9090-5378498015C9" />
+	</Page>
+</PageManager>

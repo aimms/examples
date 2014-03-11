@@ -1,0 +1,420 @@
+## ams_version=1.0
+
+Model Main_SEEEq {
+    Section Model_Section {
+        DeclarationSection Model_Declaration {
+            Set Agents {
+                Text: "Agents";
+                Index: i;
+                Definition: ElementRange(1, NumberOfagents, 1, prefix : "Agent-");
+            }
+            Set Goods {
+                Text: "Goods";
+                Index: j;
+                Parameter: SelectedGoods;
+                Definition: ElementRange(1, NumberOfgoods, 1, prefix : "Good-");
+            }
+            Parameter NumberOfagents {
+                Text: "# Agents";
+                Range: {
+                    {1..40}
+                }
+                InitialData: 4;
+            }
+            Parameter NumberOfgoods {
+                Text: "# Goods";
+                Range: {
+                    {1..40}
+                }
+                InitialData: 3;
+            }
+            Parameter UtilityWeight {
+                IndexDomain: (i,j);
+                Text: "Weight of good j in the utility function of agent i.";
+            }
+            Parameter Gamma {
+                IndexDomain: (i,j);
+                Text: "Inverse elasticity of demand from agent i for good j.";
+                Range: [1.1, 4];
+            }
+            Parameter Endowment {
+                IndexDomain: (i,j);
+                Text: "The initial quantity of good j for agent i.";
+                Range: [0.1, 10];
+            }
+            Variable Consumption {
+                IndexDomain: (i,j);
+                Text: "Consumption by agent i of good j";
+                Range: [0.01, inf);
+            }
+            Variable Price {
+                IndexDomain: (j);
+                Text: "Equilibrium price for good j.";
+                Range: nonnegative;
+            }
+            Variable Lambda {
+                IndexDomain: (i);
+                Text: "Marginal utility of wealth for agent i.";
+                Range: nonnegative;
+            }
+            Constraint BudgetConstraint {
+                IndexDomain: (i);
+                Definition: sum(j, (Endowment(i,j) - Consumption(i,j)) * Price(j) ) = 0;
+                Comment: "The total value of consumption by agent i equals the total value of his endowment.";
+            }
+            Constraint FeasibilityConstraint {
+                IndexDomain: (j);
+                Definition: sum(i, Endowment(i,j) - Consumption(i,j) ) = 0;
+                Comment: "Total consumption of good j equals total initial endowment.";
+            }
+            Constraint NormalizePrices {
+                Definition: sum(j, Price(j)) = 1;
+                Comment: "Prices are normalised so they sum to 1.";
+            }
+            Constraint ZeroUtil_der {
+                IndexDomain: (i,j);
+                Definition: UtilityWeight(i,j) * Consumption(i,j)^(-Gamma(i,j)) - Lambda(i)*Price(j) = 0;
+                Comment: "Marginal utility of good j for agent i must equal the marginal value of the monetary cost of buying good j.";
+            }
+            MathematicalProgram Equilibrium_Model {
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: NLS;
+                Comment: {
+                    "The model for the Economic Exchange Equilibrium,
+                    as defined by all constraints and variables in the model tree."
+                }
+            }
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+        DeclarationSection Resulting_Data {
+            Comment: "These parameters are calculated based on the solved model.";
+            Parameter TradeAmount {
+                IndexDomain: (i,j);
+                Definition: Endowment(i,j) - Consumption(i,j);
+                Comment: "TradeAmount is calculated based on the values of the variables after a solve.";
+            }
+            Parameter Utility {
+                IndexDomain: (i);
+                Text: "Definition of the utility function for agent i.";
+                Definition: Sum(j, (UtilityWeight(i,j)*Consumption(i,j)^(1-Gamma(i,j)))/(-Gamma(i,j)+1)) - Lambda(i) * Sum(j, Consumption(i,j)*Price(j));
+            }
+            Parameter Utility_der {
+                IndexDomain: (i,j);
+                Text: "First derivative of the Utility function";
+                Definition: UtilityWeight(i,j) * Consumption(i,j)^(-Gamma(i,j)) - Lambda(i)*Price(j);
+            }
+        }
+    }
+    Section GUI_Section {
+        Procedure InitializeData {
+            Body: {
+                
+                
+                empty Lambda;
+                UtilityWeight(i,j) := ord(i) + ord(j);
+                Gamma(i,j) := round(uniform[1.1,4],1);
+                Endowment(i,j) := 8;
+                Consumption(i,j) := 7.9;
+                Price(j) := 1/NumberOfgoods;
+                Lambda(i) := 0.5;
+                
+                CalculateNetworkPositions;
+                ResetNetwork;
+            }
+        }
+        Procedure ShowPage {
+            Body: {
+                If VisiblePage= "Input Overview" then
+                        VisiblePage:="Results Overview"
+                endif;
+            }
+        }
+        StringParameter VisiblePage;
+        ElementParameter TradeAmountColor {
+            IndexDomain: (i,j);
+            Range: AllColors;
+        }
+        DeclarationSection Solver_Section {
+            Set AvailableNLPSolvers {
+                SubsetOf: AllSolvers;
+                Index: nlpSolvers;
+                Comment: "The performance and solution of the solvers differs in this model";
+            }
+            ElementParameter SelectedSolver {
+                Text: "Solver Used";
+                Range: AvailableNLPSolvers;
+            }
+        }
+        Section Trade_Network_Declarations {
+            DeclarationSection Positions {
+                Parameter x {
+                    IndexDomain: (i);
+                }
+                Parameter y {
+                    IndexDomain: (i);
+                }
+            }
+            DeclarationSection Market_Declaration {
+                Set market {
+                    Index: m;
+                    Definition: data{Market};
+                }
+                Parameter xMarket {
+                    IndexDomain: (m);
+                    Definition: marketCenter;
+                }
+                Parameter yMarket {
+                    IndexDomain: (m);
+                    Definition: marketCenter;
+                }
+                Parameter agentRadius {
+                    Definition: (Div(NumberOfagents,20)+1)*22;
+                }
+                Parameter marketRadius {
+                    Definition: max(NumberOfagents,10);
+                }
+                Parameter marketCenter {
+                    Definition: agentRadius + 3;
+                }
+                Set arrowTargets {
+                    Index: at;
+                    Definition: elementRange(1,NumberOfagents*NumberOfgoods);
+                }
+                Set targetsOfAgent {
+                    IndexDomain: (i);
+                    SubsetOf: arrowTargets;
+                }
+                Parameter xAT {
+                    IndexDomain: at;
+                }
+                Parameter yAT {
+                    IndexDomain: (at);
+                }
+            }
+            Section Trade_Visualization {
+                DeclarationSection Page_Data {
+                    Parameter TradeWithMarket {
+                        IndexDomain: (i,at) | at in targetsOfAgent(i);
+                        Comment: " | at in targetsOfAgent(i)";
+                    }
+                    StringParameter ButtonText {
+                        Definition: {
+                            if (ShowWeightedArrows) then
+                            	"Show All Trades"
+                            else
+                            	"Show Trade Amounts"
+                            endif;
+                        }
+                    }
+                    StringParameter NetworkTitle {
+                        Definition: {
+                            if (ShowWeightedArrows) then
+                            	"Trade Amounts:"
+                            else
+                            	"All Trades:"
+                            endif;
+                        }
+                    }
+                    Parameter ShowWeightedArrows {
+                        Range: binary;
+                    }
+                }
+                DeclarationSection Network_Object_Data {
+                    Parameter LeftMargin;
+                    Parameter RightMargin;
+                    Parameter TopMargin;
+                    Parameter BottomMargin;
+                }
+                Section Visualisation {
+                    DeclarationSection Network_data {
+                        Set PossibleArcColors {
+                            SubsetOf: AllColors;
+                            Index: pColor;
+                        }
+                        ElementParameter ArcColors {
+                            IndexDomain: (i,at);
+                            Range: PossibleArcColors;
+                            Definition: Element(PossibleArcColors,Mod(ord(at,targetsOfAgent(i)),card(PossibleArcColors)) );
+                        }
+                        StringParameter ArcNames {
+                            IndexDomain: (i,at);
+                            Definition: Element(Goods,ord(at,targetsOfAgent(i)));
+                        }
+                    }
+                    DeclarationSection Legend_data {
+                        ElementParameter LegendColors {
+                            IndexDomain: (at);
+                            Range: PossibleArcColors;
+                        }
+                        StringParameter LegendText {
+                            IndexDomain: (at);
+                        }
+                        Set ExistingATs {
+                            SubsetOf: arrowTargets;
+                        }
+                        ElementParameter ATOfLegend {
+                            Range: ExistingATs;
+                        }
+                    }
+                }
+            }
+            Procedure CalculateNetworkPositions {
+                Body: {
+                    
+                    currentAngleStep := 2*3.1416/NumberOfagents;
+                    insideAngleStep := currentAngleStep/(NumberOfgoods+1);
+                    availableATs := arrowTargets;
+                    empty targetsOfAgent;
+                    
+                    
+                    for (i) do
+                            currentAngle := currentAngleStep*(ord(i)-1)-3.1416;
+                            x(i) := Cos(currentAngle)*agentRadius+marketCenter;
+                            y(i) := Sin(currentAngle)*agentRadius+marketCenter;
+                            repeat
+                                    currentAT := first(availableATs);
+                                    currentInsideAngle := currentAngle-currentAngleStep*0.5 + insideAngleStep*((count(at in targetsOfAgent(i))+1));
+                                    xAT(currentAT) := Cos(currentInsideAngle)*marketRadius+marketCenter;
+                                    yAT(currentAT) := Sin(currentInsideAngle)*marketRadius+marketCenter;
+                                    targetsOfAgent(i) += currentAT;
+                                    availableATs -= currentAT;
+                                    break when (count(at in targetsOfAgent(i)) = NumberOfgoods);
+                            endrepeat;
+                    endfor;
+                }
+                Set availableATs {
+                    SubsetOf: arrowTargets;
+                }
+                Parameter currentAngleStep;
+                Parameter insideAngleStep;
+                Parameter currentAngle;
+                ElementParameter currentAT {
+                    Range: arrowTargets;
+                }
+                Parameter currentInsideAngle;
+            }
+            Procedure CreateLegend {
+                Body: {
+                    maxArcs := 0;
+                    arcExists(i,at) := (TradeWithMarket(i,at) > 0);
+                    for (i) do
+                    	if(maxArcs < sum(at,arcExists(i,at))) then
+                    		agentWithMostArcs := i;
+                    		maxArcs := sum(at,arcExists(i,at));
+                    	endif;
+                    endfor;
+                    
+                    ExistingATs := targetsOfAgent(agentWithMostArcs);
+                    
+                    LegendColors(at) := ArcColors(agentWithMostArcs,at);
+                    LegendText(at) := ArcNames(agentWithMostArcs,at);
+                    
+                    PageRefreshAll;
+                }
+                Parameter arcExists {
+                    IndexDomain: (i,at);
+                    Range: binary;
+                }
+                ElementParameter agentWithMostArcs {
+                    Range: Agents;
+                }
+                Parameter maxArcs;
+            }
+            Procedure ResetNetwork {
+                Body: {
+                    LeftMargin := 0;
+                    RightMargin := marketCenter*2;
+                    TopMargin := marketCenter*2;
+                    BottomMargin :=0;
+                }
+            }
+            Procedure ChangeNetwork {
+                Body: {
+                    TradeWithMarket(i,at) := 0;
+                    
+                    if (ShowWeightedArrows) then
+                            TradeWithMarket(i,at) onlyif (TradeAmount(i,Element(Goods,ord(at,targetsOfAgent(i)))) > 0) := 1;
+                            TradeWithMarket(i,at) onlyif (TradeAmount(i,Element(Goods,ord(at,targetsOfAgent(i)))) < 0) := -1;
+                    else
+                            TradeWithMarket(i,at) := TradeAmount(i,Element(Goods,ord(at,targetsOfAgent(i))));
+                    endif;
+                    
+                    ShowWeightedArrows := not(ShowWeightedArrows);
+                }
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            AvailableNLPSolvers := {IndexSolvers |
+            	FindString( FormatString( "%e",IndexSolvers), "CONOPT" ) or
+                   	FindString( FormatString( "%e",IndexSolvers), "BARON" ) or
+                   	FindString( FormatString( "%e",IndexSolvers), "KNITRO" ) or
+                   	FindString( FormatString( "%e",IndexSolvers), "MINOS" ) or
+                   	FindString( FormatString( "%e",IndexSolvers), "SNOPT" )
+                   	};
+            
+            SelectedSolver := first(nlpSolvers);
+            
+            UserColorAdd("arrow_orange",255,128,64);
+            UserColorAdd("bkg_red",200,80,80);
+            UserColorAdd("arrow_green",89,210,60);
+            UserColorAdd("bkg_green",60,150,85);
+            UserColorAdd("arrow_blue",62,160,208);
+            UserColorAdd("arrow_purple",164,71,99);
+            
+            PossibleArcColors := data { black,  blue, grey, bkg_red, 'navy blue', bkg_green,arrow_orange, arrow_green,arrow_blue,arrow_purple};
+            
+            ! GUI Initialization
+            
+            CalculateNetworkPositions;
+            
+            ResetNetwork;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            
+            
+            if not IsRunningAsViewer then
+            
+                TradeWithMarket(i,at) := 0;
+            
+                solve Equilibrium_Model where solver= SelectedSolver;
+            
+                TradeAmountColor(i,j) := 'bkg_green';
+                TradeAmountColor(i,j) onlyif  (TradeAmount(i,j) < 0) := 'bkg_red';
+            
+                ShowWeightedArrows := 0;
+                ChangeNetwork;
+                CreateLegend;
+            
+            else
+            
+                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+                CaseFind("Solution",ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            empty TradeAmountColor;
+            UserColorDelete("bkg_green");
+            UserColorDelete("bkg_red");
+            
+            return 1;
+            
+            !if ( CaseSaveAll( confirm:2 ) = 1 ) then
+            !    return 1;
+            !else
+            !    return 0;
+            !endif ;
+            !
+        }
+    }
+}

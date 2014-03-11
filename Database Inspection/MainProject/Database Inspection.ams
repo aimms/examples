@@ -1,0 +1,1055 @@
+## ams_version=1.0
+
+Model Main_Database_Inspection {
+    Section Database_Inspection_Section {
+        DeclarationSection Database_Declaration {
+            Set DatabaseIDs {
+                SubsetOf: Integers;
+                Index: d, d2;
+                Parameter: TheDatabase;
+                Comment: "Set of databases available in this example.";
+            }
+            StringParameter DatabaseName {
+                IndexDomain: (d);
+                Comment: "Name of the database to identify the databases in this example.";
+            }
+            StringParameter DatabaseLocation {
+                IndexDomain: (d);
+                Comment: "Location of the database. Can either be a path to a file datasource or the name of a system/user datasource.";
+            }
+            StringParameter DatabaseProperty {
+                IndexDomain: (d,IndexDatasourceProperties);
+                Comment: {
+                    "The properties for a database. The data is filled by using the AIMMS function GetDatasourceProperty in the
+                    procedure \'InspectDatabase\'."
+                }
+            }
+        }
+        DeclarationSection Table_Declaration {
+            Set TableIDs {
+                SubsetOf: Integers;
+                Index: t, t2;
+                Parameter: TheTable;
+                Comment: "Set of tables. The set contains the table numbers available in the databases.";
+            }
+            Parameter NumberOfTables {
+                IndexDomain: (d);
+                Comment: "Number of tables in each database.";
+            }
+            Parameter TableNumber {
+                IndexDomain: (d,t) | t <= NumberOfTables(d);
+                Definition: t;
+                Comment: "Table number for each table in each database.";
+            }
+            StringParameter TableName {
+                IndexDomain: (d,t) | TableNumber(d,t);
+                Comment: {
+                    "Name of the table in the database. The data is filled by using the AIMMS function SQLTableName in the
+                    procedure \'InspectDatabase\'."
+                }
+            }
+            ElementParameter NumberOfPKColumns {
+                IndexDomain: (d,t);
+                Range: Integers;
+                Definition: count( c | ColumnNumber(d,t,c) AND ColumnIsPrimaryKey(d,t,c) );
+                Comment: "Number of primary key columns in a table.";
+            }
+        }
+        DeclarationSection Column_Declaration {
+            Set ColumnIDs {
+                SubsetOf: Integers;
+                Index: c, c2;
+                Parameter: TheColumn;
+                Comment: "Set of columns. The set contains the column numbers available in the tables in the databases.";
+            }
+            Parameter NumberOfColumns {
+                IndexDomain: (d,t) | TableNumber(d,t);
+                Comment: "Number of columns in a table.";
+            }
+            Parameter ColumnNumber {
+                IndexDomain: (d,t,c) | c <= NumberOfColumns(d,t);
+                Definition: c;
+                Comment: "Column number for each column in each table.";
+            }
+            StringParameter ColumnName {
+                IndexDomain: (d,t,c);
+                Definition: ColumnCharacteristics(d,t,c,'Name');
+                Comment: "Name of the column in the database.";
+            }
+            StringParameter ColumnCharacteristics {
+                IndexDomain: (d,t,c,IndexDataColumnCharacteristics);
+                Comment: {
+                    "The column characteristics of a column. The data is filled by using the AIMMS function SQLColumnData in the
+                    procedure \'InspectDatabase\'."
+                }
+            }
+            Parameter ColumnIsPrimaryKey {
+                IndexDomain: (d,t,c);
+                Definition: ColumnCharacteristics(d,t,c,'IsPrimaryKey') = "Yes";
+                Comment: "Parameter to indicate whether a column in a table is a primary key column.";
+            }
+            Parameter ColumnIsString {
+                IndexDomain: (d,t,c);
+                Definition: {
+                    ColumnCharacteristics(d,t,c,'DataType') = "VARCHAR" OR
+                    ColumnCharacteristics(d,t,c,'DataType') = "text" OR
+                    ColumnCharacteristics(d,t,c,'DataType') = "char"
+                }
+                Comment: {
+                    "Parameter to indicate whether a column contains string values. You can extend the definition if your database
+                    contains string columns with a different DataType than the data types specified."
+                }
+            }
+            Parameter ColumnIsNumber {
+                IndexDomain: (d,t,c);
+                Definition: {
+                    ColumnCharacteristics(d,t,c, 'DataType') = "NUMBER" OR
+                    ColumnCharacteristics(d,t,c, 'DataType') = "double" OR
+                    ColumnCharacteristics(d,t,c, 'DataType') = "decimal" OR
+                    ColumnCharacteristics(d,t,c, 'DataType') = "integer unsigned" OR
+                    ColumnCharacteristics(d,t,c, 'DataType') = "tinyint" OR
+                    ColumnCharacteristics(d,t,c, 'DataType') = "tinyint unsigned" OR
+                    ColumnCharacteristics(d,t,c, 'DataType') = "integer"
+                }
+                Comment: {
+                    "Parameter to indicate whether a column contains number values. You can extend the definition if your database
+                    contains number columns with a different DataType than the data types specified."
+                }
+            }
+        }
+        Procedure InspectAllDatabases {
+            Body: {
+                empty DatabaseProperty, NumberOfTables, TableName, NumberOfColumns, ColumnCharacteristics;
+                
+                for d do
+                
+                	InspectDatabase( d );
+                	!PageRefreshAll;
+                
+                endfor;
+            }
+            Comment: "This procedure inspects all databases available in this example.";
+        }
+        Procedure InspectDatabase {
+            Arguments: (_d);
+            Body: {
+                ! Reading Database Properties
+                DatabaseProperty(_d,IndexDatasourceProperties) :=
+                	GetDatasourceProperty(DatabaseLocation(_d), IndexDatasourceProperties );
+                
+                ! Reading Number of Tables and Table Names
+                NumberOfTables(_d) := SQLNumberOfTables( DatabaseLocation(_d) );
+                TableIDs := ElementRange(1, max(d, NumberOfTables(d)) );
+                TableName(_d,t)$TableNumber(_d,t) := SQLTableName(DatabaseLocation(_d), TableNumber(_d,t) );
+                
+                ! Reading Number of Columns and Column Characteristics
+                NumberOfColumns(_d,t) := SQLNumberOfColumns(DatabaseLocation(_d), TableName(_d,t) );
+                ColumnIDs := ElementRange(1, max( (d,t), NumberOfColumns(d,t) ) );
+                ColumnCharacteristics(_d,t,c,IndexDataColumnCharacteristics)$ColumnNumber(_d,t,c) :=
+                	SQLColumnData(DatabaseLocation(_d), TableName(_d,t), ColumnNumber(_d,t,c), ColumnCharacteristic : IndexDataColumnCharacteristics );
+            }
+            Comment: {
+                "This procedure inspects database \'_d\'.
+                \'IndexDataColumnCharacteristics\' and \'IndexDatasourceProperties\' are indices in predefined sets.
+                By adding these indices to the domain of an identifier, you can easily read in all characteristics or properties."
+            }
+            ElementParameter _d {
+                Range: DatabaseIDs;
+                Property: Input;
+            }
+        }
+    }
+    Section AddDatabase_Section {
+        Procedure AddDatabase {
+            Body: {
+                SetElementAdd(DatabaseIDs, _d, val(last(DatabaseIDs)) + 1 );
+                
+                if not SpecifyDatabaseInfo(_d) then
+                
+                	DatabaseIDs -= _d;
+                	DialogMessage("No database has been added.");
+                
+                else
+                
+                	! Database has been added successfully, so it can be inspected.
+                	InspectDatabase(_d);
+                	DialogMessage("Database inspected");
+                
+                	! Give a warning when no primary key columns have been found for this database.
+                	if sum(t | TableNumber(_d,t), NumberOfPKColumns(_d,t)) = 0 then
+                		DialogMessage( "Please note that this example only supports viewing tables with 1 to 5 primary key columns. "+
+                							"In the just added database there are no tables with 1 to 5 primary key columns. "+
+                							"Therefore in this example you cannot view the table(s) of this database.");
+                	endif;
+                
+                	TheDatabase := _d;
+                	InitializeInformation;
+                
+                endif;
+                
+                !PageRefreshAll;
+            }
+            Comment: {
+                "This procedure adds a new database element to the set of \'DatabaseIDs\'.
+                Name and unique source need to be specified, connection needs to established.
+                If one of these fails, the new element will be deleted.
+                If all goes well, the new database is inspected."
+            }
+            ElementParameter _d {
+                Range: DatabaseIDs;
+            }
+        }
+        Procedure SpecifyDatabaseInfo {
+            Arguments: (_d);
+            Body: {
+                ! Specify a name for the new database
+                if not DialogGetString("Specify a name for the new database:", DatabaseName(_d), "Database Name") then
+                
+                	! Dialog has been cancelled
+                	return 0;
+                
+                endif;
+                
+                ! Select type of datasource
+                Value := DialogAsk("What type of database do you want to add?", "File Datasource", "System/User Datasource", title : "Type of Datasource");
+                
+                if Value = 1 then
+                
+                	! Select the location of the new database
+                	if not FileSelect(DatabaseLocation(_d), extension: "udl; *.dsn;"  , title : "Database Location") then
+                
+                		! Dialog has been cancelled
+                		return 0;
+                
+                	endif;
+                
+                elseif Value = 2 then
+                
+                	! Enter a System/User Datasource
+                	if not DialogGetString("Please enter the name of System/User Database:",
+                									DatabaseLocation(_d), "Database Location") then
+                
+                		!Dialog has been cancelled
+                		return 0;
+                
+                	endif;
+                else
+                	!Dialog has been cancelled
+                	return 0;
+                endif;
+                
+                !Check whether the database is indeed a new database.
+                if  not CheckNewDatabase(_d) then
+                
+                	! Database already exists in this project
+                	return 0;
+                
+                endif;
+                
+                ! A new database has been selected -> test the connection.
+                if not TestConnection(_d) then
+                
+                	! Test connection failed
+                	return 0;
+                
+                endif;
+                
+                ! Database info has succesfully been specified
+                return 1;
+            }
+            Comment: "Name and unique source need to be specified, connection needs to established.";
+            Parameter StopSelectDatabaseLocation {
+                InitialData: 0;
+            }
+            Parameter Value;
+            ElementParameter _d {
+                Range: DatabaseIDs;
+                Property: Input;
+            }
+        }
+        Procedure CheckNewDatabase {
+            Arguments: (_d);
+            Body: {
+                if exists(d | DatabaseLocation(d) = DatabaseLocation(_d) AND d <> _d) then
+                
+                	! The selected database already exists in this project.
+                	DialogMessage("Database with this location alread exists.");
+                	return 0;
+                
+                else
+                
+                	! The selected database is indeed new in this project.
+                	return 1;
+                
+                endif;
+            }
+            Comment: "This procedure checks whether the new database already exists in this example.";
+            ElementParameter _d {
+                Range: DatabaseIDs;
+                Property: Input;
+            }
+        }
+        Procedure TestConnection {
+            Arguments: (_d);
+            Body: {
+                ! If connection can be made, inspect the database.
+                if TestDataSource( DatabaseLocation(_d) ) then
+                
+                	!DialogMessage("Test connection succeeded.");
+                	return 1;
+                
+                else
+                
+                	DialogMessage("Test connection failed.");
+                	return 0;
+                
+                endif;
+            }
+            Comment: "This procedure tests the connection with the database.";
+            ElementParameter _d {
+                Range: DatabaseIDs;
+                Property: Input;
+            }
+        }
+        Procedure RemoveDatabase {
+            Body: {
+                if TheDatabase then
+                
+                	if DialogAsk(FormatString("Do you want to remove database '%s' from this example?", DatabaseName(TheDatabase)), "Yes", "No" ) = 1 then
+                
+                		DatabaseIDs -= TheDatabase;
+                		cleandependents;
+                
+                		TheDatabase := first(DatabaseIDs);
+                		InitializeInformation;
+                
+                
+                	endif;
+                
+                else
+                
+                	DialogMessage("No database selected.");
+                
+                endif;
+            }
+            Comment: "This procedure removes a database from this example.";
+        }
+    }
+    Section Read_Data_Section {
+        DeclarationSection Read_Data_Declaration {
+            StringParameter SQLQuery {
+                Comment: {
+                    "The SQL Query that is used in the database procedures that read in the data of a column.
+                    It is filled in the procedure \'FillSQLQuery\'."
+                }
+            }
+            ElementParameter ReadDatabase {
+                Range: DatabaseIDs;
+            }
+            ElementParameter ReadTable {
+                Range: TableIDs;
+            }
+        }
+        Section Primary_Key_Section {
+            Comment: {
+                "This section contains all identifiers and procedures related to the number of primary keys in a certain table.
+                The dimension of the data that is read in, is equal to the number of primary keys.
+                Therefore, for each dimension the following identifiers are needed (X represents the dimension):
+                	PKSetX
+                	PKXColumn
+                	ColumnDataX
+                	ColumnDataXHidden
+                	ReadColumnDataX"
+            }
+            DeclarationSection Primary_Key_Declaration {
+                Set PKSet1 {
+                    Index: pk1;
+                    Comment: {
+                        "The set corresponding to the first primary key column in the table selected on the View Data page.
+                        The set is filled via the \'ReadData\' procedure."
+                    }
+                }
+                Set PKSet2 {
+                    Index: pk2;
+                    Comment: {
+                        "The set corresponding to the second primary key column in the table selected on the View Data page.
+                        The set is filled via the \'ReadData\' procedure."
+                    }
+                }
+                Set PKSet3 {
+                    Index: pk3;
+                    Comment: {
+                        "The set corresponding to the third primary key column in the table selected on the View Data page.
+                        The set is filled via the \'ReadData\' procedure."
+                    }
+                }
+                Set PKSet4 {
+                    Index: pk4;
+                    Comment: {
+                        "The set corresponding to the fourth primary key column in the table selected on the View Data page.
+                        The set is filled via the \'ReadData\' procedure."
+                    }
+                }
+                Set PKSet5 {
+                    Index: pk5;
+                    Comment: {
+                        "The set corresponding to the fifth primary key column in the table selected on the View Data page.
+                        The set is filled via the \'ReadData\' procedure."
+                    }
+                }
+                ElementParameter PK1Column {
+                    IndexDomain: (c);
+                    Range: ColumnIDs;
+                    Comment: "The first primary key column.";
+                }
+                ElementParameter PK2Column {
+                    IndexDomain: (c);
+                    Range: ColumnIDs;
+                    Comment: "The second primary key column.";
+                }
+                ElementParameter PK3Column {
+                    IndexDomain: (c);
+                    Range: ColumnIDs;
+                    Comment: "The third primary key column.";
+                }
+                ElementParameter PK4Column {
+                    IndexDomain: (c);
+                    Range: ColumnIDs;
+                    Comment: "The fourth primary key column.";
+                }
+                ElementParameter PK5Column {
+                    IndexDomain: (c);
+                    Range: ColumnIDs;
+                    Comment: "The fifth primary key column.";
+                }
+                StringParameter ColumnData1 {
+                    IndexDomain: (d,t,c,pk1);
+                    Comment: "The identifier that contains the column data of tables with one primary key column.";
+                }
+                Parameter ColumnData1Hidden {
+                    Definition: NumberOfPKColumns(TheDatabase,TheTableInView) <> 1;
+                    Comment: "This parameter determines whether the corresponding ColumnData identifier is visible on the View Data page.";
+                }
+                StringParameter ColumnData2 {
+                    IndexDomain: (d,t,c,pk1,pk2);
+                    Comment: "The identifier that contains the column data of tables with two primary key columns.";
+                }
+                Parameter Columndata2Hidden {
+                    Definition: NumberOfPKColumns(TheDatabase,TheTableInView) <> 2;
+                    Comment: "This parameter determines whether the corresponding ColumnData identifier is visible on the View Data page.";
+                }
+                StringParameter ColumnData3 {
+                    IndexDomain: (d,t,c,pk1,pk2,pk3);
+                    Comment: "The identifier that contains the column data of tables with three primary key columns.";
+                }
+                Parameter Columndata3Hidden {
+                    Definition: NumberOfPKColumns(TheDatabase,TheTableInView) <> 3;
+                    Comment: "This parameter determines whether the corresponding ColumnData identifier is visible on the View Data page.";
+                }
+                StringParameter ColumnData4 {
+                    IndexDomain: (d,t,c,pk1,pk2,pk3,pk4);
+                    Comment: "The identifier that contains the column data of tables with four primary key columns.";
+                }
+                Parameter Columndata4Hidden {
+                    Definition: NumberOfPKColumns(TheDatabase,TheTableInView) <> 4;
+                    Comment: "This parameter determines whether the corresponding ColumnData identifier is visible on the View Data page.";
+                }
+                StringParameter ColumnData5 {
+                    IndexDomain: (d,t,c,pk1,pk2,pk3,pk4,pk5);
+                    Comment: "The identifier that contains the column data of tables with five primary key columns.";
+                }
+                Parameter Columndata5Hidden {
+                    Definition: NumberOfPKColumns(TheDatabase,TheTableInView) <> 5;
+                    Comment: "This parameter determines whether the corresponding ColumnData identifier is visible on the View Data page.";
+                }
+            }
+            DatabaseProcedure ReadColumnData1 {
+                Arguments: (_d,_t,_c);
+                DataSource: DatabaseLocation(ReadDatabase);
+                SqlQuery: SQLQuery;
+                Property: UseResultSet;
+                Mapping: {
+                    "pk1"  --> pk1,
+                    "col1" --> ColumnData1(_d,_t,_c, pk1)
+                }
+                Comment: "This database procedure is used to read in column data for tables with one primary key column.";
+                ElementParameter _d {
+                    Range: DatabaseIDs;
+                    Property: Input;
+                }
+                ElementParameter _t {
+                    Range: TableIDs;
+                    Property: Input;
+                }
+                ElementParameter _c {
+                    Range: ColumnIDs;
+                    Property: Input;
+                }
+            }
+            DatabaseProcedure ReadColumnData2 {
+                Arguments: (_d,_t,_c);
+                DataSource: DatabaseLocation(ReadDatabase);
+                SqlQuery: SQLQuery;
+                Property: UseResultSet;
+                Mapping: {
+                    "pk1"  --> pk1,
+                    "pk2"  --> pk2,
+                    "col1" --> ColumnData2(_d,_t,_c, pk1, pk2)
+                }
+                Comment: "This database procedure is used to read in column data for tables with two primary key columns.";
+                ElementParameter _d {
+                    Range: DatabaseIDs;
+                    Property: Input;
+                }
+                ElementParameter _t {
+                    Range: TableIDs;
+                    Property: Input;
+                }
+                ElementParameter _c {
+                    Range: ColumnIDs;
+                    Property: Input;
+                }
+            }
+            DatabaseProcedure ReadColumnData3 {
+                Arguments: (_d,_t,_c);
+                DataSource: DatabaseLocation(ReadDatabase);
+                SqlQuery: SQLQuery;
+                Property: UseResultSet;
+                Mapping: {
+                    "pk1"  --> pk1,
+                    "pk2"  --> pk2,
+                    "pk3"  --> pk3,
+                    "col1" --> ColumnData3(_d,_t,_c, pk1, pk2, pk3)
+                }
+                Comment: "This database procedure is used to read in column data for tables with three primary key columns.";
+                ElementParameter _d {
+                    Range: DatabaseIDs;
+                    Property: Input;
+                }
+                ElementParameter _t {
+                    Range: TableIDs;
+                    Property: Input;
+                }
+                ElementParameter _c {
+                    Range: ColumnIDs;
+                    Property: Input;
+                }
+            }
+            DatabaseProcedure ReadColumnData4 {
+                Arguments: (_d,_t,_c);
+                DataSource: DatabaseLocation(ReadDatabase);
+                SqlQuery: SQLQuery;
+                Property: UseResultSet;
+                Mapping: {
+                    "pk1"  --> pk1,
+                    "pk2"  --> pk2,
+                    "pk3"  --> pk3,
+                    "pk4"  --> pk4,
+                    "col1" --> ColumnData4(_d,_t,_c, pk1, pk2, pk3, pk4)
+                }
+                Comment: "This database procedure is used to read in column data for tables with four primary key columns.";
+                ElementParameter _d {
+                    Range: DatabaseIDs;
+                    Property: Input;
+                }
+                ElementParameter _t {
+                    Range: TableIDs;
+                    Property: Input;
+                }
+                ElementParameter _c {
+                    Range: ColumnIDs;
+                    Property: Input;
+                }
+            }
+            DatabaseProcedure ReadColumnData5 {
+                Arguments: (_d,_t,_c);
+                DataSource: DatabaseLocation(ReadDatabase);
+                SqlQuery: SQLQuery;
+                Property: UseResultSet;
+                Mapping: {
+                    "pk1"  --> pk1,
+                    "pk2"  --> pk2,
+                    "pk3"  --> pk3,
+                    "pk4"  --> pk4,
+                    "pk5"  --> pk5,
+                    "col1" --> ColumnData5(_d,_t,_c, pk1, pk2, pk3, pk4, pk5)
+                }
+                Comment: "This database procedure is used to read in column data for tables with five primary key columns.";
+                ElementParameter _d {
+                    Range: DatabaseIDs;
+                    Property: Input;
+                }
+                ElementParameter _t {
+                    Range: TableIDs;
+                    Property: Input;
+                }
+                ElementParameter _c {
+                    Range: ColumnIDs;
+                    Property: Input;
+                }
+            }
+        }
+        Procedure ReadData {
+            Body: {
+                empty ColumnData1, ColumnData2, ColumnData3, ColumnData4, ColumnData5;
+                
+                ReadDatabase := TheDatabase;
+                ReadTable	 := TheTableInView;
+                TestConnection(ReadDatabase);
+                InspectDatabase(ReadDatabase);
+                
+                for c | ColumnNumber(ReadDatabase,ReadTable,c) do
+                
+                	PK1Column(c)  := first( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                										  ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2) );
+                
+                	switch NumberOfPKColumns(ReadDatabase,ReadTable) do
+                
+                		1 :	FillSQLQuery(ReadDatabase,ReadTable,c);
+                				read from table ReadColumnData1(ReadDatabase,ReadTable,c);
+                
+                		2 :	PK2Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 2 );
+                				FillSQLQuery(ReadDatabase,ReadTable,c);
+                				read from table ReadColumnData2(ReadDatabase,ReadTable,c);
+                
+                		3 :	PK2Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 2 );
+                				PK3Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 3 );
+                				FillSQLQuery(ReadDatabase,ReadTable,c);
+                				read from table ReadColumnData3(ReadDatabase,ReadTable,c);
+                
+                		4 :	PK2Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 2 );
+                				PK3Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 3 );
+                				PK4Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 4 );
+                				FillSQLQuery(ReadDatabase,ReadTable,c);
+                				read from table ReadColumnData4(ReadDatabase,ReadTable,c);
+                
+                		5 :	PK2Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 2 );
+                				PK3Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 3 );
+                				PK4Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 4 );
+                				PK5Column(c)  := Nth( c2 | ColumnNumber(ReadDatabase,ReadTable,c2) AND
+                													ColumnIsPrimaryKey(ReadDatabase,ReadTable,c2), 5 );
+                				FillSQLQuery(ReadDatabase,ReadTable,c);
+                				read from table ReadColumnData5(ReadDatabase,ReadTable,c);
+                
+                		Default : DialogMessage( FormatString(
+                						"Tables with %e primary key columns are not supported in this example",
+                						NumberOfPKColumns(ReadDatabase,ReadTable)));
+                					 halt;
+                
+                	endswitch;
+                
+                endfor;
+                
+                FillInitialColumnWidth;
+            }
+            Comment: {
+                "This procedure reads the data for all columns in the selected table in the selected database.
+                The reading of the columns depends on the number of primary key columns in the table.
+                For tables with 1 to 5 primary keys, the data can be read in.
+                If you have tables with more primary key columns, you can extend the example in a similar way.
+                Note that depending on the number of primary key columns in the table, for each column:
+                - the primary key column(s) is/are determined
+                - the SQLQuery is filled,
+                - the column data is read from the database."
+            }
+        }
+        Procedure FillSQLQuery {
+            Arguments: (_d,_t,_c);
+            Body: {
+                if not CheckCondition(1) then
+                	halt; ! Conditions to continu are not met.
+                endif;
+                
+                ! Fill in the SQLQuery
+                switch NumberOfPKColumns(_d,_t) do
+                
+                1 : SQLQuery :=
+                		"Select " + ColumnName(_d,_t,PK1Column(_c) ) +" as pk1, " +
+                						ColumnName(_d,_t,_c) + " as col1 from " +
+                			TableName(_d,_t) +
+                			if WhereActive then
+                				" where " + ColumnName(_d,_t,TheColumnInView) + TheOperator +
+                				if ColumnIsString(_d,_t,TheColumnInView) then
+                					"'" + ComparingString + "'"
+                				elseif ColumnIsNumber(_d,_t,TheColumnInView) then
+                					ComparingString
+                				endif
+                			else
+                				""
+                			endif;
+                
+                2 : SQLQuery :=
+                		"Select " + ColumnName(_d,_t,PK1Column(_c) ) +" as pk1, " +
+                						ColumnName(_d,_t,PK2Column(_c) ) +" as pk2, " +
+                						ColumnName(_d,_t,_c) + " as col1 from " +
+                			TableName(_d,_t) +
+                			if WhereActive then
+                				" where " + ColumnName(_d,_t,TheColumnInView) + TheOperator +
+                				if ColumnIsString(_d,_t,TheColumnInView) then
+                					"'" + ComparingString + "'"
+                				elseif ColumnIsNumber(_d,_t,TheColumnInView) then
+                					ComparingString
+                				endif
+                			else
+                				""
+                			endif;
+                
+                3 : SQLQuery :=
+                		"Select " + ColumnName(_d,_t,PK1Column(_c) ) +" as pk1, " +
+                						ColumnName(_d,_t,PK2Column(_c) ) +" as pk2, " +
+                						ColumnName(_d,_t,PK3Column(_c) ) +" as pk3, " +
+                						ColumnName(_d,_t,_c) + " as col1 from " +
+                			TableName(_d,_t) +
+                			if WhereActive then
+                				" where " + ColumnName(_d,_t,TheColumnInView) + TheOperator +
+                				if ColumnIsString(_d,_t,TheColumnInView) then
+                					"'" + ComparingString + "'"
+                				elseif ColumnIsNumber(_d,_t,TheColumnInView) then
+                					ComparingString
+                				endif
+                			else
+                				""
+                			endif;
+                
+                4 : SQLQuery :=
+                		"Select " + ColumnName(_d,_t,PK1Column(_c) ) +" as pk1, " +
+                						ColumnName(_d,_t,PK2Column(_c) ) +" as pk2, " +
+                						ColumnName(_d,_t,PK3Column(_c) ) +" as pk3, " +
+                						ColumnName(_d,_t,PK4Column(_c) ) +" as pk4, " +
+                						ColumnName(_d,_t,_c) + " as col1 from " +
+                			TableName(_d,_t) +
+                			if WhereActive then
+                				" where " + ColumnName(_d,_t,TheColumnInView) + TheOperator +
+                				if ColumnIsString(_d,_t,TheColumnInView) then
+                					"'" + ComparingString + "'"
+                				elseif ColumnIsNumber(_d,_t,TheColumnInView) then
+                					ComparingString
+                				endif
+                			else
+                				""
+                			endif;
+                
+                5 : SQLQuery :=
+                		"Select " + ColumnName(_d,_t,PK1Column(_c) ) +" as pk1, " +
+                						ColumnName(_d,_t,PK2Column(_c) ) +" as pk2, " +
+                						ColumnName(_d,_t,PK3Column(_c) ) +" as pk3, " +
+                						ColumnName(_d,_t,PK4Column(_c) ) +" as pk4, " +
+                						ColumnName(_d,_t,PK5Column(_c) ) +" as pk5, " +
+                						ColumnName(_d,_t,_c) + " as col1 from " +
+                			TableName(_d,_t) +
+                			if WhereActive then
+                				" where " + ColumnName(_d,_t,TheColumnInView) + TheOperator +
+                				if ColumnIsString(_d,_t,TheColumnInView) then
+                					"'" + ComparingString + "'"
+                				elseif ColumnIsNumber(_d,_t,TheColumnInView) then
+                					ComparingString
+                				endif
+                			else
+                				""
+                			endif;
+                
+                endswitch
+            }
+            Comment: {
+                "This procedure fills the SQLQuery that will be executed when reading the data.
+                In the switch the SQLQuery is filled based on the number of primary keys in the selected table.
+                In case the \'where\' checkbox is checked, the SQLQuery is extended with the where-condition.
+                Note that the format of the SQLQuery depends on the type of column in the where condition.
+                For String columns quotes are added."
+            }
+            ElementParameter _d {
+                Range: DatabaseIDs;
+                Property: Input;
+            }
+            ElementParameter _t {
+                Range: TableIDs;
+                Property: Input;
+            }
+            ElementParameter _c {
+                Range: ColumnIDs;
+                Property: Input;
+            }
+            Parameter WhereNumber;
+        }
+        Procedure CheckCondition {
+            Arguments: (Interactive);
+            Body: {
+                ! When 'where' is active, the where-condition should be specified
+                if WhereActive AND [TheColumnInView = '' OR TheOperator = '' OR ComparingString = ""] then
+                
+                	if Interactive then
+                		DialogMessage("Please fill in all the 'where' parameters.");
+                	endif;
+                	return 0;
+                
+                endif;
+                
+                ! When 'where' is active and the selected column contains numbers, the where-condition should be a number as well.
+                if WhereActive AND ColumnIsNumber(TheDatabase,TheTableInView,TheColumnInView) AND Val(ComparingString) = undf then
+                
+                	if Interactive then
+                		DialogMessage("Please fill in a number instead of a string.");
+                	endif;
+                	return 0;
+                
+                endif;
+                
+                ! Only columns of type number or string according to the definitions of 'ColumnIsNumber' and 'ColumnIsString' are supported in this example.
+                if WhereActive AND not ColumnIsNumber(TheDatabase,TheTableInView,TheColumnInView) AND not ColumnIsString(TheDatabase,TheTableInView,TheColumnInView) then
+                
+                	if Interactive then
+                		DialogMessage(FormatString("Column of type %s is not supported in this example.",
+                							ColumnCharacteristics(TheDatabase,TheTableInView,TheColumnInView,'DataType') ) );
+                	endif;
+                	return 0;
+                
+                endif;
+                return 1;
+            }
+            Comment: {
+                "This procedure performs some checks on the where-condition parameters.
+                It returns 1 only if all checks are succesful.
+                Note that the \'Interactive\' parameter determines whether the user gets feedback via dialog messages."
+            }
+            Parameter Interactive {
+                Property: Input;
+            }
+        }
+    }
+    Section GUI_Section {
+        DeclarationSection General_GUI_Declaration {
+            Set DisplayIdentifiers {
+                SubsetOf: AllIdentifiers;
+                Index: di;
+                Comment: "This set contains the identifiers that are displayed on the pages in this example.";
+            }
+            StringParameter HeaderTitle {
+                IndexDomain: (di);
+                Comment: "The header title of the displayed identifiers.";
+            }
+            Parameter InitialOuterAreaWidth {
+                Default: 15;
+                Comment: {
+                    "This parameter makes sure that the outer area items in the Pivot Table on the Database Information page
+                    have an initial width of 15."
+                }
+            }
+        }
+        File ProblemDescriptionFile {
+            Name: "Description.txt";
+            Comment: "This file contains the text displayed on the Problem Description page (AIMMS 3 Demo: Database Inspection).";
+        }
+        Set TablesInInformation {
+            SubsetOf: TableIDs;
+            Index: ti;
+            Parameter: TheTableInInformation;
+            Definition: {
+                { t | TableNumber(TheDatabase,t) }
+            }
+            Comment: "This set contains the tables for database \'TheDatabase\', both visible on the Database Information page.";
+        }
+        Set TablesInView {
+            SubsetOf: TableIDs;
+            Index: tv;
+            Parameter: TheTableInView;
+            Definition: {
+                { t | TableNumber(TheDatabase,t) AND 1 <= NumberOfPKColumns(TheDatabase,t) <= 5 }
+            }
+            Comment: {
+                "This set contains the tables available in database \'TheDatabase\', both visible on the View Data page.
+                Note that only tables with 1 - 5 primary key columns are supported in the View Data part of this example."
+            }
+        }
+        Set ColumnsInInformation {
+            SubsetOf: ColumnIDs;
+            Index: ci;
+            Parameter: TheColumnInInformation;
+            Definition: {
+                { c | ColumnNumber(TheDatabase,TheTableInInformation,c) }
+            }
+            Comment: "This set contains the columns for table \'TheTableInInformation\', both visible on the Database Information page.";
+        }
+        Set ColumnsInViewToSelect {
+            SubsetOf: ColumnIDs;
+            Index: cvs;
+            Parameter: TheColumnInView;
+            OrderBy: -ColumnIsPrimaryKey(TheDatabase,TheTableInView,c);
+            Definition: {
+                { c | ColumnNumber(TheDatabase,TheTableInView,c) AND
+                							  not ColumnCharacteristics(TheDatabase,TheTableInView,c, 'DataType') = "DATE" AND
+                							  not ColumnCharacteristics(TheDatabase,TheTableInView,c, 'DataType') = "datetime" }
+            }
+            Comment: {
+                "This set contains the columns that can be selected on the View Data page.
+                Only columns available in table \'TheTableInView\' are included.
+                Note that columns of type DATE or datetime are not supported in the where-condition.
+                Therefore these columns are excluded from this set."
+            }
+        }
+        Set ColumnsInView {
+            SubsetOf: ColumnIDs;
+            Index: cv;
+            OrderBy: -ColumnIsPrimaryKey(TheDatabase,TheTableInView,c);
+            Definition: {
+                { c | ColumnNumber(TheDatabase,TheTableInView,c) }
+            }
+            Comment: {
+                "This set contains the columns available in table \'TheTableInView\'.
+                For these columns the column data is visible in the table on the View Data page."
+            }
+        }
+        Parameter AutomaticReadOnChange {
+            Text: "Auto View";
+            Range: binary;
+            Default: 1;
+            Comment: {
+                "When this parameter is set to 1, the ReadData procedure is called automatically after you select a
+                different table on the View Data page.
+                In case you have a database with tables that contain many rows, you might want to set this parameter
+                to 0 and add a where condition, to avoid long reading times."
+            }
+        }
+        Parameter AutomaticReadMaxRows {
+            Range: {
+                {0..inf}
+            }
+            Default: 1000;
+            Comment: {
+                "If the \'Auto View\' checkbox on the View Data page is checked, the data is read in automatically from the database.
+                However, this is only done when the number of rows that will be read in,
+                is smaller than the value of this parameter \'AutomaticReadMaxRows\'."
+            }
+        }
+        Parameter WhereInactive {
+            Definition: 1 - WhereActive;
+            Comment: "This parameter is used to dynamically change the look of the where-condition parameters.";
+        }
+        Parameter WhereActive {
+            Comment: "This parameter indicates whether the where-condition on the View Data page is active.";
+        }
+        ElementParameter ActiveColor {
+            Range: AllColors;
+            Definition: if WhereActive then 'white' else 'light grey' endif;
+            Comment: "The color of the where-condition parameters on the View Data page.";
+        }
+        Set ComparingOperators {
+            Index: o;
+            Parameter: TheOperator;
+            Definition: data{ '<', '<=', '=', '>', '>=', '<>', ' LIKE '};
+            Comment: "The operators that can be used in the where-condition on the View Data page.";
+        }
+        StringParameter ComparingString {
+            Default: "";
+            Comment: "The value in the where-condition that is compared with the column data.";
+        }
+        Parameter InitialColumnWidth {
+            IndexDomain: (c);
+            Comment: "This parameter is used as initial column width for the Pivot Table on the View Data page.";
+        }
+        Set NumberOfRowsInTable {
+            Index: noe;
+            Comment: {
+                "This set contains a single value: the number of rows for the selected table (including where-condition if
+                available) on the View Data page."
+            }
+        }
+        StringParameter NumberOfRowsSQLQuery {
+            Comment: {
+                "The SQL Query that is used to get the number of rows of the selected table (including where-condition if available).
+                This SQL Query is filled in the procedure \'FillNumberOfRowsInTable\'."
+            }
+        }
+        Procedure InitializeInformation {
+            Body: {
+                if TheDatabase <> '' then
+                
+                	if exists( t | TableNumber(TheDatabase,t) ) then
+                		TheTableInInformation := first( t in TablesInInformation);
+                	else
+                		TheTableInInformation := '';
+                	endif;
+                
+                	!PageSetCursor("Database Information", "Information Table", DatabaseName(TheDatabase));
+                
+                endif
+            }
+            Comment: "This procedure initially determines which database and table is selected on the Database Information page.";
+        }
+        Procedure FillInitialColumnWidth {
+            Body: {
+                InitialColumnWidth(c) := Stringlength(ColumnName(TheDatabase,TheTableInView,c)) + 5;
+            }
+            Comment: "This procedure determines the initial columns width of the Pivot Table on the View Data page.";
+        }
+        DatabaseProcedure GetNumberOfRowsInTable {
+            DataSource: DatabaseLocation(TheDatabase);
+            SqlQuery: NumberOfRowsSQLQuery;
+            Property: UseResultSet;
+            Mapping: "TheResult" --> noe;
+            Comment: {
+                "This database procedure is used to determine the number of rows in the selected table (including
+                where-condition). It is used in the FillNumberOfRowsInTable procedure."
+            }
+        }
+        Procedure FillNumberOfRowsInTable {
+            Body: {
+                ! if conditions are met, the number of rows can be read in
+                if CheckCondition(0) then
+                
+                	! Fill the SQLQuery that reads the number of rows in the table, based on whether the where-condition is available.
+                	if WhereActive AND TheColumnInView AND TheOperator AND ComparingString then
+                
+                		NumberOfRowsSQLQuery := "Select COUNT(*) as TheResult from " + TableName(TheDatabase, TheTableInView) +
+                		" where " + ColumnName(TheDatabase, TheTableInView, TheColumnInView) + TheOperator +
+                		if ColumnIsString(TheDatabase,TheTableInView,TheColumnInView) then
+                			"'" + ComparingString + "'"
+                		elseif ColumnIsNumber(TheDatabase,TheTableInView,TheColumnInView) then
+                			ComparingString
+                		endif;
+                
+                	else
+                
+                		NumberOfRowsSQLQuery := "Select COUNT(*) as TheResult from " + TableName(TheDatabase, TheTableInView);
+                
+                	endif;
+                
+                	read from table GetNumberOfRowsInTable;
+                
+                	ReadDataAutomatic;
+                
+                endif;
+            }
+            Comment: {
+                "This procedure fills the number of rows that are available in the table (including where-condition) that
+                is selected on the View Data page."
+            }
+        }
+        Procedure ReadDataAutomatic {
+            Body: {
+                if AutomaticReadOnChange and val(first(NumberOfRowsInTable)) <= AutomaticReadMaxRows then
+                	ReadData;
+                endif;
+            }
+            Comment: {
+                "Automatically viewing the data is only done when the Auto View checkbox is checked and the number of
+                rows does not exceed the maximum number of rows."
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

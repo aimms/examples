@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>CreatePossiblePatterns64.dll</ExcludedFile>
+	<ExcludedFile>CSCount64.dll</ExcludedFile>
+	<ExcludedFile>Description.txt.bak</ExcludedFile>
+</ExportSettings>

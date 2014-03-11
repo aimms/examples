@@ -1,0 +1,42 @@
+﻿Converting Main project
+Converting Chance Constraints.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\UISettings\ColorSchemes.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\Pages\Input Data.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\Pages\Portfolio Selection.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\Pages\Results Discussion.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\MainProject\Chance Constraints.prj\User Files\bitmaps\boxcircle.png
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Chance Constraints.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\Chance Constraints.dat
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\Description.txt
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library
+Copying file: _Example Style Library\Example Style Library.nch to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\_Example Style Library\Example Style Library.nch
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Chance Constraints\Chance Constraints_converted\Chance Constraints.aimms
+Successfully converted the whole project.

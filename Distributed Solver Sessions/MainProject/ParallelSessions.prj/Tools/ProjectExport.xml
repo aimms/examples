@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>CSCount32.dll</ExcludedFile>
+	<ExcludedFile>ExecutionInformation.put</ExcludedFile>
+</ExportSettings>

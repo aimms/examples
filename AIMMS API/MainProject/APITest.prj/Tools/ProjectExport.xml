@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>APITest64.dll</ExcludedFile>
+</ExportSettings>

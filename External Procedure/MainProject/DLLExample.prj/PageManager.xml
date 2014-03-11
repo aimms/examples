@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="B1FAB376-2CAD-417B-AF6F-00E0381DBCE1">
+		<Page Name="External Procedure Call" PageGUID="1A77C948-7287-4A21-AC7A-8A425E2CA01B" />
+	</Page>
+</PageManager>

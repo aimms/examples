@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowMeasurementData xmlns="http://www.aimms.com/XMLSchema/Reconciliation-example">
+  <Flow measured="111.98" name="Inflow" reconciled="117.03">
+    <Composition>
+      <Component measured="26.96" name="N2" reconciled="26.96"/>
+      <Component measured="72.71" name="H2" reconciled="72.71"/>
+      <Component measured="0.33" name="Ar" reconciled="0.33"/>
+    </Composition>
+  </Flow>
+  <Flow name="Mix" reconciled="475.03">
+    <Composition>
+      <Component measured="24.56" name="N2" reconciled="23.95"/>
+      <Component name="H2" reconciled="71.08"/>
+      <Component name="NH3" reconciled="0.05"/>
+      <Component measured="4.91" name="Ar" reconciled="4.91"/>
+    </Composition>
+  </Flow>
+  <Flow name="NH3-Mix" reconciled="475.03">
+    <Composition>
+      <Component measured="19.99" name="N2" reconciled="19.99"/>
+      <Component name="H2" reconciled="59.08"/>
+      <Component name="NH3" reconciled="15.27"/>
+      <Component name="Ar" reconciled="5.66"/>
+    </Composition>
+  </Flow>
+  <Flow measured="105.59" name="NH3-Flow" reconciled="105.59">
+    <Composition>
+      <Component name="NH3" reconciled="100.00"/>
+    </Composition>
+  </Flow>
+  <Flow name="Residu" reconciled="369.44">
+    <Composition>
+      <Component name="N2" reconciled="23.57"/>
+      <Component measured="69.68" name="H2" reconciled="69.68"/>
+      <Component name="NH3" reconciled="0.07"/>
+      <Component name="Ar" reconciled="6.67"/>
+    </Composition>
+  </Flow>
+  <Flow name="Ar-Flow" reconciled="11.44">
+    <Composition>
+      <Component name="N2" reconciled="89.19"/>
+      <Component name="Ar" reconciled="10.81"/>
+    </Composition>
+  </Flow>
+  <Flow measured="358.00" name="Feedback" reconciled="358.00">
+    <Composition>
+      <Component name="N2" reconciled="22.83"/>
+      <Component name="H2" reconciled="70.48"/>
+      <Component name="NH3" reconciled="0.07"/>
+      <Component name="Ar" reconciled="6.62"/>
+    </Composition>
+  </Flow>
+</FlowMeasurementData>
+

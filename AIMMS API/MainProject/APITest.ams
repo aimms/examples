@@ -1,0 +1,55 @@
+## ams_version=1.0
+
+Model Main_APITest {
+    Set Cities {
+        Index: i, j;
+        InitialData: data { Rotterdam, Antwerp, Berlin };
+    }
+    Parameter TransportCost {
+        IndexDomain: (i,j);
+        InitialData: {
+            data
+            { ( Rotterdam, Rotterdam ) :  1.000,  ( Rotterdam, Antwerp   ) :  2.500,
+              ( Rotterdam, Berlin    ) : 10.000,  ( Antwerp  , Antwerp   ) :  1.200,
+              ( Antwerp  , Berlin    ) : 10.000,  ( Berlin   , Berlin    ) : 11.000 }
+        }
+    }
+    StringParameter APITestDllName {
+        Definition: {
+            if AimmsStringConstants('Architecture') = 'x86' then
+                    "APITest.dll"
+            else
+                    "APITest64.dll"
+            endif
+        }
+    }
+    ExternalProcedure PrintParameterInfo {
+        Arguments: (param);
+        DllName: APITestDllName;
+        BodyCall: {
+            print_double_aimms_identifier_info(
+              scalar string : param
+            )
+        }
+        ElementParameter param {
+            Range: AllIdentifiers;
+            Property: Input;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure RunExternalProcedure {
+        Body: {
+            PrintParameterInfo('TransportCost');
+        }
+    }
+    Procedure ViewOutput {
+        Body: {
+            FileView("TransportCost.def");
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

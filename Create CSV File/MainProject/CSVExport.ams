@@ -1,0 +1,60 @@
+## ams_version=1.0
+
+Model Main_CSVExport {
+    Set Cities {
+        Index: i, j;
+        InitialData: data { Rotterdam, Antwerp, Berlin };
+    }
+    Parameter TransportCost {
+        IndexDomain: (i,j);
+        InitialData: {
+            data
+            { ( Rotterdam, Rotterdam ) :  1.000,  ( Rotterdam, Antwerp   ) :  2.500,
+              ( Rotterdam, Berlin    ) : 10.000,  ( Antwerp  , Antwerp   ) :  1.200,
+              ( Antwerp  , Berlin    ) : 10.000,  ( Berlin   , Berlin    ) : 11.000 }
+        }
+    }
+    StringParameter CSVExportDllName {
+        Definition: {
+            if AimmsStringConstants('Architecture') = 'x86' then
+                    "CSVExport.dll"
+            else
+                    "CSVExport64.dll"
+            endif
+        }
+    }
+    ExternalProcedure CSVExport {
+        Arguments: (param,location);
+        DllName: CSVExportDllName;
+        BodyCall: {
+            CSVExport(
+              scalar string : param,
+              scalar string : location
+            )
+        }
+        ElementParameter param {
+            Range: AllIdentifiers;
+            Property: Input;
+        }
+        StringParameter location {
+            Default: ".";
+            Property: Optional;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure RunExternalProcedure {
+        Body: {
+            CSVExport('TransportCost');
+        }
+    }
+    Procedure ViewOutput {
+        Body: {
+            FileView("TransportCost.csv");
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

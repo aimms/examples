@@ -1,0 +1,321 @@
+## ams_version=1.0
+
+Model Main_FarmPlanning {
+    Section Model_Formulation {
+        DeclarationSection Set_Declaration {
+            Set Crops {
+                Index: c;
+            }
+            Set Months {
+                Index: t;
+            }
+            Set ConsumptionBundles {
+                Index: b;
+            }
+        }
+        DeclarationSection Parameter_Declaration_Crop {
+            Parameter Yield {
+                IndexDomain: (c);
+                Unit: ton/hectare;
+            }
+            Parameter Price {
+                IndexDomain: (c);
+                Unit: $/ton;
+            }
+            Parameter AmountInBundle {
+                IndexDomain: (c,b);
+                Unit: ton;
+            }
+        }
+        DeclarationSection Parameter_Declaration_Land {
+            Parameter LandAvailable {
+                Unit: hectare;
+            }
+            Parameter FractionOccupiesLand {
+                IndexDomain: (t,c);
+                Unit: -;
+            }
+        }
+        DeclarationSection Parameter_Declaration_Labor {
+            Parameter LaborRequired {
+                IndexDomain: (t,c);
+                Unit: hour/hectare;
+            }
+            Parameter AnnualWageRateFamilyLabor {
+                Unit: $/man;
+            }
+            Parameter AnnualWageRatePermanentLabor {
+                Unit: $/man;
+            }
+            Parameter HourlyWageRateTemporaryLabor {
+                Unit: $/hour;
+            }
+            Parameter WorkingHours {
+                IndexDomain: (t);
+                Unit: hour/man;
+            }
+            Parameter FamilyLaborAvailable {
+                Unit: man;
+            }
+        }
+        DeclarationSection Parameter_Declaration_Water {
+            Parameter AnnualAmountOfWaterAvailable {
+                Unit: kcub;
+            }
+            Parameter WaterLimit {
+                IndexDomain: (t);
+                Unit: kcub;
+            }
+            Parameter WaterRequirement {
+                IndexDomain: (t,c);
+                Unit: kcub/hectare;
+            }
+            Parameter PriceOfWater {
+                Unit: $/kcub;
+            }
+        }
+        DeclarationSection Variable_Declaration {
+            Variable AmountPlanted {
+                IndexDomain: (c);
+                Range: nonnegative;
+                Unit: hectare;
+            }
+            Variable PermanentLaborHired {
+                Range: nonnegative;
+                Unit: man;
+            }
+            Variable TemporaryLaborHired {
+                IndexDomain: t;
+                Range: nonnegative;
+                Unit: hour;
+            }
+            Variable Sales {
+                IndexDomain: (c);
+                Range: nonnegative;
+                Unit: ton;
+            }
+            Variable FractionConsumed {
+                IndexDomain: (b);
+                Range: nonnegative;
+                Unit: -;
+            }
+        }
+        DeclarationSection Constraint_Declaration {
+            Constraint LandLimitations {
+                IndexDomain: (t);
+                Unit: hectare;
+                Definition: Sum[ c, FractionOccupiesLand(t,c) * AmountPlanted(c)] <= LandAvailable;
+            }
+            Constraint LaborRequirements {
+                IndexDomain: (t);
+                Unit: hour;
+                Property: ShadowPrice;
+                Definition: {
+                    Sum[ c, LaborRequired(t,c) * AmountPlanted(c)] <= WorkingHours(t) * ( FamilyLaborAvailable + PermanentLaborHired )
+                            + TemporaryLaborHired(t)
+                }
+            }
+            Constraint WaterRequirements1 {
+                IndexDomain: t;
+                Unit: kcub;
+                Property: ShadowPrice;
+                Definition: Sum[ c, WaterRequirement(t,c) * AmountPlanted(c)] <= WaterLimit(t);
+            }
+            Constraint WaterRequirements2 {
+                Unit: kcub;
+                Property: ShadowPrice;
+                Definition: Sum[ (t,c), WaterRequirement(t,c) * AmountPlanted(c)] <= AnnualAmountOfWaterAvailable;
+            }
+            Constraint FamilyConsumption1 {
+                IndexDomain: (c);
+                Unit: ton;
+                Definition: Yield(c) * AmountPlanted(c) = Sum[ b, AmountInBundle(c,b) * FractionConsumed(b)] + Sales(c);
+            }
+            Constraint FamilyConsumption2 {
+                Unit: -;
+                Definition: Sum[ b, FractionConsumed(b)] = 1;
+            }
+        }
+        DeclarationSection Mathematical_Program_Declaration {
+            Variable ObjectiveFunction {
+                Unit: $;
+                Definition: {
+                    Sum[ c, Price(c) * Sales(c)] - AnnualWageRateFamilyLabor * FamilyLaborAvailable - AnnualWageRatePermanentLabor *
+                            PermanentLaborHired - HourlyWageRateTemporaryLabor * Sum[ t, TemporaryLaborHired(t)] - PriceOfWater *
+                            Sum[ (t,c), WaterRequirement(t,c) * AmountPlanted(c)]
+                }
+            }
+            MathematicalProgram FarmPlanning {
+                Objective: ObjectiveFunction;
+                Direction: maximize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: LP;
+            }
+        }
+    }
+    Section Additional_Identifiers {
+        DeclarationSection Quantity_Declaration {
+            Quantity SI_Mass {
+                BaseUnit: kg;
+                Conversions: ton -> kg : # -> # * 1000;
+                Comment: "Expresses the value for the amount of matter.";
+            }
+            Quantity SI_Length {
+                BaseUnit: m;
+                Comment: "Expresses the value of a distance.";
+            }
+            Quantity SI_Area {
+                BaseUnit: m2 = m^2;
+                Conversions: hectare -> m2 : # -> # * 10000;
+                Comment: "Expresses the value of the extent of a surface.";
+            }
+            Quantity Currency {
+                BaseUnit: $;
+            }
+            Quantity SI_Unitless {
+                BaseUnit: -;
+                Comment: "Expresses a dimensionless value.";
+            }
+            Quantity SI_Time_Duration {
+                BaseUnit: s;
+                Conversions: hour -> s : # -> # * 3600;
+                Comment: "Expresses the value for the duration of periods.";
+            }
+            Quantity Personnel {
+                BaseUnit: man;
+            }
+            Quantity SI_Volume {
+                BaseUnit: m3 = m^3;
+                Conversions: kcub -> m3 : # -> # * 1000;
+                Comment: "Expresses the value of solid content.";
+            }
+        }
+        DeclarationSection Output_Declaration {
+            Parameter AbsYield {
+                IndexDomain: (c);
+                Unit: ton;
+                Definition: Yield(c) * AmountPlanted(c);
+            }
+            Parameter Consumption {
+                IndexDomain: (c);
+                Unit: ton;
+                Definition: Sum[ b, AmountInBundle(c,b) * FractionConsumed(b)];
+            }
+            Parameter FarmEarnings {
+                Text: "Farm Earnings";
+                Unit: $;
+                Definition: Sum[ c, Price(c) * Sales(c)];
+            }
+            Parameter CostOfFamilyLabor {
+                Text: "Cost of Family Labor";
+                Unit: $;
+                Definition: - AnnualWageRateFamilyLabor * FamilyLaborAvailable;
+            }
+            Parameter CostOfPermanentLabor {
+                Text: "Cost of Permanent Labor";
+                Unit: $;
+                Definition: - AnnualWageRatePermanentLabor * PermanentLaborHired;
+            }
+            Parameter CostOfTemporaryLabor {
+                Text: "Cost of temporary Labor";
+                Unit: $;
+                Definition: - HourlyWageRateTemporaryLabor * Sum[ t, TemporaryLaborHired(t)];
+            }
+            Parameter CostOfWater {
+                Text: "Cost of Water";
+                Unit: $;
+                Definition: - PriceOfWater * Sum[ (t,c), WaterRequirement(t,c) * AmountPlanted(c)];
+            }
+            Parameter ShadowPrices {
+                IndexDomain: (t);
+                Unit: -;
+                Definition: WaterRequirements1.ShadowPrice(t);
+            }
+        }
+        DeclarationSection Sensititvity_Analysis_Declaration {
+            Parameter MinimalLandAviable {
+                Unit: hectare;
+                Definition: 8;
+            }
+            Parameter MaximalLandAviable {
+                Unit: hectare;
+                Definition: 12;
+            }
+            Parameter NrOfSteps {
+                Definition: 10;
+            }
+        }
+    }
+    Section Viewer_Declaration {
+        DeclarationSection Viewer_Data {
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+            Set CurvePoints {
+                SubsetOf: Integers;
+                Index: i_cp;
+                Definition: ElementRange(0,NrOfSteps);
+            }
+            Parameter OptimalPlanted {
+                IndexDomain: (c,i_cp);
+                Unit: hectare;
+            }
+            Parameter LandAviablePoints {
+                IndexDomain: (i_cp);
+                Unit: hectare;
+                Definition: MinimalLandAviable + i_cp* (MaximalLandAviable-MinimalLandAviable)/NrOfSteps;
+            }
+            StringParameter PointText {
+                IndexDomain: (c,i_cp);
+                Definition: FormatString("AmountPlanted(%e)",c);
+            }
+        }
+        Procedure RunMainExecution {
+            Body: {
+                for (i_cp) do
+                        LandAvailable := LandAviablePoints(i_cp);
+                        MainExecution;
+                        OptimalPlanted(c,i_cp) := AmountPlanted(c);
+                endfor;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            Empty AllVariables;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+                    MainInitialization;
+                    Solve FarmPlanning;
+            
+            else
+            
+                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                CaseFind("Solution",ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure LoadSensitivityAnalysisOutput {
+        Body: {
+            if IsRunningAsViewer then
+            
+                DialogMessage("In the AIMMS Viewer the SOLVE statement is disabled. Therefore the data of parametric curve is read from a case.");
+                CaseFind("Sensitivity Analysis Output",ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

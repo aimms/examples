@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="EACCB58D-3A38-4AFD-BFEB-7990B78EE5A2" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|AC42C23E-F237-4DA1-AA35-18600AEF687E|Size Template">
+		<Template Name="Navigation Template" PageGUID="3017DC6B-E346-4B0E-8A04-B74E834CD940" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|94A6AE06-5A9D-4FE7-84FC-0732C14DEA21|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="FF39F866-DE16-4738-A803-A7F12A6F9396" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|E9210CC7-8613-46D0-96FD-3D2E588C2714|Background Info Template">
+				<Page Name="AIMMS 3 Demo - A Bandwidth Allocation Problem" PageGUID="913B48A3-3F60-40FE-9B3F-F555B308A4B8" />
+			</Template>
+			<Page Name="Bandwidth Allocation Problem" PageGUID="51F6D29C-F2C2-4452-B744-40A69A139084" />
+		</Template>
+	</Template>
+	<Page Name="All Data Pages" PageGUID="E5FAC913-FD4F-40A6-BE7E-E1993DD84E3A" />
+</TemplateManager>

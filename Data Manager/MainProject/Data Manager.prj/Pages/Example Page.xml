@@ -1,0 +1,489 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:46:19">
+	<Location top="22" left="4" bottom="1077" right="1344" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>49507C75-0EF0-4D1E-9AA9-3D6E10D8710E</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="340" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="PercentageFromTop" Value="0.415525">
+						<TopArea Line="FixedFromRight" Value="164">
+							<RightArea Line="FixedFromTop" Value="52">
+								<BottomArea Line="FixedFromBottom" Value="74" />
+							</RightArea>
+						</TopArea>
+						<BottomArea Line="PercentageFromTop" Value="0.53125">
+							<TopArea Line="FixedFromTop" Value="30">
+								<BottomArea Line="FixedFromRight" Value="165">
+									<RightArea Line="FixedFromTop" Value="98" />
+								</BottomArea>
+							</TopArea>
+							<BottomArea Line="FixedFromTop" Value="28">
+								<BottomArea Line="FixedFromRight" Value="164">
+									<RightArea Line="FixedFromTop" Value="84.000023" />
+								</BottomArea>
+							</BottomArea>
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="E5421D8C-62AD-49F0-9E3B-00E60C20E7F1">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Table">
+		<Location top="399" left="384" bottom="498" right="603" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>MaterialCost( m )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Material Cost"</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+			<Unit Display="PerValue" ShowBrackets="false" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>AvailableMaterial( m )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Available"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+			<Unit Display="PerValue" ShowBrackets="false" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<Location top="201" left="210" bottom="270" right="345" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<EditField>AtTop</EditField>
+		<AddAndRemoveButtons>true</AddAndRemoveButtons>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>Products(Products)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<Location top="288" left="210" bottom="363" right="345" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<EditField>AtTop</EditField>
+		<AddAndRemoveButtons>true</AddAndRemoveButtons>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>Materials(Materials)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="183" left="210" bottom="201" right="354" />
+		<StaticText>Products:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="270" left="210" bottom="288" right="354" />
+		<StaticText>Materials:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="399" left="210" bottom="498" right="378" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Demand( p )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+			<Unit Display="PerValue" ShowBrackets="false" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Revenue( p )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="6" Decimals="2" Alignment="Center" />
+			<Unit Display="PerValue" ShowBrackets="false" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ProductCost( p )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Cost Price"</HeaderText>
+			<NumberFormat Width="6" Decimals="2" Alignment="Center" />
+			<Unit Display="PerValue" ShowBrackets="false" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="201" left="351" bottom="363" right="603" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<MultiLineHeaders>true</MultiLineHeaders>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>MaterialContentsInProduct( p, m )</Identifier>
+			<Permutation>[1,0]</Permutation>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Material contents in product"</HeaderText>
+			<NumberFormat Width="6" Decimals="3" ThousandSeparator="true" Alignment="Center" ShowDefaults="true" />
+			<Unit Display="PerValue" ShowBrackets="false" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>MaterialUnit( m )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="3" Decimals="0" Alignment="Right" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ProductUnit( p )</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="534" left="342" bottom="615" right="468" />
+		<TabOrder>14</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Production( p )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="534" left="210" bottom="615" right="336" />
+		<TabOrder>13</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>MaterialUsed( m )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Material used"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+			<Unit Display="PerValue" ShowBrackets="false" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="534" left="477" bottom="615" right="603" />
+		<TabOrder>15</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ObjectiveValue</Identifier>
+			<Unit Display="PerValue" ShowBrackets="false" />
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ProductionCost</Identifier>
+			<Unit Display="PerValue" ShowBrackets="false" />
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Profit</Identifier>
+			<Unit Display="PerValue" ShowBrackets="false" />
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="552" left="609" bottom="576" right="765" />
+		<TabOrder>16</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Load Case"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>EmptyModelDeclaration</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="MenuCommand">
+				<Command>Case-Load As Active</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="531" left="609" bottom="555" right="765" />
+		<TabOrder>17</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Save Case"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SaveCase</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="210" left="609" bottom="234" right="765" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="408" left="18" bottom="621" right="195" />
+		<StaticText>You can enter your products, materials and other (constant or variable) input information and save it as a case or dataset. You can also load a case or dataset. 
+
+After solving the mathematical model, the output information is saved in a separate output case. 
+
+Open 'Data Management Setup' and 'Data Manager' to get acquainted with Data Categories, CaseTypes, DataSets and Cases.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="423" left="609" bottom="447" right="765" />
+		<TabOrder>12</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Save Variable Input"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SaveVariableInput</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="318" left="609" bottom="342" right="765" />
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Save Constant Input"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SaveConstantInput</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="609" bottom="210" right="765" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Empty Data"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>EmptyModelDeclaration</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="399" left="609" bottom="423" right="765" />
+		<TabOrder>11</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Load Variable Input"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>OpenVariableDataSet</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="294" left="609" bottom="318" right="765" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Load Constant Input"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>EmptyModelDeclaration</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>OpenConstantDataSet</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="342" left="612" bottom="363" right="756" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>CurrentConstantInput</StringParameter>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="576" left="615" bottom="615" right="762" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>CurrentCaseName</StringParameter>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="369" left="204" bottom="393" right="768" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="504" left="204" bottom="528" right="768" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="210" bottom="177" right="441" />
+		<StaticText>Constant Input Information</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="372" left="210" bottom="390" right="441" />
+		<StaticText>Variable Input Information</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="507" left="210" bottom="525" right="441" />
+		<StaticText>Output Information</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="447" left="615" bottom="495" right="765" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>CurrentVariableInput</StringParameter>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>Production</Symbol>
+			<Symbol>m</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>MaterialCost</Symbol>
+			<Symbol>MaterialContentsInProduct</Symbol>
+			<Symbol>CurrentVariableInput</Symbol>
+			<Symbol>Demand</Symbol>
+			<Symbol>ProductionCost</Symbol>
+			<Symbol>OpenConstantDataSet</Symbol>
+			<Symbol>ProductCost</Symbol>
+			<Symbol>Products</Symbol>
+			<Symbol>Materials</Symbol>
+			<Symbol>SaveCase</Symbol>
+			<Symbol>SaveVariableInput</Symbol>
+			<Symbol>ObjectiveValue</Symbol>
+			<Symbol>Profit</Symbol>
+			<Symbol>MaterialUnit</Symbol>
+			<Symbol>CurrentCaseName</Symbol>
+			<Symbol>CurrentConstantInput</Symbol>
+			<Symbol>ProductUnit</Symbol>
+			<Symbol>Revenue</Symbol>
+			<Symbol>AvailableMaterial</Symbol>
+			<Symbol>SaveConstantInput</Symbol>
+			<Symbol>EmptyModelDeclaration</Symbol>
+			<Symbol>MaterialUsed</Symbol>
+			<Symbol>OpenVariableDataSet</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

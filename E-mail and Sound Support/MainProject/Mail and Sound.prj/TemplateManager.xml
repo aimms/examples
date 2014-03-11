@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="88C52786-F043-468B-B732-6DBF83C5C61B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|E79D9684-6E05-4807-8DE2-4F18866361D0|Size Template">
+		<Template Name="Navigation Template" PageGUID="6826ACFA-5D02-46FB-A25C-7F49BACA484C" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|BD2B8ADB-50BA-4DA8-8565-E2133B834197|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="8F49B7AA-A51A-41B7-929A-BA571CDEDE51" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|46EDA601-BCBE-4042-9406-426F3A275BA2|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="72966E8C-9905-4F99-9260-0ED61510B37F" />
+			</Template>
+			<Page Name="Send Mail and Play Sound" PageGUID="43391CB1-00B1-4B80-88CD-C90D8AEEB4D8" />
+		</Template>
+	</Template>
+</TemplateManager>

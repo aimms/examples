@@ -1,0 +1,713 @@
+## ams_version=1.0
+
+Model Main_Flow_Shop {
+    Parameter MaxJobs {
+        Text: "Number of elements in the set Jobs";
+        Range: integer;
+    }
+    Set Jobs {
+        Text: "Set of all Jobs";
+        Index: j, j2;
+        Definition: {
+            ElementRange(1,MaxJobs, prefix: "Job-");
+        }
+    }
+    Set Schedules {
+        Text: "Set of all schedules";
+        Index: s;
+        Definition: {
+            ElementRange(1,MaxJobs, prefix: "Pos-");
+        }
+    }
+    Parameter MaxMachines {
+        Text: "Number of elements in the set Machines";
+        Range: integer;
+    }
+    Set Machines {
+        Text: "Set of all machines";
+        Index: m;
+        Definition: {
+            ElementRange(1,MaxMachines, prefix: "M-");
+        }
+    }
+    Parameter ProcesTime {
+        IndexDomain: (j,m);
+        Text: "Time required to process job j on machine m";
+    }
+    Variable JobSchedule {
+        IndexDomain: (j,s);
+        Text: "Determining the place of the job";
+        Range: binary;
+    }
+    Variable StartTime {
+        IndexDomain: (s,m);
+        Text: "The time at which job in schedule position s commences processing on machine m";
+        Range: nonnegative;
+    }
+    Constraint OneJobPerSchedule {
+        IndexDomain: (s);
+        Text: "Only one job is related to every schedule";
+        Definition: sum(j, JobSchedule(j,s)) = 1;
+    }
+    Constraint OneSchedulePerJob {
+        IndexDomain: (j);
+        Text: "Only one schedule is related to every job";
+        Definition: sum(s, JobSchedule(j,s)) = 1;
+    }
+    Constraint MachineStartTime {
+        IndexDomain: (s,m) | m <> last(Machines);
+        Text: "The commencement of schedule s on machine m+1 is no earlier then its finish on machine m";
+        Definition: StartTime(s,m + 1) >=  StartTime(s,m) + sum(j, ProcesTime(j,m)*JobSchedule(j,s));
+    }
+    Constraint ScheduleStartTime {
+        IndexDomain: (s,m) | s <> last(Schedules);
+        Text: "The commencement of schedule s + 1 on machine m is no earlier then the finish time of job j on machine m";
+        Definition: StartTime(s + 1,m) >=  StartTime(s,m) + sum(j, ProcesTime(j,m)*JobSchedule(j,s));
+    }
+    Variable TimeSpan {
+        Text: "Total time to process all jobs on all machines";
+        Definition: StartTime(Last(s),last(m)) + sum(j, ProcesTime(j,last(m))*JobSchedule(j,Last(s)));
+    }
+    MathematicalProgram FlowShopModel {
+        Objective: TimeSpan;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+    }
+    DeclarationSection Interface_Declarations {
+        Parameter IntermediateInterfaceUpdate {
+            InitialData: 1;
+        }
+        Parameter InterfaceStartTime {
+            IndexDomain: (j,m);
+            Text: "The time at which job j commences processing on machine m";
+        }
+        Parameter InterfaceProcesTime {
+            IndexDomain: (s,m);
+        }
+        StringParameter JobDescription {
+            IndexDomain: (j);
+            Text: "Description of jobs that can be used inside the Gantt Chart";
+            Definition: {
+                FormatString("J%i", ord(j));
+            }
+        }
+        StringParameter MachineDescription {
+            IndexDomain: (m);
+            Text: "Description of machines that can be used inside the Gantt Chart";
+            Definition: {
+                FormatString("M%i", ord(m));
+            }
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            MaxJobs 	:= 7;
+            MaxMachines 	:= 10;
+            
+            GenerateData;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            
+            
+            
+            if not IsRunningAsViewer then
+            
+            	Empty AllVariables;
+            
+            	if ( IntermediateInterfaceUpdate ) then
+            		FlowShopModel.CallbackNewIncumbent := 'NewIncumbentCallback';
+            	else
+            		FlowShopModel.CallbackNewIncumbent := '';
+            	endif;
+            
+            	solve FlowShopModel;
+            
+            	GenerateInterface;
+            	WriteSolution;
+            
+            
+            else
+            
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+            	CaseFind("Solution",ACase);
+            	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainExecutionWithSolution {
+        Body: {
+            if not IsRunningAsViewer Then
+            
+            	Empty AllVariables;
+            
+            	read from file "solution.txt";
+            
+            	if ( IntermediateInterfaceUpdate ) then
+            		FlowShopModel.CallbackNewIncumbent := 'NewIncumbentCallback';
+            	else
+            		FlowShopModel.CallbackNewIncumbent := '';
+            	endif;
+            
+            	solve FlowShopModel;
+            
+            	GenerateInterface;
+            	WriteSolution;
+            
+            else
+            
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+            	CaseFind("Solution with starting point",ACase);
+            	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure GenerateData {
+        Body: {
+            
+            ProcesTime(j,m) := round(Uniform(1,20));
+        }
+    }
+    Procedure GenerateInterface {
+        Body: {
+            InterfaceStartTime(j,m)  := StartTime( first(s | JobSchedule(j,s)),m);
+            InterfaceProcesTime(s,m) := sum (j | JobSchedule(j,s), ProcesTime(j,m));
+            
+            PageRefreshAll();
+        }
+    }
+    Procedure NewIncumbentCallback {
+        Body: {
+            empty JobSchedule;
+            RetrieveCurrentVariableValues(AllVariables);
+            TimeSpan := FlowShopModel.Incumbent;
+            
+            GenerateInterface;
+        }
+    }
+    Procedure WriteSolution {
+        Body: {
+            write AllVariables to file "Solution.txt";
+        }
+    }
+    Section Solve_Scenarios_parallel_with_Multiple_SolverSessions {
+        Procedure CheckNumberOfCPUs {
+            Body: {
+                if EnvironmentGetString("NUMBER_OF_PROCESSORS", psNumCPUs) then
+                	if val(psNumCPUs) <= 0 then
+                		DialogMessage("Could not determine the number of processors in your computer.\n"+
+                		      		"Be careful with using more workers than processors in your machine.") ;
+                	endif ;
+                
+                	if pMaxNumberOfParallelWorkers > val(psNumCPUs) then
+                		if DialogAsk("You selected more parallel workers than processors in your computer. This will have negative impact "+
+                			     "on the performance.\nAre you sure you want to test with more workers than processors?" , "Yes", "No") = 2 then
+                
+                			pMaxNumberOfParallelWorkers := val(psNumCPUs) ;
+                		endif ;
+                
+                	endif ;
+                else
+                	DialogMessage("Could not determine the number of processors in your computer.\n"+
+                		      "Be careful with using more workers than processors in your machine.") ;
+                endif ;
+            }
+            StringParameter psNumCPUs;
+        }
+        Procedure ClearAllGMPs {
+            Body: {
+                !First remove all the solversessions that currently might be active
+                while card(IndexSolverSessions) do
+                	gmp::Instance::DeleteSolverSession( first(IndexSolverSessions) ) ;
+                endwhile ;
+                
+                !Now remove any of the GMPs that might still be present
+                while card(IndexGeneratedMathematicalPrograms) do
+                	gmp::Instance::Delete( first(IndexGeneratedMathematicalPrograms) ) ;
+                endwhile ;
+            }
+        }
+        Procedure CreateAllDataFiles {
+            Body: {
+                !Check if the directory in which we store all the data files for the scenarios exists
+                !If it does not exist, then try to create it. Halt execution if the directory cannot be created.
+                if not directoryExists("Parallel-data-instances") then
+                	if not DirectoryCreate("Parallel-data-instances") then
+                		DialogError("Could not create the parallel-data-instances directory. Probably this is caused by your project directory being read-only. Aborting further execution.") ;
+                		halt ;
+                	endif ;
+                endif ;
+                
+                !For each combination of #Jobs and #Machines, we first check whether there already exists a file
+                !for this scenario (i.e. specific combination of #machines and #jobs). If the file does
+                !not yet exist, we first fill the ProcesTime parameter with the requested data, after
+                !which the data is written to the file for this scenario.
+                for( iJobScenario, iMachineScenario) do
+                	spDataFilename := "Parallel-data-instances\\parallel-solversession-data-" + iMachineScenario+"-machines-" + iJobScenario+"-jobs.txt" ;
+                	if not FileExists(spDataFilename) then
+                		maxJobs := iJobScenario ;
+                		maxMachines := iMachineScenario ;
+                
+                		GenerateData ;
+                
+                		write ProcesTime to file spDataFilename ;
+                	endif  ;
+                endfor ;
+            }
+            StringParameter spDataFilename;
+        }
+        Procedure UpdateCurrentScenario {
+            Body: {
+                !Increment the number of machines.
+                pCurrentNumberOfMachines += 1 ;
+                
+                !If overflow, then increase the number of jobs and reset the
+                !number of machines again.
+                if pCurrentNumberOfMachines > pMaxNumberOfMachines then
+                	pCurrentNumberOfMachines := pMinNumberOfMachines  ;
+                	pCurrentNumberOfJobs += 1 ;
+                endif ;
+                
+                
+                !If we are finished, break out of this loop. This will
+                !be the case if the #workers > #scenarios.
+                if pCurrentNumberOfJobs > pMaxNumberOfJobs then
+                	!Return value of 0 means that there does not exist a next scenario.
+                	return 0 ;
+                endif ;
+                
+                !Load the Scenario input data from the correct txt file.
+                LoadScenarioInputData ;
+                
+                return 1 ;
+            }
+        }
+        Procedure LoadScenarioInputData {
+            Body: {
+                
+                !Set the values for the number of machines and jobs.
+                MaxMachines := pCurrentNumberOfMachines ;
+                MaxJobs := pCurrentNumberOfJobs ;
+                
+                !Read the data from the file that corresponds to the current Scenario.
+                spDataFilename := "Parallel-data-instances\\parallel-solversession-data-" + pCurrentNumberOfMachines+"-machines-" + pCurrentNumberOfJobs+"-jobs.txt" ;
+                read from file spDataFilename ;
+            }
+            StringParameter spDataFilename;
+        }
+        Procedure InputSanityCheck {
+            Body: {
+                if pMaxNumberOfParallelWorkers  <= 0 then
+                	DialogMessage("Please ensure that the number of parallel workers is >= 1.") ;
+                	return ;
+                endif ;
+                
+                if pMinNumberOfJobs <= 0 then
+                	DialogMessage("Please ensure you provide a value for minimal number of jobs that is >= 1.") ;
+                	return ;
+                endif ;
+                
+                if pMaxNumberOfJobs <= 0 then
+                	DialogMessage("Please ensure you provide a value for maximal number of jobs that is >= 1.") ;
+                	return ;
+                endif ;
+                
+                if pMinNumberOfMachines <= 0 then
+                	DialogMessage("Please ensure you provide a value for minimal number of machines that is >= 1.") ;
+                	return ;
+                endif ;
+                
+                if pMaxNumberOfMachines <= 0 then
+                	DialogMessage("Please ensure you provide a value for maximal number of machines that is >= 1.") ;
+                	return ;
+                endif ;
+                
+                if pMaxNumberOfJobs < pMinNumberOfJobs then
+                	DialogMessage("Please ensure the maximal number of jobs is greater than or equal to the min number of jobs.", "Error in input") ;
+                	return 0 ;
+                endif ;
+                
+                if pMaxNumberOfMachines < pMinNumberOfMachines then
+                	DialogMessage("Please ensure the maximal number of machines is greater than or equal to the min number of machines.", "Error in input") ;
+                	return 0 ;
+                endif ;
+                
+                if pMaxNumberOfMachines > 25 then
+                	if dialogAsk("Using a large number of machines can induce very long running times. Are you sure you want to use this many machines?", "Yes", "No") = 2 then
+                		return 0 ;
+                	endif ;
+                endif ;
+                
+                if pMaxNumberOfJobs > 14 then
+                	if dialogAsk("Using a large number of jobs can induce very long running times. Are you sure you want to use this many jobs?", "Yes", "No") = 2 then
+                		return 0 ;
+                	endif ;
+                endif ;
+                
+                return 1;
+            }
+        }
+        Section Stopwatch_support {
+            DeclarationSection Stopwatch_Declarations {
+                Quantity SI_Time_Duration {
+                    BaseUnit: s;
+                    Conversions: tick -> s : # -> # / 100;
+                    Comment: "Expresses the value for the duration of periods.";
+                }
+                StringParameter StopwatchStartTime {
+                    Comment: "Time the stopwatch was started.";
+                }
+                Parameter ElapsedTime {
+                    Unit: s;
+                    Comment: {
+                        "Time that has elapsed since the stopwatch was started. The value for this is updated
+                        by the StopStopwatch procedure."
+                    }
+                }
+            }
+            Procedure StartStopwatch {
+                Body: {
+                    !Use the CurrentToString AIMMS function to store the current time in YYYY-MM-DD HH:MM:SS:TT format.
+                    StopwatchStartTime := CurrentToString( "%c%y-%m-%d %H:%M:%S:%t");
+                }
+                Comment: "Set the StopwatchStartTime of the stopwatch.";
+            }
+            Procedure StopStopwatch {
+                Body: {
+                    !Using the CurrentToMoment AIMMS function, we can ask for the number of ticks that have elapsed at the moment
+                    !since the given StopwatchStartTime (which was stored by calling the StartStopwatch procedure).
+                    !Please note that we do not actually 'stop' the stopwatch, but only store the time elapsed.
+                    ElapsedTime := CurrentToMoment( [tick], StopwatchStartTime );
+                }
+                Comment: "Determine how many ticks have elapsed since the start of the stopwatch.";
+            }
+        }
+        Procedure SolveAllScenarios {
+            Body: {
+                !First do a sanity check on the input
+                if not InputSanityCheck then
+                	return ;
+                endif ;
+                
+                !Now clear any residual GMP information that might still
+                !be present
+                ClearAllGMPs ;
+                
+                
+                !This procedure will create a txt for each scenario (i.e.
+                !combination of #jobs and #machines). This will ensure that
+                !when running multiple times, we will always use the same
+                !input data
+                CreateAllDataFiles ;
+                
+                
+                
+                !Now initialize everything
+                empty pMakespan, pTotalTime ;
+                pCurrentNumberOfJobs := pMinNumberOfJobs ;
+                !Initialize the current number of machines one less than the minimum
+                !because the first thing that happens in the loop is an increase with 1
+                pCurrentNumberOfMachines := pMinNumberOfMachines - 1  ;
+                
+                
+                
+                !Start the stopwatch to see how quick everything went!
+                StartStopWatch ;
+                
+                
+                !Start showing the progress window.
+                ShowProgressWindow(1) ;
+                
+                
+                !If you want to use a maximum of N workers, this loop will
+                !create the first N GMPs and send them to separate solver sessions
+                !directly
+                while LoopCount <= pMaxNumberOfParallelWorkers do
+                
+                	!First we must update the two parameters used to
+                	!denote the #jobs and #machines in current scenario
+                	!and read the data corresponding to this scenario from
+                	!a text file. If there does not exist a next scenario, then
+                	!UpdateCurrentScenario will return the value 0
+                	if not UpdateCurrentScenario then
+                		break ;
+                	endif ;
+                
+                
+                
+                	!The current worker we are considering is determined by
+                	!the number of times the while loop has been run so far.
+                	epCurrentWorker := element(sWorkers,LoopCount) ;
+                
+                
+                	!Now generate the GMP for the current information in the model and
+                	!store this GMP so that we know that this GMP is associated with the
+                	!current worker
+                	epGMP(epCurrentWorker) := gmp::Instance::Generate(
+                						MP   : FlowShopModel ,
+                						name : "gmp-" + pCurrentNumberOfJobs + "-jobs-" + pCurrentNumberOfMachines + "-machines" )  ;
+                
+                
+                	!Now create the solversession for this GMP and also store it so
+                	!that we know that this solver session is associated with the
+                	!current worker
+                	epSolverSession(epCurrentWorker) := gmp::Instance::CreateSolverSession(
+                							GMP    : epGMP( epCurrentWorker ) ,
+                							Name   :  "ss-"+ pCurrentNumberOfJobs + "-jobs-" + pCurrentNumberOfMachines + "-machines" );
+                
+                	!By creating a separate category, you can display each solver session separately in the progress window
+                	epProgressWindowCategory :=  gmp::SolverSession::CreateProgressCategory( epSolverSession( epCurrentWorker )) ;
+                
+                	!Besides the standard lines, now add a new line that states which instance is solved by this solver session
+                	gmp::ProgressWindow::DisplayLine(7, "Instance", pCurrentNumberOfJobs + " jobs, " + pCurrentNumberOfMachines + " machines", epProgressWindowCategory) ;
+                	gmp::ProgressWindow::FreezeLine(7,1, epProgressWindowCategory) ;
+                
+                
+                
+                	!And instruct AIMMS to start this SolverSession Asynchronously
+                	gmp::SolverSession::AsynchronousExecute( epSolverSession(epCurrentWorker)) ;
+                
+                
+                
+                	!With the SolverSession, we also store which worker is associated with it
+                	!This information can be used to determine the worker after a solversession is finished
+                	epWorkerForSolverSession( epSolverSession( epCurrentWorker) ) := epCurrentWorker ;
+                
+                
+                	!Now store the information about the #machines and #Jobs
+                	!of the scenario that is solved by this worker.
+                	pWorkerNumberOfMachines(  epCurrentWorker ) := pCurrentNumberOfMachines ;
+                	pWorkerNumberOfJobs( epCurrentWorker ) := pCurrentNumberOfJobs ;
+                
+                
+                	!Because we now know the solversession, we can also check if the user tried
+                	!to start more parallel threads than actually allowed by the license for the solver
+                	!used to solve this type of problem. If the user tries to do this, just reset the
+                	!maximum number of parallel workers to the max allowed sessions for the solver and
+                	!raise a warning to notify the user
+                	epSelectedSolver := gmp::SolverSession::GetSolver( epSolverSession(epCurrentWorker)) ;
+                	pMaxAllowedSolverSessions := gmp::Solver::GetAsynchronousSessionsLimit(  epSelectedSolver ) ;
+                	if (pMaxNumberOfParallelWorkers  > pMaxAllowedSolverSessions ) then
+                		raise warning "You cannot run " + pMaxAllowedSolverSessions +
+                		              " parallel solver sessions, as your license only allows " +
+                		              pMaxAllowedSolverSessions + " simultaneous " +
+                		              epSelectedSolver +" solver sessions. Resetting number of workers to " +
+                		              pMaxAllowedSolverSessions ;
+                		pMaxNumberOfParallelWorkers := pMaxAllowedSolverSessions ;
+                	endif ;
+                endwhile ;
+                
+                
+                
+                
+                !continue this loop until we manually break out of it with
+                !a break statement
+                while 1 do
+                
+                	!Wait for one of the solversessions to be finished. The WaitForSingleCompletion
+                	!will return the SolverSession that was finished.
+                	epFinishedSolverSession := gmp::SolverSession::WaitForSingleCompletion(AllSolverSessionCompletionObjects) ;
+                
+                	!When we know the solversession, we can determine which of the workers this
+                	!corresponds to.
+                	epCurrentWorker := epWorkerForSolverSession( epFinishedSolverSession )  ;
+                
+                
+                	!We are only interested in the objective, which we can directly get from
+                	!the solversession. If you need more information (i.e. variable values), you
+                	!will have to first copy the solution from the solversession to the GMP solution
+                	!and then to the model
+                	pFoundObjective := gmp::SolverSession::GetObjective( epFinishedSolverSession ) ;
+                
+                
+                	!We can now delete both the solversession and the gmp
+                	gmp::Instance::Delete(  gmp::SolverSession::GetInstance( epFinishedSolverSession ) ) ;
+                	gmp::Instance::DeleteSolverSession( epFinishedSolverSession ) ;
+                
+                	!Now store the found objective in the pMakeSpan parameter that is indexed
+                	!over the numberOfJobs and the numberOfMachines.
+                	pMakeSpan(pWorkerNumberOfJobs(epCurrentWorker), pWorkerNumberOfMachines(epCurrentWorker) ) := pFoundObjective ;
+                
+                
+                	!Advance to the next scenario. If there is no next scenario, then we are
+                	!finished with starting new scenarios and we can break out of the current loop
+                	if not UpdateCurrentScenario then
+                		break ;
+                	endif ;
+                
+                
+                	!Generate the GMP corresponding to the now new scenario
+                	epGMP(epCurrentWorker  ) := gmp::Instance::Generate( FlowShopModel, "gmp-" + pCurrentNumberOfJobs + "-jobs-" + pCurrentNumberOfMachines + "-machines"  )  ;
+                
+                	!Now create a new solver session and store this again with the current worker
+                	epSolverSession( epCurrentWorker ) := gmp::Instance::CreateSolverSession( 	epGMP( epCurrentWorker  ) , "ss-" + pCurrentNumberOfJobs + "-jobs-" + pCurrentNumberOfMachines + "-machines") ;
+                
+                	!By creating a separate category, you can display each solver session separately in the progress window
+                	epProgressWindowCategory :=  gmp::SolverSession::CreateProgressCategory( epSolverSession( epCurrentWorker )) ;
+                
+                	!Besides the standard lines, now add a new line that states which instance is solved by this solver session
+                	gmp::ProgressWindow::DisplayLine(7, "Instance", pCurrentNumberOfJobs + " jobs, " + pCurrentNumberOfMachines + " machines", epProgressWindowCategory) ;
+                	gmp::ProgressWindow::FreezeLine(7,1, epProgressWindowCategory) ;
+                
+                	!And instruct AIMMS to start this SolverSession Asynchronously
+                	gmp::SolverSession::AsynchronousExecute( epSolverSession(epCurrentWorker ) ) ;
+                
+                
+                
+                
+                
+                
+                
+                	!With the SolverSession, we also store which worker is associated with it
+                	!This information can be used to determine the worker after a solversession is finished
+                
+                	epWorkerForSolverSession( epSolverSession( epCurrentWorker ) ) := epCurrentWorker ;
+                
+                
+                	!Now store the information about the #machines and #Jobs
+                	!of the scenario that is solved by this worker.
+                	pWorkerNumberOfMachines( epCurrentWorker) := pCurrentNumberOfMachines ;
+                	pWorkerNumberOfJobs(epCurrentWorker ) := pCurrentNumberOfJobs ;
+                
+                	PageRefreshAll ;
+                endwhile ;
+                
+                !We still have to look at all the solversessions that are still running
+                while card( AllSolverSessions ) do
+                	!Wait for one of the solversessions to be finished. The WaitForSingleCompletion
+                	!will return the SolverSession that was finished.
+                	epFinishedSolverSession := gmp::SolverSession::WaitForSingleCompletion(AllSolverSessionCompletionObjects) ;
+                	!When we know the solversession, we can determine which of the workers this
+                	!corresponds to.
+                	epCurrentWorker := epWorkerForSolverSession( epFinishedSolverSession )  ;
+                
+                
+                
+                	!We are only interested in the objective, which we can directly get from
+                	!the solversession. If you need more information (i.e. variable values), you
+                	!will have to first copy the solution from the solversession to the GMP solution
+                	!first and then to the model
+                	pFoundObjective := gmp::SolverSession::GetObjective( epFinishedSolverSession ) ;
+                
+                	!We can now delete both the solversession and the gmp
+                	gmp::Instance::Delete(  gmp::SolverSession::GetInstance( epFinishedSolverSession ) ) ;
+                	gmp::Instance::DeleteSolverSession( epFinishedSolverSession ) ;
+                
+                
+                
+                	!Now store the found objective in the pMakeSpan parameter that is indexed
+                	!over the numberOfJobs and the numberOfMachines.
+                	pMakeSpan(pWorkerNumberOfJobs(epCurrentWorker), pWorkerNumberOfMachines(epCurrentWorker) ) := pFoundObjective ;
+                
+                
+                	PageRefreshAll ;
+                endwhile ;
+                
+                
+                
+                !And stop the stopwatch. Then store the time it took to solve all scenarios in the pTotalTime
+                !parameter. Then you can check how much faster it was to make use of multiple simultaneous
+                !solver sessions.
+                StopStopWatch ;
+                pTotalTime := (ElapsedTime)[-] ;
+            }
+            Parameter pMaxAllowedSolverSessions;
+            ElementParameter epCurrentWorker {
+                Range: sWorkers;
+            }
+            ElementParameter epSelectedSolver {
+                Range: AllSolvers;
+            }
+        }
+        ElementParameter epProgressWindowCategory {
+            Range: AllProgressCategories;
+        }
+        Parameter pMinNumberOfJobs {
+            Range: {
+                {1..inf}
+            }
+            InitialData: 7;
+        }
+        Parameter pMaxNumberOfJobs {
+            Range: {
+                {1..inf}
+            }
+            InitialData: 11;
+        }
+        Parameter pMinNumberOfMachines {
+            Range: {
+                {1..inf}
+            }
+            InitialData: 10;
+        }
+        Parameter pMaxNumberOfMachines {
+            Range: {
+                {1..inf}
+            }
+            InitialData: 14;
+        }
+        Parameter pCurrentNumberOfJobs;
+        Parameter pCurrentNumberOfMachines;
+        Set sJobsScenarios {
+            SubsetOf: Integers;
+            Index: iJobScenario, iJobScenario1;
+            Definition: elementrange( pMinNumberOfJobs, pMaxNumberOfJobs, fill:0 );
+        }
+        Set sMachineScenarios {
+            SubsetOf: Integers;
+            Index: iMachineScenario, iMachineScenario1;
+            Definition: elementRange( pMinNumberOfMachines, pMaxNumberOfMachines, fill:0);
+        }
+        Parameter pMaxNumberOfParallelWorkers {
+            Range: {
+                {1..inf}
+            }
+            InitialData: 1;
+        }
+        Set sWorkers {
+            Index: iWorker;
+            Definition: elementRange(1, pMaxNumberOfParallelWorkers, prefix:"Worker-");
+        }
+        ElementParameter epGMP {
+            IndexDomain: (iWorker);
+            Range: AllGeneratedMathematicalPrograms;
+        }
+        ElementParameter epSolverSession {
+            IndexDomain: (iWorker);
+            Range: AllSolverSessions;
+        }
+        ElementParameter epCurrentWorker {
+            Range: sWorkers;
+        }
+        ElementParameter epFinishedSolverSession {
+            Range: AllSolverSessions;
+        }
+        ElementParameter epWorkerForSolverSession {
+            IndexDomain: (IndexSolverSessions);
+            Range: sWorkers;
+        }
+        Parameter pWorkerNumberOfJobs {
+            IndexDomain: (iWorker);
+        }
+        Parameter pWorkerNumberOfMachines {
+            IndexDomain: (iWorker);
+        }
+        Parameter pMakeSpan {
+            IndexDomain: (iJobScenario,iMachineScenario);
+        }
+        Parameter pFoundObjective;
+        Parameter pTotalTime;
+    }
+}

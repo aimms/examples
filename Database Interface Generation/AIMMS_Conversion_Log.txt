@@ -1,0 +1,57 @@
+﻿Converting Main project
+Converting Database Interface Generation.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\Pages\All Data Pages.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Converting Library project: Database Interface Generation
+Converting Database Interface Generation.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.ams
+Converting .\Database Interface Generation\Database Interface Generation.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\Pages\Database Interface Generation.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.libprj\User Files\What's This.jpg
+Copying file: Database Interface Generation.DeveloperState to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\MainProject\Database Interface Generation.DeveloperState
+Copying file: Data.mdb to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Data.mdb
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation
+Copying file: Database Interface Generation\Database Interface Generation.chm to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.chm
+Copying file: Database Interface Generation\Database Interface Generation.DeveloperState to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation\Database Interface Generation.DeveloperState
+Copying file: Database Interface Generation.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation.dat
+Copying file: DemoDatabaseLink.udl to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\DemoDatabaseLink.udl
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Description.txt
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\_Example Style Library
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Database Interface Generation\Database Interface Generation_converted\Database Interface Generation.aimms
+Successfully converted the whole project.

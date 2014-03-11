@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="8957009B-A342-4D03-B4DE-0A247264C11D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|DFF255F1-3AF1-41BD-B25B-A97C84FF485D|Size Template">
+		<Template Name="Navigation Template" PageGUID="6E008C78-E089-4E9A-B751-FBF1CBC35985" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|58911B33-A1D7-4202-B97C-B66A1E637C3A|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="ADB0F993-312A-4DDE-A604-00578D0CE3C3" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|1FB7F30E-0612-4C67-A33B-36A4FC1A91CD|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="9722B068-F4EC-4198-BF10-ACD3D51C1DBF" />
+			</Template>
+			<Page Name="Calendar Data" PageGUID="1A0E1556-0C34-425F-B2C5-70913E256D8C" />
+			<Page Name="Inactive Days" PageGUID="B00ACFFB-C4B9-4E83-A054-BB388863CF5B" />
+		</Template>
+	</Template>
+	<Page Name="Inactive Days 1" PageGUID="84EB245B-9044-4CD7-960C-E65A3ABF6CF8" />
+</TemplateManager>

@@ -1,0 +1,28 @@
+## ams_version=1.0
+
+Model Main_Database_Interface_Generation {
+    File ProblemDescriptionFile {
+        Name: "Description.txt";
+        Comment: "This file contains the text displayed on the Problem Description page (AIMMS 3 Demo: Database Interface Generation).";
+    }
+    Calendar DemoCalendar {
+        Index: dc;
+        Unit: day;
+        BeginDate: "2000-01-01";
+        EndDate: "2010-12-31";
+        TimeslotFormat: "%c%y-%m-%d";
+        Comment: "This calendar exists for demo purposes. When you select a table containing a date/time column, you can select this calendar for the column mapping.";
+    }
+    Quantity SI_Time_Duration {
+        BaseUnit: day;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Comment: "allsets";
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

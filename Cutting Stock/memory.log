@@ -1,0 +1,1982 @@
+vm-start.tan 330: calloc 337895024 size 4992 (2496 x 2)
+vm-start.tan 405: free 337895024 size 4992
+listmem.tan 70: calloc 338018096 size 32768 (2048 x 16)
+vm-start.tan 330: calloc 338286704 size 4992 (2496 x 2)
+vm-start.tan 405: free 338286704 size 4992
+vm-start.tan 330: calloc 338309408 size 4992 (2496 x 2)
+vm-start.tan 405: free 338309408 size 4992
+vm-strng.tan 37: calloc 338746848 size 248 (1 x 248)
+vm-misc.tan 157: calloc 338732960 size 72 (36 x 2)
+listmem.tan 111: calloc 338611968 size 512 (32 x 16)
+listmem.tan 111: calloc 636323552 size 9472 (32 x 296)
+listmem.tan 111: calloc 636333200 size 6912 (32 x 216)
+vmresize.tan 1309: calloc 636221600 size 200 (5 x 40)
+vmresize.tan 3445: calloc 636223216 size 40 (1 x 40)
+listmem.tan 111: calloc 636352448 size 1792 (32 x 56)
+listmem.tan 111: calloc 636365728 size 2304 (32 x 72)
+listmem.tan 111: calloc 636368208 size 35072 (32 x 1096)
+vmbackup.tan 412: calloc 637448208 size 1072 (1 x 1072)
+vm-misc.tan 897: calloc 636723504 size 5340 (5 x 1068)
+meerror.tan 305: calloc 636236800 size 8 (1 x 8)
+vm-run.tan 67: calloc 636284752 size 80 (5 x 16)
+vm-misc.tan 157: calloc 636618352 size 16 (8 x 2)
+vm-misc.tan 157: calloc 636359376 size 28 (14 x 2)
+vm-misc.tan 157: calloc 636818864 size 22 (11 x 2)
+vm-misc.tan 157: calloc 636931856 size 26 (13 x 2)
+vm-misc.tan 157: calloc 637451360 size 18 (9 x 2)
+vm-misc.tan 157: calloc 636795984 size 20 (10 x 2)
+metree.tan 1079: calloc 636706272 size 64 (1 x 64)
+listmem.tan 111: calloc 637515040 size 18176 (32 x 568)
+vm-clboxitem.tan 107: calloc 636705744 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 636705744 size 120
+vm-clboxitem.tan 105: realloc 636362112 size 240
+memanag.tan 104: calloc 337938576 size 40 (5 x 8)
+vm-misc.tan 392: calloc 636925216 size 412 (103 x 4)
+vm-sym.tan 616: free 636925216 size 412
+vm-misc.tan 157: calloc 636861888 size 44 (22 x 2)
+vm-misc.tan 157: calloc 636593024 size 32 (16 x 2)
+vm-misc.tan 157: calloc 636354800 size 22 (11 x 2)
+vm-misc.tan 157: calloc 636412208 size 32 (16 x 2)
+vm-misc.tan 157: calloc 636729440 size 12 (6 x 2)
+vm-misc.tan 157: calloc 636597120 size 80 (40 x 2)
+vm-misc.tan 157: calloc 636797088 size 32 (16 x 2)
+vm-misc.tan 157: calloc 636862976 size 12 (6 x 2)
+Casestrg.tan 1774: calloc 636729632 size 36 (3 x 12)
+vm-misc.tan 157: calloc 637475440 size 40 (20 x 2)
+vm-misc.tan 157: calloc 337917344 size 18 (9 x 2)
+vm-misc.tan 157: calloc 636839632 size 50 (25 x 2)
+Casestrg.tan 1599: free 636729632 size 36
+vm-misc.tan 392: calloc 337972016 size 4 (1 x 4)
+vm-sym.tan 616: free 337972016 size 4
+vm-misc.tan 897: calloc 637629584 size 5340 (5 x 1068)
+vmbackup.tan 998: calloc 637635104 size 6336 (6 x 1056)
+vmbackup.tan 1158: free 637635104 size 6336
+vmbackup.tan 402: free 637629584 size 5340
+vmresize.tan 1309: calloc 636729632 size 200 (5 x 40)
+vmresize.tan 1309: realloc freed 636729632 size 200
+vmresize.tan 1309: realloc 636927184 size 400
+vmresize.tan 3445: calloc 636596400 size 40 (1 x 40)
+vmresize.tan 1309: realloc freed 636221600 size 200
+vmresize.tan 1309: realloc 636616272 size 400
+vmresize.tan 3563: free 636927184 size 400
+vm-vwio.tan 9232: free 636596400 size 40
+listmem.tan 111: calloc 637691296 size 8960 (32 x 280)
+vm-btn.tan 2270: calloc 637385536 size 24 (1 x 24)
+listmem.tan 111: calloc 637535376 size 5120 (32 x 160)
+vm-vwio.tan 4544: calloc 636927184 size 64 (32 x 2)
+vmresize.tan 1309: calloc 637549488 size 200 (5 x 40)
+vmresize.tan 1309: realloc freed 637549488 size 200
+vmresize.tan 1309: realloc 637542432 size 400
+vmresize.tan 3445: calloc 637477104 size 40 (1 x 40)
+vmresize.tan 3563: free 637542432 size 400
+vm-vwio.tan 9232: free 637477104 size 40
+vm-vwio.tan 4544: calloc 636221536 size 64 (32 x 2)
+listmem.tan 111: calloc 637700432 size 3840 (32 x 120)
+vm-btn.tan 2270: calloc 636730096 size 24 (1 x 24)
+vm-misc.tan 172: calloc 636412416 size 42 (21 x 2)
+vm-vwio.tan 5022: free 636412416 size 42
+vm-btn.tan 2270: calloc 636345296 size 24 (1 x 24)
+vm-btn.tan 2270: calloc 636315360 size 24 (1 x 24)
+vm-misc.tan 172: calloc 636405936 size 20 (10 x 2)
+vm-vwio.tan 5022: free 636405936 size 20
+vm-vwio.tan 4544: calloc 338632560 size 64 (32 x 2)
+vm-vwio.tan 4544: calloc 636225952 size 64 (32 x 2)
+vm-vwio.tan 4544: calloc 636284496 size 64 (32 x 2)
+vmresize.tan 1309: calloc 637476624 size 200 (5 x 40)
+vmresize.tan 1309: realloc freed 637476624 size 200
+vmresize.tan 1309: realloc 636344416 size 400
+vmresize.tan 3445: calloc 636659840 size 40 (1 x 40)
+vm-misc.tan 157: calloc 637449664 size 72 (36 x 2)
+vm-csym.tan 252: free 637449664 size 72
+vmresize.tan 3563: free 636344416 size 400
+vm-vwio.tan 9232: free 636659840 size 40
+vm-misc.tan 157: calloc 637549600 size 32 (16 x 2)
+vm-vwio.tan 4544: calloc 636729856 size 64 (32 x 2)
+vm-frame.tan 5353: calloc 636359088 size 76 (19 x 4)
+vm-frame.tan 5397: free 636359088 size 76
+vm-misc.tan 157: calloc 636285024 size 28 (14 x 2)
+vmresize.tan 1309: calloc 637714416 size 200 (5 x 40)
+vmresize.tan 3445: calloc 636521408 size 40 (1 x 40)
+vmresize.tan 1309: calloc 636522560 size 200 (5 x 40)
+vmresize.tan 1309: realloc freed 636522560 size 200
+vmresize.tan 1309: realloc 636524688 size 400
+vmresize.tan 3445: calloc 337956480 size 40 (1 x 40)
+vmresize.tan 1309: realloc freed 637714416 size 200
+vmresize.tan 1309: realloc 636526112 size 400
+vmresize.tan 3563: free 636524688 size 400
+vm-vwio.tan 9232: free 337956480 size 40
+vm-btn.tan 2270: calloc 337906576 size 24 (1 x 24)
+vm-vwio.tan 4544: calloc 636281568 size 64 (32 x 2)
+vmresize.tan 1309: calloc 637721056 size 200 (5 x 40)
+vmresize.tan 1309: realloc freed 637721056 size 200
+vmresize.tan 1309: realloc 637723936 size 400
+vmresize.tan 3445: calloc 636412416 size 40 (1 x 40)
+vmresize.tan 3563: free 637723936 size 400
+vm-vwio.tan 9232: free 636412416 size 40
+vm-misc.tan 172: calloc 636925600 size 66 (33 x 2)
+vm-btn.tan 2270: calloc 637476368 size 24 (1 x 24)
+vm-btn.tan 2268: realloc freed 637476368 size 24
+vm-btn.tan 2268: realloc 637614720 size 48
+vm-btn.tan 2268: realloc freed 637614720 size 48
+vm-btn.tan 2268: realloc 636594512 size 72
+vm-btn.tan 2270: calloc 636729632 size 24 (1 x 24)
+vm-btn.tan 2268: realloc freed 636729632 size 24
+vm-btn.tan 2268: realloc 637541328 size 48
+vm-misc.tan 172: calloc 636359104 size 54 (27 x 2)
+vm-btn.tan 2270: calloc 637572848 size 24 (1 x 24)
+vm-btn.tan 2268: realloc freed 637572848 size 24
+vm-btn.tan 2268: realloc 637704496 size 48
+vm-btn.tan 2268: realloc freed 637704496 size 48
+vm-btn.tan 2268: realloc 637574176 size 72
+listmem.tan 111: calloc 637716448 size 2304 (32 x 72)
+vm-vwio.tan 4544: calloc 637722784 size 64 (32 x 2)
+vm-ctbl2.tan 306: calloc 636836208 size 12 (1 x 12)
+vm-misc.tan 157: calloc 636414832 size 12 (6 x 2)
+vm-csym.tan 132: calloc 636347696 size 4 (1 x 4)
+vm-misc.tan 396: realloc freed 636836208 size 12
+vm-misc.tan 396: realloc 637584592 size 544
+vm-misc.tan 157: calloc 636348304 size 20 (10 x 2)
+vm-ctbl2.tan 624: calloc 637541984 size 32 (4 x 8)
+vm-csym.tan 132: calloc 637714000 size 4 (1 x 4)
+vm-misc.tan 396: realloc freed 637584592 size 544
+vm-misc.tan 396: realloc 637391984 size 816
+vm-misc.tan 157: calloc 636358000 size 14 (7 x 2)
+vm-csym.tan 132: calloc 637473056 size 4 (1 x 4)
+vm-misc.tan 396: realloc freed 637391984 size 816
+vm-misc.tan 396: realloc 637393840 size 1088
+vm-misc.tan 157: calloc 637546208 size 46 (23 x 2)
+vm-misc.tan 392: calloc 637545728 size 44 (11 x 4)
+vm-clboxitem.tan 107: calloc 637616016 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 637616016 size 120
+vm-clboxitem.tan 105: realloc 636570544 size 240
+listmem.tan 111: calloc 636482064 size 11776 (32 x 368)
+vm-sclr.tan 4513: calloc 637542656 size 176 (1 x 176)
+vm-misc.tan 157: calloc 637449648 size 34 (17 x 2)
+vm-sclr.tan 4826: calloc 636357472 size 48 (6 x 8)
+vm-sclr.tan 4511: realloc freed 637542656 size 176
+vm-sclr.tan 4511: realloc 337904464 size 352
+vm-misc.tan 157: calloc 637392400 size 58 (29 x 2)
+vm-sclr.tan 4826: calloc 637392624 size 48 (6 x 8)
+vm-sclr.tan 4511: realloc freed 337904464 size 352
+vm-sclr.tan 4511: realloc 637584864 size 528
+vm-misc.tan 157: calloc 637588768 size 42 (21 x 2)
+vm-sclr.tan 4826: calloc 637597424 size 48 (6 x 8)
+vm-sclr.tan 4511: realloc freed 637584864 size 528
+vm-sclr.tan 4511: realloc 637610880 size 704
+vm-misc.tan 157: calloc 637715648 size 38 (19 x 2)
+vm-sclr.tan 4826: calloc 637723024 size 48 (6 x 8)
+vm-sclr.tan 4511: realloc freed 637610880 size 704
+vm-sclr.tan 4511: realloc 636494016 size 880
+vm-sclr.tan 4826: calloc 637612464 size 24 (3 x 8)
+vm-misc.tan 157: calloc 636495520 size 58 (29 x 2)
+vm-sclr.tan 4826: realloc freed 637612464 size 24
+vm-sclr.tan 4826: realloc 637704496 size 48
+vm-sclr.tan 4511: realloc freed 636494016 size 880
+vm-sclr.tan 4511: realloc 636495744 size 1056
+vm-misc.tan 157: calloc 636497152 size 30 (15 x 2)
+vm-sclr.tan 4826: calloc 636497360 size 48 (6 x 8)
+vm-sclr.tan 5282: calloc 337989136 size 8 (1 x 8)
+vm-sclr.tan 5282: calloc 637534976 size 8 (1 x 8)
+vm-sclr.tan 5282: calloc 338153632 size 8 (1 x 8)
+vm-sclr.tan 5282: calloc 636236352 size 8 (1 x 8)
+vm-sclr.tan 5282: calloc 637542464 size 8 (1 x 8)
+vm-sclr.tan 5282: calloc 636770240 size 8 (1 x 8)
+vm-ctbl2.tan 306: calloc 636773520 size 12 (1 x 12)
+vm-misc.tan 157: calloc 338307024 size 20 (10 x 2)
+vm-csym.tan 132: calloc 636770432 size 4 (1 x 4)
+vm-misc.tan 396: realloc freed 636773520 size 12
+vm-misc.tan 396: realloc 636472656 size 544
+vm-misc.tan 157: calloc 637589984 size 22 (11 x 2)
+vm-csym.tan 132: calloc 637714736 size 4 (1 x 4)
+vm-misc.tan 396: realloc freed 636472656 size 544
+vm-misc.tan 396: realloc 636468896 size 816
+vm-misc.tan 157: calloc 636470128 size 22 (11 x 2)
+vm-misc.tan 392: calloc 636731584 size 4 (1 x 4)
+vm-sym.tan 616: free 636731584 size 4
+listmem.tan 111: calloc 637616672 size 31744 (32 x 992)
+vm-misc.tan 172: calloc 338132352 size 6 (3 x 2)
+vm-misc.tan 172: calloc 636836208 size 20 (10 x 2)
+vm-misc.tan 392: calloc 636414432 size 4 (1 x 4)
+vm-misc.tan 392: calloc 636474528 size 48 (12 x 4)
+vm-csym.tan 132: calloc 637572848 size 12 (3 x 4)
+vm-gantt.tan 1367: calloc 636475104 size 24 (3 x 8)
+vm-misc.tan 392: calloc 636475552 size 400 (100 x 4)
+vm-csym.tan 132: calloc 636796896 size 8 (2 x 4)
+vm-gantt.tan 1367: calloc 636476976 size 16 (2 x 8)
+vm-csym.tan 132: calloc 636477168 size 8 (2 x 4)
+vm-gantt.tan 1367: calloc 636503584 size 16 (2 x 8)
+vm-gantt.tan 1826: calloc 636503776 size 96 (12 x 8)
+vm-gantt.tan 1075: calloc 636504384 size 2 (1 x 2)
+vm-gantt.tan 1075: calloc 636504560 size 2 (1 x 2)
+vm-gantt.tan 1075: calloc 636504736 size 2 (1 x 2)
+vm-misc.tan 172: calloc 637475840 size 46 (23 x 2)
+vm-btn.tan 2270: calloc 637543424 size 24 (1 x 24)
+vm-btn.tan 2268: realloc freed 637543424 size 24
+vm-btn.tan 2268: realloc 637704688 size 48
+vm-btn.tan 2268: realloc freed 637704688 size 48
+vm-btn.tan 2268: realloc 637648816 size 72
+vm-misc.tan 172: calloc 636570336 size 28 (14 x 2)
+vm-btn.tan 2270: calloc 637589488 size 24 (1 x 24)
+vm-vwio.tan 4544: calloc 637723472 size 64 (32 x 2)
+vm-vwio.tan 4588: realloc freed 637723472 size 64
+vm-vwio.tan 4588: realloc 636472656 size 164
+vm-vwio.tan 4544: calloc 636597552 size 64 (32 x 2)
+vm-vwio.tan 4544: calloc 636500368 size 64 (32 x 2)
+vm-frame.tan 5353: calloc 636478160 size 100 (25 x 4)
+vm-frame.tan 5397: free 636478160 size 100
+vm-misc.tan 392: calloc 337975040 size 4 (1 x 4)
+vm-sym.tan 616: free 337975040 size 4
+vm-misc.tan 392: calloc 637608944 size 44 (11 x 4)
+vm-clboxitem.tan 107: calloc 636507312 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 636507312 size 120
+vm-clboxitem.tan 105: realloc 637661456 size 240
+vm-misc.tan 396: realloc freed 636414432 size 4
+vm-misc.tan 396: realloc 637704688 size 44
+vm-gantt.tan 5927: calloc 637759840 size 1776 (444 x 4)
+vm-misc.tan 157: calloc 338613664 size 114 (57 x 2)
+vm-misc.tan 157: calloc 637570736 size 240 (120 x 2)
+vm-misc.tan 157: calloc 636772272 size 134 (67 x 2)
+meerror.tan 379: realloc freed 636236800 size 8
+meerror.tan 379: realloc 637611312 size 24
+vm-clboxitem.tan 107: calloc 636525600 size 160 (10 x 16)
+compstrn.tan 210: calloc 636478624 size 240 (120 x 2)
+compstrn.tan 193: free 636478624 size 240
+compstrn.tan 210: calloc 636952512 size 366 (183 x 2)
+compstrn.tan 193: free 636952512 size 366
+compstrn.tan 210: calloc 636507344 size 260 (130 x 2)
+compstrn.tan 193: free 636507344 size 260
+vm-clboxitem.tan 87: free 636525600 size 160
+vm-misc.tan 157: calloc 637688288 size 114 (57 x 2)
+vm-misc.tan 157: calloc 337970400 size 240 (120 x 2)
+vm-misc.tan 157: calloc 637731488 size 134 (67 x 2)
+vm-clboxitem.tan 107: calloc 637571792 size 160 (10 x 16)
+compstrn.tan 210: calloc 637733872 size 240 (120 x 2)
+compstrn.tan 193: free 637733872 size 240
+compstrn.tan 210: calloc 637814896 size 366 (183 x 2)
+compstrn.tan 193: free 637814896 size 366
+compstrn.tan 210: calloc 637684864 size 260 (130 x 2)
+compstrn.tan 193: free 637684864 size 260
+vm-clboxitem.tan 87: free 637571792 size 160
+vm-misc.tan 157: calloc 636925216 size 114 (57 x 2)
+vm-misc.tan 157: calloc 337964800 size 240 (120 x 2)
+vm-misc.tan 157: calloc 337965216 size 134 (67 x 2)
+vm-clboxitem.tan 107: calloc 637824464 size 160 (10 x 16)
+compstrn.tan 210: calloc 637825024 size 240 (120 x 2)
+compstrn.tan 193: free 637825024 size 240
+compstrn.tan 210: calloc 637825664 size 366 (183 x 2)
+compstrn.tan 193: free 637825664 size 366
+compstrn.tan 210: calloc 637826432 size 260 (130 x 2)
+compstrn.tan 193: free 637826432 size 260
+vm-clboxitem.tan 87: free 637824464 size 160
+vm-misc.tan 157: calloc 637828448 size 114 (57 x 2)
+vm-misc.tan 157: calloc 637738864 size 240 (120 x 2)
+vm-misc.tan 157: calloc 637740560 size 134 (67 x 2)
+vm-clboxitem.tan 107: calloc 637673104 size 160 (10 x 16)
+compstrn.tan 210: calloc 637673440 size 240 (120 x 2)
+compstrn.tan 193: free 637673440 size 240
+compstrn.tan 210: calloc 637669600 size 366 (183 x 2)
+compstrn.tan 193: free 637669600 size 366
+compstrn.tan 210: calloc 637670144 size 260 (130 x 2)
+compstrn.tan 193: free 637670144 size 260
+vm-clboxitem.tan 87: free 637673104 size 160
+vm-misc.tan 157: calloc 636798432 size 114 (57 x 2)
+vm-misc.tan 157: calloc 636502304 size 240 (120 x 2)
+vm-misc.tan 157: calloc 636481328 size 134 (67 x 2)
+vm-clboxitem.tan 107: calloc 637723472 size 160 (10 x 16)
+compstrn.tan 210: calloc 637670576 size 240 (120 x 2)
+compstrn.tan 193: free 637670576 size 240
+compstrn.tan 210: calloc 637671216 size 366 (183 x 2)
+compstrn.tan 193: free 637671216 size 366
+compstrn.tan 210: calloc 637820416 size 260 (130 x 2)
+compstrn.tan 193: free 637820416 size 260
+vm-clboxitem.tan 87: free 637723472 size 160
+vm-misc.tan 157: calloc 637821152 size 114 (57 x 2)
+vm-misc.tan 157: calloc 637683008 size 240 (120 x 2)
+vm-misc.tan 157: calloc 637714928 size 134 (67 x 2)
+vm-clboxitem.tan 107: calloc 637689168 size 160 (10 x 16)
+compstrn.tan 210: calloc 637742144 size 240 (120 x 2)
+compstrn.tan 193: free 637742144 size 240
+compstrn.tan 210: calloc 637742560 size 366 (183 x 2)
+compstrn.tan 193: free 637742560 size 366
+compstrn.tan 210: calloc 637743104 size 260 (130 x 2)
+compstrn.tan 193: free 637743104 size 260
+vm-clboxitem.tan 87: free 637689168 size 160
+vm-misc.tan 157: calloc 636224496 size 114 (57 x 2)
+vm-misc.tan 157: calloc 637746096 size 240 (120 x 2)
+vm-misc.tan 157: calloc 637747232 size 134 (67 x 2)
+vm-clboxitem.tan 107: calloc 636478624 size 160 (10 x 16)
+compstrn.tan 210: calloc 637762000 size 240 (120 x 2)
+compstrn.tan 193: free 637762000 size 240
+compstrn.tan 210: calloc 636507120 size 366 (183 x 2)
+compstrn.tan 193: free 636507120 size 366
+compstrn.tan 210: calloc 636952736 size 260 (130 x 2)
+compstrn.tan 193: free 636952736 size 260
+vm-misc.tan 392: calloc 637660800 size 132 (33 x 4)
+vm-ctbl2.tan 178: free 637608944 size 44
+vm-clboxitem.tan 87: free 637661456 size 240
+vm-clboxitem.tan 107: calloc 637813856 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 637813856 size 120
+vm-clboxitem.tan 105: realloc 637661840 size 240
+vm-clboxitem.tan 105: realloc freed 637661840 size 240
+vm-clboxitem.tan 105: realloc 637814144 size 360
+vm-clboxitem.tan 105: realloc freed 637814144 size 360
+vm-clboxitem.tan 105: realloc 637749216 size 480
+vm-misc.tan 396: realloc freed 637704688 size 44
+vm-misc.tan 396: realloc 337905392 size 132
+vm-gantt.tan 5925: realloc freed 637759840 size 1776
+vm-gantt.tan 5925: realloc 637749840 size 1776
+compstrn.tan 210: calloc 637828736 size 240 (120 x 2)
+vm-misc.tan 396: realloc freed 637828736 size 240
+vm-misc.tan 396: realloc 637824208 size 716
+compstrn.tan 193: free 637824208 size 716
+vm-frame.tan 5353: calloc 636469856 size 100 (25 x 4)
+vm-frame.tan 5397: free 636469856 size 100
+vm-frame.tan 5353: calloc 637828144 size 100 (25 x 4)
+vm-frame.tan 5397: free 637828144 size 100
+vm-frame.tan 5353: calloc 637762208 size 100 (25 x 4)
+vm-frame.tan 5397: free 637762208 size 100
+vm-misc.tan 392: calloc 637689168 size 44 (11 x 4)
+vm-ctbl2.tan 178: free 637660800 size 132
+vm-clboxitem.tan 87: free 637749216 size 480
+vm-clboxitem.tan 107: calloc 637548832 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 637548832 size 120
+vm-clboxitem.tan 105: realloc 637661840 size 240
+vm-misc.tan 396: realloc freed 337905392 size 132
+vm-misc.tan 396: realloc 637704688 size 44
+vm-gantt.tan 5925: realloc freed 637749840 size 1776
+vm-gantt.tan 5925: realloc 637763680 size 1776
+vm-misc.tan 392: calloc 637742096 size 132 (33 x 4)
+vm-ctbl2.tan 178: free 637689168 size 44
+vm-clboxitem.tan 87: free 637661840 size 240
+vm-clboxitem.tan 107: calloc 637826128 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 637826128 size 120
+vm-clboxitem.tan 105: realloc 637661456 size 240
+vm-clboxitem.tan 105: realloc freed 637661456 size 240
+vm-clboxitem.tan 105: realloc 636525600 size 360
+vm-clboxitem.tan 105: realloc freed 636525600 size 360
+vm-clboxitem.tan 105: realloc 637813616 size 480
+vm-misc.tan 396: realloc freed 637704688 size 44
+vm-misc.tan 396: realloc 637825232 size 132
+vm-gantt.tan 5925: realloc freed 637763680 size 1776
+vm-gantt.tan 5925: realloc 637829120 size 4584
+compstrn.tan 210: calloc 637608752 size 240 (120 x 2)
+vm-misc.tan 396: realloc freed 637608752 size 240
+vm-misc.tan 396: realloc 637847520 size 716
+compstrn.tan 193: free 637847520 size 716
+compstrn.tan 210: calloc 637821440 size 240 (120 x 2)
+compstrn.tan 193: free 637821440 size 240
+compstrn.tan 210: calloc 637742832 size 240 (120 x 2)
+compstrn.tan 193: free 637742832 size 240
+vm-frame.tan 5353: calloc 636234304 size 100 (25 x 4)
+vm-frame.tan 5397: free 636234304 size 100
+vm-misc.tan 392: calloc 636481008 size 44 (11 x 4)
+vm-ctbl2.tan 178: free 637742096 size 132
+vm-clboxitem.tan 87: free 637813616 size 480
+vm-clboxitem.tan 107: calloc 636525600 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 636525600 size 120
+vm-clboxitem.tan 105: realloc 637661456 size 240
+vm-misc.tan 396: realloc freed 637825232 size 132
+vm-misc.tan 396: realloc 637704688 size 44
+vm-gantt.tan 5925: realloc freed 637829120 size 4584
+vm-gantt.tan 5925: realloc 637749216 size 1776
+vm-misc.tan 392: calloc 637689376 size 132 (33 x 4)
+vm-ctbl2.tan 178: free 636481008 size 44
+vm-clboxitem.tan 87: free 637661456 size 240
+vm-clboxitem.tan 107: calloc 637731168 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 637731168 size 120
+vm-clboxitem.tan 105: realloc 637661840 size 240
+vm-clboxitem.tan 105: realloc freed 637661840 size 240
+vm-clboxitem.tan 105: realloc 637785392 size 360
+vm-clboxitem.tan 105: realloc freed 637785392 size 360
+vm-clboxitem.tan 105: realloc 637755008 size 480
+vm-misc.tan 396: realloc freed 637704688 size 44
+vm-misc.tan 396: realloc 637801776 size 132
+vm-gantt.tan 5925: realloc freed 637749216 size 1776
+vm-gantt.tan 5925: realloc 637843248 size 4584
+vm-clboxitem.tan 87: free 636478624 size 160
+vm-misc.tan 157: calloc 637572128 size 144 (72 x 2)
+vm-misc.tan 157: calloc 637678960 size 270 (135 x 2)
+vm-misc.tan 157: calloc 636361264 size 156 (78 x 2)
+vm-clboxitem.tan 107: calloc 636794432 size 160 (10 x 16)
+compstrn.tan 210: calloc 637476064 size 270 (135 x 2)
+compstrn.tan 193: free 637476064 size 270
+compstrn.tan 210: calloc 637547840 size 396 (198 x 2)
+compstrn.tan 193: free 637547840 size 396
+compstrn.tan 210: calloc 637741056 size 282 (141 x 2)
+compstrn.tan 193: free 637741056 size 282
+compstrn.tan 210: calloc 637614480 size 270 (135 x 2)
+vm-misc.tan 396: realloc freed 637614480 size 270
+vm-misc.tan 396: realloc 637587584 size 806
+compstrn.tan 193: free 637587584 size 806
+vm-clboxitem.tan 87: free 636794432 size 160
+vm-misc.tan 157: calloc 636473248 size 144 (72 x 2)
+vm-misc.tan 157: calloc 637574624 size 270 (135 x 2)
+vm-misc.tan 157: calloc 637546432 size 156 (78 x 2)
+vm-clboxitem.tan 107: calloc 637606656 size 160 (10 x 16)
+compstrn.tan 210: calloc 637669600 size 270 (135 x 2)
+compstrn.tan 193: free 637669600 size 270
+compstrn.tan 210: calloc 637660800 size 396 (198 x 2)
+compstrn.tan 193: free 637660800 size 396
+compstrn.tan 210: calloc 637684928 size 282 (141 x 2)
+compstrn.tan 193: free 637684928 size 282
+compstrn.tan 210: calloc 636494544 size 270 (135 x 2)
+vm-misc.tan 396: realloc freed 636494544 size 270
+vm-misc.tan 396: realloc 636506144 size 806
+compstrn.tan 193: free 636506144 size 806
+vm-clboxitem.tan 87: free 637606656 size 160
+vm-misc.tan 157: calloc 637673168 size 144 (72 x 2)
+vm-misc.tan 157: calloc 637780144 size 270 (135 x 2)
+vm-misc.tan 157: calloc 637687904 size 156 (78 x 2)
+vm-clboxitem.tan 107: calloc 636501888 size 160 (10 x 16)
+compstrn.tan 210: calloc 637736992 size 270 (135 x 2)
+compstrn.tan 193: free 637736992 size 270
+compstrn.tan 210: calloc 637610160 size 396 (198 x 2)
+compstrn.tan 193: free 637610160 size 396
+compstrn.tan 210: calloc 637849264 size 282 (141 x 2)
+compstrn.tan 193: free 637849264 size 282
+compstrn.tan 210: calloc 637813616 size 270 (135 x 2)
+vm-misc.tan 396: realloc freed 637813616 size 270
+vm-misc.tan 396: realloc 637607488 size 806
+compstrn.tan 193: free 637607488 size 806
+vm-clboxitem.tan 87: free 636501888 size 160
+vm-misc.tan 157: calloc 637814064 size 144 (72 x 2)
+vm-misc.tan 157: calloc 637751856 size 270 (135 x 2)
+vm-misc.tan 157: calloc 637752304 size 156 (78 x 2)
+vm-clboxitem.tan 107: calloc 637570352 size 160 (10 x 16)
+compstrn.tan 210: calloc 338614624 size 270 (135 x 2)
+compstrn.tan 193: free 338614624 size 270
+compstrn.tan 210: calloc 637723888 size 396 (198 x 2)
+compstrn.tan 193: free 637723888 size 396
+compstrn.tan 210: calloc 637730048 size 282 (141 x 2)
+compstrn.tan 193: free 637730048 size 282
+compstrn.tan 210: calloc 637730496 size 270 (135 x 2)
+vm-misc.tan 396: realloc freed 637730496 size 270
+vm-misc.tan 396: realloc 637742096 size 806
+compstrn.tan 193: free 637742096 size 806
+vm-clboxitem.tan 87: free 637570352 size 160
+vm-misc.tan 157: calloc 636478624 size 144 (72 x 2)
+vm-misc.tan 157: calloc 637750944 size 270 (135 x 2)
+vm-misc.tan 157: calloc 637608752 size 156 (78 x 2)
+vm-clboxitem.tan 107: calloc 637713664 size 160 (10 x 16)
+compstrn.tan 210: calloc 637819936 size 270 (135 x 2)
+compstrn.tan 193: free 637819936 size 270
+compstrn.tan 210: calloc 637671904 size 396 (198 x 2)
+compstrn.tan 193: free 637671904 size 396
+compstrn.tan 210: calloc 637476064 size 282 (141 x 2)
+compstrn.tan 193: free 637476064 size 282
+compstrn.tan 210: calloc 637741056 size 270 (135 x 2)
+vm-misc.tan 396: realloc freed 637741056 size 270
+vm-misc.tan 396: realloc 637783776 size 806
+compstrn.tan 193: free 637783776 size 806
+vm-clboxitem.tan 87: free 637713664 size 160
+vm-misc.tan 157: calloc 637596432 size 144 (72 x 2)
+vm-misc.tan 157: calloc 637547840 size 270 (135 x 2)
+vm-misc.tan 157: calloc 637833856 size 156 (78 x 2)
+vm-clboxitem.tan 107: calloc 338613952 size 160 (10 x 16)
+compstrn.tan 210: calloc 637569696 size 270 (135 x 2)
+compstrn.tan 193: free 637569696 size 270
+compstrn.tan 210: calloc 637811424 size 396 (198 x 2)
+compstrn.tan 193: free 637811424 size 396
+compstrn.tan 210: calloc 637825920 size 282 (141 x 2)
+compstrn.tan 193: free 637825920 size 282
+compstrn.tan 210: calloc 637826368 size 270 (135 x 2)
+vm-misc.tan 396: realloc freed 637826368 size 270
+vm-misc.tan 396: realloc 637587584 size 806
+compstrn.tan 193: free 637587584 size 806
+vm-clboxitem.tan 87: free 338613952 size 160
+vm-misc.tan 157: calloc 636494544 size 144 (72 x 2)
+vm-misc.tan 157: calloc 637684704 size 270 (135 x 2)
+vm-misc.tan 157: calloc 636506144 size 156 (78 x 2)
+vm-clboxitem.tan 107: calloc 637687568 size 160 (10 x 16)
+compstrn.tan 210: calloc 637842736 size 270 (135 x 2)
+compstrn.tan 193: free 637842736 size 270
+compstrn.tan 210: calloc 637735712 size 396 (198 x 2)
+compstrn.tan 193: free 637735712 size 396
+compstrn.tan 210: calloc 637736288 size 282 (141 x 2)
+compstrn.tan 193: free 637736288 size 282
+compstrn.tan 210: calloc 637610160 size 270 (135 x 2)
+vm-misc.tan 396: realloc freed 637610160 size 270
+vm-misc.tan 396: realloc 637763184 size 806
+compstrn.tan 193: free 637763184 size 806
+vm-misc.tan 392: calloc 337975040 size 4 (1 x 4)
+vm-ctbl2.tan 178: free 637689376 size 132
+vm-clboxitem.tan 87: free 637755008 size 480
+vm-misc.tan 396: realloc freed 637801776 size 132
+vm-misc.tan 396: realloc 637670048 size 4
+vm-gantt.tan 5916: free 637843248 size 4584
+vm-frame.tan 5353: calloc 637713664 size 100 (25 x 4)
+vm-frame.tan 5397: free 637713664 size 100
+vm-frame.tan 5353: calloc 636359936 size 100 (25 x 4)
+vm-frame.tan 5397: free 636359936 size 100
+compstrn.tan 210: calloc 637724160 size 396 (198 x 2)
+compstrn.tan 193: free 637724160 size 396
+vm-clboxitem.tan 87: free 637687568 size 160
+meerror.tan 1215: free 636494544 size 144
+meerror.tan 1215: free 637684704 size 270
+meerror.tan 1215: free 636506144 size 156
+meerror.tan 169: free 637611312 size 24
+vm-frame.tan 5353: calloc 636469856 size 100 (25 x 4)
+vm-frame.tan 5397: free 636469856 size 100
+vm-misc.tan 392: calloc 636405952 size 4 (1 x 4)
+vm-sym.tan 616: free 636405952 size 4
+vm-misc.tan 392: calloc 637852176 size 25612 (6403 x 4)
+vm-ctbl2.tan 178: free 337975040 size 4
+vm-clboxitem.tan 107: calloc 637606656 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 637606656 size 120
+vm-clboxitem.tan 105: realloc 637661840 size 240
+vm-clboxitem.tan 105: realloc freed 637661840 size 240
+vm-clboxitem.tan 105: realloc 637785392 size 360
+vm-clboxitem.tan 105: realloc freed 637785392 size 360
+vm-clboxitem.tan 105: realloc 637736128 size 480
+vm-clboxitem.tan 105: realloc freed 637736128 size 480
+vm-clboxitem.tan 105: realloc 337965520 size 600
+vm-clboxitem.tan 105: realloc freed 337965520 size 600
+vm-clboxitem.tan 105: realloc 637828736 size 720
+vm-clboxitem.tan 105: realloc freed 637828736 size 720
+vm-clboxitem.tan 105: realloc 637815936 size 840
+vm-clboxitem.tan 105: realloc freed 637815936 size 840
+vm-clboxitem.tan 105: realloc 637818912 size 960
+vm-clboxitem.tan 105: realloc freed 637818912 size 960
+vm-clboxitem.tan 105: realloc 637838464 size 1080
+vm-clboxitem.tan 105: realloc freed 637838464 size 1080
+vm-clboxitem.tan 105: realloc 637765824 size 1200
+vm-clboxitem.tan 105: realloc freed 637765824 size 1200
+vm-clboxitem.tan 105: realloc 637767168 size 1320
+vm-clboxitem.tan 105: realloc freed 637767168 size 1320
+vm-clboxitem.tan 105: realloc 637906848 size 1440
+vm-clboxitem.tan 105: realloc freed 637906848 size 1440
+vm-clboxitem.tan 105: realloc 637908432 size 1560
+vm-clboxitem.tan 105: realloc freed 637908432 size 1560
+vm-clboxitem.tan 105: realloc 637910144 size 1680
+vm-clboxitem.tan 105: realloc freed 637910144 size 1680
+vm-clboxitem.tan 105: realloc 637877968 size 1800
+vm-clboxitem.tan 105: realloc freed 637877968 size 1800
+vm-clboxitem.tan 105: realloc 637879920 size 1920
+vm-clboxitem.tan 105: realloc freed 637879920 size 1920
+vm-clboxitem.tan 105: realloc 637881984 size 2040
+vm-clboxitem.tan 105: realloc freed 637881984 size 2040
+vm-clboxitem.tan 105: realloc 637884176 size 2160
+vm-clboxitem.tan 105: realloc freed 637884176 size 2160
+vm-clboxitem.tan 105: realloc 637886480 size 2280
+vm-clboxitem.tan 105: realloc freed 637886480 size 2280
+vm-clboxitem.tan 105: realloc 637888912 size 2400
+vm-clboxitem.tan 105: realloc freed 637888912 size 2400
+vm-clboxitem.tan 105: realloc 637891456 size 2520
+vm-clboxitem.tan 105: realloc freed 637891456 size 2520
+vm-clboxitem.tan 105: realloc 637894128 size 2640
+vm-clboxitem.tan 105: realloc freed 637894128 size 2640
+vm-clboxitem.tan 105: realloc 637896912 size 2760
+vm-clboxitem.tan 105: realloc freed 637896912 size 2760
+vm-clboxitem.tan 105: realloc 637915168 size 2880
+vm-clboxitem.tan 105: realloc freed 637915168 size 2880
+vm-clboxitem.tan 105: realloc 637918192 size 3000
+vm-clboxitem.tan 105: realloc freed 637918192 size 3000
+vm-clboxitem.tan 105: realloc 637921344 size 3120
+vm-clboxitem.tan 105: realloc freed 637921344 size 3120
+vm-clboxitem.tan 105: realloc 637924608 size 3240
+vm-clboxitem.tan 105: realloc freed 637924608 size 3240
+vm-clboxitem.tan 105: realloc 637928000 size 3360
+vm-clboxitem.tan 105: realloc freed 637928000 size 3360
+vm-clboxitem.tan 105: realloc 637931504 size 3480
+vm-clboxitem.tan 105: realloc freed 637931504 size 3480
+vm-clboxitem.tan 105: realloc 637935136 size 3600
+vm-clboxitem.tan 105: realloc freed 637935136 size 3600
+vm-clboxitem.tan 105: realloc 637938880 size 3720
+vm-clboxitem.tan 105: realloc freed 637938880 size 3720
+vm-clboxitem.tan 105: realloc 637942752 size 3840
+vm-clboxitem.tan 105: realloc freed 637942752 size 3840
+vm-clboxitem.tan 105: realloc 637946736 size 3960
+vm-clboxitem.tan 105: realloc freed 637946736 size 3960
+vm-clboxitem.tan 105: realloc 637950848 size 4080
+vm-clboxitem.tan 105: realloc freed 637950848 size 4080
+vm-clboxitem.tan 105: realloc 637955072 size 4200
+vm-clboxitem.tan 105: realloc freed 637955072 size 4200
+vm-clboxitem.tan 105: realloc 637959424 size 4320
+vm-clboxitem.tan 105: realloc freed 637959424 size 4320
+vm-clboxitem.tan 105: realloc 637963888 size 4440
+vm-clboxitem.tan 105: realloc freed 637963888 size 4440
+vm-clboxitem.tan 105: realloc 637968480 size 4560
+vm-clboxitem.tan 105: realloc freed 637968480 size 4560
+vm-clboxitem.tan 105: realloc 637973184 size 4680
+vm-clboxitem.tan 105: realloc freed 637973184 size 4680
+vm-clboxitem.tan 105: realloc 637978016 size 4800
+vm-clboxitem.tan 105: realloc freed 637978016 size 4800
+vm-clboxitem.tan 105: realloc 637982960 size 4920
+vm-clboxitem.tan 105: realloc freed 637982960 size 4920
+vm-clboxitem.tan 105: realloc 637988032 size 5040
+vm-clboxitem.tan 105: realloc freed 637988032 size 5040
+vm-clboxitem.tan 105: realloc 637993216 size 5160
+vm-clboxitem.tan 105: realloc freed 637993216 size 5160
+vm-clboxitem.tan 105: realloc 637998528 size 5280
+vm-clboxitem.tan 105: realloc freed 637998528 size 5280
+vm-clboxitem.tan 105: realloc 638003952 size 5400
+vm-clboxitem.tan 105: realloc freed 638003952 size 5400
+vm-clboxitem.tan 105: realloc 638009504 size 5520
+vm-clboxitem.tan 105: realloc freed 638009504 size 5520
+vm-clboxitem.tan 105: realloc 638015168 size 5640
+vm-clboxitem.tan 105: realloc freed 638015168 size 5640
+vm-clboxitem.tan 105: realloc 638020960 size 5760
+vm-clboxitem.tan 105: realloc freed 638020960 size 5760
+vm-clboxitem.tan 105: realloc 638026864 size 5880
+vm-clboxitem.tan 105: realloc freed 638026864 size 5880
+vm-clboxitem.tan 105: realloc 638032896 size 6000
+vm-clboxitem.tan 105: realloc freed 638032896 size 6000
+vm-clboxitem.tan 105: realloc 638039040 size 6120
+vm-clboxitem.tan 105: realloc freed 638039040 size 6120
+vm-clboxitem.tan 105: realloc 638045312 size 6240
+vm-clboxitem.tan 105: realloc freed 638045312 size 6240
+vm-clboxitem.tan 105: realloc 638051696 size 6360
+vm-clboxitem.tan 105: realloc freed 638051696 size 6360
+vm-clboxitem.tan 105: realloc 638058208 size 6480
+vm-clboxitem.tan 105: realloc freed 638058208 size 6480
+vm-clboxitem.tan 105: realloc 638064832 size 6600
+vm-clboxitem.tan 105: realloc freed 638064832 size 6600
+vm-clboxitem.tan 105: realloc 638071584 size 6720
+vm-clboxitem.tan 105: realloc freed 638071584 size 6720
+vm-clboxitem.tan 105: realloc 638078448 size 6840
+vm-clboxitem.tan 105: realloc freed 638078448 size 6840
+vm-clboxitem.tan 105: realloc 638085440 size 6960
+vm-clboxitem.tan 105: realloc freed 638085440 size 6960
+vm-clboxitem.tan 105: realloc 638092544 size 7080
+vm-clboxitem.tan 105: realloc freed 638092544 size 7080
+vm-clboxitem.tan 105: realloc 638099776 size 7200
+vm-clboxitem.tan 105: realloc freed 638099776 size 7200
+vm-clboxitem.tan 105: realloc 638107120 size 7320
+vm-clboxitem.tan 105: realloc freed 638107120 size 7320
+vm-clboxitem.tan 105: realloc 638114592 size 7440
+vm-clboxitem.tan 105: realloc freed 638114592 size 7440
+vm-clboxitem.tan 105: realloc 638122176 size 7560
+vm-clboxitem.tan 105: realloc freed 638122176 size 7560
+vm-clboxitem.tan 105: realloc 638129888 size 7680
+vm-clboxitem.tan 105: realloc freed 638129888 size 7680
+vm-clboxitem.tan 105: realloc 638137712 size 7800
+vm-clboxitem.tan 105: realloc freed 638137712 size 7800
+vm-clboxitem.tan 105: realloc 638145664 size 7920
+vm-clboxitem.tan 105: realloc freed 638145664 size 7920
+vm-clboxitem.tan 105: realloc 638153728 size 8040
+vm-clboxitem.tan 105: realloc freed 638153728 size 8040
+vm-clboxitem.tan 105: realloc 638161920 size 8160
+vm-clboxitem.tan 105: realloc freed 638161920 size 8160
+vm-clboxitem.tan 105: realloc 638170224 size 8280
+vm-clboxitem.tan 105: realloc freed 638170224 size 8280
+vm-clboxitem.tan 105: realloc 638178656 size 8400
+vm-clboxitem.tan 105: realloc freed 638178656 size 8400
+vm-clboxitem.tan 105: realloc 638187200 size 8520
+vm-clboxitem.tan 105: realloc freed 638187200 size 8520
+vm-clboxitem.tan 105: realloc 638195872 size 8640
+vm-clboxitem.tan 105: realloc freed 638195872 size 8640
+vm-clboxitem.tan 105: realloc 638204656 size 8760
+vm-clboxitem.tan 105: realloc freed 638204656 size 8760
+vm-clboxitem.tan 105: realloc 638213568 size 8880
+vm-clboxitem.tan 105: realloc freed 638213568 size 8880
+vm-clboxitem.tan 105: realloc 638222592 size 9000
+vm-clboxitem.tan 105: realloc freed 638222592 size 9000
+vm-clboxitem.tan 105: realloc 638231744 size 9120
+vm-clboxitem.tan 105: realloc freed 638231744 size 9120
+vm-clboxitem.tan 105: realloc 638241008 size 9240
+vm-clboxitem.tan 105: realloc freed 638241008 size 9240
+vm-clboxitem.tan 105: realloc 638250400 size 9360
+vm-clboxitem.tan 105: realloc freed 638250400 size 9360
+vm-clboxitem.tan 105: realloc 638259904 size 9480
+vm-clboxitem.tan 105: realloc freed 638259904 size 9480
+vm-clboxitem.tan 105: realloc 638269536 size 9600
+vm-clboxitem.tan 105: realloc freed 638269536 size 9600
+vm-clboxitem.tan 105: realloc 638279280 size 9720
+vm-clboxitem.tan 105: realloc freed 638279280 size 9720
+vm-clboxitem.tan 105: realloc 638289152 size 9840
+vm-clboxitem.tan 105: realloc freed 638289152 size 9840
+vm-clboxitem.tan 105: realloc 638299136 size 9960
+vm-clboxitem.tan 105: realloc freed 638299136 size 9960
+vm-clboxitem.tan 105: realloc 638309248 size 10080
+vm-clboxitem.tan 105: realloc freed 638309248 size 10080
+vm-clboxitem.tan 105: realloc 638319472 size 10200
+vm-clboxitem.tan 105: realloc freed 638319472 size 10200
+vm-clboxitem.tan 105: realloc 638329824 size 10320
+vm-clboxitem.tan 105: realloc freed 638329824 size 10320
+vm-clboxitem.tan 105: realloc 638340288 size 10440
+vm-clboxitem.tan 105: realloc freed 638340288 size 10440
+vm-clboxitem.tan 105: realloc 638350880 size 10560
+vm-clboxitem.tan 105: realloc freed 638350880 size 10560
+vm-clboxitem.tan 105: realloc 638361584 size 10680
+vm-clboxitem.tan 105: realloc freed 638361584 size 10680
+vm-clboxitem.tan 105: realloc 638372416 size 10800
+vm-clboxitem.tan 105: realloc freed 638372416 size 10800
+vm-clboxitem.tan 105: realloc 638383360 size 10920
+vm-clboxitem.tan 105: realloc freed 638383360 size 10920
+vm-clboxitem.tan 105: realloc 638394432 size 11040
+vm-clboxitem.tan 105: realloc freed 638394432 size 11040
+vm-clboxitem.tan 105: realloc 638405616 size 11160
+vm-clboxitem.tan 105: realloc freed 638405616 size 11160
+vm-clboxitem.tan 105: realloc 638416928 size 11280
+vm-clboxitem.tan 105: realloc freed 638416928 size 11280
+vm-clboxitem.tan 105: realloc 638428352 size 11400
+vm-clboxitem.tan 105: realloc freed 638428352 size 11400
+vm-clboxitem.tan 105: realloc 638439904 size 11520
+vm-clboxitem.tan 105: realloc freed 638439904 size 11520
+vm-clboxitem.tan 105: realloc 638451568 size 11640
+vm-clboxitem.tan 105: realloc freed 638451568 size 11640
+vm-clboxitem.tan 105: realloc 638463360 size 11760
+vm-clboxitem.tan 105: realloc freed 638463360 size 11760
+vm-clboxitem.tan 105: realloc 638475264 size 11880
+vm-clboxitem.tan 105: realloc freed 638475264 size 11880
+vm-clboxitem.tan 105: realloc 638487296 size 12000
+vm-clboxitem.tan 105: realloc freed 638487296 size 12000
+vm-clboxitem.tan 105: realloc 638499440 size 12120
+vm-clboxitem.tan 105: realloc freed 638499440 size 12120
+vm-clboxitem.tan 105: realloc 638511712 size 12240
+vm-clboxitem.tan 105: realloc freed 638511712 size 12240
+vm-clboxitem.tan 105: realloc 638524096 size 12360
+vm-clboxitem.tan 105: realloc freed 638524096 size 12360
+vm-clboxitem.tan 105: realloc 638536608 size 12480
+vm-clboxitem.tan 105: realloc freed 638536608 size 12480
+vm-clboxitem.tan 105: realloc 638549232 size 12600
+vm-clboxitem.tan 105: realloc freed 638549232 size 12600
+vm-clboxitem.tan 105: realloc 638561984 size 12720
+vm-clboxitem.tan 105: realloc freed 638561984 size 12720
+vm-clboxitem.tan 105: realloc 638574848 size 12840
+vm-clboxitem.tan 105: realloc freed 638574848 size 12840
+vm-clboxitem.tan 105: realloc 638587840 size 12960
+vm-clboxitem.tan 105: realloc freed 638587840 size 12960
+vm-clboxitem.tan 105: realloc 638600944 size 13080
+vm-clboxitem.tan 105: realloc freed 638600944 size 13080
+vm-clboxitem.tan 105: realloc 638614176 size 13200
+vm-clboxitem.tan 105: realloc freed 638614176 size 13200
+vm-clboxitem.tan 105: realloc 638627520 size 13320
+vm-clboxitem.tan 105: realloc freed 638627520 size 13320
+vm-clboxitem.tan 105: realloc 638640992 size 13440
+vm-clboxitem.tan 105: realloc freed 638640992 size 13440
+vm-clboxitem.tan 105: realloc 638654576 size 13560
+vm-clboxitem.tan 105: realloc freed 638654576 size 13560
+vm-clboxitem.tan 105: realloc 638668288 size 13680
+vm-clboxitem.tan 105: realloc freed 638668288 size 13680
+vm-clboxitem.tan 105: realloc 638682112 size 13800
+vm-clboxitem.tan 105: realloc freed 638682112 size 13800
+vm-clboxitem.tan 105: realloc 638696064 size 13920
+vm-clboxitem.tan 105: realloc freed 638696064 size 13920
+vm-clboxitem.tan 105: realloc 638710128 size 14040
+vm-clboxitem.tan 105: realloc freed 638710128 size 14040
+vm-clboxitem.tan 105: realloc 638724320 size 14160
+vm-clboxitem.tan 105: realloc freed 638724320 size 14160
+vm-clboxitem.tan 105: realloc 638738624 size 14280
+vm-clboxitem.tan 105: realloc freed 638738624 size 14280
+vm-clboxitem.tan 105: realloc 638753056 size 14400
+vm-clboxitem.tan 105: realloc freed 638753056 size 14400
+vm-clboxitem.tan 105: realloc 638767600 size 14520
+vm-clboxitem.tan 105: realloc freed 638767600 size 14520
+vm-clboxitem.tan 105: realloc 638782272 size 14640
+vm-clboxitem.tan 105: realloc freed 638782272 size 14640
+vm-clboxitem.tan 105: realloc 638797056 size 14760
+vm-clboxitem.tan 105: realloc freed 638797056 size 14760
+vm-clboxitem.tan 105: realloc 638811968 size 14880
+vm-clboxitem.tan 105: realloc freed 638811968 size 14880
+vm-clboxitem.tan 105: realloc 638826992 size 15000
+vm-clboxitem.tan 105: realloc freed 638826992 size 15000
+vm-clboxitem.tan 105: realloc 638842144 size 15120
+vm-clboxitem.tan 105: realloc freed 638842144 size 15120
+vm-clboxitem.tan 105: realloc 638857408 size 15240
+vm-clboxitem.tan 105: realloc freed 638857408 size 15240
+vm-clboxitem.tan 105: realloc 638872800 size 15360
+vm-clboxitem.tan 105: realloc freed 638872800 size 15360
+vm-clboxitem.tan 105: realloc 638888304 size 15480
+vm-clboxitem.tan 105: realloc freed 638888304 size 15480
+vm-clboxitem.tan 105: realloc 638903936 size 15600
+vm-clboxitem.tan 105: realloc freed 638903936 size 15600
+vm-clboxitem.tan 105: realloc 638919680 size 15720
+vm-clboxitem.tan 105: realloc freed 638919680 size 15720
+vm-clboxitem.tan 105: realloc 638935552 size 15840
+vm-clboxitem.tan 105: realloc freed 638935552 size 15840
+vm-clboxitem.tan 105: realloc 638951536 size 15960
+vm-clboxitem.tan 105: realloc freed 638951536 size 15960
+vm-clboxitem.tan 105: realloc 638967648 size 16080
+vm-clboxitem.tan 105: realloc freed 638967648 size 16080
+vm-clboxitem.tan 105: realloc 638983872 size 16200
+vm-clboxitem.tan 105: realloc freed 638983872 size 16200
+vm-clboxitem.tan 105: realloc 639000224 size 16320
+vm-clboxitem.tan 105: realloc freed 639000224 size 16320
+vm-clboxitem.tan 105: realloc 639016688 size 16440
+vm-clboxitem.tan 105: realloc freed 639016688 size 16440
+vm-clboxitem.tan 105: realloc 639033280 size 16560
+vm-clboxitem.tan 105: realloc freed 639033280 size 16560
+vm-clboxitem.tan 105: realloc 639049984 size 16680
+vm-clboxitem.tan 105: realloc freed 639049984 size 16680
+vm-clboxitem.tan 105: realloc 639066816 size 16800
+vm-clboxitem.tan 105: realloc freed 639066816 size 16800
+vm-clboxitem.tan 105: realloc 639083760 size 16920
+vm-clboxitem.tan 105: realloc freed 639083760 size 16920
+vm-clboxitem.tan 105: realloc 639100832 size 17040
+vm-clboxitem.tan 105: realloc freed 639100832 size 17040
+vm-clboxitem.tan 105: realloc 639118016 size 17160
+vm-clboxitem.tan 105: realloc freed 639118016 size 17160
+vm-clboxitem.tan 105: realloc 639135328 size 17280
+vm-clboxitem.tan 105: realloc freed 639135328 size 17280
+vm-clboxitem.tan 105: realloc 639152752 size 17400
+vm-clboxitem.tan 105: realloc freed 639152752 size 17400
+vm-clboxitem.tan 105: realloc 639170304 size 17520
+vm-clboxitem.tan 105: realloc freed 639170304 size 17520
+vm-clboxitem.tan 105: realloc 639187968 size 17640
+vm-clboxitem.tan 105: realloc freed 639187968 size 17640
+vm-clboxitem.tan 105: realloc 639205760 size 17760
+vm-clboxitem.tan 105: realloc freed 639205760 size 17760
+vm-clboxitem.tan 105: realloc 639223664 size 17880
+vm-clboxitem.tan 105: realloc freed 639223664 size 17880
+vm-clboxitem.tan 105: realloc 639241696 size 18000
+vm-clboxitem.tan 105: realloc freed 639241696 size 18000
+vm-clboxitem.tan 105: realloc 639259840 size 18120
+vm-clboxitem.tan 105: realloc freed 639259840 size 18120
+vm-clboxitem.tan 105: realloc 639278112 size 18240
+vm-clboxitem.tan 105: realloc freed 639278112 size 18240
+vm-clboxitem.tan 105: realloc 639296496 size 18360
+vm-clboxitem.tan 105: realloc freed 639296496 size 18360
+vm-clboxitem.tan 105: realloc 639315008 size 18480
+vm-clboxitem.tan 105: realloc freed 639315008 size 18480
+vm-clboxitem.tan 105: realloc 639333632 size 18600
+vm-clboxitem.tan 105: realloc freed 639333632 size 18600
+vm-clboxitem.tan 105: realloc 639352384 size 18720
+vm-clboxitem.tan 105: realloc freed 639352384 size 18720
+vm-clboxitem.tan 105: realloc 639371248 size 18840
+vm-clboxitem.tan 105: realloc freed 639371248 size 18840
+vm-clboxitem.tan 105: realloc 639390240 size 18960
+vm-clboxitem.tan 105: realloc freed 639390240 size 18960
+vm-clboxitem.tan 105: realloc 639409344 size 19080
+vm-clboxitem.tan 105: realloc freed 639409344 size 19080
+vm-clboxitem.tan 105: realloc 639428576 size 19200
+vm-clboxitem.tan 105: realloc freed 639428576 size 19200
+vm-clboxitem.tan 105: realloc 639447920 size 19320
+vm-clboxitem.tan 105: realloc freed 639447920 size 19320
+vm-clboxitem.tan 105: realloc 639467392 size 19440
+vm-clboxitem.tan 105: realloc freed 639467392 size 19440
+vm-clboxitem.tan 105: realloc 639486976 size 19560
+vm-clboxitem.tan 105: realloc freed 639486976 size 19560
+vm-clboxitem.tan 105: realloc 639506688 size 19680
+vm-clboxitem.tan 105: realloc freed 639506688 size 19680
+vm-clboxitem.tan 105: realloc 639526512 size 19800
+vm-clboxitem.tan 105: realloc freed 639526512 size 19800
+vm-clboxitem.tan 105: realloc 1223033072 size 19920
+vm-clboxitem.tan 105: realloc freed 1223033072 size 19920
+vm-clboxitem.tan 105: realloc 1223053136 size 20040
+vm-clboxitem.tan 105: realloc freed 1223053136 size 20040
+vm-clboxitem.tan 105: realloc 1223073328 size 20160
+vm-clboxitem.tan 105: realloc freed 1223073328 size 20160
+vm-clboxitem.tan 105: realloc 1223093632 size 20280
+vm-clboxitem.tan 105: realloc freed 1223093632 size 20280
+vm-clboxitem.tan 105: realloc 1223114064 size 20400
+vm-clboxitem.tan 105: realloc freed 1223114064 size 20400
+vm-clboxitem.tan 105: realloc 1223134608 size 20520
+vm-clboxitem.tan 105: realloc freed 1223134608 size 20520
+vm-clboxitem.tan 105: realloc 1223155280 size 20640
+vm-clboxitem.tan 105: realloc freed 1223155280 size 20640
+vm-clboxitem.tan 105: realloc 1223176064 size 20760
+vm-clboxitem.tan 105: realloc freed 1223176064 size 20760
+vm-clboxitem.tan 105: realloc 1223196976 size 20880
+vm-clboxitem.tan 105: realloc freed 1223196976 size 20880
+vm-clboxitem.tan 105: realloc 1223218000 size 21000
+vm-clboxitem.tan 105: realloc freed 1223218000 size 21000
+vm-clboxitem.tan 105: realloc 637877968 size 21120
+vm-clboxitem.tan 105: realloc freed 637877968 size 21120
+vm-clboxitem.tan 105: realloc 1223239152 size 21240
+vm-clboxitem.tan 105: realloc freed 1223239152 size 21240
+vm-clboxitem.tan 105: realloc 1223260544 size 21360
+vm-clboxitem.tan 105: realloc freed 1223260544 size 21360
+vm-clboxitem.tan 105: realloc 1223282048 size 21480
+vm-clboxitem.tan 105: realloc freed 1223282048 size 21480
+vm-clboxitem.tan 105: realloc 1223303680 size 21600
+vm-clboxitem.tan 105: realloc freed 1223303680 size 21600
+vm-clboxitem.tan 105: realloc 1223325424 size 21720
+vm-clboxitem.tan 105: realloc freed 1223325424 size 21720
+vm-clboxitem.tan 105: realloc 637915168 size 21840
+vm-clboxitem.tan 105: realloc freed 637915168 size 21840
+vm-clboxitem.tan 105: realloc 1223347296 size 21960
+vm-clboxitem.tan 105: realloc freed 1223347296 size 21960
+vm-clboxitem.tan 105: realloc 1223369408 size 22080
+vm-clboxitem.tan 105: realloc freed 1223369408 size 22080
+vm-clboxitem.tan 105: realloc 1223391632 size 22200
+vm-clboxitem.tan 105: realloc freed 1223391632 size 22200
+vm-clboxitem.tan 105: realloc 1223413984 size 22320
+vm-clboxitem.tan 105: realloc freed 1223413984 size 22320
+vm-clboxitem.tan 105: realloc 1223436448 size 22440
+vm-clboxitem.tan 105: realloc freed 1223436448 size 22440
+vm-clboxitem.tan 105: realloc 637937152 size 22560
+vm-clboxitem.tan 105: realloc freed 637937152 size 22560
+vm-clboxitem.tan 105: realloc 1223459040 size 22680
+vm-clboxitem.tan 105: realloc freed 1223459040 size 22680
+vm-clboxitem.tan 105: realloc 1223481872 size 22800
+vm-clboxitem.tan 105: realloc freed 1223481872 size 22800
+vm-clboxitem.tan 105: realloc 1223504816 size 22920
+vm-clboxitem.tan 105: realloc freed 1223504816 size 22920
+vm-clboxitem.tan 105: realloc 1223527888 size 23040
+vm-clboxitem.tan 105: realloc freed 1223527888 size 23040
+vm-clboxitem.tan 105: realloc 637959856 size 23160
+vm-clboxitem.tan 105: realloc freed 637959856 size 23160
+vm-clboxitem.tan 105: realloc 1223551072 size 23280
+vm-clboxitem.tan 105: realloc freed 1223551072 size 23280
+vm-clboxitem.tan 105: realloc 1223574496 size 23400
+vm-clboxitem.tan 105: realloc freed 1223574496 size 23400
+vm-clboxitem.tan 105: realloc 1223598048 size 23520
+vm-clboxitem.tan 105: realloc freed 1223598048 size 23520
+vm-clboxitem.tan 105: realloc 637983168 size 23640
+vm-clboxitem.tan 105: realloc freed 637983168 size 23640
+vm-clboxitem.tan 105: realloc 1223621712 size 23760
+vm-clboxitem.tan 105: realloc freed 1223621712 size 23760
+vm-clboxitem.tan 105: realloc 1223645616 size 23880
+vm-clboxitem.tan 105: realloc freed 1223645616 size 23880
+vm-clboxitem.tan 105: realloc 1223669648 size 24000
+vm-clboxitem.tan 105: realloc freed 1223669648 size 24000
+vm-clboxitem.tan 105: realloc 638006960 size 24120
+vm-clboxitem.tan 105: realloc freed 638006960 size 24120
+vm-clboxitem.tan 105: realloc 1223693792 size 24240
+vm-clboxitem.tan 105: realloc freed 1223693792 size 24240
+vm-clboxitem.tan 105: realloc 1223718176 size 24360
+vm-clboxitem.tan 105: realloc freed 1223718176 size 24360
+vm-clboxitem.tan 105: realloc 1223742688 size 24480
+vm-clboxitem.tan 105: realloc freed 1223742688 size 24480
+vm-clboxitem.tan 105: realloc 638031232 size 24600
+vm-clboxitem.tan 105: realloc freed 638031232 size 24600
+vm-clboxitem.tan 105: realloc 1223767312 size 24720
+vm-clboxitem.tan 105: realloc freed 1223767312 size 24720
+vm-clboxitem.tan 105: realloc 1223792176 size 24840
+vm-clboxitem.tan 105: realloc freed 1223792176 size 24840
+vm-clboxitem.tan 105: realloc 1223817168 size 24960
+vm-clboxitem.tan 105: realloc freed 1223817168 size 24960
+vm-clboxitem.tan 105: realloc 638055984 size 25080
+vm-clboxitem.tan 105: realloc freed 638055984 size 25080
+vm-clboxitem.tan 105: realloc 1223842272 size 25200
+vm-clboxitem.tan 105: realloc freed 1223842272 size 25200
+vm-clboxitem.tan 105: realloc 1223867616 size 25320
+vm-clboxitem.tan 105: realloc freed 1223867616 size 25320
+vm-clboxitem.tan 105: realloc 638081216 size 25440
+vm-clboxitem.tan 105: realloc freed 638081216 size 25440
+vm-clboxitem.tan 105: realloc 1223893088 size 25560
+vm-clboxitem.tan 105: realloc freed 1223893088 size 25560
+vm-clboxitem.tan 105: realloc 1223918800 size 25680
+vm-clboxitem.tan 105: realloc freed 1223918800 size 25680
+vm-clboxitem.tan 105: realloc 1223944624 size 25800
+vm-clboxitem.tan 105: realloc freed 1223944624 size 25800
+vm-clboxitem.tan 105: realloc 638106800 size 25920
+vm-clboxitem.tan 105: realloc freed 638106800 size 25920
+vm-clboxitem.tan 105: realloc 1223970576 size 26040
+vm-clboxitem.tan 105: realloc freed 1223970576 size 26040
+vm-clboxitem.tan 105: realloc 1223996768 size 26160
+vm-clboxitem.tan 105: realloc freed 1223996768 size 26160
+vm-clboxitem.tan 105: realloc 638132864 size 26280
+vm-clboxitem.tan 105: realloc freed 638132864 size 26280
+vm-clboxitem.tan 105: realloc 1224023072 size 26400
+vm-clboxitem.tan 105: realloc freed 1224023072 size 26400
+vm-clboxitem.tan 105: realloc 1224049616 size 26520
+vm-clboxitem.tan 105: realloc freed 1224049616 size 26520
+vm-clboxitem.tan 105: realloc 638159296 size 26640
+vm-clboxitem.tan 105: realloc freed 638159296 size 26640
+vm-clboxitem.tan 105: realloc 1224076288 size 26760
+vm-clboxitem.tan 105: realloc freed 1224076288 size 26760
+vm-clboxitem.tan 105: realloc 1224103200 size 26880
+vm-clboxitem.tan 105: realloc freed 1224103200 size 26880
+vm-clboxitem.tan 105: realloc 638186080 size 27000
+vm-clboxitem.tan 105: realloc freed 638186080 size 27000
+vm-clboxitem.tan 105: realloc 1224130224 size 27120
+vm-clboxitem.tan 105: realloc freed 1224130224 size 27120
+vm-clboxitem.tan 105: realloc 1224157488 size 27240
+vm-clboxitem.tan 105: realloc freed 1224157488 size 27240
+vm-clboxitem.tan 105: realloc 638213232 size 27360
+vm-clboxitem.tan 105: realloc freed 638213232 size 27360
+vm-clboxitem.tan 105: realloc 1224184880 size 27480
+vm-clboxitem.tan 105: realloc freed 1224184880 size 27480
+vm-clboxitem.tan 105: realloc 1224212512 size 27600
+vm-clboxitem.tan 105: realloc freed 1224212512 size 27600
+vm-clboxitem.tan 105: realloc 638240736 size 27720
+vm-clboxitem.tan 105: realloc freed 638240736 size 27720
+vm-clboxitem.tan 105: realloc 1224240256 size 27840
+vm-clboxitem.tan 105: realloc freed 1224240256 size 27840
+vm-clboxitem.tan 105: realloc 1224268240 size 27960
+vm-clboxitem.tan 105: realloc freed 1224268240 size 27960
+vm-clboxitem.tan 105: realloc 638268608 size 28080
+vm-clboxitem.tan 105: realloc freed 638268608 size 28080
+vm-clboxitem.tan 105: realloc 1224296352 size 28200
+vm-clboxitem.tan 105: realloc freed 1224296352 size 28200
+vm-clboxitem.tan 105: realloc 1224324704 size 28320
+vm-clboxitem.tan 105: realloc freed 1224324704 size 28320
+vm-clboxitem.tan 105: realloc 638296832 size 28440
+vm-clboxitem.tan 105: realloc freed 638296832 size 28440
+vm-clboxitem.tan 105: realloc 1224353168 size 28560
+vm-clboxitem.tan 105: realloc freed 1224353168 size 28560
+vm-clboxitem.tan 105: realloc 1224381872 size 28680
+vm-clboxitem.tan 105: realloc freed 1224381872 size 28680
+vm-clboxitem.tan 105: realloc 638325424 size 28800
+vm-clboxitem.tan 105: realloc freed 638325424 size 28800
+vm-clboxitem.tan 105: realloc 1224410704 size 28920
+vm-clboxitem.tan 105: realloc freed 1224410704 size 28920
+vm-clboxitem.tan 105: realloc 1224439776 size 29040
+vm-clboxitem.tan 105: realloc freed 1224439776 size 29040
+vm-clboxitem.tan 105: realloc 638354368 size 29160
+vm-clboxitem.tan 105: realloc freed 638354368 size 29160
+vm-clboxitem.tan 105: realloc 1224468960 size 29280
+vm-clboxitem.tan 105: realloc freed 1224468960 size 29280
+vm-clboxitem.tan 105: realloc 638383680 size 29400
+vm-clboxitem.tan 105: realloc freed 638383680 size 29400
+vm-clboxitem.tan 105: realloc 1224498384 size 29520
+vm-clboxitem.tan 105: realloc freed 1224498384 size 29520
+vm-clboxitem.tan 105: realloc 1224528048 size 29640
+vm-clboxitem.tan 105: realloc freed 1224528048 size 29640
+vm-clboxitem.tan 105: realloc 1224557840 size 29760
+vm-clboxitem.tan 105: realloc freed 1224557840 size 29760
+vm-clboxitem.tan 105: realloc 638413232 size 29880
+vm-clboxitem.tan 105: realloc freed 638413232 size 29880
+vm-clboxitem.tan 105: realloc 638443264 size 30000
+vm-clboxitem.tan 105: realloc freed 638443264 size 30000
+vm-clboxitem.tan 105: realloc 1224587744 size 30120
+vm-clboxitem.tan 105: realloc freed 1224587744 size 30120
+vm-clboxitem.tan 105: realloc 1224618016 size 30240
+vm-clboxitem.tan 105: realloc freed 1224618016 size 30240
+vm-clboxitem.tan 105: realloc 638473408 size 30360
+vm-clboxitem.tan 105: realloc freed 638473408 size 30360
+vm-clboxitem.tan 105: realloc 1224648400 size 30480
+vm-clboxitem.tan 105: realloc freed 1224648400 size 30480
+vm-clboxitem.tan 105: realloc 638503920 size 30600
+vm-clboxitem.tan 105: realloc freed 638503920 size 30600
+vm-clboxitem.tan 105: realloc 1224679024 size 30720
+vm-clboxitem.tan 105: realloc freed 1224679024 size 30720
+vm-clboxitem.tan 105: realloc 1224709888 size 30840
+vm-clboxitem.tan 105: realloc freed 1224709888 size 30840
+vm-clboxitem.tan 105: realloc 638534672 size 30960
+vm-clboxitem.tan 105: realloc freed 638534672 size 30960
+vm-clboxitem.tan 105: realloc 1224740880 size 31080
+vm-clboxitem.tan 105: realloc freed 1224740880 size 31080
+vm-clboxitem.tan 105: realloc 638565776 size 31200
+vm-clboxitem.tan 105: realloc freed 638565776 size 31200
+vm-clboxitem.tan 105: realloc 1224772112 size 31320
+vm-clboxitem.tan 105: realloc freed 1224772112 size 31320
+vm-clboxitem.tan 105: realloc 1224803584 size 31440
+vm-clboxitem.tan 105: realloc freed 1224803584 size 31440
+vm-clboxitem.tan 105: realloc 638597120 size 31560
+vm-clboxitem.tan 105: realloc freed 638597120 size 31560
+vm-clboxitem.tan 105: realloc 1224835168 size 31680
+vm-clboxitem.tan 105: realloc freed 1224835168 size 31680
+vm-clboxitem.tan 105: realloc 638628832 size 31800
+vm-clboxitem.tan 105: realloc freed 638628832 size 31800
+vm-clboxitem.tan 105: realloc 1224866992 size 31920
+vm-clboxitem.tan 105: realloc freed 1224866992 size 31920
+vm-clboxitem.tan 105: realloc 638660784 size 32040
+vm-clboxitem.tan 105: realloc freed 638660784 size 32040
+vm-clboxitem.tan 105: realloc 1224899056 size 32160
+vm-clboxitem.tan 105: realloc freed 1224899056 size 32160
+vm-clboxitem.tan 105: realloc 1224931360 size 32280
+vm-clboxitem.tan 105: realloc freed 1224931360 size 32280
+vm-clboxitem.tan 105: realloc 638692976 size 32400
+vm-clboxitem.tan 105: realloc freed 638692976 size 32400
+vm-clboxitem.tan 105: realloc 1224963792 size 32520
+vm-clboxitem.tan 105: realloc freed 1224963792 size 32520
+vm-clboxitem.tan 105: realloc 638725520 size 32640
+vm-clboxitem.tan 105: realloc freed 638725520 size 32640
+vm-clboxitem.tan 105: realloc 1224996464 size 32760
+vm-clboxitem.tan 105: realloc freed 1224996464 size 32760
+vm-clboxitem.tan 105: realloc 638758304 size 32880
+vm-clboxitem.tan 105: realloc freed 638758304 size 32880
+vm-clboxitem.tan 105: realloc 1225029376 size 33000
+vm-clboxitem.tan 105: realloc freed 1225029376 size 33000
+vm-clboxitem.tan 105: realloc 638791328 size 33120
+vm-clboxitem.tan 105: realloc freed 638791328 size 33120
+vm-clboxitem.tan 105: realloc 1225062528 size 33240
+vm-clboxitem.tan 105: realloc freed 1225062528 size 33240
+vm-clboxitem.tan 105: realloc 1225095920 size 33360
+vm-clboxitem.tan 105: realloc freed 1225095920 size 33360
+vm-clboxitem.tan 105: realloc 638824592 size 33480
+vm-clboxitem.tan 105: realloc freed 638824592 size 33480
+vm-clboxitem.tan 105: realloc 1225129424 size 33600
+vm-clboxitem.tan 105: realloc freed 1225129424 size 33600
+vm-clboxitem.tan 105: realloc 1225163168 size 33720
+vm-clboxitem.tan 105: realloc freed 1225163168 size 33720
+vm-clboxitem.tan 105: realloc 638858224 size 33840
+vm-clboxitem.tan 105: realloc freed 638858224 size 33840
+vm-clboxitem.tan 105: realloc 638892208 size 33960
+vm-clboxitem.tan 105: realloc freed 638892208 size 33960
+vm-clboxitem.tan 105: realloc 1225197040 size 34080
+vm-clboxitem.tan 105: realloc freed 1225197040 size 34080
+vm-clboxitem.tan 105: realloc 638926320 size 34200
+vm-clboxitem.tan 105: realloc freed 638926320 size 34200
+vm-clboxitem.tan 105: realloc 1225231264 size 34320
+vm-clboxitem.tan 105: realloc freed 1225231264 size 34320
+vm-clboxitem.tan 105: realloc 638960672 size 34440
+vm-clboxitem.tan 105: realloc freed 638960672 size 34440
+vm-clboxitem.tan 105: realloc 1225265728 size 34560
+vm-clboxitem.tan 105: realloc freed 1225265728 size 34560
+vm-clboxitem.tan 105: realloc 638995264 size 34680
+vm-clboxitem.tan 105: realloc freed 638995264 size 34680
+vm-clboxitem.tan 105: realloc 1225300432 size 34800
+vm-clboxitem.tan 105: realloc freed 1225300432 size 34800
+vm-clboxitem.tan 105: realloc 639030096 size 34920
+vm-clboxitem.tan 105: realloc freed 639030096 size 34920
+vm-clboxitem.tan 105: realloc 1225335376 size 35040
+vm-clboxitem.tan 105: realloc freed 1225335376 size 35040
+vm-clboxitem.tan 105: realloc 639065168 size 35160
+vm-clboxitem.tan 105: realloc freed 639065168 size 35160
+vm-clboxitem.tan 105: realloc 1225370560 size 35280
+vm-clboxitem.tan 105: realloc freed 1225370560 size 35280
+vm-clboxitem.tan 105: realloc 1225405984 size 35400
+vm-clboxitem.tan 105: realloc freed 1225405984 size 35400
+vm-clboxitem.tan 105: realloc 639100480 size 35520
+vm-clboxitem.tan 105: realloc freed 639100480 size 35520
+vm-clboxitem.tan 105: realloc 1225441536 size 35640
+vm-clboxitem.tan 105: realloc freed 1225441536 size 35640
+vm-clboxitem.tan 105: realloc 639136144 size 35760
+vm-clboxitem.tan 105: realloc freed 639136144 size 35760
+vm-clboxitem.tan 105: realloc 1225477328 size 35880
+vm-clboxitem.tan 105: realloc freed 1225477328 size 35880
+vm-clboxitem.tan 105: realloc 639172048 size 36000
+vm-clboxitem.tan 105: realloc freed 639172048 size 36000
+vm-clboxitem.tan 105: realloc 1225513360 size 36120
+vm-clboxitem.tan 105: realloc freed 1225513360 size 36120
+vm-clboxitem.tan 105: realloc 639208192 size 36240
+vm-clboxitem.tan 105: realloc freed 639208192 size 36240
+vm-clboxitem.tan 105: realloc 1225549632 size 36360
+vm-clboxitem.tan 105: realloc freed 1225549632 size 36360
+vm-clboxitem.tan 105: realloc 639244576 size 36480
+vm-clboxitem.tan 105: realloc freed 639244576 size 36480
+vm-clboxitem.tan 105: realloc 1225586144 size 36600
+vm-clboxitem.tan 105: realloc freed 1225586144 size 36600
+vm-clboxitem.tan 105: realloc 639281200 size 36720
+vm-clboxitem.tan 105: realloc freed 639281200 size 36720
+vm-clboxitem.tan 105: realloc 1225622896 size 36840
+vm-clboxitem.tan 105: realloc freed 1225622896 size 36840
+vm-clboxitem.tan 105: realloc 639318064 size 36960
+vm-clboxitem.tan 105: realloc freed 639318064 size 36960
+vm-clboxitem.tan 105: realloc 1225659888 size 37080
+vm-clboxitem.tan 105: realloc freed 1225659888 size 37080
+vm-clboxitem.tan 105: realloc 639355168 size 37200
+vm-clboxitem.tan 105: realloc freed 639355168 size 37200
+vm-clboxitem.tan 105: realloc 1225697120 size 37320
+vm-clboxitem.tan 105: realloc freed 1225697120 size 37320
+vm-clboxitem.tan 105: realloc 639392512 size 37440
+vm-clboxitem.tan 105: realloc freed 639392512 size 37440
+vm-clboxitem.tan 105: realloc 1225734592 size 37560
+vm-clboxitem.tan 105: realloc freed 1225734592 size 37560
+vm-clboxitem.tan 105: realloc 639430096 size 37680
+vm-clboxitem.tan 105: realloc freed 639430096 size 37680
+vm-clboxitem.tan 105: realloc 639467920 size 37800
+vm-clboxitem.tan 105: realloc freed 639467920 size 37800
+vm-clboxitem.tan 105: realloc 1225772304 size 37920
+vm-clboxitem.tan 105: realloc freed 1225772304 size 37920
+vm-clboxitem.tan 105: realloc 639505872 size 38040
+vm-clboxitem.tan 105: realloc freed 639505872 size 38040
+vm-clboxitem.tan 105: realloc 1225810368 size 38160
+vm-clboxitem.tan 105: realloc freed 1225810368 size 38160
+vm-clboxitem.tan 105: realloc 1225848672 size 38280
+vm-clboxitem.tan 105: realloc freed 1225848672 size 38280
+vm-clboxitem.tan 105: realloc 1223033072 size 38400
+vm-clboxitem.tan 105: realloc freed 1223033072 size 38400
+vm-clboxitem.tan 105: realloc 1223071616 size 38520
+vm-clboxitem.tan 105: realloc freed 1223071616 size 38520
+vm-clboxitem.tan 105: realloc 1225887104 size 38640
+vm-clboxitem.tan 105: realloc freed 1225887104 size 38640
+vm-clboxitem.tan 105: realloc 1223110288 size 38760
+vm-clboxitem.tan 105: realloc freed 1223110288 size 38760
+vm-clboxitem.tan 105: realloc 1225925888 size 38880
+vm-clboxitem.tan 105: realloc freed 1225925888 size 38880
+vm-clboxitem.tan 105: realloc 1223149200 size 39000
+vm-clboxitem.tan 105: realloc freed 1223149200 size 39000
+vm-clboxitem.tan 105: realloc 1225964912 size 39120
+vm-clboxitem.tan 105: realloc freed 1225964912 size 39120
+vm-clboxitem.tan 105: realloc 1223188352 size 39240
+vm-clboxitem.tan 105: realloc freed 1223188352 size 39240
+vm-clboxitem.tan 105: realloc 1226004176 size 39360
+vm-clboxitem.tan 105: realloc freed 1226004176 size 39360
+vm-clboxitem.tan 105: realloc 1226043680 size 39480
+vm-clboxitem.tan 105: realloc freed 1226043680 size 39480
+vm-clboxitem.tan 105: realloc 1223227744 size 39600
+vm-clboxitem.tan 105: realloc freed 1223227744 size 39600
+vm-clboxitem.tan 105: realloc 1226083312 size 39720
+vm-clboxitem.tan 105: realloc freed 1226083312 size 39720
+vm-clboxitem.tan 105: realloc 1223267488 size 39840
+vm-clboxitem.tan 105: realloc freed 1223267488 size 39840
+vm-clboxitem.tan 105: realloc 1226123184 size 39960
+vm-clboxitem.tan 105: realloc freed 1226123184 size 39960
+vm-clboxitem.tan 105: realloc 1226163296 size 40080
+vm-clboxitem.tan 105: realloc freed 1226163296 size 40080
+vm-clboxitem.tan 105: realloc 1223307472 size 40200
+vm-clboxitem.tan 105: realloc freed 1223307472 size 40200
+vm-clboxitem.tan 105: realloc 1223347824 size 40320
+vm-clboxitem.tan 105: realloc freed 1223347824 size 40320
+vm-clboxitem.tan 105: realloc 1226203520 size 40440
+vm-clboxitem.tan 105: realloc freed 1226203520 size 40440
+vm-clboxitem.tan 105: realloc 1223388288 size 40560
+vm-clboxitem.tan 105: realloc freed 1223388288 size 40560
+vm-clboxitem.tan 105: realloc 1226244112 size 40680
+vm-clboxitem.tan 105: realloc freed 1226244112 size 40680
+vm-clboxitem.tan 105: realloc 637915168 size 40800
+vm-clboxitem.tan 105: realloc freed 637915168 size 40800
+vm-clboxitem.tan 105: realloc 1223428992 size 40920
+vm-clboxitem.tan 105: realloc freed 1223428992 size 40920
+vm-clboxitem.tan 105: realloc 1226284944 size 41040
+vm-clboxitem.tan 105: realloc freed 1226284944 size 41040
+vm-clboxitem.tan 105: realloc 1223470064 size 41160
+vm-clboxitem.tan 105: realloc freed 1223470064 size 41160
+vm-clboxitem.tan 105: realloc 1226326128 size 41280
+vm-clboxitem.tan 105: realloc freed 1226326128 size 41280
+vm-clboxitem.tan 105: realloc 1226367552 size 41400
+vm-clboxitem.tan 105: realloc freed 1226367552 size 41400
+vm-clboxitem.tan 105: realloc 1223511376 size 41520
+vm-clboxitem.tan 105: realloc freed 1223511376 size 41520
+vm-clboxitem.tan 105: realloc 1223553040 size 41640
+vm-clboxitem.tan 105: realloc freed 1223553040 size 41640
+vm-clboxitem.tan 105: realloc 1226409104 size 41760
+vm-clboxitem.tan 105: realloc freed 1226409104 size 41760
+vm-clboxitem.tan 105: realloc 637956112 size 41880
+vm-clboxitem.tan 105: realloc freed 637956112 size 41880
+vm-clboxitem.tan 105: realloc 1223594832 size 42000
+vm-clboxitem.tan 105: realloc freed 1223594832 size 42000
+vm-clboxitem.tan 105: realloc 1226451008 size 42120
+vm-clboxitem.tan 105: realloc freed 1226451008 size 42120
+vm-clboxitem.tan 105: realloc 1223636976 size 42240
+vm-clboxitem.tan 105: realloc freed 1223636976 size 42240
+vm-clboxitem.tan 105: realloc 1226493280 size 42360
+vm-clboxitem.tan 105: realloc freed 1226493280 size 42360
+vm-clboxitem.tan 105: realloc 1226535792 size 42480
+vm-clboxitem.tan 105: realloc freed 1226535792 size 42480
+vm-clboxitem.tan 105: realloc 1223679360 size 42600
+vm-clboxitem.tan 105: realloc freed 1223679360 size 42600
+vm-clboxitem.tan 105: realloc 1223722112 size 42720
+vm-clboxitem.tan 105: realloc freed 1223722112 size 42720
+vm-clboxitem.tan 105: realloc 637998144 size 42840
+vm-clboxitem.tan 105: realloc freed 637998144 size 42840
+vm-clboxitem.tan 105: realloc 1226578416 size 42960
+vm-clboxitem.tan 105: realloc freed 1226578416 size 42960
+vm-clboxitem.tan 105: realloc 1223764976 size 43080
+vm-clboxitem.tan 105: realloc freed 1223764976 size 43080
+vm-clboxitem.tan 105: realloc 1226621520 size 43200
+vm-clboxitem.tan 105: realloc freed 1226621520 size 43200
+vm-clboxitem.tan 105: realloc 1226664864 size 43320
+vm-clboxitem.tan 105: realloc freed 1226664864 size 43320
+vm-clboxitem.tan 105: realloc 1223808208 size 43440
+vm-clboxitem.tan 105: realloc freed 1223808208 size 43440
+vm-clboxitem.tan 105: realloc 1226708336 size 43560
+vm-clboxitem.tan 105: realloc freed 1226708336 size 43560
+vm-clboxitem.tan 105: realloc 638041136 size 43680
+vm-clboxitem.tan 105: realloc freed 638041136 size 43680
+vm-clboxitem.tan 105: realloc 1223851792 size 43800
+vm-clboxitem.tan 105: realloc freed 1223851792 size 43800
+vm-clboxitem.tan 105: realloc 1223895744 size 43920
+vm-clboxitem.tan 105: realloc freed 1223895744 size 43920
+vm-clboxitem.tan 105: realloc 1226752048 size 44040
+vm-clboxitem.tan 105: realloc freed 1226752048 size 44040
+vm-clboxitem.tan 105: realloc 638084960 size 44160
+vm-clboxitem.tan 105: realloc freed 638084960 size 44160
+vm-clboxitem.tan 105: realloc 1223939808 size 44280
+vm-clboxitem.tan 105: realloc freed 1223939808 size 44280
+vm-clboxitem.tan 105: realloc 1226796240 size 44400
+vm-clboxitem.tan 105: realloc freed 1226796240 size 44400
+vm-clboxitem.tan 105: realloc 1226840784 size 44520
+vm-clboxitem.tan 105: realloc freed 1226840784 size 44520
+vm-clboxitem.tan 105: realloc 1223984240 size 44640
+vm-clboxitem.tan 105: realloc freed 1223984240 size 44640
+vm-clboxitem.tan 105: realloc 1224029024 size 44760
+vm-clboxitem.tan 105: realloc freed 1224029024 size 44760
+vm-clboxitem.tan 105: realloc 638129264 size 44880
+vm-clboxitem.tan 105: realloc freed 638129264 size 44880
+vm-clboxitem.tan 105: realloc 1226885456 size 45000
+vm-clboxitem.tan 105: realloc freed 1226885456 size 45000
+vm-clboxitem.tan 105: realloc 1226930608 size 45120
+vm-clboxitem.tan 105: realloc freed 1226930608 size 45120
+vm-clboxitem.tan 105: realloc 1224073936 size 45240
+vm-clboxitem.tan 105: realloc freed 1224073936 size 45240
+vm-clboxitem.tan 105: realloc 1226975872 size 45360
+vm-clboxitem.tan 105: realloc freed 1226975872 size 45360
+vm-clboxitem.tan 105: realloc 1224119328 size 45480
+vm-clboxitem.tan 105: realloc freed 1224119328 size 45480
+vm-clboxitem.tan 105: realloc 638174288 size 45600
+vm-clboxitem.tan 105: realloc freed 638174288 size 45600
+vm-clboxitem.tan 105: realloc 1224164960 size 45720
+vm-clboxitem.tan 105: realloc freed 1224164960 size 45720
+vm-clboxitem.tan 105: realloc 1227021376 size 45840
+vm-clboxitem.tan 105: realloc freed 1227021376 size 45840
+vm-clboxitem.tan 105: realloc 638220032 size 45960
+vm-clboxitem.tan 105: realloc freed 638220032 size 45960
+vm-clboxitem.tan 105: realloc 1224210832 size 46080
+vm-clboxitem.tan 105: realloc freed 1224210832 size 46080
+vm-clboxitem.tan 105: realloc 1227067360 size 46200
+vm-clboxitem.tan 105: realloc freed 1227067360 size 46200
+vm-clboxitem.tan 105: realloc 1227113712 size 46320
+vm-clboxitem.tan 105: realloc freed 1227113712 size 46320
+vm-clboxitem.tan 105: realloc 1224257056 size 46440
+vm-clboxitem.tan 105: realloc freed 1224257056 size 46440
+vm-clboxitem.tan 105: realloc 1224303648 size 46560
+vm-clboxitem.tan 105: realloc freed 1224303648 size 46560
+vm-clboxitem.tan 105: realloc 638266144 size 46680
+vm-clboxitem.tan 105: realloc freed 638266144 size 46680
+vm-clboxitem.tan 105: realloc 1227160176 size 46800
+vm-clboxitem.tan 105: realloc freed 1227160176 size 46800
+vm-clboxitem.tan 105: realloc 1224350352 size 46920
+vm-clboxitem.tan 105: realloc freed 1224350352 size 46920
+vm-clboxitem.tan 105: realloc 1227207120 size 47040
+vm-clboxitem.tan 105: realloc freed 1227207120 size 47040
+vm-clboxitem.tan 105: realloc 1227254304 size 47160
+vm-clboxitem.tan 105: realloc freed 1227254304 size 47160
+vm-clboxitem.tan 105: realloc 1224397424 size 47280
+vm-clboxitem.tan 105: realloc freed 1224397424 size 47280
+vm-clboxitem.tan 105: realloc 638312976 size 47400
+vm-clboxitem.tan 105: realloc freed 638312976 size 47400
+vm-clboxitem.tan 105: realloc 1224444848 size 47520
+vm-clboxitem.tan 105: realloc freed 1224444848 size 47520
+vm-clboxitem.tan 105: realloc 638360528 size 47640
+vm-clboxitem.tan 105: realloc freed 638360528 size 47640
+vm-clboxitem.tan 105: realloc 1227301616 size 47760
+vm-clboxitem.tan 105: realloc freed 1227301616 size 47760
+vm-clboxitem.tan 105: realloc 1224492512 size 47880
+vm-clboxitem.tan 105: realloc freed 1224492512 size 47880
+vm-clboxitem.tan 105: realloc 1227349520 size 48000
+vm-clboxitem.tan 105: realloc freed 1227349520 size 48000
+vm-clboxitem.tan 105: realloc 1227397664 size 48120
+vm-clboxitem.tan 105: realloc freed 1227397664 size 48120
+vm-clboxitem.tan 105: realloc 638408320 size 48240
+vm-clboxitem.tan 105: realloc freed 638408320 size 48240
+vm-clboxitem.tan 105: realloc 1224540544 size 48360
+vm-clboxitem.tan 105: realloc freed 1224540544 size 48360
+vm-clboxitem.tan 105: realloc 1224589056 size 48480
+vm-clboxitem.tan 105: realloc freed 1224589056 size 48480
+vm-clboxitem.tan 105: realloc 1227445936 size 48600
+vm-clboxitem.tan 105: realloc freed 1227445936 size 48600
+vm-clboxitem.tan 105: realloc 1227494688 size 48720
+vm-clboxitem.tan 105: realloc freed 1227494688 size 48720
+vm-clboxitem.tan 105: realloc 638456704 size 48840
+vm-clboxitem.tan 105: realloc freed 638456704 size 48840
+vm-clboxitem.tan 105: realloc 1224637680 size 48960
+vm-clboxitem.tan 105: realloc freed 1224637680 size 48960
+vm-clboxitem.tan 105: realloc 1224686784 size 49080
+vm-clboxitem.tan 105: realloc freed 1224686784 size 49080
+vm-clboxitem.tan 105: realloc 638505696 size 49200
+vm-clboxitem.tan 105: realloc freed 638505696 size 49200
+vm-clboxitem.tan 105: realloc 1227543552 size 49320
+vm-clboxitem.tan 105: realloc freed 1227543552 size 49320
+vm-clboxitem.tan 105: realloc 1227593024 size 49440
+vm-clboxitem.tan 105: realloc freed 1227593024 size 49440
+vm-clboxitem.tan 105: realloc 1224736016 size 49560
+vm-clboxitem.tan 105: realloc freed 1224736016 size 49560
+vm-clboxitem.tan 105: realloc 1227642608 size 49680
+vm-clboxitem.tan 105: realloc freed 1227642608 size 49680
+vm-clboxitem.tan 105: realloc 638555040 size 49800
+vm-clboxitem.tan 105: realloc freed 638555040 size 49800
+vm-clboxitem.tan 105: realloc 1224785728 size 49920
+vm-clboxitem.tan 105: realloc freed 1224785728 size 49920
+vm-clboxitem.tan 105: realloc 638604992 size 50040
+vm-clboxitem.tan 105: realloc freed 638604992 size 50040
+vm-clboxitem.tan 105: realloc 1224835792 size 50160
+vm-clboxitem.tan 105: realloc freed 1224835792 size 50160
+vm-clboxitem.tan 105: realloc 1227692432 size 50280
+vm-clboxitem.tan 105: realloc freed 1227692432 size 50280
+vm-clboxitem.tan 105: realloc 1227742864 size 50400
+vm-clboxitem.tan 105: realloc freed 1227742864 size 50400
+vm-clboxitem.tan 105: realloc 1224886096 size 50520
+vm-clboxitem.tan 105: realloc freed 1224886096 size 50520
+vm-clboxitem.tan 105: realloc 638655184 size 50640
+vm-clboxitem.tan 105: realloc freed 638655184 size 50640
+vm-clboxitem.tan 105: realloc 1224936768 size 50760
+vm-clboxitem.tan 105: realloc freed 1224936768 size 50760
+vm-clboxitem.tan 105: realloc 638705968 size 50880
+vm-clboxitem.tan 105: realloc freed 638705968 size 50880
+vm-clboxitem.tan 105: realloc 1227793408 size 51000
+vm-clboxitem.tan 105: realloc freed 1227793408 size 51000
+vm-clboxitem.tan 105: realloc 1227844560 size 51120
+vm-clboxitem.tan 105: realloc freed 1227844560 size 51120
+vm-clboxitem.tan 105: realloc 1224987680 size 51240
+vm-clboxitem.tan 105: realloc freed 1224987680 size 51240
+vm-clboxitem.tan 105: realloc 638756992 size 51360
+vm-clboxitem.tan 105: realloc freed 638756992 size 51360
+vm-clboxitem.tan 105: realloc 1225039072 size 51480
+vm-clboxitem.tan 105: realloc freed 1225039072 size 51480
+vm-clboxitem.tan 105: realloc 1227895824 size 51600
+vm-clboxitem.tan 105: realloc freed 1227895824 size 51600
+vm-clboxitem.tan 105: realloc 1227947568 size 51720
+vm-clboxitem.tan 105: realloc freed 1227947568 size 51720
+vm-clboxitem.tan 105: realloc 1225090704 size 51840
+vm-clboxitem.tan 105: realloc freed 1225090704 size 51840
+vm-clboxitem.tan 105: realloc 1225142688 size 51960
+vm-clboxitem.tan 105: realloc freed 1225142688 size 51960
+vm-clboxitem.tan 105: realloc 638808496 size 52080
+vm-clboxitem.tan 105: realloc freed 638808496 size 52080
+vm-clboxitem.tan 105: realloc 638860720 size 52200
+vm-clboxitem.tan 105: realloc freed 638860720 size 52200
+vm-clboxitem.tan 105: realloc 1227999440 size 52320
+vm-clboxitem.tan 105: realloc freed 1227999440 size 52320
+vm-clboxitem.tan 105: realloc 1228051904 size 52440
+vm-clboxitem.tan 105: realloc freed 1228051904 size 52440
+vm-clboxitem.tan 105: realloc 1225194800 size 52560
+vm-clboxitem.tan 105: realloc freed 1225194800 size 52560
+vm-clboxitem.tan 105: realloc 638913072 size 52680
+vm-clboxitem.tan 105: realloc freed 638913072 size 52680
+vm-clboxitem.tan 105: realloc 1228104496 size 52800
+vm-clboxitem.tan 105: realloc freed 1228104496 size 52800
+vm-clboxitem.tan 105: realloc 638965904 size 52920
+vm-clboxitem.tan 105: realloc freed 638965904 size 52920
+vm-clboxitem.tan 105: realloc 1225247504 size 53040
+vm-clboxitem.tan 105: realloc freed 1225247504 size 53040
+vm-clboxitem.tan 105: realloc 1228157440 size 53160
+vm-clboxitem.tan 105: realloc freed 1228157440 size 53160
+vm-clboxitem.tan 105: realloc 1225300688 size 53280
+vm-clboxitem.tan 105: realloc freed 1225300688 size 53280
+vm-clboxitem.tan 105: realloc 639018976 size 53400
+vm-clboxitem.tan 105: realloc freed 639018976 size 53400
+vm-clboxitem.tan 105: realloc 1228210752 size 53520
+vm-clboxitem.tan 105: realloc freed 1228210752 size 53520
+vm-clboxitem.tan 105: realloc 1228264416 size 53640
+vm-clboxitem.tan 105: realloc freed 1228264416 size 53640
+vm-clboxitem.tan 105: realloc 639072528 size 53760
+vm-clboxitem.tan 105: realloc freed 639072528 size 53760
+vm-clboxitem.tan 105: realloc 1225354112 size 53880
+vm-clboxitem.tan 105: realloc freed 1225354112 size 53880
+vm-clboxitem.tan 105: realloc 1225408144 size 54000
+vm-clboxitem.tan 105: realloc freed 1225408144 size 54000
+vm-clboxitem.tan 105: realloc 1228318208 size 54120
+vm-clboxitem.tan 105: realloc freed 1228318208 size 54120
+vm-clboxitem.tan 105: realloc 639126432 size 54240
+vm-clboxitem.tan 105: realloc freed 639126432 size 54240
+vm-clboxitem.tan 105: realloc 1225462288 size 54360
+vm-clboxitem.tan 105: realloc freed 1225462288 size 54360
+vm-clboxitem.tan 105: realloc 639180816 size 54480
+vm-clboxitem.tan 105: realloc freed 639180816 size 54480
+vm-clboxitem.tan 105: realloc 1225516800 size 54600
+vm-clboxitem.tan 105: realloc freed 1225516800 size 54600
+vm-clboxitem.tan 105: realloc 1228372480 size 54720
+vm-clboxitem.tan 105: realloc freed 1228372480 size 54720
+vm-clboxitem.tan 105: realloc 1228427344 size 54840
+vm-clboxitem.tan 105: realloc freed 1228427344 size 54840
+vm-clboxitem.tan 105: realloc 639235440 size 54960
+vm-clboxitem.tan 105: realloc freed 639235440 size 54960
+vm-clboxitem.tan 105: realloc 1225571552 size 55080
+vm-clboxitem.tan 105: realloc freed 1225571552 size 55080
+vm-clboxitem.tan 105: realloc 639290544 size 55200
+vm-clboxitem.tan 105: realloc freed 639290544 size 55200
+vm-clboxitem.tan 105: realloc 1225626784 size 55320
+vm-clboxitem.tan 105: realloc freed 1225626784 size 55320
+vm-clboxitem.tan 105: realloc 1228482336 size 55440
+vm-clboxitem.tan 105: realloc freed 1228482336 size 55440
+vm-clboxitem.tan 105: realloc 1228537920 size 55560
+vm-clboxitem.tan 105: realloc freed 1228537920 size 55560
+vm-clboxitem.tan 105: realloc 639345888 size 55680
+vm-clboxitem.tan 105: realloc freed 639345888 size 55680
+vm-clboxitem.tan 105: realloc 1225682256 size 55800
+vm-clboxitem.tan 105: realloc freed 1225682256 size 55800
+vm-clboxitem.tan 105: realloc 639401712 size 55920
+vm-clboxitem.tan 105: realloc freed 639401712 size 55920
+vm-clboxitem.tan 105: realloc 1228593632 size 56040
+vm-clboxitem.tan 105: realloc freed 1228593632 size 56040
+vm-clboxitem.tan 105: realloc 1225738208 size 56160
+vm-clboxitem.tan 105: realloc freed 1225738208 size 56160
+vm-clboxitem.tan 105: realloc 639457776 size 56280
+vm-clboxitem.tan 105: realloc freed 639457776 size 56280
+vm-clboxitem.tan 105: realloc 1228649824 size 56400
+vm-clboxitem.tan 105: realloc freed 1228649824 size 56400
+vm-clboxitem.tan 105: realloc 1225794512 size 56520
+vm-clboxitem.tan 105: realloc freed 1225794512 size 56520
+vm-clboxitem.tan 105: realloc 1228706368 size 56640
+vm-clboxitem.tan 105: realloc freed 1228706368 size 56640
+vm-clboxitem.tan 105: realloc 1223033072 size 56760
+vm-clboxitem.tan 105: realloc freed 1223033072 size 56760
+vm-clboxitem.tan 105: realloc 1225851184 size 56880
+vm-clboxitem.tan 105: realloc freed 1225851184 size 56880
+vm-clboxitem.tan 105: realloc 1223089984 size 57000
+vm-clboxitem.tan 105: realloc freed 1223089984 size 57000
+vm-clboxitem.tan 105: realloc 1228763152 size 57120
+vm-clboxitem.tan 105: realloc freed 1228763152 size 57120
+vm-clboxitem.tan 105: realloc 1228820416 size 57240
+vm-clboxitem.tan 105: realloc freed 1228820416 size 57240
+vm-clboxitem.tan 105: realloc 1225908208 size 57360
+vm-clboxitem.tan 105: realloc freed 1225908208 size 57360
+vm-clboxitem.tan 105: realloc 1223147136 size 57480
+vm-clboxitem.tan 105: realloc freed 1223147136 size 57480
+vm-clboxitem.tan 105: realloc 1225965712 size 57600
+vm-clboxitem.tan 105: realloc freed 1225965712 size 57600
+vm-clboxitem.tan 105: realloc 1226023456 size 57720
+vm-clboxitem.tan 105: realloc freed 1226023456 size 57720
+vm-clboxitem.tan 105: realloc 1223204768 size 57840
+vm-clboxitem.tan 105: realloc freed 1223204768 size 57840
+vm-clboxitem.tan 105: realloc 1228877808 size 57960
+vm-clboxitem.tan 105: realloc freed 1228877808 size 57960
+vm-clboxitem.tan 105: realloc 1228935920 size 58080
+vm-clboxitem.tan 105: realloc freed 1228935920 size 58080
+vm-clboxitem.tan 105: realloc 1226081328 size 58200
+vm-clboxitem.tan 105: realloc freed 1226081328 size 58200
+vm-clboxitem.tan 105: realloc 1226139680 size 58320
+vm-clboxitem.tan 105: realloc freed 1226139680 size 58320
+vm-clboxitem.tan 105: realloc 1223262752 size 58440
+vm-clboxitem.tan 105: realloc freed 1223262752 size 58440
+vm-clboxitem.tan 105: realloc 1223321344 size 58560
+vm-clboxitem.tan 105: realloc freed 1223321344 size 58560
+vm-clboxitem.tan 105: realloc 1228994144 size 58680
+vm-clboxitem.tan 105: realloc freed 1228994144 size 58680
+vm-clboxitem.tan 105: realloc 1229052976 size 58800
+vm-clboxitem.tan 105: realloc freed 1229052976 size 58800
+vm-clboxitem.tan 105: realloc 1226198144 size 58920
+vm-clboxitem.tan 105: realloc freed 1226198144 size 58920
+vm-clboxitem.tan 105: realloc 1229111920 size 59040
+vm-clboxitem.tan 105: realloc freed 1229111920 size 59040
+vm-clboxitem.tan 105: realloc 1223380048 size 59160
+vm-clboxitem.tan 105: realloc freed 1223380048 size 59160
+vm-clboxitem.tan 105: realloc 1226257216 size 59280
+vm-clboxitem.tan 105: realloc freed 1226257216 size 59280
+vm-clboxitem.tan 105: realloc 1223439360 size 59400
+vm-clboxitem.tan 105: realloc freed 1223439360 size 59400
+vm-clboxitem.tan 105: realloc 1229171104 size 59520
+vm-clboxitem.tan 105: realloc freed 1229171104 size 59520
+vm-clboxitem.tan 105: realloc 1226316640 size 59640
+vm-clboxitem.tan 105: realloc freed 1226316640 size 59640
+vm-clboxitem.tan 105: realloc 1229230768 size 59760
+vm-clboxitem.tan 105: realloc freed 1229230768 size 59760
+vm-clboxitem.tan 105: realloc 1223498912 size 59880
+vm-clboxitem.tan 105: realloc freed 1223498912 size 59880
+vm-clboxitem.tan 105: realloc 1226376432 size 60000
+vm-clboxitem.tan 105: realloc freed 1226376432 size 60000
+vm-clboxitem.tan 105: realloc 637915168 size 60120
+vm-clboxitem.tan 105: realloc freed 637915168 size 60120
+vm-clboxitem.tan 105: realloc 1223558944 size 60240
+vm-clboxitem.tan 105: realloc freed 1223558944 size 60240
+vm-clboxitem.tan 105: realloc 1229290672 size 60360
+vm-clboxitem.tan 105: realloc freed 1229290672 size 60360
+vm-clboxitem.tan 105: realloc 1229351184 size 60480
+vm-clboxitem.tan 105: realloc freed 1229351184 size 60480
+vm-clboxitem.tan 105: realloc 1226436576 size 60600
+vm-clboxitem.tan 105: realloc freed 1226436576 size 60600
+vm-clboxitem.tan 105: realloc 1226497328 size 60720
+vm-clboxitem.tan 105: realloc freed 1226497328 size 60720
+vm-clboxitem.tan 105: realloc 1223619328 size 60840
+vm-clboxitem.tan 105: realloc freed 1223619328 size 60840
+vm-clboxitem.tan 105: realloc 1223680320 size 60960
+vm-clboxitem.tan 105: realloc freed 1223680320 size 60960
+vm-clboxitem.tan 105: realloc 637975440 size 61080
+vm-clboxitem.tan 105: realloc freed 637975440 size 61080
+vm-clboxitem.tan 105: realloc 1226558192 size 61200
+vm-clboxitem.tan 105: realloc freed 1226558192 size 61200
+vm-clboxitem.tan 105: realloc 1223741424 size 61320
+vm-clboxitem.tan 105: realloc freed 1223741424 size 61320
+vm-clboxitem.tan 105: realloc 1229411808 size 61440
+vm-clboxitem.tan 105: realloc freed 1229411808 size 61440
+vm-clboxitem.tan 105: realloc 1226619536 size 61560
+vm-clboxitem.tan 105: realloc freed 1226619536 size 61560
+vm-clboxitem.tan 105: realloc 1229473392 size 61680
+vm-clboxitem.tan 105: realloc freed 1229473392 size 61680
+vm-clboxitem.tan 105: realloc 1226681248 size 61800
+vm-clboxitem.tan 105: realloc freed 1226681248 size 61800
+vm-clboxitem.tan 105: realloc 1229535216 size 61920
+vm-clboxitem.tan 105: realloc freed 1229535216 size 61920
+vm-clboxitem.tan 105: realloc 1223802896 size 62040
+vm-clboxitem.tan 105: realloc freed 1223802896 size 62040
+vm-clboxitem.tan 105: realloc 1223865088 size 62160
+vm-clboxitem.tan 105: realloc freed 1223865088 size 62160
+vm-clboxitem.tan 105: realloc 1229597280 size 62280
+vm-clboxitem.tan 105: realloc freed 1229597280 size 62280
+vm-clboxitem.tan 105: realloc 638036672 size 62400
+vm-clboxitem.tan 105: realloc freed 638036672 size 62400
+vm-clboxitem.tan 105: realloc 1229659712 size 62520
+vm-clboxitem.tan 105: realloc freed 1229659712 size 62520
+vm-clboxitem.tan 105: realloc 1226743200 size 62640
+vm-clboxitem.tan 105: realloc freed 1226743200 size 62640
+vm-clboxitem.tan 105: realloc 1226805984 size 62760
+vm-clboxitem.tan 105: realloc freed 1226805984 size 62760
+vm-clboxitem.tan 105: realloc 1223927392 size 62880
+vm-clboxitem.tan 105: realloc freed 1223927392 size 62880
+vm-clboxitem.tan 105: realloc 1223990416 size 63000
+vm-clboxitem.tan 105: realloc freed 1223990416 size 63000
+vm-clboxitem.tan 105: realloc 638099216 size 63120
+vm-clboxitem.tan 105: realloc freed 638099216 size 63120
+vm-clboxitem.tan 105: realloc 1229722384 size 63240
+vm-clboxitem.tan 105: realloc freed 1229722384 size 63240
+vm-clboxitem.tan 105: realloc 1226868896 size 63360
+vm-clboxitem.tan 105: realloc freed 1226868896 size 63360
+vm-clboxitem.tan 105: realloc 1224053568 size 63480
+vm-clboxitem.tan 105: realloc freed 1224053568 size 63480
+vm-clboxitem.tan 105: realloc 1226932400 size 63600
+vm-clboxitem.tan 105: realloc freed 1226932400 size 63600
+vm-clboxitem.tan 105: realloc 1229785776 size 63720
+vm-clboxitem.tan 105: realloc freed 1229785776 size 63720
+vm-clboxitem.tan 105: realloc 1229849648 size 63840
+vm-clboxitem.tan 105: realloc freed 1229849648 size 63840
+vm-clboxitem.tan 105: realloc 1224117200 size 63960
+vm-clboxitem.tan 105: realloc freed 1224117200 size 63960
+vm-clboxitem.tan 105: realloc 1226996144 size 64080
+vm-clboxitem.tan 105: realloc freed 1226996144 size 64080
+vm-clboxitem.tan 105: realloc 638162480 size 64200
+vm-clboxitem.tan 105: realloc freed 638162480 size 64200
+vm-clboxitem.tan 105: realloc 1224181312 size 64320
+vm-clboxitem.tan 105: realloc freed 1224181312 size 64320
+vm-clboxitem.tan 105: realloc 1229913632 size 64440
+vm-clboxitem.tan 105: realloc freed 1229913632 size 64440
+vm-clboxitem.tan 105: realloc 1227060368 size 64560
+vm-clboxitem.tan 105: realloc freed 1227060368 size 64560
+vm-clboxitem.tan 105: realloc 1229978224 size 64680
+vm-clboxitem.tan 105: realloc freed 1229978224 size 64680
+vm-clboxitem.tan 105: realloc 1224245776 size 64800
+vm-clboxitem.tan 105: realloc freed 1224245776 size 64800
+vm-clboxitem.tan 105: realloc 638226832 size 64920
+vm-clboxitem.tan 105: realloc freed 638226832 size 64920
+vm-clboxitem.tan 105: realloc 1227125072 size 65040
+vm-clboxitem.tan 105: realloc freed 1227125072 size 65040
+vm-clboxitem.tan 105: realloc 1224310720 size 65160
+vm-clboxitem.tan 105: realloc freed 1224310720 size 65160
+vm-clboxitem.tan 105: realloc 1230043056 size 65280
+vm-clboxitem.tan 105: realloc freed 1230043056 size 65280
+vm-clboxitem.tan 105: realloc 1227190256 size 65400
+vm-clboxitem.tan 105: realloc freed 1227190256 size 65400
+vm-clboxitem.tan 105: realloc 239767552 size 65520
+vm-clboxitem.tan 105: realloc freed 239767552 size 65520
+vm-clboxitem.tan 105: realloc 239841168 size 65640
+vm-clboxitem.tan 105: realloc freed 239841168 size 65640
+vm-clboxitem.tan 105: realloc 239914768 size 65760
+vm-clboxitem.tan 105: realloc freed 239914768 size 65760
+vm-clboxitem.tan 105: realloc 239988384 size 65880
+vm-clboxitem.tan 105: realloc freed 239988384 size 65880
+vm-clboxitem.tan 105: realloc 240061984 size 66000
+vm-clboxitem.tan 105: realloc freed 240061984 size 66000
+vm-clboxitem.tan 105: realloc 240135600 size 66120
+vm-clboxitem.tan 105: realloc freed 240135600 size 66120
+vm-clboxitem.tan 105: realloc 240209200 size 66240
+vm-clboxitem.tan 105: realloc freed 240209200 size 66240
+vm-clboxitem.tan 105: realloc 240282816 size 66360
+vm-clboxitem.tan 105: realloc freed 240282816 size 66360
+vm-clboxitem.tan 105: realloc 240356416 size 66480
+vm-clboxitem.tan 105: realloc freed 240356416 size 66480
+vm-clboxitem.tan 105: realloc 240430032 size 66600
+vm-clboxitem.tan 105: realloc freed 240430032 size 66600
+vm-clboxitem.tan 105: realloc 240503632 size 66720
+vm-clboxitem.tan 105: realloc freed 240503632 size 66720
+vm-clboxitem.tan 105: realloc 240577248 size 66840
+vm-clboxitem.tan 105: realloc freed 240577248 size 66840
+vm-clboxitem.tan 105: realloc 240650848 size 66960
+vm-clboxitem.tan 105: realloc freed 240650848 size 66960
+vm-clboxitem.tan 105: realloc 240724464 size 67080
+vm-clboxitem.tan 105: realloc freed 240724464 size 67080
+vm-clboxitem.tan 105: realloc 240798064 size 67200
+vm-clboxitem.tan 105: realloc freed 240798064 size 67200
+vm-clboxitem.tan 105: realloc 240871680 size 67320
+vm-clboxitem.tan 105: realloc freed 240871680 size 67320
+vm-clboxitem.tan 105: realloc 240945280 size 67440
+vm-clboxitem.tan 105: realloc freed 240945280 size 67440
+vm-clboxitem.tan 105: realloc 241018896 size 67560
+vm-clboxitem.tan 105: realloc freed 241018896 size 67560
+vm-clboxitem.tan 105: realloc 241092496 size 67680
+vm-clboxitem.tan 105: realloc freed 241092496 size 67680
+vm-clboxitem.tan 105: realloc 241166112 size 67800
+vm-clboxitem.tan 105: realloc freed 241166112 size 67800
+vm-clboxitem.tan 105: realloc 241239712 size 67920
+vm-clboxitem.tan 105: realloc freed 241239712 size 67920
+vm-clboxitem.tan 105: realloc 241313328 size 68040
+vm-clboxitem.tan 105: realloc freed 241313328 size 68040
+vm-clboxitem.tan 105: realloc 241386928 size 68160
+vm-clboxitem.tan 105: realloc freed 241386928 size 68160
+vm-clboxitem.tan 105: realloc 241460544 size 68280
+vm-clboxitem.tan 105: realloc freed 241460544 size 68280
+vm-clboxitem.tan 105: realloc 241534144 size 68400
+vm-clboxitem.tan 105: realloc freed 241534144 size 68400
+vm-clboxitem.tan 105: realloc 241607760 size 68520
+vm-clboxitem.tan 105: realloc freed 241607760 size 68520
+vm-clboxitem.tan 105: realloc 241681360 size 68640
+vm-clboxitem.tan 105: realloc freed 241681360 size 68640
+vm-clboxitem.tan 105: realloc 241754976 size 68760
+vm-clboxitem.tan 105: realloc freed 241754976 size 68760
+vm-clboxitem.tan 105: realloc 241828576 size 68880
+vm-clboxitem.tan 105: realloc freed 241828576 size 68880
+vm-clboxitem.tan 105: realloc 241902192 size 69000
+vm-clboxitem.tan 105: realloc freed 241902192 size 69000
+vm-clboxitem.tan 105: realloc 241975792 size 69120
+vm-clboxitem.tan 105: realloc freed 241975792 size 69120
+vm-clboxitem.tan 105: realloc 242049408 size 69240
+vm-clboxitem.tan 105: realloc freed 242049408 size 69240
+vm-clboxitem.tan 105: realloc 242123008 size 69360
+vm-clboxitem.tan 105: realloc freed 242123008 size 69360
+vm-clboxitem.tan 105: realloc 242196624 size 69480
+vm-clboxitem.tan 105: realloc freed 242196624 size 69480
+vm-clboxitem.tan 105: realloc 242274320 size 69600
+vm-clboxitem.tan 105: realloc freed 242274320 size 69600
+vm-clboxitem.tan 105: realloc 242352032 size 69720
+vm-clboxitem.tan 105: realloc freed 242352032 size 69720
+vm-clboxitem.tan 105: realloc 242429728 size 69840
+vm-clboxitem.tan 105: realloc freed 242429728 size 69840
+vm-clboxitem.tan 105: realloc 242507440 size 69960
+vm-clboxitem.tan 105: realloc freed 242507440 size 69960
+vm-clboxitem.tan 105: realloc 242585136 size 70080
+vm-clboxitem.tan 105: realloc freed 242585136 size 70080
+vm-clboxitem.tan 105: realloc 242662848 size 70200
+vm-clboxitem.tan 105: realloc freed 242662848 size 70200
+vm-clboxitem.tan 105: realloc 242740544 size 70320
+vm-clboxitem.tan 105: realloc freed 242740544 size 70320
+vm-clboxitem.tan 105: realloc 242818256 size 70440
+vm-clboxitem.tan 105: realloc freed 242818256 size 70440
+vm-clboxitem.tan 105: realloc 242895952 size 70560
+vm-clboxitem.tan 105: realloc freed 242895952 size 70560
+vm-clboxitem.tan 105: realloc 242973664 size 70680
+vm-clboxitem.tan 105: realloc freed 242973664 size 70680
+vm-clboxitem.tan 105: realloc 243051360 size 70800
+vm-clboxitem.tan 105: realloc freed 243051360 size 70800
+vm-clboxitem.tan 105: realloc 243129072 size 70920
+vm-clboxitem.tan 105: realloc freed 243129072 size 70920
+vm-clboxitem.tan 105: realloc 243206768 size 71040
+vm-clboxitem.tan 105: realloc freed 243206768 size 71040
+vm-clboxitem.tan 105: realloc 243284480 size 71160
+vm-clboxitem.tan 105: realloc freed 243284480 size 71160
+vm-clboxitem.tan 105: realloc 243362176 size 71280
+vm-clboxitem.tan 105: realloc freed 243362176 size 71280
+vm-clboxitem.tan 105: realloc 243439888 size 71400
+vm-clboxitem.tan 105: realloc freed 243439888 size 71400
+vm-clboxitem.tan 105: realloc 243517584 size 71520
+vm-clboxitem.tan 105: realloc freed 243517584 size 71520
+vm-clboxitem.tan 105: realloc 243595296 size 71640
+vm-clboxitem.tan 105: realloc freed 243595296 size 71640
+vm-clboxitem.tan 105: realloc 243672992 size 71760
+vm-clboxitem.tan 105: realloc freed 243672992 size 71760
+vm-clboxitem.tan 105: realloc 243750704 size 71880
+vm-clboxitem.tan 105: realloc freed 243750704 size 71880
+vm-clboxitem.tan 105: realloc 243828400 size 72000
+vm-clboxitem.tan 105: realloc freed 243828400 size 72000
+vm-clboxitem.tan 105: realloc 243906112 size 72120
+vm-clboxitem.tan 105: realloc freed 243906112 size 72120
+vm-clboxitem.tan 105: realloc 243983808 size 72240
+vm-clboxitem.tan 105: realloc freed 243983808 size 72240
+vm-clboxitem.tan 105: realloc 244061520 size 72360
+vm-clboxitem.tan 105: realloc freed 244061520 size 72360
+vm-clboxitem.tan 105: realloc 244139216 size 72480
+vm-clboxitem.tan 105: realloc freed 244139216 size 72480
+vm-clboxitem.tan 105: realloc 244216928 size 72600
+vm-clboxitem.tan 105: realloc freed 244216928 size 72600
+vm-clboxitem.tan 105: realloc 244294624 size 72720
+vm-clboxitem.tan 105: realloc freed 244294624 size 72720
+vm-clboxitem.tan 105: realloc 244372336 size 72840
+vm-clboxitem.tan 105: realloc freed 244372336 size 72840
+vm-clboxitem.tan 105: realloc 244450032 size 72960
+vm-clboxitem.tan 105: realloc freed 244450032 size 72960
+vm-clboxitem.tan 105: realloc 244527744 size 73080
+vm-clboxitem.tan 105: realloc freed 244527744 size 73080
+vm-clboxitem.tan 105: realloc 244605440 size 73200
+vm-clboxitem.tan 105: realloc freed 244605440 size 73200
+vm-clboxitem.tan 105: realloc 244683152 size 73320
+vm-clboxitem.tan 105: realloc freed 244683152 size 73320
+vm-clboxitem.tan 105: realloc 244760848 size 73440
+vm-clboxitem.tan 105: realloc freed 244760848 size 73440
+vm-clboxitem.tan 105: realloc 244838560 size 73560
+vm-clboxitem.tan 105: realloc freed 244838560 size 73560
+vm-clboxitem.tan 105: realloc 244920352 size 73680
+vm-clboxitem.tan 105: realloc freed 244920352 size 73680
+vm-clboxitem.tan 105: realloc 245002160 size 73800
+vm-clboxitem.tan 105: realloc freed 245002160 size 73800
+vm-clboxitem.tan 105: realloc 245083952 size 73920
+vm-clboxitem.tan 105: realloc freed 245083952 size 73920
+vm-clboxitem.tan 105: realloc 245165760 size 74040
+vm-clboxitem.tan 105: realloc freed 245165760 size 74040
+vm-clboxitem.tan 105: realloc 245247552 size 74160
+vm-clboxitem.tan 105: realloc freed 245247552 size 74160
+vm-clboxitem.tan 105: realloc 245329360 size 74280
+vm-clboxitem.tan 105: realloc freed 245329360 size 74280
+vm-clboxitem.tan 105: realloc 245411152 size 74400
+vm-clboxitem.tan 105: realloc freed 245411152 size 74400
+vm-clboxitem.tan 105: realloc 245492960 size 74520
+vm-clboxitem.tan 105: realloc freed 245492960 size 74520
+vm-clboxitem.tan 105: realloc 245574752 size 74640
+vm-clboxitem.tan 105: realloc freed 245574752 size 74640
+vm-clboxitem.tan 105: realloc 245656560 size 74760
+vm-clboxitem.tan 105: realloc freed 245656560 size 74760
+vm-clboxitem.tan 105: realloc 245738352 size 74880
+vm-clboxitem.tan 105: realloc freed 245738352 size 74880
+vm-clboxitem.tan 105: realloc 245820160 size 75000
+vm-clboxitem.tan 105: realloc freed 245820160 size 75000
+vm-clboxitem.tan 105: realloc 245901952 size 75120
+vm-clboxitem.tan 105: realloc freed 245901952 size 75120
+vm-clboxitem.tan 105: realloc 245983760 size 75240
+vm-clboxitem.tan 105: realloc freed 245983760 size 75240
+vm-clboxitem.tan 105: realloc 246065552 size 75360
+vm-clboxitem.tan 105: realloc freed 246065552 size 75360
+vm-clboxitem.tan 105: realloc 246147360 size 75480
+vm-clboxitem.tan 105: realloc freed 246147360 size 75480
+vm-clboxitem.tan 105: realloc 246229152 size 75600
+vm-clboxitem.tan 105: realloc freed 246229152 size 75600
+vm-clboxitem.tan 105: realloc 246310960 size 75720
+vm-clboxitem.tan 105: realloc freed 246310960 size 75720
+vm-clboxitem.tan 105: realloc 246392752 size 75840
+vm-clboxitem.tan 105: realloc freed 246392752 size 75840
+vm-clboxitem.tan 105: realloc 246474560 size 75960
+vm-clboxitem.tan 105: realloc freed 246474560 size 75960
+vm-clboxitem.tan 105: realloc 246556352 size 76080
+vm-clboxitem.tan 105: realloc freed 246556352 size 76080
+vm-clboxitem.tan 105: realloc 246638160 size 76200
+vm-clboxitem.tan 105: realloc freed 246638160 size 76200
+vm-clboxitem.tan 105: realloc 246719952 size 76320
+vm-clboxitem.tan 105: realloc freed 246719952 size 76320
+vm-clboxitem.tan 105: realloc 246801760 size 76440
+vm-clboxitem.tan 105: realloc freed 246801760 size 76440
+vm-clboxitem.tan 105: realloc 246883552 size 76560
+vm-clboxitem.tan 105: realloc freed 246883552 size 76560
+vm-clboxitem.tan 105: realloc 246965360 size 76680
+vm-clboxitem.tan 105: realloc freed 246965360 size 76680
+vm-clboxitem.tan 105: realloc 247047152 size 76800
+vm-clboxitem.tan 105: realloc freed 247047152 size 76800
+vm-clboxitem.tan 105: realloc 247128960 size 76920
+vm-misc.tan 396: realloc freed 637670048 size 4
+vm-misc.tan 396: realloc 637877968 size 25612
+vm-misc.tan 392: calloc 637685296 size 44 (11 x 4)
+vm-ctbl2.tan 178: free 637852176 size 25612
+vm-clboxitem.tan 87: free 247128960 size 76920
+vm-clboxitem.tan 107: calloc 636234976 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 636234976 size 120
+vm-clboxitem.tan 105: realloc 637661840 size 240
+vm-misc.tan 396: realloc freed 637877968 size 25612
+vm-misc.tan 396: realloc 637704688 size 44
+vm-gantt.tan 5927: calloc 637903728 size 1776 (444 x 4)
+vm-misc.tan 392: calloc 637829344 size 132 (33 x 4)
+vm-ctbl2.tan 178: free 637685296 size 44
+vm-clboxitem.tan 87: free 637661840 size 240
+vm-clboxitem.tan 107: calloc 636510224 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 636510224 size 120
+vm-clboxitem.tan 105: realloc 637661456 size 240
+vm-clboxitem.tan 105: realloc freed 637661456 size 240
+vm-clboxitem.tan 105: realloc 637785392 size 360
+vm-clboxitem.tan 105: realloc freed 637785392 size 360
+vm-clboxitem.tan 105: realloc 637672112 size 480
+vm-misc.tan 396: realloc freed 637704688 size 44
+vm-misc.tan 396: realloc 637801776 size 132
+vm-gantt.tan 5925: realloc freed 637903728 size 1776
+vm-gantt.tan 5925: realloc 637905680 size 4584
+vm-misc.tan 392: calloc 637734112 size 44 (11 x 4)
+vm-ctbl2.tan 178: free 637829344 size 132
+vm-clboxitem.tan 87: free 637672112 size 480
+vm-clboxitem.tan 107: calloc 637756720 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 637756720 size 120
+vm-clboxitem.tan 105: realloc 637661456 size 240
+vm-misc.tan 396: realloc freed 637801776 size 132
+vm-misc.tan 396: realloc 637704688 size 44
+vm-gantt.tan 5925: realloc freed 637905680 size 4584
+vm-gantt.tan 5925: realloc 637763520 size 1776
+vm-misc.tan 392: calloc 637685312 size 132 (33 x 4)
+vm-ctbl2.tan 178: free 637734112 size 44
+vm-clboxitem.tan 87: free 637661456 size 240
+vm-clboxitem.tan 107: calloc 637753040 size 120 (10 x 12)
+vm-clboxitem.tan 105: realloc freed 637753040 size 120
+vm-clboxitem.tan 105: realloc 637661840 size 240
+vm-clboxitem.tan 105: realloc freed 637661840 size 240
+vm-clboxitem.tan 105: realloc 637785392 size 360
+vm-clboxitem.tan 105: realloc freed 637785392 size 360
+vm-clboxitem.tan 105: realloc 637811200 size 480
+vm-misc.tan 396: realloc freed 637704688 size 44
+vm-misc.tan 396: realloc 637801776 size 132
+vm-gantt.tan 5925: realloc freed 637763520 size 1776
+vm-gantt.tan 5925: realloc 637875040 size 4584
+vm-btn.tan 2566: free 337906576 size 24
+vm-otext.tan 174: free 636281568 size 64
+vm-btn.tan 2613: free 636925600 size 66
+vm-btn.tan 2566: free 636594512 size 72
+vm-btn.tan 2566: free 637541328 size 48
+vm-btn.tan 2613: free 636359104 size 54
+vm-btn.tan 2566: free 637574176 size 72
+vm-otext.tan 174: free 637722784 size 64
+vm-ctbl.tan 400: free 637393840 size 1088
+vm-ctbl.tan 382: free 637545728 size 44
+vm-csym.tan 252: free 636414832 size 12
+vm-csym.tan 251: free 637473056 size 4
+vm-csym.tan 252: free 637546208 size 46
+vm-csym.tan 251: free 637714000 size 4
+vm-csym.tan 252: free 636358000 size 14
+vm-csym.tan 251: free 636347696 size 4
+vm-ctbl.tan 230: free 637541984 size 32
+vm-csym.tan 252: free 636348304 size 20
+vm-clboxitem.tan 87: free 636570544 size 240
+vm-csym.tan 252: free 637449648 size 34
+vm-sclr.tan 3220: free 636357472 size 48
+vm-sclr.tan 3229: free 337989136 size 8
+vm-csym.tan 252: free 637392400 size 58
+vm-sclr.tan 3220: free 637392624 size 48
+vm-sclr.tan 3229: free 637534976 size 8
+vm-csym.tan 252: free 637588768 size 42
+vm-sclr.tan 3220: free 637597424 size 48
+vm-sclr.tan 3229: free 338153632 size 8
+vm-csym.tan 252: free 637715648 size 38
+vm-sclr.tan 3220: free 637723024 size 48
+vm-sclr.tan 3229: free 636236352 size 8
+vm-csym.tan 252: free 636495520 size 58
+vm-sclr.tan 3220: free 637704496 size 48
+vm-sclr.tan 3229: free 637542464 size 8
+vm-csym.tan 252: free 636497152 size 30
+vm-sclr.tan 3220: free 636497360 size 48
+vm-sclr.tan 3229: free 636770240 size 8
+vm-sclr.tan 3232: free 636495744 size 1056
+listmem.tan 127: free 636482064 size 11776
+vm-ctbl.tan 400: free 636468896 size 816
+vm-ctbl.tan 382: free 637685312 size 132
+vm-csym.tan 252: free 338307024 size 20
+vm-csym.tan 251: free 637714736 size 4
+vm-csym.tan 252: free 636470128 size 22
+vm-csym.tan 251: free 636770432 size 4
+vm-csym.tan 252: free 637589984 size 22
+vm-clboxitem.tan 87: free 637811200 size 480
+vh-bp.tan 243: free 636475104 size 24
+vh-bp.tan 246: free 636504384 size 2
+vm-csym.tan 251: free 637572848 size 12
+vm-csym.tan 252: free 338132352 size 6
+vh-bp.tan 243: free 636476976 size 16
+vh-bp.tan 246: free 636504560 size 2
+vm-csym.tan 251: free 636796896 size 8
+vh-bp.tan 243: free 636503584 size 16
+vh-bp.tan 246: free 636504736 size 2
+vm-csym.tan 251: free 636477168 size 8
+vm-gantt.tan 4344: free 636503776 size 96
+vm-gantt.tan 4376: free 637875040 size 4584
+vm-sym.tan 616: free 637801776 size 132
+vm-sym.tan 617: free 636836208 size 20
+vm-sym.tan 616: free 636474528 size 48
+vm-sym.tan 616: free 636475552 size 400
+listmem.tan 127: free 637616672 size 31744
+vm-btn.tan 2613: free 637475840 size 46
+vm-btn.tan 2566: free 637648816 size 72
+vm-btn.tan 2613: free 636570336 size 28
+vm-btn.tan 2566: free 637589488 size 24
+vm-otext.tan 174: free 636472656 size 164
+vm-otext.tan 174: free 636597552 size 64
+vm-otext.tan 174: free 636500368 size 64
+listmem.tan 127: free 637716448 size 2304
+vmresize.tan 3326: free 636526112 size 400
+vmresize.tan 3327: free 636521408 size 40
+vm-frame.tan 5353: calloc 637715600 size 76 (19 x 4)
+vm-frame.tan 5397: free 637715600 size 76
+vm-frame.tan 5353: calloc 637546176 size 76 (19 x 4)
+vm-frame.tan 5397: free 637546176 size 76
+vmbackup.tan 998: calloc 637623200 size 6336 (6 x 1056)
+vmbackup.tan 1158: free 637623200 size 6336
+vmbackup.tan 998: calloc 637901056 size 6336 (6 x 1056)
+vmbackup.tan 1158: free 637901056 size 6336
+vmbackup.tan 424: free 636723504 size 5340
+vmbackup.tan 425: free 637448208 size 1072
+vm-clboxitem.tan 87: free 636362112 size 240
+metree.tan 1104: free 636706272 size 64
+listmem.tan 127: free 637515040 size 18176
+vm-run.tan 50: free 636284752 size 80
+listmem.tan 127: free 636368208 size 35072
+vm-btn.tan 2566: free 637385536 size 24
+listmem.tan 127: free 637691296 size 8960
+vm-otext.tan 174: free 636927184 size 64
+listmem.tan 127: free 636352448 size 1792
+vm-otext.tan 174: free 636221536 size 64
+vm-btn.tan 2566: free 636730096 size 24
+vm-btn.tan 2566: free 636345296 size 24
+vm-btn.tan 2566: free 636315360 size 24
+listmem.tan 127: free 637700432 size 3840
+vm-otext.tan 174: free 338632560 size 64
+vm-otext.tan 174: free 636225952 size 64
+vm-otext.tan 174: free 636284496 size 64
+vm-otext.tan 174: free 636729856 size 64
+vm-csym.tan 252: free 637549600 size 32
+listmem.tan 127: free 637535376 size 5120
+listmem.tan 127: free 636365728 size 2304
+vmresize.tan 3326: free 636616272 size 400
+vmresize.tan 3327: free 636223216 size 40
+listmem.tan 127: free 636333200 size 6912
+listmem.tan 127: free 636323552 size 9472
+Casedat2.tan 2785: free 636861888 size 44
+Casedat2.tan 2785: free 636593024 size 32
+Casedat2.tan 2785: free 636354800 size 22
+Casedat2.tan 2785: free 636412208 size 32
+Casedat2.tan 2785: free 636729440 size 12
+Casedat2.tan 2785: free 636597120 size 80
+Casedat2.tan 2785: free 636797088 size 32
+Casedat2.tan 2785: free 636862976 size 12
+Casedat2.tan 2785: free 637475440 size 40
+Casedat2.tan 2785: free 337917344 size 18
+Casedat2.tan 2785: free 636839632 size 50
+vm-csym.tan 252: free 338732960 size 72
+c:\u\s\3130_unicodeonly\gui\src\FileTree.h 27: free 636795984 size 20
+c:\u\s\3130_unicodeonly\gui\src\FileTree.h 27: free 637451360 size 18
+c:\u\s\3130_unicodeonly\gui\src\FileTree.h 27: free 636931856 size 26
+c:\u\s\3130_unicodeonly\gui\src\FileTree.h 27: free 636818864 size 22
+c:\u\s\3130_unicodeonly\gui\src\FileTree.h 27: free 636359376 size 28
+c:\u\s\3130_unicodeonly\gui\src\FileTree.h 27: free 636618352 size 16
+c:\u\s\3130_unicodeonly\gui\src\FileTree.h 27: free 636285024 size 28
+listmem.tan 127: free 338611968 size 512

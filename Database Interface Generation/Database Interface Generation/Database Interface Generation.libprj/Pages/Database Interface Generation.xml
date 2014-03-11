@@ -1,0 +1,534 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:47:03">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>1AC72A39-F02E-43A1-B61B-CB31A3D6269F</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="295" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="70">
+						<TopArea Line="PercentageFromLeft" Value="0.218531">
+							<RightArea Line="FixedFromLeft" Value="25" />
+						</TopArea>
+						<BottomArea Line="FixedFromBottom" Value="55" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HelpTopic>"Database Interface Generation"</HelpTopic>
+	<PageObject Type="Scalar">
+		<Location top="216" left="210" bottom="246" right="324" />
+		<HelpTag>"Datasource"</HelpTag>
+		<TabOrder>7</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>dig::DataSource</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<ProcedureUponChange>dig::DatasourceOrOwnerChanged</ProcedureUponChange>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="216" left="354" bottom="246" right="456" />
+		<HelpTag>"Owner"</HelpTag>
+		<TabOrder>9</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>dig::DSOwner</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<ProcedureUponChange>dig::DatasourceOrOwnerChanged</ProcedureUponChange>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="366" left="6" bottom="390" right="192" />
+		<HelpTag>"Retrieve Table Info"</HelpTag>
+		<TabOrder>13</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Retrieve Table Info"</Title>
+		<TooltipText>"Retrieve the table information for the selected data source"</TooltipText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>dig::RetrieveTableInformation</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Composite Table" Tag="Available tables">
+		<Location top="276" left="210" bottom="564" right="324" />
+		<HelpTag>"Available tables"</HelpTag>
+		<TabOrder>17</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Domain>
+			<Identifier>dig::tab</Identifier>
+			<Index Name="dig::tab">
+				<TitleText>"Table Name"</TitleText>
+				<Color>dig::TableColor( dig::tab )</Color>
+				<ProcedureUponSelect>dig::UpdateSelectedTableName( dig::tab )</ProcedureUponSelect>
+			</Index>
+		</Domain>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="276" left="330" bottom="564" right="762" />
+		<HelpTag>"Column Information"</HelpTag>
+		<TabOrder>18</TabOrder>
+		<ObjectUUID>ED57E685-B450-4E54-B6DE-37C89AD7F0F7</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">dig::IncludeColumnInGeneration( dig::col )</Identifier>
+				<Title ID="4120">"Include"</Title>
+				<Format>
+					<Show_Checkboxes ID="4315">"Yes"</Show_Checkboxes>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">dig::ColumnIsPrimaryKey( dig::col )</Identifier>
+				<Title ID="4120">"PK"</Title>
+				<Format>
+					<Show_Checkboxes ID="4315">"Yes"</Show_Checkboxes>
+				</Format>
+				<Procedures_Assertions>
+					<On_Change ID="4181">dig::ForceSetForPKColumns</On_Change>
+				</Procedures_Assertions>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">dig::ColumnDataType( dig::col )</Identifier>
+				<Title ID="4120">"Data Type"</Title>
+				<Readonly ID="4122">1</Readonly>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">dig::ColumnAIMMSParameterType( dig::col )</Identifier>
+				<Title ID="4120">"Identfier Type"</Title>
+				<Readonly ID="4122">dig::ColumnIsPrimaryKey( dig::col )</Readonly>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">dig::col</Index>
+				<Header_Title ID="6530">"Column Name"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">""</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+		</General>
+		<Row_Area>
+			<Background_Color ExtraInfo="33BB2465-9D09-4035-9765-4D4D12BABAAE" ID="2010">"white"</Background_Color>
+			<Text_Color ExtraInfo="B5956EEA-5F3E-4BD0-85C7-9F70EB490991" ID="2020">"Header Blue"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+			<Grid_Focus_Indicator>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2270">"default selection"</Background_Color>
+				<Text_Color ID="2280">RGB&lt;255,255,200&gt;</Text_Color>
+			</Grid_Focus_Indicator>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="216" left="456" bottom="246" right="558" />
+		<HelpTag>"Identifier prefix"</HelpTag>
+		<TabOrder>10</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>dig::IdentifierNamePrefix( dig::TheTable )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"Prefix"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="396" left="6" bottom="420" right="192" />
+		<ReadOnly>VALUE := 1 - TableInfoRetrieved</ReadOnly>
+		<HelpTag>"Generate Identifiers"</HelpTag>
+		<TabOrder>14</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Generate Identifiers"</Title>
+		<TooltipText>"Automatically generate all relevant identifiers, based on the table and column selection"</TooltipText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>dig::GenerateIdentifiers</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="324" bottom="246" right="348" />
+		<HelpTag>"Datasource"</HelpTag>
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"..."</Title>
+		<TooltipText>"Browse for datasources"</TooltipText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>dig::BrowseForDataSources</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="330" left="6" bottom="354" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="333" left="18" bottom="351" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="198" left="210" bottom="216" right="348" />
+		<StaticText>Datasource:</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="198" left="354" bottom="216" right="492" />
+		<StaticText>Owner:</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="198" left="456" bottom="216" right="594" />
+		<StaticText>Identifier prefix:</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="216" left="660" bottom="246" right="762" />
+		<HelpTag>"Library prefix"</HelpTag>
+		<TabOrder>12</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>dig::RuntimeLibraryPrefix</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"Prefix"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="198" left="660" bottom="216" right="798" />
+		<StaticText>Library prefix:</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="260" left="210" bottom="278" right="348" />
+		<StaticText>Available tables:</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="260" left="330" bottom="278" right="468" />
+		<StaticText>Column information:</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Open Model Explorer</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<Symbol>ExampleStyle::ButtonColor</Symbol>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="282" left="18" bottom="300" right="195" />
+		<StaticText>Quit AIMMS</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>dig::OpenProblemDescription</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="426" left="6" bottom="450" right="192" />
+		<ReadOnly>dig::HideLibraryButtons</ReadOnly>
+		<HelpTag>"Export Library"</HelpTag>
+		<TabOrder>15</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Export Library"</Title>
+		<TooltipText>"Export the generated library to a file for inclusion in another project"</TooltipText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>dig::ExportSelectedLibrary</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<ReadOnly>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</ReadOnly>
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>Tools-Model Explorer</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>File-Exit</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="18" bottom="270" right="195" />
+		<StaticText>Open Explorer</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<Symbol>ExampleStyle::ButtonColor</Symbol>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<ReadOnly>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</ReadOnly>
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>dig::OpenExplorer</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="216" left="558" bottom="246" right="660" />
+		<HelpTag>"Library name"</HelpTag>
+		<TabOrder>11</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>dig::RuntimeLibraryName</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"Prefix"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="198" left="558" bottom="216" right="696" />
+		<StaticText>Library name:</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="456" left="6" bottom="480" right="192" />
+		<ReadOnly>dig::HideLibraryButtons</ReadOnly>
+		<HelpTag>"Remove Library"</HelpTag>
+		<TabOrder>16</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Remove Library"</Title>
+		<TooltipText>"Remove a generated library from the current model"</TooltipText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>dig::SelectLibAndRemoveIdentifiers</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="570" left="330" bottom="594" right="750" />
+		<HelpTag>"Generate read procedure"</HelpTag>
+		<TabOrder>19</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>dig::GenerateReadProc</Identifier>
+			<Description>"Generate read procedure"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="588" left="330" bottom="612" right="750" />
+		<HelpTag>"Generate write procedure"</HelpTag>
+		<TabOrder>20</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>dig::GenerateWriteProc</Identifier>
+			<Description>"Generate write procedure"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="552" left="162" bottom="576" right="186" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;lib:dig&gt;:What's This.jpg"</BitmapFile>
+		<TooltipText>"Click on this "What's this" button followed by a click on the object for which you want more information."</TooltipText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>Help-Context Help</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="492" left="12" bottom="564" right="186" />
+		<StaticText>You can use the "What's this?" button to read more information about the fields, tables and buttons on this page.</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>dig::TableInfoRetrieved</Symbol>
+			<Symbol>dig::OpenProblemDescription</Symbol>
+			<Symbol>dig::RetrieveTableInformation</Symbol>
+			<Symbol>dig::IncludeColumnInGeneration</Symbol>
+			<Symbol>dig::GenerateReadProc</Symbol>
+			<Symbol>dig::TheTable</Symbol>
+			<Symbol>dig::DSOwner</Symbol>
+			<Symbol>dig::TableColor</Symbol>
+			<Symbol>dig::GenerateWriteProc</Symbol>
+			<Symbol>dig::RuntimeLibraryName</Symbol>
+			<Symbol>dig::ExportSelectedLibrary</Symbol>
+			<Symbol>dig::ColumnDataType</Symbol>
+			<Symbol>dig::col</Symbol>
+			<Symbol>dig::ForceSetForPKColumns</Symbol>
+			<Symbol>dig::OpenExplorer</Symbol>
+			<Symbol>dig::tab</Symbol>
+			<Symbol>dig::BrowseForDataSources</Symbol>
+			<Symbol>dig::RuntimeLibraryPrefix</Symbol>
+			<Symbol>dig::HideLibraryButtons</Symbol>
+			<Symbol>dig::DataSource</Symbol>
+			<Symbol>dig::GenerateIdentifiers</Symbol>
+			<Symbol>dig::ColumnIsPrimaryKey</Symbol>
+			<Symbol>dig::IdentifierNamePrefix</Symbol>
+			<Symbol>dig::SelectLibAndRemoveIdentifiers</Symbol>
+			<Symbol>dig::DatasourceOrOwnerChanged</Symbol>
+			<Symbol>dig::UpdateSelectedTableName</Symbol>
+			<Symbol>dig::ColumnAIMMSParameterType</Symbol>
+			<Symbol>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</Symbol>
+			<Symbol>ExampleStyle::ButtonColor</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

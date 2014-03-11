@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="499A5942-092B-4908-838B-8BFD4307E56A">
+		<Template Name="Navigation Template" PageGUID="8496B137-9169-40F0-A5FF-2FDD0F3F7E53">
+			<Template Name="Background Info Template" PageGUID="B07D48F4-CAF2-467A-A980-E43DE67FBA94" />
+		</Template>
+	</Template>
+</TemplateManager>

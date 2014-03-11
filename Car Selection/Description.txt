@@ -1,0 +1,7 @@
+In this AIMMS project the use of pictures as nodes in a network is illustrated. These pictures are stored inside the project as so-called project user files. Project user files can only be reached in developer mode, through the menu bar command: Tools - Project User Files.
+
+The goal of this model is to assign a set of available cars to a number of different participants, so that the number of people assigned to a car is maximal. Every participant is only interested in a subset of all available cars.
+
+This model is an example of a matching problem. The results are illustrated in a network object, with pictures of the cars as nodes.
+
+The number of cars and the number of participants can be changed by the user, where the possible combinations are generated randomly. New possible combinations will be determined when the number of participants or cars is changed, or by pushing the "generate possible pairs" button.

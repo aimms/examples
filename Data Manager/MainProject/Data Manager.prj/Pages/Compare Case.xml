@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:46:19">
+	<Location top="22" left="4" bottom="1077" right="1344" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>49507C75-0EF0-4D1E-9AA9-3D6E10D8710E</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="340" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="PercentageFromTop" Value="0.495434">
+						<TopArea Line="FixedFromBottom" Value="40" />
+						<BottomArea Line="FixedFromTop" Value="40" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="E5421D8C-62AD-49F0-9E3B-00E60C20E7F1">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="414" left="216" bottom="432" right="552" />
+		<StaticText>Contents of the difference file:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="444" left="6" bottom="615" right="192" />
+		<StaticText>By clicking on the Compare button, the selected case is compared with the current data using the selected differencing mode. 
+
+You can change the current data by loading a different case.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="444" left="216" bottom="612" right="756" />
+		<TabOrder>11</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<DisplayTextFile>true</DisplayTextFile>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>DifferenceFile</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="288" left="216" bottom="357" right="408" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>10</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="None" Width="1" />
+		<BackgroundColor>
+			<UserColor GUID="E5421D8C-62AD-49F0-9E3B-00E60C20E7F1">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ModeDescription( OneModeToCompareAll )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="411" left="6" bottom="435" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Load Case"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>EmptyModelDeclaration</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="MenuCommand">
+				<Command>Case-Load As Active</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="366" left="216" bottom="390" right="408" />
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Compare"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>Compare_Cases</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="246" left="534" bottom="264" right="615" />
+		<StaticText>Identifiers:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="264" left="531" bottom="357" right="732" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<SpreadVertically>false</SpreadVertically>
+		<ExplicitIdentifier>
+			<Identifier>IdentifiersToCompare( TotalSetIdentifiersToCompare )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="216" left="216" bottom="240" right="405" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>CaseToCompare</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="AllCases">DataFileName( AllCases )</ElementText>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="198" left="216" bottom="216" right="255" />
+		<StaticText>Case:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="246" left="216" bottom="264" right="258" />
+		<StaticText>Mode:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="264" left="216" bottom="288" right="405" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>OneModeToCompareAll</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="366" left="531" bottom="390" right="627" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Select All"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SelectAll</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="366" left="630" bottom="390" right="732" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Unselect All"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>UnselectAll</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="192" left="210" bottom="396" right="768" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</LineColor>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="408" left="210" bottom="618" right="768" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</LineColor>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="414" left="531" bottom="438" right="732" />
+		<TabOrder>9</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Apply differences to selected case"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ReadDifferenceFile</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>AllDifferencingModes</Symbol>
+			<Symbol>UnselectAll</Symbol>
+			<Symbol>OneModeToCompareAll</Symbol>
+			<Symbol>CaseToCompare</Symbol>
+			<Symbol>SelectAll</Symbol>
+			<Symbol>DifferenceFile</Symbol>
+			<Symbol>TotalSetIdentifiersToCompare</Symbol>
+			<Symbol>Compare_Cases</Symbol>
+			<Symbol>AllCases</Symbol>
+			<Symbol>IdentifiersToCompare</Symbol>
+			<Symbol>DataFileName</Symbol>
+			<Symbol>ModeDescription</Symbol>
+			<Symbol>EmptyModelDeclaration</Symbol>
+			<Symbol>ReadDifferenceFile</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

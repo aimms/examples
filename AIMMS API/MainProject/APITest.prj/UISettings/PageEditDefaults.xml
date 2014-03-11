@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<PageObjectBorder Style="InShadow" Width="2" MarginTop="1" MarginRight="1" MarginBottom="1" MarginLeft="1" />
+<PageObjectFont GUID="02E1670B-6B20-4371-9AB1-5F85257E88E3" Name="default" />
+<PageObjectColors>
+	<Background RGB="#ffffff" />
+	<Foreground RGB="#000000" />
+	<Selection RGB="#000000" />
+</PageObjectColors>

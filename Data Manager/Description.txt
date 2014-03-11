@@ -1,0 +1,16 @@
+In this example you can see how the Case, Dataset and Data Manager functions can be used. 
+
+Within the Data Management Setup (Ctrl + F10, or use the button on the demo page) two additional Case Types were created: 'Input Identifiers' and 'Output Identifiers'. The 'Input Identifiers' are the identifiers that are used by the model when a case is run. The 'Output Identifiers' are the variables that have been calculated by the model. 
+
+The data was separated in two Data Categories: 'Constant Input' and 'Variable Input'. 'Constant Input' in this example consists of Sets, Units and a Parameter that do not change often. 'Variable Input' consists of Parameters that can change every month (you can see the identifiers at the properties of the Data Category). 
+
+By using Datasets and Data Categories, a lot of memory can be saved in your .dat file. You can, for example, create multiple cases that use one single dataset of data category 'Constant Input'. This will mean that the data in this dataset is only saved once instead as for each case seperately.
+
+In the MainExecution you can see how to save a case automatically after you solved your model. There is also a customized batchrun facility build such that you can see how you can create your own batchrun (when you don't want to use the AIMMS batchrun facility).
+
+This example also illustrates some multiple case objects (Multiple Case page) and the use of the CaseCreateDifferenceFile functionality (Compare Case page).
+
+Please open the demo page and play with the cases and datasets. Also take a look at the procedures behind the buttons.
+
+Keywords:
+Data Manager, Data Management Setup, Data Category, Dataset, Case Type, Case, Multiple Case, Compare Case, CaseCreateDifferenceFile, PageOpen, Batch Run.

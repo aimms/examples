@@ -1,0 +1,60 @@
+﻿Converting Main project
+Converting Error Handling.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\UISettings\StandardNumberFormats.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Pages\AIMMS 3 Demo - Error Handling.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Pages\Global Error Handling.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Pages\Local Error Handling.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Templates\Example Page.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Pages\Error While Reading Data.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\Pages\Error Locating File.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\MainProject\Error Handling.prj\User Files\incorrectinput.txt
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Converting Library project: Error Handler
+Converting Error Handler.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.ams
+Converting .\Error Handler\Error Handler.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.ams
+Converting Error Handler\mail.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\mail.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.libprj\Pages\Error Dialog.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\Error Handler.libprj\DataManagementSetup.xml
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Description.txt
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler
+Copying folder: Error Handler\AimmsMAPI Source to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\AimmsMAPI Source
+Copying file: Error Handler\AimmsMAPI.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handler\AimmsMAPI.dll
+Copying file: Error Handling.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handling.dat
+Copying file: incorrectinput.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\incorrectinput.txt
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\_Example Style Library
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Error Handling\Error Handling_converted\Error Handling.aimms
+Successfully converted the whole project.

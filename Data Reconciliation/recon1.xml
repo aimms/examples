@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<AimmsData xmlns="http://tempuri.org/AIMMS/generated-namespace-15106">
+  <Flows>
+    <Flows elem="Inflow"/>
+    <Flows elem="Mix"/>
+    <Flows elem="NH3-Mix"/>
+    <Flows elem="NH3-Flow"/>
+    <Flows elem="Residu"/>
+    <Flows elem="Ar-Flow"/>
+    <Flows elem="Feedback"/>
+  </Flows>
+  <MeasuredFlow>
+    <f elem="Inflow" value="111.98"/>
+    <f elem="NH3-Flow" value="105.59"/>
+    <f elem="Feedback" value="358.00"/>
+  </MeasuredFlow>
+  <Flow>
+    <f elem="Inflow" value="117.03"/>
+    <f elem="Mix" value="475.03"/>
+    <f elem="NH3-Mix" value="475.03"/>
+    <f elem="NH3-Flow" value="105.59"/>
+    <f elem="Residu" value="369.44"/>
+    <f elem="Ar-Flow" value="11.44"/>
+    <f elem="Feedback" value="358.00"/>
+  </Flow>
+  <Flow.basic>
+    <f elem="Inflow" value="3.00"/>
+    <f elem="Mix" value="3.00"/>
+    <f elem="NH3-Mix" value="3.00"/>
+    <f elem="NH3-Flow" value="3.00"/>
+    <f elem="Residu" value="3.00"/>
+    <f elem="Ar-Flow" value="3.00"/>
+    <f elem="Feedback" value="3.00"/>
+  </Flow.basic>
+  <MeasuredComposition>
+    <nmf elem="Inflow">
+      <c elem="N2" value="26.96"/>
+      <c elem="H2" value="72.71"/>
+      <c elem="Ar" value="0.33"/>
+    </nmf>
+    <nmf elem="Mix">
+      <c elem="N2" value="24.56"/>
+      <c elem="Ar" value="4.91"/>
+    </nmf>
+    <nmf elem="NH3-Mix">
+      <c elem="N2" value="19.99"/>
+    </nmf>
+    <nmf elem="Residu">
+      <c elem="H2" value="69.68"/>
+    </nmf>
+  </MeasuredComposition>
+  <Composition>
+    <nmf elem="Inflow">
+      <c elem="N2" value="26.96"/>
+      <c elem="H2" value="72.71"/>
+      <c elem="Ar" value="0.33"/>
+    </nmf>
+    <nmf elem="Mix">
+      <c elem="N2" value="23.95"/>
+      <c elem="H2" value="71.08"/>
+      <c elem="NH3" value="0.05"/>
+      <c elem="Ar" value="4.91"/>
+    </nmf>
+    <nmf elem="NH3-Mix">
+      <c elem="N2" value="19.99"/>
+      <c elem="H2" value="59.08"/>
+      <c elem="NH3" value="15.27"/>
+      <c elem="Ar" value="5.66"/>
+    </nmf>
+    <nmf elem="NH3-Flow">
+      <c elem="NH3" value="100.00"/>
+    </nmf>
+    <nmf elem="Residu">
+      <c elem="N2" value="23.57"/>
+      <c elem="H2" value="69.68"/>
+      <c elem="NH3" value="0.07"/>
+      <c elem="Ar" value="6.67"/>
+    </nmf>
+    <nmf elem="Ar-Flow">
+      <c elem="N2" value="89.19"/>
+      <c elem="Ar" value="10.81"/>
+    </nmf>
+    <nmf elem="Feedback">
+      <c elem="N2" value="22.83"/>
+      <c elem="H2" value="70.48"/>
+      <c elem="NH3" value="0.07"/>
+      <c elem="Ar" value="6.62"/>
+    </nmf>
+  </Composition>
+  <Composition.basic>
+    <nmf elem="Inflow">
+      <c elem="N2" value="3.00"/>
+      <c elem="H2" value="3.00"/>
+      <c elem="Ar" value="3.00"/>
+    </nmf>
+    <nmf elem="Mix">
+      <c elem="N2" value="3.00"/>
+      <c elem="H2" value="3.00"/>
+      <c elem="NH3" value="3.00"/>
+      <c elem="Ar" value="3.00"/>
+    </nmf>
+    <nmf elem="NH3-Mix">
+      <c elem="N2" value="3.00"/>
+      <c elem="H2" value="3.00"/>
+      <c elem="NH3" value="3.00"/>
+      <c elem="Ar" value="3.00"/>
+    </nmf>
+    <nmf elem="NH3-Flow">
+      <c elem="NH3" value="3.00"/>
+    </nmf>
+    <nmf elem="Residu">
+      <c elem="N2" value="3.00"/>
+      <c elem="H2" value="3.00"/>
+      <c elem="NH3" value="3.00"/>
+      <c elem="Ar" value="3.00"/>
+    </nmf>
+    <nmf elem="Ar-Flow">
+      <c elem="N2" value="3.00"/>
+      <c elem="Ar" value="3.00"/>
+    </nmf>
+    <nmf elem="Feedback">
+      <c elem="N2" value="3.00"/>
+      <c elem="H2" value="3.00"/>
+      <c elem="NH3" value="3.00"/>
+      <c elem="Ar" value="3.00"/>
+    </nmf>
+  </Composition.basic>
+</AimmsData>
+

@@ -1,0 +1,70 @@
+## ams_version=1.0
+
+Model Main_DLLExample {
+    Parameter MaxS {
+        Range: {
+            {1..1000}
+        }
+        Default: 10;
+    }
+    Set S {
+        SubsetOf: Integers;
+        Index: i, j;
+        Definition: {
+            { 1 .. MaxS }
+        }
+    }
+    Parameter a {
+        IndexDomain: (i,j);
+    }
+    Parameter AverageOfA;
+    Parameter ExternalAverageOfA;
+    StringParameter DllFileName {
+        Definition: {
+            if AimmsStringConstants('Architecture') = 'x86' then
+                    "DLLExample.dll"
+            else
+                    "DLLExample64.dll"
+            endif
+        }
+    }
+    ExternalProcedure ExternalAverage {
+        Arguments: (x,res);
+        DllName: DllFileName;
+        BodyCall: {
+            ComputeAverage(
+               array double : x,
+               card : i,
+               card : j,
+               scalar double : res
+             )
+        }
+        Parameter x {
+            IndexDomain: (i,j);
+            Property: Input;
+        }
+        Parameter res {
+            Property: Output;
+        }
+    }
+    Procedure ComputeAverage {
+        Body: {
+            AverageOfA := Average((i,j), a(i,j));
+        }
+    }
+    Procedure ComputeExternalAverage {
+        Body: {
+            ExternalAverage(a,ExternalAverageOfA);
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            a((i,j) | not a(i,j)) := 10*i + j;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

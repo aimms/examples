@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="31468E61-BDFA-4AAF-B580-C80629D2598E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6DC7C642-81AA-4A66-9B80-578A4EB4E806|Size Template">
+		<Template Name="Navigation Template" PageGUID="F938E136-27AF-40C7-A583-1D9801FC0F18" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|4155E480-4525-4ACF-8973-46A49B7C4F43|Navigation Template">
+			<Template Name="Page Navigation" PageGUID="58FFADC9-79EB-4F7D-AD9C-5DF3F4359D81">
+				<Page Name="Overview Page" PageGUID="189D0F18-F34C-4007-B9C4-48C5B29A14CB" />
+				<Page Name="Skewness and Kurtosis" PageGUID="00BE833A-717D-4777-BBEB-54469C2914E1" />
+				<Page Name="Sampling and Operations" PageGUID="DFE47A6C-7D65-44B4-81AD-A4218D0C6129" Marked="true" />
+				<Page Name="Distribution Descriptions" PageGUID="DF602C1F-DE07-48F0-8408-B693BCFB215C" />
+				<Page Name="Conclusions" PageGUID="97ECB8FD-E7F2-4FB0-ABA3-8E056355A88A" />
+				<Page Name="Distribution Approximations" PageGUID="8126EBCA-769D-41B1-BB1A-CE16E4AEAB05" />
+			</Template>
+			<Template Name="Background Info Template" PageGUID="BEC50A68-6FDE-45AC-9F9B-724EC9CC1AD3" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|0293CF6D-0876-4D9E-8918-9F76581AE6A3|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="EF518061-44F9-4088-B4BE-80FE3D283004" />
+			</Template>
+		</Template>
+	</Template>
+	<Template Name="Template Samples -1" PageGUID="CB06AEDC-9E42-4A88-8442-49997CCAA6DA">
+		<Page Name="All Pareto" PageGUID="2026A6BF-9018-4D4C-9AED-E2AFAC5BA86B" />
+		<Page Name="All LogNormal" PageGUID="2267D463-21F1-414C-BBB9-BFE60996A890" />
+		<Page Name="All Weibull" PageGUID="2E9303B0-595B-46A7-AD76-750E610C6D11" />
+		<Page Name="All Gamma" PageGUID="B3FDF538-3E35-4AD6-B9E8-CB511FEAD787" />
+	</Template>
+	<Template Name="Template Samples - 2" PageGUID="705058B0-A7F5-41ED-A0EC-DC6C34D57B27">
+		<Page Name="Exponential" PageGUID="6C9C1ED6-94F9-4E99-9C05-70A606415A3B" />
+		<Page Name="Pareto" PageGUID="E75B5137-6F2D-464D-8983-1EC5BB0E99A4" />
+		<Page Name="LogNormal" PageGUID="652C3652-8B3B-485A-8FBF-C3E6099427FB" />
+		<Page Name="Weibull" PageGUID="45FC3961-3ADA-49BB-8527-CB61432AD488" />
+		<Page Name="Gamma" PageGUID="01D17E7C-C016-4E26-9807-CDF3620EFCC3" />
+	</Template>
+	<Page Name="Distribution Approximations Explanation" PageGUID="D19E6E71-8FE1-487D-BF8A-EB4091FE810E" />
+	<Page Name="Sample Explanation" PageGUID="1496020F-22D8-4BF9-9B57-D6B8FE07B057" />
+	<Page Name="Skewness and Kurtosis Explanation" PageGUID="BD72F4E9-4DA7-42CF-9C4E-524F664C0BC9" />
+</TemplateManager>

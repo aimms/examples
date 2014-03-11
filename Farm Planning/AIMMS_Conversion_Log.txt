@@ -1,0 +1,42 @@
+﻿Converting Main project
+Converting farmplanning.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\farmplanning.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\UISettings\ColorSchemes.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\Pages\On the farm.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\Pages\A Farm Planning Problem.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\Pages\Input Data.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\Pages\Output Data.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\Pages\Sensitivity Analysis.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\MainProject\FarmPlanning.prj\User Files\bitmaps\construct.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\Description.txt
+Copying file: FarmPlanning.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\FarmPlanning.dat
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library
+Copying file: _Example Style Library\Example Style Library.nch to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\_Example Style Library\Example Style Library.nch
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Farm Planning\Farm Planning_converted\FarmPlanning.aimms
+Successfully converted the whole project.

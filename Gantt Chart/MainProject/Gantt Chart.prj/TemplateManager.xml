@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="DC01BFD5-BAC5-41FA-826C-E879BCDB74CD" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|9208655D-F413-4975-8E20-E3661968FC41|Size Template">
+		<Template Name="Navigation Template" PageGUID="C52FD35B-89F8-40D2-999C-A90D056FA6C6" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6D895B10-DB95-4DCF-AFED-54148CFAC4EF|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="0C468FEE-79CE-4666-8D88-2601E30520C1" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B13AF00B-FC97-424B-A1FB-E0A4812923F1|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="A382F905-F080-4328-8A67-3296380192A2" />
+			</Template>
+			<Page Name="Gantt Chart" PageGUID="A1E35183-F2A7-4E92-9B6A-0A181CB1201A" />
+			<Page Name="Gantt Chart with Calendar" PageGUID="104CCA8D-7A1B-450D-AD0A-98931091862D" />
+		</Template>
+	</Template>
+</TemplateManager>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<References>
+	<MainProject Path="MainProject\Database Interface Generation.prj" />
+	<Library Path=".\_Example Style Library\Example Style Library.libprj" />
+	<Library Path=".\Database Interface Generation\Database Interface Generation.libprj" />
+</References>

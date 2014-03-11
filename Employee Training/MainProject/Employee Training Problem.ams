@@ -1,0 +1,363 @@
+## ams_version=1.0
+
+Model Main_Employee_Training_Problem {
+    Comment: {
+        "An implementation of the Employee Training Problem of
+        Chapter 8 of the AIMMS Optimization Modeling book."
+    }
+    DeclarationSection Flight_Attendant_Requirement_Declarations {
+        Set Months {
+            Definition: data { November, December, January, February, March, April, May, June };
+        }
+        Horizon TimePeriods {
+            SubsetOf: Months;
+            Index: t;
+            Parameter: StartPeriod;
+            CurrentPeriod: StartPeriod;
+            IntervalLength: 6;
+            Definition: Months;
+            Comment: {
+                "The months \'November\' and \'December\' are only used to initialize the model. By
+                using an HORIZON that spans the months \'January\' .. \'June\', the model will
+                automatically assume all variables that are defined over periods outside the
+                planning interval to be initial data (i.e. fixed). So, instead of introducing
+                special model identifier to store the initial data, the initial data is stored
+                in the model variables itself."
+            }
+        }
+        Parameter MonthlyAttendantCost {
+            Range: nonnegative;
+            Comment: "Corresponds to parameter \'c\' in \'AIMMS, Optimization Modeling\'.";
+        }
+        Parameter MonthlyTraineeCost {
+            Range: nonnegative;
+            Comment: "Corresponds to parameter \'d\' in \'AIMMS, Optimization Modeling\'.";
+        }
+        Parameter MonthlyAttendantFlightHours {
+            Range: nonnegative;
+            Comment: "Corresponds to parameter \'u\' in \'AIMMS, Optimization Modeling\'.";
+        }
+        Parameter MonthlyTraineeFlightHours {
+            Range: nonnegative;
+            Comment: "Corresponds to parameter \'v\' in \'AIMMS, Optimization Modeling\'.";
+        }
+        Parameter MonthlyMaximumTrainees;
+        Parameter RequiredFlightHours {
+            IndexDomain: t;
+            Range: nonnegative;
+            Comment: "Corresponds to parameter \'r\' in \'AIMMS, Optimization Modeling\'.";
+        }
+        Parameter AttendantsResigning {
+            IndexDomain: t;
+            Range: {
+                {0..inf}
+            }
+            Comment: "Corresponds to parameter \'l\' in \'AIMMS, Optimization Modeling\'.";
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    Section Deterministic_Model_Formulation {
+        DeclarationSection Determistic_Model_Declarations {
+            Variable Attendants {
+                IndexDomain: t;
+                Range: integer;
+                Definition: Attendants(t-1) - AttendantsResigning(t-1) + TraineesHired(t-2);
+                Comment: {
+                    "Corresponds to constraint \'x(t) = x(t-1) - l(t-1) + y(t-2)\' in \'AIMMS,
+                    Optimization Modeling\'. Note that this attribute form constains both the
+                    declarayion of the \'Attendent\' variable as well as the definition of
+                    the \'Attendant balance\' constraint."
+                }
+            }
+            Variable TraineesHired {
+                IndexDomain: t;
+                Range: {
+                    {0..MonthlyMaximumTrainees}
+                }
+                Comment: "Corresponds to variable \'y\' in \'AIMMS, Optimization Modeling\'.";
+            }
+            Variable TotalPersonnelCost {
+                Definition: {
+                    Sum[ t, MonthlyAttendantCost * Attendants(t) +
+                            MonthlyTraineeCost   * (TraineesHired(t) + TraineesHired(t-1)) ]
+                }
+                Comment: {
+                    "An extra free model variable is needed by AIMMS to represent the objective function
+                    of the mathematical program."
+                }
+            }
+            Constraint PersonnelRequirementConstraint {
+                IndexDomain: t;
+                Definition: {
+                    MonthlyAttendantFlightHours * Attendants(t) +
+                    MonthlyTraineeFlightHours   * (TraineesHired(t) + TraineesHired(t-1))
+                    >=
+                    RequiredFlightHours(t)
+                }
+                Comment: {
+                    "Corresponds to constraint \'u x(t) + v (y(t) + y(t-1)) >= r(t)\' in \'AIMMS,
+                    Optimization Modeling\'."
+                }
+            }
+            Set DeterministicConstraints {
+                SubsetOf: AllConstraints;
+                Definition: data { Attendants, TotalPersonnelCost, PersonnelRequirementConstraint };
+            }
+            MathematicalProgram DeterministicModel {
+                Objective: TotalPersonnelCost;
+                Direction: minimize;
+                Constraints: DeterministicConstraints;
+                Variables: AllVariables;
+                Type: MIP;
+            }
+        }
+        Procedure SolveIntegerModel {
+            Body: {
+                ! solve IP
+                solve DeterministicModel;
+                
+                SolutionAttendants(t in TimePeriods,'Integer')    := Attendants(t);
+                SolutionTraineesHired(t in TimePeriods,'Integer') := TraineesHired(t);
+                SolutionTotalPersonnelCost('Integer')             := TotalPersonnelCost;
+                
+                empty Rounding_Heuristics;
+            }
+        }
+    }
+    Section Rounding_Heuristics {
+        Section Rounding_Up {
+            Procedure SolveLinearModelAndRoundUp {
+                Body: {
+                    ! Solve LP
+                    solve DeterministicModel where type := 'rmip';
+                    
+                    ! Store LP solution
+                    SolutionAttendants(t in TimePeriods,'LP')    := Attendants(t);
+                    SolutionTraineesHired(t in TimePeriods,'LP') := TraineesHired(t);
+                    SolutionTotalPersonnelCost('LP')             := TotalPersonnelCost;
+                    
+                    ! Compute and store rounded solution
+                    SolutionAttendants(t in TimePeriods.Past,'Rounded Up')    := Attendants(t);
+                    SolutionTraineesHired(t in TimePeriods.Past,'Rounded Up') := TraineesHired(t);
+                    
+                    SolutionTraineesHired(t,'Rounded Up')    := Ceil(TraineesHired(t));
+                    SolutionAttendants(t,'Rounded Up')       :=
+                        SolutionAttendants(t-1,'Rounded Up') - AttendantsResigning(t-1) + SolutionTraineesHired(t-2,'Rounded Up');
+                    SolutionTotalPersonnelCost('Rounded Up') :=
+                        Sum[ t, MonthlyAttendantCost * SolutionAttendants(t,'Rounded Up') +
+                                MonthlyTraineeCost   * (SolutionTraineesHired(t,'Rounded Up') +
+                                                        SolutionTraineesHired(t-1,'Rounded Up')) ];
+                }
+            }
+        }
+        Section Rounding_with_Reserves {
+            Procedure SolveLinearModelAndRoundWithReserves {
+                Body: {
+                    ! Solve LP
+                    solve DeterministicModel where type := 'rmip';
+                    
+                    ! Store LP solution
+                    SolutionAttendants(t in TimePeriods,'LP')    := Attendants(t);
+                    SolutionTraineesHired(t in TimePeriods,'LP') := TraineesHired(t);
+                    SolutionTotalPersonnelCost('LP')             := TotalPersonnelCost;
+                    
+                    !Compute and store rounded solution
+                    SolutionAttendants(t in TimePeriods.Past,'Rounded with Reserves')    := Attendants(t);
+                    SolutionTraineesHired(t in TimePeriods.Past,'Rounded with Reserves') := TraineesHired(t);
+                    
+                    Reserve := 0;
+                    
+                    for (t) do
+                        SolutionTraineesHired(t,'Rounded with Reserves') :=
+                            if ( Reserve < 1 ) then
+                                Ceil(TraineesHired(t))
+                            else
+                                Floor(TraineesHired(t))
+                            endif;
+                        SolutionAttendants(t,'Rounded with Reserves') :=
+                            SolutionAttendants(t-1,'Rounded with Reserves') - AttendantsResigning(t-1) +
+                            SolutionTraineesHired(t-2,'Rounded with Reserves');
+                        Reserve += SolutionTraineesHired(t,'Rounded with Reserves') - TraineesHired(t);
+                    endfor;
+                    
+                    SolutionTotalPersonnelCost('Rounded with Reserves') :=
+                        Sum[ t, MonthlyAttendantCost * SolutionAttendants(t,'Rounded with Reserves') +
+                                MonthlyTraineeCost   * (SolutionTraineesHired(t,'Rounded with Reserves') +
+                                                        SolutionTraineesHired(t-1,'Rounded with Reserves')) ];
+                }
+                Parameter Reserve;
+            }
+        }
+    }
+    Section Probablistic_Model_Formulation {
+        DeclarationSection Probablistic_Model_Declarations {
+            Parameter Alpha {
+                InitialData: 0.01;
+            }
+            Parameter NormalMean {
+                IndexDomain: (t);
+            }
+            Parameter NormalVariance {
+                IndexDomain: (t);
+            }
+            Parameter CriticalValueAttendantsResigning {
+                IndexDomain: (t);
+            }
+            Constraint ProbablisticAttendantBalance {
+                IndexDomain: (t);
+                Definition: {
+                    Attendants(t)
+                    <=
+                    Attendants(t-1) - CriticalValueAttendantsResigning(t-1) + TraineesHired(t-2)
+                }
+            }
+            Set ProbablisticConstraints {
+                SubsetOf: AllConstraints;
+                Definition: data { TotalPersonnelCost, PersonnelRequirementConstraint, ProbablisticAttendantBalance };
+            }
+            MathematicalProgram ProbablisticModel {
+                Objective: TotalPersonnelCost;
+                Direction: minimize;
+                Constraints: ProbablisticConstraints;
+                Variables: AllVariables;
+                Type: MIP;
+            }
+        }
+        Procedure ComputeCriticalValues {
+            Body: {
+                if ( ( Alpha < 0 ) or ( Alpha > 1 ) ) then
+                    DialogMessage( "Invalid value for alpha." );
+                    return;
+                endif;
+                
+                CriticalValueAttendantsResigning(t) :=
+                  if ( NormalMean(t) or NormalVariance(t) ) then
+                      InverseCumulativeDistribution( Normal( NormalMean(t), NormalVariance(t) ), 1 - Alpha )
+                  else
+                      0
+                  endif;
+            }
+        }
+        Procedure SolveProbabilisticModel {
+            Body: {
+                ! Display AIMMS Progress Window
+                ShowProgressWindow(1);
+                
+                ! Temporarily release upper bound on number of trainees per month
+                TemporaryMonthlyMaximumTrainees := MonthlyMaximumTrainees;
+                MonthlyMaximumTrainees          := inf;
+                
+                ! solve IP
+                solve ProbablisticModel;
+                
+                ! restore upper bound on number of trainees per month
+                MonthlyMaximumTrainees          := TemporaryMonthlyMaximumTrainees;
+                
+                SolutionAttendants(t in TimePeriods,'Probablistic')    := Attendants(t);
+                SolutionTraineesHired(t in TimePeriods,'Probablistic') := TraineesHired(t);
+                SolutionTotalPersonnelCost('Probablistic')             := TotalPersonnelCost;
+            }
+            Parameter TemporaryMonthlyMaximumTrainees;
+        }
+    }
+    Section Solution_Reporting {
+        DeclarationSection Solution_Reporting_Declarations {
+            Set SolutionMethods {
+                Index: s;
+                Definition: data { 'Integer', 'LP', 'Rounded Up', 'Rounded with Reserves', 'Probablistic' };
+            }
+            Parameter SolutionAttendants {
+                IndexDomain: (t,s);
+            }
+            Parameter SolutionTraineesHired {
+                IndexDomain: (t,s);
+            }
+            Parameter SolutionTotalPersonnelCost {
+                IndexDomain: (s);
+            }
+            Parameter NumberOfDecimals {
+                IndexDomain: (s);
+                Definition: data { LP : 2 };
+            }
+        }
+        Procedure ClearSolution {
+            Body: {
+                empty Solution_Reporting_Declarations;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            read from file "<prj>:data.txt";
+            
+            ComputeCriticalValues;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure SolveModelInteger {
+        Body: {
+            if not IsRunningAsViewer then
+            
+                SolveIntegerModel;
+            
+            else
+            
+               	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+               	CaseFind("Solution Integer",ACase);
+               	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure SolveModelWithRoundingUp {
+        Body: {
+            if not IsRunningAsViewer then
+            
+                SolveLinearModelAndRoundUp ;
+            
+            else
+            
+               	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+               	CaseFind("Solution Rounding Up",ACase);
+               	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure SolveModelWithRoundingAndReserves {
+        Body: {
+            if not IsRunningAsViewer then
+            
+                SolveLinearModelAndRoundWithReserves ;
+            
+            else
+            
+               	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+               	CaseFind("Solution Rounding with Reserves",ACase);
+               	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure SolveModelWithProbabilistic {
+        Body: {
+            if not IsRunningAsViewer then
+            
+                SolveProbabilisticModel ;
+            
+            else
+            
+               	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+               	CaseFind("Solution Probabilistic",ACase);
+               	CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+}

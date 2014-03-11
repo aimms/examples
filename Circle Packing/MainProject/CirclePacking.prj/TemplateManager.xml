@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="62E1DC3A-60D6-41FB-BB6D-AF115AB99C02" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|58078DE9-98A8-4CA9-938D-D597DE340DC6|Size Template">
+		<Template Name="Navigation Template" PageGUID="27132217-3BD7-4430-AE2E-9471D9C9FE01" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|DA2290FC-BB3F-450C-989B-4F24F5B80A68|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="1EB9A651-A7D1-4E73-89E1-CD038E978C9E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B8614269-5275-49B7-89DC-11DA6D40B6E8|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="FCE5D05B-CD4B-47D6-99BC-F6ACF633560E" />
+			</Template>
+			<Template Name="Navigation Buttons Circle Problems" PageGUID="2EB77126-126B-485B-8541-D57F4E03DB1A">
+				<Page Name="Circle Packing in a Square" PageGUID="1791152C-5634-4899-9850-5D0D81B434D1" />
+				<Page Name="Circle Packing in a Circle" PageGUID="C3C6DA85-EE31-4353-B23D-D34EB7DB2FF8" />
+				<Page Name="Various Size Circle Packing" PageGUID="FE53F721-5C9A-4F83-B11A-C9A41A750E40" />
+			</Template>
+		</Template>
+	</Template>
+</TemplateManager>

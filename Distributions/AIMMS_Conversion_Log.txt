@@ -1,0 +1,59 @@
+﻿Converting Main project
+Converting Distributions.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Distribution Descriptions.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Distribution Approximations.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\All Pareto.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\All LogNormal.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\All Weibull.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\All Gamma.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Conclusions.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Skewness and Kurtosis.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Sampling and Operations.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Templates\Page Navigation.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Overview Page.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Exponential.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Pareto.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\LogNormal.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Weibull.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Gamma.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Templates\Template Samples -1.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Distribution Approximations Explanation.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Skewness and Kurtosis Explanation.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Templates\Template Samples - 2.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\Pages\Sample Explanation.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\MainProject\Distributions.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\Description.txt
+Copying file: Distributions.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\Distributions.dat
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\_Example Style Library
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Distributions\Distributions_converted\Distributions.aimms
+Successfully converted the whole project.

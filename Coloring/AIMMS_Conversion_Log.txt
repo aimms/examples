@@ -1,0 +1,51 @@
+﻿Converting Main project
+Converting Coloring.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\UISettings\PageEditDefaults.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\UISettings\PageEditDefaults.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\UISettings\PageEditDefaults.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\UISettings\PageEditDefaults.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\UISettings\PageEditDefaults.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Pages\Example Page.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Pages\Graph.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Pages\Table.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Pages\Composite Table.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Pages\Pivot Table.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\Templates\Tab Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.prj\User Files\bitmaps\wizard.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Coloring.DeveloperState to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\MainProject\Coloring.DeveloperState
+Copying file: Coloring.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\Coloring.dat
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\Description.txt
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\_Example Style Library
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Coloring\Coloring_converted\Coloring.aimms
+Successfully converted the whole project.

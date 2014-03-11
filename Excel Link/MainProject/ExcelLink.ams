@@ -1,0 +1,353 @@
+## ams_version=1.0
+
+Model Main_Integrated {
+    Comment: {
+        "This model is not intended to be run interactively. It is called from the external
+        program RunAIMMS.exe, which uses the AIMMS API to connect to this model."
+    }
+    Section Transportation_Model {
+        DeclarationSection Input_Data {
+            Set Depots {
+                Index: d;
+                Parameter: temp;
+                OrderBy: user;
+            }
+            Set Customers {
+                Index: c;
+                Parameter: tc;
+                OrderBy: user;
+            }
+            Parameter Supply {
+                IndexDomain: (d);
+            }
+            Parameter Demand {
+                IndexDomain: (c);
+            }
+            Parameter UnitTransportCost {
+                IndexDomain: (d,c);
+            }
+        }
+        DeclarationSection Transport_Model_Formulation {
+            Variable Transport {
+                IndexDomain: (d,c) | UnitTransportCost(d,c);
+                Range: nonnegative;
+            }
+            Constraint SatisfySupply {
+                IndexDomain: (d);
+                Definition: sum(c, Transport(d,c)) <= Supply(d);
+            }
+            Constraint MeetDemand {
+                IndexDomain: c;
+                Definition: sum(d, Transport(d,c)) >= Demand(c);
+            }
+            Variable TotalCost {
+                Definition: sum((d,c), UnitTransportCost(d,c)*Transport(d,c));
+            }
+            MathematicalProgram TransportModel {
+                Objective: TotalCost;
+                Direction: minimize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: LP;
+            }
+            Parameter TransportModelStatus;
+            ElementParameter NewTransportModelStatus {
+                Range: AllSolutionStates;
+            }
+        }
+        Section Excel_Linkage {
+            DeclarationSection Auxiliary_Parameters {
+                StringParameter WorkbookName {
+                    InitialData: "AimmsExample.xls";
+                }
+                Parameter ExcelStatus;
+                StringParameter ExcelErrorMessage;
+                ElementParameter err {
+                    Range: errh::PendingErrors;
+                }
+            }
+            Procedure RandomizeExcelInputs {
+                Body: {
+                    Spreadsheet::SetActiveSheet( WorkbookName, "Transport Model" );
+                    Spreadsheet::RunMacro( WorkbookName, "AssignRandomTransportCost" );
+                    
+                    ReadInputFromExcel;
+                }
+                Comment: "currenterrormessage";
+            }
+            Procedure ReadInputFromExcel {
+                Body: {
+                    Spreadsheet::SetActiveSheet( WorkbookName, "Transport Model" );
+                    
+                    
+                    
+                    !Originally:
+                    !Spreadsheet::RetrieveSet( WorkbookName, Depots, "DepotsRange" );
+                    ! or Spreadsheet::RetrieveSet( WorkbookName, Depots,"A4:A8");
+                    !
+                    !But can also determine the range A4:A8 by instructing AIMMS to build
+                    !the range from the startcell A4 and keep adding rows to the range
+                    !until an empty cell is discovered.
+                    !
+                    !Please note, the procedure requires the Spreadsheet::SetActiveSheet being called before this is called
+                    !Also, the argument '4' comes from the fact that we want to search downwards
+                    DetermineConsecutiveRange( WorkbookName, "A4", 4, rangeEndCell) ;
+                    !Now that we have the endCell of the range, use it to obtain depots set elements
+                    Spreadsheet::RetrieveSet ( WorkbookName, Depots, formatstring( "%s:%s" , "A4", rangeEndCell) ) ;
+                    
+                    
+                    
+                    
+                    
+                    
+                    Spreadsheet::RetrieveSet( WorkbookName, Customers, "CustomersRange" );
+                    Spreadsheet::RetrieveParameter( WorkbookName, Supply, "SupplyRange" );
+                    Spreadsheet::RetrieveParameter( WorkbookName, Demand, "DemandRange" );
+                    
+                    !Use the return value to check if any errors, for demonstration purpose, we only check function Spreadsheet::RetrieveTable
+                    ExcelStatus := Spreadsheet::RetrieveTable( WorkbookName, UnitTransportCost, "UnitTransportRange", "DepotsRange", "CustomersRange" );
+                    CheckExcelError;
+                }
+                StringParameter rangeEndCell;
+            }
+            Procedure WriteOutputToExcel {
+                Body: {
+                    Spreadsheet::SetActiveSheet( WorkbookName, "Transport Model" );
+                    
+                    Spreadsheet::AssignParameter( WorkbookName, Transport, "TransportRange", sparse: 1 );
+                    
+                    Spreadsheet::AssignValue( WorkbookName, TotalCost, "TotalCostRange" );
+                    
+                    Spreadsheet::CloseWorkbook( WorkbookName, 1 ) ;
+                }
+            }
+            Procedure CheckExcelError {
+                Body: {
+                    if not ExcelStatus then
+                            if CurrentErrorMessage then
+                                    ExcelErrorMessage := FormatString("Function failed with error %s",CurrentErrorMessage);
+                            else
+                                    ExcelErrorMessage := FormatString("Function failed without an error message");
+                            endif;
+                    
+                            DialogError(ExcelErrorMessage);
+                            empty CurrentErrorMessage;
+                    
+                            Spreadsheet::CloseWorkbook(WorkbookName,0);
+                            halt;
+                    endif;
+                }
+            }
+            Procedure DetermineConsecutiveRange {
+                Arguments: (whichWorkbook,startCell,cellDirection,endCell);
+                Body: {
+                    /*
+                    This function assumes that the activeSheet has been set for the workbook already
+                    It is possible to modify it to use an optional Sheet stringparameter that is given as an argument
+                    
+                    Use the cellDirection to denote how to look for first non-empty cell:
+                    1: Search left-wards
+                    2: Search right-wards
+                    3: Search up-wards
+                    4: search down-wards
+                    */
+                    
+                    !First separate the startCell into column number and row number
+                    !For this, we need to do some looking into the string and determine where
+                    !the numbers start in the cell cell representation
+                    iterator := 0 ;
+                    while (iterator < StringLength( startCell ))
+                    do
+                    
+                    	!If the character at the current position is a number, then we can stop and have
+                    	!found the start of where the row part of the cell starts
+                    	if characterNumber( substring(startCell, iterator, iterator + 1) ) >= characterNumber( "0" )  and characterNumber( substring(startCell, iterator, iterator + 1) ) <= characterNumber( "9" ) then
+                    		break ;
+                    	endif ;
+                    
+                    	iterator += 1 ;
+                    endwhile  ;
+                    
+                    !Based on the value of iterator, we can now separate the startCell into the row and column component.
+                    cellCurrentRow := val( substring( startCell, iterator, stringlength(startCell) ) );
+                    cellCurrentCol := Spreadsheet::ColumnNumber( substring( startcell, 0 , iterator - 1));
+                    
+                    !Now determine the contents of the currentCell (this is startCell now)
+                    Spreadsheet::RetrieveParameter(whichWorkbook, cellContents, formatstring( "%s%i", Spreadsheet::ColumnName( cellCurrentCol), cellCurrentRow) ) ;
+                    
+                    !Keep on searching for next cell, until we found an empty cell
+                    while cellContents <> ""
+                    do
+                    	!Determine the new current cell, based on the direction provided by the user
+                    	switch cellDirection
+                    	do
+                    		1:
+                    			cellCurrentCol -= 1 ;
+                    		2:
+                    			cellCurrentCol += 1 ;
+                    		3:
+                    			cellCurrentRow -= 1 ;
+                    		4:
+                    			cellCurrentRow += 1 ;
+                    	endswitch ;
+                    
+                    	!Get the contents of the new current cell
+                    	Spreadsheet::RetrieveParameter(whichWorkbook, cellContents, formatstring( "%s%i", Spreadsheet::ColumnName( cellCurrentCol), cellCurrentRow) ) ;
+                    endwhile ;
+                    
+                    !Because of the above loop, we went one step to far (i.e. current cell is empty). Must undo the last step
+                    !to get the actual range
+                    switch cellDirection
+                    do
+                    	1:
+                    		cellCurrentCol += 1 ;
+                    	2:
+                    		cellCurrentCol -= 1 ;
+                    	3:
+                    		cellCurrentRow += 1 ;
+                    	4:
+                    		cellCurrentRow -= 1 ;
+                    endswitch ;
+                    
+                    !and set the outputparameter to endCell that we found
+                    endCell := formatstring("%s%i", Spreadsheet::ColumnName( cellCurrentCol), cellCurrentRow) ;
+                }
+                StringParameter startCell {
+                    Property: Input;
+                }
+                Parameter cellDirection {
+                    Range: {
+                        {1..4}
+                    }
+                    Property: Input;
+                }
+                StringParameter endCell {
+                    Property: Output;
+                }
+                StringParameter CellContents;
+                Parameter cellCurrentRow;
+                Parameter cellCurrentCol;
+                Parameter iterator;
+                StringParameter whichWorkbook {
+                    Property: Input;
+                }
+            }
+        }
+    }
+    Section Another_Read_and_Write_Examples {
+        Set Regions {
+            Index: r;
+        }
+        Set Plants {
+            Index: p;
+        }
+        Set Years {
+            Index: y;
+        }
+        Parameter DemandInput1 {
+            IndexDomain: (r,p,y);
+        }
+        Parameter DemandInput2 {
+            IndexDomain: (r,p,y);
+        }
+        Parameter TransportOutput {
+            IndexDomain: (r,p,y);
+            Definition: DemandInput2(r,p,y);
+        }
+        StringParameter DataRange;
+        StringParameter RowRange;
+        Procedure ReadDemandDataFromExcel {
+            Body: {
+                !-- Reading from Excel file AIMMSExample.xls
+                
+                empty DemandInput1, DemandInput2 ;
+                
+                WorkbookName := "AimmsExample.xls";
+                BLOCK
+                Spreadsheet::SetActiveSheet( WorkbookName, "Transport Model" );
+                
+                Spreadsheet::RetrieveSet( WorkbookName, Regions, "A3:A12", "Demand Input 1" );
+                Spreadsheet::RetrieveSet( WorkbookName, Plants,  "B3:B12", "Demand Input 1" );
+                Spreadsheet::RetrieveSet( WorkbookName, Years,   "C3:C12", "Demand Input 1" );
+                
+                
+                !-- Reading from worksheet "Demand Input 1"
+                Spreadsheet::SetActiveSheet( WorkbookName, "Demand Input 1" ) ;
+                Spreadsheet::RetrieveTable(       Workbook      : WorkbookName,
+                                                  Parameter     : DemandInput1(r,p,y),
+                                                  DataRange     : "D3:D12",
+                                                  RowsRange     : "A3:C12",
+                                                  ColumnsRange  : "",
+                                                  AutomaticallyExtendSets : 1
+                                                 ) ;
+                
+                !-- Reading from worksheet "Demand Input 2"
+                Spreadsheet::SetActiveSheet( WorkbookName, "Demand Input 2" ) ;
+                ExcelStatus := Spreadsheet::RetrieveTable( Workbook : WorkbookName,
+                                                   Parameter     : DemandInput2(r,p,y),
+                                                   DataRange     : "C3:L12",
+                                                   RowsRange     : "A3:B12",
+                                                   ColumnsRange  : "C2:L2",
+                                                   AutomaticallyExtendSets : 1
+                                                 ) ;
+                ONERROR err DO
+                	CheckExcelError;
+                ENDBLOCK;
+            }
+        }
+        Procedure WriteTransportDataToExcel {
+            Body: {
+                !-- Writing to Excel worksheet Transport Output in the AIMMSExample.xls file
+                
+                WorkbookName := "AimmsExample.xls";
+                
+                !-- Writing to DemandImput2 to the worksheet "Demand Output 2"
+                BLOCK
+                	Spreadsheet::SetActiveSheet( WorkbookName, "Demand Output 2" ) ;
+                
+                	RowRange  := FormatString( "B4:D%i",  Count( (r,p,y) | TransportOutput(r,p,y) ) + 3 ) ;
+                	DataRange := FormatString( "E4:E%i",  Count( (r,p,y) | TransportOutput(r,p,y) ) + 3 ) ;
+                	Spreadsheet::AssignTable( WorkbookName,
+                                                 Parameter    : TransportOutput(r,p,y),
+                                                 DataRange    : DataRange,
+                                                 RowsRange    : RowRange,
+                                                 ColumnMode   : 3 ) ;
+                
+                	Spreadsheet::CloseWorkbook( WorkbookName, 1 ) ;
+                ONERROR err DO
+                	CheckExcelError;
+                ENDBLOCK;
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            solve TransportModel;
+            TransportModelStatus := ord(TransportModel.ProgramStatus);
+            
+            NewTransportModelStatus := TransportModel.ProgramStatus;
+            !if TransportModel.ProgramStatus <> 'Optimal' then
+            !    Abort "Transport model is infeasible";
+            !endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure OpenExplorer {
+        Body: {
+            if DialogAsk("This will open the Windows Explorer, but it will close this AIMMS session. Are you sure?", Button1:"Yes", Button2:"No") = 1 then
+            
+            	DirectoryGetCurrent(CurrentDirectory);
+            	OpenDocument(CurrentDirectory);
+            
+            	ExitAimms(0);
+            
+            endif;
+        }
+        StringParameter CurrentDirectory;
+    }
+}

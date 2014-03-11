@@ -1,0 +1,467 @@
+## ams_version=1.0
+
+Model Main_Circle_Packing {
+    Comment: {
+        "A set of 3 packing problems from:
+        
+        János D. Pintér and Frank J. Kampas, Nonlinear Optimization in Mathematica
+        with MathOptimizer Professional.
+        Mathematica in Education and Research 10 (2005), 1-18.
+        (C) iJournals.net, 2005.
+        
+        Extended by Paragon Decision Technology to allow adjustment of the number
+        of circles packed. Also extended with an interactive graphical representaion
+        to show results and resolve the models."
+    }
+    Section The_Packing_Problems {
+        DeclarationSection GeneralPacking {
+            Parameter NoOfCircles {
+                Text: "Number of circles";
+                InitialData: 20;
+                Comment: "Limited to 30 for example to limit run-time";
+            }
+            Set SetOfCircles {
+                SubsetOf: Integers;
+                Text: "Set of circles";
+                Index: i, j;
+                Parameter: SelectedCircle;
+                Definition: ElementRange(1,NoOfCircles);
+            }
+        }
+        DeclarationSection Packing_1 {
+            Comment: {
+                "Packing equal size circles in the unit square.
+                
+                From:
+                János D. Pintér and Frank J. Kampas, Nonlinear Optimization in Mathematica
+                with MathOptimizer Professional.
+                Mathematica in Education and Research 10 (2005), 1-18.
+                (C) iJournals.net, 2005.
+                
+                ========================================================================
+                For 20 circles the best solution (maximized circle radius) obtained by
+                AIMMS/LGO: 0.111382347512. This is identical with MiER result and with
+                the solution posted at www.packomania.com."
+            }
+            Parameter Border {
+                Text: "Border of the box in the network object";
+                InitialData: 0.5;
+            }
+            Parameter pi {
+                Text: "Pi";
+                Definition: 4*arctan(1);
+            }
+            Variable CoordXCircle1 {
+                IndexDomain: (i);
+                Text: "Circle center x-coordinate";
+                Range: [-1, 1];
+            }
+            Variable CoordYCircle1 {
+                IndexDomain: (i);
+                Text: "Circle center y-coordinate";
+                Range: [-1, 1];
+            }
+            Variable CircleRadius1 {
+                Text: "Radius of the identical circles";
+                Range: [0, CircleRadius_UB1];
+            }
+            Parameter CircleRadius_UB1 {
+                Text: "Upper bound on r";
+                Definition: 1 / sqrt(pi*NoOfCircles);
+            }
+            Variable Objective_Packing1 {
+                Text: "Objective of model 1";
+                Definition: CircleRadius1;
+            }
+            Constraint KeepWithinXBorder {
+                IndexDomain: i;
+                Text: "Keep the circles inside -border <= x <= border";
+                Definition: abs(CoordXCircle1(i)) + CircleRadius1 <= border;
+            }
+            Constraint KeepWithinYBorder {
+                IndexDomain: i;
+                Text: "Keep the circles inside -border <= y <= border";
+                Definition: abs(CoordYCircle1(i)) + CircleRadius1 <= border;
+            }
+            Constraint DoNotOverlapCircles1 {
+                IndexDomain: (i,j) | i < j;
+                Text: "Non-overlap constraints";
+                Definition: {
+                    2*CircleRadius1 <= sqrt( (CoordXCircle1(i) - CoordXCircle1(j))^2 +
+                                             (CoordYCircle1(i) - CoordYCircle1(j))^2
+                                            )
+                }
+            }
+            Set Packing1Constraints {
+                SubsetOf: AllConstraints;
+                Text: "All constraints used in model 1";
+                Definition: data { Objective_Packing1, KeepWithinXBorder, KeepWithinYBorder, DoNotOverlapCircles1 };
+            }
+            Set Packing1Variables {
+                SubsetOf: AllVariables;
+                Text: "All variables used in model 1";
+                Definition: data { CoordXCircle1, CoordYCircle1, CircleRadius1, Objective_Packing1 };
+            }
+            MathematicalProgram MP_CirclePacking1 {
+                Objective: Objective_Packing1;
+                Direction: maximize;
+                Constraints: Packing1Constraints;
+                Variables: Packing1Variables;
+                Text: "Packing equal size circles in the unit square";
+                Type: NLP;
+            }
+        }
+        DeclarationSection Packing_2 {
+            Comment: {
+                "Packing equal size circles in the unit circle.
+                
+                From:
+                János D. Pintér and Frank J. Kampas, Nonlinear Optimization in Mathematica
+                with MathOptimizer Professional.
+                Mathematica in Education and Research 10 (2005), 1-18.
+                (C) iJournals.net, 2005.
+                
+                =============================================================================
+                For 20 circles the best known solution obtained by AIMMS/LGO is ~ 0.195224011.
+                This is in agreement with the paper and with www.packomania.com.\""
+            }
+            Variable CoordXCircle2 {
+                IndexDomain: (i);
+                Text: "Circle center x-coordinate";
+                Range: [-1, 1];
+            }
+            Variable CoordYCircle2 {
+                IndexDomain: (i);
+                Text: "Circle center y-coordinate";
+                Range: [-1, 1];
+            }
+            Variable CircleRadius2 {
+                Text: "Radius of the identical circles";
+                Range: [0, CircleRadius_UB2];
+            }
+            Parameter CircleRadius_UB2 {
+                Text: "Upper bound on r";
+                Definition: 1 / sqrt(NoOfCircles);
+            }
+            Variable Objective_Packing2 {
+                Text: "Objective of model 2";
+                Definition: CircleRadius2;
+            }
+            Constraint KeepWithinCircumscribingCircle2 {
+                IndexDomain: i;
+                Text: "Constraint which keeps the circles inside the circumscribing circle";
+                Definition: sqrt( CoordXCircle2(i)^2 + CoordYCircle2(i)^2 ) + CircleRadius2 <= 1;
+            }
+            Constraint DoNotOverlapCircles2 {
+                IndexDomain: (i,j) | i < j;
+                Text: "Non-overlap constraints";
+                Definition: {
+                    2*CircleRadius2 <= sqrt( (CoordXCircle2(i) - CoordXCircle2(j))^2 +
+                                             (CoordYCircle2(i) - CoordYCircle2(j))^2
+                                            )
+                }
+            }
+            Set Packing2Constraints {
+                SubsetOf: AllConstraints;
+                Text: "All constraints used in model 2";
+                Definition: data { Objective_Packing2, KeepWithinCircumscribingCircle2, DoNotOverlapCircles2 };
+            }
+            Set Packing2Variables {
+                SubsetOf: AllVariables;
+                Text: "All variables used in model 2";
+                Definition: data {  CoordXCircle2, CoordYCircle2, CircleRadius2, Objective_Packing2 };
+            }
+            MathematicalProgram MP_CirclePacking2 {
+                Objective: Objective_Packing2;
+                Direction: maximize;
+                Constraints: Packing2Constraints;
+                Variables: Packing2Variables;
+                Text: "Packing equal size circles in the unit circle";
+                Type: NLP;
+            }
+        }
+        DeclarationSection Packing_3 {
+            Comment: {
+                "Packing circles of various size into an optimized circumscribing circle.
+                
+                From:
+                János D. Pintér and Frank J. Kampas, Nonlinear Optimization in Mathematica
+                with MathOptimizer Professional.
+                Mathematica in Education and Research 10 (2005), 1-18.
+                (C) iJournals.net, 2005.
+                
+                For 20 circles with radii i^(-0.5) i=1,...,20 the best known result
+                cited in this paper is ~ 2.1246798149.
+                
+                ========================================================================
+                Using AIMMS/LGO, the current best solution known is 2.123952003 using
+                the option maximal_number_of_function_evaluations set to 1,000,0000.
+                If the value of this option is increased, an even better solution can
+                be found. All constraints are met at least with 1.e-8 precision.\""
+            }
+            Set SetOfCircles3 {
+                SubsetOf: SetOfCircles;
+                Text: "Set of circles";
+                Index: i3, j3;
+                Definition: ElementRange(1,NoOfCircles);
+            }
+            Parameter CircleRadius3 {
+                IndexDomain: (i3);
+                Text: "Circle radii";
+                Default: 0.5;
+                InitialData: 0.5;
+            }
+            Variable CoordXCircle3 {
+                IndexDomain: (i3);
+                Text: "Circle center x-coordinate";
+                Range: [-2.5, 2.5];
+            }
+            Variable CoordYCircle3 {
+                IndexDomain: (i3);
+                Text: "Circle center y-coordinate";
+                Range: [-2.5, 2.5];
+            }
+            Variable CircumscribingCircleRadius3 {
+                Text: "Radius of the circumscribing circle";
+                Default: 0;
+            }
+            Variable Objective_Packing3 {
+                Text: "Objective of model 3";
+                Definition: CircumscribingCircleRadius3;
+            }
+            Constraint KeepWithinCircumscribingCircle3 {
+                IndexDomain: i3;
+                Text: "Constraint which keeps the circles inside the circumscribing circle";
+                Definition: sqrt( CoordXCircle3(i3)^2 + CoordYCircle3(i3)^2 ) + CircleRadius3(i3) <= CircumscribingCircleRadius3;
+            }
+            Constraint DoNotOverlapCircles3 {
+                IndexDomain: (i3,j3) | i3 < j3;
+                Text: "Non-overlap constraints";
+                Definition: {
+                    CircleRadius3(i3) + CircleRadius3(j3) <=
+                              sqrt( (CoordXCircle3(i3) - CoordXCircle3(j3))^2 +
+                                    (CoordYCircle3(i3) - CoordYCircle3(j3))^2
+                                  )
+                }
+            }
+            Set Packing3Constraints {
+                SubsetOf: AllConstraints;
+                Text: "All constraints used in model 3";
+                Definition: data { Objective_Packing3, KeepWithinCircumscribingCircle3, DoNotOverlapCircles3 };
+            }
+            Set Packing3Variables {
+                SubsetOf: AllVariables;
+                Text: "All variables used in model 3";
+                Definition: data {  CoordXCircle3, CoordYCircle3, CircumscribingCircleRadius3, Objective_Packing3 };
+            }
+            MathematicalProgram MP_CirclePacking3 {
+                Objective: Objective_Packing3;
+                Direction: minimize;
+                Constraints: Packing3Constraints;
+                Variables: Packing3Variables;
+                Text: "Packing equal size circles in the unit circle";
+                Type: NLP;
+            }
+        }
+        Procedure SolveCirclePacking1 {
+            Body: {
+                ! Best known value: 0.1113823475 (20 circles).
+                option Maximal_number_of_function_evaluations:= -1;
+                ClearSolutions;
+                if PE_CurrentSolver <> '' then
+                        ShowProgressWindow;
+                        solve MP_CirclePacking1 where solver := PE_CurrentSolver;
+                else
+                        DialogMessage("Please select a solver first.","No Solver Specified");
+                endif;
+            }
+        }
+        Procedure SolveCirclePacking2 {
+            Body: {
+                ! Best known value: 0.1952240110 (20 circles).
+                option Maximal_number_of_function_evaluations:= -1 ;
+                ClearSolutions;
+                if PE_CurrentSolver <> '' then
+                        showProgressWindow;
+                        solve MP_CirclePacking2 where solver := PE_CurrentSolver;
+                else
+                        DialogMessage("Please select a solver first.","No Solver Specified");
+                endif;
+            }
+        }
+        Procedure SolveCirclePacking3 {
+            Body: {
+                ! Best known value: 2.123952003 (20 circles).
+                option Maximal_number_of_function_evaluations:= 1000000;
+                ClearSolutions;
+                if PE_CurrentSolver <> '' then
+                        showProgressWindow;
+                        solve MP_CirclePacking3 where solver := PE_CurrentSolver;
+                else
+                        DialogMessage("Please select a solver first.","No Solver Specified");
+                endif;
+            }
+        }
+        Procedure UpdateCircleRadius {
+            Body: {
+                CircleRadius3(i):= ord(i)^(-.5);
+                CircumscribingCircleRadius3 := 0;
+            }
+        }
+        Procedure ClearSolutions {
+            Body: {
+                ! clears all the solutions so the solve can start from scratch
+                empty AllVariables, AllConstraints;
+                Empty SelectedCircle;
+            }
+        }
+    }
+    Section GUI_Support {
+        Comment: "Support section to improve GUI of Packing problems";
+        DeclarationSection Packing_GUI {
+            Comment: "Supporting identifiers to enhance the dispay of results in the AIMMS GUI";
+            Set Corners {
+                Text: "Points fo a square";
+                Index: c, c1, c2;
+                Definition: {
+                    {'NW','SW','NE', 'SE', 'Center'}
+                }
+            }
+            Set CenterPoint {
+                SubsetOf: Corners;
+                Text: "Center point of a Square";
+                Index: i_cp;
+                Definition: data { Center };
+            }
+            Parameter CoordXCorner {
+                IndexDomain: c;
+                Text: "X coordinate of point c";
+            }
+            Parameter CoordYCorner {
+                IndexDomain: c;
+                Text: "Y coordinate of point c";
+            }
+            Parameter Box {
+                IndexDomain: (c1,c2);
+                Text: "Outline of a square";
+                Definition: data { ( NW, SW ) : 1,  ( NW, NE ) : 1,  ( SE, SW ) : 1,  ( SE, NE ) : 1 };
+            }
+            Assertion MaxCircles {
+                Text: "Please input a number between 1 and 30";
+                Definition: NoOfCircles <= 30 and NoOfCircles >=1;
+                Action: {
+                    DialogMessage("Number of circles should be between 1 and 30.","Out of Range");
+                    If NoOfCircles <1 then NoOfCircles := 1;
+                    elseif NoOfCircles >30 then NoOfCircles := 30;
+                    endif;
+                }
+            }
+            Assertion CheckCircleRadius3 {
+                IndexDomain: i3;
+                Text: "Error: Radius out of range";
+                Definition: CircleRadius3(i3)>=0 and CircleRadius3(i3)<=1;
+                Action: {
+                    DialogMessage("Radius should be between 0 and 1.","Out of Range");
+                    If CircleRadius3(i3) <0 then CircleRadius3(i3):=0;
+                    elseif CircleRadius3(i3)>1 then CircleRadius3(i3):=1;
+                    endif;
+                }
+            }
+            ElementParameter SelectedColor {
+                IndexDomain: (i);
+                Range: AllColors;
+                Definition: {
+                    if i = SelectedCircle then
+                            'blue'
+                    else
+                            'black'
+                    endif
+                }
+            }
+            ElementParameter Graph_SelectedColor {
+                IndexDomain: (i);
+                Range: AllColors;
+                Definition: {
+                    if i = SelectedCircle then
+                            'Node Green'
+                    else
+                            'Text Brown'
+                    endif
+                }
+            }
+            ElementParameter PE_CurrentSolver {
+                Range: S_SuitableSolvers;
+            }
+            Set S_SuitableSolvers {
+                SubsetOf: AllSolvers;
+            }
+            Index i_CurrentSolver {
+                Range: AllSolvers;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            if not ('LGO 1.0' in Allsolvers  ) then
+                   Raise warning "Solver LGO is not installed yet. Please install it to get the best result.";
+            endif;
+            for (c) do
+                switch (c) do
+            
+               'NW':
+                            CoordXCorner(c) := Border;
+                            CoordYCorner(c) := Border;
+               'SW':
+                            CoordXCorner(c) := Border;
+                            CoordYCorner(c) := -Border;
+               'NE':
+                            CoordXCorner(c) := -Border;
+                            CoordYCorner(c) := Border;
+               'SE':
+                            CoordXCorner(c) := -Border;
+                            CoordYCorner(c) := -Border;
+            
+                endswitch;
+            endfor;
+            Empty AllVariables;
+            Empty SelectedCircle;
+            
+            
+            For i_CurrentSolver do
+                    if FindString (i_CurrentSolver, "LGO") then
+                            S_SuitableSolvers += {i_CurrentSolver};
+                            PE_CurrentSolver := i_CurrentSolver;
+                    elseif FindString (i_CurrentSolver, "KNITRO") then
+                            S_SuitableSolvers += {i_CurrentSolver};
+                    elseif FindString (i_CurrentSolver, "CONOPT") then
+                            S_SuitableSolvers += {i_CurrentSolver};
+                    elseif FindString (i_CurrentSolver, "MINOS") then
+                            S_SuitableSolvers += {i_CurrentSolver};
+                    elseif FindString (i_CurrentSolver, "SNOPT") then
+                            S_SuitableSolvers += {i_CurrentSolver};
+                    endif;
+            endfor;
+        }
+    }
+    Procedure MainExecution {
+        StringParameter ps_loc_projectdirectory;
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure RunAllModels {
+        Body: {
+            DialogGetNumber(
+                    message   : "How many circles should be fitted?",
+                    reference : NoOfCircles,
+                    decimals  : 0,
+                    title     : "Question");
+            
+            SolveCirclePacking1;
+            SolveCirclePacking2;
+            SolveCirclePacking3;
+        }
+    }
+}

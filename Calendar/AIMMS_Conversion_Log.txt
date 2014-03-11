@@ -1,0 +1,43 @@
+﻿Converting Main project
+Converting Calendar.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\Pages\Calendar Data.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\Pages\Inactive Days 1.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\Pages\Inactive Days.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\MainProject\Calendar.prj\User Files\bitmaps\wizard button.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Calendar.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\Calendar.dat
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\Description.txt
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library
+Copying file: _Example Style Library\Example Style Library.nch to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\_Example Style Library\Example Style Library.nch
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Calendar\Calendar_converted\Calendar.aimms
+Successfully converted the whole project.

@@ -1,0 +1,37 @@
+﻿Converting Main project
+Converting Aggregation Example.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\Pages\Aggregate Example.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\Pages\AIMMS 3 Demo - Aggregate Example.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Aggregation Example.DeveloperState to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\MainProject\Aggregation Example.DeveloperState
+Copying file: Aggregation Example.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\Aggregation Example.dat
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\Description.txt
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\_Example Style Library
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Date Aggregation\Date Aggregation_converted\Aggregation Example.aimms
+Successfully converted the whole project.

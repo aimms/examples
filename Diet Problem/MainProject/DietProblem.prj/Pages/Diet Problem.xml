@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:47:44">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>D3547EBD-1C2D-4195-A307-14700C615E8A</ProjectUUID>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="310" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="PercentageFromTop" Value="0.504566">
+						<BottomArea Line="FixedFromTop" Value="33" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="342" left="6" bottom="366" right="192" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="447" left="207" bottom="612" right="462" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfUnitsInMenu( f )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Servings"</HeaderText>
+			<NumberFormat Width="7" Decimals="0" Alignment="Right" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="573" left="504" bottom="600" right="762" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalCost</Identifier>
+			<Unit AlternativeUnit="[Hfl]" Display="PerValue" />
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total Cost"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="447" left="504" bottom="534" right="762" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>TotalValueOfNutrientsInOptimalDiet( n )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Optimal Value"</HeaderText>
+			<NumberFormat Width="10" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="537" left="504" bottom="567" right="762" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalWeightOptimalDiet</Identifier>
+			<Unit Display="PerValue" ShowBrackets="false" />
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total Weight"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="189" left="207" bottom="318" right="759" />
+		<TabOrder>5</TabOrder>
+		<ObjectUUID>23D72EB2-A65B-4170-8D10-5265B2CBDC5E</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">NutrientValuePerUnit( f, n )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Not show units"</Show_Unit>
+				</Show_Unit>
+				<Title ID="4120">"Nutritient Value"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MaximumNumberOfServings( f )</Identifier>
+				<Title ID="4120">"Servings"</Title>
+				<Format>
+					<Alignment ID="4330">"Center"</Alignment>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">WeightOfFoodType( f )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Show in header"</Show_Unit>
+				</Show_Unit>
+				<Title ID="4120">"Weight"</Title>
+				<Format>
+					<Alignment ID="4330">"Center"</Alignment>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">PricePerUnit( f )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Show in header"</Show_Unit>
+				</Show_Unit>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+					<Alignment ID="4330">"Center"</Alignment>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">f</Index>
+				<Header_Title ID="6530">"Food Type"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">n</Index>
+				<Header_Title ID="6530">"Nutrient"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">" "</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Font ExtraInfo="00000000-0000-0000-0000-000000000001" ID="1030">"Main Font"</Font>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="324" left="207" bottom="399" right="759" />
+		<TabOrder>6</TabOrder>
+		<ObjectUUID>DEAD74D3-F6F7-4B7C-A091-787F33C1317B</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MaximumAllowanceOfNutrient( n )</Identifier>
+				<Title ID="4120">"Max Allowed"</Title>
+				<Format>
+					<Alignment ID="4330">"Center"</Alignment>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MinimumRequirementOfNutrient( n )</Identifier>
+				<Title ID="4120">"Min Required"</Title>
+				<Format>
+					<Alignment ID="4330">"Center"</Alignment>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Defaults>
+				<Column_Width ID="6170">14</Column_Width>
+			</Defaults>
+			<Explicit_Index>
+				<Index ID="6510">n</Index>
+				<Header_Title ID="6530">"Food Type"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">" "</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="162" left="216" bottom="180" right="384" />
+		<StaticText>Input Data</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="414" left="204" bottom="438" right="762" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="417" left="216" bottom="435" right="384" />
+		<StaticText>Output Data</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="507" left="3" bottom="612" right="198" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="3" MarginBottom="5" MarginLeft="3" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>UnitNutrients( n )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Unit"</HeaderText>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+			<Assertion>CheckUnit( n )</Assertion>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>DefaultUnits( n )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Default"</HeaderText>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="375" left="9" bottom="513" right="186" />
+		<StaticText>NOTE:
+One can change the unit below:
+g -&gt; kg -&gt; oz
+kcal -&gt; j -&gt; kj
+Deleting the unit will automatically revert to its default.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="312" left="6" bottom="336" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="315" left="18" bottom="333" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>CheckUnit</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>n</Symbol>
+			<Symbol>MaximumAllowanceOfNutrient</Symbol>
+			<Symbol>MinimumRequirementOfNutrient</Symbol>
+			<Symbol>NumberOfUnitsInMenu</Symbol>
+			<Symbol>MaximumNumberOfServings</Symbol>
+			<Symbol>WeightOfFoodType</Symbol>
+			<Symbol>PricePerUnit</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>DefaultUnits</Symbol>
+			<Symbol>UnitNutrients</Symbol>
+			<Symbol>TotalWeightOptimalDiet</Symbol>
+			<Symbol>NutrientValuePerUnit</Symbol>
+			<Symbol>TotalValueOfNutrientsInOptimalDiet</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,47 @@
+﻿Converting Main project
+Converting Mail and Sound.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\Pages\Send Mail and Play Sound.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\MainProject\Mail and Sound.prj\User Files\bitmaps\next.bmp
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying folder: AimmsMAPI Source to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\AimmsMAPI Source
+Copying file: AimmsMAPI.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\AimmsMAPI.dll
+Copying file: aimmsmapi64.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\aimmsmapi64.dll
+Copying folder: AimmsWav Source to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\AimmsWav Source
+Copying file: AimmsWav.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\AimmsWav.dll
+Copying file: AimmsWav64.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\AimmsWav64.dll
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\Description.txt
+Copying folder: Import Sections to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\Import Sections
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\log
+Copying file: Mail and Sound.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\Mail and Sound.dat
+Copying file: signal.wav to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\signal.wav
+Copying file: signature.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\signature.txt
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\_Example Style Library
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\E-mail and Sound Support\E-mail and Sound Support_converted\Mail and Sound.aimms
+Successfully converted the whole project.

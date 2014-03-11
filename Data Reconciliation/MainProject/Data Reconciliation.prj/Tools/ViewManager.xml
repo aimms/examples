@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<ViewDefinition Name="Domain - Range - Default">
+	<IdentifierColumnWidth>210</IdentifierColumnWidth>
+	<Column Attribute="index domain" ColumnWidth="100" />
+	<Column Attribute="range" ColumnWidth="100" />
+	<Column Attribute="default" ColumnWidth="100" />
+</ViewDefinition>
+<ViewDefinition Name="Domain - Definition">
+	<IdentifierColumnWidth>121</IdentifierColumnWidth>
+	<Column Attribute="index domain" ColumnWidth="109" />
+	<Column Attribute="definition" ColumnWidth="327" />
+</ViewDefinition>
+<ViewDefinition Name="Domain - Unit">
+	<Column Attribute="index domain" ColumnWidth="100" />
+	<Column Attribute="unit" ColumnWidth="100" />
+</ViewDefinition>
+<ViewDefinition Name="Domain - Comment">
+	<Column Attribute="index domain" ColumnWidth="152" />
+	<Column Attribute="comment" />
+</ViewDefinition>
+<ViewDefinition Name="Subset of - Index">
+	<Column Attribute="subset of" ColumnWidth="100" />
+	<Column Attribute="index" ColumnWidth="100" />
+</ViewDefinition>
+<ViewDefinition Name="New">
+	<Column Attribute="index domain" />
+	<Column Attribute="property" />
+	<Column Attribute="range" />
+</ViewDefinition>

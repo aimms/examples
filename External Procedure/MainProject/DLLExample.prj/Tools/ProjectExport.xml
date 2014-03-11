@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>DLLExample32.dll</ExcludedFile>
+</ExportSettings>

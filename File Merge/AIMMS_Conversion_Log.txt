@@ -1,0 +1,45 @@
+﻿Converting Main project
+Converting filemerge.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\filemerge.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Pages\AIMMS 3 Demo - A File Merge Problem.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Pages\File Merge Problem.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Pages\Income Data Table.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Pages\Population Data Table.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Pages\Merged Data Table.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\Templates\Template 1.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.prj\User Files\DataFileMerge.txt
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: filemerge.nch to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\filemerge.nch
+Copying file: FileMerge.DeveloperState to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\MainProject\FileMerge.DeveloperState
+Copying file: description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\description.txt
+Copying file: FileMerge.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\FileMerge.dat
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\log
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library
+Copying file: _Example Style Library\Example Style Library.nch to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\_Example Style Library\Example Style Library.nch
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\File Merge\File Merge_converted\FileMerge.aimms
+Successfully converted the whole project.

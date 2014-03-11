@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:48:26" NeedsCompiledModel="false">
+	<Location top="185" left="271" bottom="503" right="728" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>DF3BEC5E-9D0D-4DEE-8E27-EBE8628E79DA</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Text">
+		<Location top="18" left="42" bottom="252" right="420" />
+		<StaticText>The two graphs on left show the approximation of Extreme Value distribution, which is an asymetrical distribution with strongly declining density for large values, by using LogNormal, Beta and Gamma distributions.
+
+The graph on right demostrates the fact that there is no unique way to measure the best fit, i.e. The lognormal graph is closer to the ExtremeValue distribution at equal kurtosis, the Gamma/Beta graph closer at equal skewness.  
+
+See the skewness and kurtosis page for graphs of their nonlinear behaviour.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="264" left="156" bottom="288" right="294" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Close"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="15C8D185-3284-4C8F-B07C-41BC34ACB5E4" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|237CC1A2-5A85-42D2-AF78-2BE39A55FA9F|Size Template">
+		<Template Name="Navigation Template" PageGUID="DC98831D-ECAF-4368-9B6C-FD2ABFEDB58C" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B832B7F1-DC56-4DD7-8968-5E82B834B0D6|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="778DC170-28C5-41F9-A609-D799680C9697" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|29034441-9C9F-453F-A72E-6BDE2CB53489|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="368ADAF9-1BE1-400F-AAB5-7728E2A5FECB" />
+			</Template>
+			<Page Name="Extended Cutting Stock Results" PageGUID="F766BB23-185A-4B58-A59F-1521642DC7A5" />
+		</Template>
+	</Template>
+	<Template Name="Blank Page Size" PageGUID="F624CBD2-BDA8-4F78-AA62-5A63DEFEB9E0">
+		<Page Name="Gantt Chart For Single Raw" PageGUID="A4301D6C-4F62-4B4D-9CF7-67875CC97062" />
+	</Template>
+</TemplateManager>

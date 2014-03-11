@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="EH Buttons" FaceName="Verdana" PointSize="100" UUID="F010E392-B47A-4A74-9978-52819BBEE28E" />
+	<UserFont Name="EH Headers" FaceName="Verdana" PointSize="100" Bold="true" UUID="43D44DA0-AE9F-4815-AC7B-2D7B27ADB9DA" InternalID="1" />
+	<UserFont Name="EH General Text" FaceName="Verdana" PointSize="100" UUID="80AE16B2-C58E-4F31-A3C4-346DEA75F943" InternalID="2" />
+	<UserFont Name="EH Main Font" FaceName="Arial" PointSize="80" UUID="ABF766B0-2F92-45FF-95F4-AC4AA29B0311" InternalID="3" />
+</UserFonts>

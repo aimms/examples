@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="1C0E5220-FBEF-4CCB-B842-678E558A9AB4" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|21CBA37D-63C9-4D1F-AB92-F409AA1C2ED4|Size Template">
+		<Template Name="Navigation Template" PageGUID="33AFF41C-DBFC-4919-BDE4-6CBADE44E6F2" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|50A05177-56F7-46A3-A935-9E4DA5C8BA0B|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="F3C123ED-D3B9-4DC5-9CAC-9B0BC5EBA711" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|E1A21688-4A62-4135-B2F8-D18098BB944B|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="5D517786-A792-4D11-AE8D-80051CF10AB4" />
+			</Template>
+			<Page Name="Input Data" PageGUID="0E06D626-8964-48B2-ACDF-57518F541D2C" />
+			<Page Name="Portfolio Selection" PageGUID="54C2BF21-EE0D-4454-85A2-C45026F09E9A" />
+		</Template>
+	</Template>
+	<Page Name="Results Discussion" PageGUID="64E3CB8F-B67A-44E1-AD57-0303A6A2399C" />
+</TemplateManager>

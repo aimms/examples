@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:39:47">
+	<Location top="27" left="8" bottom="770" right="1430" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>D989AEA3-3E13-4FB5-B08D-534E94525677</ProjectUUID>
+	<Title>"Inactive Days"</Title>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromLeft" Value="280">
+						<LeftArea Line="PercentageFromTop" Value="0.5">
+							<BottomArea Line="FixedFromTop" Value="162" />
+						</LeftArea>
+						<RightArea Line="PercentageFromTop" Value="0.5" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="8CDF7D63-C832-423F-966C-F264A2A083A5">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>1</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="9722B068-F4EC-4198-BF10-ACD3D51C1DBF" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="207" right="189" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="F5DD1C3A-58B5-41DF-8AE5-7265ACC293EA" Name="default" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="1A0E1556-0C34-425F-B2C5-70913E256D8C" Name="Calendar Data" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="219" left="18" bottom="240" right="117" />
+		<StaticText>Calendar Data</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="276" left="489" bottom="396" right="762" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnUpDown>false</LeaveOnUpDown>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ProcedureUponChange>UpdateGanttChart</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>InactiveDays( d2 )</Identifier>
+			<Color>ELEMENT( d2 )-&gt;AllColors := if (d2 = TodayElement) then 'red' endif;</Color>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="255" left="269" bottom="396" right="434" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ProcedureUponChange>AddRemoveGroupToInactiveDays</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>SelectedInactiveDayChoice( idc )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="408" left="489" bottom="615" right="762" />
+		<TabOrder>8</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<CellSelection>false</CellSelection>
+		<RowSelection>false</RowSelection>
+		<Domain>
+			<Identifier>fd2</Identifier>
+			<Index Name="fd2">
+				<TitleText>"Days"</TitleText>
+				<Color>ELEMENT( fd2 )-&gt;AllColors := if (fd2 in InactiveDays) then 'grey' elseif (fd2 = TodayElement) then 'red' elseif (fd2 &lt; TodayElement) then 'black' endif;</Color>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>STRING( fd2 ) := if (fd2 in InactiveDays) then "Inactive" else "Active" endif;</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"Status"</TitleText>
+			<Color>ELEMENT( fd2 )-&gt;AllColors := if (fd2 in InactiveDays) then 'grey' elseif (fd2 = TodayElement) then 'red' elseif (fd2 &lt; TodayElement) then 'black' endif;</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>TableValues( fd2 )</Identifier>
+			<NumberFormat Width="7" Decimals="3" Alignment="Center" ShowDefaults="true" />
+			<TitleText>"Values"</TitleText>
+			<Color>ELEMENT( fd2 )-&gt;AllColors := if (fd2 in InactiveDays) then 'grey' elseif (fd2 = TodayElement) then 'red' elseif (fd2 &lt; TodayElement) then 'black' endif;</Color>
+			<Readonly>VALUE( fd2 ) := (fd2 in InactiveDays)</Readonly>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="195" left="216" bottom="246" right="471" />
+		<StaticText>Select a subset of the calendar using definitions and by clicking on the Gantt chart or the calendar</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="417" left="213" bottom="444" right="477" />
+		<StaticText>Select filtering options</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="324" left="18" bottom="534" right="186" />
+		<StaticText>Define a set of inactive days.
+
+In the composite table the inactive days are presented in grey; days in the past are presented in black; days in the future have default color. The values of "Active" days can be changed only.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Gantt Chart">
+		<Location top="192" left="489" bottom="270" right="765" />
+		<TabOrder>12</TabOrder>
+		<Font GUID="F5DD1C3A-58B5-41DF-8AE5-7265ACC293EA" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Legend>true</Legend>
+		<X-Labels>true</X-Labels>
+		<VerticalGridLines>true</VerticalGridLines>
+		<InactiveData>true</InactiveData>
+		<Calendar>
+			<Items>dmY</Items>
+			<MeasurementFactor>1</MeasurementFactor>
+			<MeasurementUnit>days</MeasurementUnit>
+			<ReferenceTime>CalendarBeginDate</ReferenceTime>
+			<LeftBound>GanttChartBeginDate</LeftBound>
+			<RightBound>GanttChartEndDate</RightBound>
+		</Calendar>
+		<IndexLocations>
+			<LegendDomain>st</LegendDomain>
+		</IndexLocations>
+		<TaskGroup>
+			<Domain>DayStatus( d2, st )</Domain>
+			<Start>VALUE( d2 ) := ord(d2)-1</Start>
+			<Duration>DayStatus( d2, st )</Duration>
+			<ProcedureUponSelect>ChangegeDayStatus( d2 )</ProcedureUponSelect>
+		</TaskGroup>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="492" left="294" bottom="513" right="468" />
+		<TabOrder>13</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>FilterDayStatus( st )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="525" left="297" bottom="555" right="459" />
+		<TabOrder>15</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>CurrentFilter</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="465" left="219" bottom="489" right="348" />
+		<StaticText>Visible days:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>CalendarBeginDate</Symbol>
+			<Symbol>d2</Symbol>
+			<Symbol>DailyCalendar2</Symbol>
+			<Symbol>GanttChartBeginDate</Symbol>
+			<Symbol>TableValues</Symbol>
+			<Symbol>st</Symbol>
+			<Symbol>SelectedInactiveDayChoice</Symbol>
+			<Symbol>CalendarFilters</Symbol>
+			<Symbol>InactiveDays</Symbol>
+			<Symbol>FilterDayStatus</Symbol>
+			<Symbol>AllColors</Symbol>
+			<Symbol>CurrentFilter</Symbol>
+			<Symbol>idc</Symbol>
+			<Symbol>TodayElement</Symbol>
+			<Symbol>GanttChartEndDate</Symbol>
+			<Symbol>AddRemoveGroupToInactiveDays</Symbol>
+			<Symbol>fd2</Symbol>
+			<Symbol>DayStatus</Symbol>
+			<Symbol>ChangegeDayStatus</Symbol>
+			<Symbol>UpdateGanttChart</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

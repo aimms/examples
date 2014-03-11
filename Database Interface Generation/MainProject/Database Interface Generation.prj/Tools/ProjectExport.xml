@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>Database Interface Generation\Database Interface Generation.chw</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Janjte.aim</ExcludedFile>
+	<ExcludedFile>NaWijzigingB.aim</ExcludedFile>
+	<ExcludedFile>qq.aim</ExcludedFile>
+</ExportSettings>

@@ -1,0 +1,618 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:39:13">
+	<Location top="29" left="4" bottom="888" right="1274" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>95DC6F15-1119-414A-84B1-912EC8859110</ProjectUUID>
+	<TemplatesTabOrderPosition>20</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="299" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="40">
+						<BottomArea Line="FixedFromRight" Value="330">
+							<RightArea Line="FixedFromTop" Value="55" />
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="47FE05BA-3590-4993-BFF7-C96402FAB952">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="189" left="212" bottom="222" right="764" />
+		<StaticText>You can add, delete and modify nodes and arcs through the right-mouse menu within the network object. Select an existing node or arc by left-clicking on it.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Network Object">
+		<Location top="228" left="205" bottom="615" right="438" />
+		<TabOrder>15</TabOrder>
+		<TabStop>false</TabStop>
+		<PopupMenu ProjectUUID="95DC6F15-1119-414A-84B1-912EC8859110" MenuUUID="A548CA7F-2DF9-4C6B-AAF9-A9B5DC7F8F9E" />
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Border Style="Line" Width="2" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<SelectionColor RGB="#000080" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-0.358234353936</Left>
+			<Right>0.266240542104</Right>
+			<Top>0.702436625259</Top>
+			<Bottom>-0.341990820957</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>n</Identifier>
+			<XCoordinate>NodeCoordinate( n -&gt; SelectedNode, 'x' )</XCoordinate>
+			<YCoordinate>NodeCoordinate( n, 'y' )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MinimumSize>4</MinimumSize>
+			<MaximumSize>40</MaximumSize>
+			<ScaleFactor>0.5</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>NodeColor( n )</Color>
+			<Size>NodeSize( n )</Size>
+			<Shape>Circle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>ArcMap( a -&gt; SelectedArc, i -&gt; SourceNode, j -&gt; DestinationNode )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MinimumSize>1</MinimumSize>
+			<MaximumSize>7</MaximumSize>
+			<TextPosition>Left</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>ArcColor( a )</Color>
+			<Size>ComputedFlow( a )</Size>
+			<Text>ComputedFlow( a )</Text>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="324" left="447" bottom="447" right="762" />
+		<TabOrder>18</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<MultipleRowSelection>false</MultipleRowSelection>
+		<Domain>
+			<Identifier>n</Identifier>
+			<Index Name="n">
+				<TitleText>"Node"</TitleText>
+				<AllowCellSelection>false</AllowCellSelection>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>Supply( n -&gt; SelectedNode )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Demand( n -&gt; SelectedNode )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>EndStock( n )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"End Stock"</TitleText>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="471" left="447" bottom="615" right="762" />
+		<TabOrder>19</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Domain>
+			<Identifier>ArcMap( a -&gt; SelectedArc, i -&gt; SourceNode, j -&gt; DestinationNode )</Identifier>
+			<Index Name="a">
+				<TitleText>"Arc"</TitleText>
+				<SortingOrder>2</SortingOrder>
+			</Index>
+			<Index Name="i">
+				<TitleText>"Src"</TitleText>
+			</Index>
+			<Index Name="j">
+				<TitleText>"Dst"</TitleText>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>ArcCost( a )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Cost"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ComputedFlow( a )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Flow"</TitleText>
+			<SortingOrder>-1</SortingOrder>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ArcCapacity( a )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Cap"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ArcFromMultiplier( a )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+			<TitleText>"Gain"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ArcToMultiplier( a )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+			<TitleText>"Loss"</TitleText>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>1</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="4416B09A-4EFA-43FF-93D3-3C846A8BA77B" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="301" left="93" bottom="325" right="192" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Demand( SelectedNode )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="275" left="93" bottom="299" right="192" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Supply( SelectedNode )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="275" left="9" bottom="299" right="90" />
+		<StaticText>Supply:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="301" left="9" bottom="325" right="90" />
+		<StaticText>Demand:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="249" left="93" bottom="273" right="192" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>SelectedNode</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="249" left="9" bottom="273" right="90" />
+		<StaticText>Node:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="357" left="93" bottom="381" right="192" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<ProcedureUponChange>ModifySourceDestination</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>SourceNode</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="357" left="9" bottom="381" right="90" />
+		<StaticText>Source:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="381" left="93" bottom="405" right="192" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<ProcedureUponChange>ModifySourceDestination</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>DestinationNode</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="381" left="9" bottom="405" right="90" />
+		<StaticText>Destination:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="333" left="93" bottom="357" right="192" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<ProcedureUponChange>SetSourceDestination</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>SelectedArc</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="333" left="9" bottom="357" right="90" />
+		<StaticText>Arc:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="438" left="93" bottom="462" right="192" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ArcCapacity( SelectedArc )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="414" left="93" bottom="438" right="192" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ArcCost( SelectedArc )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="414" left="9" bottom="438" right="90" />
+		<StaticText>Cost:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="438" left="9" bottom="462" right="90" />
+		<StaticText>Capacity:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="486" left="93" bottom="510" right="192" />
+		<TabOrder>11</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ArcFromMultiplier( SelectedArc )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="462" left="93" bottom="486" right="192" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ArcToMultiplier( SelectedArc )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="462" left="9" bottom="486" right="90" />
+		<StaticText>From Factor:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="486" left="9" bottom="510" right="90" />
+		<StaticText>To Factor:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="309" left="447" bottom="324" right="768" />
+		<StaticText>Node Data:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="456" left="447" bottom="471" right="768" />
+		<StaticText>Arc Data:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="555" left="6" bottom="576" right="183" />
+		<TabOrder>13</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" Width="2" />
+		<BackgroundColor>
+			<UserColor GUID="47FE05BA-3590-4993-BFF7-C96402FAB952">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>SolveNetworkModel</Identifier>
+			<Description>"Use network model"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="537" left="6" bottom="555" right="183" />
+		<StaticText>Network flow or LP model:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="576" left="6" bottom="600" right="192" />
+		<TabOrder>14</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve model"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="508" left="93" bottom="532" right="192" />
+		<TabOrder>12</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ComputedFlow( SelectedArc )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="508" left="9" bottom="532" right="90" />
+		<StaticText>Flow:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="252" left="681" bottom="276" right="762" />
+		<TabOrder>17</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ComputedCost</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="447" bottom="276" right="603" />
+		<StaticText>Total cost of solution:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="228" left="681" bottom="252" right="762" />
+		<TabOrder>16</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalSupplySurplus</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="228" left="447" bottom="252" right="603" />
+		<StaticText>Total surplus of supply:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="219" left="18" bottom="237" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="212" bottom="177" right="477" />
+		<StaticText>Network Object and Output Data</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="207" right="189" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>SetSourceDestination</Symbol>
+			<Symbol>a</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>n</Symbol>
+			<Symbol>SelectedNode</Symbol>
+			<Symbol>ModifySourceDestination</Symbol>
+			<Symbol>ArcCost</Symbol>
+			<Symbol>ComputedCost</Symbol>
+			<Symbol>ArcColor</Symbol>
+			<Symbol>ArcMap</Symbol>
+			<Symbol>Demand</Symbol>
+			<Symbol>DestinationNode</Symbol>
+			<Symbol>EndStock</Symbol>
+			<Symbol>SolveNetworkModel</Symbol>
+			<Symbol>NodeSize</Symbol>
+			<Symbol>ArcToMultiplier</Symbol>
+			<Symbol>SolveModel</Symbol>
+			<Symbol>NodeSet</Symbol>
+			<Symbol>SelectedArc</Symbol>
+			<Symbol>NodeCoordinate</Symbol>
+			<Symbol>NodeColor</Symbol>
+			<Symbol>Supply</Symbol>
+			<Symbol>ArcSet</Symbol>
+			<Symbol>ComputedFlow</Symbol>
+			<Symbol>TotalSupplySurplus</Symbol>
+			<Symbol>SourceNode</Symbol>
+			<Symbol>ArcCapacity</Symbol>
+			<Symbol>ArcFromMultiplier</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

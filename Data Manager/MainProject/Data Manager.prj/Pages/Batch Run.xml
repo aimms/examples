@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:46:19">
+	<Location top="22" left="4" bottom="1077" right="1344" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>49507C75-0EF0-4D1E-9AA9-3D6E10D8710E</ProjectUUID>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="340" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromLeft" Value="564">
+						<LeftArea Line="FixedFromTop" Value="430" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="E5421D8C-62AD-49F0-9E3B-00E60C20E7F1">white</UserColor>
+	</Background>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="228" left="210" bottom="354" right="636" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<SpreadVertically>false</SpreadVertically>
+		<ExplicitIdentifier>
+			<Identifier>BatchRunCases( InputCases )</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="InputCases">DataFileName( InputCases )</ElementText>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="198" left="210" bottom="222" right="402" />
+		<StaticText>Select cases for batch run:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="360" left="210" bottom="384" right="348" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Start Batch Run"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>BatchRun</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="414" left="6" bottom="612" right="192" />
+		<StaticText>- One can create an own batch run facility as in this example
+or
+- One can use the Batch Run facility (Data Manager, go to View - Batch Run...) </StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="474" left="210" bottom="576" right="636" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>ObjResult( oc )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Objective Value"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ElementText Index="oc">DataFileName( oc )</ElementText>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="402" left="210" bottom="468" right="636" />
+		<StaticText>Below you can see results of the cases run. Please note that the table will be empty before the batch run is started. If you want you can delete the output cases, because you can easily create them again by running the batch run.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="188" left="204" bottom="390" right="642" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</LineColor>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="396" left="204" bottom="612" right="642" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="0F94B33E-B75A-4457-BD62-87A3DD25671D">default selection</UserColor>
+		</LineColor>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="581" left="210" bottom="605" right="348" />
+		<TabOrder>10</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Delete Output Case"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DeleteCases</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>InputCases</Symbol>
+			<Symbol>ObjResult</Symbol>
+			<Symbol>DeleteCases</Symbol>
+			<Symbol>oc</Symbol>
+			<Symbol>BatchRun</Symbol>
+			<Symbol>DataFileName</Symbol>
+			<Symbol>BatchRunCases</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

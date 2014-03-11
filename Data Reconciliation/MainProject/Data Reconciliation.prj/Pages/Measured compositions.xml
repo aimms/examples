@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:46:33">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromBottom" Value="70">
+						<TopArea Line="FixedFromTop" Value="232" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="170" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="192" left="207" bottom="330" right="759" />
+		<StaticText>On this page you must select the compositions for which measurements are available. In addition, you must provide information about the distribution of absolute or relative errors in the composition measurements by specifying the systematic error (if any), as well as (an estimate of) its standard deviation.
+
+This accuracy indication plays a key role in the data reconconciliation: changes in less accurate measurements (i.e. with a large deviation) are preferred over changes in more accurate values.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="9B4C3B3E-A80D-43F1-9D8C-419D94537DE4">old text font</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="338" left="207" bottom="360" right="645" />
+		<Hidden>CompositionAccuracyIsRelative</Hidden>
+		<StaticText>Specify measured compositions and absolute accuracy:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="9B4C3B3E-A80D-43F1-9D8C-419D94537DE4">old text font</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="360" left="207" bottom="615" right="762" />
+		<Hidden>CompositionAccuracyIsAbsolute</Hidden>
+		<TabOrder>3</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<MaxColWidth>6</MaxColWidth>
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<InputColor>
+			<UserColor GUID="2B027397-60EE-4D54-9DF0-7C7B28E5941A">red</UserColor>
+		</InputColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>IndicatorMeasuredComponent( nmf, c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Meas.  [y/n]"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Right" Binary="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>RelativeMeanCompositionError( nmf, c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Syst. err."</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+			<Unit Display="InTitle" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>RelativeCompositionErrorDeviation( nmf, c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Std. dev."</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+			<Unit Display="InTitle" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="336" left="631" bottom="354" right="763" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" MarginTop="2" MarginRight="2" MarginLeft="2" />
+		<BackgroundColor>
+			<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>CompositionAccuracyIsRelative</Identifier>
+			<Description>"error is relative"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="360" left="207" bottom="615" right="762" />
+		<Hidden>CompositionAccuracyIsRelative</Hidden>
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<MaxColWidth>5</MaxColWidth>
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<InputColor>
+			<UserColor GUID="2B027397-60EE-4D54-9DF0-7C7B28E5941A">red</UserColor>
+		</InputColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>IndicatorMeasuredComponent( nmf, c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Meas.  [y/n]"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Right" Binary="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>AbsoluteMeanCompositionError( nmf, c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Syst. err."</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+			<Unit Display="InTitle" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>AbsoluteCompositionErrorDeviation( nmf, c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Std. dev."</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+			<Unit Display="InTitle" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="338" left="207" bottom="360" right="645" />
+		<Hidden>CompositionAccuracyIsAbsolute</Hidden>
+		<StaticText>Specify measured compositions and relative accuracy:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>c</Symbol>
+			<Symbol>nmf</Symbol>
+			<Symbol>CompositionAccuracyIsAbsolute</Symbol>
+			<Symbol>CompositionAccuracyIsRelative</Symbol>
+			<Symbol>AbsoluteMeanCompositionError</Symbol>
+			<Symbol>RelativeCompositionErrorDeviation</Symbol>
+			<Symbol>AbsoluteCompositionErrorDeviation</Symbol>
+			<Symbol>IndicatorMeasuredComponent</Symbol>
+			<Symbol>RelativeMeanCompositionError</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

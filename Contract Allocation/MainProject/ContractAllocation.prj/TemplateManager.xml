@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="E1EC755B-438E-4038-8529-96BEBC7FAF5E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|2B221CA3-788E-47BE-9EDB-A63E9C76AEA1|Size Template">
+		<Template Name="Navigation Template" PageGUID="ADEA5008-BEE6-4061-9B48-70E817434B3C" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|DD2D05A3-6C41-474D-B6DB-24C988647385|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="BAB7D46B-7EA9-4151-AD9E-76A070CA545E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6C6C1ED0-E482-411D-B7A2-F04E640ED5A4|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="A18829EF-6F80-494A-BBEF-820F630003E7" />
+			</Template>
+			<Page Name="Contract Allocation" PageGUID="009B8B5B-D8AD-485B-A5D8-74A2588445F5" />
+			<Page Name="Production and Delivery Cost" PageGUID="33499D93-6E04-432A-B798-76ADAC2F2008" />
+		</Template>
+	</Template>
+</TemplateManager>

@@ -1,0 +1,238 @@
+## ams_version=1.0
+
+Model Main_Error_Handling {
+    Section Local_Error_Handling {
+        StringParameter LocalTestFileName {
+            InitialData: "incorrectinput2.txt";
+        }
+        File LocalTestFile {
+            Name: LocalTestFileName;
+            Device: Disk;
+            Mode: replace;
+        }
+        ElementParameter err {
+            Range: errh::PendingErrors;
+        }
+        StringParameter ErrorString;
+        Parameter ExitWithError;
+        Parameter Y;
+        Procedure LocalReadFile {
+            Body: {
+                ! This procedure tries to read from a file that does not exist.
+                ! The user is offered the possibility to select an existing file.
+                ! When the user selects the file incorrectinput.txt, another
+                ! error will occur because the contents of the file is not in
+                ! AIMMS format. The user gets the possibility to edit and save
+                ! the file and read again.
+                ! If the user chooses to Interrupt execution, the global error
+                ! handler will be invoked.
+                
+                empty ExitWithError, NoProblemDuringFileRead;
+                
+                repeat
+                
+                ! The combination of a block statement with an onerror statement
+                ! inside allows for local error handling. Whenever an error occurs
+                ! while executing one of the statements within the block the
+                ! execution will jump to the onerror clause. The onerror should
+                ! be followed by an element parameter in the predeclared set
+                ! errh::PendingErrors that can be used to retrieve information
+                ! about the error and for example mark the error as handled.
+                
+                block
+                
+                   read from file LocalTestFile;
+                
+                   NoProblemDuringFileRead := 1;
+                
+                   onerror err do
+                
+                      if errh::Filename( err ) then
+                
+                         ErrorString := FormatString( "The file '%s' does not adhere to the expected format for reading data. Please edit the file to correct the problem on line %i:\n\n%s\n\nand try again, or consult your application support desk.",
+                                                       errh::Filename( err ), errh::Line( err, 1 ), errh::Message( err ) );
+                
+                         PageOpen( "Error While Reading Data" );
+                
+                      else
+                
+                         ErrorString := FormatString( "This application is trying to read from a file, which resulted in an error:\n\n%s\n\nPlease select the correct file or consult your application support desk.", errh::Message( err ) );
+                
+                         PageOpen( "Error Locating File");
+                
+                      endif;
+                
+                      if not ExitWithError then
+                
+                         errh::MarkAsHandled( err );
+                
+                      endif;
+                
+                   endblock;
+                
+                   break when NoProblemDuringFileRead = 1 or ExitWithError = 1;
+                
+                endrepeat;
+            }
+            Parameter NoProblemDuringFileRead;
+        }
+        Procedure EditFile {
+            Body: {
+                ! This procedure opens notepad with the file that needs
+                ! a correction. It assumes notepad is available and its
+                ! folder is in the Path.
+                
+                Execute( FormatString( "Notepad.exe %s", LocalTestFileName ));
+            }
+        }
+        Procedure SelectFile {
+            Body: {
+                ! This procedure allows the user to select a file for reading.
+                
+                FileSelect( LocalTestFileName );
+            }
+        }
+        Procedure InterruptExecution {
+            Body: {
+                ! This procedure is executed if interrupt is selected in
+                ! one of the local error dialogs.
+                
+                ExitWithError := 1;
+                
+                PageClose;
+            }
+        }
+        Procedure Reset {
+            Body: {
+                LocalTestFileName := "incorrectinput2.txt";
+                
+                FileCopy( "<prj>:incorrectinput.txt", "incorrectinput.txt" );
+            }
+        }
+    }
+    Section Global_Error_Handling {
+        Procedure GlobalErrorHandler {
+            Arguments: (err);
+            Body: {
+                eh::GlobalErrorHandler(err);
+            }
+            ElementParameter err {
+                Range: errh::PendingErrors;
+                Property: Input;
+            }
+        }
+        Section Simple_Exection_Error {
+            Procedure ForceDivisionByZeroError {
+                Body: {
+                    X := 1/0;
+                }
+                Parameter X;
+            }
+        }
+        Section Stacked_Execution_Error {
+            Procedure MainProcedure {
+                Body: {
+                    ! This procedure just calls one other procedure.
+                    
+                    SubProcedure;
+                }
+            }
+            Procedure SubProcedure {
+                Body: {
+                    ! In this procedure the detailed procedure is called that will lead to the error.
+                    
+                    DetailedProcedure;
+                }
+            }
+            Procedure DetailedProcedure {
+                Body: {
+                    ! This procedure tries to open a page that doesn't exist, which generates an error.
+                    
+                    PageOpen( "This Page Doesn't Exist");
+                }
+            }
+        }
+        Section Definition_Evaluation_Error {
+            Parameter X {
+                Definition: val(TestString);
+            }
+            StringParameter TestString;
+            Procedure UpdateX {
+                Body: {
+                    ! This procedure resets the value of TestString, so that updating x will result in an error.
+                    
+                    empty TestString;
+                    TestString := "test";
+                    update x;
+                }
+            }
+        }
+        Section File_Read_Error {
+            StringParameter GlobalTestFileName {
+                Definition: "incorrectinput.txt";
+            }
+            File GlobalTestFile {
+                Name: GlobalTestFileName;
+                Device: Disk;
+                Mode: replace;
+            }
+            Procedure GlobalReadFile {
+                Body: {
+                    ! This procedure reads from a file with incorrect (not in AIMMS format) input.
+                    
+                    read from file GlobalTestFile;
+                }
+            }
+        }
+        Section Model_Generation_Error {
+            Variable X1 {
+                Range: nonnegative;
+            }
+            Variable Y1 {
+                Range: nonnegative;
+            }
+            Constraint Cons1 {
+                Definition: sqrt(-1+Y1) >= X1*X1;
+                Comment: {
+                    "This constraint triggers an error because at generation time Y1 is 0
+                    and the argument of the numerical function SQRT should be nonnegative."
+                }
+            }
+            Variable Obj {
+                Range: free;
+                Definition: X1+Y1;
+            }
+            MathematicalProgram MinObj {
+                Objective: Obj;
+                Direction: minimize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: Automatic;
+            }
+            Procedure SolveModel {
+                Body: {
+                    ! This procedures solves a model with a constraint that will have
+                    ! an error during generation.
+                    
+                    solve MinObj;
+                }
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            eh::ApplicationVersion := "1.01";
+            eh::ApplicationName := "Error Handling Example";
+            
+            eh::ApplicationContactPerson := "<Name of Application Developer>";
+            eh::ApplicationContactEMail  := "application.developer@domain.com";
+            eh::ApplicationContactPhone  := "+1 234 567 8900";
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

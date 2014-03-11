@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Chance Constraints.DeveloperState</ExcludedFile>
+	<ExcludedFile>Chance Constraints.nch</ExcludedFile>
+	<ExcludedFile>Description.txt.bak</ExcludedFile>
+</ExportSettings>

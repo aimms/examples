@@ -1,0 +1,412 @@
+## ams_version=1.0
+
+Model Main_FileMerge {
+    Section Model_Formulation {
+        DeclarationSection File_Merge {
+            Set AllRecords {
+                Index: a;
+                Definition: IncomeRecords+PopulationRecords;
+                Comment: "Data set of both income and population records";
+            }
+            Set IncomeRecords {
+                SubsetOf: AllRecords;
+                Index: i;
+                Parameter: istar;
+            }
+            Set PopulationRecords {
+                SubsetOf: AllRecords;
+                Index: j;
+                Parameter: jstar;
+            }
+            Set Permitted {
+                SubsetOf: (IncomeRecords,PopulationRecords);
+            }
+            Parameter GrossIncome {
+                IndexDomain: (a);
+                Comment: "Gross income of each data set";
+            }
+            Parameter Members {
+                IndexDomain: (a);
+                Comment: "Number of family members of each data set";
+            }
+            Parameter IncomeSources {
+                IndexDomain: (a);
+                Comment: "Income source of each data set";
+            }
+            Parameter Interest {
+                IndexDomain: (a);
+                Comment: "Interest of each data set";
+            }
+            Parameter NumberOfFamilies {
+                IndexDomain: (a);
+                Comment: "Total number of families in each data set";
+            }
+            Parameter TempNumberOfFamilies {
+                IndexDomain: (a);
+                Comment: "Temporary variables, number of families, is used during the excution";
+            }
+            Parameter AgeHead {
+                IndexDomain: (a);
+                Comment: "Age head in each data set";
+            }
+            Parameter YearsEducation {
+                IndexDomain: (a);
+                Comment: "Years of education of house hold in each data set";
+            }
+            Parameter Gender {
+                IndexDomain: (a);
+                Comment: "Gendar of house hold in each data set";
+            }
+            Parameter Distance {
+                IndexDomain: (i,j) | (i,j) in Permitted;
+                Comment: "The variance of gross income and number of family members between two files";
+            }
+            Parameter EstimatedVarianceGrossIncome {
+                Definition: sqr[SampleDeviation(a,GrossIncome(a))];
+                Comment: "Variance of gross income between two data files";
+            }
+            Parameter EstimatedVarianceMembers {
+                Definition: sqr[SampleDeviation(a,Members(a))];
+                Comment: "Variance of number of family members between two data files";
+            }
+            Parameter TemporaryNumberOfFamilies;
+            Macro DistanceFormula {
+                Arguments: (i,j);
+                Definition: {
+                    sqrt[
+                    sqr(GrossIncome(i)-GrossIncome(j))
+                    /EstimatedVarianceGrossIncome+
+                    sqr(Members(i)-Members(j))
+                    /EstimatedVarianceMembers]
+                }
+                Comment: "The total variance of gross income and number of family members between two data files";
+            }
+            Variable Merged {
+                IndexDomain: (i,j) | (i,j) in Permitted;
+                Range: nonnegative;
+                Comment: "The merged data table with the number of merged families";
+            }
+            Variable TotalDistance {
+                Definition: Sum((i,j),Distance(i,j)*Merged(i,j));
+                Comment: "Total distance = ditance * number of merged families";
+            }
+            Constraint IncomeRecordSupply {
+                IndexDomain: (i);
+                Property: ShadowPrice;
+                Definition: Sum(j,Merged(i,j))=NumberOfFamilies(i);
+                Comment: "Constraints of supply";
+            }
+            Constraint PopulationRecordDemand {
+                IndexDomain: (j);
+                Property: ShadowPrice;
+                Definition: Sum(i,Merged(i,j))=NumberOfFamilies(j);
+                Comment: "Constraints of demand";
+            }
+            MathematicalProgram FileMerge {
+                Objective: TotalDistance;
+                Direction: minimize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: LP;
+            }
+        }
+        Section SupportRoutines {
+            Procedure DetermineInitialSolution {
+                Body: {
+                    
+                    TempNumberOfFamilies(a):=NumberOfFamilies(a);
+                    Repeat
+                            istar := First(i|TempNumberOfFamilies(i)>0);
+                            jstar := First(j|TempNumberOfFamilies(j)>0);
+                            Break When Not(istar And jstar);
+                            TemporaryNumberOfFamilies := min(TempNumberOfFamilies(istar),TempNumberOfFamilies(jstar));
+                            Merged(istar,jstar) := TemporaryNumberOfFamilies;
+                            TempNumberOfFamilies(istar) -= TemporaryNumberOfFamilies;
+                            TempNumberOfFamilies(jstar) -= TemporaryNumberOfFamilies;
+                            Permitted += {(istar,jstar)};
+                            Distance(istar,jstar) := DistanceFormula(istar,jstar);
+                    EndRepeat;
+                }
+                Comment: "Empty Permitted , Distance , Merged";
+            }
+            Procedure DetermineBestCandidates {
+                Body: {
+                    
+                    
+                    
+                    FOR i DO
+                    
+                      FOR j DO
+                      TemporaryDistance(j) := DistanceFormula(i,j);
+                      ENDFOR;
+                    
+                      TemporaryMax := max [ j , TemporaryDistance(j) ];
+                    
+                      REPEAT
+                    
+                        BREAK WHEN (LoopCount > NumberOfBestCandidates);
+                    
+                        jstar := argmin(j , TemporaryDistance(j));
+                    
+                        Permitted     += { (i,jstar) };
+                        Distance(i,jstar) := DistanceFormula(i,jstar);
+                    
+                        TemporaryDistance(jstar) := TemporaryMax;
+                    
+                      ENDREPEAT;
+                    
+                    ENDFOR;
+                    
+                    
+                    
+                    FOR j DO
+                    
+                      FOR i DO
+                      TemporaryDistance(i) := DistanceFormula(i,j);
+                      ENDFOR;
+                    
+                      TemporaryMax := max [ i , TemporaryDistance(i) ];
+                    
+                      REPEAT
+                    
+                        BREAK WHEN (LoopCount > NumberOfBestCandidates);
+                    
+                        istar := argmin(i , TemporaryDistance(i));
+                    
+                        Permitted     += { (istar,j) };
+                        Distance(istar,j) := DistanceFormula(istar,j);
+                    
+                        TemporaryDistance(istar) := TemporaryMax;
+                    
+                      ENDREPEAT;
+                    
+                    ENDFOR;
+                }
+                Comment: "Find best candidates for given supply and demand";
+                Parameter TemporaryDistance {
+                    IndexDomain: (a);
+                }
+                Parameter TemporaryMax;
+                Parameter NumberOfBestCandidates {
+                    InitialData: 4;
+                }
+            }
+            Procedure DetermineAllCandidateVariables {
+                Body: {
+                    Repeat
+                            Solve FileMerge;
+                            istar:=First(IncomeRecords);
+                            jstar:=First(PopulationRecords);
+                            SearchCount:=0;
+                            CandidateCount:=0;
+                            Repeat
+                                    TempDistance:=DistanceFormula(istar,jstar);
+                                    If ((TempDistance-IncomeRecordSupply.ShadowPrice(istar)
+                                            -PopulationRecordDemand.ShadowPrice(jstar))<=(0-Epsilon))
+                                            Then
+                                            Permitted+={(istar,jstar)};
+                                            Distance(istar,jstar):=TempDistance;
+                                            CandidateCount+=1;
+                                    Endif;
+                                    jstar+=1;
+                                    If (jstar='')
+                                            Then
+                                            istar+=1;
+                                            jstar:=First(PopulationRecords);
+                                            ! SearchCount+=1;
+                                    Endif;
+                                    SearchCount+=1;
+                                    Break when (SearchCount=(card(IncomeRecords)*card(PopulationRecords)));
+                            Endrepeat;
+                            Break when (CandidateCount=0);
+                    Endrepeat;
+                }
+                Comment: "Find the optimal solution through systematically solving a sequence of smaller submodels";
+                Parameter SearchCount;
+                Parameter CandidateCount;
+                Parameter Epsilon {
+                    InitialData: 1E-3;
+                }
+                Parameter TempDistance;
+            }
+        }
+        Section AlternativeMethods {
+            Procedure RunWithAllVariables {
+                Body: {
+                    if not IsRunningAsViewer then
+                    
+                    	MainInitialization;
+                    	Permitted:={(i,j)};
+                    	Empty Merged;
+                    	Distance(i,j):=DistanceFormula(i,j);
+                    	Solve FileMerge;
+                    
+                    else
+                    
+                    	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
+                    	CaseFind("Solution Simplex", ACase);
+                    	CaseLoadCurrent(ACase);
+                    
+                    endif;
+                }
+            }
+            Procedure RunWithInitialSolutionOnly {
+                Body: {
+                    if not IsRunningAsViewer then
+                    
+                    	MainInitialization;
+                    	DetermineInitialSolution;
+                    	Solve FileMerge;
+                    
+                    else
+                    
+                    	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
+                    	CaseFind("Solution Heuristic", ACase);
+                    	CaseLoadCurrent(ACase);
+                    
+                    endif;
+                }
+            }
+            Procedure RunWithColumnGeneration {
+                Body: {
+                    if not IsRunningAsViewer then
+                    
+                    	MainInitialization;
+                    	Empty Permitted;
+                    	Empty Merged;
+                    	DetermineInitialSolution;
+                    	DetermineBestCandidates;
+                    	DetermineAllCandidateVariables;
+                    
+                    else
+                    
+                    	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
+                    	CaseFind("Solution Combination", ACase);
+                    	CaseLoadCurrent(ACase);
+                    
+                    endif;
+                }
+            }
+        }
+    }
+    Section Interface_Section {
+        DeclarationSection Output_Data {
+            Set NewRecord;
+            Parameter TotalRecords {
+                Definition: Card(Permitted);
+                Comment: "Number of new records";
+            }
+            Parameter Merged_GrossIncome {
+                IndexDomain: (i,j);
+                Definition: {
+                    
+                    If Merged(i,j)then
+                    
+                    (GrossIncome(i)+GrossIncome(j))/2
+                    
+                    endif
+                }
+                Comment: "Merged gross income is equal to sum of the gross incomes of the two data sets divided by two";
+            }
+            Parameter Merged_Members {
+                IndexDomain: (i,j);
+                Definition: {
+                    If Merged(i,j)then
+                    Max(Members(i),Members(j))
+                    endif
+                }
+                Comment: "Merged members is the maximum number of family members";
+            }
+            Parameter Merged_IncomeSources {
+                IndexDomain: (i,j);
+                Definition: {
+                    If Merged(i,j) then
+                    IncomeSources(i)
+                    endif
+                }
+                Comment: "Merged income source is called from the income data file";
+            }
+            Parameter Merged_Interest {
+                IndexDomain: (i,j);
+                Definition: {
+                    If Merged(i,j) then
+                    Interest(i)
+                    endif
+                }
+                Comment: "Merged interest is called from the income data file";
+            }
+            Parameter Merged_NumberOfFamilies {
+                IndexDomain: (i,j);
+                Definition: {
+                    If Merged(i,j)then
+                    min(NumberOfFamilies(i),NumberOfFamilies(j))
+                    endif
+                }
+                Comment: "Merged number of families is equal to the minimum number of families from the two data sets";
+            }
+            Parameter Merged_TempNumberOfFamilies {
+                IndexDomain: (i,j);
+                Comment: "Temporary number of families = 0";
+            }
+            Parameter Merged_AgeHead {
+                IndexDomain: (i,j);
+                Definition: {
+                    If Merged(i,j)then
+                    AgeHead(j)
+                    endif
+                }
+                Comment: "Merged age head is called from the population data file";
+            }
+            Parameter Merged_YearsEducation {
+                IndexDomain: (i,j);
+                Definition: {
+                    If Merged(i,j)then
+                    YearsEducation(j)
+                    endif
+                }
+                Comment: "Merged year education is called from the population data file";
+            }
+            Parameter Merged_Gender {
+                IndexDomain: (i,j);
+                Definition: {
+                    If Merged(i,j)then
+                    Gender(j)
+                    endif
+                }
+                Comment: "Merged gender is called from the population data file";
+            }
+        }
+        StringParameter ActivePage {
+            Definition: {
+                If Solved then
+                        "Merged Data Table"
+                                else
+                                "Income Data Table"
+                endif;
+            }
+        }
+        Parameter Solved {
+            Default: 0;
+            InitialData: {
+                0;
+            }
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    Section SystemRoutines {
+        Procedure MainInitialization {
+            Body: {
+                !-- read data from a project user file (menu Tools - Project User Files)
+                Read From file "<prj>:datafilemerge.txt" In merge mode;
+            }
+        }
+        Procedure MainExecution;
+        Procedure MainTermination {
+            Body: {
+                    return 1;
+            }
+        }
+    }
+}

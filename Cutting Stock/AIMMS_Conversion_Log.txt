@@ -1,0 +1,50 @@
+﻿Converting Main project
+Converting Cutting Stock.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\UISettings\DeveloperLayout.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\Tools\ProjectExport.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\Options
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\Pages\AIMMS Demo.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\Pages\Cutting Pattern Results.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\MenuBuilder.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\DataManagementSetup.xml
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\User Files\bitmaps
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\User Files\bitmaps\construct.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\User Files\bitmaps\totree.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\User Files\bitmaps\previous.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\User Files\bitmaps\next.bmp
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.prj\User Files\data1.txt
+Converting Library project: Example Style Library
+Converting Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.ams
+Converting .\_Example Style Library\Example Style Library.amb to new style model file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.ams
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\Project.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserColors.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\UISettings\UserFonts.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\Templates\Size Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\Templates\Navigation Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\Templates\Background Info Template.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\PageManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\TemplateManager.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\DataManagementSetup.xml
+Writing: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.libprj\User Files\StartPage.jpg
+Copying file: Cutting Stock.nch to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\MainProject\Cutting Stock.nch
+Copying file: CreatePossiblePatterns.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\CreatePossiblePatterns.dll
+Copying file: CreatePossiblePatterns64.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\CreatePossiblePatterns64.dll
+Copying file: CSCount.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\CSCount.dll
+Copying file: CSCount64.dll to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\CSCount64.dll
+Copying file: Cutting Stock.dat to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\Cutting Stock.dat
+Copying file: data1.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\data1.txt
+Copying file: debug.log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\debug.log
+Copying file: Description.txt to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\Description.txt
+Copying folder: log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\log
+Copying file: memory.log to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\memory.log
+Copying folder: Source to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\Source
+Copying file: _AIMMSpackInfo to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_AIMMSpackInfo
+Creating folder: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library
+Copying file: _Example Style Library\Example Style Library.nch to C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\_Example Style Library\Example Style Library.nch
+Writing file: C:\Users\PabloL\Desktop\proyectos AIMMS to convert\Cutting Stock\Cutting Stock_converted\Cutting Stock.aimms
+Successfully converted the whole project.

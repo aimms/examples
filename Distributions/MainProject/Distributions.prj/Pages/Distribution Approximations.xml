@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:48:24">
+	<Location top="23" left="8" bottom="644" right="772" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>DF3BEC5E-9D0D-4DEE-8E27-EBE8628E79DA</ProjectUUID>
+	<Title>"Distribution Approximations"</Title>
+	<TemplatesTabOrderPosition>3</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="2D Chart">
+		<Location top="189" left="513" bottom="615" right="762" />
+		<TabOrder>1</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Xval( p )</Domain>
+			<Scale>
+				<Minimum ID="1014">-1</Minimum>
+				<Maximum ID="1015">0</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Top area of the graphs to the left"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">density( extremevalueindex, p )</Value>
+				<Appearance>
+					<Line>
+						<Pattern ID="2024">STRING( extremevalueindex ) := if ord( extremevalueindex)&gt;6 then "LongDash" endif</Pattern>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Scale>
+				<Minimum ID="2035">0.4</Minimum>
+				<Maximum ID="2036">0.5</Maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Misc_display_settings>
+				<Anchor ID="41">"North"</Anchor>
+			</Misc_display_settings>
+		</Legend>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="417" left="207" bottom="615" right="495" />
+		<TabOrder>4</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Xval( p )</Domain>
+			<Scale>
+				<Minimum ID="1014">-2</Minimum>
+				<Maximum ID="1015">3</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Equal mean deviation and kurtosis"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">density( kurtosisindex, p )</Value>
+				<Appearance>
+					<Line>
+						<Pattern ID="2024">STRING( kurtosisindex ) := if ord(kurtosisindex)&gt;3 then "LongDash" endif</Pattern>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Scale>
+				<Maximum ID="2036">0.5</Maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Misc_display_settings>
+				<Anchor ID="41">"North"</Anchor>
+				<Orientation ID="56">"Horizontal"</Orientation>
+			</Misc_display_settings>
+		</Legend>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="189" left="207" bottom="399" right="495" />
+		<TabOrder>5</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Xval( p )</Domain>
+			<Scale>
+				<Minimum ID="1014">-2</Minimum>
+				<Maximum ID="1015">2</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Equal mean deviation and skewness"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">density( skewnessindex, p )</Value>
+				<Appearance>
+					<Line>
+						<Pattern ID="2024">STRING( skewnessindex ) := if ord(skewnessindex)&gt;3 then "LongDash" endif</Pattern>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Scale>
+				<Maximum ID="2036">0.5</Maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Misc_display_settings>
+				<Anchor ID="41">"North"</Anchor>
+				<Orientation ID="56">"Horizontal"</Orientation>
+			</Misc_display_settings>
+		</Legend>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="372" left="6" bottom="396" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="375" left="18" bottom="393" right="186" />
+		<StaticText>Actions</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="408" left="12" bottom="432" right="186" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"View Explanation"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="D19E6E71-8FE1-487D-BF8A-EB4091FE810E" Name="Distribution Approximations Explanation" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>p</Symbol>
+			<Symbol>kurtosisindex</Symbol>
+			<Symbol>Xval</Symbol>
+			<Symbol>skewnessindex</Symbol>
+			<Symbol>extremevalueindex</Symbol>
+			<Symbol>density</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="C2729558-320B-4116-8767-636E19D32F42">
+		<Page Name="Database Information" PageGUID="49CEBF90-2551-4D66-8217-07011EF8880D" />
+		<Page Name="View Data" PageGUID="0CA94859-7599-4690-93FC-83CF93DC65A7" />
+	</Page>
+	<Page Name="All Data Pages" PageGUID="07DFDCE8-4ACC-4AE4-80A6-A239BE93EC87">
+		<Page Name="[Data Page] HeaderTitle" PageGUID="21398003-86DA-4B23-B986-AA974F1FDE5F" />
+	</Page>
+</PageManager>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:48:26">
+	<Location top="29" left="8" bottom="798" right="1180" />
+	<PageEditSize Type="Inherited">
+		<Size Width="650" Height="548" />
+	</PageEditSize>
+	<ProjectUUID>DF3BEC5E-9D0D-4DEE-8E27-EBE8628E79DA</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromTop" Value="0.53">
+			<BottomArea Line="FixedFromBottom" Value="70" />
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="57AC877A-86C2-4F21-A11C-2AACE8CF2F89">white</UserColor>
+	</Background>
+	<PageObject Type="2D Chart">
+		<Location top="12" left="12" bottom="468" right="636" />
+		<TabOrder>2</TabOrder>
+		<Border Style="Line" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">Xval( p )</Domain>
+			<Scale>
+				<Minimum ID="1014">-1.5</Minimum>
+				<Maximum ID="1015">1.5</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Lognormal distributions:density graphs"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">density( logn, p )</Value>
+				<Appearance>
+					<Line>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Scale>
+				<Maximum ID="2036">2</Maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+		</Legend>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="486" left="12" bottom="540" right="636" />
+		<StaticText>The LogNormal distribution always has a smooth shape, unlike the Exponential distribution. While Lognormal(inf) is very peaked and assymmetrical, Lognormal(0) equals a Normal Distribution.</StaticText>
+		<Font GUID="46D05E58-942E-4033-933A-740958D80946" Name="Button font" />
+		<TextColor>
+			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>p</Symbol>
+			<Symbol>Xval</Symbol>
+			<Symbol>logn</Symbol>
+			<Symbol>density</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
