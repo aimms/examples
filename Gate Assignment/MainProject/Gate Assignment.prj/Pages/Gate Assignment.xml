@@ -1,0 +1,470 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:20:56">
+	<Location top="23" left="8" bottom="644" right="772" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>0C85949E-28CF-4A30-8DF0-12A5C8390841</ProjectUUID>
+	<Title>"Gate Assignment main planning screen"</Title>
+	<TemplatesTabOrderPosition>11</TemplatesTabOrderPosition>
+	<ToolBar None="true" />
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="149">
+					<BottomArea Line="FixedFromTop" Value="364" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="116">
+						<TopArea Line="PercentageFromTop" Value="0.56546" />
+						<BottomArea Line="FixedFromLeft" Value="564" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Gantt Chart">
+		<Location top="408" left="210" bottom="504" right="756" />
+		<TabOrder>3</TabOrder>
+		<TabStop>false</TabStop>
+		<PopupMenu ProjectUUID="0C85949E-28CF-4A30-8DF0-12A5C8390841" MenuUUID="4C42174B-62B9-4E1D-8971-0B25AC538C0F" />
+		<Font GUID="5552634E-97F0-4DD5-B52F-6B5EBFC7FA48" Name="Test" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<VerticalGridLines>true</VerticalGridLines>
+		<Background>
+			<AlternatingColor RGB="#ffefe8" />
+		</Background>
+		<TimeRange>
+			<Upper Value="1250" />
+		</TimeRange>
+		<IndexLocations>
+			<RowDomain>gui_unassigned</RowDomain>
+		</IndexLocations>
+		<TaskGroup>
+			<Domain>GUI_DomainUnassginedFlights( gui_unassigned, flight )</Domain>
+			<Start>GUI_ArrivalTime( gui_unassigned )</Start>
+			<Duration>GUI_GroundTime( gui_unassigned )</Duration>
+			<Color>UnassignedFlightColor( gui_unassigned )</Color>
+			<StoreSelectionIn>isUnassignedFlightSelected( gui_unassigned )</StoreSelectionIn>
+			<InsideBarText>FlightDescription( gui_unassigned )</InsideBarText>
+			<ProcedureUponSelect>UpdateSelectedFlight_Unassigned</ProcedureUponSelect>
+			<Description>FlightDescription( gui_unassigned )</Description>
+			<ProcedureUponDoubleClick>ShowFlightInformationPage</ProcedureUponDoubleClick>
+		</TaskGroup>
+	</PageObject>
+	<PageObject Type="Gantt Chart">
+		<Location top="210" left="210" bottom="384" right="756" />
+		<TabOrder>2</TabOrder>
+		<TabStop>false</TabStop>
+		<PopupMenu ProjectUUID="0C85949E-28CF-4A30-8DF0-12A5C8390841" MenuUUID="35DC7A7E-6706-4FED-9A13-E8C5938371B7" />
+		<Font GUID="5552634E-97F0-4DD5-B52F-6B5EBFC7FA48" Name="Test" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<VerticalGridLines>true</VerticalGridLines>
+		<Background>
+			<AlternatingColor RGB="#ffefe8" />
+		</Background>
+		<TimeRange>
+			<Upper Value="1250" />
+		</TimeRange>
+		<IndexLocations>
+			<RowDomain>si</RowDomain>
+		</IndexLocations>
+		<TaskGroup>
+			<Domain>GUI_DomainAssignedFlights( si, si2, flight )</Domain>
+			<Start>GUI_ArrivalTime( flight )</Start>
+			<Duration>GUI_GroundTime( flight )</Duration>
+			<Color>AssignedFlightColor( si, flight )</Color>
+			<StoreSelectionIn>isAssignedFlightSelected( si, flight )</StoreSelectionIn>
+			<InsideBarText>FlightDescription( flight )</InsideBarText>
+			<ProcedureUponChange>UpdateGanttChartData</ProcedureUponChange>
+			<ProcedureUponSelect>UpdateSelectedFlight_Assigned</ProcedureUponSelect>
+			<Description>FlightDescription( flight )</Description>
+			<ProcedureUponDoubleClick>ShowFlightInformationPage</ProcedureUponDoubleClick>
+		</TaskGroup>
+		<ElementText Index="si">SelectedGateplanDescription( si )</ElementText>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="390" left="210" bottom="408" right="498" />
+		<StaticText>All unassigned flights</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="210" bottom="210" right="498" />
+		<StaticText>All assigned flights</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="510" left="210" bottom="582" right="756" />
+		<StaticText>Double click on flight to get more detailed information. 
+  (There you can force the flight to be either assigned or to be left unassigned)
+
+Right-click on a flight to move it from unassigned to assigned and vice versa.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="258" left="6" bottom="282" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="261" left="18" bottom="279" right="186" />
+		<StaticText>Actions</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button" Tag="Move all to unassigned">
+		<Location top="318" left="6" bottom="342" right="192" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MakeEverythingUnassigned</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="324" left="18" bottom="342" right="195" />
+		<StaticText>Move all to unassigned</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button" Tag="Move all to assigned">
+		<Location top="348" left="6" bottom="372" right="192" />
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MakeEverythingAssigned</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="354" left="18" bottom="372" right="195" />
+		<StaticText>Move all to assigned</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button" Tag="Solve Gate Assignment">
+		<Location top="378" left="6" bottom="402" right="192" />
+		<TabOrder>9</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="384" left="18" bottom="402" right="195" />
+		<StaticText>Solve Gate Assignment</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button" Tag="Problem Description">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="414" left="6" bottom="438" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="417" left="18" bottom="435" right="186" />
+		<StaticText>Solution Information</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button" Tag="Show details last solve">
+		<Location top="576" left="6" bottom="600" right="192" />
+		<TabOrder>10</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>NthChild</Destination>
+				<ChildNumber>2</ChildNumber>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="582" left="18" bottom="600" right="195" />
+		<StaticText>Show details last solve</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="444" left="6" bottom="564" right="192" />
+		<Hidden>VALUE := 1 $ (GUI_MinIdletime &lt; 0)</Hidden>
+		<TabOrder>1</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("   Idle time:")</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("       Average : %n", GUI_AverageIdletime)</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("       Std deviation : %n", GUI_StdDevIdleTime )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("       Min. : %n", GUI_MinIdletime )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("       Max. : %n", GUI_MaxIdletime)</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>""</Identifier>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("   Flights assigned : %n", card(Flights) - card(GUI_UnassignedFlights) )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("   Flights unassigned : %n", card(GUI_UnassignedFlights))</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button" Tag="Input Settings">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="GotoPage">
+				<Destination>FirstChild</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Input/Settings</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="462" left="30" bottom="540" right="156" />
+		<Hidden>VALUE := 1 $ (GUI_MinIdletime &gt;= 0)</Hidden>
+		<StaticText>Currently
+no
+feasible
+solution
+exists</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="594" left="210" bottom="612" right="228" />
+		<FillColor>
+			<UserColor GUID="8C1FFC91-A781-4272-831D-2D86F23592E4">red</UserColor>
+		</FillColor>
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="594" left="234" bottom="612" right="354" />
+		<StaticText>Conflicting flights</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="594" left="384" bottom="612" right="402" />
+		<FillColor>
+			<UserColor GUID="ABB4A8BD-7798-41D3-BA43-C629DFC98735">green</UserColor>
+		</FillColor>
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="594" left="408" bottom="612" right="576" />
+		<StaticText>Flight must be assigned</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="594" left="588" bottom="612" right="606" />
+		<FillColor>
+			<UserColor GUID="23D75666-2DD0-449B-AFD6-D67D2CC2A745">Dark Orange</UserColor>
+		</FillColor>
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="594" left="612" bottom="612" right="762" />
+		<StaticText>Keep flight unassigned</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button" Tag="Help / Instructions">
+		<Location top="288" left="6" bottom="312" right="192" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="15D3A1F9-D440-4E8D-A474-8C7E409AC44D" Name="Help and Instructions" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="294" left="18" bottom="312" right="195" />
+		<StaticText>Help / Instructions</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>GUI_DomainUnassginedFlights</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>GUI_StdDevIdleTime</Symbol>
+			<Symbol>gui_unassigned</Symbol>
+			<Symbol>SelectedGateplanDescription</Symbol>
+			<Symbol>GUI_MinIdletime</Symbol>
+			<Symbol>GUI_MaxIdletime</Symbol>
+			<Symbol>GUI_GroundTime</Symbol>
+			<Symbol>UpdateSelectedFlight_Assigned</Symbol>
+			<Symbol>si2</Symbol>
+			<Symbol>UpdateSelectedFlight_Unassigned</Symbol>
+			<Symbol>si</Symbol>
+			<Symbol>GUI_UnassignedFlights</Symbol>
+			<Symbol>UnassignedFlightColor</Symbol>
+			<Symbol>UpdateGanttChartData</Symbol>
+			<Symbol>flight</Symbol>
+			<Symbol>isAssignedFlightSelected</Symbol>
+			<Symbol>FlightDescription</Symbol>
+			<Symbol>isUnassignedFlightSelected</Symbol>
+			<Symbol>GUI_AverageIdletime</Symbol>
+			<Symbol>Flights</Symbol>
+			<Symbol>MakeEverythingUnassigned</Symbol>
+			<Symbol>GUI_ArrivalTime</Symbol>
+			<Symbol>MakeEverythingAssigned</Symbol>
+			<Symbol>GUI_DomainAssignedFlights</Symbol>
+			<Symbol>ShowFlightInformationPage</Symbol>
+			<Symbol>AssignedFlightColor</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

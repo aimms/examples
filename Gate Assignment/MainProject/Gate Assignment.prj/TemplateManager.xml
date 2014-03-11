@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="007CE4BC-2CE8-47CF-B5AA-05B029774D04" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|7AE2C5BD-6961-43AF-A7AD-C12E0F955021|Size Template">
+		<Template Name="Navigation Template" PageGUID="BD846072-140E-481B-BBD0-A4D7FA0C139E" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|1799D4BB-3A8E-4BC9-847B-883A284B81B8|Navigation Template">
+			<Template Name="Progress Template" PageGUID="38B3A685-B5D9-4001-A337-AD6FC0CAA6FC">
+				<Page Name="Progress Column Generation" PageGUID="B1700F76-38F0-4D70-90B8-CAA2453939A6" />
+				<Page Name="Progress ILP" PageGUID="2F61D270-B904-4FC4-AEB4-28D1B48C7A5D" />
+			</Template>
+			<Template Name="Background Info Template" PageGUID="E66EBC07-A0D8-422D-A35C-89E811B07384" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|872937F9-354F-4F10-82B3-76F47FB144D9|Background Info Template">
+				<Page Name="Problem Description Page" PageGUID="46970390-FC8B-42A3-9F12-05E5FA306E98" />
+			</Template>
+			<Page Name="Details last solve" PageGUID="06FA72AD-223E-48A9-A8CF-01A12317AC6B" />
+			<Page Name="Gate Assignment" PageGUID="6BE30088-295B-4726-8CB9-5B3D7073CEE4" />
+			<Page Name="Show Input" PageGUID="BFA9C803-3F3E-4719-ABB5-D88BD1D416A3" />
+			<Page Name="Gate input" PageGUID="FFBE8EDB-5A0D-4E52-A85F-F6FDDB26F106" />
+			<Page Name="Flight input" PageGUID="0A9C2AA5-1ED0-42D7-9D0A-212B76798DE6" />
+		</Template>
+	</Template>
+	<Page Name="Assign flight to gateplan" PageGUID="56CDB652-6ACC-4A94-B25B-AD20F33E4BF5" />
+	<Page Name="Selected Flight Information" PageGUID="C9BCD0DF-BE64-43B6-A040-5819DCD6F3E9" />
+	<Page Name="Help and Instructions" PageGUID="15D3A1F9-D440-4E8D-A474-8C7E409AC44D" />
+	<Page Name="All Data Pages" PageGUID="080854B5-45CD-4DE2-A2E2-DF36D1531FB8" />
+	<Page Name="[Data Page] StartSolution_Flow" PageGUID="A6943E90-0675-4268-8560-4DF823D8437D" />
+</TemplateManager>
