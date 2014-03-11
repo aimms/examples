@@ -1,0 +1,172 @@
+## ams_version=1.0
+
+Model Main_template {
+    Section Chart_Demo_1 {
+        Set XPoints {
+            SubsetOf: Integers;
+            Index: i;
+            Definition: data { -100 .. 100 };
+        }
+        Set YPoints {
+            SubsetOf: Integers;
+            Index: j;
+            Definition: data { -100 .. 100 };
+        }
+        Parameter MaxSubPointsInput {
+            InitialData: 1;
+        }
+        Parameter MaxSubPoints {
+            Definition: 5 * MaxSubPointsInput;
+        }
+        Set SubXPoints {
+            SubsetOf: XPoints;
+            Index: si;
+            Definition: ElementRange(-MaxSubPoints,MaxSubpoints);
+        }
+        Set SubYPoints {
+            SubsetOf: YPoints;
+            Index: sj;
+            Definition: ElementRange(-MaxSubPoints,MaxSubpoints);
+        }
+        Parameter PointValue {
+            IndexDomain: (si,sj);
+            Definition: si^2 + sj^2;
+        }
+        Parameter XRotation {
+            InitialData: 45;
+        }
+        Parameter YRotation {
+            InitialData: 0;
+        }
+        Parameter ZRotation {
+            InitialData: 45;
+        }
+        Set ChartStyles {
+            Index: cs;
+            Definition: data { 'Is Meshed', 'Is Shaded', 'Is Contoured', 'Is Zoned' };
+        }
+        Parameter ChartStyleVal {
+            IndexDomain: (cs);
+            Range: binary;
+            InitialData: data { 'Is Shaded' : 1,  'Is Zoned' : 1 };
+        }
+        Set Contours {
+            Index: c;
+            Definition: data { 1 .. 10 };
+        }
+        Parameter ContourLevel {
+            IndexDomain: (c);
+            Definition: (Max( (i,j), PointValue(i,j) )/10) * (ord(c));
+        }
+        StringParameter ContourLabel {
+            IndexDomain: (c);
+            Definition: FormatString( "%i - %i ", (Max( (i,j), PointValue(i,j) )/10) * (ord(c)-1), (Max( (i,j), PointValue(i,j) )/10) * ord(c) );
+        }
+        ElementParameter ContourLowerColor {
+            Range: AllColors;
+            InitialData: 'white';
+        }
+        ElementParameter ContourUpperColor {
+            Range: AllColors;
+            InitialData: 'blue';
+        }
+        Procedure Reposition3DChart {
+            Body: {
+                XRotation := -1 ;
+                YRotation := -1 ;
+                ZRotation := -1 ;
+                
+                PageRefreshAll;
+                
+                XRotation := 45 ;
+                YRotation := 0 ;
+                ZRotation := 45 ;
+                
+                PageRefreshAll ;
+            }
+        }
+    }
+    Section Chart_Demo_2 {
+        Set Points {
+            Index: p, x, y;
+            Definition: {
+                ElementRange(0,NumberofPoints, Prefix: "point-");
+            }
+        }
+        Parameter NumberOfPoints {
+            InitialData: 50;
+        }
+        Parameter MembraneLength {
+            InitialData: 1;
+        }
+        Parameter MembraneWidth {
+            InitialData: 1;
+        }
+        Parameter ForceConstant {
+            InitialData: 1;
+        }
+        Parameter LengthDiscreteValue {
+            IndexDomain: (x);
+            Definition: MembraneLength * ord(x) / card(x);
+        }
+        Parameter WidthDiscreteValue {
+            IndexDomain: (y);
+            Definition: MembraneWidth * ord(y) / card(y);
+        }
+        Parameter MembraneLowerBound {
+            IndexDomain: (x,y);
+            Definition: {
+                0.5 * [sin(9.2*LengthDiscreteValue(x))*sin(9.3*WidthDiscreteValue(y))]^2;
+            }
+        }
+        Parameter MembraneUpperBound {
+            IndexDomain: (x,y);
+            Definition: {
+                1
+                ! [sin(9.2*LengthDiscreteValue(x))*sin(9.3*WidthDiscreteValue(y))]^2 + 0.02;
+            }
+        }
+        ComplementarityVariable MembraneHeight {
+            IndexDomain: (x,y);
+            Range: [MembraneLowerBound(x, y), MembraneUpperBound(x, y)];
+            Complement: {
+                4*MembraneHeight(x,y)
+                - MembraneHeight(x+1,y) - MembraneHeight(x-1,y)
+                - MembraneHeight(x,y+1) - MembraneHeight(x,y-1)
+                - ForceConstant/[card(points)^2] = 0
+            }
+        }
+        MathematicalProgram Obstacle {
+            Type: MCP;
+        }
+        Parameter Quality {
+            Definition: {
+                sum[(x,y),
+                 [(MembraneHeight_complement(x,y)) * (MembraneHeight(x,y) - MembraneLowerBound(x,y))] onlyif (MembraneHeight_complement(x,y) >= 0)
+                -[(MembraneHeight_complement(x,y)) * (MembraneUpperBound(x,y) - MembraneHeight(x,y))] onlyif (MembraneHeight_complement(x,y) <= 0)
+                ]
+            }
+        }
+        Set ObsContours {
+            Index: oc;
+            Parameter: CurrentContour;
+            Definition: data { 1 .. 10 };
+        }
+        Parameter ObsContourLevel {
+            IndexDomain: (oc);
+            Definition: (Max( (x,y), MembraneLowerBound(x,y) )/10) * (ord(oc));
+        }
+        Procedure SolveObstacleMP {
+            Body: {
+                solve Obstacle ;
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}
