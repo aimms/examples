@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="47EBF9C7-3AF6-4B2F-B985-D334325E1A4B">
+		<Page Name="3D Chart Demo 1" PageGUID="43F452E2-EB4E-4076-9B1D-EED1A3977E3D" />
+		<Page Name="3D Chart Demo 2" PageGUID="B00B0C80-5F62-4520-9FD0-36BDAAA736A5" />
+	</Page>
+</PageManager>
