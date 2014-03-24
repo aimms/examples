@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-21 14:03:02" NeedsCompiledModel="false">
+	<Location bottom="423" right="1280" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>815943C0-011E-4F24-88E2-47BBE23FE82D</ProjectUUID>
+	<Title>"AIMMS 3 Demo: Globally Optimal Circle Packings"</Title>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<TopArea Line="FixedFromTop" Value="54" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<HorizontalGridDistance>1</HorizontalGridDistance>
+	<VerticalGridDistance>1</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="189" left="207" bottom="615" right="762" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Description.txt"</FileName>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>
