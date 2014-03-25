@@ -153,7 +153,8 @@ MAIN MODEL Main_VRP4
        index domain :  k | k < VehiclesNumber
        definition   :  Y(1,k) >= Y(1,k+1)
        comment      :  "This constraint enforces that vehicle 1 is used before vehicle 2, which is used
-                        before vehicle3, etc." ;
+                        before vehicle 3, etc. This constraint is added to improve the performance of the
+                        model as it breaks some symmetry in the model." ;
 
     MATHEMATICAL PROGRAM:
        identifier   :  LeastCost
