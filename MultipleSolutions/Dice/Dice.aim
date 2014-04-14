@@ -5,6 +5,9 @@ MAIN MODEL Dice_Model
               Problem type:
               MIP (small)
               
+              Keywords:
+              Multiple solutions, incumbent callback, solution pool, GMP
+              
               Description:
               This example demonstrates several approaches to get multiple solutions when
               solving a MIP problem. These approaches are:

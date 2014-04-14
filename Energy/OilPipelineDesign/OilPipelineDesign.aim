@@ -5,6 +5,9 @@ MAIN MODEL Main_OilPipelineDesign
               Problem type:
               MIP (medium)
               
+              Keywords:
+              Network object
+              
               Description:
               We consider a given set of offshore platforms and onshore wells producing known
               amounts of oil to be connected to a port. Connections may take place directly

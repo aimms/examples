@@ -4,7 +4,7 @@ Problem type:
 MIP (medium)
 
 Keywords:
-Incumbent callback, Network object
+Incumbent callback, network object
 
 Description:
 The Vehicle Routing Problem (VRP) deals with the distribution of goods between depots

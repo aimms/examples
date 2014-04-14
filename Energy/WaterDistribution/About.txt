@@ -4,7 +4,7 @@ Problem type:
 MINLP (small)
 
 Keywords:
-Branch-and-Bound, generic algorithm, GMP, section
+Branch-and-Bound, generic algorithm, GMP, sections
 
 Description:
 The optimal design of a Water Distribution Network consists of the choice of

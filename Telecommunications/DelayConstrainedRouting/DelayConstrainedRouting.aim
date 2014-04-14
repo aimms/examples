@@ -3,7 +3,10 @@ MAIN MODEL Delay_Constrained_Routing
   comment :  "Delay constrained routing
               
               Problem type:
-              MINLP (small)
+              Convex MINLP (small)
+              
+              Keywords:
+              Outer Approximation, GMP-AOA, lazy constraints callback
               
               Description:
               The Delay-Constrained Routing Problem is a problem in telecommunications.
