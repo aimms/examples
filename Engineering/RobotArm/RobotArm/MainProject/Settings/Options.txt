@@ -1,0 +1,8 @@
+﻿* AIMMS
+rounding_compatibility Aimms_3_7
+* CBC 2.8.0
+* IPOPT 3.11
+* NETSOL
+* Environment
+Startup_Page "Input and Output Data"
+Data_Management_Style 1

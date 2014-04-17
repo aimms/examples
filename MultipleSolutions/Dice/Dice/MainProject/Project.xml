@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project AimmsVersion="4.0.0.275 unicode x86" ProjectUUID="E3EDF3D8-C822-4305-8114-A093A78C526C">
+	<ModelFileName>dice.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

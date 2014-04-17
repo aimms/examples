@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-17 10:51:54">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>48F21F1F-E5E2-469D-BE4F-604D6946C1DF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="216" left="276" bottom="516" right="624" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="4B4C5D47-5469-4901-9BF7-0533B63FF808" Name="1" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-30</Left>
+			<Right>45.9090909091</Right>
+			<Top>30</Top>
+			<Bottom>-35</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>i</Identifier>
+			<XCoordinate>XCoordinate( i )</XCoordinate>
+			<YCoordinate>YCoordinate( i )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>3</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Size>CustomersDemand( i )</Size>
+			<TooltipText>CustomersDemand( i )</TooltipText>
+			<Shape>Circle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>X( i, j, k )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<ArrowPosition>63</ArrowPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="258" left="78" bottom="558" right="240" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="4B4C5D47-5469-4901-9BF7-0533B63FF808" Name="1" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>CustomersDemand( i )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="5" Decimals="0" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="216" left="78" bottom="252" right="240" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="4B4C5D47-5469-4901-9BF7-0533B63FF808" Name="1" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>LoadCapacity</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="480" bottom="558" right="624" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="4B4C5D47-5469-4901-9BF7-0533B63FF808" Name="1" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalCost</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="276" bottom="558" right="474" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="4B4C5D47-5469-4901-9BF7-0533B63FF808" Name="1" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>VALUE := sum(k, Y(1,k))</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Number of vehicles"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="150" left="72" bottom="564" right="246" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="150" left="270" bottom="564" right="630" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="162" left="72" bottom="204" right="246" />
+		<StaticText>Input</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="222CA504-8190-42F8-A718-92AFE9280373" Name="2" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="162" left="360" bottom="204" right="534" />
+		<StaticText>Output</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="222CA504-8190-42F8-A718-92AFE9280373" Name="2" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="522" left="648" bottom="564" right="792" />
+		<TabOrder>10</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<Font GUID="4B4C5D47-5469-4901-9BF7-0533B63FF808" Name="1" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>k</Symbol>
+			<Symbol>X</Symbol>
+			<Symbol>Y</Symbol>
+			<Symbol>Customers</Symbol>
+			<Symbol>LoadCapacity</Symbol>
+			<Symbol>XCoordinate</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>YCoordinate</Symbol>
+			<Symbol>CustomersDemand</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,123 @@
+## ams_version=1.0
+
+Model Main_LargestSmallPolygon {
+    Comment: {
+        "Largest small polygon
+        
+        Problem type:
+        NLP (small)
+        
+        Description:
+        Find the polygon with maximal area, among polygons with n sides and diameter
+        d <= 1. This problem has many local minima and therefore general nonlinear
+        solvers are usually expected to find only local solutions.
+        
+        References:
+        Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000."
+    }
+    Parameter NumberOfSides {
+        Range: integer;
+        InitialData: 10;
+        Comment: "Number of sides and points";
+    }
+    Set Points {
+        SubsetOf: Integers;
+        Index: i, j;
+        Definition: {
+            {1..NumberOfSides}
+        }
+    }
+    Parameter pi {
+        Definition: 4 * arctan(1);
+    }
+    Variable PolarRadius {
+        IndexDomain: (i);
+        Range: nonnegative;
+        Comment: "r: Polar radius (distance to fixed vertex)";
+    }
+    Variable PolarAngle {
+        IndexDomain: (i);
+        Range: [0, pi];
+        Comment: "theta: Polar angle (measured from fixed direction).";
+    }
+    Variable PolygonArea {
+        Range: free;
+        Definition: 0.5 * sum(i | i<>NumberOfSides, PolarRadius(i+1) * PolarRadius(i) * sin(PolarAngle(i+1) - PolarAngle(i)));
+    }
+    Constraint Distance {
+        IndexDomain: (i,j) | i < j;
+        Definition: {
+            PolarRadius(i)^2 + PolarRadius(j)^2 -
+            2 * PolarRadius(i) * PolarRadius(j) * cos(PolarAngle(i) - PolarAngle(j)) <= 1
+        }
+    }
+    Constraint OrderConstraint {
+        IndexDomain: i | i<NumberOfSides;
+        Definition: PolarAngle(i) - PolarAngle(i+1) <= 0;
+    }
+    Constraint LastPolarRadius {
+        Definition: PolarRadius(NumberOfSides) = 0;
+        Comment: "Fixing last vertex at the origin";
+    }
+    Constraint LastPolarAngle {
+        Definition: PolarAngle(NumberOfSides) = Pi;
+        Comment: "Fixing last vertex at the origin";
+    }
+    MathematicalProgram LeastArea {
+        Objective: PolygonArea;
+        Direction: maximize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: NLP;
+    }
+    DeclarationSection Declaration_Result_Display {
+        Set DisplayPoints {
+            SubsetOf: Integers;
+            Index: ii;
+            Definition: {
+                {0..NumberOfSides}
+            }
+            Comment: {
+                "We need an extra point to close the last line of the polygon displayed
+                on the page."
+            }
+        }
+        Parameter X {
+            IndexDomain: (ii);
+            Definition: {
+                if ( ii=0 ) then
+                	0
+                else
+                	PolarRadius(ii) * cos(PolarAngle(ii))
+                endif
+            }
+            Comment: "X coordinate of points in polygon";
+        }
+        Parameter Y {
+            IndexDomain: ii;
+            Definition: {
+                if ( ii=0 ) then
+                	0
+                else
+                	PolarRadius(ii) * sin(PolarAngle(ii))
+                endif
+            }
+            Comment: "Y coordinate of points in polygon";
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            ! Specify starting point.
+            PolarRadius(i) := 4 * i / (Card(i) + 1 - i) / (Card(i) + 1)^2;
+            PolarAngle(i) := Pi * i / Card(i);
+            
+            solve LeastArea;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

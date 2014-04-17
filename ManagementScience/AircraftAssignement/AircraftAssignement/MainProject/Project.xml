@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project AimmsVersion="4.0.0.275 unicode x86" ProjectUUID="72B1ADF2-1B36-4DE6-99BD-9F96E61013BB">
+	<ModelFileName>AircraftAssignement.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

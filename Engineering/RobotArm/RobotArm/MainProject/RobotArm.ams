@@ -1,0 +1,168 @@
+## ams_version=1.0
+
+Model Main_RobotArm {
+    Comment: {
+        "Robot arm
+        
+        Problem type:
+        NLP (medium)
+        
+        Description:
+        Minimization of the time taken for a robot arm to travel between two points.
+        
+        References:
+        Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000."
+    }
+    Parameter NumberOfIntervals {
+        Definition: 200;
+        Comment: "Number of discretization intervals";
+    }
+    Set Intervals {
+        SubsetOf: Integers;
+        Index: h;
+        Definition: {
+            {0..NumberOfIntervals}
+        }
+    }
+    Parameter pi {
+        Definition: 4 * arctan(1);
+    }
+    Parameter minus_pi {
+        Definition: -pi;
+    }
+    Parameter LengthOfArm {
+        Definition: 5;
+        Comment: {
+            "Length of the arm of the robot. This arm is a rigid bar that protrudes
+            from the origin to the gripping end and sticks out in the opposite
+            direction. The pivot point of the arm is the origin of a spherical
+            coordinate system."
+        }
+    }
+    Variable Rho {
+        IndexDomain: (h);
+        Range: [0, LengthOfArm];
+        Definition: {
+            if (h=0) then
+            	4.5
+            else
+            	Rho(h-1) + 0.5 * Step * (RhoDot(h) + RhoDot(h-1))
+            endif
+        }
+        Comment: "The length of the arm from the pivot.";
+    }
+    Variable Theta {
+        IndexDomain: (h) | h > 0;
+        Range: [minus_pi, pi];
+        Definition: Theta(h-1) + 0.5 * Step * (ThetaDot(h) + ThetaDot(h-1));
+        Comment: "The horizontal angle from the horizontal plane.";
+    }
+    Variable Phi {
+        IndexDomain: (h);
+        Range: [0, pi];
+        Definition: {
+            if (h=0) then
+            	Pi / 4
+            else
+            	Phi(h-1) + 0.5 * Step * (PhiDot(h) + PhiDot(h-1))
+            endif
+        }
+        Comment: "The vertical angle from the horizontal plane.";
+    }
+    Variable URho {
+        IndexDomain: (h);
+        Range: [-1, 1];
+        Comment: "Control variable for Rho, the length of the arm from the pivot.";
+    }
+    Variable UTheta {
+        IndexDomain: (h);
+        Range: [-1, 1];
+        Comment: "Control variable for Theta, the horizontal angle from the horizontal plane.";
+    }
+    Variable UPhi {
+        IndexDomain: (h);
+        Range: [-1, 1];
+        Comment: "Control variable for Phi, the vertical angle from the horizontal plane.";
+    }
+    Variable RhoDot {
+        IndexDomain: (h) | h > 0;
+        Range: free;
+        Definition: RhoDot(h-1) + 0.5 * Step * (URho(h) + URho(h-1))/LengthOfArm;
+        Comment: "The derivative of Rho (the length of the arm).";
+    }
+    Variable ThetaDot {
+        IndexDomain: (h) | h > 0;
+        Range: free;
+        Definition: ThetaDot(h-1) + 0.5 * Step * (UTheta(h) / ITheta(h) + UTheta(h-1) / ITheta(h-1));
+        Comment: "The derivative of Theta (the horizontal angle from the horizontal plane).";
+    }
+    Variable PhiDot {
+        IndexDomain: (h) | h > 0;
+        Range: free;
+        Definition: PhiDot(h-1) + 0.5 * Step * (UPhi(h) / IPhi(h) + UPhi(h-1) / IPhi(h-1));
+        Comment: "The derivative of Phi (the vertical angle from the horizontal plane).";
+    }
+    Variable Step {
+        Range: nonnegative;
+    }
+    Variable FinalTime {
+        Range: free;
+        Definition: {
+            Step * NumberOfIntervals;
+        }
+    }
+    Variable ITheta {
+        IndexDomain: (h);
+        Range: (0, inf);
+        Definition: ((LengthOfArm - Rho(h))^3 + Rho(h)^3) * sin(Phi(h))^2 / 3;
+        Comment: "Moment of inertia for Theta, the horizontal angle from the horizontal plane.";
+    }
+    Variable IPhi {
+        IndexDomain: (h);
+        Range: (0, inf);
+        Definition: ((LengthOfArm - Rho(h))^3 + Rho(h)^3) / 3;
+        Comment: "Moment of inertia for Phi, the vertical angle from the horizontal plane.";
+    }
+    MathematicalProgram RobotArm {
+        Objective: FinalTime;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: NLP;
+    }
+    Constraint ThetaLastValue {
+        Definition: Theta(NumberOfIntervals) >= 2 * Pi /3;
+    }
+    Constraint PhiLastValue {
+        Definition: Phi(NumberOfIntervals) = Pi /4;
+    }
+    Constraint RhoLastValue {
+        Definition: Rho(NumberOfIntervals) >= 4.5;
+    }
+    Constraint RhoDotLastValue {
+        Definition: RhoDot(NumberOfIntervals) = 0;
+    }
+    Constraint ThetaDotLastValue {
+        Definition: ThetaDot(NumberOfIntervals) = 0;
+    }
+    Constraint PhiDotLastValue {
+        Definition: PhiDot(NumberOfIntervals) = 0;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            ! Specify starting solution.
+            Rho(h) := 4.5;
+            Theta(h) := (2*Pi/3)*(h/NumberOfIntervals)^2;
+            Phi(h) := Pi/4;
+            Step := 1 / NumberOfIntervals;
+            
+            solve RobotArm;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

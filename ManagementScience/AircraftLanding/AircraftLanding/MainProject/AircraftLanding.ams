@@ -1,0 +1,143 @@
+## ams_version=1.0
+
+Model Main_AircraftLanding {
+    Comment: {
+        "Aircraft landing
+        
+        Problem type:
+        MIP (small)
+        
+        Description:
+        The Aircraft Landing Problem (ALP) is the problem of deciding a landing time
+        on an appropriate runway for each aircraft in a given set of aircraft such
+        that each aircraft lands within a predetermined time window; and separation
+        criteria between the landing of an aircraft, and the landing of all successive
+        aircraft, are respected.
+        
+        References:
+        Beasley, J.E., M. Krishnamoorthy, Y.M. Sharaiha and D. Abramson, Displacement
+        problem and dynamically scheduling aircraft landings, Journal of the Operational
+        Research Society 55, 2004, pp 54-64."
+    }
+    Parameter NumberOfAircrafts {
+        Definition: 10;
+    }
+    Set Aircrafts {
+        SubsetOf: Integers;
+        Index: i, j;
+        Definition: {
+            {1..NumberOfAircrafts}
+        }
+    }
+    Parameter EarliestLanding {
+        IndexDomain: (i);
+    }
+    Parameter LatestLanding {
+        IndexDomain: (i);
+    }
+    Parameter TargetLanding {
+        IndexDomain: (i);
+    }
+    Parameter PenaltyAfterTarget {
+        IndexDomain: (i);
+    }
+    Parameter PenaltyBeforeTarget {
+        IndexDomain: (i);
+    }
+    Parameter SeparationTime {
+        IndexDomain: (i,j);
+    }
+    Variable Landing {
+        IndexDomain: (i);
+        Range: nonnegative;
+    }
+    Variable AircraftsOrder {
+        IndexDomain: (i,j);
+        Range: binary;
+    }
+    Variable Early {
+        IndexDomain: (i);
+        Range: nonnegative;
+    }
+    Variable Late {
+        IndexDomain: (i);
+        Range: nonnegative;
+    }
+    Variable TotalCost {
+        Range: free;
+        Definition: sum(i, PenaltyBeforeTarget(i) * Early(i) + PenaltyAfterTarget(i) * Late(i));
+    }
+    Constraint OrderConstraint {
+        IndexDomain: (i,j) | j > i;
+        Definition: AircraftsOrder(i, j) + AircraftsOrder(j, i) = 1;
+    }
+    Constraint SeparationConstraint {
+        IndexDomain: (i,j) | i<>j;
+        Definition: {
+            Landing(j) >= Landing(i)
+            + SeparationTime(i, j) * AircraftsOrder(i, j)
+            - (LatestLanding(i) - EarliestLanding(j)) * AircraftsOrder(j, i)
+        }
+    }
+    Constraint LowerTimeWindowConstraint {
+        IndexDomain: (i);
+        Definition: Landing(i) >= EarliestLanding(i);
+    }
+    Constraint UpperTimeWindowConstraint {
+        IndexDomain: (i);
+        Definition: Landing(i) <= LatestLanding(i);
+    }
+    Constraint EarlyContraint {
+        IndexDomain: (i);
+        Definition: Early(i) >= TargetLanding(i) - Landing(i);
+    }
+    Constraint LateContraint {
+        IndexDomain: (i);
+        Definition: Late(i) >= Landing(i) - TargetLanding(i);
+    }
+    MathematicalProgram LeastCost {
+        Objective: TotalCost;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: MIP;
+    }
+    Procedure MainInitialization {
+        Body: {
+            ! Instance airland1.
+            
+             COMPOSITE TABLE
+            
+             i   EarliestLanding   TargetLanding   LatestLanding   PenaltyBeforeTarget   PenaltyAfterTarget
+            
+             1         129              155            559                 10.00              10.00
+             2         195              258            744                 10.00              10.00
+             3         89               98             510                 30.00              30.00
+             4         96               106            521                 30.00              30.00
+             5         110              123            555                 30.00              30.00
+             6         120              135            576                 30.00              30.00
+             7         124              138            577                 30.00              30.00
+             8         126              140            573                 30.00              30.00
+             9         135              150            591                 30.00              30.00
+             10        160              180            657                 30.00              30.00
+             ;
+            
+            SeparationTime(i,j) := 8;
+            SeparationTime(i,1) := 15;
+            SeparationTime(i,2) := 15;
+            SeparationTime(1,j) := 15;
+            SeparationTime(2,j) := 15;
+            SeparationTime(i,i) := 99999;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            solve LeastCost;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

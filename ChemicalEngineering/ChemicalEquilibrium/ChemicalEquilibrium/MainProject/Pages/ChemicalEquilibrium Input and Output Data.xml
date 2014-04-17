@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-14 13:41:16">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>C156491A-5E78-4BC1-AF02-14E75198D1F2</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Table">
+		<Location top="306" left="54" bottom="486" right="186" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>C( j )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"F0/RT + P"</HeaderText>
+			<NumberFormat StandardFormatIndex="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="492" left="54" bottom="522" right="186" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Pressure</Identifier>
+			<NumberFormat Width="5" Decimals="1" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Bar Chart">
+		<Location top="306" left="246" bottom="486" right="600" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<HorizontalGridLines>true</HorizontalGridLines>
+		<StatusLine>true</StatusLine>
+		<ExplicitIdentifier>
+			<Identifier>MolesOfCompound( j )</Identifier>
+		</ExplicitIdentifier>
+		<FillWithColor>true</FillWithColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="492" left="246" bottom="522" right="600" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalFreeEnergy</Identifier>
+			<NumberFormat StandardFormatIndex="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="156" left="240" bottom="222" right="606" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Chemical Equilibrium"</Title>
+		<Font GUID="01D92614-965B-4C21-9866-714CAD9B05E6" Name="Button" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="252" left="48" bottom="528" right="192" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="264" left="54" bottom="300" right="186" />
+		<StaticText>Input Data</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="F5D84AE3-C116-4FA8-B63D-2FFA2E57BCA0" Name="Title" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="264" left="360" bottom="300" right="492" />
+		<StaticText>Output Data</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="F5D84AE3-C116-4FA8-B63D-2FFA2E57BCA0" Name="Title" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="252" left="240" bottom="528" right="606" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="84" left="132" bottom="120" right="510" />
+		<StaticText>1/2 N2H4 + 1/2 O2</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="9C8265C2-A805-469B-8A95-D380915C33B6" Name="Equation" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="78" left="228" bottom="114" right="414" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>C</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>MolesOfCompound</Symbol>
+			<Symbol>Pressure</Symbol>
+			<Symbol>TotalFreeEnergy</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

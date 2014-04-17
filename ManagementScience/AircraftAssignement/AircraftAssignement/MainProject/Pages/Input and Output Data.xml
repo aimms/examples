@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-16 13:46:37">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>72B1ADF2-1B36-4DE6-99BD-9F96E61013BB</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Table">
+		<Location top="294" left="288" bottom="408" right="534" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>Allocation( a, r )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="108" left="114" bottom="222" right="666" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>Capabilities( a, r )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Costs( a, r )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="378" left="546" bottom="408" right="666" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalCost</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="294" bottom="294" right="666" />
+		<StaticText>Output</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="D8B76FE2-38EE-487C-A675-BB6BD8A4A726" Name="Title Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="66" left="192" bottom="108" right="564" />
+		<StaticText>Input</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="D8B76FE2-38EE-487C-A675-BB6BD8A4A726" Name="Title Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="60" left="108" bottom="228" right="672" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="282" bottom="414" right="672" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="300" left="120" bottom="342" right="264" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>a</Symbol>
+			<Symbol>r</Symbol>
+			<Symbol>Allocation</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>Capabilities</Symbol>
+			<Symbol>Costs</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

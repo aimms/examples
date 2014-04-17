@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-16 13:21:00">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>9A651FA9-9C86-4A33-BAE7-B2F9D40DB087</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Curve">
+		<Location top="66" left="390" bottom="300" right="678" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<YRange Automatic="false">
+			<Lower>0.5</Lower>
+			<Upper>1</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>Mass( h )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="66" left="108" bottom="300" right="384" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<YRange Automatic="false">
+			<Lower>1</Lower>
+			<Upper>1.015</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>Height( h )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="306" left="108" bottom="534" right="384" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<ExplicitIdentifier>
+			<Identifier>Velocity( h )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="306" left="390" bottom="534" right="678" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<YRange Automatic="false">
+			<Lower>-0.1</Lower>
+			<Upper>3.6</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>Thrust( h )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Velocity</Symbol>
+			<Symbol>h</Symbol>
+			<Symbol>Thrust</Symbol>
+			<Symbol>Height</Symbol>
+			<Symbol>Mass</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

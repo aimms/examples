@@ -1,0 +1,89 @@
+## ams_version=1.0
+
+Model Main_ChemicalEquilibrium {
+    Comment: {
+        "Chemical Equilibrium problem
+        
+        Problem type:
+        NLP (small)
+        
+        Description:
+        Determination of the chemical composition of a complex mixture under chemical equilibrium conditions.
+        
+        References:
+        Bracken, J., and G.P. McCormick, Chapter 5 in: Selected Applications of Nonlinear Programming, John
+        Wiley and Sons, New York, 1968, pp. 46-49."
+    }
+    Set Atoms {
+        Index: i;
+        Definition: data { H, N, O };
+        Comment: "H: hydrogen, N: nitrogen, O: oxygen";
+    }
+    Set Compounds {
+        Index: j;
+        Definition: data { H, H2, H2O, N, N2, NH, NO, O, O2, OH };
+    }
+    Parameter AtomsPerCompound {
+        IndexDomain: (i,j);
+        Definition: {
+            data
+            { ( H, H   ) : 1,  ( H, H2  ) : 2,  ( H, H2O ) : 2,  ( H, NH  ) : 1,  ( H, OH  ) : 1,  ( N, N   ) : 1,  ( N, N2  ) : 2,
+              ( N, NH  ) : 1,  ( N, NO  ) : 1,  ( O, H2O ) : 1,  ( O, NO  ) : 1,  ( O, O   ) : 1,  ( O, O2  ) : 2,  ( O, OH  ) : 1 }
+        }
+    }
+    Parameter AtomsInMixture {
+        IndexDomain: (i);
+        Definition: data { H : 2,  N : 1,  O : 1 };
+    }
+    Parameter Gibbs {
+        IndexDomain: (j);
+        Definition: {
+            data
+            { H   : -10.021,  H2  : -21.096,  H2O : -37.986,  N   :  -9.846,  N2  : -28.653,  NH  : -18.918,  NO  : -28.032,
+              O   : -14.640,  O2  : -30.594,  OH  : -26.111 }
+        }
+        Comment: "This parameter stands for the modal standard free energy function (F0/RT)";
+    }
+    Parameter Pressure {
+        Definition: 51.0089;
+        Comment: "Total pressure in atmospheres";
+    }
+    Parameter C {
+        IndexDomain: (j);
+        Definition: Gibbs(j) + log(Pressure);
+    }
+    Variable MolesOfCompound {
+        IndexDomain: (j);
+        Range: [0.001, inf);
+    }
+    Variable TotalMoles {
+        Range: [0.001, inf);
+        Definition: sum[ j, MolesOfCompound(j) ];
+    }
+    Variable TotalFreeEnergy {
+        Range: free;
+        Definition: sum[ j, MolesOfCompound(j)*(C(j) + log(MolesOfCompound(j)/TotalMoles)) ];
+    }
+    Constraint AtomsConservation {
+        IndexDomain: (i);
+        Definition: sum[ j, AtomsPerCompound(i,j) * MolesOfCompound(j) ] = AtomsInMixture(i);
+    }
+    MathematicalProgram LeastFreeEnergy {
+        Objective: TotalFreeEnergy;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: NLP;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            solve LeastFreeEnergy;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

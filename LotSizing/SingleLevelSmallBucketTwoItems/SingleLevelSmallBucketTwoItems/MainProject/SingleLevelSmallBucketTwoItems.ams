@@ -1,0 +1,196 @@
+## ams_version=1.0
+
+Model Main_SingleLevelSmallBucketTwoItems {
+    Comment: {
+        "Lot sizing
+        
+        Problem type:
+        MIP (small)
+        
+        Description:
+        Lot-sizing problems are production planning problems in which the periods
+        are a priori, and production of an item in a given period implies some
+        discrete event such as payment of a cost or the loss of a amount of
+        production capacity, due to placement of an order, or the set-up, startup,
+        or changeover of a machine.
+        
+        References:
+        Problem vpm5 from: Belvaux, G., L.A. Wolsey, Lotsizelib: A library of models
+        and matrices for lot-sizing problems, Core discussion paper, Universite
+        Catholique de Louvain, 1999."
+    }
+    Parameter NumberOfItems {
+        Definition: 8;
+    }
+    Parameter NumberOfMachines {
+        Definition: 4;
+    }
+    Parameter NumberOfPeriods {
+        Definition: 8;
+    }
+    Set Items {
+        SubsetOf: Integers;
+        Index: i;
+        Definition: {
+            {1..NumberOfItems}
+        }
+    }
+    Set Machines {
+        SubsetOf: Integers;
+        Index: m;
+        Definition: {
+            {1..NumberOfMachines}
+        }
+    }
+    Set Periods {
+        SubsetOf: Integers;
+        Index: t;
+        Definition: {
+            {1..NumberOfPeriods}
+        }
+    }
+    Parameter InitialStock {
+        IndexDomain: (i);
+        Definition: data { 1 : 200,  2 : 400,  3 : 600,  4 : 500,  5 : 500,  6 : 400,  7 : 400,  8 : 400 };
+    }
+    Parameter MinStock {
+        IndexDomain: (i);
+        Definition: data { 1 : 100,  2 : 200,  3 : 300,  4 : 400,  5 : 200,  6 : 100,  7 : 300,  8 : 200 };
+    }
+    Parameter MaxStock {
+        IndexDomain: (i);
+        Definition: data { 1 : 300,  2 : 400,  3 : 400,  4 : 500,  5 : 500,  6 : 600,  7 : 400,  8 : 300 };
+    }
+    Parameter ProductionRate {
+        IndexDomain: (i,m);
+    }
+    Parameter MachineStartUpTime {
+        IndexDomain: (m);
+        Definition: data { 1 : 0.100,  2 : 0.200,  3 : 0.400,  4 : 0.500 };
+    }
+    Parameter StartUpTime {
+        IndexDomain: (i,m);
+        Definition: MachineStartUpTime(m);
+    }
+    Parameter Demand {
+        IndexDomain: (i,t);
+    }
+    Variable X {
+        IndexDomain: (i,m,t);
+        Range: nonnegative;
+        Comment: "Fraction produced of item i on machine m in period t";
+    }
+    Variable Y {
+        IndexDomain: (i,m,t);
+        Range: binary;
+        Comment: "Production variable: 1 if item i is produced on machine m in period t";
+    }
+    Variable S {
+        IndexDomain: (i,t);
+        Range: nonnegative;
+        Comment: "Stock of item i in period t";
+    }
+    Variable Z {
+        IndexDomain: (i,t,m);
+        Range: binary;
+        Comment: "Startup variable: 1 if production of item i is started on machine m in period t";
+    }
+    Variable V {
+        IndexDomain: (i);
+        Range: nonnegative;
+        Comment: "Excess over upper bound on stock for item i";
+    }
+    Variable TimeLoss {
+        Range: free;
+        Definition: sum((i,m,t), StartUpTime(i,m) * Z(i, t, m)) + sum(i, 10 * V(i));
+    }
+    Constraint FlowConstraint {
+        IndexDomain: (i,t) | t>1;
+        Definition: S(i, t-1) + sum(m, ProductionRate(i, m) * X(i, m, t)) = Demand(i, t) + S(i, t);
+    }
+    Constraint FlowConstraintBis {
+        IndexDomain: (i);
+        Definition: InitialStock(i) + sum(m, ProductionRate(i, m) * X(i, m, 1)) = Demand(i, 1) + S(i, 1);
+    }
+    Constraint StartUpContraint {
+        IndexDomain: (i,m,t);
+        Definition: X(i, m, t) + StartUpTime(i,m) * Z(i, t, m) <= Y(i, m, t);
+    }
+    Constraint StartUpConstraint1 {
+        IndexDomain: (i,m,t);
+        Definition: Z(i, t, m) >= Y(i, m, t) - Y(i, m, t-1);
+    }
+    Constraint StartUpConstraint2 {
+        IndexDomain: (i,t,m);
+        Definition: Z(i, t, m) + Z(i, t-1, m) <= Y(i, m, t);
+    }
+    Constraint StartUpConstraint3 {
+        IndexDomain: (m,t);
+        Definition: sum(i, Y(i, m, t) - Z(i, t, m)) <= 1;
+    }
+    Constraint UniqueStartUpConstraint {
+        IndexDomain: (m,t);
+        Definition: sum(i, Z(i, t, m)) <= 1;
+    }
+    Constraint StartUpTimeConstraint {
+        IndexDomain: (m,t);
+        Definition: sum(i, X(i, m, t)) + sum(i, StartUpTime(i, m) * Z(i, t, m)) <= 1;
+    }
+    Constraint MaxStockConstraint {
+        IndexDomain: (i,t);
+        Definition: S(i, t) <= MaxStock(i) + V(i);
+    }
+    Constraint MinStockConstraint {
+        IndexDomain: (i,t);
+        Definition: S(i, t) >= MinStock(i);
+    }
+    MathematicalProgram LeastTime {
+        Objective: TimeLoss;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: Automatic;
+    }
+    Procedure MainInitialization {
+        Body: {
+            Demand(i,t) := DATA TABLE
+            
+               1      2      3      4      5      6      7      8
+            !
+            1 400    300    300     0      0    600      0      0
+            2   0    300    200   300    400      0      0      0
+            3   0      0      0   500    600      0      0      0
+            4   0      0      0     0    300    800      0      0
+            5   0      0      0   500      0    100      0      0
+            6   0      0      0     0      0      0    900    200
+            7 700    200      0     0      0      0      0      0
+            8   0    400    500     0      0      0      0      0
+            ;
+            
+            
+            ProductionRate(i,m) := DATA TABLE
+            
+                1       2       3       4
+            !
+            1  200     300     400     300
+            2  400     200     100     400
+            3  400     400     300     400
+            4  300     400     200     300
+            5  200     200     100     300
+            6  300     200     400     500
+            7  300     500     600     600
+            8  500     500     400     600
+            ;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            solve LeastTime;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project AimmsVersion="4.0.0.319 unicode x86" ProjectUUID="2B0AB004-B099-4412-8DE8-C210F24B359C">
+	<ModelFileName>CapacitatedWarehouseLocation.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

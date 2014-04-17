@@ -1,0 +1,295 @@
+## ams_version=1.0
+
+Model Dice_Model {
+    Comment: {
+        "Finding multiple solutions for the dice problem
+        
+        Problem type:
+        MIP (small)
+        
+        Keywords:
+        Multiple solutions, incumbent callback, solution pool, GMP
+        
+        Description:
+        This example demonstrates several approaches to get multiple solutions when
+        solving a MIP problem. These approaches are:
+        - Using the incumbent (solver) callback;
+        - Using the solution pool (only supported by CPLEX);
+        - Repeatedly solve problem forbidding the previous solutions.
+        
+        In the dice problem a set of three dice has to be designed by assigning an
+        integer number to each face such that on average dice 1 beats dice 2, dice
+        2 beats dice 3 and dice 3 beats dice 1. The goal is to maximize the number
+        of total wins on average. The dice problem has many solutions.
+        
+        References:
+        Paul van der Eijk"
+    }
+    DeclarationSection Declaration_Model {
+        Set Faces {
+            Text: "Faces on a dice";
+            Index: f, fp;
+            InitialData: data { face1 .. face6 };
+        }
+        Set Dice {
+            Index: i;
+            InitialData: data { dice1 .. dice3 };
+        }
+        Parameter LowestFaceValue {
+            Text: "Lowest face value";
+            InitialData: 1;
+        }
+        Parameter HighestFaceValue {
+            Text: "Highest face value";
+        }
+        Variable Obj {
+            Comment: "Number of wins.";
+        }
+        Variable FaceValue {
+            IndexDomain: (i,f);
+            Range: binary;
+            Comment: "Face value of dice.";
+        }
+        Variable MatchOutcome {
+            IndexDomain: (i,f,fp);
+            Range: binary;
+            Comment: {
+                "Binary variable indicating whether face f of dice i wins (value 1) or loses (value 0)
+                against face fp of dice i+1 (circular)."
+            }
+        }
+        Constraint WinsConstraint {
+            IndexDomain: i;
+            Definition: Obj = sum( (f,fp), MatchOutcome(i,f,fp) );
+            Comment: "Count the wins of all dice.";
+        }
+        Constraint MatchOutcomeConstraint {
+            IndexDomain: (i,f,fp);
+            Definition: FaceValue(i,f) + (HighestFaceValue-LowestFaceValue)*(1-MatchOutcome(i,f,fp)) >= FaceValue(i++1,fp) + 1;
+            Comment: {
+                "Constraint that determines whether face f of dice i wins (value 1) or loses (value 0)
+                against face fp of dice i+1, as indicated by the binary variable MatchOutcome. Note
+                that MatchOutcome is non-transitive."
+            }
+        }
+        Constraint FaceValuesConstraint {
+            IndexDomain: (i,f) | (f-1) in faces;
+            Definition: FaceValue(i,f-1) + 1 <= FaceValue(i,f);
+            Comment: "Constraint to enforce that each single dice gets different face values.";
+        }
+        MathematicalProgram DiceMP {
+            Objective: Obj;
+            Direction: maximize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: MIP;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            HighestFaceValue := card(Dice) * card(faces);
+            
+            FaceValue.lower(i,f) := LowestFaceValue;
+            FaceValue.upper(i,f) := HighestFaceValue;
+            
+            FaceValue.lower('dice1','face1') := LowestFaceValue;
+            FaceValue.upper('dice1','face1') := LowestFaceValue;
+            FaceValue.level('dice1','face1') := LowestFaceValue;
+            
+            SolutionMethod := 'normal';
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            empty Objs, FaceValues;
+            
+            ! Optimal objective value: 21.
+            solve DiceMP;
+            
+            Objs(1) := Obj;
+            FaceValues(i,f,1) := FaceValue(i,f);
+        }
+        Comment: {
+            "Normal solve; returns one (optimal) solution."
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Section Multiple_Solutions {
+        DeclarationSection Declaration_Solutions {
+            ElementParameter myGMP {
+                Range: AllGeneratedMathematicalPrograms;
+            }
+            Parameter SolutionLimit {
+                Range: integer;
+                Definition: 5;
+                Comment: "Maximum number of solutions stored.";
+            }
+            Parameter NumberOfSolutions {
+                Comment: "Number of solutions stored.";
+            }
+            Parameter SolutionCount {
+                Comment: "The number of solutions found.";
+            }
+            Set Solutions {
+                SubsetOf: Integers;
+                Index: s;
+                Definition: {
+                    { 1 .. SolutionLimit }
+                }
+            }
+            Parameter Objs {
+                IndexDomain: (s);
+                Comment: "Parameter to store the objective values for the solutions.";
+            }
+            Parameter FaceValues {
+                IndexDomain: (i,f,s);
+                Text: "value of dice - will be integer";
+                Comment: "Parameter to store the face values for the solutions.";
+            }
+        }
+        Procedure SolverCallback {
+            Body: {
+                empty Objs, FaceValues;
+                
+                SolutionCount := 0;
+                
+                myGMP := GMP::Instance::Generate( DiceMP );
+                
+                ! Install incumbent callback.
+                GMP::Instance::SetCallbackNewIncumbent( myGMP, 'NewIncumbentCallback' );
+                
+                GMP::Instance::Solve( myGMP );
+                
+                ! Reomve incumbent callback.
+                GMP::Instance::SetCallbackNewIncumbent( myGMP, '' );
+            }
+            Comment: {
+                "Solve model using incumbent callback procedure. During the solving process the solver
+                will call this callback whenever it finds a new improved incumbent solution."
+            }
+        }
+        Procedure NewIncumbentCallback {
+            Arguments: solvSess;
+            Body: {
+                GMP::Solution::RetrieveFromSolverSession( solvSess, 1 );
+                
+                GMP::Solution::SendToModel( myGMP, 1 );
+                
+                SolutionCount += 1;
+                
+                cnt := min( SolutionCount, SolutionLimit );
+                
+                while ( cnt > 1 ) do
+                    Objs(cnt) := Objs(cnt-1);
+                    FaceValues(i,f,cnt) := FaceValues(i,f,cnt-1);
+                    cnt -= 1;
+                endwhile;
+                
+                Objs(1) := Obj;
+                FaceValues(i,f,1) := FaceValue(i,f);
+                
+                return 1;
+            }
+            Comment: {
+                "Incumbent callback. The order of solutions is reversed such that the best
+                solutions are at the first positions in the solution repository."
+            }
+            Parameter cnt;
+            ElementParameter solvSess {
+                Range: AllSolverSessions;
+                Property: Input;
+            }
+        }
+        Procedure SolutionPool {
+            Body: {
+                empty Objs, FaceValues;
+                
+                myGMP := GMP::Instance::Generate( DiceMP );
+                
+                GMP::Instance::SetOptionValue( myGMP, 'do populate', 1 );
+                
+                GMP::Instance::Solve( myGMP );
+                
+                NumberOfSolutions := GMP::Solution::Count( myGMP );
+                
+                SolutionCount := 1;
+                while ( SolutionCount <= min(NumberOfSolutions,SolutionLimit) ) do
+                    GMP::Solution::SendToModel( myGMP, SolutionCount );
+                
+                    Objs(SolutionCount) := Obj;
+                    FaceValues(i,f,SolutionCount) := FaceValue(i,f);
+                
+                    SolutionCount += 1;
+                endwhile;
+                
+                GMP::Solution::SendToModel( myGMP, 1 );
+                
+                GMP::Instance::SetOptionValue( myGMP, 'do populate', 0 );
+            }
+            Comment: {
+                "Solve model using the solution pool which is only supported by CPLEX. The CPLEX option
+                \'Do Populate\' should be switched on to invoke the solution pool. The solution pool is
+                not necessarily filled with the best solutions. CPLEX offers several options for the
+                solution pool which gives you the possibility to control, e.g., the quality or the
+                diversity of the solutions.
+                
+                The solutions are stored in the solution repository of the GMP and after the solve
+                the solution values are copied from the solution repository to the parameters Objs
+                and FaceValues holding the variable values for the different solutions."
+            }
+        }
+        Procedure EliminationRows {
+            Body: {
+                empty Objs, FaceValues;
+                
+                myGMP := GMP::Instance::Generate( DiceMP );
+                
+                SolutionCount := 1;
+                while ( SolutionCount <= SolutionLimit ) do
+                    GMP::Instance::Solve( myGMP );
+                
+                    Objs(SolutionCount) := Obj;
+                    FaceValues(i,f,SolutionCount) := FaceValue(i,f);
+                
+                    ! Eliminate previously found integer solution.
+                    GMP::Instance::AddIntegerEliminationRows( myGMP, 1, SolutionCount );
+                
+                    SolutionCount += 1;
+                endwhile;
+            }
+            Comment: {
+                "Repeatedly solve model eliminating the previously found solution (by adding rows
+                that forbid this solution). This approach returns the n best solutions. It is the
+                most time consuming approach in this example."
+            }
+        }
+    }
+    Section Page {
+        Set Methods {
+            Definition: {
+                { 'normal', 'callback', 'solution pool', 'elimination' }
+            }
+        }
+        ElementParameter SolutionMethod {
+            Range: Methods;
+        }
+        Procedure ButtonSelectionProcedure {
+            Body: {
+                switch (SolutionMethod) do
+                	'normal':
+                		MainExecution;
+                	'callback':
+                		SolverCallback;
+                	'elimination':
+                		EliminationRows;
+                	'solution pool':
+                		SolutionPool;
+                endswitch;
+            }
+        }
+    }
+}

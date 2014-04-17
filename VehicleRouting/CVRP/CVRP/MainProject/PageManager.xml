@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="Input and Output Data" PageGUID="BE9844F1-F5B0-419D-B45F-931DAC9E1CB6" />
+	<Page Name="All Data Pages" PageGUID="05C280F3-C4F6-463F-A8F4-B85F87929CC8">
+		<Page Name="[Data Page] X" PageGUID="02F8C9D0-2059-4526-8921-EBAADA67D17D" />
+	</Page>
+</PageManager>

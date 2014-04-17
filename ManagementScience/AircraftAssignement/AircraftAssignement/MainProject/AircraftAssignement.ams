@@ -1,0 +1,78 @@
+## ams_version=1.0
+
+Model Main_AircraftAssignement {
+    Set Aircraft {
+        Index: a;
+        InitialData: data { a, b, c, d, e };
+    }
+    Set Route {
+        Index: r;
+        InitialData: data { route-1, route-2, route-3, route-4, route-5 };
+    }
+    Parameter Availability {
+        IndexDomain: a;
+        InitialData: data { a : 10,  b : 19,  c : 25,  d : 15 };
+    }
+    Parameter Demand {
+        IndexDomain: r;
+        InitialData: data { route-1 : 250,  route-2 : 120,  route-3 : 180,  route-4 : 90,  route-5 : 600 };
+    }
+    Parameter Capabilities {
+        IndexDomain: (a,r);
+        InitialData: {
+            data
+            { ( a, route-1 ) : 16,  ( a, route-2 ) : 15,  ( a, route-3 ) : 28,  ( a, route-4 ) : 23,  ( a, route-5 ) : 81,
+              ( b, route-2 ) : 10,  ( b, route-3 ) : 14,  ( b, route-4 ) : 15,  ( b, route-5 ) : 57,  ( c, route-2 ) :  5,
+              ( c, route-4 ) :  7,  ( c, route-5 ) : 29,  ( d, route-1 ) :  9,  ( d, route-2 ) : 11,  ( d, route-3 ) : 22,
+              ( d, route-4 ) : 17,  ( d, route-5 ) : 55,  ( e, route-1 ) :  1,  ( e, route-2 ) :  1,  ( e, route-3 ) :  1,
+              ( e, route-4 ) :  1,  ( e, route-5 ) :  1 }
+        }
+    }
+    Parameter Costs {
+        IndexDomain: (a,r);
+        InitialData: {
+            data
+            { ( a, route-1 ) : 18,  ( a, route-2 ) : 21,  ( a, route-3 ) : 18,  ( a, route-4 ) : 16,  ( a, route-5 ) : 10,
+              ( b, route-2 ) : 15,  ( b, route-3 ) : 16,  ( b, route-4 ) : 14,  ( b, route-5 ) :  9,  ( c, route-2 ) : 10,
+              ( c, route-4 ) :  9,  ( c, route-5 ) :  6,  ( d, route-1 ) : 17,  ( d, route-2 ) : 16,  ( d, route-3 ) : 17,
+              ( d, route-4 ) : 15,  ( d, route-5 ) : 10,  ( e, route-1 ) : 13,  ( e, route-2 ) : 13,  ( e, route-3 ) :  7,
+              ( e, route-4 ) :  7,  ( e, route-5 ) :  1 }
+        }
+    }
+    Variable Allocation {
+        IndexDomain: (a,r);
+        Range: nonnegative;
+    }
+    Variable TotalCost {
+        Range: free;
+        Definition: sum((a,r), Costs(a,r)*Allocation(a,r));
+    }
+    Constraint AvailabilityConstraint {
+        IndexDomain: (a)|a <> Last(Aircraft);
+        Definition: {
+            sum(r, Allocation(a,r)) <= Availability(a);
+        }
+    }
+    Constraint DemandConstraint {
+        IndexDomain: (r);
+        Definition: sum(a, Allocation(a,r)*Capabilities(a,r)) = Demand(r);
+    }
+    MathematicalProgram LeastTotalCost {
+        Objective: TotalCost;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: Automatic;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            solve LeastTotalCost;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return DataManagementExit();
+        }
+    }
+}

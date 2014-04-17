@@ -1,0 +1,281 @@
+## ams_version=1.0
+
+Model Main_VRPTW {
+    Comment: {
+        "Capacitated Vehicle Routing Problem with Time Windows
+        
+        Problem type:
+        MIP (medium)
+        
+        Keywords:
+        Incumbent callback, network object
+        
+        Description:
+        The Vehicle Routing Problem with Time Windows (VRPTW) deals with the distribution
+        of goods between depots and customers using vehicles. The vehicles have a limited
+        capacity. Each customer has to be supplied within the time window associated with
+        the customer.
+        
+        The model formulation follows Desrochers et al. (1988), pp. 67-68.
+        
+        By default this project uses the data instance \'R106.25\' from the Solomon set at:
+          http://w.cba.neu.edu/~msolomon/problems.htm
+          http://neo.lcc.uma.es/vrp/vrp-instances/
+        More instances are available as cases.
+        
+        References:
+        Desrochers, M., J.K. Lenstra, M.W.P. Savelsbergh, F. Soumis, Vehicle Routing Problem
+        with Time Windows: Optimization and Approximation, In: Vehicle Routing: Methods and
+        Studies, B.L. Golden and A.A. Assad (eds), Studies in Management Science and Systems
+        vol. 16, 1988, pp. 65-84."
+    }
+    Parameter CustomersNumber {
+        Range: integer;
+        InitialData: 25;
+    }
+    Set Customers {
+        SubsetOf: Integers;
+        Index: i, j, k;
+        Definition: {
+            {0..CustomersNumber}
+        }
+    }
+    Parameter Demand {
+        IndexDomain: (i);
+    }
+    Parameter LBTW {
+        IndexDomain: (i);
+        Comment: "Lower Bound of the Time Window";
+    }
+    Parameter UBTW {
+        IndexDomain: (i);
+        Comment: "Upper Bound of the Time Window";
+    }
+    Parameter XCoord {
+        IndexDomain: (i);
+        Text: "X-coordinate";
+    }
+    Parameter YCoord {
+        IndexDomain: (j);
+        Text: "Y-coordinate";
+    }
+    Parameter Distance {
+        IndexDomain: (i,j);
+        Definition: floor(sqrt((XCoord(i) - XCoord(j))^2 + (YCoord(i) - YCoord(j))^2)*10)/10;
+        Comment: "Cost or distance between i and j (round to first decimal)";
+    }
+    Parameter ServiceTime {
+        IndexDomain: i;
+        Comment: "Service Time";
+    }
+    Parameter TravelTime {
+        IndexDomain: (i,j);
+        Definition: Distance(i,j) + ServiceTime(i);
+        Comment: "Travel time equals the corresponding distance plus the service time";
+    }
+    Parameter Capacity {
+        InitialData: 200;
+    }
+    Parameter M {
+        Definition: 1000;
+        Comment: "A large constant (\"Big M\")";
+    }
+    Variable X {
+        IndexDomain: (i,j) | i<>j;
+        Text: "Arc indicator";
+        Range: binary;
+        Comment: "Equal to 1 if arc (i,j) is used by a vehicle and 0 otherwise";
+    }
+    Variable D {
+        IndexDomain: (i);
+        Text: "Departure time";
+        Range: nonnegative;
+        Comment: "Departure time at customer i";
+    }
+    Variable Y {
+        IndexDomain: (i);
+        Text: "Vehicle load";
+        Range: nonnegative;
+        Comment: "Load of the vehicle arriving at i";
+    }
+    Variable TotalCost {
+        Range: free;
+        Definition: sum( (i,j), Distance(i,j) * X(i,j) );
+    }
+    Constraint CustomerSelection {
+        IndexDomain: i | i>0;
+        Definition: sum( j, X(i,j) ) = 1;
+        Comment: "Corresponds to a minimum cost flow problem";
+    }
+    Constraint FlowBalance {
+        IndexDomain: i | i>0;
+        Definition: sum( j, X(i,j) ) - sum( j, X(j,i) ) = 0;
+        Comment: "Correspond to a minimum cost flow problem";
+    }
+    Constraint ScheduleFeasibility {
+        IndexDomain: (i,j) | i>0 and j>0 and i<>j;
+        Definition: D(i) + TravelTime(i,j) - D(j) <= M * (1 - X(i,j));
+        Comment: "Ensures feasibility of the schedule";
+    }
+    Constraint TimeWindowConstraint {
+        IndexDomain: i | i>0;
+        Definition: LBTW(i) <= D(i) <= UBTW(i);
+        Comment: {
+            "Ensures that each customer has to be supplied within the time window associated with
+            the customer"
+        }
+    }
+    Constraint LoadsFeasibility1 {
+        IndexDomain: (i,j) | i>0 and j>0 and i<>j;
+        Definition: Y(i) + Demand(i) - Y(j) <= M * (1 - X(i,j));
+        Comment: "Ensures feasibility of the loads";
+    }
+    Constraint LoadsFeasibility2 {
+        IndexDomain: i | i>0;
+        Definition: Y(i) <= Capacity;
+        Comment: "Ensures feasibility of the loads";
+    }
+    MathematicalProgram LeastCost {
+        Objective: TotalCost;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: MIP;
+    }
+    Section User_Interface {
+        Set Colors {
+            SubsetOf: Integers;
+            Index: n;
+            Definition: {
+                {0..NumberOfColors}
+            }
+        }
+        Parameter NumberOfColors {
+            Definition: 6;
+        }
+        ElementParameter ColorsValue {
+            IndexDomain: n;
+            Range: AllColors;
+            Definition: data { 0 : red,  1 : blue,  2 : green,  3 : magenta,  4 : cyan,  5 : yellow,  6 : grey };
+        }
+        ElementParameter RoutesColor {
+            IndexDomain: (i,j);
+            Range: AllColors;
+        }
+        ElementParameter DepartureTimeColor {
+            IndexDomain: (i);
+            Range: AllColors;
+        }
+        Parameter XRange;
+        Parameter YRange;
+        Procedure ColorsAssignment {
+            Body: {
+                empty RoutesColor;
+                
+                Counter := 0;
+                
+                for (i) do
+                    if ( X(0,i) = 1 ) then
+                        RoutesColor(0,i) := ColorsValue(Counter);
+                        NextCustomer := First( j | X(i,j) );
+                        CurrentCustomer := i;
+                        DepartureTimeColor(CurrentCustomer) := ColorsValue(Counter);
+                        while(NextCustomer <> 0) do
+                            RoutesColor(CurrentCustomer,NextCustomer) := ColorsValue(Counter);
+                            NextCustomerTemp := NextCustomer;
+                            NextCustomer := First( j | X(CurrentCustomer,j) );
+                            CurrentCustomer := NextCustomerTemp;
+                            DepartureTimeColor(CurrentCustomer) := ColorsValue(Counter);
+                        endwhile;
+                        RoutesColor(CurrentCustomer,0) := ColorsValue(Counter);
+                        Counter := Counter + 1;
+                    endif;
+                endfor;
+                
+                XRange := 2 * XCoord(0);
+                YRange := 2 * YCoord(0);
+            }
+            Parameter Counter {
+                Range: integer;
+            }
+            Parameter XCopy {
+                IndexDomain: (i,j);
+            }
+            ElementParameter CurrentCustomer {
+                Range: Customers;
+            }
+            ElementParameter NextCustomer {
+                Range: Customers;
+            }
+            ElementParameter NextCustomerTemp {
+                Range: Customers;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            CustomersNumber := 25;
+            Capacity := 200;
+            
+            COMPOSITE TABLE
+                i  XCoord     YCoord     Demand       LBTW       UBTW     ServiceTime
+            !  --  ------     ------     ------       ----       ----     -----------
+                0      35         35          0          0        230          0
+                1      41         49         10          0        204         10
+                2      35         17          7          0        202         10
+                3      55         45         13          0        197         10
+                4      55         20         19        139        169         10
+                5      15         30         26          0        199         10
+                6      25         30          3         89        119         10
+                7      20         50          5          0        198         10
+                8      10         43          9         85        115         10
+                9      55         60         16         87        117         10
+               10      30         60         16        114        144         10
+               11      20         65         12         57         87         10
+               12      50         35         19          0        205         10
+               13      30         25         23        149        179         10
+               14      15         10         20         32         62         10
+               15      30          5          8         51         81         10
+               16      10         20         19         65         95         10
+               17       5         30          2        147        177         10
+               18      20         40         12         77        107         10
+               19      15         60         17         66         96         10
+               20      45         65          9        116        146         10
+               21      45         20         11          0        201         10
+               22      45         10         18         87        117         10
+               23      55          5         29         58         88         10
+               24      65         35          3        143        173         10
+               25      65         20          6        156        186         10
+               ;
+        }
+        Comment: {
+            "Instance R106.25 from the Solomon set which can be found at: http://w.cba.neu.edu/~msolomon/problems.htm
+            or http://neo.lcc.uma.es/vrp/vrp-instances/"
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            ShowProgressWindow;
+            
+            LeastCost.CallbackNewIncumbent := 'IncumbentCallback';
+            
+            solve LeastCost;
+            
+            ColorsAssignment;
+        }
+    }
+    Procedure IncumbentCallback {
+        Body: {
+            RetrieveCurrentVariableValues( AllVariables );
+            
+            ColorsAssignment;
+            
+            PageRefreshAll;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

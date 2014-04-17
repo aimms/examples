@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-17 10:53:29">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>E3F68976-71E7-4793-9264-AAAF69B7786F</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="162" left="522" bottom="660" right="1020" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Right>XRange</Right>
+			<Top>YRange</Top>
+		</VisibleArea>
+		<Node>
+			<Identifier>i</Identifier>
+			<XCoordinate>XCoord( i )</XCoordinate>
+			<YCoordinate>YCoord( j )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>5</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Shape>Circle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>X( i, j )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Color>RoutesColor( i, j )</Color>
+			<ArrowPosition>65</ArrowPosition>
+			<ShapeExtraData>15</ShapeExtraData>
+			<Shape>Curved</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>ArrowHead</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="162" left="48" bottom="576" right="492" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>LBTW( i )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"LB Time Window"</HeaderText>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>UBTW( i )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"UB Time Window"</HeaderText>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ServiceTime( i )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Service Time"</HeaderText>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Demand( i )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>D( i )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Departure time"</HeaderText>
+			<NumberFormat Width="4" Decimals="0" />
+			<Color>DepartureTimeColor( i )</Color>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="618" left="366" bottom="660" right="492" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalCost</Identifier>
+			<NumberFormat Width="5" Decimals="1" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="156" left="42" bottom="582" right="498" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="612" left="360" bottom="666" right="498" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="156" left="516" bottom="666" right="1026" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="612" left="42" bottom="666" right="156" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>D</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>X</Symbol>
+			<Symbol>Demand</Symbol>
+			<Symbol>UBTW</Symbol>
+			<Symbol>ServiceTime</Symbol>
+			<Symbol>XCoord</Symbol>
+			<Symbol>XRange</Symbol>
+			<Symbol>RoutesColor</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>DepartureTimeColor</Symbol>
+			<Symbol>LBTW</Symbol>
+			<Symbol>YCoord</Symbol>
+			<Symbol>YRange</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
