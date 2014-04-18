@@ -6,23 +6,5 @@ default_input_character_encoding WINDOWS-1252
 default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
-negate_objective_coefficient_modifications 1
-* AOA
-* BARON 12
-* CONOPT 3.14G
-* CONOPT 3.14V
-* CPLEX 12.6
-* CPOptimizer 12.6
-* GUROBI 5.6
-* KNITRO 9.0
-* LGO 1.0
-* MINOS
-* PATH 4.6
-* SNOPT 6.1
-* XA 15
-* CPLEX 9.1
-"CPLEX 9.1".presolve 0
-* NETSOL
 * Environment
 Startup_Page "Results"
-Data_Management_Style 1

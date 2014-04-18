@@ -1,18 +1,3 @@
 ﻿* AIMMS
 rounding_compatibility Aimms_3_7
-* AOA
-* BARON 12
-* CONOPT 3.14G
-* CONOPT 3.14V
-* CPLEX 12.6
-* CPOptimizer 12.6
-* GUROBI 5.6
-* KNITRO 9.0
-* LGO 1.0
-* MINOS
-* PATH 4.6
-* SNOPT 6.1
-* XA 15
-* NETSOL
 * Environment
-Data_Management_Style 1
