@@ -7,14 +7,18 @@ default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 * AOA
-* CBC 2.7.5
-* CBC 2.8.0
-* IPOPT 3.10.1
-* IPOPT 3.11
+* BARON 12
+* CONOPT 3.14V
+* CPLEX 12.4
+* CPLEX 12.5
+* CPLEX 12.5.1
+* CPLEX 12.6
+* LGO 1.0
+* XA 15
 * KNITRO 8.0
 "KNITRO 8.0".Absolute_feasibility_tolerance 1e-005
 * NETSOL
 * Environment
 Project_Title "AIMMS 3 - 3D Chart"
 Startup_Page "AIMMS Demo"
-Startup_Case "Result"
+Startup_Case "data\Result.data"
