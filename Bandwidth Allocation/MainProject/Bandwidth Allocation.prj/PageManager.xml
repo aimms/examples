@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS 3 Demo - A Bandwidth Allocation Problem" PageGUID="913B48A3-3F60-40FE-9B3F-F555B308A4B8">
-		<Page Name="Bandwidth Allocation Problem" PageGUID="51F6D29C-F2C2-4452-B744-40A69A139084" />
-	</Page>
-	<Page Name="All Data Pages" PageGUID="E5FAC913-FD4F-40A6-BE7E-E1993DD84E3A" />
-</PageManager>
