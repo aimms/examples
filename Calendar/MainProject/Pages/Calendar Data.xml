@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:39:47">
+<Page Version="4000" TimeStamp="2014-04-29 16:06:21">
 	<Location top="29" left="4" bottom="886" right="1144" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -38,7 +38,7 @@
 		<ActionSequence>
 			<Action Type="ClosePage" />
 			<Action Type="LinkedPage">
-				<Page PageGUID="9722B068-F4EC-4198-BF10-ACD3D51C1DBF" Name="AIMMS Demo" />
+				<Page PageGUID="01157EE4-7A7D-40F3-ACEE-C738B6FF6588" Name="AIMMS Demo" />
 			</Action>
 		</ActionSequence>
 	</PageObject>
@@ -341,7 +341,7 @@
 		<ActionSequence>
 			<Action Type="ClosePage" />
 			<Action Type="LinkedPage">
-				<Page PageGUID="B00ACFFB-C4B9-4E83-A054-BB388863CF5B" Name="Inactive Days" />
+				<Page PageGUID="0E07DCEC-F472-47AE-ABE1-107632BCBE12" Name="Inactive Days" />
 			</Action>
 		</ActionSequence>
 	</PageObject>

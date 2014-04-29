@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:39:47">
+<Page Version="4000" TimeStamp="2014-04-29 16:06:21">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -25,7 +25,7 @@
 		<ActionSequence>
 			<Action Type="ClosePage" />
 			<Action Type="LinkedPage">
-				<Page PageGUID="9722B068-F4EC-4198-BF10-ACD3D51C1DBF" Name="AIMMS Demo" />
+				<Page PageGUID="01157EE4-7A7D-40F3-ACEE-C738B6FF6588" Name="AIMMS Demo" />
 			</Action>
 		</ActionSequence>
 	</PageObject>
@@ -47,7 +47,7 @@
 		<ActionSequence>
 			<Action Type="ClosePage" />
 			<Action Type="LinkedPage">
-				<Page PageGUID="1A0E1556-0C34-425F-B2C5-70913E256D8C" Name="Calendar Data" />
+				<Page PageGUID="47046A9B-C225-42C7-A6C1-3A7200DCA4D6" Name="Calendar Data" />
 			</Action>
 		</ActionSequence>
 	</PageObject>

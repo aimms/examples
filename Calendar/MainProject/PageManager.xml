@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="Inactive Days 1" PageGUID="E741066E-EDE9-47AD-B521-6912A6BDDBB7" />
+	<Page Name="AIMMS Demo" PageGUID="01157EE4-7A7D-40F3-ACEE-C738B6FF6588">
+		<Page Name="Calendar Data" PageGUID="47046A9B-C225-42C7-A6C1-3A7200DCA4D6" />
+		<Page Name="Inactive Days" PageGUID="0E07DCEC-F472-47AE-ABE1-107632BCBE12" />
+	</Page>
+</PageManager>
