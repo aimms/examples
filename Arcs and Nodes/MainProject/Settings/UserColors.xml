@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <UserColors LastKnownInternalId="47">
-	<UserColor Name="default background" RGB="#d4d0c8" IsSystemBackground="true" UUID="FC7C79B7-5BF6-4D2B-BE59-5BEDE51C2993" InternalID="1" />
+	<UserColor Name="default background" RGB="#f0f0f0" IsSystemBackground="true" UUID="FC7C79B7-5BF6-4D2B-BE59-5BEDE51C2993" InternalID="1" />
 	<UserColor Name="default foreground" RGB="#000000" UUID="97EEA202-BF93-448A-8B20-A5A92660C489" InternalID="2" />
 	<UserColor Name="default selection" RGB="#000080" UUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01" InternalID="3" />
 	<UserColor Name="black" RGB="#000000" UUID="0E661DA4-17C1-4BEB-83C3-4D2413577958" InternalID="4" />

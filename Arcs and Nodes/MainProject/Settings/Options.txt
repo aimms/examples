@@ -9,12 +9,21 @@ external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 warning_index_domain_violation off
 * AOA
-* CBC 2.7.5
-* CBC 2.8.0
-* IPOPT 3.10.1
-* IPOPT 3.11
+* BARON 12
+* CONOPT 3.14G
+* CONOPT 3.14V
+* CPLEX 12.6
+* CPOptimizer 12.6
+* GUROBI 5.6
+* KNITRO 9.0
+* LGO 1.0
+* MINOS
+* PATH 4.6
+* SNOPT 6.1
+* SNOPT 7.2
+* XA 15
 * NETSOL
 * Environment
 Project_Title "AIMMS 3 - Arcs and Nodes"
 Startup_Page "AIMMS Demo"
-Startup_Case "Example Data"
+Startup_Case "data\Example Data.data"
