@@ -319,7 +319,7 @@ Model Main_CarSelection {
             option seed := 36420;
             empty Cars;
             empty Participants;
-            MaxCars          := 10;
+            MaxCars         := 10;
             MaxParticipants := 10;
             nameExistsFull := 0;
             nameExists(fn,ln) := 0;

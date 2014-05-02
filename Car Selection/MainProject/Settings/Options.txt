@@ -7,12 +7,6 @@ default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 seed 36420
-* AOA
-* CBC 2.7.5
-* CBC 2.8.0
-* IPOPT 3.10.1
-* IPOPT 3.11
-* NETSOL
 * Environment
 Project_Title "AIMMS 3 - Car Selection"
 Startup_Page "AIMMS Demo"
