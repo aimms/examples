@@ -243,15 +243,15 @@ Model Main_Camping {
             IndexDomain: (x,y);
             Definition: {
                 if TreeAtSpot(x, y) then
-                	"Tree42x42.bmp"
+                	"MainProject\\User Files\\bitmaps\\Tree42x42.bmp"
                 elseif Spot(x, y) = 'Tent' then
                 	if TreeAtSpot(x, y + 1) then
-                		"TentShadow42x42.bmp"
+                		"MainProject\\User Files\\bitmaps\\TentShadow42x42.bmp"
                 	else
-                		"Tent42x42.bmp"
+                		"MainProject\\User Files\\bitmaps\\Tent42x42.bmp"
                 	endif
                 else
-                	"Empty.bmp"
+                	"MainProject\\User Files\\bitmaps\\Empty.bmp"
                 endif;
             }
             Comment: {

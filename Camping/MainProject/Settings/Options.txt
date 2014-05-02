@@ -6,6 +6,8 @@ default_input_character_encoding WINDOWS-1252
 default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
+rounding_compatibility Aimms_3_7
 * Environment
-Project_Title "AIMMS 3 - Using Calendars"
+Project_Title "AIMMS 3 - Camping"
 Startup_Page "AIMMS Demo"
+Startup_Case "data\Cases\StartupSituation.data"

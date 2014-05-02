@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-05-02 15:44:24">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>46A0FA7A-949D-47F9-93D1-69BD0DE0FBB7</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="8">
+						<BottomArea Line="FixedFromTop" Value="269" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="PercentageFromLeft" Value="0.631119">
+						<LeftArea Line="PercentageFromTop" Value="0.865297" />
+						<RightArea Line="PercentageFromTop" Value="0.305936">
+							<BottomArea Line="FixedFromTop" Value="230">
+								<TopArea Line="FixedFromLeft" Value="192" />
+							</BottomArea>
+						</RightArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Text">
+		<Location top="192" left="12" bottom="216" right="192" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="75FA5FB5-C3DE-41E2-B2BE-26FE97E960D0" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="192" left="210" bottom="558" right="558" />
+		<FillColor RGB="#007600" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="312" left="6" bottom="336" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="315" left="18" bottom="333" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="342" left="6" bottom="366" right="192" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Clear Tents"</Title>
+		<ForegroundColor>
+			<Symbol>ExampleStyle::ButtonColor</Symbol>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ClearTents</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="450" left="6" bottom="474" right="192" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Model"</Title>
+		<ForegroundColor>
+			<Symbol>ExampleStyle::ButtonColor</Symbol>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="372" left="6" bottom="396" right="192" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Clear Trees"</Title>
+		<ForegroundColor>
+			<Symbol>ExampleStyle::ButtonColor</Symbol>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ClearTrees</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="402" left="6" bottom="426" right="192" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Place Random Trees"</Title>
+		<ForegroundColor>
+			<Symbol>ExampleStyle::ButtonColor</Symbol>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>PlaceRandomTrees</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="192" left="564" bottom="306" right="756" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfRows</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"The number of rows"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfColumns</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"The number of columns"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfTreesToPlace</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"The number of trees to place"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>SpaceAroundTent</Identifier>
+			<NumberFormat Width="3" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"The space around each tent"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfShadowPlaces</Identifier>
+			<NumberFormat Width="3" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"The number of places in the shadow"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ShadowPlaceRelation</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"The relation to the number of places in the shadow"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Indexed Page Object">
+		<Location top="192" left="210" bottom="540" right="558" />
+		<TabOrder>8</TabOrder>
+		<Border Style="None" />
+		<Rows>
+			<FixedNumber>NumberOfRows</FixedNumber>
+			<ElementParameter>YElem</ElementParameter>
+		</Rows>
+		<Columns>
+			<FixedNumber>NumberOfColumns</FixedNumber>
+			<ElementParameter>XElem</ElementParameter>
+		</Columns>
+		<PageToShow PageGUID="43EBE357-D1AB-4E5E-B452-72B1C346671E" Name="Button Page" />
+		<Layout>Matrix</Layout>
+		<BackgroundColor RGB="#007600" />
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="330" left="570" bottom="372" right="612" />
+		<FileName LiteralFileName="true">"MainProject\User Files\bitmaps\Empty.bmp"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="384" left="570" bottom="426" right="612" />
+		<FileName LiteralFileName="true">"MainProject\User Files\bitmaps\Tree42x42.bmp"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="438" left="570" bottom="480" right="612" />
+		<FileName LiteralFileName="true">"MainProject\User Files\bitmaps\Tent42x42.bmp"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="492" left="570" bottom="534" right="612" />
+		<FileName LiteralFileName="true">"MainProject\User Files\bitmaps\TentShadow42x42.bmp"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="330" left="624" bottom="354" right="744" />
+		<StaticText>Empty spot</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="384" left="624" bottom="408" right="744" />
+		<StaticText>Spot with tree</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="438" left="624" bottom="462" right="744" />
+		<StaticText>Spot with tent</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="492" left="624" bottom="534" right="744" />
+		<StaticText>Shadow spot with tent</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="570" left="210" bottom="600" right="456" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalNumberOfTents</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total number of tents"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>violation</Symbol>
+			<Symbol>AllDataFiles</Symbol>
+			<Symbol>TotalNumberOfTents</Symbol>
+			<Symbol>NumberOfColumns</Symbol>
+			<Symbol>NumberOfRows</Symbol>
+			<Symbol>NumberOfTreesToPlace</Symbol>
+			<Symbol>SpaceAroundTent</Symbol>
+			<Symbol>NumberOfShadowPlaces</Symbol>
+			<Symbol>ShadowPlaceRelation</Symbol>
+			<Symbol>ClearTents</Symbol>
+			<Symbol>ClearTrees</Symbol>
+			<Symbol>PlaceRandomTrees</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>XElem</Symbol>
+			<Symbol>YElem</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
