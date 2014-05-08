@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="5FE92A41-D029-47D4-A21D-FE9D5CF0AC93">
+<Project AimmsVersion="4.0.0.432 unicode x86" ProjectUUID="5FE92A41-D029-47D4-A21D-FE9D5CF0AC93">
 	<ModelFileName>Chance Constraints.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

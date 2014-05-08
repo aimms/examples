@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:43:11">
+<Page Version="4000" TimeStamp="2010-11-10 20:55:45">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -41,7 +41,7 @@
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<ActionSequence>
 			<Action Type="LinkedPage">
-				<Page PageGUID="54C2BF21-EE0D-4454-85A2-C45026F09E9A" Name="Portfolio Selection" />
+				<Page PageGUID="FE5C5BF6-48B3-4E1E-85E1-3CBC1AC874ED" Name="Portfolio Selection" />
 			</Action>
 		</ActionSequence>
 	</PageObject>

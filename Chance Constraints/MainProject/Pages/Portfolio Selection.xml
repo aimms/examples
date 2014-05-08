@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:43:11">
+<Page Version="4000" TimeStamp="2014-05-08 14:57:01">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>5FE92A41-D029-47D4-A21D-FE9D5CF0AC93</ProjectUUID>
-	<TemplatesTabOrderPosition>13</TemplatesTabOrderPosition>
+	<TemplatesTabOrderPosition>11</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
@@ -46,7 +46,7 @@
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<ActionSequence>
 			<Action Type="LinkedPage">
-				<Page PageGUID="0E06D626-8964-48B2-ACDF-57518F541D2C" Name="Input Data" />
+				<Page PageGUID="CC778DDA-C81A-46D8-9E82-D52ED51139D1" Name="Input Data" />
 			</Action>
 		</ActionSequence>
 	</PageObject>
@@ -68,7 +68,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="240" left="207" bottom="267" right="447" />
-		<TabOrder>6</TabOrder>
+		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Solve Chance Constrained Model"</Title>
@@ -83,7 +83,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="306" left="207" bottom="618" right="408" />
-		<TabOrder>10</TabOrder>
+		<TabOrder>8</TabOrder>
 		<ObjectUUID>CCEF5411-6EAA-444C-9644-D47693B19C75</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -127,6 +127,9 @@
 				<Text_Color ID="2280">RGB&lt;255,255,200&gt;</Text_Color>
 			</Grid_Focus_Indicator>
 		</Row_Area>
+		<Column_Area>
+			<Auto_resize_Column_Widths ID="3006">"Upon all data changes"</Auto_resize_Column_Widths>
+		</Column_Area>
 		<Grid_Area>
 			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
 			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
@@ -150,7 +153,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>RadioButtons</SelectionType>
 		<Location top="216" left="210" bottom="234" right="762" />
-		<TabOrder>5</TabOrder>
+		<TabOrder>3</TabOrder>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextShown>ElementName</TextShown>
 		<Border Style="None" />
@@ -167,7 +170,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="272" left="207" bottom="302" right="483" />
-		<TabOrder>8</TabOrder>
+		<TabOrder>6</TabOrder>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -186,7 +189,7 @@
 	<PageObject Type="Scalar">
 		<Location top="272" left="486" bottom="302" right="762" />
 		<ReadOnly>"Yes"</ReadOnly>
-		<TabOrder>9</TabOrder>
+		<TabOrder>7</TabOrder>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -204,7 +207,7 @@
 	</PageObject>
 	<PageObject Type="Curve">
 		<Location top="306" left="414" bottom="458" right="761" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>9</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -244,7 +247,7 @@
 	</PageObject>
 	<PageObject Type="Curve">
 		<Location top="462" left="414" bottom="614" right="761" />
-		<TabOrder>12</TabOrder>
+		<TabOrder>10</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -305,36 +308,36 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="240" left="456" bottom="267" right="696" />
-		<TabOrder>7</TabOrder>
+		<TabOrder>5</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"View Results Discussion"</Title>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<ActionSequence>
 			<Action Type="LinkedPage">
-				<Page PageGUID="64E3CB8F-B67A-44E1-AD57-0303A6A2399C" Name="Results Discussion" />
+				<Page PageGUID="6D937C9C-0387-40AD-BE33-76C40E8CB61C" Name="Results Discussion" />
 			</Action>
 		</ActionSequence>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>RelativeProfit</Symbol>
-			<Symbol>a</Symbol>
-			<Symbol>Investment_Ball</Symbol>
 			<Symbol>AllChanceApproximationTypes</Symbol>
-			<Symbol>Investment_Automatic</Symbol>
-			<Symbol>LowerRangePoint</Symbol>
 			<Symbol>ExpectedReturn</Symbol>
-			<Symbol>UpperRangePoint</Symbol>
-			<Symbol>SolveChanceConstrModel</Symbol>
 			<Symbol>InvestmentFraction</Symbol>
-			<Symbol>Investment_Budgeted</Symbol>
-			<Symbol>Investment_BallBox</Symbol>
 			<Symbol>ValueAtRisk</Symbol>
-			<Symbol>ApproximationDescription</Symbol>
 			<Symbol>ApproximationType</Symbol>
+			<Symbol>RelativeProfit</Symbol>
+			<Symbol>SolveChanceConstrModel</Symbol>
+			<Symbol>LowerRangePoint</Symbol>
+			<Symbol>UpperRangePoint</Symbol>
 			<Symbol>Investment_Box</Symbol>
+			<Symbol>Investment_Ball</Symbol>
+			<Symbol>Investment_BallBox</Symbol>
+			<Symbol>Investment_Budgeted</Symbol>
+			<Symbol>Investment_Automatic</Symbol>
+			<Symbol>ApproximationDescription</Symbol>
 			<Symbol>ApproximationName</Symbol>
+			<Symbol>a</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
