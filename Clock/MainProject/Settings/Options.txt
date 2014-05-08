@@ -7,12 +7,6 @@ default_output_character_encoding WINDOWS-1252
 elapsed_time_is_unitless 1
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
-* AOA
-* CBC 2.7.5
-* CBC 2.8.0
-* IPOPT 3.10.1
-* IPOPT 3.11
-* NETSOL
 * Environment
 Project_Title "AIMMS 3 - Clock"
 Startup_Page "AIMMS Demo"
