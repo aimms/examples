@@ -1,0 +1,3 @@
+﻿* AIMMS
+default_output_character_encoding WINDOWS-1252
+* Environment

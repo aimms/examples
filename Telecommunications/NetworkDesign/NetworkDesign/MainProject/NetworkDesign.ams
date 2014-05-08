@@ -1,0 +1,193 @@
+## ams_version=1.0
+
+Model Main_NetworkDesign {
+    Comment: {
+        "Capacitated network design problem
+        
+        Problem type:
+        MIP (hard)
+        
+        Keywords:
+        Benders Decomposition, GMP, XML
+        
+        Description:
+        Network design problems deal with the selection of a subset of edges in
+        an existing network, such that for a set of commodities the given demand
+        for each commodity can be transported from its origin to its destination,
+        at minumum cost. In the capacitated network design problem the edges have
+        (fixed) capacities. Network design problems arise in telecommunications
+        and transportation planning.
+        
+        The data of the instances are read using XML files.
+        
+        References:
+        Raack, C., A.M.C.A. Koster, S. Orlowski, R. Wessaly, On cut-based inequalities
+        for capacitated network design polyhedra, Networks 57 (2), 2011, pp. 141-156.
+        
+        SNDlib: http://sndlib.zib.de/"
+    }
+    DeclarationSection Declaration_Data {
+        Set LinkTypes {
+            Definition: {
+                { 'DIRECTED', 'BIDIRECTED', 'UNDIRECTED' }
+            }
+        }
+        ElementParameter LinkModel {
+            Range: LinkTypes;
+        }
+        Set Demands {
+            Index: q;
+        }
+        Parameter Demand {
+            IndexDomain: q;
+        }
+        Parameter SetupCost {
+            IndexDomain: (i,j);
+        }
+        ElementParameter FromCity {
+            IndexDomain: q;
+            Range: Cities;
+        }
+        ElementParameter ToCity {
+            IndexDomain: q;
+            Range: Cities;
+        }
+        Set Links {
+            Index: l;
+            Comment: "Dummy set needed to read XML file.";
+        }
+    }
+    DeclarationSection Declaration_Model {
+        Set Cities {
+            Index: i, j;
+        }
+        Set Commodities {
+            SubsetOf: Cities;
+            Index: k;
+        }
+        Parameter ModuleCost {
+            IndexDomain: (i,j);
+        }
+        Parameter ModuleCapacity {
+            IndexDomain: (i,j);
+        }
+        Parameter AggrDemand {
+            IndexDomain: (k,i);
+        }
+        Variable Flow {
+            IndexDomain: (i,j,k) | ( ModuleCapacity(i, j) or ModuleCapacity(j, i) ) and k <> i;
+            Range: nonnegative;
+        }
+        Variable NumberOfModules {
+            IndexDomain: (i,j) | ModuleCapacity(i, j);
+            Range: integer;
+        }
+        Variable TotalCost {
+            Range: free;
+            Definition: sum((i,j), NumberOfModules(i, j) * ModuleCost(i, j));
+        }
+        Constraint DemandConstraint {
+            IndexDomain: (k,i);
+            Definition: sum(j, Flow(j, i, k)) - sum(j, Flow(i, j, k)) = AggrDemand(k,i);
+            Comment: "Flow conservation constraint";
+        }
+        Constraint CapacityConstraintDirected {
+            IndexDomain: {
+                (i,j) | ModuleCapacity(i, j)
+                and ( LinkModel = 'DIRECTED' or LinkModel = 'BIDIRECTED' )
+            }
+            Definition: sum(k, Flow(i, j, k)) <= ModuleCapacity(i, j) * NumberOfModules(i, j);
+        }
+        Constraint CapacityConstraintBidirected {
+            IndexDomain: {
+                (i,j) | ModuleCapacity(j, i)
+                and LinkModel = 'BIDIRECTED'
+            }
+            Definition: sum(k, Flow(i, j, k)) <= ModuleCapacity(j, i) * NumberOfModules(j, i);
+        }
+        Constraint CapacityConstraintUndirected {
+            IndexDomain: {
+                (i,j) | ModuleCapacity(i, j)
+                and LinkModel = 'UNDIRECTED'
+            }
+            Definition: sum(k, Flow(i, j, k) + Flow(j, i, k)) <= ModuleCapacity(i, j) * NumberOfModules(i, j);
+        }
+        MathematicalProgram LeastCost {
+            Objective: TotalCost;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: Automatic;
+        }
+    }
+    DeclarationSection Declaration_Benders_Decomposition {
+        ElementParameter myGMP {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure ReadAndProcessData {
+        Body: {
+            ! The folder Input contains the following instances (in XML format):
+            !   franceDBSNCANN, geantDBSNCANN, janos-usDDSNCANN, sunDDSNCANN.
+            ! The instances are from SNDlib at http://sndlib.zib.de/home.action .
+            
+            ReadXML( "Input\\franceDBSNCANN.xml", "NetworkDesign.axm" );
+            
+            ! Unfortunately, the XML input files do not contain information on
+            ! the link model so we have to assign it manually. Instances that
+            ! contain 'DB' in their name use the BIDIRECTED link model; instances
+            ! that contain 'DD' use the DIRECTED link model.
+            
+            LinkModel := 'BIDIRECTED';
+            
+            empty Commodities, AggrDemand;
+            
+            for (q) do
+                Commodities += FromCity(q);
+                AggrDemand(FromCity(q),FromCity(q)) += Demand(q);
+                AggrDemand(FromCity(q),  ToCity(q)) -= Demand(q);
+            endfor;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            ReadAndProcessData;
+            
+            solve LeastCost;
+        }
+    }
+    Procedure DoBendersDecomposition {
+        Body: {
+            ReadAndProcessData;
+            
+            myGMP := GMP::Instance::Generate( LeastCost );
+            
+            GMPBenders::FeasibilityOnly := 1;
+            GMPBenders::CreateStatusFile := 1;
+            GMPBenders::DisplayInterval := 1;
+            GMPBenders::TimeLimit := 10800;
+            
+            ! Possible Benders' modes are:
+            !   'Classic', 'Modern', 'TwoPhaseClassic', 'TwoPhaseModern'
+            ! The modes 'Modern' and 'TwoPhaseModern' can only be used by CPLEX and Gurobi.
+            
+            GMPBenders::DoBendersDecomposition( myGMP, AllIntegerVariables, 'Classic' );
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Module GMP_Benders_Decomposition_Module {
+        SourceFile: "%AIMMSMODULES%\\GMPBendersDecomposition.ams";
+        Comment: {
+            "This module contains an implementation of an automatic Benders\' Decomposition algorithm
+            using functions from the GMP library. It can be used to solve linear problems (LP and MIP).
+            
+            See the chapter Automatic Benders\' Decomposition in the Language Reference for more
+            information."
+        }
+    }
+}

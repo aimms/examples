@@ -1,0 +1,29 @@
+<AimmsXMLSchemaMapping MappedNameSpace="xs">
+	<ElementMapping name="network">
+		<ElementMapping name="networkStructure">
+			<ElementMapping name="nodes" read-filter="0"/>
+			<ElementMapping name="links">
+				<ElementMapping name="link">
+					<AttributeMapping name="id" binds-to="l" maps-to="Links"/>
+					<ElementMapping name="source" binds-to="i" maps-to="Cities"/>
+					<ElementMapping name="target" binds-to="j" maps-to="Cities"/>
+					<ElementMapping name="setupCost" maps-to="SetupCost(i,j)"/>
+					<ElementMapping name="additionalModules">
+						<ElementMapping name="addModule">
+							<ElementMapping name="capacity" maps-to="ModuleCapacity(i,j)"/>
+							<ElementMapping name="cost" maps-to="ModuleCost(i,j)"/>
+						</ElementMapping>
+					</ElementMapping>
+				</ElementMapping>
+			</ElementMapping>
+		</ElementMapping>
+		<ElementMapping name="demands">
+			<ElementMapping name="demand">
+				<AttributeMapping name="id" binds-to="q" maps-to="Demands"/>
+				<ElementMapping name="source" maps-to="FromCity(q)"/>
+				<ElementMapping name="target" maps-to="ToCity(q)"/>
+				<ElementMapping name="demandValue" maps-to="Demand(q)"/>
+			</ElementMapping>
+		</ElementMapping>
+	</ElementMapping>
+</AimmsXMLSchemaMapping>
