@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-05 14:55:35">
+	<Location top="363" left="211" bottom="615" right="763" />
+	<PageEditSize Type="Inherited">
+		<Size Width="554" Height="253" />
+	</PageEditSize>
+	<ProjectUUID>815D62FB-6902-4E26-B758-332EBC8DDAA2</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.635379">
+			<RightArea Line="FixedFromTop" Value="125" />
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Table">
+		<Location top="6" left="6" bottom="246" right="354" />
+		<TabOrder>1</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>MyData( i_v, j_v )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+			<Color>DataColor( i_v, j_v )</Color>
+			<Readonly>DataReadOnly( i_v, j_v )</Readonly>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="6" left="360" bottom="42" right="486" />
+		<StaticText>Updatable values are colored:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="60" left="360" bottom="108" right="486" />
+		<StaticText>Non-updatable values are colored:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="12" left="492" bottom="36" right="522" />
+		<FillColor>
+			<Symbol>UpdatableColor</Symbol>
+		</FillColor>
+		<LineColor>
+			<Symbol>UpdatableColor</Symbol>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="72" left="492" bottom="96" right="522" />
+		<FillColor>
+			<Symbol>NonUpdatableColor</Symbol>
+		</FillColor>
+		<LineColor>
+			<Symbol>NonUpdatableColor</Symbol>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="15" left="528" bottom="33" right="546" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\wizard.bmp"</BitmapFile>
+		<Font GUID="7ECEBFAB-F46D-4B7E-A3AD-C6F6AAAE5B03" Name="default" />
+		<ActionSequence>
+			<Action Type="Assignment">
+				<Identifier>Updatable</Identifier>
+				<AssignedValue>1</AssignedValue>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>GetColor</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="75" left="528" bottom="93" right="546" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\wizard.bmp"</BitmapFile>
+		<Font GUID="7ECEBFAB-F46D-4B7E-A3AD-C6F6AAAE5B03" Name="default" />
+		<ActionSequence>
+			<Action Type="Assignment">
+				<Identifier>Updatable</Identifier>
+				<AssignedValue>0</AssignedValue>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>GetColor</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>DataColor</Symbol>
+			<Symbol>i_v</Symbol>
+			<Symbol>j_v</Symbol>
+			<Symbol>UpdatableColor</Symbol>
+			<Symbol>DataReadOnly</Symbol>
+			<Symbol>MyData</Symbol>
+			<Symbol>GetColor</Symbol>
+			<Symbol>Updatable</Symbol>
+			<Symbol>NonUpdatableColor</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

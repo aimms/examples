@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-05 14:55:35" NeedsCompiledModel="false">
+	<Location top="363" left="211" bottom="618" right="767" />
+	<PageEditSize Type="Inherited">
+		<Size Width="554" Height="253" />
+	</PageEditSize>
+	<ProjectUUID>815D62FB-6902-4E26-B758-332EBC8DDAA2</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.635379">
+			<RightArea Line="FixedFromTop" Value="125" />
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-05 14:55:35">
+	<Location bottom="947" right="1920" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>815D62FB-6902-4E26-B758-332EBC8DDAA2</ProjectUUID>
+	<Title>"AIMMS 3 Demo: Object Coloring, Visibility and Updatability"</Title>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<TopArea Line="FixedFromTop" Value="77" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<Action>
+		<EntryProcedure>MainInitialization</EntryProcedure>
+	</Action>
+	<HorizontalGridDistance>1</HorizontalGridDistance>
+	<VerticalGridDistance>1</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="189" left="208" bottom="615" right="763" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Description.txt"</FileName>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="316DCA2E-5BA2-43D0-AFC5-862E8186EE10">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainInitialization</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

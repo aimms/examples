@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-18 12:46:16">
+	<Location bottom="651" right="1424" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>C905EA4B-33A7-40CC-BEA9-0B163D6B1C1E</ProjectUUID>
+	<Title>"AIMMS 3 Demo: Contract Allocation"</Title>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<TopArea Line="FixedFromTop" Value="77" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<Action>
+		<EntryProcedure>MainInitialization</EntryProcedure>
+	</Action>
+	<HorizontalGridDistance>1</HorizontalGridDistance>
+	<VerticalGridDistance>1</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="189" left="211" bottom="615" right="762" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Description.txt"</FileName>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="B644DAD2-AD5B-4795-AC92-D4D7CA0607F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainInitialization</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
