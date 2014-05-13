@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2013-05-23 06:47:37">
+	<Location top="22" left="4" bottom="1077" right="1594" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>E7AC3880-5EC4-45DF-B4FF-C18C5CD72BD3</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="185" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="77BBE6C1-0173-40EC-9F97-2EA7E3D25CC3">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="396" left="6" bottom="420" right="192" />
+		<TabOrder>6</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Interrupt"</Title>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>Run-Stop</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve model sequential"</Title>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveModelSequential</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="342" left="792" bottom="576" right="936" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"network.txt"</FileName>
+		<Font GUID="A6B8C434-F2A4-463D-82CE-EA1CD74D4615" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="189" left="210" bottom="324" right="489" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<AutomaticReSort>false</AutomaticReSort>
+		<Domain>
+			<Identifier>f</Identifier>
+			<Index Name="f">
+				<TitleText>"Final"</TitleText>
+			</Index>
+			<AllowRowAdd>true</AllowRowAdd>
+			<AllowRowDelete>true</AllowRowDelete>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>FinalSize( f )</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+			<TitleText>"Size [cm]"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Demand( f )</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+			<TitleText>"Demand"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>FinalSurplus( f )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+			<TitleText>"# not used in solution"</TitleText>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Indexed Page Object">
+		<Location top="327" left="206" bottom="615" right="762" />
+		<TabOrder>8</TabOrder>
+		<Border Style="None" />
+		<Rows>
+			<FixedNumber>1</FixedNumber>
+			<ElementParameter>CurrentRaw</ElementParameter>
+		</Rows>
+		<Columns>
+			<FixedNumber>1</FixedNumber>
+		</Columns>
+		<PageToShow PageGUID="9634747A-EC42-449A-BBE6-9D0D0AA0FFBD" Name="Gantt Chart For Single Raw" />
+		<BackgroundColor Transparent="true" />
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="189" left="492" bottom="324" right="762" />
+		<TabOrder>9</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="8D90C13D-50AC-4E37-9003-16A09F551B79">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>RawsCutWithPattern( p, ar )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"# raws cut"</HeaderText>
+			<NumberFormat Width="4" Decimals="0" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PatternWaste( p, ar )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Waste"</HeaderText>
+			<NumberFormat Width="4" Decimals="0" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="306" left="6" bottom="330" right="192" />
+		<TabOrder>4</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve model parallel"</Title>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveModelParallel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="456" left="6" bottom="486" right="192" />
+		<TabOrder>10</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="8D90C13D-50AC-4E37-9003-16A09F551B79">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CuttingStockObjective</Identifier>
+			<NumberFormat Width="8" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total Costs"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="336" left="6" bottom="360" right="192" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Show execution info"</Title>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ShowExecutionInfo</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="249" left="18" bottom="267" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="366" left="6" bottom="390" right="192" />
+		<Hidden>"Yes"</Hidden>
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="426" left="6" bottom="450" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="429" left="18" bottom="447" right="186" />
+		<StaticText>Results</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>f</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>ar</Symbol>
+			<Symbol>PatternWaste</Symbol>
+			<Symbol>ShowExecutionInfo</Symbol>
+			<Symbol>Demand</Symbol>
+			<Symbol>CurrentRaw</Symbol>
+			<Symbol>SolveModelSequential</Symbol>
+			<Symbol>FinalSize</Symbol>
+			<Symbol>SolveModelParallel</Symbol>
+			<Symbol>FinalSurplus</Symbol>
+			<Symbol>CuttingStockObjective</Symbol>
+			<Symbol>RawsCutWithPattern</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS Demo" PageGUID="368ADAF9-1BE1-400F-AAB5-7728E2A5FECB">
-		<Page Name="Extended Cutting Stock Results" PageGUID="F766BB23-185A-4B58-A59F-1521642DC7A5" />
-		<Separator />
-		<Page Name="Gantt Chart For Single Raw" PageGUID="A4301D6C-4F62-4B4D-9CF7-67875CC97062" />
-	</Page>
-</PageManager>

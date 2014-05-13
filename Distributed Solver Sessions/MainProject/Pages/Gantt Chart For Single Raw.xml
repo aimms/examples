@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2013-05-23 06:47:37">
+	<Location top="387" left="217" bottom="614" right="747" />
+	<PageEditSize Type="Inherited">
+		<Size Width="532" Height="228" />
+	</PageEditSize>
+	<ProjectUUID>E7AC3880-5EC4-45DF-B4FF-C18C5CD72BD3</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.466165" />
+	</ResizeData>
+	<Background>
+		<UserColor GUID="77BBE6C1-0173-40EC-9F97-2EA7E3D25CC3">white</UserColor>
+	</Background>
+	<PageObject Type="Gantt Chart">
+		<Location top="6" left="6" bottom="168" right="336" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="A6B8C434-F2A4-463D-82CE-EA1CD74D4615" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="10" MarginBottom="5" MarginLeft="10" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<TimeRange>
+			<Upper>RawSize( CurrentRaw )</Upper>
+		</TimeRange>
+		<IndexLocations>
+			<RowDomain>p</RowDomain>
+			<LegendDomain>ct</LegendDomain>
+		</IndexLocations>
+		<TaskGroup>
+			<Domain>CutDomain( p, CurrentRaw, c, ct )</Domain>
+			<Start>CutStart( p, CurrentRaw, c )</Start>
+			<Duration>CutLength( p, CurrentRaw, c )</Duration>
+			<InsideBarText>"ct"</InsideBarText>
+		</TaskGroup>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="174" left="6" bottom="228" right="528" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="8D90C13D-50AC-4E37-9003-16A09F551B79">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>RawSize( CurrentRaw )</Identifier>
+			<NumberFormat Width="5" Decimals="0" ThousandSeparator="true" Alignment="Center" ShowDefaults="true" />
+			<Title>"Size of raw [cm]"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfRaws( CurrentRaw )</Identifier>
+			<NumberFormat Width="4" Decimals="0" ThousandSeparator="true" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total # raws cut in solution"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>WastedMaterial( CurrentRaw )</Identifier>
+			<NumberFormat Width="4" Decimals="0" ThousandSeparator="true" Alignment="Center" ShowDefaults="true" />
+			<Title>"Wasted material [cm]"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PatternCount( CurrentRaw )</Identifier>
+			<NumberFormat Width="6" Decimals="0" ThousandSeparator="true" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total # of possible patterns"</Title>
+			<Readonly>1</Readonly>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="6" left="342" bottom="168" right="528" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="8D90C13D-50AC-4E37-9003-16A09F551B79">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>RawsCutWithPattern( p, CurrentRaw )</Identifier>
+			<FirstColumn>2</FirstColumn>
+			<HeaderText>"# raws cut"</HeaderText>
+			<NumberFormat Width="7" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PatternWaste( p, CurrentRaw )</Identifier>
+			<FirstColumn>2</FirstColumn>
+			<HeaderText>"Waste"</HeaderText>
+			<NumberFormat Width="7" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>CutLength</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>CutDomain</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>PatternWaste</Symbol>
+			<Symbol>ct</Symbol>
+			<Symbol>RawSize</Symbol>
+			<Symbol>CurrentRaw</Symbol>
+			<Symbol>CutStart</Symbol>
+			<Symbol>NumberOfRaws</Symbol>
+			<Symbol>WastedMaterial</Symbol>
+			<Symbol>PatternCount</Symbol>
+			<Symbol>RawsCutWithPattern</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

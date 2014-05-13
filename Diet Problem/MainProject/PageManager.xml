@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="Problem Description" PageGUID="667FB808-A704-4E6D-B161-E9363751525B">
+		<Page Name="Diet Problem" PageGUID="00572F3C-53A8-4C9B-ABE6-998E9D245A81" />
+	</Page>
+	<Page Name="All Data Pages" PageGUID="3DD93743-E309-4D40-B27D-6EF7AB9BD4EC">
+		<Page Name="[Data Page] UnitNutrients" PageGUID="79BAEC57-BD8A-4C82-83D5-E8500FAABAEA" />
+	</Page>
+</PageManager>
