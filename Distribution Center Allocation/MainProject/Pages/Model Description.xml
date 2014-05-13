@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2011-04-15 10:04:11">
+	<Location top="42" left="26" bottom="279" right="356" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>211601CD-0FDB-4C33-926A-B1BD580D7560</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Text">
+		<Location top="6" left="6" bottom="198" right="324" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>ModelDescription</StringParameter>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="204" left="228" bottom="234" right="324" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Close"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ModelDescription</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

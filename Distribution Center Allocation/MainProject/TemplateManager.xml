@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="C24121DD-4693-4C32-85E5-8E0A03B38879" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6312BBD8-81D3-440D-B387-AD2824AD632B|Size Template">
+		<Template Name="Navigation Template" PageGUID="6DDAD386-49C9-4474-97DB-33A7BACE91F7" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|5DB91B07-89AD-4FDE-B34F-C845F75B5CC4|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="BDF15CF2-DE5B-4BC6-BFED-1EA38C7FD5F0" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|98821E8D-76C3-4D62-8E3C-B2EC9A35F2D5|Background Info Template">
+				<Page Name="AIMMS 3 Demo - Distribution Center Allocation" PageGUID="F905CE35-CB1E-4F12-B6AF-11F574A0AF2B" />
+			</Template>
+			<Template Name="Button Navigation" PageGUID="61AC4EB2-528B-45B1-B1AD-97BC210BF2AA">
+				<Page Name="Center of Gravity" PageGUID="D205A3F9-7361-4FC2-A08B-DC956EFC4D20" />
+				<Page Name="Minimize Expected Transportation Cost 1 DC" PageGUID="1CD8929F-C874-448E-9278-D4D2A5DFA14B" />
+				<Page Name="Minimize Expected Transportation Cost Multi DCs" PageGUID="0EB2BFED-EE72-4FCA-9D4C-11249A275ECC" />
+				<Page Name="Maximize Service Level" PageGUID="FA4772A6-F785-449F-A444-8166A51274E9" />
+			</Template>
+		</Template>
+	</Template>
+	<Page Name="GIS Network" PageGUID="D0C3C707-C250-455D-BD12-4A5BEF4EB183" />
+	<Page Name="Model Description" PageGUID="E76C6909-DF35-4241-B7B7-9DA2D10ACC99" />
+</TemplateManager>
