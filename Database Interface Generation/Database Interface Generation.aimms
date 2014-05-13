@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<References>
-	<MainProject Path="MainProject\Database Interface Generation.prj" />
-	<Library Path=".\_Example Style Library\Example Style Library.libprj" />
-	<Library Path=".\Database Interface Generation\Database Interface Generation.libprj" />
+<References AIMMS_Version="4.0.0.432 (x86)">
+	<MainProject Path="MainProject" />
+	<Library Path=".\_Example Style Library\" />
+	<Library Path=".\Database Interface Generation\" />
 </References>

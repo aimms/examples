@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:47:03">
+<Page Version="4000" TimeStamp="2010-08-19 14:39:16">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
-	<ProjectUUID>1AC72A39-F02E-43A1-B61B-CB31A3D6269F</ProjectUUID>
+	<ProjectUUID>66E08D8C-5677-49B5-970F-BB85475A48BE</ProjectUUID>
 	<TemplatesTabOrderPosition>4</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
@@ -20,7 +20,7 @@
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Text">
 		<Location top="159" left="213" bottom="177" right="753" />
-		<StaticText>Automatic generation of database related identifiers</StaticText>
+		<StaticText>Problem Description</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -52,7 +52,7 @@
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<ActionSequence>
 			<Action Type="LinkedPage">
-				<Page PageGUID="050425E4-7CA7-4F49-A9C9-5F2E6515213E" Name="Database Interface Generation" />
+				<Page ProjectGUID="1AC72A39-F02E-43A1-B61B-CB31A3D6269F" PageGUID="0137F17E-A537-4530-96AA-E66653592128" Name="Database Interface Generation" />
 			</Action>
 		</ActionSequence>
 	</PageObject>
