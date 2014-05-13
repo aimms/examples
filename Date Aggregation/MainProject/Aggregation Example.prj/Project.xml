@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="4C1A54D9-76FA-4483-9DC0-853CD3D146B4">
-	<ModelFileName>Aggregation Example.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>
