@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="49507C75-0EF0-4D1E-9AA9-3D6E10D8710E">
-	<ModelFileName>Data Manager.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>
