@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-04-07 07:35:03" NeedsCompiledModel="false">
+	<Location top="45" left="27" bottom="392" right="288" />
+	<PageEditSize Type="Inherited">
+		<Size Width="261" Height="347" />
+	</PageEditSize>
+	<ProjectUUID>56C93C8B-4356-4C6F-B825-D59C428FA2FD</ProjectUUID>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="17">
+			<BottomArea Line="FixedFromBottom" Value="18" />
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#c0c0c0" />
+	<PageObject Type="Navigation Object">
+		<Location top="0" left="1" bottom="346" right="260" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" />
+		<Display>Tree</Display>
+		<Spacing>6</Spacing>
+		<BackgroundColor RGB="#ffffff" />
+		<NavigationData>
+			<ReferencePage>ThisPage</ReferencePage>
+			<NumberOfGenerations>99</NumberOfGenerations>
+			<NumberOfAncestors>1</NumberOfAncestors>
+		</NavigationData>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

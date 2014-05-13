@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<AuthorizationLevels>
+	<Level Name="View Results" Password="gGalbYbhr9q#" />
+	<Level Name="Run Model" Password="gGalbYbhr9q#" IsDefault="true" />
+	<Level Name="Modify Measurements" Password="gGalbYbhr9q#" />
+</AuthorizationLevels>

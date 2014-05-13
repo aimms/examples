@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-02-26 01:52:21">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromBottom" Value="70">
+						<TopArea Line="FixedFromTop" Value="232" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="170">
+						<TopArea Line="PercentageFromLeft" Value="0.45" />
+						<BottomArea Line="PercentageFromLeft" Value="0.45">
+							<LeftArea Line="FixedFromTop" Value="217" />
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="192" left="207" bottom="327" right="753" />
+		<StaticText>On this page you can execute the data reconciliation model, where you have the choice to reconcile flows only, or both flows and composition.
+
+In the table the observed errors are displayed as factors of the specified deviation of every measurement. If these errors become too big, you can globally limit the maximum error for either the flows and/or compositions and resolve the model.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="336" left="465" bottom="366" right="819" />
+		<StaticText>Observed flow and composition errors:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="360" left="459" bottom="615" right="762" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<InputColor RGB="#8000ff" />
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>ObservedFlowError( f )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Flow error"</HeaderText>
+			<NumberFormat Width="7" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ObservedCompositionError( f, c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Composition error"</HeaderText>
+			<NumberFormat Width="7" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="459" left="336" bottom="483" right="453" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Reconcile"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveTheModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="384" left="207" bottom="456" right="453" />
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="1" MarginRight="1" MarginBottom="1" MarginLeft="1" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<SelectionColor RGB="#8000ff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>MaxFlowErrorBound</Identifier>
+			<NumberFormat Width="6" Decimals="1" Alignment="Center" ShowDefaults="true" />
+			<Title>"Maximum flow error"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>MaxCompositionErrorBound</Identifier>
+			<NumberFormat Width="6" Decimals="1" Alignment="Center" ShowDefaults="true" />
+			<Title>"Maximum composition error"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>FeasibilityTolerance</Identifier>
+			<NumberFormat Width="8" Decimals="5" Alignment="Center" ShowDefaults="true" />
+			<Title>"Feasibility tolerance"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>NLPErrorExponent</Identifier>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" ShowDefaults="true" />
+			<Title>"Objective error exponent"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="546" left="213" bottom="570" right="417" />
+		<StaticText>Total observed error:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="546" left="360" bottom="567" right="447" />
+		<TabOrder>8</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="None" MarginRight="3" MarginBottom="1" MarginLeft="1" />
+		<BackgroundColor>
+			<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="2B027397-60EE-4D54-9DF0-7C7B28E5941A">red</UserColor>
+		</TextColor>
+		<SelectionColor RGB="#000080" />
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalAbsoluteError</Identifier>
+			<NumberFormat Width="6" Decimals="1" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="519" left="207" bottom="570" right="453" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#ff0000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="525" left="213" bottom="555" right="417" />
+		<StaticText>Model status:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="525" left="306" bottom="546" right="447" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>9</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="None" MarginRight="3" MarginBottom="1" MarginLeft="1" />
+		<BackgroundColor>
+			<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="2B027397-60EE-4D54-9DF0-7C7B28E5941A">red</UserColor>
+		</TextColor>
+		<SelectionColor RGB="#000080" />
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ModelStatus</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="357" left="207" bottom="378" right="420" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" MarginRight="2" MarginBottom="2" />
+		<BackgroundColor>
+			<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="0658B864-2299-4EE0-99DB-37C7EA1B97B2">navy blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>FlowReconciliationOnly</Identifier>
+			<Description>"Reconcile flows only"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="486" left="336" bottom="510" right="453" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Print Results"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>PrintReport</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="486" left="208" bottom="510" right="325" />
+		<TabOrder>4</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Write to XML"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DataReconWriteXML</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>FeasibilityTolerance</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>MaxFlowErrorBound</Symbol>
+			<Symbol>FlowReconciliationOnly</Symbol>
+			<Symbol>SolveTheModel</Symbol>
+			<Symbol>ModelStatus</Symbol>
+			<Symbol>DataReconWriteXML</Symbol>
+			<Symbol>ObservedCompositionError</Symbol>
+			<Symbol>ObservedFlowError</Symbol>
+			<Symbol>NLPErrorExponent</Symbol>
+			<Symbol>TotalAbsoluteError</Symbol>
+			<Symbol>PrintReport</Symbol>
+			<Symbol>MaxCompositionErrorBound</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
