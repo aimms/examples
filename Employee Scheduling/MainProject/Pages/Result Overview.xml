@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2008-08-12 07:55:24">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>47DD053E-8D9C-46A7-B851-614CA56A813B</ProjectUUID>
+	<TemplatesTabOrderPosition>4</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="158">
+						<TopArea Line="PercentageFromTop" Value="0.97" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Gantt Chart">
+		<Location top="222" left="210" bottom="450" right="762" />
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<VerticalGridLines>true</VerticalGridLines>
+		<StatusLine>true</StatusLine>
+		<RowLabels>e, sk</RowLabels>
+		<TimeRange>
+			<Upper Value="24" />
+		</TimeRange>
+		<IndexLocations>
+			<RowDomain>Assignment( SelectedRestaurant, e, sh, sk )</RowDomain>
+		</IndexLocations>
+		<TaskGroup>
+			<Domain>Assignment( SelectedRestaurant, e, sh, sk )</Domain>
+			<Start>StartTime( sh )</Start>
+			<Duration>8</Duration>
+			<Color>SkillColor( sk )</Color>
+			<InsideBarText>"e, sk"</InsideBarText>
+			<Description>"sk at c performed by e (sh)"</Description>
+		</TaskGroup>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="192" left="210" bottom="222" right="366" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SelectedRestaurant</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Gantt Chart">
+		<Location top="498" left="210" bottom="612" right="762" />
+		<TabOrder>5</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<VerticalGridLines>true</VerticalGridLines>
+		<StatusLine>true</StatusLine>
+		<RowLabels>sk, c</RowLabels>
+		<TimeRange>
+			<Upper Value="24" />
+		</TimeRange>
+		<IndexLocations>
+			<RowDomain>Assignment( r, SelectedEmployee, sh, sk )</RowDomain>
+		</IndexLocations>
+		<TaskGroup>
+			<Domain>Assignment( r, SelectedEmployee, sh, sk )</Domain>
+			<Start>StartTime( sh )</Start>
+			<Duration>8</Duration>
+			<Color>CompanyColor( r )</Color>
+			<InsideBarText>"c, sk"</InsideBarText>
+			<Description>"sk at c performed by SelectedEmployee (sh)"</Description>
+		</TaskGroup>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="468" left="210" bottom="498" right="372" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SelectedEmployee</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<BackgroundColor>
+			<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+		</BackgroundColor>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="18" bottom="216" right="168" />
+		<StaticText>Employee Scheduling</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>SelectedRestaurant</Symbol>
+			<Symbol>e</Symbol>
+			<Symbol>r</Symbol>
+			<Symbol>Employees</Symbol>
+			<Symbol>CompanyColor</Symbol>
+			<Symbol>sh</Symbol>
+			<Symbol>sk</Symbol>
+			<Symbol>Restaurants</Symbol>
+			<Symbol>Assignment</Symbol>
+			<Symbol>SelectedEmployee</Symbol>
+			<Symbol>SkillColor</Symbol>
+			<Symbol>StartTime</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

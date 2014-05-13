@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="47DD053E-8D9C-46A7-B851-614CA56A813B">
-	<ModelFileName>Scheduling Problem.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>

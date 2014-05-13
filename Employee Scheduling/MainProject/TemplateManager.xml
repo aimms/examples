@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="9F7ED44D-EB3F-4234-999A-319E409F4C19" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|11C9AA72-55FD-418F-92F3-383A4BF24D47|Size Template">
+		<Template Name="Navigation Template" PageGUID="6E416BCD-CDD0-47E1-B851-239487884BF4" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B58B5E1F-F6B6-4923-8573-CE40CE8C36DC|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="232E3634-7430-40AC-B713-B52EC2DFA24D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|949F3527-7E67-459A-8699-4FC1BDBA423D|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="3741F4CC-A460-4FB2-B352-FABD1A317071" />
+			</Template>
+			<Page Name="Employee Scheduling" PageGUID="F9B8F9FE-7D4E-4C98-9ADC-1FBC85969BC3" />
+			<Page Name="Input Parameters" PageGUID="4FB3A087-2C6D-48CE-8098-D168979331FB" />
+			<Page Name="Result Overview" PageGUID="C39E72F2-2F82-4954-88DF-DF8FDDA4DFC9" />
+		</Template>
+	</Template>
+	<Template Name="Dialog Template" PageGUID="135572E2-62FB-4871-874F-FEF777662B9A">
+		<Page Name="Add New Restaurant" PageGUID="FCDF3E5A-4941-4A10-A50D-098BA135D6F0" />
+		<Page Name="Add New Employee" PageGUID="E50DBA24-514A-41EF-AA62-1C4435C2CF2C" />
+	</Template>
+	<Page Name="All Data Pages" PageGUID="F8926304-99B5-45A1-963D-67168215160F" />
+</TemplateManager>

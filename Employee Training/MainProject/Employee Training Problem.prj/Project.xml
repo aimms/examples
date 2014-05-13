@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="0ACA9FDC-77B4-44F5-9DB8-F9EC96315236">
-	<ModelFileName>Employee Training Problem.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>

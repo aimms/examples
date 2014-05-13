@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="DEE2B5D4-809F-4B19-AF39-157D128C360B">
+		<Page Name="Employee Assignment" PageGUID="7341EA8D-9D27-4390-A403-8752D36A608E" />
+		<Page Name="Input Data" PageGUID="3408BE1A-4983-4BE5-A70C-47CE7D704432" />
+	</Page>
+</PageManager>

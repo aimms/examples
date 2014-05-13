@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2008-08-12 07:55:24">
+	<Location top="36" left="79" bottom="364" right="495" />
+	<PageEditSize Type="Inherited">
+		<Size Width="416" Height="327" />
+	</PageEditSize>
+	<ProjectUUID>47DD053E-8D9C-46A7-B851-614CA56A813B</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromBottom" Value="8">
+			<TopArea Line="FixedFromRight" Value="8" />
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<Action>
+		<EntryProcedure>EmptyNewName</EntryProcedure>
+	</Action>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="108" left="12" bottom="132" right="78" />
+		<StaticText>Name:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="144" left="12" bottom="168" right="180" />
+		<StaticText>Skills &amp; Shifts:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="234" left="18" bottom="282" right="246" />
+		<TabOrder>4</TabOrder>
+		<TabStop>false</TabStop>
+		<ObjectUUID>A23589E5-A752-42E3-B395-20DF62229041</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" Width="2" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">NewEmployeeShifts( sh )</Identifier>
+				<Format>
+					<Show_Checkboxes ID="4315">"Yes"</Show_Checkboxes>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">sh</Index>
+				<Header_Title ID="6530">"Shifts"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<User_Modifications>
+				<User_Dialog ID="1210">"Not Allowed"</User_Dialog>
+				<Drag_Drop_Headers ID="1220">"Not Allowed"</Drag_Drop_Headers>
+				<Open_Close_Tree_Nodes ID="1240">"Not Allowed"</Open_Close_Tree_Nodes>
+				<Fixing_Elements_in_Rows_or_Columns ID="1225">"Not Allowed"</Fixing_Elements_in_Rows_or_Columns>
+			</User_Modifications>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="162" left="18" bottom="240" right="384" />
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<ObjectUUID>DAF13E46-BE1C-464A-A60E-A1B951CE2A09</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" Width="2" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">NewEmployeeSkills( sk )</Identifier>
+				<Title ID="4120">"Has Skill"</Title>
+				<Format>
+					<Show_Checkboxes ID="4315">"Yes"</Show_Checkboxes>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">NewEmployeeSkillPreference( sk )</Identifier>
+				<Title ID="4120">"Preference"</Title>
+				<Tooltip_Text ID="4125">"It can be filled only if the employee has the corresponding skill."</Tooltip_Text>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">sk</Index>
+				<Header_Title ID="6530">"Skills"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<User_Modifications>
+				<User_Dialog ID="1210">"Not Allowed"</User_Dialog>
+				<Drag_Drop_Headers ID="1220">"Not Allowed"</Drag_Drop_Headers>
+				<Open_Close_Tree_Nodes ID="1240">"Not Allowed"</Open_Close_Tree_Nodes>
+				<Fixing_Elements_in_Rows_or_Columns ID="1225">"Not Allowed"</Fixing_Elements_in_Rows_or_Columns>
+			</User_Modifications>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="102" left="384" bottom="126" right="408" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\construct.bmp"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>GenerateName</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="291" left="240" bottom="321" right="318" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Ok"</Title>
+		<ForegroundColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SaveEmployee</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="291" left="330" bottom="321" right="408" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Cancel"</Title>
+		<ForegroundColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CancelEmployeeDialog</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="96" left="90" bottom="132" right="378" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>NewName</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>NewEmployeeSkills</Symbol>
+			<Symbol>NewEmployeeSkillPreference</Symbol>
+			<Symbol>sh</Symbol>
+			<Symbol>sk</Symbol>
+			<Symbol>SaveEmployee</Symbol>
+			<Symbol>NewName</Symbol>
+			<Symbol>NewEmployeeShifts</Symbol>
+			<Symbol>GenerateName</Symbol>
+			<Symbol>CancelEmployeeDialog</Symbol>
+			<Symbol>EmptyNewName</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

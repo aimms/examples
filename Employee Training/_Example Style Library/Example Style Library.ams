@@ -25,7 +25,7 @@ LibraryModule Example_Base {
     Procedure DialogIfOpenedInAIMMSVIewer {
         Body: {
             if IsRunningAsViewer Then
-                    DialogMessage("This action is disabled in AIMMS Viewer");
+                    DialogMessage("This action is disabled in AIMMS Viewer.");
             endif;
         }
     }
