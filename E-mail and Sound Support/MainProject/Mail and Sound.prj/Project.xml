@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="28611408-6B55-442C-87D3-506416FF91A3">
-	<ModelFileName>Mail and Sound.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>

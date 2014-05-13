@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2013-03-11 10:25:19">
+	<Location top="227" left="299" bottom="260" right="442" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>F726EABE-8D3D-4E3E-94BE-4700EF7E9162</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background>
+		<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+	</Background>
+	<PageObject Type="Rectangle">
+		<Location top="6" left="6" bottom="24" right="24" />
+		<FillColor>
+			<Symbol>LegendColors( ATOfLegend )</Symbol>
+		</FillColor>
+		<LineColor>
+			<Symbol>LegendColors( ATOfLegend )</Symbol>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="6" left="36" bottom="24" right="132" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>LegendText( ATOfLegend )</StringParameter>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ATOfLegend</Symbol>
+			<Symbol>LegendText</Symbol>
+			<Symbol>LegendColors</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

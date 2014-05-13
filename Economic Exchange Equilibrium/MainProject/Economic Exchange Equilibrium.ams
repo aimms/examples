@@ -141,6 +141,7 @@ Model Main_SEEEq {
             Set AvailableNLPSolvers {
                 SubsetOf: AllSolvers;
                 Index: nlpSolvers;
+                Property: NoSave;
                 Comment: "The performance and solution of the solvers differs in this model";
             }
             ElementParameter SelectedSolver {
@@ -198,7 +199,7 @@ Model Main_SEEEq {
                 DeclarationSection Page_Data {
                     Parameter TradeWithMarket {
                         IndexDomain: (i,at) | at in targetsOfAgent(i);
-                        Comment: " | at in targetsOfAgent(i)";
+                        Comment: "| at in targetsOfAgent(i)";
                     }
                     StringParameter ButtonText {
                         Definition: {
@@ -351,11 +352,11 @@ Model Main_SEEEq {
         Body: {
             AvailableNLPSolvers := {IndexSolvers |
             	FindString( FormatString( "%e",IndexSolvers), "CONOPT" ) or
-                   	FindString( FormatString( "%e",IndexSolvers), "BARON" ) or
-                   	FindString( FormatString( "%e",IndexSolvers), "KNITRO" ) or
-                   	FindString( FormatString( "%e",IndexSolvers), "MINOS" ) or
-                   	FindString( FormatString( "%e",IndexSolvers), "SNOPT" )
-                   	};
+               	FindString( FormatString( "%e",IndexSolvers), "BARON" ) or
+               	FindString( FormatString( "%e",IndexSolvers), "KNITRO" ) or
+               	FindString( FormatString( "%e",IndexSolvers), "MINOS" ) or
+               	FindString( FormatString( "%e",IndexSolvers), "SNOPT" )
+               	};
             
             SelectedSolver := first(nlpSolvers);
             
@@ -408,13 +409,6 @@ Model Main_SEEEq {
             UserColorDelete("bkg_red");
             
             return 1;
-            
-            !if ( CaseSaveAll( confirm:2 ) = 1 ) then
-            !    return 1;
-            !else
-            !    return 0;
-            !endif ;
-            !
         }
     }
 }

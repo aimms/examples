@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="82288A10-EECA-42B8-AE83-0007512933B9">
+		<Page Name="Send Mail and Play Sound" PageGUID="759421A1-8A7E-4096-B864-7A34B98EC479" />
+	</Page>
+</PageManager>
