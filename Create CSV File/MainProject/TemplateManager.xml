@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="8C6FDB92-5EED-49DD-B349-A07C1C27ED40" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|F38748E1-2C39-4BAD-8C17-15EEB4634354|Size Template">
+		<Template Name="Navigation Template" PageGUID="ACB2DF03-268C-423E-9DEA-E26659C2D829" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|9041A264-98EB-40B7-AA16-55D380428773|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="52BEA6B0-65FF-47D8-9EE4-8F80808707B3" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3967315D-A47D-4B71-83A1-C7654DCED4BF|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="65E99706-69FC-4C9D-A2A7-50B06852198E" />
+			</Template>
+			<Page Name="AIMMS CSV Export" PageGUID="B5A6DB1A-EFBE-46A1-AB6F-694DAEE02923" />
+		</Template>
+	</Template>
+</TemplateManager>

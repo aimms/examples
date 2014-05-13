@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS Demo" PageGUID="F7A3CE48-2B33-46B6-968A-3EB4AF5B2421">
-		<Page Name="AIMMS CSV Export" PageGUID="F3308EB4-58EA-4BB9-867C-3C8315DBEA76" />
-	</Page>
-</PageManager>
