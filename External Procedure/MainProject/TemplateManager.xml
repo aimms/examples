@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="3D847E14-C118-451F-AFDB-5975CCB694E1" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|DA923075-3ACC-44C0-9425-66D7577706E9|Size Template">
+		<Template Name="Navigation Template" PageGUID="D8E9EB1F-6192-4BA4-A961-78F0E1E2F02F" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|29F83EEB-CA78-4850-A122-D6AB6B801AE1|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="C851C057-85F5-4C68-985C-B714D4CB12C3" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|0124586A-0ABE-45FB-9E54-F96323F158BB|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="3D4AC038-A30B-40C0-858F-CB3FFB6AA07C" />
+			</Template>
+			<Page Name="External Procedure Call" PageGUID="A4AA543C-AE0F-4603-BD8F-121C0E428EEC" />
+		</Template>
+	</Template>
+</TemplateManager>
