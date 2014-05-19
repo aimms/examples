@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="573E518E-6648-4442-913F-D6BBC6547C13">
-	<ModelFileName>farmplanning.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>

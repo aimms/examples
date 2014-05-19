@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="88FDA9FD-F7B3-47DB-93C4-FC44DE5E530C" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|87935153-CDDB-4AF1-BE01-13441E0B70F4|Size Template">
+		<Template Name="Navigation Template" PageGUID="C0264EF5-1456-4CF0-BCA1-16EE21955FF3" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|51142F91-49C0-4852-B621-B608B23D9339|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="773A0199-685B-4E5D-B0C0-A90F6FAFC854" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|61DA6F49-4CDC-4534-9577-ACD7819DE973|Background Info Template">
+				<Page Name="A Farm Planning Problem" PageGUID="E51C605E-0B7C-4FAD-B757-DFA4B0DD8348" />
+			</Template>
+			<Page Name="On the farm" PageGUID="652FFC5C-283A-4342-8AF1-EC3CE88E6378" />
+		</Template>
+	</Template>
+	<Page Name="Input Data" PageGUID="FE504340-4BFA-480E-89E2-D9CBC04342E9" />
+	<Page Name="Output Data" PageGUID="54FC2968-2B88-457E-BE85-0DFA61AEBF74" />
+	<Page Name="Sensitivity Analysis" PageGUID="A1EC69DF-DF29-4C8C-B8E6-C4A7533A4E48" />
+</TemplateManager>
