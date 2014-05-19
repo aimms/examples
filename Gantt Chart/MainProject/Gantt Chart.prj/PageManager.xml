@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS Demo" PageGUID="A382F905-F080-4328-8A67-3296380192A2">
-		<Page Name="Gantt Chart" PageGUID="A1E35183-F2A7-4E92-9B6A-0A181CB1201A" />
-		<Page Name="Gantt Chart with Calendar" PageGUID="104CCA8D-7A1B-450D-AD0A-98931091862D" />
-	</Page>
-</PageManager>

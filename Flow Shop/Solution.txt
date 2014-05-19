@@ -3,170 +3,129 @@ Composite table:
 !   -----  -----    -----------  -----------------
     Job-1  Pos-1                 NonBasic         
     Job-1  Pos-2                 NonBasic         
-    Job-1  Pos-3                 NonBasic         
+    Job-1  Pos-3              1  NonBasic         
     Job-1  Pos-4                 NonBasic         
     Job-1  Pos-5                 NonBasic         
     Job-1  Pos-6                 NonBasic         
-    Job-1  Pos-7              1  NonBasic         
-    Job-1  Pos-8                 NonBasic         
-    Job-2  Pos-1              1  NonBasic         
+    Job-1  Pos-7                 NonBasic         
+    Job-2  Pos-1                 NonBasic         
     Job-2  Pos-2                 NonBasic         
     Job-2  Pos-3                 NonBasic         
     Job-2  Pos-4                 NonBasic         
     Job-2  Pos-5                 NonBasic         
     Job-2  Pos-6                 NonBasic         
-    Job-2  Pos-7                 NonBasic         
-    Job-2  Pos-8                 NonBasic         
+    Job-2  Pos-7              1  NonBasic         
     Job-3  Pos-1                 NonBasic         
-    Job-3  Pos-2                 NonBasic         
+    Job-3  Pos-2              1  NonBasic         
     Job-3  Pos-3                 NonBasic         
     Job-3  Pos-4                 NonBasic         
-    Job-3  Pos-5              1  NonBasic         
+    Job-3  Pos-5                 NonBasic         
     Job-3  Pos-6                 NonBasic         
     Job-3  Pos-7                 NonBasic         
-    Job-3  Pos-8                 NonBasic         
     Job-4  Pos-1                 NonBasic         
     Job-4  Pos-2                 NonBasic         
-    Job-4  Pos-3              1  NonBasic         
+    Job-4  Pos-3                 NonBasic         
     Job-4  Pos-4                 NonBasic         
-    Job-4  Pos-5                 NonBasic         
+    Job-4  Pos-5              1  NonBasic         
     Job-4  Pos-6                 NonBasic         
     Job-4  Pos-7                 NonBasic         
-    Job-4  Pos-8                 NonBasic         
-    Job-5  Pos-1                 NonBasic         
-    Job-5  Pos-2              1  NonBasic         
+    Job-5  Pos-1              1  NonBasic         
+    Job-5  Pos-2                 NonBasic         
     Job-5  Pos-3                 NonBasic         
     Job-5  Pos-4                 NonBasic         
     Job-5  Pos-5                 NonBasic         
     Job-5  Pos-6                 NonBasic         
     Job-5  Pos-7                 NonBasic         
-    Job-5  Pos-8                 NonBasic         
     Job-6  Pos-1                 NonBasic         
     Job-6  Pos-2                 NonBasic         
     Job-6  Pos-3                 NonBasic         
     Job-6  Pos-4                 NonBasic         
     Job-6  Pos-5                 NonBasic         
-    Job-6  Pos-6                 NonBasic         
+    Job-6  Pos-6              1  NonBasic         
     Job-6  Pos-7                 NonBasic         
-    Job-6  Pos-8              1  NonBasic         
     Job-7  Pos-1                 NonBasic         
     Job-7  Pos-2                 NonBasic         
     Job-7  Pos-3                 NonBasic         
-    Job-7  Pos-4                 NonBasic         
+    Job-7  Pos-4              1  NonBasic         
     Job-7  Pos-5                 NonBasic         
-    Job-7  Pos-6              1  NonBasic         
+    Job-7  Pos-6                 NonBasic         
     Job-7  Pos-7                 NonBasic         
-    Job-7  Pos-8                 NonBasic         
-    Job-8  Pos-1                 NonBasic         
-    Job-8  Pos-2                 NonBasic         
-    Job-8  Pos-3                 NonBasic         
-    Job-8  Pos-4              1  NonBasic         
-    Job-8  Pos-5                 NonBasic         
-    Job-8  Pos-6                 NonBasic         
-    Job-8  Pos-7                 NonBasic         
-    Job-8  Pos-8                 NonBasic         
     ;
 Composite table:
     s      m       StartTime  StartTime.basic
 !   -----  ----    ---------  ---------------
     Pos-1  M-01               NonBasic       
-    Pos-1  M-02            7  Basic          
-    Pos-1  M-03           12  Basic          
-    Pos-1  M-04           13  Basic          
-    Pos-1  M-05           26  Basic          
-    Pos-1  M-06           37  Basic          
-    Pos-1  M-07           53  Basic          
-    Pos-1  M-08           63  Basic          
-    Pos-1  M-09           76  Basic          
-    Pos-1  M-10           92  Basic          
-    Pos-1  M-11          109  Basic          
-    Pos-1  M-12          122  Basic          
-    Pos-2  M-01            7  Basic          
+    Pos-1  M-02            5  Basic          
+    Pos-1  M-03           13  Basic          
+    Pos-1  M-04           18  Basic          
+    Pos-1  M-05           31  Basic          
+    Pos-1  M-06           40  Basic          
+    Pos-1  M-07           48  Basic          
+    Pos-1  M-08           56  Basic          
+    Pos-1  M-09           74  Basic          
+    Pos-1  M-10          114  Basic          
+    Pos-2  M-01            5  Basic          
     Pos-2  M-02           13  Basic          
-    Pos-2  M-03           18  Basic          
-    Pos-2  M-04           26  Basic          
-    Pos-2  M-05           43  Basic          
-    Pos-2  M-06           54  Basic          
-    Pos-2  M-07           70  Basic          
-    Pos-2  M-08           76  Basic          
-    Pos-2  M-09           92  Basic          
-    Pos-2  M-10          109  Basic          
-    Pos-2  M-11          122  Basic          
-    Pos-2  M-12          142  Basic          
-    Pos-3  M-01           13  Basic          
-    Pos-3  M-02           23  Basic          
-    Pos-3  M-03           36  Basic          
-    Pos-3  M-04           43  Basic          
-    Pos-3  M-05           54  Basic          
-    Pos-3  M-06           70  Basic          
-    Pos-3  M-07           79  Basic          
-    Pos-3  M-08           85  Basic          
-    Pos-3  M-09           95  Basic          
-    Pos-3  M-10          118  Basic          
-    Pos-3  M-11          124  Basic          
-    Pos-3  M-12          152  Basic          
-    Pos-4  M-01           23  Basic          
-    Pos-4  M-02           43  Basic          
-    Pos-4  M-03           49  Basic          
-    Pos-4  M-04           69  Basic          
-    Pos-4  M-05           72  Basic          
-    Pos-4  M-06           79  Basic          
-    Pos-4  M-07           86  Basic          
-    Pos-4  M-08          102  Basic          
-    Pos-4  M-09          122  Basic          
-    Pos-4  M-10          137  Basic          
-    Pos-4  M-11          138  Basic          
-    Pos-4  M-12          158  Basic          
-    Pos-5  M-01           43  Basic          
-    Pos-5  M-02           59  Basic          
-    Pos-5  M-03           78  Basic          
-    Pos-5  M-04           84  Basic          
-    Pos-5  M-05           99  Basic          
-    Pos-5  M-06          102  Basic          
-    Pos-5  M-07          109  Basic          
-    Pos-5  M-08          125  Basic          
-    Pos-5  M-09          138  Basic          
-    Pos-5  M-10          149  Basic          
-    Pos-5  M-11          161  Basic          
-    Pos-5  M-12          190  Basic          
-    Pos-6  M-01           59  Basic          
-    Pos-6  M-02           79  Basic          
-    Pos-6  M-03           85  Basic          
-    Pos-6  M-04          105  Basic          
-    Pos-6  M-05          108  Basic          
-    Pos-6  M-06          113  Basic          
-    Pos-6  M-07          127  Basic          
-    Pos-6  M-08          143  Basic          
-    Pos-6  M-09          163  Basic          
-    Pos-6  M-10          178  Basic          
-    Pos-6  M-11          179  Basic          
-    Pos-6  M-12          203  Basic          
-    Pos-7  M-01           79  Basic          
-    Pos-7  M-02           92  Basic          
-    Pos-7  M-03          105  Basic          
-    Pos-7  M-04          108  Basic          
-    Pos-7  M-05          125  Basic          
-    Pos-7  M-06          141  Basic          
-    Pos-7  M-07          154  Basic          
-    Pos-7  M-08          167  Basic          
-    Pos-7  M-09          178  Basic          
-    Pos-7  M-10          186  Basic          
-    Pos-7  M-11          188  Basic          
-    Pos-7  M-12          211  Basic          
-    Pos-8  M-01           92  Basic          
-    Pos-8  M-02          101  Basic          
-    Pos-8  M-03          118  Basic          
-    Pos-8  M-04          137  Basic          
-    Pos-8  M-05          146  Basic          
-    Pos-8  M-06          165  Basic          
-    Pos-8  M-07          169  Basic          
-    Pos-8  M-08          185  Basic          
-    Pos-8  M-09          189  Basic          
-    Pos-8  M-10          205  Basic          
-    Pos-8  M-11          208  Basic          
-    Pos-8  M-12          216  Basic          
+    Pos-2  M-03           25  Basic          
+    Pos-2  M-04           31  Basic          
+    Pos-2  M-05           46  Basic          
+    Pos-2  M-06           57  Basic          
+    Pos-2  M-07           78  Basic          
+    Pos-2  M-08           93  Basic          
+    Pos-2  M-09          111  Basic          
+    Pos-2  M-10          131  Basic          
+    Pos-3  M-01            8  Basic          
+    Pos-3  M-02           25  Basic          
+    Pos-3  M-03           35  Basic          
+    Pos-3  M-04           50  Basic          
+    Pos-3  M-05           64  Basic          
+    Pos-3  M-06           80  Basic          
+    Pos-3  M-07           94  Basic          
+    Pos-3  M-08          106  Basic          
+    Pos-3  M-09          120  Basic          
+    Pos-3  M-10          133  Basic          
+    Pos-4  M-01           14  Basic          
+    Pos-4  M-02           35  Basic          
+    Pos-4  M-03           50  Basic          
+    Pos-4  M-04           64  Basic          
+    Pos-4  M-05           80  Basic          
+    Pos-4  M-06           87  Basic          
+    Pos-4  M-07          106  Basic          
+    Pos-4  M-08          122  Basic          
+    Pos-4  M-09          129  Basic          
+    Pos-4  M-10          141  Basic          
+    Pos-5  M-01           24  Basic          
+    Pos-5  M-02           45  Basic          
+    Pos-5  M-03           58  Basic          
+    Pos-5  M-04           78  Basic          
+    Pos-5  M-05           95  Basic          
+    Pos-5  M-06          111  Basic          
+    Pos-5  M-07          125  Basic          
+    Pos-5  M-08          132  Basic          
+    Pos-5  M-09          141  Basic          
+    Pos-5  M-10          150  Basic          
+    Pos-6  M-01           39  Basic          
+    Pos-6  M-02           58  Basic          
+    Pos-6  M-03           78  Basic          
+    Pos-6  M-04           88  Basic          
+    Pos-6  M-05          110  Basic          
+    Pos-6  M-06          122  Basic          
+    Pos-6  M-07          130  Basic          
+    Pos-6  M-08          144  Basic          
+    Pos-6  M-09          147  Basic          
+    Pos-6  M-10          164  Basic          
+    Pos-7  M-01           72  Basic          
+    Pos-7  M-02           74  Basic          
+    Pos-7  M-03           89  Basic          
+    Pos-7  M-04          101  Basic          
+    Pos-7  M-05          116  Basic          
+    Pos-7  M-06          128  Basic          
+    Pos-7  M-07          143  Basic          
+    Pos-7  M-08          162  Basic          
+    Pos-7  M-09          171  Basic          
+    Pos-7  M-10          176  Basic          
     ;
-    TimeSpan := 221 ;
+    TimeSpan := 181 ;
 
     TimeSpan.basic := 'Basic' ;
 
