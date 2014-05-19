@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-07-12 17:54:51">
+	<Location top="33" left="15" bottom="523" right="782" />
+	<PageEditSize Type="Inherited">
+		<Size Width="688" Height="477" />
+	</PageEditSize>
+	<ProjectUUID>8EABF949-1286-43AB-882A-49453644A5BE</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="32">
+			<BottomArea Line="PercentageFromTop" Value="0.139326">
+				<BottomArea Line="FixedFromTop" Value="29">
+					<BottomArea Line="PercentageFromTop" Value="0.443503">
+						<BottomArea Line="FixedFromTop" Value="29">
+							<BottomArea Line="FixedFromBottom" Value="102" />
+						</BottomArea>
+					</BottomArea>
+				</BottomArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Button" Tag="Cancel Button">
+		<Location top="450" left="594" bottom="474" right="684" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Cancel"</Title>
+		<Font GUID="F010E392-B47A-4A74-9978-52819BBEE28E" Name="EH Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button" Tag="Report Butoon">
+		<Location top="450" left="498" bottom="474" right="588" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Report"</Title>
+		<Font GUID="F010E392-B47A-4A74-9978-52819BBEE28E" Name="EH Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>eh::MailErrorToApplicationDeveloper</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="126" left="6" bottom="276" right="684" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="80AE16B2-C58E-4F31-A3C4-346DEA75F943" Name="EH General Text" />
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="C91D8886-20C5-4602-BB6F-6C543C528DAD">EH Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>eh::ExplanationString</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar" Tag="Person Details">
+		<Location top="378" left="6" bottom="444" right="684" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="80AE16B2-C58E-4F31-A3C4-346DEA75F943" Name="EH General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="C91D8886-20C5-4602-BB6F-6C543C528DAD">EH Text Blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>eh::ErrorReporterName</Identifier>
+			<NumberFormat Width="50" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"Name"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>eh::ErrorReporterEmail</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"E-Mail"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>eh::ErrorReporterPhone</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"Phone"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar" Tag="Comment">
+		<Location top="312" left="6" bottom="372" right="684" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnUpDown>false</LeaveOnUpDown>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<Font GUID="80AE16B2-C58E-4F31-A3C4-346DEA75F943" Name="EH General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="C91D8886-20C5-4602-BB6F-6C543C528DAD">EH Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>eh::ErrorReporterComment</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="6" left="6" bottom="30" right="684" />
+		<FillColor>
+			<UserColor GUID="79893F09-54E3-4207-8D50-39E045F57932">EH Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="79893F09-54E3-4207-8D50-39E045F57932">EH Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="282" left="6" bottom="306" right="684" />
+		<FillColor>
+			<UserColor GUID="79893F09-54E3-4207-8D50-39E045F57932">EH Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="79893F09-54E3-4207-8D50-39E045F57932">EH Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="288" left="12" bottom="306" right="678" />
+		<StaticText>Comment/Reproduction Steps</StaticText>
+		<Font GUID="43D44DA0-AE9F-4815-AC7B-2D7B27ADB9DA" Name="EH Headers" />
+		<TextColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="12" left="12" bottom="30" right="678" />
+		<StaticText>Error</StaticText>
+		<Font GUID="43D44DA0-AE9F-4815-AC7B-2D7B27ADB9DA" Name="EH Headers" />
+		<TextColor>
+			<UserColor GUID="1F76F34D-4DCA-4D89-9203-44C612E8F660">EH Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="96" left="6" bottom="120" right="684" />
+		<FillColor>
+			<UserColor GUID="79893F09-54E3-4207-8D50-39E045F57932">EH Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="79893F09-54E3-4207-8D50-39E045F57932">EH Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="102" left="12" bottom="120" right="678" />
+		<StaticText>Explanation</StaticText>
+		<Font GUID="43D44DA0-AE9F-4815-AC7B-2D7B27ADB9DA" Name="EH Headers" />
+		<TextColor>
+			<UserColor GUID="1F76F34D-4DCA-4D89-9203-44C612E8F660">EH Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="36" left="6" bottom="90" right="684" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>5</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="80AE16B2-C58E-4F31-A3C4-346DEA75F943" Name="EH General Text" />
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="C91D8886-20C5-4602-BB6F-6C543C528DAD">EH Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>eh::ErrorString</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>eh::ErrorReporterName</Symbol>
+			<Symbol>eh::ExplanationString</Symbol>
+			<Symbol>eh::ErrorString</Symbol>
+			<Symbol>eh::ErrorReporterPhone</Symbol>
+			<Symbol>eh::ErrorReporterComment</Symbol>
+			<Symbol>eh::ErrorReporterEmail</Symbol>
+			<Symbol>eh::MailErrorToApplicationDeveloper</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
