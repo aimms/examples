@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:33:31">
-	<Location top="29" left="4" bottom="272" right="243" />
+<Page Version="4000" TimeStamp="2007-07-13 15:17:50">
+	<Location top="29" left="4" bottom="274" right="242" />
 	<PageEditSize Type="Inherited">
 		<Size Width="239" Height="242" />
 	</PageEditSize>
 	<ProjectUUID>4F9E004D-932C-4B7F-8860-0A9DF87CF832</ProjectUUID>
-	<Title>"City Information"</Title>
+	<Title>"Production Overview"</Title>
 	<IsDialogPage>true</IsDialogPage>
 	<Positioning>Save Last Position</Positioning>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
@@ -20,7 +20,7 @@
 	<PageObject Type="Text">
 		<Location top="0" left="0" bottom="36" right="234" />
 		<SourceType>StringParameter</SourceType>
-		<StringParameter>CityNames( ThisCity )</StringParameter>
+		<StringParameter>CaseName( TheCase )</StringParameter>
 		<Alignment>Center</Alignment>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
@@ -50,7 +50,7 @@
 			<Upper>260</Upper>
 		</YRange>
 		<ExplicitIdentifier>
-			<Identifier>AmountProduced( ThisCity, product )</Identifier>
+			<Identifier>VALUE( product ) := TheCase.AmountProduced( ThisCity, product )</Identifier>
 			<Unit Display="InTitle" />
 			<TitleText>"Amount Produced"</TitleText>
 		</ExplicitIdentifier>
@@ -88,7 +88,7 @@
 		<Layout>Value</Layout>
 		<SeparatorSign>=</SeparatorSign>
 		<ExplicitIdentifier>
-			<Identifier>AmountCity( ThisCity )</Identifier>
+			<Identifier>VALUE := TheCase.AmountCity( ThisCity )</Identifier>
 			<Unit Display="PerValue" />
 			<NumberFormat Width="3" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
 		</ExplicitIdentifier>
@@ -107,7 +107,7 @@
 		<Layout>Value</Layout>
 		<SeparatorSign>=</SeparatorSign>
 		<ExplicitIdentifier>
-			<Identifier>Revenues( ThisCity )</Identifier>
+			<Identifier>VALUE := TheCase.Revenues( ThisCity )</Identifier>
 			<Unit Display="PerValue" />
 			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
 		</ExplicitIdentifier>
@@ -115,11 +115,13 @@
 	<UsedReferences>
 		<Model>
 			<Symbol>AmountCity</Symbol>
+			<Symbol>CaseName</Symbol>
 			<Symbol>product</Symbol>
 			<Symbol>AmountProduced</Symbol>
+			<Symbol>TheCase</Symbol>
 			<Symbol>ThisCity</Symbol>
 			<Symbol>Revenues</Symbol>
-			<Symbol>CityNames</Symbol>
+			<Symbol>CurrentCaseSelection</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
