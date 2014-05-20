@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<References>
-	<MainProject Path="MainProject\Multi Development.prj" />
-	<Library Path=".\_Example Style Library\Example Style Library.libprj" />
-</References>
