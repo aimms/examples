@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="D2E4C327-20E6-45F9-A221-B54D4191F213">
+		<Page Name="Input Parameters" PageGUID="A2561A16-7442-440D-A816-A0C23EABEF0B" />
+		<Page Name="Results Overview" PageGUID="2C19ED9B-0C19-445D-B889-A3688EB045F2">
+			<Page Name="Consumption" PageGUID="EAFACEDF-0168-4DE9-8FDD-6B5EADEDB564" />
+			<Page Name="Assets" PageGUID="59770423-AD24-4CAE-AFC7-6C1D43741C0D" />
+			<Page Name="Labor" PageGUID="BBB3486E-B2D0-43BC-8DBC-14C8E47314A4" />
+		</Page>
+	</Page>
+</PageManager>
