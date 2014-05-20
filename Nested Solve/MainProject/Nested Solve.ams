@@ -179,6 +179,20 @@ Model Recursive_Solve_Model {
                 Definition: Sum( (i,j) | ArcEntersDemandNodesIndicator(i,j), ArcUsage(i,j) ) >= 1;
                 Comment: "Simple dicut inequality";
             }
+            Set CallbackSolvers {
+                SubsetOf: AllSolvers;
+                OrderBy: User;
+                Definition: {
+                    { IndexSolvers | FindString(IndexSolvers,"XA") }
+                    +
+                    { IndexSolvers | FindString(IndexSolvers,"CBC") }
+                }
+                Comment: "Set of solvers that can be used inside the callback procedure";
+            }
+            ElementParameter SelectedCallbackSolver {
+                Range: CallbackSolvers;
+                Definition: First( CallbackSolvers );
+            }
         }
         Procedure RetrieveDataOfNewIncumbent {
             Arguments: (ThisSession);
@@ -244,13 +258,9 @@ Model Recursive_Solve_Model {
                 !-- Generate the Dicut Generation model
                 GMPDicutSeparationModel := GMP::Instance::Generate( DicutSeparationModel ) ;
                 
-                !-- Set the solver to XA or XA 14, because CPLEX does not allow to solve a model inside a callback
-                !--    using the same solver version
-                if 'XA 14' in AllSolvers then
-                    GMP::Instance::SetSolver( GMPDicutSeparationModel, 'XA 14' );
-                else
-                    GMP::Instance::SetSolver( GMPDicutSeparationModel, 'XA' );
-                endif ;
+                !-- Set the solver to CBC or XA, because CPLEX does not allow to solve a model inside a callback
+                !-- using the same solver version
+                GMP::Instance::SetSolver( GMPDicutSeparationModel, SelectedCallbackSolver );
                 
                 !-- Solve the Separation problem model
                 GMP::Instance::Solve( GMPDicutSeparationModel );

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:42:18" NeedsCompiledModel="false">
+<Page Version="4000" TimeStamp="2014-05-20 13:20:27" NeedsCompiledModel="false">
 	<Location top="29" left="4" bottom="888" right="1274" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -52,7 +52,7 @@ Networks 41 (2003), no. 3, 143-158. </StaticText>
 		<TabOrder>4</TabOrder>
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<Contents>
-			<Document_URL ID="2" LiteralFileName="true">"http://www.core.ucl.ac.be/services/psfiles/dp00/dp2000-49.pdf"</Document_URL>
+			<Document_URL ID="2" LiteralFileName="true">"http://core.kmi.open.ac.uk/download/pdf/6376512.pdf"</Document_URL>
 		</Contents>
 	</PageObject>
 	<PageObject Type="Button">
