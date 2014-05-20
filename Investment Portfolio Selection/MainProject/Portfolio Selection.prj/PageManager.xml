@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS Demo" PageGUID="488D6843-09B6-4FCF-9CE6-DCF894841F2C">
-		<Page Name="Strategic Investment Model" PageGUID="7B54DB4C-C5C7-4F00-B2F4-49748FF326B3" />
-		<Page Name="Tactical Investment Model" PageGUID="12116458-45EA-4FAA-A7B7-C15EF7953091" />
-	</Page>
-</PageManager>

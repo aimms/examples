@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="Aimms 3 Demo - An Inventory Control Problem" PageGUID="ADD38E0A-D5CF-4729-A639-788CBE37286E">
-		<Page Name="Inventory Control Problem - Input Page" PageGUID="DD87B2BD-D59E-4C71-8CB6-B2C91E3856BB" />
-		<Page Name="Inventory Control Problem - Output Page" PageGUID="F3CCDBFD-15FE-4092-95F7-B5E3BC10EE92" />
-	</Page>
-	<Page Name="All Data Pages" PageGUID="9C7CE230-73F2-4205-9925-7737E2458EC2" />
-</PageManager>

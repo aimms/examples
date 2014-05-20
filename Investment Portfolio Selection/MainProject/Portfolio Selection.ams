@@ -464,7 +464,7 @@ Model Main_Portfolio_Selection {
         }
     }
     Module GMP_Outer_Approximation_Module {
-        SourceFile: "%AIMMSMODULES%\\GMPOuterApproximation.aim";
+        SourceFile: "%AIMMSMODULES%\\GMPOuterApproximation.ams";
         Comment: {
             "This module contains two outer approximation algorithms for solving Mixed Integer
             Nonlinear Problems (MINLP). The basic algorithm can be found in the section \'AOA
