@@ -1,0 +1,522 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-08-25 12:43:10">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F9544067-E448-4C60-9F8A-54412C921446</ProjectUUID>
+	<CloseWhenInactive>true</CloseWhenInactive>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="62">
+						<BottomArea Line="FixedFromTop" Value="88" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="262">
+						<TopArea Line="PercentageFromTop" Value="0.629771">
+							<TopArea Line="PercentageFromTop" Value="0.351515">
+								<TopArea Line="FixedFromLeft" Value="14" />
+								<BottomArea Line="FixedFromLeft" Value="560" />
+							</TopArea>
+							<BottomArea Line="FixedFromLeft" Value="137">
+								<RightArea Line="FixedFromRight" Value="46">
+									<LeftArea Line="FixedFromLeft" Value="381" />
+								</RightArea>
+							</BottomArea>
+						</TopArea>
+						<BottomArea Line="PercentageFromTop" Value="0.414773">
+							<TopArea Line="FixedFromLeft" Value="76">
+								<LeftArea Line="FixedFromTop" Value="65" />
+								<RightArea Line="FixedFromRight" Value="14" />
+							</TopArea>
+							<BottomArea Line="FixedFromLeft" Value="76">
+								<LeftArea Line="FixedFromTop" Value="60" />
+								<RightArea Line="FixedFromRight" Value="13" />
+							</BottomArea>
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Button">
+		<Location top="396" left="6" bottom="420" right="192" />
+		<ReadOnly>ExcelDataCannotYetBeRead</ReadOnly>
+		<TabOrder>12</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Read Excel Data"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DoReadFromExcel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="527" left="276" bottom="610" right="756" />
+		<TabOrder>13</TabOrder>
+		<ObjectUUID>74776811-6A30-4D9D-91AC-9FC89499F647</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" />
+		<Contents>
+			<Implicit_Identifiers ID="4010">ReadFromExcelPivotTableData( SelectableParameters )</Implicit_Identifiers>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">City</Index>
+				<Location_in_Initial_View ID="6560">"In Rows"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">Ship</Index>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">ToCity</Index>
+				<Location_in_Initial_View ID="6560">"In Rows"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">FromCity</Index>
+				<Location_in_Initial_View ID="6560">"In Rows"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">Dock</Index>
+				<Location_in_Initial_View ID="6560">"In Rows"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Location_in_Initial_View ID="6260">"In Columns"</Location_in_Initial_View>
+				<Hide_if_Single_Identifier ID="6270">"No"</Hide_if_Single_Identifier>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Column_Area>
+			<Auto_resize_Column_Widths ID="3006">"Upon all data changes"</Auto_resize_Column_Widths>
+		</Column_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="450" left="276" bottom="510" right="756" />
+		<TabOrder>9</TabOrder>
+		<ObjectUUID>93D7DED1-EB8F-4F1E-BF05-1671977AE82C</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">epRowIndex( i_rowdesc )</Identifier>
+				<Title ID="4120">"Excel row index"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">epColumnIndex( i_coldesc )</Identifier>
+				<Title ID="4120">"Excel column index"</Title>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Defaults>
+				<Show_All_Elements ID="6150">1</Show_All_Elements>
+				<Column_Width ID="6170">18</Column_Width>
+			</Defaults>
+			<Explicit_Index>
+				<Index ID="6510">i_rowdesc</Index>
+				<Header_Title ID="6530">"Description"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">i_coldesc</Index>
+				<Header_Title ID="6530">"Description"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">" "</Header_Title>
+				<Hide_if_Single_Identifier ID="6270">"No"</Hide_if_Single_Identifier>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Column_Area>
+			<Auto_resize_Column_Widths ID="3006">"Upon all data changes"</Auto_resize_Column_Widths>
+		</Column_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="366" left="6" bottom="390" right="192" />
+		<ReadOnly>ExcelDimensionsCannotYetBeRead</ReadOnly>
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Read Excel Dimensions"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DoReadRowColumnDescriptionFromExcel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="480" left="215" bottom="510" right="245" />
+		<TabOrder>10</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"X"</Title>
+		<TooltipText>"Empty dimension description mapping"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="8C1FFC91-A781-4272-831D-2D86F23592E4">red</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DoEmptyRowColumnDescriptionMapping</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="546" left="215" bottom="576" right="245" />
+		<TabOrder>14</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"X"</Title>
+		<TooltipText>"Empty data"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="8C1FFC91-A781-4272-831D-2D86F23592E4">red</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>EmptyModelData</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="480" left="245" bottom="510" right="275" />
+		<TabOrder>11</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\Wizard.jpg"</BitmapFile>
+		<TooltipText>"Wizard to read the Excel Dimensions and map these to the AIMMS indices."</TooltipText>
+		<ForegroundColor RGB="#000000" />
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DoReadRowColumnDescriptionFromExcel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>WizardRowColumnDescription</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="378" left="216" bottom="430" right="462" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="None" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<SelectionColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</SelectionColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ExcelFile( ReadFromExcelParameter )</Identifier>
+			<NumberFormat StandardFormatIndex="0" Alignment="Left" />
+			<ProcedureUponChange>ExcelFileSheetRangeChange</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ExcelSheet( ReadFromExcelParameter )</Identifier>
+			<NumberFormat StandardFormatIndex="0" Alignment="Left" />
+			<ProcedureUponChange>ExcelFileSheetRangeChange</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>psExcelRowDescriptionRange( ReadFromExcelParameter )</Identifier>
+			<NumberFormat StandardFormatIndex="0" Alignment="Left" />
+			<ProcedureUponChange>ExcelFileSheetRangeChange</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>psExcelColumnDescriptionRange( ReadFromExcelParameter )</Identifier>
+			<NumberFormat StandardFormatIndex="0" Alignment="Left" />
+			<ProcedureUponChange>ExcelFileSheetRangeChange</ProcedureUponChange>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="188" left="208" bottom="240" right="762" />
+		<StaticText>On this page you can read tables from Excel where the information in Excel is in an arbitrary order.
+Specify the Excel file, sheet and ranges, and select to which AIMMS parameter and indices the data should map.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="354" left="330" bottom="378" right="756" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ProcedureUponChange>ExcelFileSheetRangeChange</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>ReadFromExcelParameter</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="ReadFromExcelParameters">ParameterName( ReadFromExcelParameters )</ElementText>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="357" left="216" bottom="375" right="330" />
+		<StaticText>AIMMS parameter:</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="451" left="216" bottom="481" right="270" />
+		<StaticText>AIMMS indices:</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="426" left="6" bottom="450" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Open Excel File"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>OpenExcelFile</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="462" left="6" bottom="612" right="192" />
+		<TabOrder>3</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="8C1FFC91-A781-4272-831D-2D86F23592E4">red</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<SeparatorSign>none</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ExcelErrorMessage</Identifier>
+			<NumberFormat Width="1" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Left" ShowDefaults="true" />
+			<Title>"Dimension:"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="378" left="726" bottom="408" right="756" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\Reset.jpg"</BitmapFile>
+		<TooltipText>"Reset Excel file, sheet and ranges to the example defaults."</TooltipText>
+		<ForegroundColor RGB="#000000" />
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ResetExcelFileSheetRange</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="255" left="612" bottom="341" right="757" />
+		<FileName LiteralFileName="true">"&lt;prj&gt;:Legend.jpg"</FileName>
+		<Display>StretchOrShrink</Display>
+		<KeepRatio>true</KeepRatio>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="243" left="372" bottom="345" right="601" />
+		<FileName LiteralFileName="true">"&lt;prj&gt;:ExampleExcelTable.jpg"</FileName>
+		<Display>StretchOrShrink</Display>
+		<KeepRatio>true</KeepRatio>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="378" left="498" bottom="430" right="678" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="None" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<SelectionColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</SelectionColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>psExcelRowRange( ReadFromExcelParameter )</Identifier>
+			<NumberFormat StandardFormatIndex="0" Alignment="Left" />
+			<ProcedureUponChange>ExcelFileSheetRangeChange</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>psExcelColumnRange( ReadFromExcelParameter )</Identifier>
+			<NumberFormat StandardFormatIndex="0" Alignment="Left" />
+			<ProcedureUponChange>ExcelFileSheetRangeChange</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>psExcelDataRange( ReadFromExcelParameter )</Identifier>
+			<NumberFormat StandardFormatIndex="0" Alignment="Left" />
+			<ProcedureUponChange>ExcelFileSheetRangeChange</ProcedureUponChange>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="208" bottom="264" right="366" />
+		<StaticText>Excel Range mapping</StaticText>
+		<Font GUID="6A6AF6A4-5538-42A5-B86A-0A714794F632" Name="Small header" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="528" left="216" bottom="540" right="270" />
+		<StaticText>Data:</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="348" left="207" bottom="441" right="762" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="447" left="207" bottom="516" right="762" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="522" left="207" bottom="618" right="762" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="266" left="208" bottom="336" right="366" />
+		<StaticText>At the example picture at the right, you can see what is meant with the ranges.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="244" left="612" bottom="256" right="756" />
+		<StaticText>Legend:</StaticText>
+		<Font GUID="6A6AF6A4-5538-42A5-B86A-0A714794F632" Name="Small header" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ReadFromExcelPivotTableData</Symbol>
+			<Symbol>psExcelColumnDescriptionRange</Symbol>
+			<Symbol>psExcelRowRange</Symbol>
+			<Symbol>DoEmptyRowColumnDescriptionMapping</Symbol>
+			<Symbol>ParameterName</Symbol>
+			<Symbol>psExcelColumnRange</Symbol>
+			<Symbol>Dock</Symbol>
+			<Symbol>epRowIndex</Symbol>
+			<Symbol>DoReadRowColumnDescriptionFromExcel</Symbol>
+			<Symbol>ExcelFile</Symbol>
+			<Symbol>ExcelDimensionsCannotYetBeRead</Symbol>
+			<Symbol>ExcelFileSheetRangeChange</Symbol>
+			<Symbol>WizardRowColumnDescription</Symbol>
+			<Symbol>i_rowdesc</Symbol>
+			<Symbol>psExcelDataRange</Symbol>
+			<Symbol>SelectableParameters</Symbol>
+			<Symbol>Ship</Symbol>
+			<Symbol>ReadFromExcelParameters</Symbol>
+			<Symbol>ReadFromExcelParameter</Symbol>
+			<Symbol>i_coldesc</Symbol>
+			<Symbol>EmptyModelData</Symbol>
+			<Symbol>ExcelErrorMessage</Symbol>
+			<Symbol>epColumnIndex</Symbol>
+			<Symbol>ResetExcelFileSheetRange</Symbol>
+			<Symbol>ExcelSheet</Symbol>
+			<Symbol>ExcelDataCannotYetBeRead</Symbol>
+			<Symbol>psExcelRowDescriptionRange</Symbol>
+			<Symbol>FromCity</Symbol>
+			<Symbol>ToCity</Symbol>
+			<Symbol>DoReadFromExcel</Symbol>
+			<Symbol>City</Symbol>
+			<Symbol>OpenExcelFile</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -19,7 +19,7 @@ LibraryModule Example_Base {
     Procedure LibraryInitialization;
     Procedure LibraryTermination {
         Body: {
-            return 1;
+            return 1 ;
         }
     }
     Procedure DialogIfOpenedInAIMMSVIewer {

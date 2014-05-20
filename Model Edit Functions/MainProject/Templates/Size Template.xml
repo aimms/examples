@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-08-25 12:43:10" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>66E08D8C-5677-49B5-970F-BB85475A48BE</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99" />
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Rectangle">
+		<Location top="0" left="0" bottom="98" right="1030" />
+		<FillColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="0" left="0" bottom="619" right="601" />
+		<FileName LiteralFileName="true">"&lt;lib:ExampleStyle&gt;:StartPage.jpg"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>
