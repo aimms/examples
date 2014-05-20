@@ -71,10 +71,10 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="549" left="3" bottom="573" right="189" />
-		<TabOrder>12</TabOrder>
+		<TabOrder>11</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Find Maximal"</Title>
+		<Title>"Find Maximum"</Title>
 		<BackgroundColor RGB="#ffffff" />
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -90,7 +90,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="186" left="6" bottom="210" right="192" />
-		<TabOrder>4</TabOrder>
+		<TabOrder>3</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
@@ -107,7 +107,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="516" left="3" bottom="540" right="189" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>10</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Generate Function"</Title>
@@ -151,7 +151,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="279" left="126" bottom="306" right="189" />
-		<TabOrder>6</TabOrder>
+		<TabOrder>5</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -172,7 +172,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="315" left="126" bottom="342" right="189" />
-		<TabOrder>7</TabOrder>
+		<TabOrder>6</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -193,7 +193,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="351" left="126" bottom="378" right="189" />
-		<TabOrder>8</TabOrder>
+		<TabOrder>7</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -207,7 +207,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
 		<Location top="384" left="0" bottom="456" right="198" />
-		<TabOrder>9</TabOrder>
+		<TabOrder>8</TabOrder>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextShown>IdentifierText</TextShown>
 		<Border Style="None" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -243,7 +243,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="456" left="6" bottom="480" right="192" />
-		<TabOrder>10</TabOrder>
+		<TabOrder>9</TabOrder>
 		<TabStop>false</TabStop>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -261,7 +261,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
-		<TabOrder>5</TabOrder>
+		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
@@ -304,10 +304,14 @@
 		<XAxisIdentifier>
 			<Identifier>DP_x( xp )</Identifier>
 		</XAxisIdentifier>
+		<XRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>5</Upper>
+		</XRange>
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="576" left="0" bottom="639" right="189" />
-		<TabOrder>13</TabOrder>
+		<TabOrder>12</TabOrder>
 		<ObjectUUID>0C4941D4-9820-4636-9C1F-988C01E08B22</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" />

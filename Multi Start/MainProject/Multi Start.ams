@@ -196,7 +196,7 @@ Model Main_Multi_Start {
                 Definition: -10;
             }
             Parameter RightBound {
-                Definition: 510;
+                Definition: 505;
             }
             StringParameter Lables {
                 IndexDomain: lb;
