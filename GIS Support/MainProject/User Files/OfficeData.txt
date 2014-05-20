@@ -1,0 +1,7 @@
+Composite table:
+    po      AIMMSOfficeLatitude(po)  AIMMSOfficeLongitude(po)
+!   ----    -----------------------  ------------------------
+    NL                       52.371                     4.642
+    US                       47.656                  -122.206
+    Sing                      1.371                   103.800
+    ;

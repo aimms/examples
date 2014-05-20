@@ -182,21 +182,21 @@ Model Main_Transport {
             }
         }
     }
-    Section Paragon_Offices_Demo_Page {
-        Set ParagonOffices {
+    Section AIMMS_Offices_Demo_Page {
+        Set AIMMSOffices {
             Index: po;
             Definition: data{  NL,US,Sing };
         }
         ElementParameter AnOffice {
-            Range: ParagonOffices;
+            Range: AIMMSOffices;
         }
-        StringParameter ParagonOfficeAddress {
+        StringParameter AIMMSOfficeAddress {
             IndexDomain: (po);
         }
-        Parameter ParagonOfficeLatitude {
+        Parameter AIMMSOfficeLatitude {
             IndexDomain: (po);
         }
-        Parameter ParagonOfficeLongitude {
+        Parameter AIMMSOfficeLongitude {
             IndexDomain: (po);
         }
     }
@@ -436,8 +436,8 @@ Model Main_Transport {
             
             if (InternetConnectionExist) then
             	read from file "<prj>:OfficeAddresses.txt";
-            	for (po in ParagonOffices) do
-            		GeoFindCoordinates(ParagonOfficeAddress(po), ParagonOfficeLatitude(po), ParagonOfficeLongitude(po));
+            	for (po in AIMMSOffices) do
+            		GeoFindCoordinates(AIMMSOfficeAddress(po), AIMMSOfficeLatitude(po), AIMMSOfficeLongitude(po));
             	endfor;
             else
             	read from file "<prj>:OfficeData.txt";

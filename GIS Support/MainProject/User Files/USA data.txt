@@ -1,0 +1,111 @@
+Composite Table:
+
+s				StateAbbreviation	AnnualRainfall
+                                		        
+ALABAMA                         "AL"            	56.9  
+!ALASKA                          "AK"            	53.15 
+ARIZONA                         "AZ"            	7.11  
+ARKANSAS                        "AR"            	49.2  
+CALIFORNIA                      "CA"            	17.28 
+COLORADO                        "CO"            	15.31 
+CONNECTICUT                     "CT"            	44.39 
+DELAWARE                        "DE"            	41.38 
+FLORIDA                         "FL"            	49.91 
+GEORGIA                         "GA"            	48.61 
+!HAWAII                          "HI"            	23.47 
+IDAHO                           "ID"            	11.71 
+ILLINOIS                        "IL"            	33.34 
+INDIANA                         "IN"            	39.12 
+IOWA                            "IA"            	34.71 
+KANSAS                          "KS"            	28.61 
+KENTUCKY                        "KY"            	43.56 
+LOUISIANA                       "LA"            	59.74 
+MAINE                           "ME"            	43.52 
+MARYLAND                        "MD"            	41.84 
+MASSACHUSETTS                   "MA"            	43.84 
+MICHIGAN                        "MI"            	32.23 
+MINNESOTA                       "MN"            	26.36 
+MISSISSIPPI                     "MS"            	52.82 
+MISSOURI                        "MO"            	33.91 
+MONTANA                         "MT"            	11.37 
+NEBRASKA                        "NE"            	30.34 
+NEVADA                          "NV"            	7.87  
+'NEW HAMPSHIRE'            	"NH"            	36.53 
+'NEW JERSEY'                    "NJ"            	41.93 
+'NEW MEXICO'                    "NM"            	8.91  
+'NEW YORK'                      "NY"            	39.28 
+'NORTH CAROLINA'                "NC"            	42.46 
+'NORTH DAKOTA'                  "ND"            	15.36 
+OHIO                            "OH"            	37.77 
+OKLAHOMA                        "OK"            	30.89 
+OREGON                          "OR"            	37.39 
+PENNSYLVANIA                    "PA"            	40.26 
+'RHODE ISLAND'                  "RI"            	41.91 
+'SOUTH CAROLINA'                "SC"            	51.59 
+'SOUTH DAKOTA'                  "SD"            	17.47 
+TENNESSEE                       "TN"            	48.49 
+TEXAS                           "TX"            	34.74
+UTAH                            "UT"            	15.31 
+VERMONT                         "VT"            	33.69 
+VIRGINIA                        "VA"            	45.22 
+WASHINGTON                      "WA"            	27.66 
+'WEST VIRGINIA'                 "WV"            	40.74 
+WISCONSIN                       "WI"            	30.89 
+WYOMING                         "WY"            	13.31 ;
+     
+     
+     
+  
+                
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

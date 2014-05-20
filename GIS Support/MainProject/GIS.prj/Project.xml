@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="02A93BA6-5188-4B85-8BBE-0C0F92E6B422">
-	<ModelFileName>GIS.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>

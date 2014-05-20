@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-03-02 08:05:41">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>0C85949E-28CF-4A30-8DF0-12A5C8390841</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="149" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="135">
+						<BottomArea Line="FixedFromBottom" Value="30" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Rectangle">
+		<Location top="156" left="6" bottom="180" right="192" />
+		<FillColor>
+			<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="594" left="210" bottom="624" right="756" />
+		<TabOrder>2</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>SolverCurrentlyUsed</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>SolverCurrentlyUsed</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

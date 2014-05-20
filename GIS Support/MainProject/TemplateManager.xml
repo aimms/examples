@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="3C9B8332-CC75-4293-98C4-F0680317D947" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
+		<Template Name="Navigation Template" PageGUID="0CBF52F2-0EA7-48F5-8FB7-27C89A5D0473" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="7F6D85BC-08ED-46DA-8D55-70E8A966E7BC" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="DB6C03A1-3839-4CB2-929A-DE7E28415A19" />
+			</Template>
+			<Page Name="The Netherlands" PageGUID="D266E602-DE33-4E68-8FC3-E1E5BB014927" />
+			<Page Name="USA" PageGUID="5D5995C1-0141-42E9-9D29-C5EBB558C2A8" />
+			<Page Name="AIMMS Offices" PageGUID="C2C707C1-FC4F-425D-A40A-96E40E4B5255" />
+		</Template>
+	</Template>
+	<Page Name="Legend" PageGUID="4CC0D351-9188-4D9F-B4D2-AC65C4DB9D6B" />
+</TemplateManager>
