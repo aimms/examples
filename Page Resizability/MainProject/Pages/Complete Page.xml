@@ -1,11 +1,32 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:44:05">
-	<Location top="30" left="8" bottom="572" right="775" />
-	<PageEditSize Type="Inherited" />
+<Page Version="4000" TimeStamp="2012-07-31 08:42:18">
+	<Location top="30" left="9" bottom="680" right="1081" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="475" />
+	</PageEditSize>
 	<ProjectUUID>310D2727-A0A0-4B94-8F0B-A6D7E354D17A</ProjectUUID>
 	<DockAlways>true</DockAlways>
 	<Positioning>Save Last Position</Positioning>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="50">
+			<TopArea Line="FixedFromLeft" Value="126">
+				<RightArea Line="FixedFromRight" Value="123" />
+			</TopArea>
+			<BottomArea Line="FixedFromBottom" Value="74">
+				<TopArea Line="FixedFromLeft" Value="381">
+					<LeftArea Line="FixedFromTop" Value="133">
+						<BottomArea Line="FixedFromLeft" Value="218">
+							<RightArea Line="FixedFromTop" Value="58" />
+						</BottomArea>
+					</LeftArea>
+				</TopArea>
+				<BottomArea Line="FixedFromRight" Value="123">
+					<LeftArea Line="FixedFromLeft" Value="130" />
+				</BottomArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
 	<Background>
 		<UserColor GUID="52FCA5EC-AE18-4B3B-A405-11261A387E41">white</UserColor>
 	</Background>
@@ -13,7 +34,7 @@
 		<Location top="0" left="126" bottom="48" right="648" />
 		<TabOrder>1</TabOrder>
 		<TabStop>false</TabStop>
-		<Font GUID="E871014F-07B2-4C98-88F0-E986438D313B" Name="Header Font" />
+		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<Display>Text</Display>
 		<Spacing>6</Spacing>
@@ -24,7 +45,7 @@
 			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
 		</TextColor>
 		<InputColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</InputColor>
 		<NavigationData>
 			<ReferencePage>ThisPage</ReferencePage>
@@ -58,7 +79,7 @@
 		<ExplicitIdentifier>
 			<Identifier>FunctionValue( s, sf )</Identifier>
 			<FirstColumn>1</FirstColumn>
-			<NumberFormat Width="5" Decimals="2" />
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Curve">
@@ -83,6 +104,28 @@
 		</ExplicitIdentifier>
 		<DrawLines>true</DrawLines>
 	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="192" left="222" bottom="234" right="372" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FirstUsedPoint</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"First element"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>UsedPointSize</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Number of elements"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
 		<Location top="246" left="222" bottom="318" right="372" />
@@ -104,7 +147,7 @@
 		<StringParameter>CurrentDay</StringParameter>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="62062379-C834-4100-B925-4FAA7219427B">navy blue</UserColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -122,7 +165,7 @@
 		<Alignment>Center</Alignment>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="62062379-C834-4100-B925-4FAA7219427B">navy blue</UserColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -135,12 +178,12 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="432" left="132" bottom="450" right="648" />
+		<Location top="438" left="138" bottom="456" right="642" />
 		<StaticText>(c) Paragon Decision Technology</StaticText>
 		<Alignment>Center</Alignment>
 		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
 		<TextColor>
-			<UserColor GUID="62062379-C834-4100-B925-4FAA7219427B">navy blue</UserColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -204,35 +247,13 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="54" left="6" bottom="180" right="372" />
-		<StaticText>This page is the same as page "Complete Page", only without split lines.
+		<StaticText>On this page we have used several split lines, all with a fixed distance from, left, right, top or bottom. Due to the positions of the split lines only the curve, the table and the selection object will change while resizing the page.
 
-Experiment and see what the effects are of resizability by changing the page size of both pages.</StaticText>
+In large applications it is better to use templates for the header and the footer, as is illustrated in the demo "Templates and Navigation".</StaticText>
 		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
 		<TextColor>
 			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
 		</TextColor>
-	</PageObject>
-	<PageObject Type="Scalar">
-		<Location top="192" left="222" bottom="234" right="372" />
-		<TabOrder>3</TabOrder>
-		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
-		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
-		<BackgroundColor RGB="#ffffff" />
-		<TextColor>
-			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
-		</TextColor>
-		<Layout>Text-Value</Layout>
-		<SeparatorSign>=</SeparatorSign>
-		<ExplicitIdentifier>
-			<Identifier>FirstUsedPoint</Identifier>
-			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
-			<Title>"First element"</Title>
-		</ExplicitIdentifier>
-		<ExplicitIdentifier>
-			<Identifier>UsedPointSize</Identifier>
-			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
-			<Title>"Number of elements"</Title>
-		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="426" left="6" bottom="450" right="126" />

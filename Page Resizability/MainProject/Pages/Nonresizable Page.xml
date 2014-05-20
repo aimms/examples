@@ -1,20 +1,11 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:44:04">
-	<Location top="77" left="131" bottom="716" right="1127" />
-	<PageEditSize Type="Inherited">
-		<Size Width="765" Height="474" />
-	</PageEditSize>
+<Page Version="4000" TimeStamp="2012-07-31 08:42:18">
+	<Location top="217" left="259" bottom="757" right="1054" />
+	<PageEditSize Type="Inherited" />
 	<ProjectUUID>310D2727-A0A0-4B94-8F0B-A6D7E354D17A</ProjectUUID>
 	<DockAlways>true</DockAlways>
 	<Positioning>Save Last Position</Positioning>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
-	<ResizeData>
-		<MainArea Line="AdjustableFromRight" Value="216">
-			<LeftArea Line="FixedFromTop" Value="39">
-				<BottomArea Line="FixedFromBottom" Value="45" />
-			</LeftArea>
-		</MainArea>
-	</ResizeData>
 	<Background>
 		<UserColor GUID="52FCA5EC-AE18-4B3B-A405-11261A387E41">white</UserColor>
 	</Background>
@@ -60,21 +51,14 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="36" left="570" bottom="432" right="744" />
-		<StaticText>There are 3 split lines present on this page:
-
-The first split line is situated on left of this description. (The vertical grey line.) This is an adjustable split line. This means that the user can influence the size of the curve. 
-
-The two other splitlines are located just below the Header and just above the Footer. Those two lines are located on a fixed distance from top and bottom, respectively.
-This means that the header and the footer area have a height that remains fix, independent of change to the page size.
-
-Please note that in the properties this page is set to dialog.</StaticText>
+		<StaticText>This page is the same as the page "Resizable Page", however this page does not posses any split lines.</StaticText>
 		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
 		<TextColor>
 			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="444" left="570" bottom="468" right="732" />
+		<Location top="444" left="576" bottom="468" right="738" />
 		<TabOrder>5</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
