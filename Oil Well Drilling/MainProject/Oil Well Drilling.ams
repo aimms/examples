@@ -526,12 +526,16 @@ Model Main_Oil_Drilling_Well {
         Procedure CheckIfConstraintsApplied {
             Body: {
                 !This procedure checks if all the constraints are applied before solving the model
+                
+                AllConstraintsAreApplied := 1;
+                
                 StringUsedInCoding :="";
                 HandlerForDeclaration := StringToElement(AllIdentifiers, 'RTL::RunTimeLibraryForFormulationDeclarations', create:0);
                 Handler1 := StringToElement(AllIdentifiers, 'RTL::CostOfDrillingConstraint', create:0);
                 if(not  Handler1) then
                         Status_MessageForCost := "NOT APPLIED YET";
                         Color_BackgroundForCost := 'My Not Assigned Color';
+                        AllConstraintsAreApplied := 0;
                 endif;
                 
                 StringUsedInCoding :="RTL::PayOff" + "Constraint";
@@ -539,6 +543,7 @@ Model Main_Oil_Drilling_Well {
                 if(not  Handler1) then
                         Status_MessageForPayOff := "NOT APPLIED YET";
                         Color_BackgroundForPayOff := 'My Not Assigned Color';
+                        AllConstraintsAreApplied := 0;
                 endif;
                 
                 for(s) do
@@ -547,10 +552,20 @@ Model Main_Oil_Drilling_Well {
                         if(not  Handler1) then
                                 Status_MessageForProbability(s) := "NOT APPLIED YET";
                                 Color_BackgroundForProbability(s) := 'My Not Assigned Color';
+                                AllConstraintsAreApplied := 0;
                         endif;
                 endfor;
                 
                 StringUsedInCoding :="";
+                
+                if ( AllConstraintsAreApplied ) then
+                	return 1;
+                else
+                	return 0;
+                endif;
+            }
+            Parameter AllConstraintsAreApplied {
+                Range: binary;
             }
         }
     }
@@ -577,12 +592,18 @@ Model Main_Oil_Drilling_Well {
             !MainExecution procedure checks if the constraints are all applied, then solves the model and calls the SolutionsOutput function to
             !update the Solutions page
             
-            CheckIfConstraintsApplied;
+            if ( CheckIfConstraintsApplied ) then
             
-            CurrentSolver('MINLP') := First(IndexSolvers | FindString(IndexSolvers,"BARON"));
-            Solve OilWellDrilling;
+            	CurrentSolver('MINLP') := First(IndexSolvers | FindString(IndexSolvers,"BARON"));
+            	Solve OilWellDrilling;
             
-            SolutionsOutput;
+            	SolutionsOutput;
+            
+            else
+            
+            	DialogMessage( "Please apply all constraints first." );
+            
+            endif;
         }
     }
     Procedure SolutionsOutput {
@@ -638,7 +659,7 @@ Model Main_Oil_Drilling_Well {
         }
     }
     Module GMP_Outer_Approximation_Module {
-        SourceFile: "%AIMMSMODULES%\\GMPOuterApproximation.aim";
+        SourceFile: "%AIMMSMODULES%\\GMPOuterApproximation.ams";
         Comment: {
             "This module contains two outer approximation algorithms for solving Mixed Integer
             Nonlinear Problems (MINLP). The basic algorithm can be found in the section \'AOA
@@ -664,7 +685,7 @@ Model Main_Oil_Drilling_Well {
         }
     }
     Module Multi_Start_Module {
-        SourceFile: "%AIMMSMODULES%\\MultiStart.aim";
+        SourceFile: "%AIMMSMODULES%\\MultiStart.ams";
         Comment: {
             "The basic MultiStart algorithm:
             -------------------------------

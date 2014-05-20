@@ -12,7 +12,7 @@ LibraryModule Example_Base {
             if IsRunningAsViewer Then
                 'Grey'
             else
-                'Blue'
+                'Text Blue'
             endif;
         }
     }
