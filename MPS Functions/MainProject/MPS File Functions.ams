@@ -244,8 +244,8 @@ Model Main_MPS_File_Functions {
                 Parameter: SelectLPMIPSolver;
                 Definition: {
                     { IndexSolvers | FindString(IndexSolvers,"CPLEX 11.") or FindString(IndexSolvers,"XA")
-                                     or FindString(IndexSolvers,"GUROBI") or FindString(IndexSolvers, "XPRESS")
-                                     or FindString(IndexSolvers,"MOSEK")  or FindString(IndexSolvers, "CPLEX 12.")}
+                                     or FindString(IndexSolvers,"GUROBI") or FindString(IndexSolvers, "CBC")
+                                     or FindString(IndexSolvers, "CPLEX 12.")}
                 }
             }
             Set CPLEXSolvers {

@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-05-20 12:19:16">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>BC309AFA-264A-43C9-AA60-9F07F8B42F0C</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="165" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Introduction Page"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<ActionSequence>
+			<Action Type="GotoPage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Tune Multiple MPS Files"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="198" left="207" bottom="216" right="762" />
+		<StaticText>Select MPS File </StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="345" left="6" bottom="369" right="192" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Tune MPS File"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>TuneSingleMPSFile</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="420" left="207" bottom="441" right="765" />
+		<StaticText>Solve MPS file with tuned settings</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="444" left="207" bottom="549" right="621" />
+		<TabOrder>11</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>SolverValues_TuneSingle( s )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<IdentifierTextInTitle>true</IdentifierTextInTitle>
+			<NumberFormat Width="10" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="File Name Object">
+		<Location top="222" left="207" bottom="252" right="762" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Identifier>MPSFileName</Identifier>
+		<DefaultFolder>"MPS Files Pool"</DefaultFolder>
+		<AllowedFiles>AnyFile</AllowedFiles>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<ProcedureUponChange>ResetCPLEXOptions</ProcedureUponChange>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="378" left="6" bottom="402" right="192" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"View Tuning Options"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ViewOptionFiles</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="462" left="6" bottom="486" right="192" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Reset Data"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ResetData</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="273" left="207" bottom="294" right="762" />
+		<StaticText>Set MIP GAP (Relative Optimality Tolerance)</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="309" left="207" bottom="336" right="411" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>GAPSetting</Identifier>
+			<NumberFormat Width="6" Decimals="3" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="312" left="6" bottom="336" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="315" left="18" bottom="336" right="183" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="360" left="207" bottom="381" right="762" />
+		<StaticText>Select only CPLEX 11.0 or higher </StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="384" left="207" bottom="417" right="414" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SelectCPLEX</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Single MPS File"</Title>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="6440F66E-A405-4DCA-99F6-F36343400D44" Name="Solve Single MPS File" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>s</Symbol>
+			<Symbol>ResetCPLEXOptions</Symbol>
+			<Symbol>CPLEXSolvers</Symbol>
+			<Symbol>TuneSingleMPSFile</Symbol>
+			<Symbol>ResetData</Symbol>
+			<Symbol>ViewOptionFiles</Symbol>
+			<Symbol>SelectCPLEX</Symbol>
+			<Symbol>SolverValues_TuneSingle</Symbol>
+			<Symbol>MPSFileName</Symbol>
+			<Symbol>GAPSetting</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
