@@ -108,7 +108,7 @@ LibraryModule Pivot_Table_State_Manager {
             Comment: "The state dataset.";
         }
         StringParameter StateDatasetName {
-            Definition: "StateDataset";
+            Definition: "StateDataset.data";
             Comment: "The name of the state Dataset.";
         }
         ElementParameter StateDataCategory {
@@ -121,19 +121,27 @@ LibraryModule Pivot_Table_State_Manager {
         Parameter HideEnterNameBox {
             Default: 1;
         }
+        Set AllStateIdentifiers {
+            SubsetOf: AllIdentifiers;
+            Definition: State_Declaration;
+        }
     }
     Procedure InitializeStateData {
         Body: {
-            OK := DatasetFind(StateDataCategory, StateDatasetName, StateDataset);
+            !OK := DatasetFind(StateDataCategory, StateDatasetName, StateDataset);
+            !
+            !if not OK then
+            !
+            !	DatasetCreate(StateDataCategory, StateDatasetName, StateDataset);
+            !
+            !endif;
+            !
+            !DatasetSetChangedStatus(StateDataCategory,0);
+            !DatasetLoadCurrent(StateDataCategory, StateDataset, 0);
             
-            if not OK then
-            
-            	DatasetCreate(StateDataCategory, StateDatasetName, StateDataset);
-            
+            if  FileExists(StateDatasetName) then
+            	CaseFileLoad(StateDatasetName);
             endif;
-            
-            DatasetSetChangedStatus(StateDataCategory,0);
-            DatasetLoadCurrent(StateDataCategory, StateDataset, 0);
         }
         Comment: "This procedure is used to load the state data from the dataset, or create this dataset if it is not yet available.";
         Parameter OK;
@@ -190,7 +198,8 @@ LibraryModule Pivot_Table_State_Manager {
             
             endif;
             
-            DatasetSave(StateDataCategory, 0);
+            !DatasetSave(StateDataCategory, 0);
+            CaseFileSave(StateDatasetName,AllStateIdentifiers);
         }
     }
     Procedure SaveState {
@@ -250,7 +259,8 @@ LibraryModule Pivot_Table_State_Manager {
             
             endif;
             
-            DatasetSave(StateDataCategory, 0);
+            !DatasetSave(StateDataCategory, 0);
+            CaseFileSave(StateDatasetName,AllStateIdentifiers);
         }
         ElementParameter State {
             Range: States;
@@ -290,7 +300,8 @@ LibraryModule Pivot_Table_State_Manager {
             
             endif;
             
-            DatasetSave(StateDataCategory, 0);
+            !DatasetSave(StateDataCategory, 0);
+            CaseFileSave(StateDatasetName,AllStateIdentifiers);
         }
     }
     Procedure LibraryInitialization {
