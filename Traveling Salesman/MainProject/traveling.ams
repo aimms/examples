@@ -415,12 +415,8 @@ Model Main_Traveling_Salesman_Problem {
         Body: {
             ShowProgressWindow;
             NewTour;
-            ImproveInitialTourCyclic;
-            ImproveInitialTourSimultaneous;
+            FindInitialTour;
         }
-        Comment: {
-            "This procedure is used when opening the only page of the project, to illustrate the
-            both algorithms."
-        }
+        Comment: "This procedure is used when opening the only page of the project.";
     }
 }

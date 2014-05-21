@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2012-09-07 00:05:14" NeedsCompiledModel="false">
+	<Location top="22" left="4" bottom="769" right="896" />
+	<PageEditSize Type="Inherited">
+		<Size Width="790" Height="483" />
+	</PageEditSize>
+	<ProjectUUID>14D845C9-CBE3-4423-9E06-75DBBD6A56BF</ProjectUUID>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="57" />
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Button">
+		<Location top="450" left="714" bottom="474" right="744" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\previous.bmp"</BitmapFile>
+		<Font GUID="830FCB02-C24A-4129-A49F-C4CECA5B454E" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="450" left="750" bottom="474" right="780" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\next.bmp"</BitmapFile>
+		<Font GUID="830FCB02-C24A-4129-A49F-C4CECA5B454E" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="420" left="714" bottom="444" right="780" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Up"</Title>
+		<Font GUID="830FCB02-C24A-4129-A49F-C4CECA5B454E" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

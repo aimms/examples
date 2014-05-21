@@ -5,4 +5,4 @@ In this example there is a government at the policy making level wanting to infl
 On the first demo page, the policy receiving submodels are solved for a pre-specified taxation level. On the second demo page, the two level problem is solved using an intuitive and general approach in order to find simultaneously the appropriate tax and subsidy levels and the optimal responses from the companies. Finally, on the third demo page, a sensitivity analysis is carried out with respect to one of the key parameters.
 
 Keywords:
-Evironmental Economics, Stackelberg Games, Nonlinear Programming
+Evironmental Economics, Stackelberg Games, Nonlinear Programming.
