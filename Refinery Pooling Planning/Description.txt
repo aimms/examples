@@ -2,7 +2,7 @@ The model is a refinery- pooling problem, which maximizes the sales value of end
 
 This example illustrates the effect of selecting different initial values in supporting the solution finding process and also in determining different locally optimal solutions of a nonlinear programming model.  
 
-If  the BARON and/or KNITRO solver is available in your AIMMS system, then this example also shows the BARONs and/or KNITROs capability in finding a global optimal solution.
+If the BARON solver is available in your AIMMS system, then this example also shows the BARON's capability in finding a global optimal solution.
 
 An experiment is conducted with different initial values to find at least two different local optima for this example, namely 3624.0 and 4714.4.
 

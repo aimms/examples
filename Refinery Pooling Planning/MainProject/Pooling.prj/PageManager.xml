@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS Demo" PageGUID="25251CE2-2A9D-4E3A-A950-BEFE25974E12">
-		<Page Name="Results" PageGUID="B7BCECE5-726A-423F-BBA5-FF547EEDE69B" />
-		<Page Name="Details" PageGUID="A1BE351E-037B-4D42-8D49-6061822586F6" />
-		<Page Name="Case Compare" PageGUID="A281B958-66FC-4586-93D8-A3BF00D4A88F" />
-		<Page Name="Solver Comparison" PageGUID="4D6DF083-AAC4-4903-ACEC-0ECCE7510976" />
-	</Page>
-</PageManager>

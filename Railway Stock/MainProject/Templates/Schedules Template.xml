@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-19 15:12:41" NeedsCompiledModel="false">
+	<Location top="29" left="4" bottom="623" right="736" />
+	<PageEditSize Type="Inherited">
+		<Size Width="731" Height="598" />
+	</PageEditSize>
+	<ProjectUUID>8E4A45FB-800D-42D3-B2B2-0F91CF032D28</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromRight" Value="8" />
+	</ResizeData>
+	<PageObject Type="Rectangle">
+		<Location top="0" left="0" bottom="600" right="732" />
+		<Hidden>"Yes"</Hidden>
+		<FillColor>
+			<UserColor GUID="682875C3-3BF5-4293-B09F-4CAF8A8B3F63">grey</UserColor>
+		</FillColor>
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="276" left="276" bottom="300" right="444" />
+		<Hidden>"Yes"</Hidden>
+		<StaticText>Space for schedule</StaticText>
+		<Font GUID="F6AC9214-33C1-4250-9ABF-15B57D1091A0" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>
