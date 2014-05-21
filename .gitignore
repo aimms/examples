@@ -4,3 +4,6 @@ _AIMMSpackInfo
 */backup/
 */log/*
 */backup/*
+aimms.xlg
+debug.log
+memory.log
