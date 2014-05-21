@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS Demo" PageGUID="51C17195-198B-4A26-B95C-43BC6637AE70">
-		<Page Name="Stochastic Production Planning" PageGUID="EA4F6F5F-372E-45CC-BAAC-D05743733E19" />
-		<Page Name="Scenario Tree View" PageGUID="BAD20AFF-EF32-4ACB-902C-82FBA2202EC4" />
-	</Page>
-</PageManager>

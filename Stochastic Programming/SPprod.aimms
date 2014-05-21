@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<References>
-	<MainProject Path="MainProject\SPprod.prj" />
-	<Library Path=".\Scenario Tree Generation\Scenario Tree Generation.libprj" />
-	<Library Path=".\_Example Style Library\Example Style Library.libprj" />
+<References AIMMS_Version="4.0.0.432 (x86)">
+	<MainProject Path="MainProject" />
+	<Library Path=".\Scenario Tree Generation\" />
+	<Library Path=".\_Example Style Library\" />
 </References>

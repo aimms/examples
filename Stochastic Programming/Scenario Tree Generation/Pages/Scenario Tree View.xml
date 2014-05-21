@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-11-16 17:22:46">
+	<Location top="-305" left="-569" bottom="396" right="530" />
+	<PageEditSize Type="Inherited">
+		<Size Width="1165" Height="907" />
+	</PageEditSize>
+	<ProjectUUID>B9AB1032-625A-4815-802E-B2B0D288EF0C</ProjectUUID>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.5" />
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="0" left="0" bottom="906" right="1164" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<EqualXYScale>false</EqualXYScale>
+		<ScrollControl>Scrollbars</ScrollControl>
+		<VisibleArea>
+			<Left>ScenGen::ScenarioTreeVisibleAreaLeft( ScenGen::CurrentScenarioTree )</Left>
+			<Right>ScenGen::ScenarioTreeVisibleAreaRight( ScenGen::CurrentScenarioTree )</Right>
+			<Top>ScenGen::ScenarioTreeVisibleAreaTop( ScenGen::CurrentScenarioTree )</Top>
+			<Bottom>ScenGen::ScenarioTreeVisibleAreaBottom( ScenGen::CurrentScenarioTree )</Bottom>
+		</VisibleArea>
+		<TotalArea>
+			<Left>ScenGen::ScenarioTreeLeft( ScenGen::CurrentScenarioTree )</Left>
+			<Right>ScenGen::ScenarioTreeRight( ScenGen::CurrentScenarioTree )</Right>
+			<Top>ScenGen::ScenarioTreeTop( ScenGen::CurrentScenarioTree )</Top>
+			<Bottom>ScenGen::ScenarioTreeBottom( ScenGen::CurrentScenarioTree )</Bottom>
+		</TotalArea>
+		<Node>
+			<Identifier>ScenGen::cstn</Identifier>
+			<XCoordinate>ScenGen::ScenarioTreeXCoordinate( ScenGen::CurrentScenarioTree, ScenGen::cstn )</XCoordinate>
+			<YCoordinate>ScenGen::ScenarioTreeYCoordinate( ScenGen::CurrentScenarioTree, ScenGen::cstn )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>6</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Text>ScenGen::ScenarioTreeNodeText( ScenGen::CurrentScenarioTree, ScenGen::cstn )</Text>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>ScenGen::ScenarioTreeArcIndicator( ScenGen::CurrentScenarioTree, ScenGen::cstn_from, ScenGen::cstn_to )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Left</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Text>ScenGen::ScenarioTreeArcText( ScenGen::CurrentScenarioTree, ScenGen::cstn_from, ScenGen::cstn_to )</Text>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ScenGen::ScenarioTreeXCoordinate</Symbol>
+			<Symbol>ScenGen::ScenarioTreeYCoordinate</Symbol>
+			<Symbol>ScenGen::ScenarioTreeArcIndicator</Symbol>
+			<Symbol>ScenGen::ScenarioTreeNodeText</Symbol>
+			<Symbol>ScenGen::ScenarioTreeArcText</Symbol>
+			<Symbol>ScenGen::ScenarioTreeVisibleAreaLeft</Symbol>
+			<Symbol>ScenGen::ScenarioTreeVisibleAreaRight</Symbol>
+			<Symbol>ScenGen::ScenarioTreeVisibleAreaTop</Symbol>
+			<Symbol>ScenGen::ScenarioTreeVisibleAreaBottom</Symbol>
+			<Symbol>ScenGen::CurrentScenarioTree</Symbol>
+			<Symbol>ScenGen::cstn</Symbol>
+			<Symbol>ScenGen::cstn_from</Symbol>
+			<Symbol>ScenGen::cstn_to</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

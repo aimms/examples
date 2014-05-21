@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<LibraryProject FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="B9AB1032-625A-4815-802E-B2B0D288EF0C">
-	<ModelFileName>Scenario Tree Generation.ams</ModelFileName>
-	<Prefix>ScenGen</Prefix>
-	<DisplayName>Scenario Tree Generation</DisplayName>
-</LibraryProject>
