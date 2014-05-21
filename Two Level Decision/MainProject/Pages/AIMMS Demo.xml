@@ -26,7 +26,7 @@
 	<PageObject Type="Text">
 		<Location top="189" left="207" bottom="615" right="762" />
 		<SourceType>File</SourceType>
-		<FileName LiteralFileName="true">"description.txt"</FileName>
+		<FileName LiteralFileName="true">"Description.txt"</FileName>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
