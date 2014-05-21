@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="0624786D-83F8-496B-95EF-97B05A2E2E37">
+		<Page Name="Telecommunication Input" PageGUID="16DDC6C4-83CE-4D03-BD27-D3C78B0E89B9" />
+		<Page Name="Telecommunication Output" PageGUID="953B3106-54D2-4592-9E16-6C319861EA96" />
+	</Page>
+</PageManager>

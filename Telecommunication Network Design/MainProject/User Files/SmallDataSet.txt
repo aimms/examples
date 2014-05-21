@@ -1,0 +1,53 @@
+
+SwitchingStations := data
+
+  { Amsterdam, Utrecht, 'The Hague', Gouda, Arnhem, Maastricht } ;
+
+
+TrafficDemand(o,d) := Data Table
+
+             Amsterdam  Utrecht  'The Hague'  Gouda  Arnhem  Maastricht
+
+Amsterdam                 55       95          20     30       45
+Utrecht         90                 50          10     15       20
+'The Hague'     85        45                   15     10       30
+Gouda           35        25       35                 10       15
+Arnhem          45        15       20           5              35
+Maastricht      60        25       40          10     30
+;
+
+TrafficLines := data
+
+{ ( Amsterdam, Utrecht     ), ( Amsterdam  , 'The Hague' ), ( Amsterdam  , Arnhem     ) ,
+  ( Utrecht  , 'The Hague' ), ( Utrecht    , Gouda       ), ( Utrecht    , Arnhem     ) ,
+  ( Utrecht  , Maastricht  ), ( 'The Hague', Gouda       ), ( 'The Hague', Maastricht ) ,
+  ( Gouda    , Arnhem      ), ( Gouda      , Maastricht  ), ( Arnhem     , Maastricht ) } ;
+
+ArcCapacity(a) := data
+
+{ ( Amsterdam  , Utrecht    ) : 360, (Amsterdam  , 'The Hague' ) : 300,
+  ( Amsterdam  , Arnhem     ) : 240, (Utrecht    , 'The Hague' ) : 360,
+  ( Utrecht    , Gouda      ) :  60, (Utrecht    , Arnhem      ) :  90,
+  ( Utrecht    , Maastricht ) : 120, ('The Hague', Gouda       ) :  90,
+  ( 'The Hague', Maastricht ) : 180, (Gouda      , Arnhem      ) :  40,
+  ( Gouda      , Maastricht ) : 120, (Arnhem     , Maastricht  ) : 210 } ;
+
+NodeCapacity(n) := data
+
+{ Amsterdam: 490,  Utrecht: 340,  'The Hague':   400,
+  Gouda:     220,  Arnhem:  280,  Maastricht:    340 } ;
+
+COMPOSITE TABLE:
+    n                     XCoordinate  YCoordinate
+!   ------------------    -----------  -----------
+    Arnhem                      5.917       51.982
+    Utrecht                     5.118       52.107
+    Amsterdam                   4.880       52.376
+    'The Hague'                 4.303       52.079
+    Gouda                       4.703       52.017
+    Maastricht                  5.696       50.857
+    ;
+
+BitmapBounds( nb ) := data
+   { Left : 3.300,  Right : 7.300,  Top : 53.500,  Bottom : 50.680 }
+
