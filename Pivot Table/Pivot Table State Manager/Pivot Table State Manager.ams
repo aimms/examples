@@ -102,19 +102,9 @@ LibraryModule Pivot_Table_State_Manager {
             Definition: Data{ 'State Manager PT' };
             Comment: "The set of all tags.";
         }
-        ElementParameter StateDataset {
-            Range: AllDataSets;
-            Property: NoSave;
-            Comment: "The state dataset.";
-        }
         StringParameter StateDatasetName {
             Definition: "StateDataset.data";
-            Comment: "The name of the state Dataset.";
-        }
-        ElementParameter StateDataCategory {
-            Range: AllDataCategories;
-            Definition: 'PTStateManager::Pivot Table State Data';
-            Comment: "The state Data Category.";
+            Comment: "The fixed name of file that keeps track of all the data that the Pivot Table State Manager needs to save & restore between sessions.";
         }
         Parameter StateSelected;
         StringParameter StateNameSelected;
