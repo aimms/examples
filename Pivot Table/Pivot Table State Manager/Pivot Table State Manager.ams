@@ -128,17 +128,6 @@ LibraryModule Pivot_Table_State_Manager {
     }
     Procedure InitializeStateData {
         Body: {
-            !OK := DatasetFind(StateDataCategory, StateDatasetName, StateDataset);
-            !
-            !if not OK then
-            !
-            !	DatasetCreate(StateDataCategory, StateDatasetName, StateDataset);
-            !
-            !endif;
-            !
-            !DatasetSetChangedStatus(StateDataCategory,0);
-            !DatasetLoadCurrent(StateDataCategory, StateDataset, 0);
-            
             if  FileExists(StateDatasetName) then
             	CaseFileLoad(StateDatasetName);
             endif;
@@ -198,7 +187,6 @@ LibraryModule Pivot_Table_State_Manager {
             
             endif;
             
-            !DatasetSave(StateDataCategory, 0);
             CaseFileSave(StateDatasetName,AllStateIdentifiers);
         }
     }
@@ -259,7 +247,6 @@ LibraryModule Pivot_Table_State_Manager {
             
             endif;
             
-            !DatasetSave(StateDataCategory, 0);
             CaseFileSave(StateDatasetName,AllStateIdentifiers);
         }
         ElementParameter State {
@@ -300,7 +287,6 @@ LibraryModule Pivot_Table_State_Manager {
             
             endif;
             
-            !DatasetSave(StateDataCategory, 0);
             CaseFileSave(StateDatasetName,AllStateIdentifiers);
         }
     }
