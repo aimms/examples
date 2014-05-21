@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<References>
-	<MainProject Path="MainProject\Pivot Table.prj" />
-	<Library Path=".\_Example Style Library\Example Style Library.libprj" />
-	<Library Path=".\Pivot Table State Manager\Pivot Table State Manager.libprj" />
+<References AIMMS_Version="4.0.0.494 (x64)">
+	<MainProject Path="MainProject" />
+	<Library Path="_Example Style Library" />
+	<Library Path="Pivot Table State Manager" />
 </References>
