@@ -2,7 +2,7 @@ This AIMMS project illustrates how to formulate and solve a telecommunication ut
 
 The objective of the model is to check the utilization of telecommunication network capacity, such that
 
-- All calls are routed from origin to destination.
+- All calls are routed from origin to destination
 
 - The routing uphods the capacity restriction of a cable
 
