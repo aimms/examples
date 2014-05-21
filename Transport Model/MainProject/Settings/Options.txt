@@ -7,24 +7,6 @@ default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 warning_not_initialized off
-* AOA
-* BARON 12
-* CONOPT 3.14V
-* CPLEX 12.5.1
-* CPOptimizer 12.5
-* GUROBI 5.5
-* KNITRO 8.1
-* LGO 1.0
-* MINOS
-* MOSEK 6.0
-* PATH 4.6
-* SNOPT 6.1
-* XA 15
-* CPLEX 12.6
-* SNOPT 7.2
-* GUROBI 5.6
-* CPOptimizer 12.6
-* NETSOL
 * Environment
 Project_Title "AIMMS 3 - Transport Model"
 Startup_Page "AIMMS Demo"
