@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2012-09-07 00:05:14">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>14D845C9-CBE3-4423-9E06-75DBBD6A56BF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="1CF41E83-C30C-4CFA-8169-365228DCC036">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>-6</HorizontalGridDistance>
+	<VerticalGridDistance>-6</VerticalGridDistance>
+	<PageObject Type="Parametric Curve">
+		<Location top="190" left="207" bottom="523" right="761" />
+		<Hidden>HideIndicator( 'TaxMinSubsidyGraph' )</Hidden>
+		<TabOrder>3</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="830FCB02-C24A-4129-A49F-C4CECA5B454E" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<SwappedAxes>true</SwappedAxes>
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<X-Name>true</X-Name>
+		<StatusLine>true</StatusLine>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<HorizontalLine>
+			<Identifier>0</Identifier>
+		</HorizontalLine>
+		<ExplicitIdentifier>
+			<Identifier>TaxMinusSubsidy( j )</Identifier>
+			<TitleText>"Tax - Subsidy   (as function of Target Level)"</TitleText>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<MarkPoints>true</MarkPoints>
+		<XAxisIdentifier>
+			<Identifier>WasteTargetLevel</Identifier>
+		</XAxisIdentifier>
+		<XRange>
+			<NumGridPoints>10</NumGridPoints>
+		</XRange>
+		<ParametricSetup>
+			<Procedure>SolveTwoLevelModel</Procedure>
+			<Steps>10</Steps>
+			<Start>5000</Start>
+			<Stop>GraphsXUpperBound</Stop>
+		</ParametricSetup>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="523" left="206" bottom="615" right="762" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="1CF41E83-C30C-4CFA-8169-365228DCC036">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="C8E63CDC-FC9A-40D8-B165-34B79A6B2A95">navy blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>GraphToShow</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="SensitivityGraphs">GraphName( g )</ElementText>
+	</PageObject>
+	<PageObject Type="Parametric Curve">
+		<Location top="190" left="207" bottom="523" right="761" />
+		<Hidden>HideIndicator( 'RemovedWasteGraph' )</Hidden>
+		<TabOrder>2</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="830FCB02-C24A-4129-A49F-C4CECA5B454E" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<SwappedAxes>true</SwappedAxes>
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<X-Name>true</X-Name>
+		<StatusLine>true</StatusLine>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<ExplicitIdentifier>
+			<Identifier>WasteRemoved( j )</Identifier>
+			<Unit ShowBrackets="false" />
+			<TitleText>"Removed Waste   (as function of Target Level)"</TitleText>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<MarkPoints>true</MarkPoints>
+		<XAxisIdentifier>
+			<Identifier>WasteTargetLevel</Identifier>
+		</XAxisIdentifier>
+		<XRange>
+			<NumGridPoints>10</NumGridPoints>
+		</XRange>
+		<ParametricSetup>
+			<Procedure>SolveTwoLevelModel</Procedure>
+			<Steps>10</Steps>
+			<Start>5000</Start>
+			<Stop>GraphsXUpperBound</Stop>
+		</ParametricSetup>
+	</PageObject>
+	<PageObject Type="Parametric Curve">
+		<Location top="190" left="207" bottom="523" right="761" />
+		<Hidden>HideIndicator( 'TaxAndSubsidyGraph' )</Hidden>
+		<TabOrder>4</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="830FCB02-C24A-4129-A49F-C4CECA5B454E" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<SwappedAxes>true</SwappedAxes>
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<X-Name>true</X-Name>
+		<StatusLine>true</StatusLine>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Tax_and_Subsidy( i )</Identifier>
+			<NumberFormat StandardFormatIndex="0" />
+			<TitleText>"Tax and Subsidy   (as functions of Target Level)"</TitleText>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<MarkPoints>true</MarkPoints>
+		<VerticalLine>
+			<Identifier>GraphsXUpperBound</Identifier>
+		</VerticalLine>
+		<XAxisIdentifier>
+			<Identifier>WasteTargetLevel</Identifier>
+		</XAxisIdentifier>
+		<XRange>
+			<NumGridPoints>10</NumGridPoints>
+		</XRange>
+		<ParametricSetup>
+			<Procedure>SolveTwoLevelModel</Procedure>
+			<Steps>10</Steps>
+			<Start>5000</Start>
+			<Stop>GraphsXUpperBound</Stop>
+		</ParametricSetup>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="311" left="7" bottom="554" right="191" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Explanations Files\sensitivity.txt"</FileName>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>GraphsXUpperBound</Symbol>
+			<Symbol>TaxMinusSubsidy</Symbol>
+			<Symbol>HideIndicator</Symbol>
+			<Symbol>WasteRemoved</Symbol>
+			<Symbol>WasteTargetLevel</Symbol>
+			<Symbol>SolveTwoLevelModel</Symbol>
+			<Symbol>Tax_and_Subsidy</Symbol>
+			<Symbol>GraphName</Symbol>
+			<Symbol>GraphToShow</Symbol>
+			<Symbol>SensitivityGraphs</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

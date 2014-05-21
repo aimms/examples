@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2012-09-07 00:05:14" NeedsCompiledModel="false">
+	<Location top="22" left="4" bottom="769" right="896" />
+	<PageEditSize Type="Inherited">
+		<Size Width="790" Height="483" />
+	</PageEditSize>
+	<ProjectUUID>14D845C9-CBE3-4423-9E06-75DBBD6A56BF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="57" />
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Navigation Object">
+		<Location top="6" left="6" bottom="54" right="786" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>1</TabOrder>
+		<Font GUID="830FCB02-C24A-4129-A49F-C4CECA5B454E" Name="default" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Display>Text</Display>
+		<NumberVisible>1</NumberVisible>
+		<Spacing>6</Spacing>
+		<NavigationData>
+			<ReferencePage>ThisPage</ReferencePage>
+			<NumberOfAncestors>1</NumberOfAncestors>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="60" left="6" bottom="480" right="786" />
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

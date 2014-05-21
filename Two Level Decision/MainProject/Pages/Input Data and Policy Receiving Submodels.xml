@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2012-09-07 00:05:14">
+	<Location top="29" left="4" bottom="888" right="1274" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>14D845C9-CBE3-4423-9E06-75DBBD6A56BF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="1CF41E83-C30C-4CFA-8169-365228DCC036">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>-6</HorizontalGridDistance>
+	<VerticalGridDistance>-6</VerticalGridDistance>
+	<PageObject Type="Composite Table">
+		<Location top="211" left="424" bottom="321" right="757" />
+		<TabOrder>2</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="Line" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+		<MarkEntireRow>false</MarkEntireRow>
+		<Domain>
+			<Identifier>j</Identifier>
+			<Index Name="j">
+				<NumberFormat Alignment="Right" />
+				<TitleText>"Companies"</TitleText>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>AmountWasteWater( j )</Identifier>
+			<NumberFormat Width="5" Decimals="0" ThousandSeparator="true" Alignment="Right" />
+			<Hidden>0</Hidden>
+			<TitleText>"Amount Waste Water"</TitleText>
+			<ProcedureUponChange>UpdateAllData</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>WasteConcentration( j )</Identifier>
+			<NumberFormat Width="5" Decimals="2" Alignment="Right" />
+			<Hidden>0</Hidden>
+			<TitleText>"Waste Concentration"</TitleText>
+			<ProcedureUponChange>UpdateAllData</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>EfficiencyCoefficient( j )</Identifier>
+			<NumberFormat Width="5" Decimals="2" Alignment="Right" />
+			<TitleText>"Efficiency Coefficient"</TitleText>
+			<ProcedureUponChange>UpdateAllData</ProcedureUponChange>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="211" left="212" bottom="321" right="423" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalWasteWithoutRemoval</Identifier>
+			<NumberFormat Width="6" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total Waste Without Removal"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>WasteTargetLevel</Identifier>
+			<NumberFormat Width="6" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>MonitoringCosts</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="381" left="214" bottom="426" right="412" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TaxRate</Identifier>
+			<NumberFormat Width="8" Decimals="3" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Tax Rate"</Title>
+			<ProcedureUponChange>UpdateAllData</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>SubsidyRate</Identifier>
+			<NumberFormat Width="5" Decimals="2" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Subsidy Rate"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="482" left="214" bottom="596" right="583" />
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="Line" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+		<AutomaticReSort>false</AutomaticReSort>
+		<Domain>
+			<Identifier>j</Identifier>
+			<Index Name="j">
+				<NumberFormat Alignment="Right" />
+				<TitleText>"Companies"</TitleText>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>WasteRemovalRate( j )</Identifier>
+			<NumberFormat Width="6" Decimals="3" Alignment="Right" ShowDefaults="true" />
+			<Hidden>0</Hidden>
+			<TitleText>"Waste Removal Rate"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>WasteRemoved( j )</Identifier>
+			<NumberFormat Width="12" Decimals="3" ThousandSeparator="true" Alignment="Center" ShowDefaults="true" />
+			<Hidden>0</Hidden>
+			<TitleText>"Removed Waste"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>CleaningCost( j )</Identifier>
+			<NumberFormat Width="15" Decimals="3" ThousandSeparator="true" Alignment="Center" ShowDefaults="true" />
+			<Hidden>0</Hidden>
+			<TitleText>"Cleaning Costs"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>TaxMinusSubsidy( j )</Identifier>
+			<NumberFormat Width="15" Decimals="3" ThousandSeparator="true" Alignment="Center" />
+			<Hidden>0</Hidden>
+			<TitleText>"Tax - Subsidy"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>TotalCost( j )</Identifier>
+			<NumberFormat Width="15" Decimals="3" Scientific="IfTooSmallorLarge" ThousandSeparator="true" Alignment="Center" ShowDefaults="true" />
+			<Hidden>0</Hidden>
+			<TitleText>"Total Costs"</TitleText>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="429" left="214" bottom="449" right="413" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Submodels for Given Tax"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveSubmodelsForGivenTax</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="190" left="207" bottom="328" right="762" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</LineColor>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="210" bottom="212" right="763" />
+		<StaticText>Input Data</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="458" left="210" bottom="606" right="590" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="331" left="207" bottom="615" right="762" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</LineColor>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="357" left="210" bottom="452" right="590" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="462" left="214" bottom="484" right="603" />
+		<StaticText>Optimal Removal Levels and Corresponding Costs</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="338" left="208" bottom="356" right="765" />
+		<StaticText>Policy Receiving Submodels</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="362" left="216" bottom="381" right="412" />
+		<StaticText>Specifying a Given Tax Rate</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="FA87FEC2-0D1F-4C53-B54B-062F5B142F02">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="356" left="595" bottom="606" right="753" />
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="Line" Width="1" />
+		<Y_Axis>
+			<Chart_type ID="2001">"Pie"</Chart_type>
+			<Identifier>
+				<Value ID="2007">WasteRemovalRate( j )</Value>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<Chart_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="8">"Background yellow"</Background_color>
+			</Chart_area>
+			<View_3D>
+				<Depth ID="62">40</Depth>
+				<Elevation ID="63">15</Elevation>
+			</View_3D>
+			<Misc_display_settings>
+				<Show_outlines ID="68">1</Show_outlines>
+				<Axis_annotation_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="74">"Legend"</Axis_annotation_font>
+				<Axis_title_font ExtraInfo="107CF1DD-5B8E-41FC-BD55-10C950947E3C" ID="75">"Headers"</Axis_title_font>
+				<Click_label>
+					<Hide_value_label_on_click ID="77">0</Hide_value_label_on_click>
+					<Click_label_decimals ID="79">2</Click_label_decimals>
+				</Click_label>
+			</Misc_display_settings>
+		</Display>
+		<Header_Footer>
+			<Header>
+				<Text ID="23">"Optimal Removal Rate"</Text>
+				<Font ExtraInfo="107CF1DD-5B8E-41FC-BD55-10C950947E3C" ID="22">"Headers"</Font>
+			</Header>
+		</Header_Footer>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="42">"Legend"</Font>
+			<Misc_display_settings>
+				<Anchor ID="41">"South"</Anchor>
+			</Misc_display_settings>
+		</Legend>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="305" left="6" bottom="618" right="192" />
+		<TabOrder>16</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<DisplayTextFile>true</DisplayTextFile>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ExplanationsFiles_submodels</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>j</Symbol>
+			<Symbol>EfficiencyCoefficient</Symbol>
+			<Symbol>SubsidyRate</Symbol>
+			<Symbol>TaxMinusSubsidy</Symbol>
+			<Symbol>UpdateAllData</Symbol>
+			<Symbol>WasteRemoved</Symbol>
+			<Symbol>WasteTargetLevel</Symbol>
+			<Symbol>TaxRate</Symbol>
+			<Symbol>WasteRemovalRate</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>WasteConcentration</Symbol>
+			<Symbol>AmountWasteWater</Symbol>
+			<Symbol>ExplanationsFiles_submodels</Symbol>
+			<Symbol>MonitoringCosts</Symbol>
+			<Symbol>SolveSubmodelsForGivenTax</Symbol>
+			<Symbol>TotalWasteWithoutRemoval</Symbol>
+			<Symbol>CleaningCost</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
