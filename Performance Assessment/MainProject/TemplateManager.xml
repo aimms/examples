@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="56E8E18B-CBFF-439C-B833-104739443573" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|D1B53E1D-9899-4AE3-B514-E66AEF050B24|Size Template">
+		<Template Name="Navigation Template" PageGUID="AFA40960-AC64-454E-8169-0ED64E2DA0AD" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|17B78532-3872-4F91-B836-542341574E7F|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="A105728E-EBBC-49C0-A2E4-DFF7A330661B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|EF7FFBD6-2E31-48DF-94DF-94C0D21FAEAD|Background Info Template">
+				<Page Name="AIMMS 3 Demo - A Performance Assessment Problem" PageGUID="C21FC725-3791-484B-B39E-55B4D69B0D2F" />
+			</Template>
+			<Page Name="Performance Assessment" PageGUID="F730365A-8C58-46D5-9D6F-B1AF63A9C4F5" />
+		</Template>
+	</Template>
+	<Template Name="Tabbed Pages" PageGUID="E6C15A80-3FCD-49C8-9096-A77EC767F39D">
+		<Page Name="Input Data" PageGUID="ACFA813A-0CAC-4233-BDFD-998F9A4E39B1" />
+		<Page Name="Output Data" PageGUID="053F9C86-9B34-4F7A-A1BC-8AFBF7920500" />
+	</Template>
+</TemplateManager>

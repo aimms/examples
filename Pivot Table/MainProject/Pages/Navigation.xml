@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-09-25 16:41:44" NeedsCompiledModel="false">
+	<Location top="29" left="4" bottom="922" right="1024" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="407" />
+	</PageEditSize>
+	<ProjectUUID>5C856D0C-3F7D-4926-9C86-814A186CF8DF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="75">
+			<BottomArea Line="FixedFromBottom" Value="61" />
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Rectangle">
+		<Location top="78" left="6" bottom="342" right="768" />
+		<Hidden>"Yes"</Hidden>
+		<LineStyle>Dotted</LineStyle>
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Navigation Object">
+		<Location top="6" left="0" bottom="72" right="768" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Display>Text</Display>
+		<Spacing>6</Spacing>
+		<BackgroundColor Transparent="true" />
+		<InputColor>
+			<UserColor GUID="8FF23981-A94C-4E84-9FA9-DEEC106E7D2D">white</UserColor>
+		</InputColor>
+		<NavigationData>
+			<ReferencePage>NthParent</ReferencePage>
+			<NthParentNumber>1</NthParentNumber>
+			<NumberOfGenerations>1</NumberOfGenerations>
+			<Horizontally>true</Horizontally>
+		</NavigationData>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

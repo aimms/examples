@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS 3 Demo - A Performance Assessment Problem" PageGUID="32078A59-08FA-40E4-959E-D35E3A68AB08">
-		<Page Name="Performance Assessment" PageGUID="EEB00924-F09B-44E2-81D6-578C0B2248B5">
-			<Page Name="Input Data" PageGUID="896F86B2-41D1-4C32-9483-D6F8F4F5423C" />
-			<Page Name="Output Data" PageGUID="4A1D9B93-8B8E-428B-953B-86B98AF89E99" />
-		</Page>
-	</Page>
-</PageManager>

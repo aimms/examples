@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<UserMenuTree Version="4000" TimeStamp="2009-09-25 16:41:44">
+	<Menu Name="&amp;States" UUID="3CDA1B9D-02EA-4ADE-B225-923DB403B558">
+		<MenuItem Name="&amp;Save State" UUID="2F2BE753-B3CA-44FD-A0E0-B411C2ED5C42">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>PTStateManager::SaveState</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+		<MenuItem Name="&amp;Load State" UUID="BF713069-B165-458B-8CF3-2D89F98B031D">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>PTStateManager::LoadState</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+		<MenuItem Name="&amp;Delete State" UUID="EB868CF2-28A1-49E6-BA88-73E9B2B69B3C">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>PTStateManager::DeleteState</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+	</Menu>
+</UserMenuTree>
