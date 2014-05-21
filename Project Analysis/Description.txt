@@ -5,4 +5,4 @@ An activity-on-node (AON) project network is used to represent the problem. Each
 This example provides a solution to which activities can be crashed in order to meet the project deadline at a minimum cost. A sensitivity analysis is also available to find the best trade off between time and cost.
 
 Keywords:
-Project Planning, Critical Path, Trade Off, Network Objective, 2-D Chart
+Project Planning, Critical Path, Trade Off, Network Objective, 2-D Chart.

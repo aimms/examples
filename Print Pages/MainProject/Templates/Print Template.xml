@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-13 21:09:34" PrintPage="true">
+	<Location top="23" left="138" bottom="674" right="932" />
+	<PageEditSize Type="Inherited">
+		<Size Width="9025" Height="13958" />
+	</PageEditSize>
+	<ProjectUUID>2AD06DEB-C40C-4FCA-96CC-B7090B461F1F</ProjectUUID>
+	<PaperType Standard="A4" />
+	<PrintMargins top="1417" left="1417" bottom="1417" right="1417" />
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="3998">
+			<BottomArea Line="FixedFromBottom" Value="45" />
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Picture">
+		<Location top="23" left="6503" bottom="2543" right="8933" />
+		<FileName LiteralFileName="true">"&lt;prj&gt;:AIMMS - logo.bmp"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="3083" left="5963" bottom="3533" right="9023" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>none</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>DateString</Identifier>
+			<NumberFormat Width="10" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="23" left="23" bottom="3893" right="5963" />
+		<FileName LiteralFileName="true">"&lt;prj&gt;:bitmaps\UsaMap.bmp"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="14063" left="8213" bottom="14603" right="9113" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="2E73D462-FD11-4B3A-A66D-9925755A138A" Name="default" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>none</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CurrentPageNumber</Identifier>
+			<NumberFormat Width="2" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Page"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="14063" left="23" bottom="14513" right="5963" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="2E73D462-FD11-4B3A-A66D-9925755A138A" Name="default" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>none</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>SourceDescription</Identifier>
+			<NumberFormat Width="2" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"Page"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="-787" left="7673" bottom="-67" right="9023" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Print Report"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>PrintReport</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="-787" left="6188" bottom="-67" right="7538" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Print Page"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>PrintActivePage</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="-787" left="4703" bottom="-67" right="6053" />
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Print Setup"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>File-Print Setup</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="-787" left="23" bottom="-67" right="1373" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Page Back"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PrintActivePage</Symbol>
+			<Symbol>SourceDescription</Symbol>
+			<Symbol>CurrentPageNumber</Symbol>
+			<Symbol>PrintReport</Symbol>
+			<Symbol>DateString</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

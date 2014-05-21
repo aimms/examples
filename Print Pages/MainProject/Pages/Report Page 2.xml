@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-13 21:09:34" PrintPage="true">
+	<Location top="23" left="138" bottom="674" right="932" />
+	<PageEditSize Type="Inherited">
+		<Size Width="9025" Height="13958" />
+	</PageEditSize>
+	<ProjectUUID>2AD06DEB-C40C-4FCA-96CC-B7090B461F1F</ProjectUUID>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="3998">
+			<BottomArea Line="FixedFromBottom" Value="45">
+				<TopArea Line="AdjustableFromTop" Value="3570">
+					<TopArea Line="AdjustableFromTop" Value="600" />
+				</TopArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Text">
+		<Location top="4073" left="23" bottom="4523" right="9023" />
+		<StaticText>Size, revenues and temperature</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2E73D462-FD11-4B3A-A66D-9925755A138A" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="4613" left="113" bottom="7493" right="9023" />
+		<TabOrder>3</TabOrder>
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<Font GUID="2E73D462-FD11-4B3A-A66D-9925755A138A" Name="default" />
+		<Border Style="Line" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<Domain>
+			<Identifier>s</Identifier>
+			<Index Name="s" />
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>AbbrName( s )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Size( s )</Identifier>
+			<Unit Display="InTitle" />
+			<NumberFormat Width="15" Decimals="0" ThousandSeparator="true" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Revenue( s )</Identifier>
+			<Unit Display="InTitle" />
+			<NumberFormat Width="15" Decimals="0" ThousandSeparator="true" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Temperature( s, 'January average' )</Identifier>
+			<Unit Display="InTitle" />
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+			<TitleText>"January Average"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Temperature( s, 'July average' )</Identifier>
+			<Unit Display="InTitle" />
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+			<TitleText>"July Average"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Temperature( s, 'Year average' )</Identifier>
+			<Unit Display="InTitle" />
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+			<TitleText>"Year Average"</TitleText>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>s</Symbol>
+			<Symbol>AbbrName</Symbol>
+			<Symbol>Revenue</Symbol>
+			<Symbol>Temperature</Symbol>
+			<Symbol>Size</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

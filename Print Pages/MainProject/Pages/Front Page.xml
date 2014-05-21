@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-13 21:09:34" NeedsCompiledModel="false" PrintPage="true">
+	<Location top="23" left="4" bottom="770" right="1144" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>2AD06DEB-C40C-4FCA-96CC-B7090B461F1F</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Picture">
+		<Location top="1620" left="810" bottom="11070" right="16020" />
+		<PrintingOccurrence>OnlyFirstPage</PrintingOccurrence>
+		<FileName LiteralFileName="true">"&lt;prj&gt;:bitmaps\UsaMap_Large.bmp"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="900" left="3330" bottom="1350" right="12330" />
+		<PrintingOccurrence>OnlyFirstPage</PrintingOccurrence>
+		<StaticText>United States of America</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2E73D462-FD11-4B3A-A66D-9925755A138A" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

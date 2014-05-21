@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS Demo" PageGUID="56FADA9B-E121-49FC-8B61-853CEAEF58C9">
-		<Page Name="Project Data" PageGUID="F6791BA0-5F24-441F-BCD2-45872623633D" />
-		<Page Name="Sensitivity Results" PageGUID="A2949CC7-1F26-4AE4-841D-3572972F2ED3" />
-	</Page>
-</PageManager>
