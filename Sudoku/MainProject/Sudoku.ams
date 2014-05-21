@@ -225,6 +225,9 @@ Model Main_template {
             	if FindString(FormatString("%e", SelectedSolver),"CPLEX") then
             		OptionSetString(FormatString("%e::do_populate", SelectedSolver),"yes");
             	endif;
+            	if FindString(FormatString("%e", SelectedSolver),"BARON") then
+            		OptionSetValue(FormatString("%e::number_of_best_solutions", SelectedSolver),5);
+            	endif;
             	solve Sudoku where solver = SelectedSolver;
             
             	NoOfSolutions := GMP::Solution::Count('Sudoku');

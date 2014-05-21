@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="B44CF371-E234-4779-8ED8-39CE783098DD">
-	<ModelFileName>Sudoku.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>
