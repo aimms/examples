@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="0D363577-4BA6-4E27-AFA9-A84BD64A974B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|BB271E6F-091A-4C0A-9484-855B03F07466|Size Template">
+		<Template Name="Navigation Template" PageGUID="69D8E7CB-A6CB-41E3-8CF2-3A08AC02B90A" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|F7968E48-1403-4FB2-9842-B5F8A8CB2D2D|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="CA3A1C0D-DD33-433A-B86E-F480D9B68565" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|619F3F87-1916-49C1-A627-34A1337BA62C|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="53FC8AA7-7A65-4461-BC71-E7F94EA938A0" />
+			</Template>
+			<Page Name="Input Data" PageGUID="4DD02ACB-AD86-459C-9508-D0B65BDF3B15" />
+			<Page Name="Uncertainty Sets" PageGUID="22F0B108-9FEB-47B2-B830-38FA9B86CBBE" />
+			<Page Name="Robust Optimization Model" PageGUID="44C0061D-C60C-4BBB-A116-874925E0BF86" />
+		</Template>
+	</Template>
+	<Template Name="Tab Template" PageGUID="2B50D6EE-AFA8-493F-AF04-FE02CD4820EF">
+		<Page Name="Non-adjustable Decisions" PageGUID="818963C0-4634-4FB7-BA1D-B2A92B2340D5" />
+		<Page Name="Adjustable Decisions" PageGUID="44734748-749E-4B2A-A1C0-8769579E29DF" />
+		<Page Name="Instantaneous Demand Realizations" PageGUID="884464D8-9FEF-46DF-ABC4-58E1067B4BE0" />
+	</Template>
+</TemplateManager>

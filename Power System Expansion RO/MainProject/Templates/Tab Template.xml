@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-05-11 08:35:53" NeedsCompiledModel="false">
+	<Location top="27" left="8" bottom="864" right="1020" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>69E2AF0F-ED8E-4ABE-8F66-1D09D7A2CB6D</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background>
+		<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+	</Background>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

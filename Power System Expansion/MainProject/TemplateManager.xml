@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="42932F20-5A59-46B4-84F2-0EAC81ECDA22" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|1FEE0FD9-42E8-4E0C-93F1-36C1CCADC90E|Size Template">
+		<Template Name="Navigation Template" PageGUID="D9676133-D3C2-4BB0-979D-53CD2EEA8AFA" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|ACBC9800-C254-4BF4-BBA7-5E3AA6D63E5F|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="764DE3C8-9B10-4AE7-8D57-0FABEE0165C2" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|5F99C3BA-A4B0-44A2-AAC1-2451DE4B865D|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="1D454066-207E-446C-BBD6-27D92AE7A754" />
+			</Template>
+			<Page Name="Input Data" PageGUID="EDA5D7C1-879A-4A42-9BDB-89D62387EE82" />
+			<Page Name="Scenario Analysis and Explicit Stochastic Model" PageGUID="163F9747-3084-424B-9E38-3D62573B8A33" />
+			<Page Name="Stochastic Programming Model (automatic)" PageGUID="B0C51069-AE89-4ADB-ADC4-8966238EE77C" />
+		</Template>
+	</Template>
+</TemplateManager>

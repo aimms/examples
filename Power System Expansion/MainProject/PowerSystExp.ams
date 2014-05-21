@@ -877,10 +877,10 @@ Model Main_PowerSystExp {
         }
     }
     Module Scenario_Generation_Module {
-        SourceFile: "%AIMMSMODULES%\\ScenarioGeneration.aim";
+        SourceFile: "%AIMMSMODULES%\\ScenarioGeneration.ams";
     }
     Module Stochastic_Decomposition_Module {
-        SourceFile: "%AIMMSMODULES%\\StochasticDecomposition.aim";
+        SourceFile: "%AIMMSMODULES%\\StochasticDecomposition.ams";
         Comment: {
             "This module contains an implementation of the Nested Benders algorithm using
             the functions from the GMP library. It can be used to solve linear stochastic

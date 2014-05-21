@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<PageManager>
-	<Page Name="AIMMS Demo" PageGUID="FD0F7306-4E1A-4FF7-A4EF-DDDA535EBDB6">
-		<Page Name="Input Data" PageGUID="4FCC6A5A-7C41-44A5-A20D-7C159865AE98" />
-		<Page Name="Scenario Analysis and Explicit Stochastic Model" PageGUID="5C6A7385-3AF2-4A32-9C95-ECE658691A4B" />
-		<Page Name="Stochastic Programming Model (automatic)" PageGUID="0D726592-E634-4FF0-A4C7-4E8F02874DE1" />
-	</Page>
-</PageManager>
