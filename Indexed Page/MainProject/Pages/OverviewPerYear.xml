@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-07-13 15:17:50">
+<Page Version="4000" TimeStamp="2014-05-21 13:25:44">
 	<Location top="29" left="4" bottom="274" right="242" />
 	<PageEditSize Type="Inherited">
 		<Size Width="239" Height="242" />
@@ -20,7 +20,7 @@
 	<PageObject Type="Text">
 		<Location top="0" left="0" bottom="36" right="234" />
 		<SourceType>StringParameter</SourceType>
-		<StringParameter>CaseName( TheCase )</StringParameter>
+		<StringParameter>CaseShortName( TheCase )</StringParameter>
 		<Alignment>Center</Alignment>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
@@ -29,7 +29,7 @@
 	</PageObject>
 	<PageObject Type="Bar Chart">
 		<Location top="42" left="0" bottom="180" right="234" />
-		<TabOrder>2</TabOrder>
+		<TabOrder>1</TabOrder>
 		<Font GUID="7BC44E43-C856-4C80-83DC-323FD177FF39" Name="default" />
 		<Border Style="Line" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -76,7 +76,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="186" left="90" bottom="216" right="168" />
-		<TabOrder>4</TabOrder>
+		<TabOrder>2</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -95,7 +95,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="210" left="90" bottom="240" right="168" />
-		<TabOrder>5</TabOrder>
+		<TabOrder>3</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -114,14 +114,14 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>AmountCity</Symbol>
-			<Symbol>CaseName</Symbol>
-			<Symbol>product</Symbol>
-			<Symbol>AmountProduced</Symbol>
-			<Symbol>TheCase</Symbol>
-			<Symbol>ThisCity</Symbol>
-			<Symbol>Revenues</Symbol>
 			<Symbol>CurrentCaseSelection</Symbol>
+			<Symbol>ThisCity</Symbol>
+			<Symbol>AmountProduced</Symbol>
+			<Symbol>AmountCity</Symbol>
+			<Symbol>Revenues</Symbol>
+			<Symbol>TheCase</Symbol>
+			<Symbol>product</Symbol>
+			<Symbol>CaseShortName</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

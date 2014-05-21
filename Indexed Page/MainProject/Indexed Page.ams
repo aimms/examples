@@ -89,32 +89,7 @@ Model Main_template {
             endif
         }
     }
-    DeclarationSection Multi_Cases_Declaration {
-        Index c {
-            Range: AllCases;
-        }
-        StringParameter CaseName {
-            IndexDomain: (c);
-        }
-        ElementParameter TheCase {
-            Range: CurrentCaseSelection;
-            Property: NoSave;
-        }
-    }
     Procedure MainInitialization;
-    Procedure DataInitialization {
-        Body: {
-            for (c) do
-                DataFileGetName( c,  CaseName(c) ) ;
-            endfor ;
-            
-            CurrentCaseSelection := First( AllCases ) ;
-            TheCase              := First( AllCases ) ;
-            
-            CaseSetChangedStatus( 0 ) ;
-            CaseLoadCurrent( TheCase, 0 ) ;
-        }
-    }
     Procedure MainExecution {
         Body: {
             ThisCity := first(Cities);
@@ -123,6 +98,66 @@ Model Main_template {
     Procedure MainTermination {
         Body: {
             return 1;
+        }
+    }
+    Section Multiple_Cases_Declaration {
+        ElementParameter TheCase {
+            Range: CurrentCaseSelection;
+            Property: NoSave;
+        }
+        StringParameter CaseShortName {
+            IndexDomain: IndexCases;
+            Definition: {
+                GetCaseBaseName(CaseFileURL(IndexCases), CaseShortName(IndexCases));
+            }
+        }
+        Procedure DataInitialization {
+            Body: {
+                CaseFileURLtoElement("data\\2002 Overview.data", Case1);
+                CaseFileURLtoElement("data\\2003 Overview.data", Case2);
+                CaseFileURLtoElement("data\\2004 Overview.data", Case3);
+                
+                CurrentCaseSelection := Case1;
+                TheCase              := Case1;
+                
+                CaseFileLoad("data\\2002 Overview.data");
+            }
+            ElementParameter Case1 {
+                Range: AllCases;
+            }
+            ElementParameter Case2 {
+                Range: AllCases;
+            }
+            ElementParameter Case3 {
+                Range: AllCases;
+            }
+        }
+        Procedure GetCaseBaseName {
+            Arguments: (path,basename);
+            Body: {
+                fromPos := FindNthString(path,"\\",-1)+1;
+                toPos := FindNthString(path,".data",-1);
+                if (toPos = 0) then
+                	toPos := StringLength(path);
+                else
+                	toPos-=1;
+                endif;
+                
+                basename := SubString(path,fromPos, toPos);
+            }
+            Comment: {
+                "This function determines the \'base\' name of a full path file name.
+                For example, given a case file name  \"c:\\myprojects\\data\\case1.data\" it returns the string \"case1\".
+                This short string is easier to display in a multiple case page object."
+            }
+            StringParameter path {
+                Property: Input;
+            }
+            StringParameter basename {
+                Property: Output;
+            }
+            Parameter fromPos;
+            Parameter toPos;
         }
     }
 }

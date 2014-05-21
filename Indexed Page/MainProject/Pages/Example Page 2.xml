@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-07-13 15:17:50">
-	<Location top="29" left="4" bottom="632" right="1018" />
+<Page Version="4000" TimeStamp="2014-05-21 13:32:59">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -141,6 +141,7 @@
 	</PageObject>
 	<PageObject Type="Rectangle">
 		<Location top="246" left="6" bottom="270" right="192" />
+		<Shape>Rounded-Filled</Shape>
 		<FillColor>
 			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
 		</FillColor>
@@ -153,7 +154,7 @@
 		<StaticText>Description</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -161,7 +162,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -169,20 +170,20 @@
 		<StaticText>Indexed Page</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
 			<Symbol>Cities</Symbol>
-			<Symbol>PCPlace</Symbol>
-			<Symbol>AdressVisible</Symbol>
-			<Symbol>StreetName</Symbol>
-			<Symbol>TheCase</Symbol>
-			<Symbol>Telephone</Symbol>
-			<Symbol>ThisCity</Symbol>
 			<Symbol>CityNames</Symbol>
+			<Symbol>StreetName</Symbol>
+			<Symbol>PCPlace</Symbol>
+			<Symbol>Telephone</Symbol>
 			<Symbol>Fax</Symbol>
+			<Symbol>ThisCity</Symbol>
+			<Symbol>AdressVisible</Symbol>
+			<Symbol>TheCase</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
