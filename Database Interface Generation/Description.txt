@@ -3,6 +3,6 @@ This example shows you how the Model Edit functions can be used to generate a li
 	- _Example Style Library
 	- Database Interface Generation
 	
-The example also offers you the possibility to export the generated interface as a ".aim" file. In that case, you can use this example to generate the database interface(s) for your own model(s).
+The example also offers you the possibility to export the generated interface as a ".ams" file. In that case, you can use this example to generate the database interface(s) for your own model(s).
 	
 Keywords: Database, Datasource, GetDataSourceProperty, SQLNumberOfColumns, SQLNumberOfTables, SQLColumnData, SQLTableName, Mapping, Database Info, Model Edit Functions.

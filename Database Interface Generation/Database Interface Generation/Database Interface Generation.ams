@@ -723,7 +723,7 @@ LibraryModule Database_Interface_Generation {
                 endif;
                 
                 ! Ask the user for the file name and location...
-                if FileSelectNew(OutputFileName, extension : ".aim", title : "Please select the file name for the exported library") then
+                if FileSelectNew(OutputFileName, extension : ".ams", title : "Please select the file name for the exported library") then
                 
                 	! ... and export the library to the specified output file.
                 	me::ExportNode(ElementCast(AllIdentifiers, TheLib), OutputFileName);
