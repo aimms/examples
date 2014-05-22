@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<ExportSettings>
-	<ExcludedFile>Backup</ExcludedFile>
-	<ExcludedFile>Log</ExcludedFile>
-	<ExcludedFile>description.txt.bak</ExcludedFile>
-</ExportSettings>

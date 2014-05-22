@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<ExportSettings>
-	<ExcludedFile>backup</ExcludedFile>
-	<ExcludedFile>log</ExcludedFile>
-	<ExcludedFile>constraintslacks.txt.bak</ExcludedFile>
-	<ExcludedFile>description.txt.bak</ExcludedFile>
-	<ExcludedFile>showplan.out</ExcludedFile>
-</ExportSettings>

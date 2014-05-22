@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<ExportSettings>
-	<ExcludedFile>backup</ExcludedFile>
-	<ExcludedFile>log</ExcludedFile>
-	<ExcludedFile>3D Chart.nch</ExcludedFile>
-</ExportSettings>

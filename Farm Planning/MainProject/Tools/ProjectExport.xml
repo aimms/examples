@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<ExportSettings>
-	<ExcludedFile>backup</ExcludedFile>
-	<ExcludedFile>log</ExcludedFile>
-	<ExcludedFile>FarmPlanning.DeveloperState</ExcludedFile>
-	<ExcludedFile>farmplanning.nch</ExcludedFile>
-</ExportSettings>

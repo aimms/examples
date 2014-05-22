@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<ExportSettings>
-	<ExcludedFile>backup</ExcludedFile>
-	<ExcludedFile>Car_bitmaps</ExcludedFile>
-	<ExcludedFile>log</ExcludedFile>
-	<ExcludedFile>CarSelection.nch</ExcludedFile>
-</ExportSettings>

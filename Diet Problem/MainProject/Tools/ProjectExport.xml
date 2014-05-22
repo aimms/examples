@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<ExportSettings>
-	<ExcludedFile>backup</ExcludedFile>
-	<ExcludedFile>log</ExcludedFile>
-	<ExcludedFile>Description.txt.bak</ExcludedFile>
-	<ExcludedFile>DietProblem.UserState</ExcludedFile>
-</ExportSettings>
