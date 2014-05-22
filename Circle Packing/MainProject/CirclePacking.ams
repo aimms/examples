@@ -27,6 +27,9 @@ Model Main_Circle_Packing {
                 Parameter: SelectedCircle;
                 Definition: ElementRange(1,NoOfCircles);
             }
+            ElementParameter myGMP {
+                Range: AllGeneratedMathematicalPrograms;
+            }
         }
         DeclarationSection Packing_1 {
             Comment: {
@@ -40,8 +43,8 @@ Model Main_Circle_Packing {
                 
                 ========================================================================
                 For 20 circles the best solution (maximized circle radius) obtained by
-                AIMMS/LGO: 0.111382347512. This is identical with MiER result and with
-                the solution posted at www.packomania.com."
+                LGO: 0.111382347512. This is identical with MiER result and with the
+                solution posted at www.packomania.com."
             }
             Parameter Border {
                 Text: "Border of the box in the network object";
@@ -122,7 +125,7 @@ Model Main_Circle_Packing {
                 (C) iJournals.net, 2005.
                 
                 =============================================================================
-                For 20 circles the best known solution obtained by AIMMS/LGO is ~ 0.195224011.
+                For 20 circles the best known solution obtained by LGO is ~ 0.195224011.
                 This is in agreement with the paper and with www.packomania.com.\""
             }
             Variable CoordXCircle2 {
@@ -190,14 +193,8 @@ Model Main_Circle_Packing {
                 Mathematica in Education and Research 10 (2005), 1-18.
                 (C) iJournals.net, 2005.
                 
-                For 20 circles with radii i^(-0.5) i=1,...,20 the best known result
-                cited in this paper is ~ 2.1246798149.
-                
-                ========================================================================
-                Using AIMMS/LGO, the current best solution known is 2.123952003 using
-                the option maximal_number_of_function_evaluations set to 1,000,0000.
-                If the value of this option is increased, an even better solution can
-                be found. All constraints are met at least with 1.e-8 precision.\""
+                For 20 circles with radii i^(-0.5) i=1,...,20 the best known result cited
+                in this paper is ~ 2.1246798149."
             }
             Set SetOfCircles3 {
                 SubsetOf: SetOfCircles;
@@ -209,7 +206,6 @@ Model Main_Circle_Packing {
                 IndexDomain: (i3);
                 Text: "Circle radii";
                 Default: 0.5;
-                InitialData: 0.5;
             }
             Variable CoordXCircle3 {
                 IndexDomain: (i3);
@@ -266,11 +262,16 @@ Model Main_Circle_Packing {
         Procedure SolveCirclePacking1 {
             Body: {
                 ! Best known value: 0.1113823475 (20 circles).
-                option Maximal_number_of_function_evaluations:= -1;
+                
                 ClearSolutions;
+                
                 if PE_CurrentSolver <> '' then
                         ShowProgressWindow;
-                        solve MP_CirclePacking1 where solver := PE_CurrentSolver;
+                
+                        myGMP := GMP::Instance::Generate( MP_CirclePacking1 );
+                        GMP::Instance::SetSolver( myGMP, PE_CurrentSolver );
+                
+                        MulStart::DoMultiStart( myGMP, 100, 50 );
                 else
                         DialogMessage("Please select a solver first.","No Solver Specified");
                 endif;
@@ -279,11 +280,16 @@ Model Main_Circle_Packing {
         Procedure SolveCirclePacking2 {
             Body: {
                 ! Best known value: 0.1952240110 (20 circles).
-                option Maximal_number_of_function_evaluations:= -1 ;
+                
                 ClearSolutions;
+                
                 if PE_CurrentSolver <> '' then
                         showProgressWindow;
-                        solve MP_CirclePacking2 where solver := PE_CurrentSolver;
+                
+                        myGMP := GMP::Instance::Generate( MP_CirclePacking2 );
+                        GMP::Instance::SetSolver( myGMP, PE_CurrentSolver );
+                
+                        MulStart::DoMultiStart( myGMP, 50, 25 );
                 else
                         DialogMessage("Please select a solver first.","No Solver Specified");
                 endif;
@@ -292,11 +298,17 @@ Model Main_Circle_Packing {
         Procedure SolveCirclePacking3 {
             Body: {
                 ! Best known value: 2.123952003 (20 circles).
-                option Maximal_number_of_function_evaluations:= 1000000;
+                
                 ClearSolutions;
+                UpdateCircleRadius;
+                
                 if PE_CurrentSolver <> '' then
                         showProgressWindow;
-                        solve MP_CirclePacking3 where solver := PE_CurrentSolver;
+                
+                        myGMP := GMP::Instance::Generate( MP_CirclePacking3 );
+                        GMP::Instance::SetSolver( myGMP, PE_CurrentSolver );
+                
+                        MulStart::DoMultiStart( myGMP, 100, 50 );
                 else
                         DialogMessage("Please select a solver first.","No Solver Specified");
                 endif;
@@ -428,12 +440,10 @@ Model Main_Circle_Packing {
             
             
             For i_CurrentSolver do
-                    if FindString (i_CurrentSolver, "LGO") then
+                    if FindString (i_CurrentSolver, "CONOPT") then
                             S_SuitableSolvers += {i_CurrentSolver};
                             PE_CurrentSolver := i_CurrentSolver;
                     elseif FindString (i_CurrentSolver, "KNITRO") then
-                            S_SuitableSolvers += {i_CurrentSolver};
-                    elseif FindString (i_CurrentSolver, "CONOPT") then
                             S_SuitableSolvers += {i_CurrentSolver};
                     elseif FindString (i_CurrentSolver, "MINOS") then
                             S_SuitableSolvers += {i_CurrentSolver};
@@ -443,9 +453,7 @@ Model Main_Circle_Packing {
             endfor;
         }
     }
-    Procedure MainExecution {
-        StringParameter ps_loc_projectdirectory;
-    }
+    Procedure MainExecution;
     Procedure MainTermination {
         Body: {
             return 1;
@@ -462,6 +470,45 @@ Model Main_Circle_Packing {
             SolveCirclePacking1;
             SolveCirclePacking2;
             SolveCirclePacking3;
+        }
+    }
+    Module Multi_Start_Module {
+        SourceFile: "%AIMMSMODULES%\\MultiStart.ams";
+        Comment: {
+            "The basic MultiStart algorithm:
+            -------------------------------
+            
+            Input: GMP corresponding to the NLP problem, NumberOfSamplePoints, NumberOfSelectedSamplePoints.
+            
+            0.      Set IterationCount equal to 1.
+            1.      Generate NumberOfSamplePoints sample points from uniform distribution.
+                    Calculate the penalized objective for all sample points and select the best
+                    NumberOfSelectedSamplePoints sample points.
+            2.      Take one of the NumberOfSelectedSamplePoints sample points. If all sample points
+                    are processed then go to step (6).
+            3.      For all clusters, calculate the distance between the sample point and the center
+                    of the cluster. If the distance is smaller than the radius of the cluster (i.e.,
+                    the sample point belongs to the cluster) then go to step (2).
+            4.      Solve NLP by using the sample point as its starting point to obtain a candidate
+                    local solution.
+                    For all clusters, calculate the distance between the candidate local solution and
+                    the local solution belonging to the cluster. If the distance is 0 then the candidate
+                    local solution is the same as the local solution belonging to the cluster; update
+                    the center and radius of the cluster by using the sample point and go to step (2).
+            5.      Construct new cluster by using the mean of the sample point and the candidate local
+                    solution as its center with radius equal to half the distance between these two
+                    points. Assign the candidate local solution as the local solution belonging to the
+                    cluster. Go to step (2).
+            6.      Increment IterationCount. If the number of iterations exceeds the IterationLimit,
+                    then go to step (7). Else go to step (1).
+            7.      Order the local solutions and store the NumberOfBestSolutions solutions in the
+                    solution repository.
+            
+            The algorithm starts in fact by solving the NLP once by using the starting point (i.e.,
+            doing a normal solve). The starting point and the solution obtained are used to create,
+            as in step (5), the first cluster.
+            
+            The algorithm deletes all initial solutions present in the solution repository of the GMP."
         }
     }
 }

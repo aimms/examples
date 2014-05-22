@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Project AimmsVersion="4.0.0.8 unicode x86" ProjectUUID="815943C0-011E-4F24-88E2-47BBE23FE82D">
-	<ModelFileName>CirclePacking.ams</ModelFileName>
-	<AutoSaveAndBackup>
-		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
-	</AutoSaveAndBackup>
-</Project>
