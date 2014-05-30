@@ -9,4 +9,4 @@ external_string_character_encoding WINDOWS-1252
 warning_not_initialized off
 * Environment
 Project_Title "AIMMS Demo - Facility Location Choice"
-Startup_Page "AIMMS 3 Demo - A Facility Location Choice"
+Startup_Page "AIMMS Demo - A Facility Location Choice"

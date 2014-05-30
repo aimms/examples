@@ -8,6 +8,6 @@ external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 Global_error_handler "ShowErrorMessage"
 * Environment
-Project_Title "AIMMS 3 - Model Edit Functions"
+Project_Title "AIMMS - Model Edit Functions"
 Startup_Page "AIMMS Demo"
 Startup_Case "data\Cases\ExcelInput.data"

@@ -9,5 +9,5 @@ external_string_character_encoding WINDOWS-1252
 rounding_compatibility Aimms_3_7
 warning_not_initialized off
 * Environment
-Project_Title "AIMMS 3 - GIS Support"
+Project_Title "AIMMS - GIS Support"
 Startup_Page "AIMMS Demo"

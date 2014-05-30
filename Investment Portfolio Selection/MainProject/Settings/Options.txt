@@ -12,5 +12,5 @@ external_string_character_encoding WINDOWS-1252
 "BARON 7.5".LP_solver 0
 "BARON 7.5".NLP_solver 0
 * Environment
-Project_Title "AIMMS 3 - Investment Portfolio Selection "
+Project_Title "AIMMS - Investment Portfolio Selection "
 Startup_Page "AIMMS Demo"

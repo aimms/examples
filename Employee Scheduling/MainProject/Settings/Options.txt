@@ -10,5 +10,5 @@ memory_statistics off
 rounding_compatibility Aimms_3_7
 seed 123456
 * Environment
-Project_Title "AIMMS 3 - Employee Scheduling Problem"
+Project_Title "AIMMS - Employee Scheduling Problem"
 Startup_Page "AIMMS Demo"

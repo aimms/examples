@@ -12,5 +12,5 @@ seed 1234567
 Slater_condition_check 0
 warning_excluded_uncertain_parameter_referenced_in_uncertainty_constraints off
 * Environment
-Project_Title "AIMMS 3 - Power System Expansion RO"
+Project_Title "AIMMS - Power System Expansion RO"
 Startup_Page "AIMMS Demo"

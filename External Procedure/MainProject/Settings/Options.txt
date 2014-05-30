@@ -7,5 +7,5 @@ default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 * Environment
-Project_Title "AIMMS 3 - External Procedure Project"
+Project_Title "AIMMS - External Procedure Project"
 Startup_Page "AIMMS Demo"

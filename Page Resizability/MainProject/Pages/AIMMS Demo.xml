@@ -5,7 +5,7 @@
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>310D2727-A0A0-4B94-8F0B-A6D7E354D17A</ProjectUUID>
-	<Title>"AIMMS 3 Demo: Page resizability"</Title>
+	<Title>"AIMMS Demo: Page resizability"</Title>
 	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">

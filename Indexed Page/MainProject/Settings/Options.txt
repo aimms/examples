@@ -29,6 +29,6 @@ warning_unknown_option off
 * XA 15
 * NETSOL
 * Environment
-Project_Title "AIMMS 3 - Indexed Page"
+Project_Title "AIMMS - Indexed Page"
 Startup_Procedure "DataInitialization"
 Startup_Page "AIMMS Demo"

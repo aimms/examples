@@ -11,6 +11,6 @@ rounding_compatibility Aimms_3_7
 warning_duplicate_column off
 warning_duplicate_row off
 * Environment
-Project_Title "AIMMS 3 - Distributed Solver Sessions Project"
+Project_Title "AIMMS - Distributed Solver Sessions Project"
 Startup_Procedure "MainInitialization"
 Startup_Page "AIMMS Demo"

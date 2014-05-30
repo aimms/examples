@@ -8,5 +8,5 @@ external_string_character_encoding WINDOWS-1252
 rounding_compatibility Aimms_3_7
 seed 1234567
 * Environment
-Project_Title "AIMMS 3 - Stochastic Programming"
+Project_Title "AIMMS - Stochastic Programming"
 Startup_Page "AIMMS Demo"

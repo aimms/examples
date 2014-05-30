@@ -8,5 +8,5 @@ elapsed_time_is_unitless 1
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 * Environment
-Project_Title "AIMMS 3 - Clock"
+Project_Title "AIMMS - Clock"
 Startup_Page "AIMMS Demo"

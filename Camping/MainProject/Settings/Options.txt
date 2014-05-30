@@ -8,6 +8,6 @@ external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 rounding_compatibility Aimms_3_7
 * Environment
-Project_Title "AIMMS 3 - Camping"
+Project_Title "AIMMS - Camping"
 Startup_Page "AIMMS Demo"
 Startup_Case "data\Cases\StartupSituation.data"

@@ -137,7 +137,7 @@
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<ActionSequence>
 			<Action Type="LinkedPage">
-				<Page PageGUID="F905CE35-CB1E-4F12-B6AF-11F574A0AF2B" Name="AIMMS 3 Demo - Distribution Center Allocation" />
+				<Page PageGUID="F905CE35-CB1E-4F12-B6AF-11F574A0AF2B" Name="AIMMS Demo - Distribution Center Allocation" />
 			</Action>
 		</ActionSequence>
 	</PageObject>

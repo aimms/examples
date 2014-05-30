@@ -7,5 +7,5 @@ default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 * Environment
-Project_Title "AIMMS 3 - Coloring, Visibility and Updatability"
+Project_Title "AIMMS - Coloring, Visibility and Updatability"
 Startup_Page "AIMMS Demo"

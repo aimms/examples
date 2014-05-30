@@ -8,5 +8,5 @@ external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 warning_not_initialized off
 * Environment
-Project_Title "AIMMS 3 - Transport Model"
+Project_Title "AIMMS - Transport Model"
 Startup_Page "AIMMS Demo"

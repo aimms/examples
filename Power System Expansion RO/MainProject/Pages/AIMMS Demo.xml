@@ -5,7 +5,7 @@
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>69E2AF0F-ED8E-4ABE-8F66-1D09D7A2CB6D</ProjectUUID>
-	<Title>"AIMMS 3 Demo: Power System Expansion using Robust Optimization"</Title>
+	<Title>"AIMMS Demo: Power System Expansion using Robust Optimization"</Title>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">

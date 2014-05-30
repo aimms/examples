@@ -12,5 +12,5 @@ intrinsic_procedure_error_handling raise_warning_when_not_checked
 warning_duplicate_column strict_warning_default
 warning_duplicate_row strict_warning_default
 * Environment
-Project_Title "AIMMS 3 - Error Handling"
-Startup_Page "AIMMS 3 Demo - Error Handling"
+Project_Title "AIMMS - Error Handling"
+Startup_Page "AIMMS Demo - Error Handling"

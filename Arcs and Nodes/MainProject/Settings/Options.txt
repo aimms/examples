@@ -9,6 +9,6 @@ external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 warning_index_domain_violation off
 * Environment
-Project_Title "AIMMS 3 - Arcs and Nodes"
+Project_Title "AIMMS - Arcs and Nodes"
 Startup_Page "AIMMS Demo"
 Startup_Case "data\Example Data.data"

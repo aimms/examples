@@ -12,6 +12,6 @@ warning_duplicate_column strict_warning_default
 warning_duplicate_row strict_warning_default
 warning_non_optimal off
 * Environment
-Project_Title "AIMMS 3 - Multistart Algorithm"
+Project_Title "AIMMS - Multistart Algorithm"
 Startup_Page "AIMMS Demo"
 Enhanced_Long_Run_Responsiveness 1

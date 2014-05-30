@@ -10,6 +10,6 @@ external_string_character_encoding WINDOWS-1252
 warning_duplicate_column off
 warning_duplicate_row off
 * Environment
-Project_Title "AIMMS 3 - Farm Planning"
+Project_Title "AIMMS - Farm Planning"
 Startup_Page "A Farm Planning Problem"
 Startup_Case "data\Cases\Input Data.data"

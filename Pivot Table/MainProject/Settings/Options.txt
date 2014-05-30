@@ -30,6 +30,6 @@ warning_unknown_option off
 * XA 15
 * NETSOL
 * Environment
-Project_Title "AIMMS 3 - Pivot Table Project"
+Project_Title "AIMMS - Pivot Table Project"
 Startup_Procedure "PTStateManager::InitializeStateData"
 Startup_Page "AIMMS Demo"

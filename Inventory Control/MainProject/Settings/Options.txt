@@ -9,5 +9,5 @@ external_string_character_encoding WINDOWS-1252
 rounding_compatibility Aimms_3_7
 warning_unit_consistency off
 * Environment
-Project_Title "AIMMS 3 - Inventory Control"
-Startup_Page "Aimms 3 Demo - An Inventory Control Problem"
+Project_Title "AIMMS - Inventory Control"
+Startup_Page "AIMMS Demo - An Inventory Control Problem"

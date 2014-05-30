@@ -10,5 +10,5 @@ external_string_character_encoding WINDOWS-1252
 save_constraint_marginals 0
 save_variable_marginals 0
 * Environment
-Project_Title "AIMMS 3 - File Merge"
-Startup_Page "AIMMS 3 Demo - A File Merge Problem"
+Project_Title "AIMMS - File Merge"
+Startup_Page "AIMMS Demo - A File Merge Problem"

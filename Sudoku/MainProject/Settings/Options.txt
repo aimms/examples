@@ -6,6 +6,6 @@ default_input_character_encoding WINDOWS-1252
 default_output_character_encoding WINDOWS-1252
 external_string_character_encoding WINDOWS-1252
 * Environment
-Project_Title "AIMMS 3 - Sudoku Puzzle"
-Startup_Page "AIMMS 3 Demo - Sudoku"
+Project_Title "AIMMS - Sudoku Puzzle"
+Startup_Page "AIMMS Demo - Sudoku"
 Startup_Case "data\Cases\Kamikaze 429.data"

@@ -8,5 +8,5 @@ external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 Slater_condition_check 0
 * Environment
-Project_Title "AIMMS 3 - Chance Constraints"
+Project_Title "AIMMS - Chance Constraints"
 Startup_Page "AIMMS Demo"

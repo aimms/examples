@@ -22,6 +22,6 @@ warning_non_optimal warning_handle
 * XA 15
 * NETSOL
 * Environment
-Project_Title "AIMMS 3 - Oil Well Drilling"
+Project_Title "AIMMS - Oil Well Drilling"
 Startup_Page "Problem Description"
 Startup_Case "data\Cases\Oil Well Drilling.data"

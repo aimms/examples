@@ -7,5 +7,5 @@ default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 * Environment
-Project_Title "AIMMS 3 - Media Selection"
-Startup_Page "AIMMS 3 Demo - A Media Selection Problem"
+Project_Title "AIMMS - Media Selection"
+Startup_Page "AIMMS Demo - A Media Selection Problem"

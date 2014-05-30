@@ -9,5 +9,5 @@ external_procedure_error_handling raise_warning_when_not_checked
 external_string_character_encoding WINDOWS-1252
 intrinsic_procedure_error_handling raise_warning_when_not_checked
 * Environment
-Project_Title "AIMMS 3 - Distributions & Distribution Operators"
+Project_Title "AIMMS - Distributions & Distribution Operators"
 Startup_Page "AIMMS Demo"

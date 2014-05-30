@@ -8,4 +8,4 @@ external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 * Environment
 Project_Title "AIMMS Demo - Performance Assessment"
-Startup_Page "AIMMS 3 Demo - A Performance Assessment Problem"
+Startup_Page "AIMMS Demo - A Performance Assessment Problem"

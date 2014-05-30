@@ -8,5 +8,5 @@ external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
 rounding_compatibility Aimms_3_7
 * Environment
-Project_Title "AIMMS 3 - Goal Programming"
+Project_Title "AIMMS - Goal Programming"
 Startup_Page "AIMMS Demo"

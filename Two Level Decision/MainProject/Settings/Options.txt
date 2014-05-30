@@ -7,6 +7,6 @@ default_output_character_encoding WINDOWS-1252
 external_string_character_encoding WINDOWS-1252
 warning_not_initialized off
 * Environment
-Project_Title "AIMMS 3 - Two-level Decision Problem"
+Project_Title "AIMMS - Two-level Decision Problem"
 Startup_Page "AIMMS Demo"
 Startup_Case "data\Cases\InitialData.data"

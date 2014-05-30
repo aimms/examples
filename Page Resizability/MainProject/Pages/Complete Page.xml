@@ -161,7 +161,7 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="6" left="648" bottom="48" right="774" />
-		<StaticText>AIMMS 3 Demo</StaticText>
+		<StaticText>AIMMS Demo</StaticText>
 		<Alignment>Center</Alignment>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>

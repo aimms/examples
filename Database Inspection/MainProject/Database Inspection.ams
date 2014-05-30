@@ -846,7 +846,7 @@ Model Main_Database_Inspection {
         }
         File ProblemDescriptionFile {
             Name: "Description.txt";
-            Comment: "This file contains the text displayed on the Problem Description page (AIMMS 3 Demo: Database Inspection).";
+            Comment: "This file contains the text displayed on the Problem Description page (AIMMS Demo: Database Inspection).";
         }
         Set TablesInInformation {
             SubsetOf: TableIDs;
