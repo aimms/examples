@@ -6,12 +6,7 @@ default_input_character_encoding WINDOWS-1252
 default_output_character_encoding WINDOWS-1252
 external_dll_AIMMS_reference ASCII
 external_string_character_encoding WINDOWS-1252
-* AOA
-* CBC 2.7.5
-* CBC 2.8.0
-* IPOPT 3.10.1
-* IPOPT 3.11
-* NETSOL
+rounding_compatibility Aimms_3_7
 * Environment
 Project_Title "AIMMS - AIMMS API Project"
 Startup_Page "AIMMS Demo"
