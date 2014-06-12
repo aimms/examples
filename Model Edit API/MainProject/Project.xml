@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project FileVersion="3140" AimmsVersion="3.14.4.840 unicode x86" ProjectUUID="02720721-A221-4AD9-B8FD-820FA144B309">
+<Project AimmsVersion="4.0.0.606 unicode x86" ProjectUUID="02720721-A221-4AD9-B8FD-820FA144B309">
 	<ModelFileName>Model Edit API.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

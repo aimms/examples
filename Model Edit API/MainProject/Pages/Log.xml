@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:37:44">
+<Page Version="4000" TimeStamp="2013-05-23 13:33:32">
 	<Location top="98" left="92" bottom="656" right="767" />
 	<PageEditSize Type="Inherited">
 		<Size Width="675" Height="557" />
@@ -29,13 +29,13 @@
 		<DisplayTextFile>true</DisplayTextFile>
 		<SeparatorSign>=</SeparatorSign>
 		<ExplicitIdentifier>
-			<Identifier>ModelOutput</Identifier>
+			<Identifier>LogFile</Identifier>
 			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
 		</ExplicitIdentifier>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>ModelOutput</Symbol>
+			<Symbol>LogFile</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

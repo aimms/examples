@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:37:44">
+<Page Version="4000" TimeStamp="2013-05-23 13:33:32">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -79,7 +79,7 @@
 		<Font GUID="91E08492-2879-479D-AD00-B751D91B39C6" Name="default" />
 		<ActionSequence>
 			<Action Type="LinkedPage">
-				<Page ProjectGUID="02720721-A221-4AD9-B8FD-820FA144B309" PageGUID="89AFA7D6-BBF3-4841-A88B-61825E9C9DEF" Name="Demo Page" />
+				<Page ProjectGUID="02720721-A221-4AD9-B8FD-820FA144B309" PageGUID="17C2E672-4B97-4839-BFA5-A23C880C34B4" Name="Demo Page" />
 			</Action>
 		</ActionSequence>
 	</PageObject>

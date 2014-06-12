@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:37:44">
+<Page Version="4000" TimeStamp="2013-05-23 13:33:32">
 	<Location top="98" left="92" bottom="656" right="767" />
 	<PageEditSize Type="Inherited">
 		<Size Width="675" Height="557" />
@@ -18,7 +18,7 @@
 		<Location top="0" left="0" bottom="558" right="678" />
 		<TabOrder>1</TabOrder>
 		<TabStop>false</TabStop>
-		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Font GUID="48252877-49CD-4B87-9E36-A0A3614924D6" Name="Source" />
 		<Border Style="Line" Width="1" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
 		<BackgroundColor RGB="#ffffff" />
 		<TextColor>
@@ -29,13 +29,13 @@
 		<DisplayTextFile>true</DisplayTextFile>
 		<SeparatorSign>=</SeparatorSign>
 		<ExplicitIdentifier>
-			<Identifier>LogFile</Identifier>
+			<Identifier>SourceFile</Identifier>
 			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
 		</ExplicitIdentifier>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>LogFile</Symbol>
+			<Symbol>SourceFile</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:37:44">
+<Page Version="4000" TimeStamp="2013-05-23 13:33:32">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -111,7 +111,7 @@
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<ActionSequence>
 			<Action Type="LinkedPage">
-				<Page PageGUID="405F6357-2207-4FA5-A8F5-A7D8F2D53C89" Name="AIMMS Demo" />
+				<Page PageGUID="ACB453BC-490B-45B1-BEC9-D1DD5A1D2814" Name="AIMMS Demo" />
 			</Action>
 		</ActionSequence>
 	</PageObject>

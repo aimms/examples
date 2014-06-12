@@ -48,7 +48,7 @@ int res = 0;
 
 //Open the project; note that the additional double quotes are needed because of spaces in the project and path.
 int PROJECT_HANDLE = 0;
-res = AimmsProjectOpen( _T( "\"Empty AIMMS Project\\Empty AIMMS Project.prj\"" ), &PROJECT_HANDLE);
+res = AimmsProjectOpen( _T( "\"Empty AIMMS Project\\Empty AIMMS Project.aimms\"" ), &PROJECT_HANDLE);
 CHECK("opening project");
 
 //Start building the model.
@@ -205,7 +205,7 @@ if (AimmsErrorLine(1,1)) {
 CHECK("compiling model");
 
 //Export the Transport Model section, such that we can inspect it if we want to.
-res = AimmsMeExportNode(TM_MEH, _T("TransportModel.aim"), _T("") );
+res = AimmsMeExportNode(TM_MEH, _T("TransportModel.ams"), _T("") );
 CHECK("exporting Transport Model section");
 
 //Run the created procedure.

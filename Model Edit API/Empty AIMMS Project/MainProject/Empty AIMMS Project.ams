@@ -1,0 +1,15 @@
+## ams_version=1.0
+
+Model Empty_AIMMS_Project {
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            if ( CaseSaveAll( confirm:2 ) = 1 ) then
+                return 1;
+            else
+                return 0;
+            endif ;
+        }
+    }
+}

@@ -14,7 +14,7 @@ Model Model_Edit_API {
         Definition: "Empty AIMMS Project\\Data Output.txt";
     }
     StringParameter ModelOutput {
-        Definition: "Empty AIMMS Project//TransportModel.aim";
+        Definition: "Empty AIMMS Project//TransportModel.ams";
     }
     ElementParameter TheLibrary {
         Range: AllSymbols;
@@ -50,8 +50,8 @@ Model Model_Edit_API {
                     TheSection := me::Create("Transport_Model_Section", 'Section', TheLibrary);
             endif;
             
-            ! Import the TransportModel.aim file that has been created using the external program.
-            ok := me::ImportNode(TheSection, "Empty AIMMS Project\\TransportModel.aim");
+            ! Import the TransportModel.ams file that has been created using the external program.
+            ok := me::ImportNode(TheSection, "Empty AIMMS Project\\TransportModel.ams");
             
             if ok then
                     ok := me::Compile(TheSection);
