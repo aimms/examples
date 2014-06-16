@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-16 13:24:09">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>5C3A7624-0856-442F-B98D-95EBDD8D3178</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Curve">
+		<Location top="96" left="54" bottom="390" right="414" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<ExplicitIdentifier>
+			<Identifier>Y( ii )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<MarkPoints>true</MarkPoints>
+		<XAxisIdentifier>
+			<Identifier>X( ii )</Identifier>
+		</XAxisIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="258" left="438" bottom="288" right="588" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfSides</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<HeaderText>"Number Of Sides"</HeaderText>
+			<NumberFormat Width="3" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="360" left="438" bottom="390" right="588" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>PolygonArea</Identifier>
+			<NumberFormat Width="7" Decimals="4" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="300" left="438" bottom="348" right="588" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="54" left="96" bottom="96" right="372" />
+		<StaticText>Polygon Shape</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="D675104D-E12B-4388-8B76-8FF0BF3A6183" Name="1" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="216" left="438" bottom="258" right="588" />
+		<StaticText>Data</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="D675104D-E12B-4388-8B76-8FF0BF3A6183" Name="1" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="48" left="48" bottom="396" right="420" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="210" left="432" bottom="396" right="594" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>X</Symbol>
+			<Symbol>Y</Symbol>
+			<Symbol>ii</Symbol>
+			<Symbol>NumberOfSides</Symbol>
+			<Symbol>PolygonArea</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-16 12:49:24">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>9FAD6893-E6D8-49C4-835C-CF38F7801D8C</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background RGB="#ecf5ff" />
+	<PageObject Type="Network Object">
+		<Location top="126" left="60" bottom="762" right="552" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="433DEA4D-2828-4315-92DA-1422A32C7521" Name="Figure Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<AllowZoom>false</AllowZoom>
+		<TransparentButtons>true</TransparentButtons>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-1</Left>
+			<Right>54.3311897106</Right>
+			<Top>72</Top>
+		</VisibleArea>
+		<Background>
+			<Background_Image_Source ID="101">"From File"</Background_Image_Source>
+			<Image_File_Name ID="200" LiteralFileName="true">"Gamba.jpg"</Image_File_Name>
+			<Left ID="210">-22</Left>
+			<Right ID="211">55</Right>
+			<Top ID="212">165</Top>
+			<Bottom ID="213">-10</Bottom>
+		</Background>
+		<Node>
+			<Identifier>i</Identifier>
+			<XCoordinate>XCoordinate( i )</XCoordinate>
+			<YCoordinate>YCoordinate( i )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>20</MaximumSize>
+			<ScaleFactor>1.5</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>RGB 800000</Color>
+			<Size>PlateformSize( i )</Size>
+			<Shape>Circle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>Distance( i, j )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Color>RGB 008000</Color>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+		<Arc>
+			<Identifier>Flow( i, j )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>6</MaximumSize>
+			<ScaleFactor>0.4</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<Color>RGB ff8000</Color>
+			<Size>Flow( i, j )</Size>
+			<ShapeExtraData>30</ShapeExtraData>
+			<Shape>Curved</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>ArrowHead</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="420" left="588" bottom="462" right="738" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<BackgroundColor RGB="#e2ecfe" />
+		<ForegroundColor RGB="#000000" />
+		<Font GUID="433DEA4D-2828-4315-92DA-1422A32C7521" Name="Figure Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="528" left="576" bottom="708" right="756" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="433DEA4D-2828-4315-92DA-1422A32C7521" Name="Figure Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ddeeff" />
+		<Domain>
+			<Identifier>Flow( i, j )</Identifier>
+			<Index Name="i">
+				<TitleText>"From"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+				<WidthAsPercentage>true</WidthAsPercentage>
+			</Index>
+			<Index Name="j">
+				<TitleText>"To"</TitleText>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>Flow( i, j )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="714" left="576" bottom="744" right="756" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="433DEA4D-2828-4315-92DA-1422A32C7521" Name="Figure Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#cddffc" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalCost</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="180" left="576" bottom="390" right="756" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="433DEA4D-2828-4315-92DA-1422A32C7521" Name="Figure Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#dfefff" />
+		<RowIndentation>-1</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>Production( i )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="138" left="576" bottom="186" right="756" />
+		<StaticText>Input</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="BC3383BE-8F81-4953-B4BE-3DBB2088C14B" Name="Title Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="486" left="576" bottom="528" right="756" />
+		<StaticText>Output</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="BC3383BE-8F81-4953-B4BE-3DBB2088C14B" Name="Title Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="126" left="564" bottom="408" right="768" />
+		<Shape>Rounded-Open</Shape>
+		<FillColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="474" left="564" bottom="756" right="768" />
+		<Shape>Rounded-Open</Shape>
+		<FillColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="60" left="60" bottom="114" right="732" />
+		<StaticText>Oil Pipeline Design</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="8168E4D8-7660-4E7F-8C03-78CF48EF71AA" Name="Main Title Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>Production</Symbol>
+			<Symbol>PlateformSize</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>Distance</Symbol>
+			<Symbol>XCoordinate</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>YCoordinate</Symbol>
+			<Symbol>Flow</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

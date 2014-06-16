@@ -1,0 +1,108 @@
+## ams_version=1.0
+
+Model Main_HangingChain {
+    Comment: {
+        "Hanging chain
+        
+        Problem type:
+        NLP (small)
+        
+        Description:
+        Determination of the shape of a chain (of uniform density) suspended between
+        two points with minimal potential energy.
+        
+        References:
+        Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000."
+    }
+    Parameter NumberOfIntervals {
+        Range: integer;
+        InitialData: 200;
+    }
+    Set Intervals {
+        SubsetOf: Integers;
+        Index: i;
+        Definition: {
+            {0..NumberOfIntervals}
+        }
+    }
+    Parameter Bla {
+        IndexDomain: i;
+        Definition: i/NumberOfIntervals;
+    }
+    Parameter ChainLength {
+        Definition: 4;
+        Comment: "Length of the suspended chain";
+    }
+    Parameter HeightLeft {
+        Definition: 1;
+        Comment: "Height of the chain at t=0 (left)";
+    }
+    Parameter HeightRight {
+        Definition: 3;
+        Comment: "Height of the chain at t=1 (right)";
+    }
+    Parameter IntervalLength {
+        Definition: 1/NumberOfIntervals;
+        Comment: "derivative of x";
+    }
+    Parameter TMin {
+        Definition: {
+            if (HeightRight > HeightLeft) then
+            	0.25
+            else
+            	0.75
+            endif
+        }
+    }
+    Variable ChainHeight {
+        IndexDomain: i;
+        Range: free;
+        Definition: {
+            if (i=0) then
+            	HeightLeft
+            else
+            	ChainHeight(i-1) + 0.5 * IntervalLength * (ChainHeightDerivative(i-1) + ChainHeightDerivative(i))
+            endif
+        }
+        Comment: "Height of the chain";
+    }
+    Variable ChainHeightDerivative {
+        IndexDomain: (i);
+        Range: free;
+        Comment: "Derivative of ChainHeight";
+    }
+    Variable PotentialEnergy {
+        Range: free;
+        Definition: {
+            0.5 * IntervalLength * sum(i | i>0, ChainHeight(i-1) * sqrt(1 + sqr(ChainHeightDerivative(i-1))) +
+            ChainHeight(i) * sqrt(1 + sqr(ChainHeightDerivative(i))))
+        }
+    }
+    Constraint LengthConstraint {
+        Definition: {
+            0.5 * IntervalLength * sum(i | i>0, sqrt(1 + sqr(ChainHeightDerivative(i-1))) +
+            sqrt(1 + sqr(ChainHeightDerivative(i)))) = ChainLength
+        }
+    }
+    Constraint ChainHeightRightConstraint {
+        Definition: ChainHeight(NumberOfIntervals) = HeightRight;
+    }
+    MathematicalProgram LeastPotentialEnergy {
+        Objective: PotentialEnergy;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: NLP;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            solve LeastPotentialEnergy;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

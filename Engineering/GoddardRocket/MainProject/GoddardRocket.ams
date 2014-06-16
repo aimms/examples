@@ -1,0 +1,162 @@
+## ams_version=1.0
+
+Model Main_GoddardRocket {
+    Comment: {
+        "Goddard rocket
+        
+        Problem type:
+        NLP (medium)
+        
+        Description:
+        Maximization of the final altitude of a vertically launched rocket, using the
+        thrust as a control and given the initial mass, the fuel mass, and the drag
+        characteristics of the rocket.
+        
+        References:
+        Dolan, E.D., J.J. More, Benchmarking Optimization Software with COPS, 2000."
+    }
+    DeclarationSection Declaration_Data {
+        Parameter NumberOfIntervals {
+            Definition: 200;
+        }
+        Set Intervals {
+            SubsetOf: Integers;
+            Index: h;
+            Definition: {
+                {0..NumberOfIntervals}
+            }
+        }
+        Parameter InitialHeight {
+            Definition: 1;
+        }
+        Parameter InitialVelocity {
+            Definition: 0;
+        }
+        Parameter InitialMass {
+            Definition: 1;
+        }
+        Parameter SurfaceGravity {
+            Definition: 1;
+        }
+        Parameter ThrustConstant {
+            Definition: 3.5;
+        }
+        Parameter VelocityConstant {
+            Definition: 620;
+        }
+        Parameter HeightConstant {
+            Definition: 500;
+        }
+        Parameter MassConstant {
+            Definition: 0.6;
+        }
+        Parameter DragConstant {
+            Definition: 0.5 * VelocityConstant * (InitialMass / SurfaceGravity);
+        }
+        Parameter FinalMass {
+            Definition: MassConstant * InitialMass;
+        }
+        Parameter C {
+            Definition: 0.5 * (SurfaceGravity * InitialHeight)^2;
+        }
+    }
+    DeclarationSection Declaration_Model {
+        Variable Step {
+            Range: nonnegative;
+        }
+        Variable Velocity {
+            IndexDomain: (h);
+            Range: nonnegative;
+            Definition: {
+                if (h = 0) then
+                	InitialVelocity
+                else
+                	Velocity(h-1) + 0.5 * Step * ((Thrust(h) - Drag(h) - Mass(h) * Gravity(h)) / Mass(h) +
+                	(Thrust(h-1) - Drag(h-1) - Mass(h-1) * Gravity(h-1)) / Mass(h-1))
+                endif
+            }
+        }
+        Variable Height {
+            IndexDomain: (h);
+            Range: (0, inf);
+            Definition: {
+                if (h = 0) then
+                	InitialHeight
+                else
+                	Height(h-1) + 0.5 * Step * (Velocity(h) + Velocity(h-1))
+                endif
+            }
+        }
+        Variable Gravity {
+            IndexDomain: (h);
+            Range: nonnegative;
+            Definition: SurfaceGravity * (InitialHeight / Height(h))^2;
+        }
+        Variable Mass {
+            IndexDomain: (h);
+            Range: (0, inf);
+            Definition: {
+                if (h = 0) then
+                	InitialMass
+                else
+                	Mass(h-1) - 0.5 * Step * (Thrust(h) + Thrust(h-1)) / C
+                endif
+            }
+        }
+        Variable Thrust {
+            IndexDomain: (h);
+            Range: nonnegative;
+        }
+        Variable Drag {
+            IndexDomain: (h);
+            Range: nonnegative;
+            Definition: DragConstant * Velocity(h)^2 * Exp(-HeightConstant * (Height(h) - InitialHeight) / InitialHeight);
+        }
+        Variable FinalAltitude {
+            Range: free;
+            Definition: Height(NumberOfIntervals);
+        }
+        Constraint ThrustUpperBound {
+            IndexDomain: (h);
+            Definition: Thrust(h) <= ThrustConstant * (InitialMass * SurfaceGravity);
+        }
+        Constraint MassUpperBound {
+            IndexDomain: (h);
+            Definition: Mass(h) <= InitialMass;
+        }
+        Constraint MassLowerBound {
+            IndexDomain: h | h <> NumberOfIntervals;
+            Definition: Mass(h) >= FinalMass;
+        }
+        Constraint FinalMassConstraint {
+            Definition: Mass(NumberOfIntervals) = FinalMass;
+        }
+        MathematicalProgram MaxHeight {
+            Objective: FinalAltitude;
+            Direction: maximize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: NLP;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            ! Specify starting solution.
+            Height(h) := 1;
+            Velocity(h | h<>0) := ((h-1) / NumberOfIntervals) * (1 - ((h-1) / NumberOfIntervals));
+            Mass(h | h<>0) := (FinalMass - InitialMass) * ((h-1) / NumberOfIntervals) + InitialMass;
+            Thrust(h) := ThrustConstant * (InitialMass * SurfaceGravity) / 2;
+            Step := 1 / NumberOfIntervals;
+            Drag(h) := DragConstant * (Velocity(h))^2 * Exp(-HeightConstant * (Height(h) - InitialHeight) / InitialHeight);
+            Gravity(h) := SurfaceGravity * (InitialHeight / Height(h))^2;
+            
+            solve MaxHeight;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

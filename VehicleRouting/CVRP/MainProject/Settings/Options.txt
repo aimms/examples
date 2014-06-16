@@ -1,0 +1,3 @@
+﻿* AIMMS
+* Environment
+Startup_Page "Input and Output Data"

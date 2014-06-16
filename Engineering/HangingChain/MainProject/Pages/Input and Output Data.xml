@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-16 13:22:45">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>1BD62E90-B8A8-40A3-AB88-A667DD2E0EA1</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Curve">
+		<Location top="114" left="66" bottom="360" right="294" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<ExplicitIdentifier>
+			<Identifier>ChainHeight( i )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<XAxisIdentifier>
+			<Identifier>Bla( i )</Identifier>
+		</XAxisIdentifier>
+		<XRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>1</Upper>
+			<NumGridPoints>1</NumGridPoints>
+		</XRange>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="114" left="312" bottom="162" right="486" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="288" left="312" bottom="360" right="486" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>HeightLeft</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>HeightRight</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ChainLength</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfIntervals</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="204" left="312" bottom="234" right="486" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>PotentialEnergy</Identifier>
+			<NumberFormat Width="7" Decimals="4" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="312" bottom="306" right="486" />
+		<StaticText>Parameters</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="FF7CD7E8-25CD-442B-B85E-8473EFC1D6E5" Name="1" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="66" left="90" bottom="120" right="264" />
+		<StaticText>Chain Shape</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="FF7CD7E8-25CD-442B-B85E-8473EFC1D6E5" Name="1" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="54" left="60" bottom="366" right="300" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="306" bottom="366" right="492" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Bla</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>ChainLength</Symbol>
+			<Symbol>HeightLeft</Symbol>
+			<Symbol>PotentialEnergy</Symbol>
+			<Symbol>HeightRight</Symbol>
+			<Symbol>NumberOfIntervals</Symbol>
+			<Symbol>ChainHeight</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

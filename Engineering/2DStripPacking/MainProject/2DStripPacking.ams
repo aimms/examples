@@ -1,0 +1,246 @@
+## ams_version=1.0
+
+Model StripPacking {
+    Comment: {
+        "2D Strip Packing
+        
+        Problem type:
+        MIP (medium)
+        
+        Keywords:
+        Search algorithm
+        
+        Description:
+        Strip packing problems are a class of 2-dimensional allocation problems that are open dimensional,
+        meaning that all items need to be packed into a strip of a given width so as to minimize its height.
+        
+        References:
+        Castro, P.M., I.E. Grossmann, Hybrid Spatial Representation Models for Strip Packing Problems,
+        Computers and Operations Research, submitted for publication July 2011.
+        
+        Instances:
+        http://minlp.org/library/problem/mod/index.php?lib=MINLP&i=171&pi=131"
+    }
+    Set Items {
+        Index: i;
+        InitialData: data { I1 .. I50 };
+    }
+    Set StripWidth {
+        Index: w;
+        InitialData: data { X1 .. X300 };
+    }
+    Set StripHeight {
+        Index: h;
+        InitialData: data { Y1 .. Y300 };
+    }
+    Set ActiveItems {
+        SubsetOf: Items;
+        Text: "Active items";
+        Index: ai;
+        Definition: {
+            { i | Width(i) >  0 }
+        }
+    }
+    Set ActiveWidthPoints {
+        SubsetOf: StripWidth;
+        Index: aw;
+        Definition: {
+            { w | ord(w) <= StripW }
+        }
+    }
+    Set ActiveHeigthPoints {
+        SubsetOf: StripHeight;
+        Index: ah;
+        Definition: {
+            { h | ord(h) <= StripH }
+        }
+    }
+    Parameter PossibleOriginPoints {
+        IndexDomain: (i,w,h);
+        Range: binary;
+    }
+    Parameter StripW {
+        Text: "Strip width";
+    }
+    Parameter StripH {
+        Text: "Strip height";
+    }
+    Parameter Width {
+        IndexDomain: i;
+        Text: "Width of item i";
+    }
+    Parameter Height {
+        IndexDomain: i;
+        Text: "Heigth of item i";
+    }
+    Variable Origin {
+        IndexDomain: (i,w,h) | PossibleOriginPoints(i,w,h);
+        Text: "Origin of item i is placed on grid element with coordinates w and h";
+        Range: binary;
+    }
+    Variable ExcessResource {
+        IndexDomain: (w,h) | ActiveWidthPoints(w) and ActiveHeigthPoints(h);
+        Text: "Excess resource of point with coordinates w and h";
+        Range: nonnegative;
+    }
+    Variable Obj {
+        Text: {
+            "Objective function; place items as close as possible to the grid origin"
+        }
+        Definition: SUM( (i,w,h) | PossibleOriginPoints(i,w,h), Origin(i,w,h)*(ord(w)+ord(h)-2) );
+    }
+    Constraint ExcessResourceBalance {
+        IndexDomain: (aw,ah);
+        Text: "Excess resource balance for point with coordinates aw and ah";
+        Definition: {
+            SUM( (i,w,h) | PossibleOriginPoints(i,w,h) and (ord(w) >= ord(aw)-Width(i) +1 and ord(w) <= ord(aw) and
+                                                            ord(h) >= ord(ah)-Height(i)+1 and ord(h) <= ord(ah)), Origin(i,w,h) )
+            =
+            1 - ExcessResource(aw,ah)
+        }
+    }
+    Constraint ItemOnGrid {
+        IndexDomain: ai;
+        Text: "Every item needs to be placed on the grid";
+        Definition: Sum( (w,h) | (PossibleOriginPoints(ai,w,h)), Origin(ai,w,h) ) = 1;
+    }
+    MathematicalProgram LeastObj {
+        Objective: Obj;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: MIP;
+    }
+    Parameter ContinueLoop {
+        Text: "Auxiliary parameter";
+        InitialData: 0;
+    }
+    DeclarationSection Declaration_Instances {
+        Set Instances {
+            Index: p;
+            Definition: {
+                { 'P1', 'P2', 'P3', 'P4', 'P5' }
+            }
+            Comment: {
+                "The instances from http://minlp.org/library/problem/mod/index.php?lib=MINLP&i=171&pi=131 .
+                Instance P5 is very hard."
+            }
+        }
+        ElementParameter CurrentInstance {
+            Range: Instances;
+            InitialData: 'P4';
+        }
+        Parameter InstanceWidth {
+            IndexDomain: (p,i);
+            Text: "Width of item i for instance p";
+            Definition: {
+                data
+                { ( P1, I1  ) :  2,  ( P1, I2  ) :  2,  ( P1, I3  ) :  2,  ( P1, I4  ) :  2,  ( P1, I5  ) :  2,  ( P1, I6  ) :  5,
+                  ( P1, I7  ) :  5,  ( P1, I8  ) :  1,  ( P1, I9  ) :  1,  ( P1, I10 ) : 10,  ( P1, I11 ) :  4,  ( P1, I12 ) :  2,
+                  ( P1, I13 ) :  2,  ( P1, I14 ) :  7,  ( P1, I15 ) :  7,  ( P1, I16 ) :  7,  ( P1, I17 ) :  2,  ( P1, I18 ) :  2,
+                  ( P1, I19 ) :  2,  ( P1, I20 ) :  1,  ( P1, I21 ) :  1,  ( P2, I1  ) :  9,  ( P2, I2  ) :  2,  ( P2, I3  ) :  2,
+                  ( P2, I4  ) :  2,  ( P2, I5  ) :  4,  ( P2, I6  ) :  8,  ( P2, I7  ) :  8,  ( P2, I8  ) :  8,  ( P2, I9  ) :  1,
+                  ( P2, I10 ) :  4,  ( P2, I11 ) :  4,  ( P2, I12 ) :  4,  ( P2, I13 ) :  3,  ( P2, I14 ) :  2,  ( P2, I15 ) :  5,
+                  ( P3, I1  ) :  9,  ( P3, I2  ) :  9,  ( P3, I3  ) :  9,  ( P3, I4  ) :  3,  ( P3, I5  ) :  3,  ( P3, I6  ) :  2,
+                  ( P3, I7  ) :  1,  ( P3, I8  ) :  1,  ( P4, I1  ) :  3,  ( P4, I2  ) :  6,  ( P4, I3  ) :  6,  ( P4, I4  ) :  6,
+                  ( P4, I5  ) :  1,  ( P4, I6  ) :  1,  ( P4, I7  ) :  7,  ( P4, I8  ) :  7,  ( P4, I9  ) :  5,  ( P4, I10 ) :  5,
+                  ( P4, I11 ) :  5,  ( P4, I12 ) :  4,  ( P4, I13 ) :  3,  ( P5, I1  ) :  6,  ( P5, I2  ) :  1,  ( P5, I3  ) :  1,
+                  ( P5, I4  ) :  1,  ( P5, I5  ) : 28,  ( P5, I6  ) : 28,  ( P5, I7  ) : 28,  ( P5, I8  ) : 23,  ( P5, I9  ) : 23,
+                  ( P5, I10 ) : 23,  ( P5, I11 ) :  1,  ( P5, I12 ) :  1,  ( P5, I13 ) :  1,  ( P5, I14 ) : 26,  ( P5, I15 ) : 26,
+                  ( P5, I16 ) : 30,  ( P5, I17 ) : 30,  ( P5, I18 ) : 11,  ( P5, I19 ) : 11,  ( P5, I20 ) : 11,  ( P5, I21 ) : 30,
+                  ( P5, I22 ) : 13 }
+            }
+        }
+        Parameter InstanceHeight {
+            IndexDomain: (p,i);
+            Text: "Heigth of item i for instance p";
+            Definition: {
+                data
+                { ( P1, I1  ) :  3,  ( P1, I2  ) :  3,  ( P1, I3  ) :  7,  ( P1, I4  ) :  7,  ( P1, I5  ) :  7,  ( P1, I6  ) :  4,
+                  ( P1, I7  ) :  4,  ( P1, I8  ) :  4,  ( P1, I9  ) :  4,  ( P1, I10 ) :  1,  ( P1, I11 ) :  8,  ( P1, I12 ) :  4,
+                  ( P1, I13 ) :  4,  ( P1, I14 ) :  3,  ( P1, I15 ) :  3,  ( P1, I16 ) :  3,  ( P1, I17 ) :  6,  ( P1, I18 ) :  6,
+                  ( P1, I19 ) :  6,  ( P1, I20 ) :  9,  ( P1, I21 ) :  9,  ( P2, I1  ) :  2,  ( P2, I2  ) : 10,  ( P2, I3  ) : 10,
+                  ( P2, I4  ) : 10,  ( P2, I5  ) :  2,  ( P2, I6  ) :  2,  ( P2, I7  ) :  2,  ( P2, I8  ) :  3,  ( P2, I9  ) :  4,
+                  ( P2, I10 ) :  6,  ( P2, I11 ) :  6,  ( P2, I12 ) :  6,  ( P2, I13 ) : 10,  ( P2, I14 ) : 11,  ( P2, I15 ) :  4,
+                  ( P3, I1  ) :  1,  ( P3, I2  ) :  1,  ( P3, I3  ) :  1,  ( P3, I4  ) : 16,  ( P3, I5  ) : 18,  ( P3, I6  ) : 20,
+                  ( P3, I7  ) :  3,  ( P3, I8  ) :  3,  ( P4, I1  ) : 15,  ( P4, I2  ) :  6,  ( P4, I3  ) :  6,  ( P4, I4  ) :  6,
+                  ( P4, I5  ) : 13,  ( P4, I6  ) : 13,  ( P4, I7  ) :  8,  ( P4, I8  ) :  8,  ( P4, I9  ) : 18,  ( P4, I10 ) : 18,
+                  ( P4, I11 ) : 18,  ( P4, I12 ) : 12,  ( P4, I13 ) :  8,  ( P5, I1  ) : 16,  ( P5, I2  ) : 24,  ( P5, I3  ) : 24,
+                  ( P5, I4  ) : 24,  ( P5, I5  ) :  6,  ( P5, I6  ) :  6,  ( P5, I7  ) :  6,  ( P5, I8  ) :  8,  ( P5, I9  ) :  8,
+                  ( P5, I10 ) :  8,  ( P5, I11 ) :  5,  ( P5, I12 ) :  5,  ( P5, I13 ) :  5,  ( P5, I14 ) :  6,  ( P5, I15 ) :  6,
+                  ( P5, I16 ) :  2,  ( P5, I17 ) :  2,  ( P5, I18 ) :  9,  ( P5, I19 ) :  9,  ( P5, I20 ) :  9,  ( P5, I21 ) :  4,
+                  ( P5, I22 ) : 16 }
+            }
+        }
+        Parameter InstanceStripW {
+            IndexDomain: (p);
+            Text: "Strip width for instance p";
+            Definition: data { P1 : 10,  P2 : 10,  P3 : 20,  P4 : 20,  P5 : 35 };
+        }
+        Parameter InitialStripH;
+    }
+    Procedure MainInitialization {
+        Body: {
+            CurrentInstance := 'P4';
+            
+            StripW := InstanceStripW(CurrentInstance);
+            
+            Width(i)  := InstanceWidth (CurrentInstance,i);
+            Height(i) := InstanceHeight(CurrentInstance,i);
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            ! The initial estimate on the strip height.
+            StripH := Max( Ceil(Round(Sum(i | ActiveItems(i), Width(i)*Height(i)/StripW),3)), Max(i | ActiveItems(i), Height(i)) );
+            InitialStripH := StripH;
+            
+            UpdatePossibleOriginPoints;
+            
+            ContinueLoop := 1;
+            While ( ContinueLoop ) do
+                Solve LeastObj;
+            
+                if ( LeastObj.ProgramStatus <> 'Optimal' ) then
+                	StripH := StripH + 1;
+            
+                	UpdatePossibleOriginPoints;
+                else
+                	ContinueLoop := 0;
+                endif;
+            endwhile;
+            
+            display StripH;
+        }
+        Comment: {
+            "The objective of this program is to pack items in a 2-dimensional strip with a given width thereby
+            minimizing its height.
+            
+            The strip width StripW is fixed. The search algorithm iterates over the strip height StripH until the
+            first feasible solution is found. The initial estimate on the strip height is given by the continuous
+            lower bound. In each iteration StripH is fixed and a MIP problem is solved. Whenever this problem is
+            feasible, the optimal strip height has been found (and then equals to value to which StripH was fixed
+            for that solve).
+            
+            We are only interested in finding a feasible solution for the math program LeastObj (or proving that
+            it is infeasible). Any objective can be chosen but an objective function with a low degree of degeneracy
+            is preferable. The option for the \'relative optimality tolerance\' is set to 50%."
+        }
+    }
+    Procedure UpdatePossibleOriginPoints {
+        Body: {
+            empty PossibleOriginPoints;
+            
+            for (ai,aw,ah) do
+                if ( ( ord(aw)+Width(ai) <= StripW+1 ) and ( ord(ah)+Height(ai) <= StripH+1 ) ) then
+                    PossibleOriginPoints(ai,aw,ah) := 1;
+                endif;
+            endfor;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

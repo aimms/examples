@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-16 13:27:39">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>701F5768-F4ED-4FC7-92D2-4F9D3625EE30</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Curve">
+		<Location top="282" left="72" bottom="504" right="294" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<YRange Automatic="false">
+			<Lower>3</Lower>
+			<Upper>5</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>Rho( h )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="282" left="306" bottom="504" right="528" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<ExplicitIdentifier>
+			<Identifier>Theta( h )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="282" left="540" bottom="504" right="762" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<YRange Automatic="false">
+			<Lower>0.4</Lower>
+			<Upper>0.9</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>Phi( h )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="234" left="606" bottom="264" right="762" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FinalTime</Identifier>
+			<NumberFormat Width="7" Decimals="4" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Final time"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="174" left="606" bottom="222" right="762" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>LengthOfArm</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<HeaderText>"Length of arm"</HeaderText>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfIntervals</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<HeaderText>"Number of intervals"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="114" left="606" bottom="162" right="762" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Rho</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>h</Symbol>
+			<Symbol>Theta</Symbol>
+			<Symbol>FinalTime</Symbol>
+			<Symbol>Phi</Symbol>
+			<Symbol>LengthOfArm</Symbol>
+			<Symbol>NumberOfIntervals</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

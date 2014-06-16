@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-16 13:29:02">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>8FCBA44F-729B-425A-8BFB-6330A2A3A840</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Curve">
+		<Location top="156" left="480" bottom="192" right="828" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="Line" />
+		<BackgroundColor Transparent="true" />
+		<ColorScheme Number="0" />
+		<YRange Automatic="false">
+			<Lower>VALUE := -0.1 * DepthOfCorrugation</Lower>
+			<Upper>VALUE := DepthOfCorrugation * 1.1;</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>Y( p )</Identifier>
+			<Color>9E91AFF7-0C42-4624-9450-66E75C74B1AB grey</Color>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<LineWidth>3</LineWidth>
+		<XAxisIdentifier>
+			<Identifier>X( p )</Identifier>
+		</XAxisIdentifier>
+		<XRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>VALUE := WidthOfPanel</Upper>
+		</XRange>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="318" left="558" bottom="378" right="756" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>DepthOfCorrugation</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>LengthOfWeb</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>WidthOfFlange</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="1" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="276" left="546" bottom="306" right="762" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfCorrugations</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="300" left="906" bottom="354" right="1116" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<BackgroundColor>
+			<UserColor GUID="4C29CF98-3E51-4BAA-8563-90FCE3E3DF3B">default background</UserColor>
+		</BackgroundColor>
+		<ForegroundColor RGB="#000000" />
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="144" left="912" bottom="234" right="1110" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>CorrosionAllowance</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="2" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>DetNorskeVeritas</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="2" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>FlangeEffectiveness</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="5" Decimals="2" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>HeightAbovePanel</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>WidthOfPanel</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="390" left="522" bottom="474" right="786" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>LengthOfPanel( s )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PlateThickness( s )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="6" Decimals="3" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="258" left="72" bottom="276" right="336" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="108" bottom="258" right="108" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="120" bottom="258" right="120" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="150" bottom="258" right="150" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="162" bottom="258" right="162" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="78" bottom="258" right="78" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="192" bottom="258" right="192" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="204" bottom="258" right="204" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="240" bottom="258" right="240" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="252" bottom="258" right="252" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="288" bottom="258" right="288" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="300" bottom="258" right="300" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="330" bottom="258" right="330" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="108" bottom="420" right="108" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="120" bottom="420" right="120" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="150" bottom="420" right="150" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="162" bottom="420" right="162" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="78" bottom="420" right="78" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="192" bottom="420" right="192" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="204" bottom="420" right="204" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="240" bottom="420" right="240" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="252" bottom="420" right="252" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="288" bottom="420" right="288" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="300" bottom="420" right="300" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="276" left="330" bottom="420" right="330" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="108" bottom="534" right="108" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="120" bottom="534" right="120" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="150" bottom="534" right="150" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="162" bottom="534" right="162" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="78" bottom="534" right="78" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="192" bottom="534" right="192" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="204" bottom="534" right="204" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="240" bottom="534" right="240" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="252" bottom="534" right="252" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="288" bottom="534" right="288" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="300" bottom="534" right="300" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="438" left="330" bottom="534" right="330" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="420" left="72" bottom="438" right="336" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="144" left="330" bottom="144" right="78" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="102" left="72" bottom="126" right="354" />
+		<StaticText>Vertical Corrugated Transverse Bulkhead</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="0192E3DF-C524-4C10-8E63-DC19834204B7" Name="Legend Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="168" left="354" bottom="204" right="456" />
+		<StaticText>top</StaticText>
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="336" left="354" bottom="372" right="456" />
+		<StaticText>middle</StaticText>
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="486" left="354" bottom="522" right="456" />
+		<StaticText>bottom</StaticText>
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="102" left="498" bottom="150" right="792" />
+		<StaticText>Corrugations Shape</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="0192E3DF-C524-4C10-8E63-DC19834204B7" Name="Legend Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="240" left="510" bottom="288" right="804" />
+		<StaticText>Features</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="0192E3DF-C524-4C10-8E63-DC19834204B7" Name="Legend Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="90" left="60" bottom="546" right="408" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="90" left="462" bottom="204" right="840" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="222" left="462" bottom="546" right="840" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="534" left="330" bottom="534" right="78" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="90" left="888" bottom="252" right="1128" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</LineColor>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="102" left="858" bottom="150" right="1152" />
+		<StaticText>Parameters</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="0192E3DF-C524-4C10-8E63-DC19834204B7" Name="Legend Font" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="486" left="546" bottom="516" right="762" />
+		<TabOrder>58</TabOrder>
+		<Font GUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" Name="Description Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>WeightOfStructure</Identifier>
+			<NumberFormat Width="5" Decimals="2" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>DepthOfCorrugation</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>LengthOfWeb</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>s</Symbol>
+			<Symbol>X</Symbol>
+			<Symbol>Y</Symbol>
+			<Symbol>HeightAbovePanel</Symbol>
+			<Symbol>WidthOfPanel</Symbol>
+			<Symbol>DetNorskeVeritas</Symbol>
+			<Symbol>NumberOfCorrugations</Symbol>
+			<Symbol>PlateThickness</Symbol>
+			<Symbol>FlangeEffectiveness</Symbol>
+			<Symbol>WidthOfFlange</Symbol>
+			<Symbol>WeightOfStructure</Symbol>
+			<Symbol>LengthOfPanel</Symbol>
+			<Symbol>CorrosionAllowance</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

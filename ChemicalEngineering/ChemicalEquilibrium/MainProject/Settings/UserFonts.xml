@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Title" FaceName="Arial" PointSize="160" Bold="true" UUID="F5D84AE3-C116-4FA8-B63D-2FFA2E57BCA0" InternalID="1" />
+	<UserFont Name="Button" FaceName="Arial" PointSize="120" Italic="true" UUID="01D92614-965B-4C21-9866-714CAD9B05E6" InternalID="2" />
+	<UserFont Name="Equation" FaceName="Arial" PointSize="140" UUID="9C8265C2-A805-469B-8A95-D380915C33B6" InternalID="3" />
+</UserFonts>
