@@ -113,103 +113,180 @@ xcmsGAtype='gaq'; AddToInitArray(xcmsGoogleAnalytics);
 
 <!--start GitHub examples-->
 
-<p><strong>GitHub</strong> stores a collection of AIMMS examples. Each example contains the following two files:</p>
+<p>The <strong>aimms/examples</strong> repository at github stores a collection of AIMMS examples. 
+Each example is stored in a separate folder containing:</p>
 
 <ul>
-<li>An .aim file which is a text file containing the AIMMS model;</li>
-<li>An AIMMSpack file which contains all project files.</li>
-</ul><p>The AIMMSpack file can only be opened in AIMMS 3.14 (or higher). For most examples the .aim file is sufficient; you can
-create a new AIMMS project (might be AIMMS 3.13 or older) and load the .aim file.</p>
+<li>An about.txt or description.txt file that briefly describes the model or functionality illustrated in the example</li>
+<li>An .aimms file which listing the main project and all library folders included in the example</li>
+<li>An .ams file containing the model source describing the AIMMS model
+</ul>
 
-<p>The examples are listed below. If you click on an example then the .aim file will be shown. The AIMMSpack file will be downloaded if you click on its 'Ap' link.
-For each example, keywords are given which might help you finding a suitable example for your needs.</p>
+<p>
+The examples projects can only be opened in AIMMS 4.0 (or higher) through the .aimms file. To get an overview of the 
+underlying optimization model you can also directly view the .ams model source file.</p>
 
+<p>All examples can also be downloaded in one <a href="https://github.com/aimms/examples/zipball/master">ZIP file</a>
+or as a <a href="https://github.com/aimms/examples/tarball/master">TAR ball</a>. Obviously, you can also just clone the entire <a href="https://github.com/aimms/examples/">aimms/examples</a> repository.</p>
+
+<p>The examples are listed below. If you click on an example then the .ams file will be shown. The 'description' link will provide a more detailed description about the example.</p>
+
+<ul>
+<li>Application Examples</li>
+<ul>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Car%20Selection/MainProject/CarSelection.ams">Car Selection</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Car%20Selection/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Circle%20Packing/MainProject/CirclePacking.ams">Circle Packing</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Circle%20Packing/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Contract%20Allocation/MainProject/ContractAllocation.ams">Contract Allocation</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Contract%20Allocation/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Data%20Reconciliation/MainProject/Data%20Reconciliation.ams">Data Reconciliation</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Data%20Reconciliation/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Distribution%20Center%20Allocation/MainProject/Distribution%20Center%20Allocation.ams">Distribution Center Allocation</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Distribution%20Center%20Allocation/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Economic%20Exchange%20Equilibrium/MainProject/Economic%20Exchange%20Equilibrium.ams">Economic Exchange Equilibrium</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Economic%20Exchange%20Equilibrium/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Employee%20Scheduling/MainProject/Scheduling%20Problem.ams">Scheduling Problem</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Employee%20Scheduling/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Flow%20Shop/MainProject/Flowshop.ams">Flow Shop</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Flow%20Shop/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Gate%20Assignment/MainProject/Gate%20Assignment.ams">Gate Assignment</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Gate%20Assignment/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Knapsack%20Problem/MainProject/Knapsack.ams">Knapsack</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Knapsack%20Problem/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Life%20Cycle%20Consumption/MainProject/Life%20Cycle%20Consumption%20Model.ams">Life Cycle Consumption Model</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Life%20Cycle%20Consumption/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Project%20Analysis/MainProject/Project%20Analysis.ams">Project Analysis</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Project%20Analysis/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Railway%20Stock/MainProject/Railway%20Stock.ams">Railway Stock</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Railway%20Stock/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Sudoku/MainProject/Sudoku.ams">Sudoku</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Sudoku/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Traffic%20Equilibrium/MainProject/Traffic%20Equilibrium.ams">Traffic Equilibrium</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Traffic%20Equilibrium/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Transport%20Model/MainProject/transport.ams">Transport</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Transport%20Model/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Traveling%20Salesman/MainProject/traveling.ams">Traveling Salesman</a> (<a href="https://raw.github.com/aimms/examples/master/Application%20Examples/Traveling%20Salesman/Description.txt">description</a>)</li>
+</ul>
+
+<li>Functional Examples</li>
+<ul>
+
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/3D%20Chart/MainProject/3D%20Chart.ams">3D Chart</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/3D%20Chart/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/AIMMS%20API/MainProject/APITest.ams">APITest</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/AIMMS%20API/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Arcs%20and%20Nodes/MainProject/Arcs%20and%20Nodes.ams">Arcs and Nodes</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Arcs%20and%20Nodes/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Calendar/MainProject/Calendar.ams">Calendar</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Calendar/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Camping/MainProject/Camping.ams">Camping</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Camping/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Chance%20Constraints/MainProject/Chance%20Constraints.ams">Chance Constraints</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Chance%20Constraints/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Clock/MainProject/Clock.ams">Clock</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Clock/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Coloring/MainProject/Coloring.ams">Coloring</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Coloring/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Create%20CSV%20File/MainProject/CSVExport.ams">CSV Export</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Create%20CSV%20File/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Database%20Inspection/MainProject/Database%20Inspection.ams">Database Inspection</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Database%20Inspection/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Database%20Interface%20Generation/MainProject/Database%20Interface%20Generation.ams">Database Interface Generation</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Database%20Interface%20Generation/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/DataFeed/MainProject/DataFeed.ams">Data Feed</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/DataFeed/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Date%20Aggregation/MainProject/Aggregation%20Example.ams">Aggregation Example</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Date%20Aggregation/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Distributed%20Solver%20Sessions/MainProject/ParallelSessions.ams">Parallel Sessions</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Distributed%20Solver%20Sessions/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Distributions/MainProject/Distributions.ams">Distributions</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Distributions/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/E-mail%20and%20Sound%20Support/MainProject/Mail%20and%20Sound.ams">Mail and Sound</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/E-mail%20and%20Sound%20Support/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Error%20Handling/MainProject/Error%20Handling.ams">Error Handling</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Error%20Handling/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Excel%20Link/MainProject/ExcelLink.ams">Excel Link</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Excel%20Link/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Experiment/MainProject/Experiment.ams">Experiment</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Experiment/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/External%20Procedure/MainProject/DLLExample.ams">DLL Example</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/External%20Procedure/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Gantt%20Chart/MainProject/Gantt%20Chart.ams">Gantt Chart</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Gantt%20Chart/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/GIS%20Support/MainProject/GIS.ams">GIS</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/GIS%20Support/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Goal%20Programming/MainProject/GoalProgramming.ams">Goal Programming</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Goal%20Programming/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Horizon/MainProject/Horizon.ams">Horizon</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Horizon/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Indexed%20Page/MainProject/Indexed%20Page.ams">Indexed Page</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Indexed%20Page/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Interrupt%20AIMMS%20Externally/MainProject/Interrupt%20AIMMS%20Project.ams">Interrupt AIMMS Project</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Interrupt%20AIMMS%20Externally/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Linked%20Objects/MainProject/Linked%20Objects.ams">Linked Objects</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Linked%20Objects/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Model%20Edit%20API/MainProject/Model%20Edit%20API.ams">Model Edit API</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Model%20Edit%20API/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Model%20Edit%20Functions/MainProject/Model%20Edit%20Functions.ams">Model Edit Functions</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Model%20Edit%20Functions/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/MPS%20Functions/MainProject/MPS%20File%20Functions.ams">MPS File Functions</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/MPS%20Functions/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Multi%20Start/MainProject/Multi%20Start.ams">Multi Start</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Multi%20Start/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Nested%20Solve/MainProject/Nested%20Solve.ams">Nested Solve</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Nested%20Solve/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Page%20Resizability/MainProject/Page%20Resizability.ams">Page Resizability</a> (<a href="
+https://raw.github.com/aimms/examples/master/Functional%20Examples/Page%20Resizability/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Oil%20Well%20Drilling/MainProject/Oil%20Well%20Drilling.ams">Oil Well Drilling</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Oil%20Well%20Drilling/Description.txt">description</a></li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Pivot%20Table/MainProject/Pivot%20Table.ams">Pivot Table</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Pivot%20Table/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Power%20System%20Expansion%20RO/MainProject/Power%20System%20Expansion%20RO.ams">Power System Expansion RO</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Power%20System%20Expansion%20RO/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Print%20Pages/MainProject/Print%20Pages.ams">Print Pages</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Print%20Pages/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/ReindeerPairing/MainProject/ReindeerPairing.ams">Reindeer Pairing</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/ReindeerPairing/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Rolling%20Horizon/MainProject/RollingHorizon.ams">Rolling Horizon</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Rolling%20Horizon/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Stochastic%20Programming/MainProject/SPprod.ams">Stochastic Programming</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Stochastic%20Programming/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Tea%20Consumption/MainProject/Tea.ams">Tea</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Tea%20Consumption/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Templates%20and%20Navigation/MainProject/Templates%20and%20Navigation.ams">Templates and Navigation</a> (<a href="https://raw.github.com/aimms/examples/master/Functional%20Examples/Templates%20and%20Navigation/Description.txt">description</a>)</li>
+</ul>
+
+<li>Modeling Book Examples</li>
+<ul>
+
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Bandwidth%20Allocation/MainProject/Bandwidth%20Allocation.ams">Bandwidth Allocation</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Bandwidth%20Allocation/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Cutting%20Stock/MainProject/Cutting%20Stock.ams">Cutting Stock</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Cutting%20Stock/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Diet%20Problem/MainProject/dietproblem.ams">Diet Problem</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Diet%20Problem/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Employee%20Training/MainProject/Employee%20Training%20Problem.ams">Employee Training Problem</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Employee%20Training/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Facility%20Location%20Choice/MainProject/facility%20location.ams">Facility Location</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Facility%20Location%20Choice/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Farm%20Planning/MainProject/farmplanning.ams">Farm Planning</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Farm%20Planning/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/File%20Merge/MainProject/filemerge.ams">File Merge</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/File%20Merge/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Inventory%20Control/MainProject/Inventory%20Control.ams">Inventory Control</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Inventory%20Control/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Investment%20Portfolio%20Selection/MainProject/Portfolio%20Selection.ams">Portfolio Selection</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Investment%20Portfolio%20Selection/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Media%20Selection/MainProject/Media%20Selection%20Problem.ams">Media Selection Problem</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Media%20Selection/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Performance%20Assessment/MainProject/Performance%20Assessment.ams">Performance Assessment</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Performance%20Assessment/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Power%20System%20Expansion/MainProject/PowerSystExp.ams">Power System Expansion</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Power%20System%20Expansion/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Refinery%20Pooling%20Planning/MainProject/Pooling.ams">Pooling</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Refinery%20Pooling%20Planning/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Telecommunication%20Network%20Design/MainProject/Telecom.ams">Telecom</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Telecommunication%20Network%20Design/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Two%20Level%20Decision/MainProject/TwoLevel.ams">Two Level Decision</a> (<a href="https://raw.github.com/aimms/examples/master/Modeling%20Book/Two%20Level%20Decision/Description.txt">description</a>)</li>
+</ul>
+
+<li>Practical Examples</li>
 <ul>
 
 <li>Chemical Engineering</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/ChemicalEngineering/BlendingProblem/BlendingProblem.aim">Blending Problem</a>
-   (<a href="https://raw.github.com/aimms/examples/master/ChemicalEngineering/BlendingProblem/BlendingProblem.aimmspack">Ap</a>): LP (small)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/ChemicalEngineering/ChemicalEquilibrium/ChemicalEquilibrium.aim">Chemical Equilibrium</a>
-   (<a href="https://raw.github.com/aimms/examples/master/ChemicalEngineering/ChemicalEquilibrium/ChemicalEquilibrium.aimmspack">Ap</a>): NLP (small)</li>
+
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ChemicalEngineering/BlendingProblem/MainProject/BlendingProblem.ams">Blending Problem</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ChemicalEngineering/BlendingProblem/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ChemicalEngineering/ChemicalEquilibrium/MainProject/ChemicalEquilibrium.ams">Chemical Equilibrium</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ChemicalEngineering/ChemicalEquilibrium/Description.txt">description</a>)</li>
 </ul>
 
 <li>Energy</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Energy/OilPipelineDesign/OilPipelineDesign.aim">Oil Pipeline Design</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Energy/OilPipelineDesign/OilPipelineDesign.aimmspack">Ap</a>): MIP (medium), network object</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Energy/WaterDistribution/WaterDistribution.aim">Water Distribution</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Energy/WaterDistribution/WaterDistribution.aimmspack">Ap</a>): MINLP (small), Branch-and-Bound, generic algorithm, GMP</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Energy/OilPipelineDesign/MainProject/OilPipelineDesign.ams">Oil Pipeline Design</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Energy/OilPipelineDesign/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Energy/WaterDistribution/MainProject/WaterDistribution.ams">Water Distribution</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Energy/WaterDistribution/Description.txt">description</a>)</li>
 </ul>
 
 <li>Engineering</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Engineering/2DStripPacking/2DStripPacking.aim">2D Strip Packing</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Engineering/2DStripPacking/2DStripPacking.aimmspack">Ap</a>): MIP (medium), search algorithm</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Engineering/GoddardRocket/GoddardRocket.aim">Goddard Rocket</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Engineering/GoddardRocket/GoddardRocket.aimmspack">Ap</a>): NLP (medium)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Engineering/HangingChain/HangingChain.aim">Hanging Chain</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Engineering/HangingChain/HangingChain.aimmspack">Ap</a>): NLP (small)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Engineering/LargestSmallPolygon/LargestSmallPolygon.aim">Largest Small Polygon</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Engineering/LargestSmallPolygon/LargestSmallPolygon.aimmspack">Ap</a>): NLP (small)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Engineering/RobotArm/RobotArm.aim">Robot Arm</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Engineering/RobotArm/RobotArm.aimmspack">Ap</a>): NLP (medium)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Engineering/StructuralOptimization/StructuralOptimization.aim">Structural Optimization</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Engineering/StructuralOptimization/StructuralOptimization.aimmspack">Ap</a>): NLP (small)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/2DStripPacking/MainProject/2DStripPacking.ams">2D Strip Packing</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/2DStripPacking/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/GoddardRocket/MainProject/GoddardRocket.ams">Goddard Rocket</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/GoddardRocket/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/HangingChain/MainProject/HangingChain.ams">Hanging Chain</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/HangingChain/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/LargestSmallPolygon/MainProject/LargestSmallPolygon.ams">Largest Small Polygon</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/LargestSmallPolygon/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/RobotArm/MainProject/RobotArm.ams">Robot Arm</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/RobotArm/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/StructuralOptimization/MainProject/StructuralOptimization.ams">Structural Optimization</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/StructuralOptimization/Description.txt">description</a>)</li>
 </ul>
 
 <li>Lot Sizing</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/LotSizing/MultiLevelBucket/MultiLevelBucket.aim">Multi Level Bucket</a>
-   (<a href="https://raw.github.com/aimms/examples/master/LotSizing/MultiLevelBucket/MultiLevelBucket.aimmspack">Ap</a>): MIP (medium)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/LotSizing/SingleLevelBigBucket/SingleLevelBigBucket.aim">Single Level Big Bucket</a>
-   (<a href="https://raw.github.com/aimms/examples/master/LotSizing/SingleLevelBigBucket/SingleLevelBigBucket.aimmspack">Ap</a>): MIP (small)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/LotSizing/SingleLevelSmallBucket/SingleLevelSmallBucket.aim">Single Level Small Bucket</a>
-   (<a href="https://raw.github.com/aimms/examples/master/LotSizing/SingleLevelSmallBucket/SingleLevelSmallBucket.aimmspack">Ap</a>): MIP (hard)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/LotSizing/SingleLevelSmallBucketTwoItems/SingleLevelSmallBucketTwoItems.aim">Single Level Small Bucket Two Items</a>
-   (<a href="https://raw.github.com/aimms/examples/master/LotSizing/SingleLevelSmallBucketTwoItems/SingleLevelSmallBucketTwoItems.aimmspack">Ap</a>): MIP (small)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/MultiLevelBucket/MainProject/MultiLevelBucket.ams">Multi Level Bucket</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/MultiLevelBucket/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelBigBucket/MainProject/SingleLevelBigBucket.ams">Single Level Big Bucket</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelBigBucket/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelSmallBucket/MainProject/SingleLevelSmallBucket.ams">Single Level Small Bucket</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelSmallBucket/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelSmallBucketTwoItems/MainProject/SingleLevelSmallBucketTwoItems.ams">Single Level Small Bucket Two Items</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelSmallBucketTwoItems/Description.txt">description</a>)</li>
 </ul>
 
 <li>Management Science</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/ManagementScience/AircraftLanding/AircraftLanding.aim">Aircraft Landing</a>
-   (<a href="https://raw.github.com/aimms/examples/master/ManagementScience/AircraftLanding/AircraftLanding.aimmspack">Ap</a>): MIP (small)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ManagementScience/AircraftAssignement/MainProject/AircraftAssignement.ams">Aircraft Assignement</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ManagementScience/AircraftAssignement/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ManagementScience/AircraftLanding/MainProject/AircraftLanding.ams">Aircraft Landing</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ManagementScience/AircraftLanding/Description.txt">description</a>)</li>
 </ul>
 
 <li>Multiple Solutions</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/MultipleSolutions/Dice/Dice.aim">Dice</a>
-   (<a href="https://raw.github.com/aimms/examples/master/MultipleSolutions/Dice/Dice.aimmspack">Ap</a>): MIP (small), multiple solutions, incumbent callback, solution pool, GMP</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/MultipleSolutions/Dice/MainProject/dice.ams">Dice</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/MultipleSolutions/Dice/Description.txt">description</a>)</li>
 </ul>
 
 <li>Telecommunications</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Telecommunications/DelayConstrainedRouting/DelayConstrainedRouting.aim">Delay Constrained Routing</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Telecommunications/DelayConstrainedRouting/DelayConstrainedRouting.aimmspack">Ap</a>): Convex MINLP (small), Outer Approximation, GMP-AOA, lazy constraints callback</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Telecommunications/FilterDesign/FilterDesign.aim">Filter Design</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Telecommunications/FilterDesign/FilterDesign.aimmspack">Ap</a>): SOCP (small)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Telecommunications/NetworkDesign/NetworkDesign.aim">Network Design</a>
-   (<a href="https://raw.github.com/aimms/examples/master/Telecommunications/NetworkDesign/NetworkDesign.aimmspack">Ap</a>): MIP (hard), Benders Decomposition, GMP, XML</li>
+
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/DelayConstrainedRouting/MainProject/DelayConstrainedRouting.ams">Delay Constrained Routing</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/DelayConstrainedRouting/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/FilterDesign/MainProject/FilterDesign.ams">Filter Design</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/FilterDesign/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/NetworkDesign/MainProject/NetworkDesign.ams">Network Design</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/NetworkDesign/Description.txt">description</a>)</li>
 </ul>
 
 <li>Vehicle Routing</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/VehicleRouting/CVRP/CVRP.aim">CVRP</a>
-   (<a href="https://raw.github.com/aimms/examples/master/VehicleRouting/CVRP/CVRP.aimmspack">Ap</a>): MIP (medium), incumbent callback, network object</li>
-<li><a href="https://raw.github.com/aimms/examples/master/VehicleRouting/VRPTW/VRPTW.aim">VRPTW</a>
-   (<a href="https://raw.github.com/aimms/examples/master/VehicleRouting/VRPTW/VRPTW.aimmspack">Ap</a>): MIP (medium), incumbent callback, network object</li>
+
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/VehicleRouting/CVRP/MainProject/CVRP.ams">Vehicle Routing CVRP</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/VehicleRouting/CVRP/Description.txt">description</a>)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/VehicleRouting/VRPTW/MainProject/VRPTW.ams">Vehicle Routing VRPTW</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/VehicleRouting/VRPTW/Description.txt">description</a>)</li>
 </ul>
 
 <li>Warehouse Location</li>
 <ul>
-<li><a href="https://raw.github.com/aimms/examples/master/WarehouseLocation/CapacitatedWarehouseLocation/CapacitatedWarehouseLocation.aim">Capacitated Warehouse Location</a>
-   (<a href="https://raw.github.com/aimms/examples/master/WarehouseLocation/CapacitatedWarehouseLocation/CapacitatedWarehouseLocation.aimmspack">Ap</a>): MIP (small)</li>
+<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/WarehouseLocation/CapacitatedWarehouseLocation/MainProject/CapacitatedWarehouseLocation.ams">Capacitated Warehouse Location</a> (<a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/WarehouseLocation/CapacitatedWarehouseLocation/Description.txt">description</a>)</li>
 </ul>
 
 </ul>
-
-<p>All examples can also be downloaded in one <a href="https://github.com/aimms/examples/zipball/master">ZIP file</a>
-or as a <a href="https://github.com/aimms/examples/tarball/master">TAR ball</a>.</p>
 
 <!--end GitHub examples-->
 
