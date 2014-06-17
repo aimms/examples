@@ -16,11 +16,16 @@ If you have any questions about AIMMS in general or about how to get the most ou
 them here.
 
 
-This repository contains several AIMMS examples. Each example contains three files:
+This repository contains several types of AIMMS examples:
+* Examples from the AIMMS Modeling Book
+* Functional examples demonstrating particular AIMMS features
+* Application examples
+* Examples taken from literature, including references to the articles on which each example is based
 
-* An About.txt file that briefly describes the model;
-* An .aim file which is a text file containing the AIMMS model;
-* An AIMMSpack file which contains all project file.
+Each example is stored in a separate folder containing:
+* An about.txt or description.txt file that briefly describes the model or functionality illustrated in the example
+* An .aimms file which listing the main project and all library folders included in the example
+* An .ams file containing the model source describing the AIMMS model
 
-The AIMMSpack file can only be opened in AIMMS 3.14 (or higher). For most examples the .aim file is sufficient; you can
-create a new AIMMS project (might be AIMMS 3.13 or older) and then load the .aim file.
+The examples projects can only be opened in AIMMS 4.0 (or higher) through the .aimms file. To get an overview of the 
+underlying optimization model you can also directly view the .ams model source file.
