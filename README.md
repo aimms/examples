@@ -19,8 +19,8 @@ them here.
 This repository contains several types of AIMMS examples:
 * Examples from the AIMMS Modeling Book
 * Functional examples demonstrating particular AIMMS features
-* Application examples
-* Examples taken from literature, including references to the articles on which each example is based
+* AIMMS-style application examples including an end-user UI
+* Practical examples, including references to the articles on which each example is based
 
 Each example is stored in a separate folder containing:
 * An about.txt or description.txt file that briefly describes the model or functionality illustrated in the example
