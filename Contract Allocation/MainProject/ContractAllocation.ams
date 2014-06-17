@@ -1,0 +1,162 @@
+## ams_version=1.0
+
+Model Main_template {
+    Set Producers {
+        Text: "The set of all producers";
+        Index: p, p1;
+    }
+    Set Contracts {
+        Text: "The set of all contracts";
+        Index: c, c1;
+    }
+    Parameter AvailableCapacity {
+        IndexDomain: (p);
+        Text: "Available capacity for producer p";
+    }
+    Parameter ProductionCost {
+        IndexDomain: (p,c);
+        Text: "Unit cost for delivery by producer p for contract c";
+    }
+    Parameter MinimalDelivery {
+        IndexDomain: (p);
+        Text: "Minimal delivery size for producer p";
+    }
+    Parameter ContractSize {
+        IndexDomain: (c);
+        Text: "Size of contract c";
+    }
+    Parameter MinimalNumberofContributors {
+        IndexDomain: (c);
+        Text: "Minimal number of producers that delivery to a contract";
+        Range: integer;
+    }
+    Variable TotalCost {
+        Text: "Total cost of all deliveries";
+        Definition: sum( (p,c), ProductionCost(p,c)*Generation(p,c));
+    }
+    Variable Generation {
+        IndexDomain: (p,c);
+        Text: "Amount of commodity delivered by producers p for contract c";
+        Range: [MinimalDelivery(p), 10000);
+        Property: SemiContinuous;
+    }
+    Variable GenerationIncidence {
+        IndexDomain: (p,c);
+        Text: "Producers p produce for contract c";
+        Range: binary;
+    }
+    Constraint Capacity {
+        IndexDomain: (p);
+        Text: "Production capacity for producer p";
+        Definition: sum( c, Generation(p,c)) <= AvailableCapacity(p);
+    }
+    Constraint ContractFullfillment {
+        IndexDomain: (c);
+        Text: "The demand for contract c is met";
+        Definition: sum ( p, Generation(p,c)) >= ContractSize(c);
+    }
+    Constraint ContractContribution {
+        IndexDomain: (c);
+        Text: "Mimimal number of contributors to contract c";
+        Definition: sum( p, GenerationIncidence(p,c)) >= MinimalNumberofContributors(c);
+    }
+    Constraint GenerationIncidenceDetermination {
+        IndexDomain: (p,c);
+        Text: "Determine if producer p delivers to contract c";
+        Definition: Generation(p,c) >= MinimalDelivery(p)*GenerationIncidence(p,c);
+    }
+    MathematicalProgram ContractAllocation {
+        Objective: TotalCost;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: MIP;
+    }
+    DeclarationSection InterfaceDeclaration {
+        ElementParameter ActualProducer {
+            Text: "Element parameter used to link Gantt chart with message";
+            Range: Producers;
+        }
+        ElementParameter ActualContract {
+            Text: "Element parameter used to link Gantt chart with message";
+            Range: Contracts;
+        }
+        ElementParameter GenerationColor {
+            IndexDomain: (p,c);
+            Text: "Display message in color, based on the amount of generation in relation to the bounds";
+            Range: AllColors;
+            Definition: {
+                if sum( c1, Generation(p,c1) ) = AvailableCapacity(p) and  Generation(p,c) = MinimalDelivery(p) then
+                	    'red'
+                elseif  sum( c1, Generation(p,c1) ) = AvailableCapacity(p) then
+                	    'magenta'
+                elseif  Generation(p,c) = MinimalDelivery(p) then
+                	    'blue'
+                else
+                	    'Black'
+                endif;
+            }
+        }
+        ElementParameter SelectionColorContract {
+            IndexDomain: (c);
+            Text: "Color of selected contract in the interface";
+            Range: AllColors;
+            Definition: {
+                if c = ActualContract then
+                	'Blue'
+                else
+                	'Black'
+                endif
+            }
+        }
+        ElementParameter SelectionColorProducer {
+            IndexDomain: (p);
+            Text: "Color of selected producer in the interface";
+            Range: AllColors;
+            Definition: {
+                if p = ActualProducer then
+                	'blue'
+                else
+                	'Black'
+                endif
+            }
+        }
+        StringParameter MessageString {
+            Text: "A message describing the production of a certain producer for a certain contract";
+            Definition: {
+                FormatString("Total delivery by producer %e for contract %e is %n",
+                ActualProducer, ActualContract, Generation(ActualProducer, ActualContract) )
+            }
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            read from file "<prj>:NothWesternStates.txt";
+            ActualContract := first(c);
+            ActualProducer := first(p);
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+                solve ContractAllocation;
+            
+            else
+            
+                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the output data is read from a case");
+                CaseFind("Solution", ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

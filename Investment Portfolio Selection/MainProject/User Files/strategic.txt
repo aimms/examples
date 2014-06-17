@@ -1,0 +1,5 @@
+The allocation of the total budget over the three investment categories will be expressed in terms of budget fractions. These fractions need to be determined, and form the set of decision variables. Each budget fraction is associated with a particular investment category, and is defined as the amount invested in this category divided by the total budget.
+
+The objective of the strategical model is to minimize the portfolio risk. Covariance information between the different investment categories will be used to measure the amount of portfolio risk. The resulting strategical model will become a convex quadratic program that can be easily solved to global optimality.
+
+Each of the three investment categories has a known level of expected return. These levels, together with the budget fractions, determine the level of expected return for the entire portfolio. The investor will demand a minimal level of expected return for the entire portfolio. This requirement forms the main constraint in the portfolio model. A parametric analysis is carried out with respect to the optimal risk as a function of the desired expected return.

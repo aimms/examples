@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-05-20 13:20:27">
+	<Location bottom="947" right="1666" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>317D0481-9A1E-4F12-BEFD-D90D65FB47E0</ProjectUUID>
+	<Title>"AIMMS Demo: Nested Solve Example"</Title>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<TopArea Line="FixedFromTop" Value="77" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<Action>
+		<EntryProcedure>MainInitialization</EntryProcedure>
+	</Action>
+	<HorizontalGridDistance>1</HorizontalGridDistance>
+	<VerticalGridDistance>1</VerticalGridDistance>
+	<PageObject Type="Scalar">
+		<Location top="190" left="206" bottom="615" right="762" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="136AA63A-1A4B-4C2B-808C-DCF98C589045">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<DisplayTextFile>true</DisplayTextFile>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ProblemDescription</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainInitialization</Symbol>
+			<Symbol>ProblemDescription</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

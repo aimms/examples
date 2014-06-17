@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DockingPaneLayouts CompactMode="1">
+	<DeveloperLayout>
+		<Summary Panes="28" TopContainer="19" Client="24"/>
+		<Pane-1 Type="0" DockingCX="250" DockingCY="250" Title="Model Explorer\nModel\n" ID="12" IconID="12" DockingHolder="22" LastHolder="22"/>
+		<Pane-2 Type="0" DockingCX="250" DockingCY="250" Title="Model Explorer\nModel\n" ID="112" IconID="12" DockingHolder="25" LastHolder="25"/>
+		<Pane-3 Type="0" DockingCX="250" DockingCY="250" Title="Identifier Selector\nIdentifiers\n" ID="13" IconID="13" DockingHolder="22" LastHolder="22"/>
+		<Pane-4 Type="0" DockingCX="250" DockingCY="250" Title="Identifier Selector\nIdentifiers\n" ID="113" IconID="13" DockingHolder="25" LastHolder="25"/>
+		<Pane-5 Type="0" DockingCX="250" DockingCY="250" Title="Page Manager\nPages\n" ID="14" IconID="14" DockingHolder="22" LastHolder="22"/>
+		<Pane-6 Type="0" DockingCX="250" DockingCY="250" Title="Page Manager\nPages\n" ID="114" IconID="14" DockingHolder="25" LastHolder="25"/>
+		<Pane-7 Type="0" DockingCX="250" DockingCY="250" Title="Template Manager\nTemplates\n" ID="15" IconID="15" DockingHolder="22" LastHolder="22"/>
+		<Pane-8 Type="0" DockingCX="250" DockingCY="250" Title="Template Manager\nTemplates\n" ID="115" IconID="15" DockingHolder="25" LastHolder="25"/>
+		<Pane-9 Type="0" DockingCX="250" DockingCY="250" Title="Menu Builder\nMenus\n" ID="16" IconID="16" DockingHolder="22" LastHolder="22"/>
+		<Pane-10 Type="0" DockingCX="250" DockingCY="250" Title="Menu Builder\nMenus\n" ID="116" IconID="16" DockingHolder="25" LastHolder="25"/>
+		<Pane-11 Type="0" DockingCX="250" DockingCY="250" Title="Data Manager\nData\n" ID="17" IconID="17" DockingHolder="22" LastHolder="22"/>
+		<Pane-12 Type="0" DockingCX="250" DockingCY="250" Title="Data Manager\nData\n" ID="117" IconID="17" DockingHolder="25" LastHolder="25"/>
+		<Pane-13 Type="0" DockingCX="250" DockingCY="250" Title="Data Management Setup\nData Setup\n" ID="18" IconID="18" DockingHolder="22" LastHolder="22"/>
+		<Pane-14 Type="0" DockingCX="250" DockingCY="250" Title="Data Management Setup\nData Setup\n" ID="118" IconID="18" DockingHolder="25" LastHolder="25"/>
+		<Pane-15 Type="0" DockingCX="250" DockingCY="250" Title="Project Window\nProject\n" ID="11" IconID="11" DockingHolder="22" LastHolder="22"/>
+		<Pane-16 Type="0" DockingCX="250" DockingCY="250" Title="Messages\nMessages\n" ID="20" IconID="20" DockingHolder="26" LastHolder="26"/>
+		<Pane-17 Type="0" DockingCX="250" DockingCY="250" Title="Errors/Warnings\nErrors/Warnings\n" ID="21" IconID="21" DockingHolder="27" LastHolder="27"/>
+		<Pane-18 Type="0" DockingCX="250" DockingCY="250" Title="Progress\nProgress\n" ID="19" IconID="19" DockingHolder="23" LastHolder="23"/>
+		<Pane-19 Type="2" Panes="3" Pane-1="20" Pane-2="26" Pane-3="27"/>
+		<Pane-20 Type="2" Horiz="1" Panes="3" Pane-1="21" Pane-2="24" Pane-3="25"/>
+		<Pane-21 Type="2" DockingCX="250" DockingCY="250" Panes="2" Pane-1="22" Pane-2="23"/>
+		<Pane-22 Type="1" DockingCX="250" DockingCY="250" Panes="0"/>
+		<Pane-23 Type="1" DockingCX="250" DockingCY="250" Panes="0"/>
+		<Pane-24 Type="4"/>
+		<Pane-25 Type="1" DockingCX="250" DockingCY="250" Panes="0"/>
+		<Pane-26 Type="1" DockingCX="250" DockingCY="250" Panes="0"/>
+		<Pane-27 Type="1" DockingCX="250" DockingCY="250" Panes="0"/>
+		<Pane-28 Type="5" Direction="3" Panes="0"/>
+	</DeveloperLayout>
+</DockingPaneLayouts>

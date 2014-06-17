@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-09-20 18:55:06" NeedsCompiledModel="false">
+	<Location top="29" left="8" bottom="798" right="1180" />
+	<PageEditSize Type="Inherited">
+		<Size Width="650" Height="548" />
+	</PageEditSize>
+	<ProjectUUID>DF3BEC5E-9D0D-4DEE-8E27-EBE8628E79DA</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromTop" Value="0.53">
+			<BottomArea Line="FixedFromBottom" Value="70" />
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Rectangle">
+		<Location top="486" left="12" bottom="540" right="636" />
+		<Hidden>"Yes"</Hidden>
+		<Shape>Open</Shape>
+		<FillColor>
+			<UserColor GUID="3094483C-7C4C-44AB-997C-1094B2D22B3F">blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="3094483C-7C4C-44AB-997C-1094B2D22B3F">blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="12" left="12" bottom="468" right="636" />
+		<Hidden>"Yes"</Hidden>
+		<Shape>Open</Shape>
+		<FillColor>
+			<UserColor GUID="3094483C-7C4C-44AB-997C-1094B2D22B3F">blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="3094483C-7C4C-44AB-997C-1094B2D22B3F">blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

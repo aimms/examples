@@ -1,0 +1,18 @@
+This example, illustrates two external DLLs (complete with source) that allow you to
+- programmatically generate and send e-mail messages from within a model
+- play sounds from within your model
+
+The e-mail interface makes use of the Simple MAPI API provided by Windows in Mapi32.dll. You can only use it if a MAPI compliant e-mail client (such as Outlook) is installed on your computer.
+
+The sound interface makes use of the Win32 PlaySound function. You can use it, for instance, to play .wav files from within your model upon particular user interaction.
+
+In the respective source directories you will find the C source files of both interfaces to AIMMS, as well as the Visual Studio 2005 projects that were used to build the DLLs providing the interfaces.
+
+If you need e-mail and/or sound support in your AIMMS application you can simply import one or both interface section contained in the directory 'Import Sections' into your own AIMMS model.
+
+If your needs go beyond the provided interface, you can modify and re-compile the provided source code to suit your own needs.
+
+NOTE: The e-mail example does not fully support Unicode messages. If you want to use Unicode you must run Windows 8 or later and adapt the sources of the AimmsMapi.dll to use the new MAPISendMailW function. Documentation on this can be found on the internet, for example in the MSDN.
+
+
+

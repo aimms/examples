@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-11-13 21:38:41">
+	<Location top="22" left="4" bottom="1049" right="1112" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>54C7CF8E-331E-4E69-AC4B-9D3CA8CD5945</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Pivot Table">
+		<Location top="102" left="12" bottom="630" right="660" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>01E8D44A-8EFC-4D05-BD91-6A93486E74BB</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Merged_NumberOfFamilies( i, j )</Identifier>
+				<Title ID="4120">"Number of Families"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Merged_GrossIncome( i, j )</Identifier>
+				<Title ID="4120">"Gross Income"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Merged_Members( i, j )</Identifier>
+				<Title ID="4120">"Members"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Merged_IncomeSources( i, j )</Identifier>
+				<Title ID="4120">"Income Sources"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Merged_Interest( i, j )</Identifier>
+				<Title ID="4120">"Interest"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Merged_AgeHead( i, j )</Identifier>
+				<Title ID="4120">"Age Head"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Merged_YearsEducation( i, j )</Identifier>
+				<Title ID="4120">"Years Education"</Title>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">i</Index>
+				<Header_Title ID="6530">"Income"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">j</Index>
+				<Header_Title ID="6530">"Population"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="54" left="12" bottom="84" right="192" />
+		<TabOrder>3</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor RGB="#000080" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalDistance</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total Distance"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="54" left="198" bottom="90" right="648" />
+		<StaticText>Total distance is the multiple of number of families in each file times the distance (the variance of gross income and number of family members) </StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor RGB="#000080" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Merged_Interest</Symbol>
+			<Symbol>Merged_Members</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>Merged_YearsEducation</Symbol>
+			<Symbol>Merged_IncomeSources</Symbol>
+			<Symbol>Merged_NumberOfFamilies</Symbol>
+			<Symbol>TotalDistance</Symbol>
+			<Symbol>Merged_AgeHead</Symbol>
+			<Symbol>Merged_GrossIncome</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

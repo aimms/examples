@@ -1,0 +1,22 @@
+StartPeriod := 'January' ;
+
+MonthlyAttendantCost        := 5100 ;
+MonthlyTraineeCost          := 3600 ;
+MonthlyAttendantFlightHours := 150 ;
+MonthlyTraineeFlightHours   := 25 ;
+MonthlyMaximumTrainees      := 5;
+
+COMPOSITE TABLE:
+ t         Attendants  TraineesHired  AttendantsResigning  RequiredFlightHours  NormalMean  NormalVariance
+!---------------------------------------------------------------------------------------------------------
+ November              2
+ December  60
+ January                              2                     8000                1.15        0.57
+ February                                                   9000                0.80        0.58
+ March                                2                     9800                1.30        0.73
+ April                                                      9900                1.45        0.75
+ May                                  1                    10050                0.85        0.50
+ June                                                      10500                1.40        0.79
+;
+
+

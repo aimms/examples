@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-04-04 04:02:00">
+	<Location top="29" left="4" bottom="888" right="1274" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>A9945760-01CB-4901-9F10-9FA9617A6790</ProjectUUID>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="237">
+					<BottomArea Line="FixedFromTop" Value="33" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<HorizontalGridDistance>1</HorizontalGridDistance>
+	<VerticalGridDistance>1</VerticalGridDistance>
+	<PageObject Type="Parametric Curve">
+		<Location top="490" left="420" bottom="615" right="763" />
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<SwappedAxes>true</SwappedAxes>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<HorizontalGridLines>true</HorizontalGridLines>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<YRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>3</Upper>
+			<NumGridPoints>3</NumGridPoints>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>TotalRisk</Identifier>
+			<TitleText>"Total Risk"</TitleText>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<LineWidth>3</LineWidth>
+		<XAxisIdentifier>
+			<Identifier>DesiredExpectedPortfolioReturn</Identifier>
+		</XAxisIdentifier>
+		<ParametricSetup>
+			<Procedure>SolveStrategicInvestmentModel</Procedure>
+			<Steps>50</Steps>
+			<Start>7.6</Start>
+			<Stop>10.8</Stop>
+		</ParametricSetup>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="313" left="592" bottom="450" right="763" />
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="Line" Width="2" />
+		<X_Axis>
+			<Annotation>
+				<Rotation_angle ID="1010">200</Rotation_angle>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Chart_type ID="2001">"Pie"</Chart_type>
+			<Identifier>
+				<Value ID="2007">InvestedFraction( j )</Value>
+				<Appearance>
+					<Fill>
+						<Foreground_color ID="2013">CategoryColor( j )</Foreground_color>
+					</Fill>
+					<Slice>
+						<Offset ID="2027">5</Offset>
+					</Slice>
+				</Appearance>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<Chart_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="8">"Background yellow"</Background_color>
+			</Chart_area>
+			<View_3D>
+				<Depth ID="62">40</Depth>
+				<Elevation ID="63">15</Elevation>
+			</View_3D>
+			<Misc_display_settings>
+				<Show_outlines ID="68">1</Show_outlines>
+				<Click_label>
+					<Hide_value_label_on_click ID="77">0</Hide_value_label_on_click>
+					<Click_label_decimals ID="79">2</Click_label_decimals>
+				</Click_label>
+			</Misc_display_settings>
+		</Display>
+		<Header_Footer>
+			<Header>
+				<Text ID="23">"Optimal Invested Fraction"</Text>
+				<Font ExtraInfo="107CF1DD-5B8E-41FC-BD55-10C950947E3C" ID="22">"Headers"</Font>
+			</Header>
+		</Header_Footer>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="42">"Legend"</Font>
+			<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="43">"Background yellow"</Background_color>
+		</Legend>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="192" left="420" bottom="305" right="765" />
+		<TabOrder>4</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Covariance( j, k )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Covariances"</HeaderText>
+			<NumberFormat Width="8" Decimals="4" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="458" left="420" bottom="504" right="763" />
+		<StaticText>Total Risk 
+(as a function of desired expected return)</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="313" left="420" bottom="450" right="591" />
+		<TabOrder>5</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="Line" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">j</Domain>
+			<Annotation>
+				<Rotation_angle ID="1010">75</Rotation_angle>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Chart_type ID="2001">"Bar"</Chart_type>
+			<Identifier>
+				<Value ID="2007">ExpectedValueOfReturn( j )</Value>
+				<Appearance>
+					<Fill>
+						<Foreground_color ID="2013">CategoryColor( j )</Foreground_color>
+					</Fill>
+				</Appearance>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<View_3D>
+				<Depth ID="62">40</Depth>
+				<Elevation ID="63">5</Elevation>
+				<Rotation ID="64">5</Rotation>
+			</View_3D>
+			<Misc_display_settings>
+				<Show_box_around_plot_area ID="66">0</Show_box_around_plot_area>
+				<Show_outlines ID="68">1</Show_outlines>
+				<Axis_annotation_font ExtraInfo="9EE32D48-F52A-4B50-891C-669A3B2A569A" ID="74">"default"</Axis_annotation_font>
+				<Axis_title_font ExtraInfo="9EE32D48-F52A-4B50-891C-669A3B2A569A" ID="75">"default"</Axis_title_font>
+				<Click_label>
+					<Click_label_decimals ID="79">2</Click_label_decimals>
+				</Click_label>
+			</Misc_display_settings>
+		</Display>
+		<Header_Footer>
+			<Header>
+				<Text ID="23">"Expected Return"</Text>
+				<Font ExtraInfo="107CF1DD-5B8E-41FC-BD55-10C950947E3C" ID="22">"Headers"</Font>
+			</Header>
+		</Header_Footer>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="341" left="5" bottom="365" right="191" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveStrategicInvestmentModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="8E472A20-2EBF-4CA9-8296-5365E0FDF556" Name="Tactical Investment Model" />
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Tactical Model</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="193" left="201" bottom="615" right="420" />
+		<TabOrder>10</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<Border Style="None" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="A36527E4-6775-46C6-A63D-934E8094C2C8">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<DisplayTextFile>true</DisplayTextFile>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>STRING := "&lt;prj&gt;:Strategic.txt"</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ExpectedValueOfReturn</Symbol>
+			<Symbol>InvestedFraction</Symbol>
+			<Symbol>CategoryColor</Symbol>
+			<Symbol>SolveStrategicInvestmentModel</Symbol>
+			<Symbol>DesiredExpectedPortfolioReturn</Symbol>
+			<Symbol>TotalRisk</Symbol>
+			<Symbol>Covariance</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>k</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

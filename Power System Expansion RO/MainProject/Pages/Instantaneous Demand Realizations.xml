@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-05-11 08:35:53">
+	<Location top="27" left="8" bottom="864" right="1020" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>69E2AF0F-ED8E-4ABE-8F66-1D09D7A2CB6D</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Pivot Table">
+		<Location top="66" left="6" bottom="150" right="246" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>5CEAB40E-B812-4B5A-B8E4-91E0EDFE8FD4</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RO_InstDemand( k_ )</Identifier>
+				<Title ID="4120">"Instant Demand"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+					<Alignment ID="4330">"Center"</Alignment>
+				</Format>
+				<Procedures_Assertions>
+					<On_Change ID="4181">ComputeResults</On_Change>
+				</Procedures_Assertions>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">k_</Index>
+				<Header_Title ID="6530">"load"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">""</Header_Title>
+				<Column_Width ID="6255">15</Column_Width>
+				<Hide_if_Single_Identifier ID="6270">"No"</Hide_if_Single_Identifier>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+			<Save_Layout_State>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+			<Grid_Focus_Indicator>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2270">"default selection"</Background_Color>
+				<Text_Color ID="2280">RGB&lt;255,255,200&gt;</Text_Color>
+			</Grid_Focus_Indicator>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="156" left="6" bottom="252" right="246" />
+		<TabOrder>3</TabOrder>
+		<ObjectUUID>50C42759-5609-4067-A14C-3EF16C288762</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RO_SolutionTotalCap( p )</Identifier>
+				<Title ID="4120">"Total Capacity"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RO_SolutionUsedCap( p )</Identifier>
+				<Title ID="4120">"Allocated Capacity"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RO_SolutionSurplusCap( p )</Identifier>
+				<Title ID="4120">"Surplus Capacity"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">p</Index>
+				<Header_Title ID="6530">"plant"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">"Capacity Type"</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+			<Save_Layout_State>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+			<Grid_Focus_Indicator>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2270">"default selection"</Background_Color>
+				<Text_Color ID="2280">RGB&lt;255,255,200&gt;</Text_Color>
+			</Grid_Focus_Indicator>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="258" left="6" bottom="366" right="246" />
+		<TabOrder>4</TabOrder>
+		<ObjectUUID>9C1BD7D0-D0DD-4556-B165-9C411EADC09A</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RO_SolutionTotalCosts</Identifier>
+				<Title ID="4120">"Total Costs"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RO_SolutionCapitalCosts</Identifier>
+				<Title ID="4120">"Capital Costs"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RO_SolutionImportCosts</Identifier>
+				<Title ID="4120">"Import Costs"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RO_SolutionOperationCosts</Identifier>
+				<Title ID="4120">"Operation Costs"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Identifier_Index>
+				<Header_Title ID="6230">"Costs Type"</Header_Title>
+				<Hide_if_Single_Identifier ID="6270">"No"</Hide_if_Single_Identifier>
+			</Identifier_Index>
+			<Suffix_Index>
+				<Explicit_Suffix>
+					<Suffix ID="6620">"Level"</Suffix>
+					<Element_Text ID="6621">"Realization"</Element_Text>
+				</Explicit_Suffix>
+				<Header_Title ID="6630">""</Header_Title>
+				<Column_Width ID="6655">15</Column_Width>
+			</Suffix_Index>
+		</Indices>
+		<General>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+			<Save_Layout_State>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+			<Grid_Focus_Indicator>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2270">"default selection"</Background_Color>
+				<Text_Color ID="2280">RGB&lt;255,255,200&gt;</Text_Color>
+			</Grid_Focus_Indicator>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="3" left="168" bottom="27" right="408" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor>
+			<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ProcedureUponChange>ComputeResultsInScenario</ProcedureUponChange>
+		<UpdateOnChange>RO_RequiredElectr</UpdateOnChange>
+		<ExplicitIdentifier>
+			<Identifier>CurrentScenario</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="3" left="6" bottom="27" right="162" />
+		<StaticText>Either select scenario:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="36" left="6" bottom="60" right="174" />
+		<StaticText>Or fill in demand values:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ComputeResults</Symbol>
+			<Symbol>CurrentScenario</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>ROScenarios</Symbol>
+			<Symbol>ComputeResultsInScenario</Symbol>
+			<Symbol>k_</Symbol>
+			<Symbol>RO_SolutionCapitalCosts</Symbol>
+			<Symbol>RO_SolutionTotalCap</Symbol>
+			<Symbol>RO_SolutionOperationCosts</Symbol>
+			<Symbol>RO_SolutionSurplusCap</Symbol>
+			<Symbol>RO_SolutionTotalCosts</Symbol>
+			<Symbol>RO_InstDemand</Symbol>
+			<Symbol>RO_SolutionUsedCap</Symbol>
+			<Symbol>RO_SolutionImportCosts</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

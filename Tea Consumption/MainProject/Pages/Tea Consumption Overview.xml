@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2011-04-15 09:38:29">
+	<Location top="29" left="8" bottom="882" right="1270" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>313355D5-43FB-4B5E-8490-47A255256BD0</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="173">
+						<BottomArea Line="FixedFromLeft" Value="290">
+							<RightArea Line="FixedFromRight" Value="218">
+								<RightArea Line="FixedFromLeft" Value="172" />
+							</RightArea>
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="346165FC-6727-452D-82FE-05E983C2452C">white</UserColor>
+	</Background>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="F22BD25F-046F-47BF-B41F-46ADB6B61450" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="198" left="210" bottom="444" right="486" />
+		<TabOrder>3</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="InShadow" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">p</Domain>
+		</X_Axis>
+		<Y_Axis>
+			<Chart_type ID="2001">"Pie"</Chart_type>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">TeaConsumption( c -&gt; SelectedCountry, p )</Value>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<View_3D>
+				<Depth ID="62">20</Depth>
+				<Elevation ID="63">45</Elevation>
+			</View_3D>
+			<Misc_display_settings>
+				<Axis_annotation_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="74">"Legend"</Axis_annotation_font>
+				<Axis_title_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="75">"Legend"</Axis_title_font>
+				<Click_label>
+					<Hide_value_label_on_click ID="77">1</Hide_value_label_on_click>
+				</Click_label>
+			</Misc_display_settings>
+		</Display>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Title_text ID="57">"Countries"</Title_text>
+			<Font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="42">"Legend"</Font>
+			<Background_color ExtraInfo="346165FC-6727-452D-82FE-05E983C2452C" ID="43">"white"</Background_color>
+			<Border_type>
+				<Type ID="46">"Plain"</Type>
+			</Border_type>
+			<Misc_display_settings>
+				<Anchor ID="41">"South"</Anchor>
+				<Orientation ID="56">"Horizontal"</Orientation>
+			</Misc_display_settings>
+		</Legend>
+		<Style>
+			<Pie_chart>
+				<Threshold_value ID="4007">6</Threshold_value>
+				<Show_percentages>
+					<Percentages ID="4034">DisplayPercentages</Percentages>
+					<Number_of_decimals ID="4037">0</Number_of_decimals>
+					<Border_type>
+						<Type ID="4042">"Etched Out"</Type>
+					</Border_type>
+				</Show_percentages>
+				<The_other_slice>
+					<Fill>
+						<Foreground_color ExtraInfo="187908F8-4FFD-4E63-B1E3-EC8B92DCC289" ID="4013">"yellow"</Foreground_color>
+					</Fill>
+					<Label ID="4014">"Other countries"</Label>
+				</The_other_slice>
+			</Pie_chart>
+		</Style>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="198" left="498" bottom="444" right="762" />
+		<TabOrder>4</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="InShadow" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">p</Domain>
+			<Annotation>
+				<Rotation_angle ID="1010">45</Rotation_angle>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ID="2007">TeaConsumption( SelectedCountry, p )</Value>
+				<Unit ID="2058">[MassUnit/TimeUnit]</Unit>
+				<Appearance>
+					<Line>
+						<Color ID="2023">BDE94972-EBB0-42F9-9595-32B23B5A1426 red</Color>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Misc_settings>
+				<Remove_all_default_values ID="2061">1</Remove_all_default_values>
+			</Misc_settings>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<Misc_display_settings>
+				<Axis_annotation_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="74">"Legend"</Axis_annotation_font>
+				<Axis_title_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="75">"Legend"</Axis_title_font>
+				<Click_label>
+					<Click_label_decimals ID="79">2</Click_label_decimals>
+				</Click_label>
+			</Misc_display_settings>
+		</Display>
+		<Header_Footer>
+			<Header>
+				<Text ID="23">"Average tea consumption"</Text>
+				<Font ExtraInfo="C82FBF27-1614-41C9-B718-A431388D2B5A" ID="22">"General Text"</Font>
+			</Header>
+			<Footer>
+				<Text ID="36">" "</Text>
+				<Font ExtraInfo="2AB61267-1558-46AA-9324-9006239C49E6" ID="35">"default"</Font>
+				<Background_image>
+					<Filename ID="32">STRING := FormatString("&lt;prj&gt;:Flags\\%e.bmp", SelectedCountry)</Filename>
+					<Size_footer_to_fit_image ID="70">1</Size_footer_to_fit_image>
+				</Background_image>
+			</Footer>
+		</Header_Footer>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="276" left="12" bottom="618" right="192" />
+		<StaticText>This page shows how units are used in 2d charts.
+
+It also demonstrates the power of reverse links.
+
+The data can be read in directly from Excel or Calc, using the Spreadsheet Interface. Click "Read Spreadsheet Data" to read from the selected spreadsheet.
+
+Click in a pie chart to select a country. This country is linked to the plot chart automatically.
+You can also just pick a country from the dropdown box on the left.
+
+Click on the radio buttons to select the units to use on the y-axis of the plot chart.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="7F2098EF-7B0D-4DE8-A899-6EAD844D7D63">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="492" left="558" bottom="582" right="636" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<NumItemLines>0</NumItemLines>
+		<Border Style="Line" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="346165FC-6727-452D-82FE-05E983C2452C">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="7F2098EF-7B0D-4DE8-A899-6EAD844D7D63">default selection</UserColor>
+		</TextColor>
+		<ProcedureUponChange>MassUnitChanged</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>SelectedMassUnit</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="492" left="642" bottom="582" right="720" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<NumItemLines>0</NumItemLines>
+		<Border Style="Line" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="346165FC-6727-452D-82FE-05E983C2452C">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="7F2098EF-7B0D-4DE8-A899-6EAD844D7D63">default selection</UserColor>
+		</TextColor>
+		<ProcedureUponChange>TimeUnitChanged</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>SelectedTimeUnit</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="588" left="222" bottom="612" right="390" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextShown>ElementName</TextShown>
+		<NumItemLines>0</NumItemLines>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="7F2098EF-7B0D-4DE8-A899-6EAD844D7D63">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>SelectedCountry</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="570" left="222" bottom="594" right="390" />
+		<StaticText>Country</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="7F2098EF-7B0D-4DE8-A899-6EAD844D7D63">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="213" bottom="177" right="478" />
+		<StaticText>Chart Display</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="7F2098EF-7B0D-4DE8-A899-6EAD844D7D63">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="249" left="18" bottom="267" right="186" />
+		<StaticText>Information</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="450" left="222" bottom="474" right="396" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>IdentifierText</TextShown>
+		<NumItemLines>0</NumItemLines>
+		<Border Style="None" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>DisplayPercentages</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="486" left="228" bottom="528" right="480" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>SelectedExtension</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="SpreadsheetExtensions">SpreadsheetDescription( se )</ElementText>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="534" left="228" bottom="558" right="396" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Read Spreadsheet Data"</Title>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ReadTeaConsumptionDataFromSpreadsheet</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="480" left="222" bottom="564" right="486" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>SelectedCountry</Symbol>
+			<Symbol>MassUnitChanged</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>SelectedMassUnit</Symbol>
+			<Symbol>TeaConsumption</Symbol>
+			<Symbol>SpreadsheetDescription</Symbol>
+			<Symbol>SelectedTimeUnit</Symbol>
+			<Symbol>ReadTeaConsumptionDataFromSpreadsheet</Symbol>
+			<Symbol>DisplayPercentages</Symbol>
+			<Symbol>PossibleMassUnits</Symbol>
+			<Symbol>Countries</Symbol>
+			<Symbol>PossibleTimeUnits</Symbol>
+			<Symbol>SpreadsheetExtensions</Symbol>
+			<Symbol>TimeUnitChanged</Symbol>
+			<Symbol>SelectedExtension</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

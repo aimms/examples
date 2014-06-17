@@ -1,0 +1,44 @@
+﻿* AIMMS
+accept_basis 0
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+Case_sensitive_element_comparison 1
+conopt_retry 1
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+Number_of_rows_per_constraint_in_listing 1000
+progress_solution 10
+solver_window_messages 0
+warning_not_initialized off
+xml_number_precision 2
+xml_number_width 16
+* AOA
+* BARON 12
+* CONOPT 3.14V
+* CPLEX 12.1
+* CPLEX 12.6
+* CPOptimizer 12.6
+* GUROBI 5.6
+* KNITRO 9.0
+* LGO 1.0
+* MINOS
+* PATH 4.6
+* SNOPT 7.2
+* XA 15
+* CONOPT 2.071C
+"CONOPT 2.071C".Logical_switch_for_scaling 1
+"CONOPT 2.071C".Minimal_feasibility_tolerance 0.0003
+* CONOPT
+"CONOPT".Logical_switch_for_scaling 1
+"CONOPT".Minimal_feasibility_tolerance 0.0003
+* NETSOL
+* Environment
+Project_Title "Data Reconciliation Demo"
+Startup_Procedure "LoadNH3Example"
+Startup_Page "Data Reconciliation Application"
+Default_Batch_Procedure "SolveTheModel"
+Horizontal_Grid_Distance 3
+Vertical_Grid_Distance 3

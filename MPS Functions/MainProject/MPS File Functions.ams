@@ -1,0 +1,297 @@
+## ams_version=1.0
+
+Model Main_MPS_File_Functions {
+    Section MPS_Management {
+        Section Execution_Section {
+            Procedure SelectMPSForMulitpleTuning {
+                Body: {
+                    ResetCPLEXOptions;
+                    
+                    FileSelect(MPSFileNAme,MPSPoolDirectory);
+                    SetElementAdd(SelectedMPSFiles,NewMPSFile,MPSFileName);
+                }
+                ElementParameter NewMPSFile {
+                    Range: SelectedMPSFiles;
+                }
+            }
+            Procedure SelectCPLEXSolver {
+                Body: {
+                    if not SolverName then
+                    
+                            DialogGetElement("No CPLEX 11.0 Available, select CPLEX 11.0 or higher", SolverName);
+                    
+                    endif;
+                }
+            }
+            Procedure SolveSingleMPSFile {
+                Body: {
+                    Option MIP_Relative_Optimality_Tolerance := GAPSetting; ! To set the GAP between best solution and Best LP bound
+                    
+                    If not FileExists(MPSFileName) then
+                            DialogError("Please select a MPS file first before solve!");
+                            FileSelect(MPSFileName,MPSPoolDirectory);
+                    endif;
+                    
+                    ShowProgressWindow;
+                    
+                    GMP::Tuning::SolveSingleMPS(MPSFileName, SelectLPMIPSolver, SolverStat, ProgramStat, ObjectiveValue, NumberIterations,SolverNodes,SolutionTime,0);
+                    
+                    SolverValues_NoTuner('Objective') := ObjectiveValue;
+                    SolverValues_NoTuner('Iterations') := NumberIterations;
+                    SolverValues_NoTuner('Solution Time') := SolutionTime;
+                }
+            }
+            Procedure TuneSingleMPSFile {
+                Body: {
+                    TunerFlag := 2;
+                    
+                    If not FileExists(MPSFileName) then
+                            DialogError("Please select a MPS file first before solve!");
+                            FileSelect(MPSFileName,MPSPoolDirectory);
+                    endif;
+                    
+                    If DirectoryExists(MPSDirectory) then
+                            FileDelete(MPSDirectory + "\\*.*")
+                    else
+                            DirectoryCreate(MPSDirectory);
+                    endif;
+                    
+                    FileCopy(MPSFileName, MPSDirectory);
+                    
+                    ShowProgressWindow;
+                    
+                    GMP::Tuning::TuneMultipleMPS(MPSDirectory, SelectCPLEX, FixedOptions, ApplyTunedSettings:1, OptionFileName:OptionFile);
+                    
+                    if DialogAsk("Continue solving after tuning?", "Yes", "No") = 1 then
+                    
+                            GMP::Tuning::SolveSingleMPS(MPSFileName, SelectCPLEX, SolverStat, ProgramStat, ObjectiveValue, NumberIterations,SolverNodes,SolutionTime,0);
+                    
+                            SolverValues_TuneSingle('Objective') := ObjectiveValue;
+                            SolverValues_TuneSingle('Iterations') := NumberIterations;
+                            SolverValues_TuneSingle('Solution Time') := SolutionTime;
+                    
+                    endif
+                }
+            }
+            Procedure TuneMultipleMPSFiles {
+                Body: {
+                    TunerFlag := 1;
+                    if not card(SelectedMPSFiles) then
+                            DialogError("Please select several MPS Files first before solve!");
+                    endif;
+                    
+                    If DirectoryExists(MPSDirectory) then
+                            FileDelete(MPSDirectory + "\\*.*")
+                    else
+                            DirectoryCreate(MPSDirectory);
+                    endif;
+                    
+                    for sf do
+                            FileCopy(sf, MPSDirectory);
+                    endfor;
+                    
+                    
+                    ShowProgressWindow;
+                    GMP::Tuning::TuneMultipleMPS(MPSDirectory, SelectCPLEX, FixedOptions, ApplyTunedSettings:1, OptionFileName:OptionFile);
+                    
+                    if DialogAsk("Continue solving after tuning?", "Yes", "No") = 1 then
+                    
+                            DialogMessage("Select a MPS file to solve with tuned options");
+                            FileSelect(MPSFileNAme);
+                    
+                            GMP::Tuning::SolveSingleMPS(MPSFileName, SelectCPLEX, SolverStat, ProgramStat, ObjectiveValue, NumberIterations,SolverNodes,SolutionTime,0);
+                    
+                            SolverValues_TuneMultiple('Objective') := ObjectiveValue;
+                            SolverValues_TuneMultiple('Iterations') := NumberIterations;
+                            SolverValues_TuneMultiple('Solution Time') := SolutionTime;
+                    
+                    endif
+                }
+            }
+        }
+        DeclarationSection Tuning_Declarations {
+            Parameter TunerFlag {
+                Text: "The flag indicates the tuner to point to a right tuning directory ";
+                Range: nonnegative;
+                InitialData: 0;
+            }
+            Set FixedOptions {
+                SubsetOf: AllOptions;
+                Text: "It contains the set of all solver options that should not be tuned by the solver";
+                Definition: data {'mip_Relative_Optimality_Tolerance'};
+            }
+            StringParameter OptionFile {
+                Text: "The name of the options file to which the tuned options will be written";
+                Definition: {
+                    If TunerFlag = 1 then
+                            "Options_Multiple.txt"
+                    elseif TunerFlag = 2 then
+                            "Options_Single.txt"
+                    endif
+                }
+            }
+            StringParameter MPSDirectory {
+                Text: "The name of the directory containing the MPS files to be tuned";
+                Definition: {
+                    If TunerFlag = 1 then
+                            "Multiple MPS Files"
+                    elseif TunerFlag = 2 then
+                            "Single MPS File"
+                    endif
+                }
+            }
+            Set CPLEXOptions {
+                SubsetOf: AllOptions;
+                Text: "It contains all CPLEX 11.x options";
+                Index: i_cp;
+                Definition: {
+                    { IndexOptions | FindString(indexoptions,FindKeyWord) }
+                }
+            }
+            Parameter CPLEXLowerValues {
+                IndexDomain: i_cp;
+                Text: "The funtion OptionGetValue argument";
+            }
+            Parameter CPLEXCurrentValues {
+                IndexDomain: i_cp;
+                Text: "The funtion OptionGetValue argument";
+            }
+            Parameter CPLEXDefaultValues {
+                IndexDomain: i_cp;
+                Text: "The funtion OptionGetValue argument";
+            }
+            Parameter CPLEXUpperValues {
+                IndexDomain: i_cp;
+                Text: "The funtion OptionGetValue argument";
+            }
+            StringParameter Default_OptionStringValue {
+                IndexDomain: i_cp;
+                Text: "CPLEX default string-value options";
+            }
+            StringParameter FindKeyWord {
+                Text: "One of arguments of FindString function";
+                Definition: "CPLEX 11.";
+            }
+            StringParameter MPSPoolDirectory {
+                Text: "The directory contains prepared MPS files";
+                Definition: "MPS Files Pool";
+            }
+        }
+        DeclarationSection Solving_Declarations {
+            StringParameter MPSFileName {
+                Text: "The name of the MPS file to be solved";
+                Comment: "\"Single MPS Files\\\\flowshop1.mps\"";
+            }
+            Parameter ObjectiveValue {
+                Text: "The objective value returned by the solver";
+            }
+            Parameter NumberIterations {
+                Text: "The number of iterations used by the solver to solve the model";
+            }
+            Parameter SolverNodes {
+                Text: "The number of nodes used by the solver to solve the model";
+            }
+            Parameter SolutionTime {
+                Text: "The solution time (in seconds) used by the solver to solve the model";
+            }
+            ElementParameter SolverName {
+                Text: "Solver that is used to solve the model";
+                Range: AllSolvers;
+            }
+            ElementParameter SolverStat {
+                Text: "The solver status as an element in the set AllSolutionStates";
+                Range: AllSolutionStates;
+            }
+            ElementParameter ProgramStat {
+                Text: "The program status as an element in the set AllSolutionStates";
+                Range: AllSolutionStates;
+            }
+        }
+        DeclarationSection GUI_Declarations {
+            StringParameter ProblemDescriptionFile {
+                Text: "The file describes introduction of the problem";
+                Definition: "Description.txt";
+            }
+            Set SolvesStatistics {
+                Text: "It contains three solver returned arguments for displaying the results";
+                Index: s;
+                Parameter: SolverElement;
+                Definition: {
+                    {'Objective','Iterations','Solution Time'}
+                }
+            }
+            Parameter SolverValues_NoTuner {
+                IndexDomain: s;
+                Text: "Solver results without tuning";
+            }
+            Parameter SolverValues_TuneSingle {
+                IndexDomain: s;
+                Text: "Solver results after tuning a single MPS file";
+            }
+            Parameter SolverValues_TuneMultiple {
+                IndexDomain: s;
+                Text: "Solver results after tuning multiple MPS files";
+            }
+            Set SelectedMPSFiles {
+                Text: "It contains selected MPS file name to display on the page";
+                Index: sf;
+            }
+            Parameter GAPSetting {
+                InitialData: 0.01;
+            }
+            Set LPMIPSolvers {
+                SubsetOf: AllSolvers;
+                Parameter: SelectLPMIPSolver;
+                Definition: {
+                    { IndexSolvers | FindString(IndexSolvers,"CPLEX 11.") or FindString(IndexSolvers,"XA")
+                                     or FindString(IndexSolvers,"GUROBI") or FindString(IndexSolvers, "CBC")
+                                     or FindString(IndexSolvers, "CPLEX 12.")}
+                }
+            }
+            Set CPLEXSolvers {
+                SubsetOf: AllSolvers;
+                Parameter: SelectCPLEX;
+                Definition: {
+                    { IndexSolvers | FindString(IndexSolvers,"CPLEX 11.") or FindString(IndexSolvers,"CPLEX 12.") }
+                }
+            }
+        }
+        Procedure ViewOptionFiles {
+            Body: FileView(OptionFile);
+        }
+        Procedure ResetData {
+            Body: {
+                empty SolverValues_NoTuner;
+                empty SolverValues_TuneSingle;
+                empty SolverValues_TuneMultiple;
+                empty MPSFileName;
+            }
+        }
+        Procedure ResetCPLEXOptions {
+            Body: {
+                for i_cp do
+                        if OptionGetValue(i_cp, CPLEXLowerValues(i_cp), CPLEXCurrentValues(i_cp), CPLEXDefaultValues(i_cp), CPLEXUpperValues(i_cp)) then
+                                OptionSetValue(i_cp,CPLEXDefaultValues(i_cp));
+                        else
+                                OptionSetString(i_cp, Default_OptionStringValue(i_cp));
+                        endif;
+                endfor;
+            }
+            Comment: "CurrentErrorMessage";
+        }
+        Procedure ObtainDefaultOption_String {
+            Body: {
+                for i_cp do
+                        OptionGetString(i_cp,Default_OptionStringValue(i_cp));
+                endfor
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

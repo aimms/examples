@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<StandardNumberFormat Name="CoordinateFormat" InternalID="0">
+	<NumberFormat Width="7" Decimals="2" />
+</StandardNumberFormat>

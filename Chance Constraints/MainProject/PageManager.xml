@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="7BCCB591-99F6-48A4-B52A-6E7F521F8EFD">
+		<Page Name="Portfolio Selection" PageGUID="FE5C5BF6-48B3-4E1E-85E1-3CBC1AC874ED">
+			<Page Name="Results Discussion" PageGUID="6D937C9C-0387-40AD-BE33-76C40E8CB61C" />
+		</Page>
+		<Page Name="Input Data" PageGUID="CC778DDA-C81A-46D8-9E82-D52ED51139D1" />
+	</Page>
+</PageManager>

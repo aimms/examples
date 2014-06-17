@@ -1,0 +1,29 @@
+<html>
+
+<body>
+<link rel="stylesheet" type="text/css" href="aimms.css" />
+<H2>Description Gate Assignment problem</H2>
+<P>At an airport every day a large number of aircraft arrive. After they arrive, they need to be refueled, replenished, all the waste has to be
+	taken off-board and also all the passengers must disembark the aircraft. After some time on the ground, the new passengers embark the aircraft,
+after which it will take off to its destination. </p>
+
+<p>While the aircraft is on the ground, it needs to be assigned a place where it can stand, the so-called stand or gate. Determining which aircraft
+	is assigned to which gate is the Gate Assignment Problem. Since aircraft hardly ever arrive/depart on time, we must create an assignment plan for the upcoming
+	day, based on currently available flight-schedule information in such a way that a small deviation from the scheduled arrival/departure of any of the
+	flights does not result in an infeasible assignment plan. We would like to create an assignment plan that is <i>robust</i> against such small deviations during
+the actual day of operations.</P>
+
+<P>In this example we will demonstrate how this problem of finding a robust plan for the gate assignment problem, can be formulated as a set-covering
+model that is solved by using column generation within an AIMMS project. We will also demonstrate how to use the Generated Mathematical Problem functionality
+provided by AIMMS in combination with Column Generation.</p>
+
+<p>You may read 
+	<a target="_blank" href="http://www.cs.uu.nl/research/techreps/repo/CS-2008/2008-041.pdf"> Technical Report by G. Diepen et al.</a>
+	for details about the model and techniques used in this example. You can also refer to <a target="_blank" href="http://igitur-archive.library.uu.nl/dissertations/2008-0827-200530/UUindex.html">PhD thesis of Guido Diepen</a> for the theory and additional problems.</p>
+	
+
+<H2>Key words</H2>
+<P>Mixed Integer Programming, Linear Programming, Column Generation, GMP, Gate Assignment</P>
+
+</body>
+</html>

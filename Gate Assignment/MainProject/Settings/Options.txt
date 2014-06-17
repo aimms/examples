@@ -1,0 +1,15 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+rounding_compatibility Aimms_3_7
+warning_non_optimal off
+* Environment
+Project_Title "Gate Assignment"
+Startup_Page "Problem Description Page"
+Startup_Case "data\Cases\Default Gate Assignment Instance.data"
+Enhanced_Long_Run_Responsiveness 1

@@ -1,0 +1,131 @@
+Composite table:
+    j      s        JobSchedule  JobSchedule.basic
+!   -----  -----    -----------  -----------------
+    Job-1  Pos-1                 NonBasic         
+    Job-1  Pos-2                 NonBasic         
+    Job-1  Pos-3              1  NonBasic         
+    Job-1  Pos-4                 NonBasic         
+    Job-1  Pos-5                 NonBasic         
+    Job-1  Pos-6                 NonBasic         
+    Job-1  Pos-7                 NonBasic         
+    Job-2  Pos-1                 NonBasic         
+    Job-2  Pos-2                 NonBasic         
+    Job-2  Pos-3                 NonBasic         
+    Job-2  Pos-4                 NonBasic         
+    Job-2  Pos-5                 NonBasic         
+    Job-2  Pos-6                 NonBasic         
+    Job-2  Pos-7              1  NonBasic         
+    Job-3  Pos-1                 NonBasic         
+    Job-3  Pos-2              1  NonBasic         
+    Job-3  Pos-3                 NonBasic         
+    Job-3  Pos-4                 NonBasic         
+    Job-3  Pos-5                 NonBasic         
+    Job-3  Pos-6                 NonBasic         
+    Job-3  Pos-7                 NonBasic         
+    Job-4  Pos-1                 NonBasic         
+    Job-4  Pos-2                 NonBasic         
+    Job-4  Pos-3                 NonBasic         
+    Job-4  Pos-4                 NonBasic         
+    Job-4  Pos-5              1  NonBasic         
+    Job-4  Pos-6                 NonBasic         
+    Job-4  Pos-7                 NonBasic         
+    Job-5  Pos-1              1  NonBasic         
+    Job-5  Pos-2                 NonBasic         
+    Job-5  Pos-3                 NonBasic         
+    Job-5  Pos-4                 NonBasic         
+    Job-5  Pos-5                 NonBasic         
+    Job-5  Pos-6                 NonBasic         
+    Job-5  Pos-7                 NonBasic         
+    Job-6  Pos-1                 NonBasic         
+    Job-6  Pos-2                 NonBasic         
+    Job-6  Pos-3                 NonBasic         
+    Job-6  Pos-4                 NonBasic         
+    Job-6  Pos-5                 NonBasic         
+    Job-6  Pos-6              1  NonBasic         
+    Job-6  Pos-7                 NonBasic         
+    Job-7  Pos-1                 NonBasic         
+    Job-7  Pos-2                 NonBasic         
+    Job-7  Pos-3                 NonBasic         
+    Job-7  Pos-4              1  NonBasic         
+    Job-7  Pos-5                 NonBasic         
+    Job-7  Pos-6                 NonBasic         
+    Job-7  Pos-7                 NonBasic         
+    ;
+Composite table:
+    s      m       StartTime  StartTime.basic
+!   -----  ----    ---------  ---------------
+    Pos-1  M-01               NonBasic       
+    Pos-1  M-02            5  Basic          
+    Pos-1  M-03           13  Basic          
+    Pos-1  M-04           18  Basic          
+    Pos-1  M-05           31  Basic          
+    Pos-1  M-06           40  Basic          
+    Pos-1  M-07           48  Basic          
+    Pos-1  M-08           56  Basic          
+    Pos-1  M-09           74  Basic          
+    Pos-1  M-10          114  Basic          
+    Pos-2  M-01            5  Basic          
+    Pos-2  M-02           13  Basic          
+    Pos-2  M-03           25  Basic          
+    Pos-2  M-04           31  Basic          
+    Pos-2  M-05           46  Basic          
+    Pos-2  M-06           57  Basic          
+    Pos-2  M-07           78  Basic          
+    Pos-2  M-08           93  Basic          
+    Pos-2  M-09          111  Basic          
+    Pos-2  M-10          131  Basic          
+    Pos-3  M-01            8  Basic          
+    Pos-3  M-02           25  Basic          
+    Pos-3  M-03           35  Basic          
+    Pos-3  M-04           50  Basic          
+    Pos-3  M-05           64  Basic          
+    Pos-3  M-06           80  Basic          
+    Pos-3  M-07           94  Basic          
+    Pos-3  M-08          106  Basic          
+    Pos-3  M-09          120  Basic          
+    Pos-3  M-10          133  Basic          
+    Pos-4  M-01           14  Basic          
+    Pos-4  M-02           35  Basic          
+    Pos-4  M-03           50  Basic          
+    Pos-4  M-04           64  Basic          
+    Pos-4  M-05           80  Basic          
+    Pos-4  M-06           87  Basic          
+    Pos-4  M-07          106  Basic          
+    Pos-4  M-08          122  Basic          
+    Pos-4  M-09          129  Basic          
+    Pos-4  M-10          141  Basic          
+    Pos-5  M-01           24  Basic          
+    Pos-5  M-02           45  Basic          
+    Pos-5  M-03           58  Basic          
+    Pos-5  M-04           78  Basic          
+    Pos-5  M-05           95  Basic          
+    Pos-5  M-06          111  Basic          
+    Pos-5  M-07          125  Basic          
+    Pos-5  M-08          132  Basic          
+    Pos-5  M-09          141  Basic          
+    Pos-5  M-10          150  Basic          
+    Pos-6  M-01           39  Basic          
+    Pos-6  M-02           58  Basic          
+    Pos-6  M-03           78  Basic          
+    Pos-6  M-04           88  Basic          
+    Pos-6  M-05          110  Basic          
+    Pos-6  M-06          122  Basic          
+    Pos-6  M-07          130  Basic          
+    Pos-6  M-08          144  Basic          
+    Pos-6  M-09          147  Basic          
+    Pos-6  M-10          164  Basic          
+    Pos-7  M-01           72  Basic          
+    Pos-7  M-02           74  Basic          
+    Pos-7  M-03           89  Basic          
+    Pos-7  M-04          101  Basic          
+    Pos-7  M-05          116  Basic          
+    Pos-7  M-06          128  Basic          
+    Pos-7  M-07          143  Basic          
+    Pos-7  M-08          162  Basic          
+    Pos-7  M-09          171  Basic          
+    Pos-7  M-10          176  Basic          
+    ;
+    TimeSpan := 181 ;
+
+    TimeSpan.basic := 'Basic' ;
+

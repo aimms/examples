@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-09-25 16:41:44">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>5C856D0C-3F7D-4926-9C86-814A186CF8DF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="515" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="75" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Picture">
+		<Location top="192" left="210" bottom="540" right="762" />
+		<FileName LiteralFileName="true">"&lt;prj&gt;:AIMMS - logo.bmp"</FileName>
+		<Display>Multiple</Display>
+		<Center>true</Center>
+		<KeepRatio>true</KeepRatio>
+		<Intensity>-10</Intensity>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="192" left="210" bottom="534" right="636" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>9273BA54-0B89-41AE-A1A8-D36E36611053</ObjectUUID>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="None" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Sales( c, r, p, m )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Show per value"</Show_Unit>
+				</Show_Unit>
+				<Title ID="4120">"Sales"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Supply( f, r, m )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Show per value"</Show_Unit>
+				</Show_Unit>
+				<Title ID="4120">"Supply"</Title>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Decimal_Places ID="4212">2</Decimal_Places>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">r</Index>
+				<Header_Title ID="6530">"Region"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"Customer"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">p</Index>
+				<Header_Title ID="6530">"Product"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">y</Index>
+				<Header_Title ID="6530">"Year"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">q</Index>
+				<Header_Title ID="6530">"Quarter"</Header_Title>
+				<Artificial_Index>
+					<Index ID="6571">y</Index>
+					<Element_Parameter ID="6573">MappingQuarter2Year( q )</Element_Parameter>
+				</Artificial_Index>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">m</Index>
+				<Header_Title ID="6530">"Month"</Header_Title>
+				<Artificial_Index>
+					<Index ID="6571">q</Index>
+					<Element_Parameter ID="6573">MappingMonth2Quarter( m )</Element_Parameter>
+				</Artificial_Index>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">f</Index>
+				<Header_Title ID="6530">"Factory"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">""</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+			<Save_Layout_State>
+				<By_End_User ID="1040">"When page is closing"</By_End_User>
+				<By_Developer ID="1115">"No"</By_Developer>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;215,215,255&gt;</Background_Color>
+			<Text_Color ID="2020">RGB&lt;0,0,176&gt;</Text_Color>
+			<Line_Color ID="2040">RGB&lt;255,255,255&gt;</Line_Color>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="2045">"Table Text"</Font>
+			<Headers>
+				<Background_Color ID="2120">RGB&lt;0,0,176&gt;</Background_Color>
+				<Text_Color ID="2130">RGB&lt;215,215,255&gt;</Text_Color>
+				<Font ExtraInfo="3EA35367-19F9-422F-B73F-89DB5DEAFDA1" ID="2145">"Table Header"</Font>
+			</Headers>
+			<Grid_Focus_Indicator>
+				<Background_Color ID="2270">RGB&lt;0,0,176&gt;</Background_Color>
+				<Text_Color ID="2280">RGB&lt;215,215,255&gt;</Text_Color>
+			</Grid_Focus_Indicator>
+		</Row_Area>
+		<Column_Area>
+			<Same_as_Row_Area ID="3005">"No"</Same_as_Row_Area>
+			<Background_Color ID="3010">RGB&lt;255,187,187&gt;</Background_Color>
+			<Text_Color ID="3020">RGB&lt;140,0,0&gt;</Text_Color>
+			<Line_Color ID="3040">RGB&lt;255,255,255&gt;</Line_Color>
+			<Font ExtraInfo="4C67D5F6-478A-4A2D-A5DE-A3CB10275385" ID="3045">"Table Text Bold"</Font>
+			<Headers>
+				<Background_Color ID="3120">RGB&lt;140,0,0&gt;</Background_Color>
+				<Text_Color ID="3130">RGB&lt;255,187,187&gt;</Text_Color>
+				<Font ExtraInfo="3EA35367-19F9-422F-B73F-89DB5DEAFDA1" ID="3145">"Table Header"</Font>
+			</Headers>
+			<Grid_Focus_Indicator>
+				<Background_Color ID="3270">RGB&lt;140,0,0&gt;</Background_Color>
+				<Text_Color ID="3280">RGB&lt;255,187,187&gt;</Text_Color>
+			</Grid_Focus_Indicator>
+		</Column_Area>
+		<Outer_Area>
+			<Same_as_Row_Area ID="3505">"No"</Same_as_Row_Area>
+			<Background_Color ID="3510">RGB&lt;0,255,0&gt;</Background_Color>
+			<Text_Color ID="3520">RGB&lt;0,128,0&gt;</Text_Color>
+			<Font ExtraInfo="4C67D5F6-478A-4A2D-A5DE-A3CB10275385" ID="3545">"Table Text Bold"</Font>
+			<Headers>
+				<Background_Color ID="3620">RGB&lt;0,128,0&gt;</Background_Color>
+				<Text_Color ID="3630">RGB&lt;0,255,0&gt;</Text_Color>
+				<Font ExtraInfo="3EA35367-19F9-422F-B73F-89DB5DEAFDA1" ID="3645">"Table Header"</Font>
+			</Headers>
+		</Outer_Area>
+		<Grid_Area>
+			<Line_Color ID="5040">RGB&lt;255,255,0&gt;</Line_Color>
+			<Second_Line_Color ID="5041">SecondLineColor</Second_Line_Color>
+			<Font ExtraInfo="4C67D5F6-478A-4A2D-A5DE-A3CB10275385" ID="5045">"Table Text Bold"</Font>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;159,159,255&gt;</Background_Color>
+				<Text_Color ID="5230">RGB&lt;255,255,255&gt;</Text_Color>
+				<Font ExtraInfo="99627C86-4496-44E5-AA8B-405D7D3EDF65" ID="5240">"default"</Font>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;0,0,176&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="552" left="210" bottom="618" right="762" />
+		<StaticText>The Pivot Table allows the developer to customize the Pivot Table in various ways. On this page, you can see how the format of a Pivot Table can be customized.
+At the Pivot Table Options, you can uncheck the Show Subheaders option if you don't want to see the subheaders. 
+You can also display units in the title of the identifier, or for each individual value.
+When checking the checkbox 'Use second line color' you will see that the grid area is devided in blocks of leaf-elements. This can be specified in the Pivot Table properties on the Grid Area tab.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="195" left="636" bottom="498" right="756" />
+		<TabOrder>5</TabOrder>
+		<ObjectUUID>2FF263D9-D7FB-45D0-A56F-B3A5A410D305</ObjectUUID>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="None" Width="2" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">RegionUnit( r )</Identifier>
+				<Title ID="4120">"Unit"</Title>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">r</Index>
+				<Header_Title ID="6530">"Region"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Hide_if_Single_Identifier ID="6270">"No"</Hide_if_Single_Identifier>
+			</Identifier_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;215,215,255&gt;</Background_Color>
+			<Text_Color ID="2020">RGB&lt;0,0,176&gt;</Text_Color>
+			<Line_Color ID="2040">RGB&lt;255,255,255&gt;</Line_Color>
+			<Font ExtraInfo="4C67D5F6-478A-4A2D-A5DE-A3CB10275385" ID="2045">"Table Text Bold"</Font>
+			<Headers>
+				<Background_Color ID="2120">RGB&lt;0,0,176&gt;</Background_Color>
+				<Text_Color ID="2130">RGB&lt;215,215,255&gt;</Text_Color>
+				<Font ExtraInfo="3EA35367-19F9-422F-B73F-89DB5DEAFDA1" ID="2145">"Table Header"</Font>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Line_Color ID="5040">RGB&lt;255,255,0&gt;</Line_Color>
+			<Font ExtraInfo="4C67D5F6-478A-4A2D-A5DE-A3CB10275385" ID="5045">"Table Text Bold"</Font>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="510" left="636" bottom="534" right="780" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>UseSecondLineColor</Identifier>
+			<Description>"Use second line color"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>c</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>m</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>q</Symbol>
+			<Symbol>r</Symbol>
+			<Symbol>y</Symbol>
+			<Symbol>SecondLineColor</Symbol>
+			<Symbol>MappingMonth2Quarter</Symbol>
+			<Symbol>UseSecondLineColor</Symbol>
+			<Symbol>Sales</Symbol>
+			<Symbol>RegionUnit</Symbol>
+			<Symbol>MappingQuarter2Year</Symbol>
+			<Symbol>Supply</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

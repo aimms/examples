@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="E8305B18-628C-4EE6-9868-1BE0727D7089" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
+		<Template Name="Navigation Template" PageGUID="E458143A-6467-4184-B48F-D68DEC77AEB5" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="CB17F2FB-24EA-4A5F-BC0E-C060E9875F8D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="ACB453BC-490B-45B1-BEC9-D1DD5A1D2814" />
+			</Template>
+			<Page Name="Demo Page" PageGUID="17C2E672-4B97-4839-BFA5-A23C880C34B4" />
+		</Template>
+	</Template>
+	<Page Name="Log" PageGUID="52B805C5-B8F1-4CDA-8D26-2C120951F16B" />
+	<Page Name="Source" PageGUID="E4C7BBBE-5856-4FED-870C-05471B619856" />
+	<Page Name="Data Output" PageGUID="2D6F48E6-F466-4337-9A44-12A5ECD384B3" />
+	<Page Name="Model" PageGUID="8086904E-FB3B-4629-AAF0-FF0663B9C1D5" />
+</TemplateManager>

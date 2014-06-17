@@ -1,0 +1,75 @@
+## ams_version=1.0
+
+Model Main_Linked_Objects {
+    DeclarationSection Product_Declarations {
+        Set Products {
+            Index: p;
+            Parameter: SelectedProduct;
+        }
+        Set Components {
+            Index: c;
+        }
+        Parameter Composition {
+            IndexDomain: (p,c);
+        }
+    }
+    DeclarationSection Network_Declarations {
+        Set NodeSet {
+            Index: i, j, n;
+            Parameter: SelectedNode, SourceNode, DestinationNode;
+        }
+        Set CoordSet {
+            Index: crd;
+            Definition: data { x, y };
+        }
+        Parameter NodePosition {
+            IndexDomain: (i,crd);
+        }
+        Set ArcSet {
+            Index: a;
+            Parameter: SelectedArc;
+        }
+        Parameter NetworkTopology {
+            IndexDomain: (a,i,j);
+        }
+    }
+    DeclarationSection Transport_Declarations {
+        Parameter Demand {
+            IndexDomain: (i,p);
+        }
+        Parameter Supply {
+            IndexDomain: (i,p);
+        }
+        Parameter Transport {
+            IndexDomain: (a,p);
+        }
+    }
+    DeclarationSection Visualization_Declarations {
+        Parameter NodeSize {
+            IndexDomain: (i,p);
+            Definition: abs(Demand(i,p) - Supply(i,p));
+        }
+        ElementParameter NodeColor {
+            IndexDomain: (i,p);
+            Range: AllColors;
+            Definition: if ( Demand(i,p) > Supply(i,p) ) then 'red' else 'blue' endif;
+        }
+        ElementParameter ArcColor {
+            IndexDomain: (a);
+            Range: AllColors;
+            Definition: if ( a = SelectedArc ) then 'blue' else 'black' endif;
+        }
+        ElementParameter ProductColor {
+            IndexDomain: (p);
+            Range: AllColors;
+            Definition: if ( p = SelectedProduct ) then 'blue' else 'black' endif;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

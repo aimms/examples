@@ -1,0 +1,363 @@
+## ams_version=1.0
+
+Model Main_CarSelection {
+    Section Model_Formulation {
+        Parameter MaxParticipants {
+            Text: "The total number of participants";
+        }
+        Set Participants {
+            Text: "The set of all participants";
+            Index: p;
+        }
+        Parameter MaxCars {
+            Text: "The total number of available cars";
+        }
+        Set Cars {
+            Text: "The set of all cars";
+            Index: c;
+        }
+        Parameter PossibleAssignments {
+            IndexDomain: (p,c);
+            Text: "Participant p is interested in car c";
+            Range: binary;
+        }
+        Variable Assignments {
+            IndexDomain: (p,c)  | PossibleAssignments(p,c);
+            Text: "Participant p is assigned to car c";
+            Range: binary;
+        }
+        Variable TotalCombinations {
+            Text: "The total number of assignments";
+            Definition: sum((p,c), Assignments(p,c));
+        }
+        Constraint OneCarPerParticipant {
+            IndexDomain: (p);
+            Text: "Number of cars assigned to participant p is less than or equal to 1";
+            Definition: sum(c , Assignments(p,c)) <= 1;
+        }
+        Constraint OneParticipantPerCar {
+            IndexDomain: (c);
+            Text: "Number of participants assigned to car c is less than or equal to 1";
+            Definition: sum(p , Assignments(p,c)) <= 1;
+        }
+        MathematicalProgram CarSelection {
+            Objective: TotalCombinations;
+            Direction: maximize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Text: "Assignment problem";
+            Type: MIP;
+        }
+    }
+    Section GUI_Section {
+        Section Names_and_Pictures {
+            ElementParameter currentCar {
+                Range: Cars;
+            }
+            ElementParameter currentParticipant {
+                Range: Participants;
+            }
+            Set FirstNames {
+                Text: "List of first names";
+                Index: fn;
+                Definition: data{'Edith', 'John', 'Lisa', 'Gregory', 'Ann', 'Paul', 'Victor', 'Mary', 'Carl', 'Judith'};
+            }
+            Set LastNames {
+                Text: "List of last names";
+                Index: ln;
+                Definition: data{'P','E','G','N','C','W','M','R','T'};
+            }
+            Set CarPictures {
+                Text: "Set of car pictures";
+                Index: i_cp;
+                Parameter: currentCarPicture;
+                Definition: ElementRange(1,25);
+            }
+            StringParameter CarPictureLocation {
+                IndexDomain: (i_cp);
+                Text: "Locations of the car pictures";
+                Definition: FormatString("<prj>:\Bitmaps\\cars\\car%i.jpg", ord(i_cp));
+            }
+            StringParameter CarNames {
+                IndexDomain: (i_cp);
+                Text: "Car names";
+                Definition: {
+                    data
+                    { 01 : "Ford"    ,  02 : "Jaguar"      ,  03 : "Mitsubishi"    ,  04 : "Ferrari"    ,  05 : "BMW"           ,
+                      06 : "Nissan" ,  07 : "Jeep"          ,  08 : "Spyker"        ,  09 : "VW Beetle"     ,  10 : "Mini"      ,
+                      11 : "Toyota"       ,  12 : "Rover"         ,  13 : "Renault"       ,  14 : "Porsche"     ,  15 : "Audi"       ,
+                      16 : "Fiat"    ,  17 : "Land Rover"    ,  18 : "Peugeot"   ,  19 : "Lexus"       ,  20 : "Volvo"         ,
+                      21 : "Bentley"       ,  22 : "Seat"          ,  23 : "Suzuki",  24 : "Kia"           ,  25 : "Alfa Romeo"    }
+                }
+            }
+            Parameter nameExists {
+                IndexDomain: (fn,ln);
+                Text: "Name exists";
+                Range: binary;
+            }
+            Parameter nameExistsFull {
+                Text: "The number after the names";
+            }
+            Procedure GenerateNewName {
+                Arguments: (newName);
+                Body: {
+                    newName := "";
+                    if (prod((fn,ln),nameExists(fn,ln)) = 1) then
+                            nameExistsFull += 1;
+                            nameExists(fn,ln) := 0;
+                    endif;
+                    
+                    while (newName = "") do
+                            firstName := Element(FirstNames,Round(Uniform(1,Card(FirstNames))));
+                            lastName := Element(LastNames,Round(Uniform(1,Card(LastNames))));
+                            if not(nameExists(firstName,lastName)) then
+                                    nameExists(firstName,lastName) := 1;
+                                    if (nameExistsFull > 0) then
+                                            newName := FormatString("%e %e %i",firstName,lastName,nameExistsFull);
+                                    else
+                                            newName := FormatString("%e %e",firstName,lastName);
+                                    endif;
+                            endif;
+                    endwhile;
+                }
+                Comment: {
+                    "The procedure generates a new participant name. The first name and the last name are choosen by random numbers; if the name already exists, then new
+                    random numbers are generated.
+                    If every possible name combination is in use then the \'nameExist\' parameter will be emptied and a number will be append after the generated name."
+                }
+                ElementParameter firstName {
+                    Range: FirstNames;
+                }
+                ElementParameter lastName {
+                    Range: LastNames;
+                }
+                StringParameter newName {
+                    Property: Output;
+                }
+            }
+            Procedure GenerateNewCarPicture {
+                Arguments: (currentCar,picturePath);
+                Body: {
+                    currentCarPicture := Element(CarPictures,1) ++ (currentCar-1);
+                    picturePath := CarPictureLocation(currentCarPicture);
+                }
+                Comment: "The procedure returns the location of the next car picture. If all the picture are in use, then the procedure jumps to the first element of the set.";
+                StringParameter picturePath {
+                    Property: Output;
+                }
+                Parameter currentCar {
+                    Property: Input;
+                }
+            }
+            Procedure GenerateNewCarName {
+                Arguments: (currentCar,newName);
+                Body: {
+                    currentCarPicture := Element(CarPictures,1) ++ (currentCar-1);
+                    if (Card(Cars) >= Card(CarPictures)) then
+                            newName := FormatString("%s %n",CarNames(currentCarPicture),Ceil(Card(Cars)/25));
+                    else
+                            newName := CarNames(currentCarPicture);
+                    endif;
+                }
+                Comment: "The procedure returns a car name according to the picture of the car. If there are more cars than pictures then a number will be append to the car name.";
+                Parameter currentCar {
+                    Property: Input;
+                }
+                StringParameter newName {
+                    Property: Output;
+                }
+            }
+            Procedure ModifyMaxCars {
+                Body: {
+                    if (Card(Cars) < MaxCars) then
+                            while (Card(Cars) < MaxCars) do
+                                    GenerateNewCarName(Card(Cars)+1,newName);
+                                    SetElementAdd(Cars,currentCar,newName);
+                                    GenerateNewCarPicture(Card(Cars),CarPictureName(currentCar));
+                            endwhile;
+                    else
+                            while (Card(Cars) > MaxCars) do
+                                    Cars -= last(c);
+                            endwhile;
+                    endif;
+                    
+                    GeneratePossiblePairs;
+                }
+                Comment: "The procedure modifies the Cars set according to the value of the \'MaxCars\' parameter.";
+                StringParameter newName;
+            }
+            Procedure ModifyMaxParticipants {
+                Body: {
+                    newName := "";
+                    if (Card(Participants) < MaxParticipants) then
+                            while (Card(Participants) < MaxParticipants) do
+                                   GenerateNewName(newName);
+                                   SetElementAdd(Participants,currentParticipant,newName);
+                            endwhile;
+                    else
+                            while (Card(Participants) > MaxParticipants) do
+                                   newName := FormatString("%e",last(p));
+                                   nameLength := StringLength(newName);
+                                   spacePostion := FindNthString(newName," ",2);
+                                   if (spacePostion) then
+                                    nameExists(StringToelement(FirstNames,SubString(newName,1,spacePostion-3)),StringToElement(LastNames,SubString(newName,spacePostion-1, spacePostion-1))) := 0;
+                                   else
+                                        nameExists(StringToelement(FirstNames,SubString(newName,1,nameLength-2)),StringToElement(LastNames,SubString(newName,nameLength, nameLength))) := 0;
+                                   endif;
+                                   if (sum((fn,ln),nameExists(fn,ln)) = 0 and nameExistsFull > 0) then
+                                                    nameExists(fn,ln) := 1;
+                                                    nameExistsFull -= 1;
+                                            endif;
+                                   Participants -= last(p);
+                            endwhile;
+                    endif;
+                    
+                    GeneratePossiblePairs;
+                }
+                Comment: "The procedure modifies the Participants set according to the value of the \'MaxParticipants\' parameter.";
+                StringParameter newName;
+                Parameter nameLength;
+                Parameter spacePostion;
+            }
+        }
+        Procedure GeneratePossiblePairs {
+            Body: {
+                empty PossibleAssignments;
+                
+                WantedCarsSize(p) := 2 + Binomial(0.25, 4);
+                
+                empty WantedCars;
+                
+                for (p) do
+                        repeat
+                                WantedCars(p) += Element(cars, 1 + round(uniform(0,MaxCars)));
+                                break when loopcount = WantedCarsSize(p)
+                        endrepeat
+                endfor;
+                
+                PossibleAssignments(p,c) := c in WantedCars(p);
+                Assignments(p,c)  := 0;
+                TotalCombinations := 0;
+            }
+            Parameter WantedCarsSize {
+                IndexDomain: (p);
+                Text: "Number of cars that participants p will be interested in.";
+            }
+            Set WantedCars {
+                IndexDomain: (p);
+                SubsetOf: Cars;
+                Text: "Set of cars that are wanted by participant p";
+            }
+        }
+        DeclarationSection Declaration_Interface {
+            Parameter ParticipantPlaceX {
+                IndexDomain: (p);
+                Text: "The x-coordinate in the network of partipant p";
+                Definition: 10;
+            }
+            Parameter ParticipantPlaceY {
+                IndexDomain: (p);
+                Text: "The y-coordinate in the network of partipant p";
+                Definition: 100 - 100*ord(p) / card(p);
+            }
+            Parameter CarPlaceX {
+                IndexDomain: (c);
+                Text: "The x-coordinate in the network of car c";
+                Definition: 100;
+            }
+            Parameter CarPlaceY {
+                IndexDomain: (c);
+                Text: "The y-coordinate in the network of car c";
+                Definition: 100 - 100*ord(c) / card(c);
+            }
+            StringParameter CarPictureName {
+                IndexDomain: c;
+                Text: "The location of the picture of car c";
+            }
+            ElementParameter SelectedParticipant {
+                Text: "In interface selected participant";
+                Range: Participants;
+            }
+            ElementParameter SelectedCar {
+                Text: "In interface selected car";
+                Range: Cars;
+            }
+            Set ParticipantsSubset {
+                SubsetOf: Participants;
+                Text: "Participants that are interested in the selected car";
+                Definition: {
+                    { p | PossibleAssignments(p,SelectedCar)}
+                }
+            }
+            Set CarsSubset {
+                SubsetOf: Cars;
+                Text: "Cars that are liked by the selected participant";
+                Index: cs;
+                Definition: {
+                    { c | PossibleAssignments(SelectedParticipant,c)}
+                }
+            }
+            Parameter PictureSize {
+                Text: "Size of the picture in the interface";
+                Definition: 525/MaxCars;
+            }
+            StringParameter PossibleCars {
+                IndexDomain: (p);
+                Definition: FormatString("%e is interested in the following cars:", p);
+            }
+            StringParameter InterestedParticipants {
+                IndexDomain: (c);
+                Definition: FormatString("The following participants are interested in: %e", c);
+            }
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            option seed := 36420;
+            empty Cars;
+            empty Participants;
+            MaxCars         := 10;
+            MaxParticipants := 10;
+            nameExistsFull := 0;
+            nameExists(fn,ln) := 0;
+            while (loopcount <= MaxCars) do
+                    GenerateNewCarName(loopcount,newName);
+                    SetElementAdd(Cars,currentCar,newName);
+                    GenerateNewCarPicture(loopcount,CarPictureName(currentCar));
+            endwhile;
+            while (loopcount <= MaxParticipants) do
+                    GenerateNewName(newName);
+                    SetElementAdd(Participants,currentParticipant,newName);
+            endwhile;
+            
+            GeneratePossiblePairs;
+            
+            SelectedCar             := first(Cars);
+            SelectedParticipant     := first(Participants);
+        }
+        StringParameter newName;
+    }
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+                solve CarSelection
+            
+            else
+            
+                DialogMessage("In AIMMS Viewer, the SOLVE statement is disabled. Therefore the output data is read from a case");
+                CaseFind("10 pairs",ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

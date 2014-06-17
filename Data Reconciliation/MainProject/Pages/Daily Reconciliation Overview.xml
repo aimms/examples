@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-02-26 01:52:21" PrintPage="true">
+	<Location top="23" left="4" bottom="770" right="1144" />
+	<PageEditSize Type="Inherited">
+		<Size Width="9025" Height="13958" />
+	</PageEditSize>
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="2895">
+			<BottomArea Line="AdjustableFromTop" Value="900">
+				<BottomArea Line="AdjustableFromTop" Value="1260">
+					<BottomArea Line="AdjustableFromTop" Value="870">
+						<BottomArea Line="AdjustableFromTop" Value="1380">
+							<BottomArea Line="AdjustableFromTop" Value="960">
+								<BottomArea Line="AdjustableFromTop" Value="1365">
+									<BottomArea Line="FixedFromBottom" Value="8" />
+								</BottomArea>
+							</BottomArea>
+						</BottomArea>
+					</BottomArea>
+				</BottomArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<Action>
+		<EntryProcedure>FillReportDescription</EntryProcedure>
+	</Action>
+	<PageObject Type="Picture">
+		<Location top="180" left="180" bottom="2880" right="2790" />
+		<FileName LiteralFileName="true">"&lt;prj&gt;:bitmaps\AIMMS - logo.bmp"</FileName>
+		<Display>ActualSize</Display>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="990" left="2790" bottom="1530" right="8820" />
+		<StaticText>AIMMS - Data Reconciliation Demo</StaticText>
+		<Font GUID="53D303C4-1158-449A-B0F7-B439921F3D96" Name="Header Font" />
+		<TextColor RGB="#000080" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="1980" left="2790" bottom="2700" right="8730" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<Border Style="Line" Width="3" MarginTop="3" MarginRight="3" MarginBottom="3" MarginLeft="3" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CasePath</Identifier>
+			<NumberFormat Width="40" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Case"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ReconciliationDate</Identifier>
+			<NumberFormat Width="25" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Date of reconciliation"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>CaseOwner</Identifier>
+			<NumberFormat Width="25" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Reconciliation performed by"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="8280" left="360" bottom="9630" right="8730" />
+		<TabOrder>4</TabOrder>
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<Border Style="Line" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<MarkEntireRow>false</MarkEntireRow>
+		<RowSelection>false</RowSelection>
+		<AutomaticReSort>false</AutomaticReSort>
+		<Domain>
+			<Identifier>f</Identifier>
+			<Index Name="f">
+				<TitleText>"Flow"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>MeasuredFlow( f )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Measured flow [ton/h]"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Flow( f )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Reconciled flow [ton/h]"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>MappedMoleFlow( f )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Molar flow [Mmol/h]"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ObservedFlowError( f )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Observed error"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="5940" left="360" bottom="7290" right="8730" />
+		<TabOrder>5</TabOrder>
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<Border Style="Line" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowSelection>false</RowSelection>
+		<MultipleRowSelection>false</MultipleRowSelection>
+		<AutomaticReSort>false</AutomaticReSort>
+		<Domain>
+			<Identifier>MappedFlowComponent( f, c )</Identifier>
+			<Index Name="f">
+				<TitleText>"Flow"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+			<Index Name="c">
+				<TitleText>"Component"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>MappedMeasuredComposition( f, c )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Measured composition [%]"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>MappedComposition( f, c )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Reconciled composition [%]"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ObservedCompositionError( f, c )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Observed error"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="3420" left="360" bottom="3780" right="6210" />
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<StaticText>Reconciliation summary</StaticText>
+		<Font GUID="D6623B5E-2FCF-4385-8129-30680310AA84" Name="Intro Font" />
+		<TextColor RGB="#000080" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="5490" left="360" bottom="5850" right="6210" />
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<StaticText>Flow summary</StaticText>
+		<Font GUID="D6623B5E-2FCF-4385-8129-30680310AA84" Name="Intro Font" />
+		<TextColor RGB="#000080" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="7830" left="360" bottom="8190" right="6210" />
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<StaticText>Composition summary</StaticText>
+		<Font GUID="D6623B5E-2FCF-4385-8129-30680310AA84" Name="Intro Font" />
+		<TextColor RGB="#000080" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="3870" left="360" bottom="4770" right="3600" />
+		<TabOrder>9</TabOrder>
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<SelectionColor RGB="#000080" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>MaxFlowErrorBound</Identifier>
+			<NumberFormat Width="6" Decimals="1" Alignment="Center" ShowDefaults="true" />
+			<Title>"Maximum flow error"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>MaxCompositionErrorBound</Identifier>
+			<NumberFormat Width="6" Decimals="1" Alignment="Center" ShowDefaults="true" />
+			<Title>"Maximum composition error"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>FeasibilityTolerance</Identifier>
+			<NumberFormat Width="8" Decimals="5" Alignment="Center" ShowDefaults="true" />
+			<Title>"Feasibility tolerance"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>NLPErrorExponent</Identifier>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" ShowDefaults="true" />
+			<Title>"Objective error exponent"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="3870" left="3870" bottom="5040" right="8730" />
+		<TabOrder>10</TabOrder>
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<Border Style="Line" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowSelection>false</RowSelection>
+		<AutomaticReSort>false</AutomaticReSort>
+		<Domain>
+			<Identifier>ReactantCreated( ru, c )</Identifier>
+			<Index Name="ru">
+				<TitleText>"Reactor"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+			<Index Name="c">
+				<TitleText>"Component"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>ReactantCreated( ru, c )</Identifier>
+			<NumberFormat Width="6" Decimals="2" Alignment="Center" />
+			<TitleText>"Creation [Mmol/h]"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="14040" left="360" bottom="14310" right="4770" />
+		<TabOrder>13</TabOrder>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<Border Style="None" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CasePath</Identifier>
+			<NumberFormat Width="40" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="14040" left="7920" bottom="14310" right="8370" />
+		<StaticText>Page</StaticText>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="14040" left="8370" bottom="14310" right="8730" />
+		<TabOrder>12</TabOrder>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CurrentPageNumber</Identifier>
+			<NumberFormat Width="3" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="4770" left="360" bottom="5040" right="3600" />
+		<TabOrder>14</TabOrder>
+		<PrintingOccurrence>SpreadPages</PrintingOccurrence>
+		<Font GUID="D6623B5E-2FCF-4385-8129-30680310AA84" Name="Intro Font" />
+		<Border Style="Line" MarginRight="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffff00" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalAbsoluteError</Identifier>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" ShowDefaults="true" />
+			<Title>"Observed error"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="-630" left="4950" bottom="-90" right="6750" />
+		<TabOrder>15</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Print"</Title>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>File-Print</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MappedMeasuredComposition</Symbol>
+			<Symbol>MappedMoleFlow</Symbol>
+			<Symbol>FeasibilityTolerance</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>MaxFlowErrorBound</Symbol>
+			<Symbol>FillReportDescription</Symbol>
+			<Symbol>ReactantCreated</Symbol>
+			<Symbol>ru</Symbol>
+			<Symbol>CaseOwner</Symbol>
+			<Symbol>MappedFlowComponent</Symbol>
+			<Symbol>CasePath</Symbol>
+			<Symbol>ObservedCompositionError</Symbol>
+			<Symbol>ObservedFlowError</Symbol>
+			<Symbol>MeasuredFlow</Symbol>
+			<Symbol>CurrentPageNumber</Symbol>
+			<Symbol>Flow</Symbol>
+			<Symbol>NLPErrorExponent</Symbol>
+			<Symbol>TotalAbsoluteError</Symbol>
+			<Symbol>MappedComposition</Symbol>
+			<Symbol>ReconciliationDate</Symbol>
+			<Symbol>MaxCompositionErrorBound</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

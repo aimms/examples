@@ -1,0 +1,185 @@
+## ams_version=1.0
+
+Model Main_Aggregation_Example {
+    Section Time_Definitions {
+        Horizon Periods {
+            Index: ti;
+            Parameter: CurrentPeriod;
+            CurrentPeriod: CurrentPeriod;
+            Definition: {
+                ElementRange(1, MaxPeriods, prefix: BaseUnits);
+            }
+        }
+        Calendar Days {
+            Index: di;
+            Parameter: CurrentDay;
+            Unit: day;
+            BeginDate: StartDate;
+            EndDate: EndDate;
+            TimeslotFormat: "%sAm|AllMonths| %sd %c%y";
+        }
+        StringParameter StartDate {
+            Definition: "2007-01-01 00:00:00";
+        }
+        StringParameter EndDate {
+            Definition: "2007-03-31 00:00:00";
+        }
+        Quantity SI_Time_Duration {
+            BaseUnit: s;
+            Conversions: day -> s : # -> # * 86400;
+            Comment: "Expresses the value for the duration of periods.";
+        }
+        ElementParameter BaseUnits {
+            Range: UnitDef;
+            InitialData: {
+                'day' ;
+            }
+        }
+        Set UnitDef {
+            Index: ui;
+            OrderBy: 1;
+            Definition: data { Month, Week, Day};
+        }
+        Parameter MaxPeriods {
+            InitialData: {
+                90;
+            }
+        }
+        Parameter TimeSlotDelimiter {
+            IndexDomain: ti;
+            InitialData: {
+                0;
+            }
+        }
+        Set DelimiterDay {
+            SubsetOf: Days;
+        }
+        Set DelimiterWeek {
+            SubsetOf: Days;
+        }
+        Set DelimiterMonth {
+            SubsetOf: Days;
+        }
+        Set InActiveDays {
+            SubsetOf: Days;
+            Definition: {
+                data {};
+            }
+        }
+        Set DaysInPeriod {
+            IndexDomain: ti;
+            SubsetOf: Days;
+            InitialData: {
+                data { } ;
+            }
+        }
+        Parameter NumberOfDaysInPeriod {
+            IndexDomain: (ti);
+            Definition: card(DaysInPeriod(ti));
+        }
+        Procedure SetDelimiter {
+            Body: {
+                DelimiterMonth:={di|TimeSlotCharacteristic (di, 'monthday')=1};
+                DelimiterWeek:={di|TimeSlotCharacteristic (di, 'weekday')=1};
+                DelimiterDay:={di|TimeSlotCharacteristic (di, 'weekday')};
+            }
+            Comment: "Sets the first of the month";
+        }
+        Procedure TimeTableDay {
+            Body: {
+                MaxPeriods:=90;
+                
+                CreateTimeTable (
+                	TimeTable		: DaysInPeriod,
+                	CurrentTimeSlot   	: CurrentDay,
+                  	CurrentPeriod     	: CurrentPeriod,
+                	PeriodLength      	: NumberOfDaysInPeriod,
+                	LengthDominates   	: TimeSlotDelimiter,
+                	InactiveTimeSlots 	: InactiveDays,
+                	DelimiterSlots    	: DelimiterDay );
+            }
+        }
+        Procedure TimeTableWeek {
+            Body: {
+                MaxPeriods:=12;
+                
+                CreateTimeTable (
+                	TimeTable		: DaysInPeriod,
+                	CurrentTimeSlot   	: CurrentDay,
+                  	CurrentPeriod     	: CurrentPeriod,
+                	PeriodLength      	: NumberOfDaysInPeriod,
+                	LengthDominates   	: TimeSlotDelimiter,
+                	InactiveTimeSlots 	: InactiveDays,
+                	DelimiterSlots    	: DelimiterWeek );
+            }
+        }
+        Procedure TimeTableMonth {
+            Body: {
+                MaxPeriods:=3;
+                
+                CreateTimeTable (
+                	TimeTable		: DaysInPeriod,
+                	CurrentTimeSlot   	: CurrentDay,
+                  	CurrentPeriod     	: CurrentPeriod,
+                	PeriodLength      	: NumberOfDaysInPeriod,
+                	LengthDominates   	: TimeSlotDelimiter,
+                	InactiveTimeSlots 	: InactiveDays,
+                	DelimiterSlots    	: DelimiterMonth );
+            }
+        }
+        Procedure SetTimePeriods {
+            Body: {
+                empty DaysInPeriod(ti);
+                
+                CurrentPeriod 	:= Element( Periods, 1 );
+                CurrentDay    := Element( days, 1 );
+                
+                If BaseUnits = 'Day' then
+                	TimeTableDay;
+                	elseif BaseUnits = 'Week' then
+                		TimeTableWeek;
+                			else
+                			TimeTableMonth;
+                endif;
+            }
+        }
+    }
+    Section Data_Section {
+        Set Producers {
+            Index: pi;
+            Definition: {
+                ElementRange(1, 5, prefix: 'Producer-');
+            }
+        }
+        Parameter Daily_ProductionCosts {
+            IndexDomain: (pi,di);
+            Definition: Normal(10,4);
+        }
+        Parameter ProductionCosts {
+            IndexDomain: (pi,ti);
+        }
+        Procedure To_Aggregate {
+            Body: {
+                SetTimePeriods;
+                
+                Aggregate(
+                  TimeSlotData : Daily_ProductionCosts,
+                  PeriodData   : ProductionCosts,
+                  TimeTable    : DaysInPeriod,
+                  Type         : 'summation' );
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            SetDelimiter;
+            SetTimePeriods;
+            To_Aggregate;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+                return 1;
+        }
+    }
+}

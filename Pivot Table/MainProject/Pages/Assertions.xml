@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-09-25 16:41:44">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>5C856D0C-3F7D-4926-9C86-814A186CF8DF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="515" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="75">
+						<TopArea Line="FixedFromBottom" Value="58" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Text">
+		<Location top="552" left="210" bottom="612" right="738" />
+		<StaticText>Note: you can specify the assertions in the Pivot Table under Contents tab at the Explicit Identifier section in the Pivot Table Properties.  There is also the possibility of specifying the assertions in the Defaults section. If there are some default assertions you will get an extra option for the explicit assertions whether or not you want to ignore the default assertions. You can specify 5 assertions in the Pivot Table. However it is not allowed to re-order them.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="552" left="96" bottom="594" right="162" />
+		<StaticText>
+</StaticText>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="492" left="210" bottom="546" right="744" />
+		<StaticText>Two assertions are specified in the Pivot Table above: The first one is under the Explicit Identifier section, which is to make sure the profit in EMEA or American region can not be lower than -25,000. The other one is under the Defaults section, which is to make sure the profit in Asia-Pacific region can not be lower than -10,000.  </StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="192" left="210" bottom="486" right="744" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>A5DBEBCD-E828-4C5F-B56C-C28870B6894D</ObjectUUID>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">A_MainRegionProfit( mr, m )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Not show units"</Show_Unit>
+				</Show_Unit>
+				<Title ID="4120">STRING := MainRegionProfit.txt</Title>
+				<Format>
+					<Decimal_Places ID="4312">0</Decimal_Places>
+					<Show_1000_seperator ID="4313">"Yes"</Show_1000_seperator>
+					<Show_value_bar ID="4340">"Not show value bars"</Show_value_bar>
+				</Format>
+				<Colors>
+					<Bar_Fill_Color ID="4167">ProfitColor( mr, m )</Bar_Fill_Color>
+				</Colors>
+				<Procedures_Assertions>
+					<Assertion_1>
+						<Symbol ID="4401">Explicit_Assertion( mr, m )</Symbol>
+					</Assertion_1>
+				</Procedures_Assertions>
+			</Explicit_Identifier>
+			<Defaults>
+				<Procedures_Assertions>
+					<Assertion>
+						<Symbol ID="4501">Default_Assertion( mr, m )</Symbol>
+					</Assertion>
+				</Procedures_Assertions>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Defaults>
+				<Column_Width ID="6170">ScalarColumnWidth</Column_Width>
+			</Defaults>
+			<Explicit_Index>
+				<Index ID="6510">mr</Index>
+				<Element_Text ID="6520">MainRegionDescription( mr )</Element_Text>
+				<Header_Title ID="6530">"Main Region"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">m</Index>
+				<Header_Title ID="6530">"Month"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Hide_if_Single_Identifier ID="6270">"No"</Hide_if_Single_Identifier>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<User_Modifications>
+				<Indices_Showing_All_Elements ID="1212">"Allowed"</Indices_Showing_All_Elements>
+			</User_Modifications>
+			<Save_Layout_State>
+				<By_End_User ID="1040">"On Demand"</By_End_User>
+				<By_Developer ID="1115">"When being Saved"</By_Developer>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ExtraInfo="A2E46644-4387-482F-B613-91153F0FF029" ID="5220">"red"</Background_Color>
+			</Aggregators>
+		</Grid_Area>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>m</Symbol>
+			<Symbol>ScalarColumnWidth</Symbol>
+			<Symbol>ProfitColor</Symbol>
+			<Symbol>Explicit_Assertion</Symbol>
+			<Symbol>mr</Symbol>
+			<Symbol>Default_Assertion</Symbol>
+			<Symbol>MainRegionProfit</Symbol>
+			<Symbol>MainRegionDescription</Symbol>
+			<Symbol>A_MainRegionProfit</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

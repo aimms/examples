@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo - Error Handling" PageGUID="5DFF2690-A93B-4353-8598-E4A69A15BD59">
+		<Page Name="Local Error Handling" PageGUID="F87F3F09-6629-4728-8591-2C8585444749">
+			<Page Name="Error While Reading Data" PageGUID="9B28848D-771C-4984-96D6-67BE2B4A5A2C" />
+			<Page Name="Error Locating File" PageGUID="3BADF2BA-371D-4110-8676-66D73BCF6EB4" />
+		</Page>
+		<Page Name="Global Error Handling" PageGUID="C86AF07D-BDD8-4F3B-902D-0EBBC9CCC388" />
+	</Page>
+</PageManager>

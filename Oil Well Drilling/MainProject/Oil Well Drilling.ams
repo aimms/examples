@@ -1,0 +1,726 @@
+## ams_version=1.0
+
+Model Main_Oil_Drilling_Well {
+    DeclarationSection Model_Declaration {
+        Set SurveyResult {
+            Text: "The set containing all Survey Results";
+            Index: s;
+            Definition: data { Positive, Negative, NoSurvey };
+        }
+        Set SurveyResults_AfterDrilling {
+            SubsetOf: SurveyResult;
+            Text: "Survey Results";
+            Definition: data { Positive, Negative };
+        }
+        Parameter SurveyCost {
+            Text: "Cost of the Survey";
+        }
+        Parameter LandValue {
+            IndexDomain: (s);
+            Text: "Land Value";
+        }
+        Parameter ProbabilityOfSurvey {
+            IndexDomain: (s);
+            Text: "Probability of Survey Outcomes";
+        }
+        Variable DoSurvey {
+            Text: "Variable to indicate if we should do a survey";
+            Range: binary;
+        }
+        Variable Drill {
+            IndexDomain: s;
+            Text: "Variable to indicate if we should do a drilling, depending on the outcome of the survey";
+            Range: binary;
+        }
+        Variable DrillDepth {
+            IndexDomain: (s);
+            Text: "Variable to indicate how deep we should drill";
+            Range: [0, 100];
+        }
+        Variable HoleDiameter {
+            IndexDomain: (s);
+            Text: "Variable to indicate the width of our drilling";
+            Range: [5, 35];
+        }
+        Variable ExpectedPayOff {
+            IndexDomain: (s);
+            Text: "The expected pay off for s";
+            Range: free;
+            Definition: {
+                   Drill(s) * [ ProbabilityOfOutcome(s) * PayOffForOil(s) - CostOfDrilling(s) ] +
+                (1-Drill(s))* [ LandValue(s) ];
+            }
+        }
+        Variable TotalExpectedPayOff {
+            Text: "Total Expected PayOff";
+            Range: free;
+            Definition: {
+                    DoSurvey * (   ProbabilityOfSurvey('Positive')*ExpectedPayOff('Positive')
+                                 + ProbabilityOfSurvey('Negative')*ExpectedPayOff('Negative') - SurveyCost )
+                +(1-DoSurvey) * ExpectedPayOff('NoSurvey');
+            }
+        }
+        MathematicalProgram OilWellDrilling {
+            Objective: TotalExpectedPayOff;
+            Direction: maximize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Text: "Oil Well Drilling Example";
+            Type: MINLP;
+        }
+        File ErrorOutput {
+            Device: window;
+            Mode: replace;
+        }
+        Variable CostOfDrilling {
+            IndexDomain: (s);
+            Text: "The Cost of Drilling";
+            Range: free;
+        }
+        Variable PayOffForOil {
+            IndexDomain: (s);
+            Text: "The expected pay off for s and r";
+            Range: free;
+        }
+        Variable ProbabilityOfOutcome {
+            IndexDomain: (s);
+            Text: "The probability of finding oil when doing s and r";
+            Range: [0, 1];
+        }
+    }
+    DeclarationSection GUI_Declaration {
+        Set AdjustableFormulations {
+            Text: "Set of Formulations";
+            Index: f;
+            Definition: Data{Cost, PayOff,Probability};
+        }
+        StringParameter InputExpression_CostOfDrilling {
+            Text: "Cost of Drilling";
+        }
+        StringParameter InputExpression_PayOffForOil {
+            Text: "Pay Off";
+            Comment: "\"187*HoleDiameter(s)^2 - 103 *HoleDiameter(s) + 2400\"";
+        }
+        StringParameter InputExpression_ProbabilityOfOutcome {
+            IndexDomain: (s);
+            Text: "Probability of Outcome";
+        }
+        StringParameter Status_MessageForCost {
+            Text: "Message for Cost Formulation";
+        }
+        StringParameter Status_MessageForPayOff {
+            Text: "Message for Pay Off Formulation";
+        }
+        StringParameter Status_MessageForProbability {
+            IndexDomain: (s);
+            Text: "Message for Pay Off Formulation";
+        }
+        ElementParameter Color_BackgroundForCost {
+            Text: "Background Color for Cost Formulation";
+            Range: AllColors;
+        }
+        ElementParameter Color_BackgroundForPayOff {
+            Text: "Background Color for Pay Off";
+            Range: AllColors;
+        }
+        ElementParameter Color_BackgroundForProbability {
+            IndexDomain: (s);
+            Text: "Background Color for Probability";
+            Range: AllColors;
+        }
+        ElementParameter ObtainedResult_Survey {
+            Text: "Survey Result Obtained";
+            Range: SurveyResults_AfterDrilling;
+        }
+        StringParameter ObtainedResult_Drilling {
+            Text: "Drill Result Obtained";
+        }
+        StringParameter Results_DrillDecision {
+            Text: "Drill Decision";
+        }
+        StringParameter Results_SurveyDecision {
+            Text: "Survey Decision";
+        }
+        Parameter Results_DrillDepthDecision {
+            Text: "Drill Depth Value";
+        }
+        Parameter Results_HoleDiameterDecision {
+            Text: "Hole Diameter Value";
+        }
+    }
+    Section Model_Edit_Section {
+        DeclarationSection tmp {
+            StringParameter tmp1 {
+                IndexDomain: (ERRH::IndexPendingErrors,s);
+                Definition: errh::Node(ERRH::IndexPendingErrors);
+            }
+        }
+        DeclarationSection Model_Edit_Declaration {
+            ElementParameter Handler1 {
+                Text: "Handler for ME Identifiers";
+                Range: AllIdentifiers;
+            }
+            ElementParameter HandlerForDeclaration {
+                Text: "Handler for ME Declaration Section";
+                Range: AllIdentifiers;
+            }
+            StringParameter FormulationFormatted {
+                Text: "Formatted Formulation";
+            }
+            StringParameter FormulationToCheck {
+                Text: "Formulation to be Checked";
+            }
+            Parameter StringLocation {
+                Text: "String Location for String Operations";
+            }
+            Parameter StringOccurance {
+                Text: "Number of String Occurances";
+            }
+            Parameter PreviousStringLocation {
+                Text: "Previous String Location for String Operations";
+            }
+            StringParameter StringUsedInCoding {
+                Text: "A String to be Used in Coding";
+            }
+            Parameter ErrorProduced {
+                Text: "Error Produced";
+                Range: binary;
+                InitialData: 0;
+            }
+        }
+        Procedure CheckButtonProcedure {
+            Arguments: (Formulation);
+            Body: {
+                !This procedure calls the FormatFormulation procedure for the formulation to be checked and then creates a temporary
+                !constraint to check if the formulation is correct
+                
+                CreateATemporaryConstraint(Formulation, ErrorProduced);
+            }
+            ElementParameter Formulation {
+                Range: AdjustableFormulations;
+                Property: Input;
+            }
+        }
+        Procedure CreateATemporaryConstraint {
+            Arguments: (Formulation,ErrorProduced);
+            Body: {
+                !This procedure creates a temporary constraint to check if the entered formulation is correct. If an error occurs the procedure creates
+                !the appropriate coloring and message for the formulation checked
+                
+                BLOCK;
+                        StringUsedInCoding :="";
+                        ErrorProduced := 0;
+                        switch Formulation do
+                        'Cost':
+                                HandlerForDeclaration := StringToElement(AllIdentifiers, 'RTL::RunTimeLibraryForFormulationDeclarations', create:0);
+                                Handler1 := StringToElement(AllIdentifiers, 'RTL::CostTemporaryConstraint', create:0);
+                                if(Handler1) then
+                                        me::Delete(Handler1);
+                                endif;
+                                if(not Handler1) then
+                                        Handler1 := me::Create('CostTemporaryConstraint', 'constraint', HandlerForDeclaration);
+                                        me::SetAttribute(Handler1, 'index domain', "(s)");
+                                        me::SetAttribute(Handler1, 'definition', "CostOfDrilling(s) = " + InputExpression_CostOfDrilling + ";");
+                                        me::Compile(Handler1);
+                                endif;
+                
+                                if(Handler1) then
+                                        me::Delete(Handler1);
+                                endif;
+                
+                        'PayOff':
+                                HandlerForDeclaration := StringToElement(AllIdentifiers, 'RTL::RunTimeLibraryForFormulationDeclarations', create:0);
+                                        StringUsedInCoding := "RTL::PayOff" + "TemporaryConstraint";
+                
+                                        Handler1 := StringToElement(AllIdentifiers, StringUsedInCoding, create:0);
+                                        if(Handler1) then
+                                                me::Delete(Handler1);
+                                        endif;
+                
+                                        StringUsedInCoding := "PayOff" + "TemporaryConstraint";
+                
+                                        if(not Handler1) then
+                                                Handler1 := me::Create(StringUsedInCoding, 'constraint', HandlerForDeclaration);
+                                                me::SetAttribute(Handler1, 'index domain', "(s)");
+                                                me::SetAttribute(Handler1, 'definition', "PayOffForOil(s) = " + InputExpression_PayOffForOil + ";");
+                                                me::Compile(Handler1);
+                                        endif;
+                                        if(Handler1) then
+                                                me::Delete(Handler1);
+                                        endif;
+                
+                        'Probability':
+                
+                                HandlerForDeclaration := StringToElement(AllIdentifiers, 'RTL::RunTimeLibraryForFormulationDeclarations', create:0);
+                
+                                for(s) do
+                                        StringUsedInCoding := "RTL::Probability" + s + "TemporaryConstraint";
+                                        Handler1 := StringToElement(AllIdentifiers, StringUsedInCoding, create:0);
+                                        if(Handler1) then
+                                                me::Delete(Handler1);
+                                        endif;
+                                        if(not Handler1) then
+                                                StringUsedInCoding := "Probability" + s + "TemporaryConstraint";
+                                                Handler1 := me::Create(StringUsedInCoding, 'constraint', HandlerForDeclaration);
+                                                me::SetAttribute(Handler1, 'index domain', "(s)");
+                                                me::SetAttribute(Handler1, 'definition', "ProbabilityOfOutcome('" + s + "') = " + InputExpression_ProbabilityOfOutcome(s) + ";");
+                                                me::Compile(Handler1);
+                                        endif;
+                                        if(Handler1) then
+                                                me::Delete(Handler1);
+                                        endif;
+                
+                                endfor;
+                        endswitch;
+                
+                
+                        if(card(errh::PendingErrors) = 0) then
+                                switch Formulation do
+                                        'Cost':
+                                                if(not InputExpression_CostOfDrilling = "") then
+                                                        Status_MessageForCost := "CORRECT";
+                                                        Color_BackgroundForCost := 'My Correct Color';
+                                                endif;
+                                        'PayOff':
+                                                if(not InputExpression_PayOffForOil = "") then
+                                                        Status_MessageForPayOff := "CORRECT";
+                                                        Color_BackgroundForPayOff := 'My Correct Color';
+                                                endif;
+                
+                                        'Probability':
+                                                for(s) do
+                                                        if(not InputExpression_ProbabilityOfOutcome(s) = "" ) then
+                                                                Status_MessageForProbability(s) := "CORRECT";
+                                                                Color_BackgroundForProbability(s):= 'My Correct Color';
+                                                        endif;
+                                                endfor;
+                                endswitch;
+                        endif;
+                        StringUsedInCoding :="";
+                        ONERROR err DO
+                        if(errh::Severity(err) = "warning") then
+                                errh::MarkAsHandled(err);
+                        else
+                                ErrorProduced := 1;
+                                switch Formulation do
+                                        'Cost':
+                                                Status_MessageForCost := "INCORRECT";
+                                                Color_BackgroundForCost := 'My Incorrect Color';
+                                        'PayOff':
+                                                Status_MessageForPayOff := "INCORRECT";
+                                                Color_BackgroundForPayOff := 'My Incorrect Color';
+                
+                                        'Probability':
+                                                for(s) do
+                                                        if(substring(errh::Node(err),17,24) = s) then
+                                                                Status_MessageForProbability(s) := "INCORRECT";
+                                                                Color_BackgroundForProbability(s) := 'My Incorrect Color';
+                                                        endif;
+                                                endfor;
+                                endswitch;
+                                errh::MarkAsHandled(err);
+                        endif;
+                
+                ENDBLOCK;
+            }
+            ElementParameter Formulation {
+                Range: AdjustableFormulations;
+                Property: Input;
+            }
+            ElementParameter err {
+                Range: errh::PendingErrors;
+            }
+            Parameter ErrorProduced {
+                Property: Output;
+            }
+        }
+        Procedure CleanFormulation {
+            Arguments: (Formulation);
+            Body: {
+                !This procedure cleans for the formulation
+                
+                switch Formulation do
+                        'Cost':
+                                InputExpression_CostOfDrilling := "";
+                
+                        'PayOff':
+                                InputExpression_PayOffForOil := "";
+                
+                        'Probability':
+                                for(s) do
+                                        InputExpression_ProbabilityOfOutcome(s) := "";
+                                endfor;
+                endswitch;
+                
+                AfterNewFormulationEntered(Formulation);
+            }
+            ElementParameter Formulation {
+                Range: AdjustableFormulations;
+                Property: Input;
+            }
+        }
+        Procedure AssignDefaultFormulation {
+            Arguments: (Formulation);
+            Body: {
+                !This procedure assigns the default formulations
+                
+                switch Formulation do
+                        'Cost':
+                                InputExpression_CostOfDrilling := "0.015*HoleDiameter(s)^2*(0.67*DrillDepth(s)^2+0.06*DrillDepth(s))";
+                
+                        'PayOff':
+                                InputExpression_PayOffForOil := "187*HoleDiameter(s)^2 - 103 *HoleDiameter(s) + 2400";
+                
+                        'Probability':
+                                InputExpression_ProbabilityOfOutcome('Positive') := "0.4+0.007*DrillDepth(s)";
+                                InputExpression_ProbabilityOfOutcome('Negative') := "0.1+0.001*DrillDepth(s)";
+                                InputExpression_ProbabilityOfOutcome('NoSurvey') := "0.2+0.004*DrillDepth(s)";
+                endswitch;
+                AfterNewFormulationEntered(Formulation);
+            }
+            ElementParameter Formulation {
+                Range: AdjustableFormulations;
+                Property: Input;
+            }
+        }
+        Procedure CreateConstraint {
+            Arguments: (Formulation);
+            Body: {
+                !This proceduce creates a constraint in the Run Time Library in order to apply a constraint. Before applying, the procedure
+                !calls the CheckButtonProcedure to make sure the formulation is correct
+                
+                BLOCK
+                        StringUsedInCoding :="";
+                        CheckButtonProcedure(Formulation);
+                        if(not ErrorProduced) then
+                
+                                HandlerForDeclaration := StringToElement(AllIdentifiers, 'RTL::RunTimeLibraryForFormulationDeclarations', create:0);
+                
+                                switch Formulation do
+                                'Cost':
+                                        Handler1 := StringToElement(AllIdentifiers, 'RTL::CostOfDrillingConstraint', create:0);
+                                        if(Handler1) then
+                                                me::Delete(Handler1);
+                                        endif;
+                                        Handler1 := me::Create('CostOfDrillingConstraint', 'constraint', HandlerForDeclaration);
+                                        me::SetAttribute(Handler1, 'index domain', "(s)");
+                                        me::SetAttribute(Handler1, 'definition', "CostOfDrilling(s) = " + InputExpression_CostOfDrilling);
+                                        me::Compile(Handler1);
+                
+                                'PayOff':
+                                        StringUsedInCoding :="RTL::PayOff" + "Constraint";
+                                        Handler1 := StringToElement(AllIdentifiers, StringUsedInCoding, create:0);
+                                        if(Handler1) then
+                                                me::Delete(Handler1);
+                                        endif;
+                                        StringUsedInCoding :="PayOff" + "Constraint";
+                                        Handler1 := me::Create(StringUsedInCoding, 'constraint', HandlerForDeclaration);
+                                        me::SetAttribute(Handler1, 'index domain', "(s)");
+                                        ConstraintDefinition := "PayOffForOil(s) = " + InputExpression_PayOffForOil;
+                                        me::SetAttribute(Handler1, 'definition', ConstraintDefinition);
+                                        me::Compile(Handler1);
+                
+                                'Probability':
+                                        for(s) do
+                                                StringUsedInCoding :="RTL::ProbabilityOfOutcome" + s + "FormulationConstraint";
+                                                Handler1 := StringToElement(AllIdentifiers, StringUsedInCoding, create:0);
+                                                if(Handler1) then
+                                                        me::Delete(Handler1);
+                                                endif;
+                                                StringUsedInCoding :="ProbabilityOfOutcome" + s + "FormulationConstraint";
+                                                Handler1 := me::Create(StringUsedInCoding, 'constraint', HandlerForDeclaration);
+                                                me::SetAttribute(Handler1, 'index domain', "s|s='" + s + "'");
+                                                me::SetAttribute(Handler1, 'definition', "ProbabilityOfOutcome('" + s + "') = " + InputExpression_ProbabilityOfOutcome(s));
+                                                me::Compile(Handler1);
+                                        endfor;
+                                endswitch;
+                
+                
+                
+                
+                        switch Formulation do
+                                        'Cost':
+                                                Color_BackgroundForCost := 'My Applied Color';
+                                                Status_MessageForCost := "APPLIED";
+                                        'PayOff':
+                                                Color_BackgroundForPayOff := 'My Applied Color';
+                                                Status_MessageForPayOff := "APPLIED";
+                                        'Probability':
+                                                for (s) do
+                                                        Color_BackgroundForProbability(s) := 'My Applied Color';
+                                                        Status_MessageForProbability(s) := "APPLIED";
+                                                endfor;
+                                endswitch;
+                        endif;
+                        StringUsedInCoding :="";
+                        ONERROR err DO
+                !       if(errh::Severity(err) = "warning") then
+                !               errh::MarkAsHandled(err);
+                !       endif;
+                ENDBLOCK;
+            }
+            ElementParameter err {
+                Range: errh::PendingErrors;
+            }
+            StringParameter ConstraintDefinition;
+            ElementParameter Formulation {
+                Range: AdjustableFormulations;
+                Property: Input;
+            }
+        }
+        Procedure AfterNewFormulationEntered {
+            Arguments: (Formulation);
+            Body: {
+                !This procedure resets the error messages and colors and deletes the associated constraints when a formulation is edited.
+                
+                StringUsedInCoding :="";
+                ErrorProduced := 0;
+                switch Formulation do
+                                'Cost':
+                                        Color_BackgroundForCost := 'My background';
+                                        empty Status_MessageForCost;
+                
+                                'PayOff':
+                                        Color_BackgroundForPayOff := 'My background';
+                                        empty Status_MessageForPayOff;
+                
+                                'Probability':
+                                        for (s) do
+                                                Color_BackgroundForProbability(s) := 'My background';
+                                                empty Status_MessageForProbability;
+                                        endfor;
+                        endswitch;
+                
+                
+                        HandlerForDeclaration := StringToElement(AllIdentifiers, 'RTL::RunTimeLibraryForFormulationDeclarations', create:0);
+                
+                switch Formulation do
+                        'Cost':
+                                Handler1 := StringToElement(AllIdentifiers, 'RTL::CostOfDrillingConstraint', create:0);
+                                if(Handler1) then
+                                        me::Delete(Handler1);
+                                endif;
+                        'PayOff':
+                                StringUsedInCoding := "RTL::PayOff" + "Constraint";
+                                Handler1 := StringToElement(AllIdentifiers, StringUsedInCoding, create:0);
+                                if(Handler1) then
+                                        me::Delete(Handler1);
+                                endif;
+                
+                        'Probability':
+                                for(s) do
+                                        StringUsedInCoding := "RTL::ProbabilityOfOutcome" + s + "FormulationConstraint";
+                                        Handler1 := StringToElement(AllIdentifiers, StringUsedInCoding, create:0);
+                                        if(Handler1) then
+                                                me::Delete(Handler1);
+                                        endif;
+                                endfor;
+                endswitch;
+                StringUsedInCoding :="";
+            }
+            ElementParameter Formulation {
+                Range: AdjustableFormulations;
+                Property: Input;
+            }
+        }
+        Procedure CheckIfConstraintsApplied {
+            Body: {
+                !This procedure checks if all the constraints are applied before solving the model
+                
+                AllConstraintsAreApplied := 1;
+                
+                StringUsedInCoding :="";
+                HandlerForDeclaration := StringToElement(AllIdentifiers, 'RTL::RunTimeLibraryForFormulationDeclarations', create:0);
+                Handler1 := StringToElement(AllIdentifiers, 'RTL::CostOfDrillingConstraint', create:0);
+                if(not  Handler1) then
+                        Status_MessageForCost := "NOT APPLIED YET";
+                        Color_BackgroundForCost := 'My Not Assigned Color';
+                        AllConstraintsAreApplied := 0;
+                endif;
+                
+                StringUsedInCoding :="RTL::PayOff" + "Constraint";
+                Handler1 := StringToElement(AllIdentifiers, StringUsedInCoding, create:0);
+                if(not  Handler1) then
+                        Status_MessageForPayOff := "NOT APPLIED YET";
+                        Color_BackgroundForPayOff := 'My Not Assigned Color';
+                        AllConstraintsAreApplied := 0;
+                endif;
+                
+                for(s) do
+                        StringUsedInCoding :="RTL::ProbabilityOfOutcome" + s + "FormulationConstraint";
+                        Handler1 := StringToElement(AllIdentifiers, StringUsedInCoding, create:0);
+                        if(not  Handler1) then
+                                Status_MessageForProbability(s) := "NOT APPLIED YET";
+                                Color_BackgroundForProbability(s) := 'My Not Assigned Color';
+                                AllConstraintsAreApplied := 0;
+                        endif;
+                endfor;
+                
+                StringUsedInCoding :="";
+                
+                if ( AllConstraintsAreApplied ) then
+                	return 1;
+                else
+                	return 0;
+                endif;
+            }
+            Parameter AllConstraintsAreApplied {
+                Range: binary;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            ! This procedure creates a RunTimeLibrary and Declaration
+            
+            empty AllVariables;
+            Handler1 := StringToElement( AllIdentifiers, 'RunTimeLibraryForFormulation', create:0 );
+            if(Handler1) then
+                    me::Delete(Handler1);
+            endif;
+            
+            Handler1 := me::CreateLibrary("RunTimeLibraryForFormulation", "RTL");
+            HandlerForDeclaration := me::Create("RunTimeLibraryForFormulationDeclarations", 'declaration', Handler1, 1);
+            
+            for(f) do
+                    AssignDefaultFormulation(f);
+            endfor;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            !MainExecution procedure checks if the constraints are all applied, then solves the model and calls the SolutionsOutput function to
+            !update the Solutions page
+            
+            if ( CheckIfConstraintsApplied ) then
+            
+            	CurrentSolver('MINLP') := First(IndexSolvers | FindString(IndexSolvers,"BARON"));
+            	Solve OilWellDrilling;
+            
+            	SolutionsOutput;
+            
+            else
+            
+            	DialogMessage( "Please apply all constraints first." );
+            
+            endif;
+        }
+    }
+    Procedure SolutionsOutput {
+        Body: {
+            if(DoSurvey) then
+                    Results_SurveyDecision := "Do the survey";
+            else
+                    Results_SurveyDecision := "Don't do the survey";
+            endif;
+            
+            if(DoSurvey) then
+                    if(ObtainedResult_Survey = 'Positive') then
+                            if(Drill('Positive')) then
+                                    Results_DrillDecision := "Drill";
+                                    Results_DrillDepthDecision := DrillDepth('Positive');
+                                    Results_HoleDiameterDecision := HoleDiameter('Positive');
+                            else
+                                    Results_DrillDecision := "Don't drill";
+                                    Results_DrillDepthDecision := 0;
+                                    Results_HoleDiameterDecision := 0;
+                            endif;
+                    else
+                            if(Drill('Negative')) then
+                                    Results_DrillDecision := "Drill";
+                                    Results_DrillDepthDecision := DrillDepth('Negative');
+                                    Results_HoleDiameterDecision := HoleDiameter('Negative');
+                            else
+                                    Results_DrillDecision := "Don't drill";
+                                    Results_DrillDepthDecision := 0;
+                                    Results_HoleDiameterDecision := 0;
+                            endif;
+                    endif;
+            else
+                    if(Drill('NoSurvey')) then
+                            Results_DrillDecision := "Drill";
+                            Results_DrillDepthDecision := DrillDepth('NoSurvey');
+                            Results_HoleDiameterDecision := HoleDiameter('NoSurvey');
+                    else
+                            Results_DrillDecision := "Don't drill";
+                            Results_DrillDepthDecision := 0;
+                            Results_HoleDiameterDecision := 0;
+                    endif;
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            if ( CaseSaveAll( confirm:2 ) = 1 ) then
+                return 1;
+            else
+                return 0;
+            endif ;
+        }
+    }
+    Module GMP_Outer_Approximation_Module {
+        SourceFile: "%AIMMSMODULES%\\GMPOuterApproximation.ams";
+        Comment: {
+            "This module contains two outer approximation algorithms for solving Mixed Integer
+            Nonlinear Problems (MINLP). The basic algorithm can be found in the section \'AOA
+            Basic Algorithm\' and is based on the following two papers:
+            
+             M.A. Duran and I.E. Grossmann, An outer-approximation algorithm for a class of
+             mixed-integer nonlinear programs, Mathematical Programming 36 (1986), pp. 307-339.
+            
+             J. Viswanathan and I.E. Grossmann, A combined penalty function and outer-approximation
+             method for MINLP optimization, Computers and Chemical Engineering 14 (1990), pp. 769-778.
+            
+            The basic algorithm can be used for convex and non-convex problems with general integer
+            variables.
+            
+            The section \'AOA Convex Algorithm\' contains a variant of the outer approximation algorithm
+            that uses a single tree search. In this way the sequential solving of several MIP\'s is
+            avoided. The algorithm is based on the paper:
+            
+             I. Quesada and I.E. Grossmann, An LP/NLP Based Branch and Bound Algorithm for Convex MINLP
+             Optimization Problems, Computers and Chemical Engineering 16 (1992), pp. 937-947.
+            
+            This algorithm can only be used for convex problems (with general integer variables)."
+        }
+    }
+    Module Multi_Start_Module {
+        SourceFile: "%AIMMSMODULES%\\MultiStart.ams";
+        Comment: {
+            "The basic MultiStart algorithm:
+            -------------------------------
+            
+            Input: GMP corresponding to the NLP problem, NumberOfSamplePoints, NumberOfSelectedSamplePoints.
+            
+            0.      Set IterationCount equal to 1.
+            1.      Generate NumberOfSamplePoints sample points from uniform distribution.
+                    Calculate the penalized objective for all sample points and select the best
+                    NumberOfSelectedSamplePoints sample points.
+            2.      Take one of the NumberOfSelectedSamplePoints sample points. If all sample points
+                    are processed then go to step (6).
+            3.      For all clusters, calculate the distance between the sample point and the center
+                    of the cluster. If the distance is smaller than the radius of the cluster (i.e.,
+                    the sample point belongs to the cluster) then go to step (2).
+            4.      Solve NLP by using the sample point as its starting point to obtain a candidate
+                    local solution.
+                    For all clusters, calculate the distance between the candidate local solution and
+                    the local solution belonging to the cluster. If the distance is 0 then the candidate
+                    local solution is the same as the local solution belonging to the cluster; update
+                    the center and radius of the cluster by using the sample point and go to step (2).
+            5.      Construct new cluster by using the mean of the sample point and the candidate local
+                    solution as its center with radius equal to half the distance between these two
+                    points. Assign the candidate local solution as the local solution belonging to the
+                    cluster. Go to step (2).
+            6.      Increment IterationCount. If the number of iterations exceeds the IterationLimit,
+                    then go to step (7). Else go to step (1).
+            7.      Order the local solutions and store the NumberOfBestSolutions solutions in the
+                    solution repository.
+            
+            The algorithm starts in fact by solving the NLP once by using the starting point (i.e.,
+            doing a normal solve). The starting point and the solution obtained are used to create,
+            as in step (5), the first cluster.
+            
+            The algorithm deletes all initial solutions present in the solution repository of the GMP."
+        }
+    }
+}

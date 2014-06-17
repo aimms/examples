@@ -1,0 +1,88 @@
+## ams_version=1.0
+
+Module Interrupt_Module {
+    Prefix: im;
+    StringParameter DLLName {
+        Definition: {
+            if AimmsStringConstants('Architecture') = 'x86' then
+                    "AimmsInterrupt.dll"
+            else
+                    "AimmsInterrupt64.dll"
+            endif
+        }
+    }
+    StringParameter InterruptEventName;
+    Section Internal_Module_Functions {
+        ExternalProcedure InstallInterruptEventExternal {
+            Arguments: (eventName);
+            DllName: DLLName;
+            ReturnType: integer;
+            BodyCall: {
+                InstallInterruptEvent(
+                  scalar string : eventName
+                )
+            }
+            Comment: {
+                "This procedure generates an \'eventName\' and creates a thread that must catch if this event is set.
+                It also installs the interrupt callback, this procedure is called by AIMMS very often to check if
+                the execution must be interrupted."
+            }
+            StringParameter eventName {
+                Property: InOut;
+            }
+        }
+        ExternalProcedure UninstallInterruptEventExternal {
+            DllName: DLLName;
+            ReturnType: integer;
+            BodyCall: {
+                UninstallInterruptEvent(
+                )
+            }
+            Comment: "This will undo all the initialization of InstallInterruptEventExternal.";
+        }
+        ExternalProcedure SignalInterruptEventExternal {
+            Arguments: (eventName);
+            DllName: DLLName;
+            ReturnType: integer;
+            BodyCall: {
+                SignalInterruptEvent(
+                  scalar string : eventName
+                )
+            }
+            Comment: "This will interrupt another AIMMS that will listen to \'eventName\' to be interrupted.";
+            StringParameter eventName {
+                Property: Input;
+            }
+        }
+    }
+    Procedure InstallInterruptEvent {
+        Body: {
+            InstallInterruptEventExternal(InterruptEventName);
+            
+            put InterruptEventFile;
+            put InterruptEventName;
+            putclose;
+        }
+        Comment: {
+            "This will install the interrupt callback and writes out the name of the event in the file \"InterruptEventName.txt\".
+            This name can be picked up by anything that wants to interrupt this AIMMS session."
+        }
+        File InterruptEventFile {
+            Name: "InterruptEventName.txt";
+            Mode: replace;
+        }
+    }
+    Procedure UninstallInterruptEvent {
+        Body: {
+            UninstallInterruptEventExternal;
+            InterruptEventName := "";
+        }
+        Comment: "This will uninstall the interrupt callback.";
+    }
+    Procedure SignalInterruptEvent {
+        Body: {
+            SignalInterruptEventExternal(InterruptEventName);
+        }
+        Comment: "This will interrupt another AIMMS that will listen to \'eventName\' to be interrupted.";
+    }
+}

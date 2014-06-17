@@ -1,0 +1,3 @@
+Solving individual submodels independently for a given tax rate does not guarantee that the optimal reponses from the companies match precisely the waste target level set by the government. In order to achieve this, the solving of submodels needs to be combined with a search algorithm for the appropriate tax and subsidy levels. 
+
+This page allows for such a simultaneous decision making at the two levels. More precisely, tax and subsidy levels are determined together with optimal lower level decisions such that also the upper level requirement with respect to the target level is met. 

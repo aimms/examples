@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="FBA37C72-E550-486A-B4FF-9069E77F6504" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B48E704D-0021-4DCB-B35C-269113D8E198|Size Template">
+		<Template Name="Navigation Template" PageGUID="45AD0059-2DB7-430C-A991-A4086FB888C7" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|9EB43DF1-64D5-4A1C-A8A7-AB13780D9F7C|Navigation Template">
+			<Page Name="Introduction" PageGUID="A2923B85-6D0D-408F-B400-3D6AD1E2DEEB" />
+			<Page Name="Solve Single MPS File" PageGUID="6440F66E-A405-4DCA-99F6-F36343400D44" />
+			<Page Name="Tune Single MPS File" PageGUID="A2F8D6BF-41D8-400D-8CCA-305084896D5D" />
+			<Page Name="Tune Multiple MPS Files" PageGUID="813FADBE-042C-4F09-AA7E-0260E8FB29B1" />
+		</Template>
+	</Template>
+	<Page Name="All Data Pages" PageGUID="ADF894BD-269A-4425-AA4C-4E675DBCCC87" />
+	<Page Name="[Data Page] SolverValues_NoTuner" PageGUID="CC235FA3-5D05-48D1-AD4C-3075182CBA28" />
+</TemplateManager>

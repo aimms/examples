@@ -1,0 +1,17 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+Case_sensitive_string_comparison 0
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+rounding_compatibility Aimms_3_7
+Suppress_error_messages_of_val_function 1
+warning_index_domain_violation off
+warning_not_initialized off
+* Environment
+Project_Title "AIMMS Demo - Database Interface Generation"
+Startup_Page "AIMMS Demo"
+Application_Help_file "Database Interface Generation\Database Interface Generation.chm"

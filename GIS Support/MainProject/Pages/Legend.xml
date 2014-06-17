@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-08-03 22:56:56">
+	<Location top="328" left="314" bottom="357" right="431" />
+	<PageEditSize Type="Inherited">
+		<Size Width="117" Height="27" />
+	</PageEditSize>
+	<ProjectUUID>02A93BA6-5188-4B85-8BBE-0C0F92E6B422</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromRight" Value="8" />
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Rectangle">
+		<Location top="3" left="3" bottom="21" right="21" />
+		<FillColor>
+			<Symbol>RainfallLevelColor( ALevel )</Symbol>
+		</FillColor>
+		<LineColor>
+			<Symbol>RainfallLevelColor( ALevel )</Symbol>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="3" left="27" bottom="24" right="105" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="None" Width="2" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="C2620AD3-F3CE-4CDC-BAEC-17742857CC54">default selection</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ELEMENT-&gt;RainfallLevels := Element( RainfallLevels, ord(ALevel) )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>RainfallLevelColor</Symbol>
+			<Symbol>ALevel</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

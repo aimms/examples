@@ -1,0 +1,301 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2013-03-11 09:40:01">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>911E8D88-0FB5-447F-ABC8-1053330CF8F7</ProjectUUID>
+	<TemplatesTabOrderPosition>3</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="161" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="60" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="64A69181-F0F6-4D9E-801E-0CF03514D6BE">white</UserColor>
+	</Background>
+	<PageObject Type="Text">
+		<Location top="192" left="210" bottom="210" right="480" />
+		<StaticText>Rolling Horizon</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="486" bottom="210" right="774" />
+		<StaticText>Calendar Model</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Indexed Page Object">
+		<Location top="210" left="210" bottom="558" right="480" />
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="None" />
+		<Rows>
+			<FixedNumber>4</FixedNumber>
+			<ElementParameter>ThisProduct</ElementParameter>
+		</Rows>
+		<Columns>
+			<FixedNumber>1</FixedNumber>
+		</Columns>
+		<PageToShow PageGUID="5156736E-96D9-48B8-87D7-2B67D239EE05" Name="ResultsPerProductHorizon" />
+		<BackgroundColor Transparent="true" />
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="432" left="6" bottom="462" right="192" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Calendar Model"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveCalendarModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="396" left="6" bottom="426" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run Rolling Horizon"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>RunRollingHorizon</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Indexed Page Object">
+		<Location top="210" left="486" bottom="558" right="762" />
+		<TabOrder>5</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="None" />
+		<Rows>
+			<FixedNumber>4</FixedNumber>
+			<ElementParameter>ThisProduct</ElementParameter>
+		</Rows>
+		<Columns>
+			<FixedNumber>1</FixedNumber>
+		</Columns>
+		<PageToShow PageGUID="4CB8DB6D-CE12-4E9B-A5FD-932080C98FD9" Name="ResultsPerProductCalendar" />
+		<BackgroundColor Transparent="true" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="564" left="210" bottom="612" right="480" />
+		<TabOrder>8</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Horizon_TotalCost</Identifier>
+			<NumberFormat Width="7" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Horizon Total Cost"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Horizon_ComputationalTime</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="6" Decimals="3" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Horizon Computational Time"</Title>
+			<DescriptionFromIdentifierName>false</DescriptionFromIdentifierName>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="564" left="486" bottom="612" right="762" />
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalCost</Identifier>
+			<NumberFormat Width="7" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Total Cost"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ComputationalTime</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="7" Decimals="3" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Computational Time"</Title>
+			<DescriptionFromIdentifierName>false</DescriptionFromIdentifierName>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="276" left="6" bottom="318" right="191" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Begin_Date</Identifier>
+			<NumberFormat Width="10" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"Start Date"</Title>
+			<DescriptionFromIdentifierName>false</DescriptionFromIdentifierName>
+			<ProcedureUponChange>MainInitialization</ProcedureUponChange>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>End_Date</Identifier>
+			<NumberFormat Width="10" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<Title>"End Date"</Title>
+			<ProcedureUponChange>MainInitialization</ProcedureUponChange>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Navigation Object">
+		<Location top="180" left="0" bottom="246" right="198" />
+		<TabOrder>1</TabOrder>
+		<UseTabInObject>true</UseTabInObject>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Display>Text</Display>
+		<Spacing>6</Spacing>
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+		<InputColor>
+			<UserColor GUID="627BC6D1-6FCB-4558-B9B0-16B93007FA09">dark grey</UserColor>
+		</InputColor>
+		<NavigationData>
+			<ReferencePage>NthParent</ReferencePage>
+			<NthParentNumber>1</NthParentNumber>
+			<NumberOfGenerations>1</NumberOfGenerations>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="324" left="12" bottom="354" right="155" />
+		<StaticText>Initial number of periods in the planning interval:</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="360" left="12" bottom="390" right="155" />
+		<StaticText>Step size:</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="324" left="161" bottom="354" right="191" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>InitialNumberOfPeriodsInPlanningInterval</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="360" left="161" bottom="390" right="191" />
+		<TabOrder>11</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>StepSize</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="249" left="18" bottom="267" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="468" left="6" bottom="606" right="192" />
+		<TabOrder>18</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>STRING := "Try to run the rolling horizon procedure with different stepsizes." +
+FormatString("\n\n") +
+"E.g. (Initial number of periods in the planning interval = 10) a step size of 3 results in the same objective as when solving the calendar model. However, a step size of 5 results in a worser objective, while a step size of 10 is not feasible at all!"</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>InitialNumberOfPeriodsInPlanningInterval</Symbol>
+			<Symbol>RunRollingHorizon</Symbol>
+			<Symbol>Begin_Date</Symbol>
+			<Symbol>MainInitialization</Symbol>
+			<Symbol>End_Date</Symbol>
+			<Symbol>ThisProduct</Symbol>
+			<Symbol>Horizon_ComputationalTime</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>Horizon_TotalCost</Symbol>
+			<Symbol>SolveCalendarModel</Symbol>
+			<Symbol>StepSize</Symbol>
+			<Symbol>ComputationalTime</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

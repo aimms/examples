@@ -1,0 +1,159 @@
+## ams_version=1.0
+
+Model Main_Transport {
+    DeclarationSection Input_Data {
+        Set Depots {
+            Text: "The set of depots from which transports can emanate ";
+            Index: d;
+            OrderBy: d;
+        }
+        Set Customers {
+            Text: "The set of customers to which transport should take place";
+            Index: c;
+            OrderBy: c;
+        }
+        Parameter Supply {
+            IndexDomain: (d);
+            Text: "The total amount ready for supply from depot d";
+        }
+        Parameter Demand {
+            IndexDomain: c;
+        }
+        Parameter UnitTransportCost {
+            IndexDomain: (d,c);
+            Text: "The transport cost per unit transported from depot d to customer c";
+        }
+        Parameter UnitProductMargin {
+            Range: [10, 15];
+        }
+        Parameter UnitRevenues {
+            IndexDomain: (d,c);
+            Definition: UnitProductMargin - UnitTransportCost(d,c);
+        }
+    }
+    DeclarationSection Model_Formulation {
+        Variable Transport {
+            IndexDomain: (d,c);
+            Text: "The actual amount transported from depot d to customer c";
+            Range: nonnegative;
+            Comment: "Without specifying a nonnegative range, the optimization model becomes unbounded";
+        }
+        Constraint SatisfySupply {
+            IndexDomain: (d);
+            Text: "The amount supplied by depot d cannot exceed its supply amount";
+            Definition: sum(c, Transport(d,c)) <= Supply(d);
+        }
+        Constraint MeetDemand {
+            IndexDomain: (c);
+            Text: "The amount transported to customer c should meet its demand";
+            Definition: sum(d, Transport(d,c)) >= Demand(c);
+        }
+        Variable TotalProfit {
+            Text: "The total profit associated with a particular distribution of transports";
+            Definition: sum((d,c), UnitRevenues(d,c)*Transport(d,c));
+        }
+        MathematicalProgram TransportModel {
+            Objective: TotalProfit;
+            Direction: maximize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: LP;
+        }
+    }
+    DeclarationSection Experiment_Declarations {
+        Parameter AverageDemand {
+            IndexDomain: (c);
+            Text: "The total demand of customer c";
+        }
+        Parameter DemandDeviation {
+            IndexDomain: (c);
+        }
+        Parameter NrOfExperiments {
+            Default: 500;
+        }
+        Parameter InfeasibleRuns;
+    }
+    DeclarationSection Histogram_Declarations {
+        Parameter ProfitHistogram;
+        Set HistogramIntervals {
+            Index: h;
+            Definition: data { 1 .. 502 };
+            Comment: {
+                "This set is made ridiculously large to accomodate playing with the margin, without
+                the need to make some educated guess about a reasonable range for the profit intervals.
+                In this manner, we can make sure that all interval boundaries are on 1,000s, for easy
+                reasibility."
+            }
+        }
+        Set VisibleIntervals {
+            SubsetOf: HistogramIntervals;
+            Index: vi;
+            Definition: {
+                { first( h | IntervalFrequency(h)) .. last( h | IntervalFrequency(h) ) }
+            }
+        }
+        StringParameter IntervalText {
+            IndexDomain: (h) | ord(h) > 1;
+            Definition: FormatString( "%i", IntervalLB(h)/1000 );
+        }
+        Parameter IntervalFrequency {
+            IndexDomain: (h);
+        }
+        Parameter IntervalLB {
+            IndexDomain: (h);
+        }
+        Parameter IntervalUB {
+            IndexDomain: (h);
+        }
+        Set Moments {
+            Index: m;
+            Definition: data { Average, Deviation, Skewness, Kurtosis };
+        }
+        Parameter ProfitDistribution {
+            IndexDomain: (m);
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            read from file "netherlands.txt";
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+        Comment: {
+            "The return value of 1 indicates that we are not interested in
+            saving the current data in a case."
+        }
+    }
+    Procedure PerformExperiment {
+        Body: {
+            HistogramCreate( ProfitHistogram );
+            
+            HistogramSetDomain( ProfitHistogram, 500, left: -500000, width: 2000 );
+            
+            InfeasibleRuns := 0;
+            
+            while ( LoopCount <= NrOfExperiments ) do
+                Demand(c) := LogNormal(1, DemandDeviation(c)) * AverageDemand(c);
+                if ( sum(c, Demand(c)) > sum(d, Supply(d)) ) then
+                   InfeasibleRuns += 1;
+                else
+                   solve TransportModel;
+                   HistogramAddObservation( ProfitHistogram, TotalProfit );
+                endif;
+            endwhile;
+            
+            HistogramGetFrequencies( ProfitHistogram, IntervalFrequency(h) );
+            HistogramGetBounds( ProfitHistogram, IntervalLB(h), IntervalUB(h) );
+            
+            ProfitDistribution('Average')   := HistogramGetAverage(   ProfitHistogram );
+            ProfitDistribution('Deviation') := HistogramGetDeviation( ProfitHistogram );
+            ProfitDistribution('Skewness')  := HistogramGetSkewness(  ProfitHistogram );
+            ProfitDistribution('Kurtosis')  := HistogramGetKurtosis(  ProfitHistogram );
+            
+            HistogramDelete( ProfitHistogram );
+        }
+    }
+}

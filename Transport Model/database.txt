@@ -1,0 +1,2 @@
+You can select whether you want to use an OLE DB or ODBC database connection. These connections are specified in the files "AIMMS Transport Example Database.udl" and "AIMMS Transport Example Database.dsn".
+Clicking the button "Read Input Data Only" will read the supply and demand data from the database. Clicking the button "Read Transport Data" will read the transport data from the database. Clicking the button "Write Transport Data" will write the transport data to database.

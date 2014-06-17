@@ -1,0 +1,16 @@
+﻿* AIMMS
+adjustable_bound 500
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+rounding_compatibility Aimms_3_7
+seed 1234567
+Slater_condition_check 0
+warning_excluded_uncertain_parameter_referenced_in_uncertainty_constraints off
+* Environment
+Project_Title "AIMMS - Power System Expansion RO"
+Startup_Page "AIMMS Demo"

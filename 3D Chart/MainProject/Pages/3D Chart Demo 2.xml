@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:11:16">
+	<Location top="22" left="4" bottom="1077" right="1594" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>3D1CBC88-F0BA-4206-8AC8-7864B594850E</ProjectUUID>
+	<Title>"Membrane Height"</Title>
+	<TemplatesTabOrderPosition>3</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="189" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="206" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<BackgroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</BackgroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="47EBF9C7-3AF6-4B2F-B985-D334325E1A4B" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="744" left="732" bottom="762" right="936" />
+		<StaticText>X-axis Rotation</StaticText>
+		<Font GUID="A731F235-F716-4F9F-8650-54E3F3EC9D54" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>1</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="GotoPage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="210" bottom="348" right="735" />
+		<StaticText>This graph is based on the Complementarity Model example available in the AIMMS Language Reference, chapter Mixed Complementarity Problems, section COMPLEMENTARITY VARIABLE declaration and attributes. 
+
+This graph presents the height of a membrane in a rectangular (x,y)-grid, with a uniform external force acting on each cell in the grid. The membrane height is restricted by a complementarity condition.
+
+The complementarity condition expresses that either the membrane reaches one its given bounds (for instance, an obstacle placed in the way of the membrane), or the external force on the cell must be equal to the internal forces acting on the cell caused by differences in height with neighboring cells.</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="3D Chart">
+		<Location top="393" left="204" bottom="606" right="480" />
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="Line" Width="2" />
+		<X_Axis>
+			<Domain ID="1001">x</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="1014">10</Show_every_n_th_label>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Domain ID="2001">y</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="2014">10</Show_every_n_th_label>
+			</Annotation>
+		</Y_Axis>
+		<Z_Axis>
+			<Identifier>
+				<Identifier_value ID="3002">MembraneLowerBound( x, y )</Identifier_value>
+			</Identifier>
+			<Identifier>
+				<Identifier_value ID="3002">MembraneHeight( x, y )</Identifier_value>
+			</Identifier>
+			<Gridlines>
+				<Show_on_XZ_plane ID="3004">1</Show_on_XZ_plane>
+				<Style>
+					<Color ID="3007">RGB&lt;192,192,192&gt;</Color>
+					<Pattern ID="3008">"None"</Pattern>
+				</Style>
+			</Gridlines>
+		</Z_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="5003">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<Misc_display_settings>
+				<Click_label>
+					<Hide_value_label_on_click ID="5065">1</Hide_value_label_on_click>
+					<Click_label_decimals ID="5067">2</Click_label_decimals>
+				</Click_label>
+			</Misc_display_settings>
+			<Chart_style>
+				<Chart_type ID="5028">"Surface"</Chart_type>
+				<Is_meshed>
+					<Meshed ID="5032">0</Meshed>
+				</Is_meshed>
+				<Is_shaded>
+					<Shaded ID="5036">1</Shaded>
+				</Is_shaded>
+				<Is_contoured>
+					<Contoured ID="5040">0</Contoured>
+					<Values ID="5042">ObsContourLevel( oc )</Values>
+					<Styles>
+						<Fill>
+							<Low_value_color ExtraInfo="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB" ID="5069">"white"</Low_value_color>
+							<High_value_color ExtraInfo="A20EF015-3818-48AB-877A-759D32A3AE2D" ID="5070">"red"</High_value_color>
+						</Fill>
+					</Styles>
+				</Is_contoured>
+				<Is_zoned>
+					<Zoned ID="5051">1</Zoned>
+					<Zoning_method ID="5052">"Contours"</Zoning_method>
+				</Is_zoned>
+			</Chart_style>
+		</Display>
+	</PageObject>
+	<PageObject Type="3D Chart">
+		<Location top="393" left="489" bottom="606" right="765" />
+		<TabOrder>5</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="Line" Width="2" />
+		<X_Axis>
+			<Domain ID="1001">x</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="1014">10</Show_every_n_th_label>
+			</Annotation>
+			<Misc_settings>
+				<Title ID="1011">"X-Axis"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Domain ID="2001">y</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="2014">10</Show_every_n_th_label>
+			</Annotation>
+		</Y_Axis>
+		<Z_Axis>
+			<Identifier>
+				<Identifier_value ID="3002">MembraneHeight( x, y )</Identifier_value>
+			</Identifier>
+		</Z_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="5003">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<Misc_display_settings>
+				<Axis_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="5024">"Legend"</Axis_font>
+			</Misc_display_settings>
+			<Chart_style>
+				<Is_transparent ID="5030">1</Is_transparent>
+				<Is_meshed>
+					<Meshed ID="5032">1</Meshed>
+				</Is_meshed>
+				<Is_shaded>
+					<Shaded ID="5036">0</Shaded>
+				</Is_shaded>
+				<Is_contoured>
+					<Contoured ID="5040">0</Contoured>
+					<Values ID="5042">ObsContourLevel( oc )</Values>
+					<Styles>
+						<Fill>
+							<Low_value_color ExtraInfo="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB" ID="5069">"white"</Low_value_color>
+							<High_value_color ExtraInfo="ABA9761C-8B8D-4070-84F5-E0C9079DDFCB" ID="5070">"blue"</High_value_color>
+						</Fill>
+					</Styles>
+				</Is_contoured>
+				<Is_zoned>
+					<Zoned ID="5051">0</Zoned>
+				</Is_zoned>
+			</Chart_style>
+		</Display>
+		<Legend>
+			<Show ID="6001">"Don't show"</Show>
+		</Legend>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="411" left="12" bottom="438" right="189" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ForceConstant</Identifier>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" ShowDefaults="true" />
+			<Title>"Force Constant"</Title>
+			<ProcedureUponChange>SolveObstacleMP</ProcedureUponChange>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="495" left="15" bottom="609" right="186" />
+		<StaticText>In order to recompute the graph for another value of ForceConstant you need a license to the MCP solver (PATH or KNITRO).</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="342" left="15" bottom="411" right="195" />
+		<StaticText>Specify a new force constant and compute the membrane height accordingly.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="360" left="489" bottom="387" right="765" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="360" left="204" bottom="387" right="480" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="363" left="201" bottom="387" right="477" />
+		<StaticText>Membrane Lower Bound</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="15A67CE2-7003-45B4-97CE-E2888A4BF5A2">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="363" left="492" bottom="387" right="768" />
+		<StaticText>Membrane Height</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="15A67CE2-7003-45B4-97CE-E2888A4BF5A2">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="468" left="6" bottom="492" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="471" left="18" bottom="489" right="186" />
+		<StaticText>Note</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="A20EF015-3818-48AB-877A-759D32A3AE2D">red</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="312" left="6" bottom="336" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="315" left="18" bottom="333" right="186" />
+		<StaticText>Force Constant</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="21" bottom="207" right="189" />
+		<StaticText>Parabolic Curve</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="21" bottom="237" right="189" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>x</Symbol>
+			<Symbol>y</Symbol>
+			<Symbol>SolveObstacleMP</Symbol>
+			<Symbol>ForceConstant</Symbol>
+			<Symbol>oc</Symbol>
+			<Symbol>MembraneHeight</Symbol>
+			<Symbol>MembraneLowerBound</Symbol>
+			<Symbol>ObsContourLevel</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

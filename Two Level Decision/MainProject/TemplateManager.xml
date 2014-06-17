@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="853BA665-E5C3-416C-9D2F-E779B01E1893" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|DF8090BB-3CCB-40CB-8DAD-32B2985E2BC3|Size Template">
+		<Template Name="Navigation Template" PageGUID="9FC734B8-1AD0-480F-96EC-56E8BD0C8A44" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|51EEE2DE-35C6-4376-8588-3E8A5ECF0887|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="CBDAC57E-1824-49F4-B359-EE2E34B83B00" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|9D908540-1B6E-4B70-B859-4114E3B476A5|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="588F0ADE-E587-44B7-A1EF-B3DDBA3C5E12" />
+			</Template>
+			<Template Name="Navigation 2" PageGUID="AEF147F1-C6D5-46EA-AF20-5C67F967D9FB">
+				<Page Name="Input Data and Policy Receiving Submodels" PageGUID="09F6A1D2-2AA1-463F-99FF-45ECA6B0F517" />
+				<Page Name="Policy Making and Two Level Model" PageGUID="9946A968-702B-481E-BC10-7F47E5F23FF7" />
+				<Page Name="Sensitivity Analysis" PageGUID="52D4FB74-0559-486E-BE62-915702BB7757" />
+			</Template>
+			<Page Name="Documentation" PageGUID="E6733CB0-4353-4C25-8665-4769F914FF07" />
+		</Template>
+	</Template>
+	<Template Name="Page Frame" PageGUID="05D40396-A281-4D48-9204-EE520371B622">
+		<Template Name="Navigation" PageGUID="17F19F4D-A6DB-4060-BCEB-85E77DF4C9AD" />
+	</Template>
+</TemplateManager>

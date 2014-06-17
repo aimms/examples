@@ -1,0 +1,372 @@
+## ams_version=1.0
+
+LibraryModule Error_Handler {
+    Prefix: eh;
+    Interface: {
+        data { GlobalErrorHandler, ApplicationVersion, ApplicationName, ApplicationContactPerson,
+               ApplicationContactEMail, ApplicationContactPhone }
+    }
+    Comment: {
+        "This \'Error Handler\' library can be used in any application. It helps to
+        generate end-user friendly error messages that can be e-mailed to the
+        application developer.
+        
+        Note that this Error Handler library is just meant for global error handling.
+        If you have certain areas in your model that you know could lead to errors
+        (e.g. reading from text files, or Excel) it is advised to introduce local
+        error handling for these areas, in addition to this global error handler.
+        
+        To use this global error handler in your application:
+        
+        1) Add this library to your project
+        
+        2) Set the value of the option Global Error Handler to eh::GlobalErrorHandler
+        Note that for versions \'3.10 Feature Release 3\' to \'3.10 Production Release -
+        Software Update 1\' it is not possible to directly use a library procedure as
+        the value of this option, so you will have to introduce a procedure in your
+        main model (with as input argument an element parameter in errh::PendingErrors)
+        and call the eh::GlobalErrorHandler(err) from this procedure.
+        
+        3) Make sure the following library identifiers are assigned data:
+        eh::ApplicationVersion
+        eh::ApplicationName
+        eh::ApplicationContactPerson
+        eh::ApplicationContactEMail
+        eh::ApplicationContactPhone
+        The first two uniquely identify the application and application version and
+        are communicated as part of the error report.
+        The last three are used for sending the e-mail report and offer a possibility
+        to call in case urgent support is necessary after an unexpected error.
+        
+        The library stores errorxxx.log files with all the error info and a
+        reporterinfo.txt file with the reporter info in the Log folder."
+    }
+    Module Mail {
+        SourceFile: "mail.ams";
+    }
+    DeclarationSection Global_Declaration {
+        StringParameter ApplicationVersion;
+        StringParameter ApplicationName;
+        StringParameter ApplicationContactPerson;
+        StringParameter ApplicationContactEMail;
+        StringParameter ApplicationContactPhone;
+    }
+    DeclarationSection Error_Specific_Declaration {
+        StringParameter ReporterInfoFile {
+            Definition: "Log\\reporterinfo.txt";
+        }
+        ElementParameter ErrorNumber {
+            Range: errh::PendingErrors;
+        }
+        StringParameter ExplanationString;
+        StringParameter ErrorString;
+        StringParameter ErrorReporterName;
+        StringParameter ErrorReporterEmail;
+        StringParameter ErrorReporterPhone;
+        StringParameter ErrorReporterComment;
+    }
+    Procedure GlobalErrorHandler {
+        Arguments: (err);
+        Body: {
+            ! This is a global error handling procedure that is called each
+            ! time an error occurs that is not handled by local error handling
+            ! This procedure opens a dialog and allows the end-user to report
+            ! the error to the application developer via an e-mail.
+            
+            ErrorNumber := err;
+            
+            ErrorString := errh::Message(err);
+            ExplanationString := "Use the 'Report' button to generate an e-mail and send it to the application developer.\n";
+            ExplanationString += "Please first fill in any relevant information (e.g. reproduction steps) in the field below and provide your contact details in the fields at the bottom.\n";
+            ExplanationString += "After clicking the 'Report' button you have the opportunity to see and modify the generated e-mail before it is sent.\n\n";
+            
+            ExplanationString += FormatString( "Note that in case this error is preventing you from continuing to work with this application, you can contact %s at %s.\n\n", ApplicationContactPerson, ApplicationContactPhone );
+            
+            ExplanationString += "Note that all information related to this error is stored in the Log folder of the application.";
+            
+            if FileExists( ReporterInfoFile ) then
+            
+               read from file ReporterInfoFile;
+            
+            else
+            
+               empty ErrorReporterName, ErrorReporterEmail, ErrorReporterPhone;
+            
+            endif;
+            
+            empty ErrorReporterComment;
+            
+            errh::MarkAsHandled( err);
+            
+            PageOpen( "Error Dialog" );
+        }
+        ElementParameter err {
+            Range: errh::PendingErrors;
+            Property: Input;
+        }
+    }
+    Procedure MailErrorToApplicationDeveloper {
+        Body: {
+            ! This procedure stores relevant error information to a put file
+            ! and generates an e-mail that sends the contents of the put file to
+            ! the application developer.
+            
+            ! We use a block to be able to catch and handle any errors that might
+            ! occur within this procedure locally.
+            
+            block
+            
+            ! First, we 'remember' the old values for two options we want to change to
+            ! have the contents of our put file in a nicer format and we set those
+            ! options to the required values.
+            
+               OptionGetValue( "Put_Element_Width", Dummy1, OldPutElementWidth, Dummy2, Dummy3 );
+               OptionGetValue( "Listing_Page_Width", Dummy1, OldListingPageWidth, Dummy2, Dummy3 );
+            
+               OptionSetValue( "Put_Element_Width", 100 );
+               OptionSetValue( "Listing_Page_Width", 32767 );
+            
+            ! This tab size is used to format the e-mail, you can change it to your preference.
+            
+               TabSize := 3;
+            
+            ! If the error reporter has provided info in the dialog we will store this so that
+            ! it can be retrieved next time.
+            
+               if ErrorReporterName or ErrorREporterEmail or ErrorReporterPhone then
+            
+                  write ErrorReporterName, ErrorReporterEmail, ErrorReporterPhone to file ReporterInfoFile;
+            
+               endif;
+            
+               if not DirectoryExists( "Log" ) then
+            
+                  DirectoryCreate( "Log" );
+            
+               endif;
+            
+            ! Check the first log file that is not yet used.
+            
+               Counter := 1;
+            
+               while FileExists( FormatString( "Log\\Error%03i.log", Counter )) and Counter < 999 do
+            
+                  Counter += 1;
+            
+               endwhile;
+            
+            ! If there is no log file, the user is asked whether the error reporting should stop
+            ! or whether report001.log can be overwritten.
+            
+               if Counter >= 999 and FileExists( FormatString( "Log\\Error%03i.log", Counter ) ) then
+            
+                  ok := DialogAsk( "Unable to generate a new report error file. Do you want to overwrite error001.log or cancel reporting this issue?", "Overwrite", "Cancel");
+            
+                  if ok=1 then
+            
+                     Counter := 1;
+            
+                  endif;
+            
+               endif;
+            
+            ! If there is still a free log file or the user has chosen to overwrite Error001.log, continue.
+            
+               if not ( Counter >= 999 and FileExists( FormatString( "Log\\Error%03i.log", Counter ) ) ) then
+            
+                  ErrorReportFileName := FormatString( "Log\\Error%03i.log", Counter );
+            
+                  put errorReportFile;
+            
+            ! First, store some information about the reporter, if provided.
+            
+                  if ErrorReporterName or ErrorReporterEmail or ErrorReporterPhone or ErrorReporterComment then
+            
+                     put @1, "ERROR REPORTER INFO:\n\n" ;
+            
+                     if ErrorReporterName then
+            
+                        put @(1+TabSize), FormatString( "Name   : %s\n", ErrorReporterName );
+            
+                     endif;
+            
+                     if ErrorReporterEmail then
+            
+                        put @(1+TabSize), FormatString( "E-mail : %s\n", ErrorReporterEmail );
+            
+                     endif;
+            
+                     if ErrorReporterPhone then
+            
+                        put @(1+TabSize), FormatString( "Phone  : %s\n\n", ErrorReporterPhone );
+            
+                     endif;
+            
+                     if ErrorReporterComment then
+            
+                        put @(1+TabSize), FormatString( "Comment/reproduction steps :\n\n%s\n\n", ErrorReporterComment );
+            
+                     endif;
+            
+                  endif;
+            
+            ! Second, store specific information about the error that occurred.
+            
+                  put @1, "ERROR SPECIFIC INFO:\n\n" ;
+            
+                  put @(1+TabSize), "Severity   : ", errh::Severity( ErrorNumber ), "\n";
+                  put @(1+TabSize), "Category   : ", errh::Category( ErrorNumber ), "\n";
+                  put @(1+TabSize), "Error Code : ", errh::Code( ErrorNumber ), "\n\n";
+                  put @(1+TabSize), "Message :\n\n", errh::Message( ErrorNumber ), "\n\n";
+            
+                  NrOfLocations := errh::NumberOfLocations( ErrorNumber );
+                  RelevantLocations := ElementRange( 1, NrOfLocations );
+            
+                  if NrOfLocations > 1 then
+            
+                     put @(1+TabSize), "Nr. of Locations : ", NrOfLocations:<3:0, "\n\n";
+            
+                  endif;
+            
+                  if NrOfLocations > 0 then
+            
+                     if NrOfLocations = 1 then
+            
+                        TempMargin := 1+TabSize
+            
+                     else
+            
+                        TempMargin := 1+2*TabSize
+            
+                     endif;
+            
+                     for ( loc ) do
+            
+                        put @TempMargin, "Location  : ", val(loc):<3:0, "\n";
+            
+                        if errh::Node( ErrorNumber, loc ) then
+            
+                           put @TempMargin, "Node      : ", errh::Node( ErrorNumber, loc ), "\n";
+            
+                        endif;
+            
+                        if errh::Attribute( ErrorNumber, loc ) and errh::Attribute( ErrorNumber, loc ) <> 'none' then
+            
+                           put @TempMargin, "Attribute : ", errh::Attribute( ErrorNumber, loc ), "\n";
+            
+                        endif;
+            
+                        if errh::Line( ErrorNumber, loc ) then
+            
+                           put @TempMargin, "Line      : ", errh::Line( ErrorNumber, loc ):<5:0, "\n";
+            
+                        endif;
+            
+                        put "\n";
+            
+                     endfor;
+            
+                  endif;
+            
+                  if errh::Column( ErrorNumber ) then
+            
+                     put @(1+TabSize), "Column       : ", errh::Column( ErrorNumber ):<5:0, "\n\n";
+            
+                  endif;
+            
+                  if errh::FileName( ErrorNumber ) then
+            
+                     put @(1+TabSize), "FileName     : ", errh::FileName( ErrorNumber ), "\n\n";
+            
+                  endif;
+            
+                  if errh::Multiplicity( ErrorNumber ) > 1 then
+            
+                     put @(1+TabSize), "Multiplicity : ", errh::Multiplicity( ErrorNumber ):5:0, "\n\n";
+            
+                  endif;
+            
+            ! Third, store some information about the AIMMS session used.
+            
+                  put @1, "GENERAL AIMMS INFO:\n\n" ;
+            
+                  AIMMSRevisionString( TempString, 4 );
+            
+                  put @(1+TabSize), "AIMMS Version  : ", TempString, "\n";
+            
+                  LicenseNumber( TempString );
+            
+                  put @(1+TabSize), "License Number : ", TempString, "\n\n";
+            
+                  putclose;
+            
+            ! We use the MAPI dll to send the e-mail.
+            
+                  m::AIMMSMapiNewMail( FormatString( "Error Report: Error in %s %s", ApplicationName, ApplicationVersion ));
+            
+                  m::AIMMSMapiAddRecipientTo( ApplicationContactPerson, ApplicationContactEmail);
+            
+                  m::AIMMSMapiAddParagraph( FormatString( "Hi %s,", ApplicationContactPerson ));
+            
+                  m::AIMMSMapiAddParagraph( FormatString( "This is an automatically generated e-mail because an error occurred while running application %s %s.", ApplicationName, ApplicationVersion ) );
+            
+                  m::AIMMSMapiAddTextFromFile( ErrorReportFileName );
+            
+                  m::AIMMSMapiSendMail(interactive: 1);
+            
+               endif;
+            
+               OptionSetValue( "Put_Element_Width", OldPutElementWidth );
+               OptionSetValue( "Listing_Page_Width", OldListingPageWidth );
+            
+            onerror err2 do
+            
+            ! In case an error or warning should occur, we just show it as a dailogmessage
+            ! and mark it as handled.
+            
+               DialogMessage( errh::Message( err2 ) );
+            
+               errh::MarkAsHandled( err2 );
+            
+            endblock;
+        }
+        Parameter TabSize;
+        Parameter TempMargin;
+        StringParameter TempString;
+        Parameter ok;
+        Parameter Counter;
+        File ErrorReportFile {
+            Name: ErrorReportFileName;
+            Device: Disk;
+            Mode: replace;
+        }
+        StringParameter ErrorReportFileName;
+        ElementParameter err2 {
+            Range: errh::PendingErrors;
+        }
+        Parameter NrOfLocations;
+        Set RelevantLocations {
+            SubsetOf: Integers;
+            Index: loc;
+        }
+        Parameter OldPutElementWidth;
+        Parameter OldListingPageWidth;
+        Parameter Dummy1;
+        Parameter Dummy2;
+        Parameter Dummy3;
+    }
+    Procedure LibraryInitialization {
+        Body: {
+            ! This option makes sure that the GlobalErrorHandler procedure from
+            ! the Error Handler library is called when an error occurs (that is
+            ! not handled by local error handling).
+            
+            OptionSetString( "Global_Error_Handler", "eh::GlobalErrorHandler" );
+        }
+    }
+    Procedure LibraryTermination {
+        Body: {
+            return 1 ;
+        }
+    }
+}

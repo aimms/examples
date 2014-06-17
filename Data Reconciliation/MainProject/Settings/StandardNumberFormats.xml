@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<StandardNumberFormat Name="small" InternalID="0">
+	<NumberFormat Width="6" Decimals="3" />
+</StandardNumberFormat>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="DC82753F-9873-49B0-BD57-BA7B0922EF18">
+		<Page Name="Example Page" PageGUID="5115A066-404F-406C-93F9-CA6A91C4FE6D" />
+		<Page Name="Source Article" PageGUID="88993549-C446-416A-A0D4-75901E57BE96" />
+		<Page Name="All Data Pages" PageGUID="7550BD3F-457C-4A6E-BDD3-717C095C166F" />
+	</Page>
+</PageManager>

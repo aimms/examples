@@ -1,0 +1,3 @@
+With the settings below you can control the level of tracing and to which file the information is written.
+
+The settings below correspond to the Project Options "Database trace file" and "Database trace level".

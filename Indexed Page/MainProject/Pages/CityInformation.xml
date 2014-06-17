@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-13 15:17:50">
+	<Location top="29" left="4" bottom="272" right="243" />
+	<PageEditSize Type="Inherited">
+		<Size Width="239" Height="242" />
+	</PageEditSize>
+	<ProjectUUID>4F9E004D-932C-4B7F-8860-0A9DF87CF832</ProjectUUID>
+	<Title>"City Information"</Title>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="38">
+			<BottomArea Line="FixedFromBottom" Value="61" />
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="ECAC7599-C9E1-4F84-B1C4-7361B8F116C9">white</UserColor>
+	</Background>
+	<PageObject Type="Text">
+		<Location top="0" left="0" bottom="36" right="234" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>CityNames( ThisCity )</StringParameter>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="9C36AE07-0EB9-4A59-8326-6E3CEB3E4428">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Bar Chart">
+		<Location top="42" left="0" bottom="180" right="234" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="7BC44E43-C856-4C80-83DC-323FD177FF39" Name="default" />
+		<Border Style="Line" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="9C36AE07-0EB9-4A59-8326-6E3CEB3E4428">default selection</UserColor>
+		</TextColor>
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<HorizontalGridLines>true</HorizontalGridLines>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<YRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>260</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>AmountProduced( ThisCity, product )</Identifier>
+			<Unit Display="InTitle" />
+			<TitleText>"Amount Produced"</TitleText>
+		</ExplicitIdentifier>
+		<FillWithColor>true</FillWithColor>
+		<Overlap>0</Overlap>
+		<BarSpacing>10</BarSpacing>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="0" bottom="210" right="84" />
+		<StaticText>Total production:</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="9C36AE07-0EB9-4A59-8326-6E3CEB3E4428">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="216" left="0" bottom="234" right="84" />
+		<StaticText>Total revenues:</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="9C36AE07-0EB9-4A59-8326-6E3CEB3E4428">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="186" left="90" bottom="216" right="168" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="ECAC7599-C9E1-4F84-B1C4-7361B8F116C9">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="9C36AE07-0EB9-4A59-8326-6E3CEB3E4428">default selection</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>AmountCity( ThisCity )</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="3" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="210" left="90" bottom="240" right="168" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="ECAC7599-C9E1-4F84-B1C4-7361B8F116C9">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="9C36AE07-0EB9-4A59-8326-6E3CEB3E4428">default selection</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Revenues( ThisCity )</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>AmountCity</Symbol>
+			<Symbol>product</Symbol>
+			<Symbol>AmountProduced</Symbol>
+			<Symbol>ThisCity</Symbol>
+			<Symbol>Revenues</Symbol>
+			<Symbol>CityNames</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

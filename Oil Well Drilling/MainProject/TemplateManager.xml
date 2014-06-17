@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="DBBF8BD6-6A86-4B97-B271-ED16F5746E23" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|8DE367B2-9550-4AB6-A842-94E4705E6CD5|Size Template">
+		<Template Name="Navigation Template" PageGUID="F79E8913-4C40-4793-9F45-032C6614B96B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|7EC0BF08-55B6-4AD3-8E42-36E6B713EBE0|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="50A2CF7B-AD15-4783-97C1-E19DC5456E73" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|EBA51BB4-C787-4A4B-903D-602EF64B54B8|Background Info Template" />
+			<Page Name="Problem Description" PageGUID="BD25F234-2DC7-4967-B746-8F89D38169E0" />
+			<Page Name="Input Formulation" PageGUID="AC500DFE-C555-4902-8AE8-91722D740F35" />
+			<Page Name="Model Results" PageGUID="48690315-6696-4AAC-A96A-B6D172B15D6F" />
+			<Page Name="Formulations" PageGUID="FEDC5AFA-7AFE-43B1-9643-61B1E66F6C93" />
+			<Page Name="Solutions" PageGUID="2793C61C-C013-42A0-9A31-4384839BB090" />
+		</Template>
+	</Template>
+</TemplateManager>

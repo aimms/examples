@@ -1,0 +1,44 @@
+
+LIBRARYMODULE Example_Base
+  prefix    :  ExampleStyle
+  interface :  data { InactiveIfOpenedInAIMMSVIewer, ButtonColor, DialogIfOpenedInAIMMSVIewer }
+
+  DECLARATION SECTION 
+
+    PARAMETER:
+       identifier :  InactiveIfOpenedInAIMMSVIewer
+       definition :  1 onlyif IsRunningAsViewer ;
+
+    ELEMENT PARAMETER:
+       identifier :  ButtonColor
+       range      :  AllColors
+       definition :  if IsRunningAsViewer Then
+                         'Grey'
+                     else
+                         'Text Blue'
+                     endif  ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  LibraryInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  LibraryTermination
+    body       :  
+      return 1 ;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  DialogIfOpenedInAIMMSVIewer
+    body       :  
+      if IsRunningAsViewer Then
+              DialogMessage("This action is disabled in AIMMS Viewer.");
+      endif;
+
+  ENDPROCEDURE  ;
+
+ENDLIBRARYMODULE Example_Base ;

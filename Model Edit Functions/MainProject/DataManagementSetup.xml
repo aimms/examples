@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<DataManagementSetup TimeStamp="2010-08-25 12:43:10">
+	<CaseType Name="All Identifiers" UUID="7A38AC85-E060-418B-965B-BDB9817C11B6" InternalID="1">
+		<Properties>
+			<Contents AllIdentifiers="true" />
+			<Options ConfirmOverwriteExisting="false" />
+		</Properties>
+	</CaseType>
+	<CaseType Name="ExcelInput" UUID="29CF61A4-4CE5-4546-A61F-61A651A65486" InternalID="2">
+		<Properties>
+			<Contents>
+				<SelectedSymbol>psExcelColumnDescriptionRange</SelectedSymbol>
+				<SelectedSymbol>psExcelRowRange</SelectedSymbol>
+				<SelectedSymbol>psExcelColumnRange</SelectedSymbol>
+				<SelectedSymbol>ExcelFile</SelectedSymbol>
+				<SelectedSymbol>psExcelDataRange</SelectedSymbol>
+				<SelectedSymbol>ExcelSheet</SelectedSymbol>
+				<SelectedSymbol>psExcelRowDescriptionRange</SelectedSymbol>
+			</Contents>
+		</Properties>
+	</CaseType>
+</DataManagementSetup>

@@ -1,0 +1,50 @@
+    Producers := data 
+    { Seattle, 'San Francisco', 'Las Vegas', Phoenix, Denver } ;
+
+    Contracts := data 
+    { Washington, Oregon    , California, Idaho     , Nevada    , Montana   ,
+      Wyoming   , Arizona   , Utah      , Colorado  } ;
+
+
+    AvailableCapacity(p) := data 
+    { Seattle         : 175,  'San Francisco' : 175,  'Las Vegas'     : 175,
+      Phoenix         : 175,  Denver          : 175 } ;
+
+
+    ProductionCost(p,c) := data table 
+                 Washington      Oregon  California       Idaho      Nevada
+              !  ----------  ----------  ----------  ----------  ----------
+        Seattle          10          15          10          15          20
+'San Francisco'          30          15          10          20          10
+    'Las Vegas'          20          10           5          15          10
+        Phoenix          40          25          15          20          10
+         Denver          30          30          25          10           5
+
+              +     Montana     Wyoming     Arizona        Utah    Colorado
+              !  ----------  ----------  ----------  ----------  ----------
+        Seattle          20          20          40          10          30
+'San Francisco'          20          20          30          20          30
+    'Las Vegas'          15          15          10           5           5
+        Phoenix          30          30          10          15          10
+         Denver          35          35          15           5          10
+
+    ;
+
+
+
+    MinimalDelivery(p) := data 
+    { Seattle         : 25,  'San Francisco' : 30,  'Las Vegas'     : 25,
+      Phoenix         : 35,  Denver          : 25 } ;
+
+
+    ContractSize(c) := data 
+    { Washington : 100,  Oregon     :  65,  California : 100,  Idaho      :  70,
+      Nevada     : 120,  Montana    :  60,  Wyoming    :  75,  Arizona    : 100,
+      Utah       :  95,  Colorado   :  85 } ;
+
+
+    MinimalNumberofContributors(c) := data 
+    { Washington : 3,  Oregon     : 2,  California : 3,  Idaho      : 2,
+      Nevada     : 3,  Montana    : 2,  Wyoming    : 2,  Arizona    : 3,
+      Utah       : 3,  Colorado   : 3 } ;
+

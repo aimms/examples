@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-01-26 02:08:34">
+	<Location top="26" left="8" bottom="643" right="1020" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>8F2E7F25-EE03-41BC-9A2D-7D0530DE3B45</ProjectUUID>
+	<CloseWhenInactive>true</CloseWhenInactive>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="346" />
+				<RightArea Line="FixedFromTop" Value="83">
+					<TopArea Line="FixedFromTop" Value="53">
+						<BottomArea Line="FixedFromLeft" Value="284" />
+					</TopArea>
+					<BottomArea Line="FixedFromBottom" Value="228" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="8AC7590F-4549-4E19-A63E-8B3058966075">white</UserColor>
+	</Background>
+	<Action>
+		<EntryProcedure>UpdateCurrentPage</EntryProcedure>
+	</Action>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Network Object">
+		<Location top="204" left="204" bottom="618" right="765" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>Scrollbars</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-0.140267826202</Left>
+			<Right>23.3675446738</Right>
+			<Top>19</Top>
+			<Bottom>2</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>i</Identifier>
+			<XCoordinate>XCoordinate_Intermediates( i )</XCoordinate>
+			<YCoordinate>YCoordinate_Intermediates( i )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>8</ScaleFactor>
+			<TextPosition>Left</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>23F33851-505F-45B5-AA1F-5360CB8B3EFB Text Blue</Color>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>t</Identifier>
+			<XCoordinate>XCoordinate_PoolTanks( t )</XCoordinate>
+			<YCoordinate>YCoordinate_PoolTanks( t )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>75</MaximumSize>
+			<ScaleFactor>75</ScaleFactor>
+			<TextPosition>Top</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>23F33851-505F-45B5-AA1F-5360CB8B3EFB Text Blue</Color>
+			<NodeImageFile LiteralFileName="true">"&lt;prj&gt;:Tank.bmp"</NodeImageFile>
+			<Shape>Bitmap</Shape>
+		</Node>
+		<Node>
+			<Identifier>f</Identifier>
+			<XCoordinate>XCoordinate_FinalProducts( f )</XCoordinate>
+			<YCoordinate>YCoordinate_FinalProducts( f )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>50</MaximumSize>
+			<ScaleFactor>50</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>23F33851-505F-45B5-AA1F-5360CB8B3EFB Text Blue</Color>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>FlowToPool( i, t )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>1.5</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Size>FlowToPool( i, t )</Size>
+			<Text>FlowToPool( i, t )</Text>
+			<ArrowPosition>15</ArrowPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+		<Arc>
+			<Identifier>FlowFromPool( t, f )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>50</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Size>FlowFromPool( t, f )</Size>
+			<Text>FlowFromPool( t, f )</Text>
+			<ArrowPosition>30</ArrowPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="186" left="204" bottom="204" right="474" />
+		<StaticText>Solution Visualization</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="28915E7B-E9D1-41B0-BBC9-F654B9F94007">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>FlowFromPool</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>XCoordinate_Intermediates</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>YCoordinate_FinalProducts</Symbol>
+			<Symbol>XCoordinate_PoolTanks</Symbol>
+			<Symbol>YCoordinate_Intermediates</Symbol>
+			<Symbol>UpdateCurrentPage</Symbol>
+			<Symbol>FlowToPool</Symbol>
+			<Symbol>XCoordinate_FinalProducts</Symbol>
+			<Symbol>YCoordinate_PoolTanks</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

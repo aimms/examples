@@ -1,0 +1,417 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-04-04 04:02:00">
+	<Location top="27" left="8" bottom="864" right="1270" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>A9945760-01CB-4901-9F10-9FA9617A6790</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="237">
+					<BottomArea Line="FixedFromTop" Value="146" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<HorizontalGridDistance>1</HorizontalGridDistance>
+	<VerticalGridDistance>1</VerticalGridDistance>
+	<PageObject Type="Parametric Curve">
+		<Location top="505" left="517" bottom="609" right="767" />
+		<TabOrder>13</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<SwappedAxes>true</SwappedAxes>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<ExplicitIdentifier>
+			<Identifier>TacticalInvestedFraction( s )</Identifier>
+			<Color>SecurityColors( s )</Color>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<LineWidth>3</LineWidth>
+		<XAxisIdentifier>
+			<Identifier>DesiredExpectedSecurityReturn</Identifier>
+		</XAxisIdentifier>
+		<XRange Automatic="false">
+			<Lower>0.01</Lower>
+			<Upper>0.5</Upper>
+		</XRange>
+		<ParametricSetup>
+			<Procedure>SolveTacticalModel</Procedure>
+			<Steps>50</Steps>
+			<Start>0</Start>
+			<Stop>0.5</Stop>
+		</ParametricSetup>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="335" left="625" bottom="467" right="766" />
+		<TabOrder>11</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="Line" Width="2" />
+		<X_Axis>
+			<Annotation>
+				<Rotation_angle ID="1010">200</Rotation_angle>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Chart_type ID="2001">"Pie"</Chart_type>
+			<Identifier>
+				<Value ID="2007">TacticalInvestedFraction( s )</Value>
+				<Appearance>
+					<Fill>
+						<Foreground_color ID="2013">SecurityColors( s )</Foreground_color>
+					</Fill>
+					<Slice>
+						<Offset ID="2027">5</Offset>
+					</Slice>
+				</Appearance>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<Chart_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="8">"Background yellow"</Background_color>
+			</Chart_area>
+			<View_3D>
+				<Depth ID="62">40</Depth>
+				<Elevation ID="63">15</Elevation>
+			</View_3D>
+			<Misc_display_settings>
+				<Show_outlines ID="68">1</Show_outlines>
+				<Axis_annotation_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="74">"Legend"</Axis_annotation_font>
+				<Click_label>
+					<Hide_value_label_on_click ID="77">0</Hide_value_label_on_click>
+					<Click_label_decimals ID="79">2</Click_label_decimals>
+				</Click_label>
+			</Misc_display_settings>
+		</Display>
+		<Header_Footer>
+			<Header>
+				<Text ID="23">"Optimal Invested Fraction"</Text>
+				<Font ExtraInfo="107CF1DD-5B8E-41FC-BD55-10C950947E3C" ID="22">"Headers"</Font>
+			</Header>
+		</Header_Footer>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="42">"Legend"</Font>
+		</Legend>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="534" left="202" bottom="599" right="515" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="A36527E4-6775-46C6-A63D-934E8094C2C8">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>CurrentTacticalModel</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="338" left="6" bottom="362" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveTacticalModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="191" left="517" bottom="332" right="767" />
+		<TabOrder>8</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="Line" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">tt</Domain>
+			<Annotation>
+				<Rotation_angle ID="1010">75</Rotation_angle>
+				<Show_every_n_th_label ID="1025">2</Show_every_n_th_label>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">SecurityValue( s, tt )</Value>
+				<Appearance>
+					<Line>
+						<Color ID="2023">SecurityColors( s )</Color>
+						<Width ID="2025">3</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<Misc_display_settings>
+				<Axis_annotation_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="74">"Legend"</Axis_annotation_font>
+				<Click_label>
+					<Click_label_decimals ID="79">2</Click_label_decimals>
+				</Click_label>
+			</Misc_display_settings>
+		</Display>
+		<Header_Footer>
+			<Header>
+				<Text ID="23">"Historical Security Values"</Text>
+				<Font ExtraInfo="107CF1DD-5B8E-41FC-BD55-10C950947E3C" ID="22">"Headers"</Font>
+			</Header>
+		</Header_Footer>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="390" left="6" bottom="455" right="191" />
+		<Hidden>HideMinimalInvestment</Hidden>
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>MinimumFraction</Identifier>
+			<NumberFormat Width="3" Decimals="2" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Min Invested Fraction"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>CostBudget</Identifier>
+			<NumberFormat Width="5" Decimals="1" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Cost Budget"</Title>
+			<Hidden>HideMINLPSolvers</Hidden>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>GMPOuterApprox::IterationMax</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Max # Iterations"</Title>
+			<Hidden>HideAOAoption</Hidden>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="478" left="503" bottom="506" right="763" />
+		<StaticText>Optimal Invested Fraction 
+(as a function of desired expected return)</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="335" left="517" bottom="467" right="621" />
+		<TabOrder>9</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="Line" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">s</Domain>
+			<Annotation>
+				<Rotation_angle ID="1010">75</Rotation_angle>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Chart_type ID="2001">"Bar"</Chart_type>
+			<Identifier>
+				<Value ID="2007">ExpectedSecurityReturn( s )</Value>
+				<Appearance>
+					<Fill>
+						<Foreground_color ID="2013">SecurityColors( s )</Foreground_color>
+					</Fill>
+				</Appearance>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<View_3D>
+				<Depth ID="62">40</Depth>
+				<Elevation ID="63">5</Elevation>
+				<Rotation ID="64">5</Rotation>
+			</View_3D>
+			<Misc_display_settings>
+				<Show_outlines ID="68">1</Show_outlines>
+				<Axis_annotation_font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="74">"Legend"</Axis_annotation_font>
+				<Click_label>
+					<Click_label_decimals ID="79">2</Click_label_decimals>
+				</Click_label>
+			</Misc_display_settings>
+		</Display>
+		<Header_Footer>
+			<Header>
+				<Text ID="23">"Expected Return"</Text>
+				<Font ExtraInfo="107CF1DD-5B8E-41FC-BD55-10C950947E3C" ID="22">"Headers"</Font>
+			</Header>
+		</Header_Footer>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="69" left="19" bottom="95" right="51" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"tactical.txt"</FileName>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="365" left="6" bottom="386" right="192" />
+		<Hidden>HideMINLPSolvers</Hidden>
+		<TabOrder>5</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SelectedMINLPsolver</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="460" left="10" bottom="616" right="191" />
+		<Hidden>HideMINLPSolvers</Hidden>
+		<StaticText>With cost budget equal to 11, both AOA and BARON result in the same (optimal) solution. However, AOA is faster. When the cost budget is changed to 12, AOA doesn't come with a global optimum anymore, while BARON (always) does. When you increase Max # Iterations to 20, AOA also reaches the global optimum.</StaticText>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="365" left="6" bottom="386" right="192" />
+		<Hidden>HideMIQPSolvers</Hidden>
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>SelectedMIQPsolver</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="485" left="10" bottom="616" right="191" />
+		<Hidden>HideMIQPSolvers</Hidden>
+		<StaticText>The results for AOA can be different when using either CPLEX or XA as MIP solver. When the solution of AOA is not a global optimum the Max # Iterations can be increased to get a better solution.</StaticText>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="191" left="201" bottom="526" right="517" />
+		<TabOrder>12</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
+		<Border Style="None" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="A36527E4-6775-46C6-A63D-934E8094C2C8">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<DisplayTextFile>true</DisplayTextFile>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>STRING := "&lt;prj&gt;:Tactical.txt"</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="458" left="6" bottom="482" right="192" />
+		<Hidden>HideMIQPSolvers</Hidden>
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="462" left="18" bottom="480" right="186" />
+		<Hidden>HideMIQPSolvers</Hidden>
+		<StaticText>Note</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="A4C53CB8-B28A-40DC-845A-F21FFF53A0AC">red</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="A714204D-1623-4EC8-BBAE-F7E52738376E" Name="Strategic Investment Model" />
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Strategic Model</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MINLPSolvers</Symbol>
+			<Symbol>SolveTacticalModel</Symbol>
+			<Symbol>HideMINLPSolvers</Symbol>
+			<Symbol>SecurityValue</Symbol>
+			<Symbol>MinimumFraction</Symbol>
+			<Symbol>HideMinimalInvestment</Symbol>
+			<Symbol>HideAOAoption</Symbol>
+			<Symbol>CostBudget</Symbol>
+			<Symbol>MIQPSolvers</Symbol>
+			<Symbol>HideMIQPSolvers</Symbol>
+			<Symbol>ExpectedSecurityReturn</Symbol>
+			<Symbol>TacticalModels</Symbol>
+			<Symbol>SecurityColors</Symbol>
+			<Symbol>DesiredExpectedSecurityReturn</Symbol>
+			<Symbol>TacticalInvestedFraction</Symbol>
+			<Symbol>GMPOuterApprox::IterationMax</Symbol>
+			<Symbol>s</Symbol>
+			<Symbol>tt</Symbol>
+			<Symbol>CurrentTacticalModel</Symbol>
+			<Symbol>SelectedMINLPsolver</Symbol>
+			<Symbol>SelectedMIQPsolver</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<UserColors LastKnownInternalId="47">
+	<UserColor Name="default background" RGB="#f0f0f0" IsSystemBackground="true" UUID="9B79F6EC-0805-436F-88AE-94B86A0B423B" InternalID="1" />
+	<UserColor Name="default foreground" RGB="#000000" UUID="7470F0EC-2DDD-4DCE-81C8-72D6ADB1D806" InternalID="2" />
+	<UserColor Name="default selection" RGB="#000080" UUID="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D" InternalID="3" />
+	<UserColor Name="black" RGB="#000000" UUID="C10E834B-BA90-48FE-967C-4BD9C79E37A6" InternalID="4" />
+	<UserColor Name="white" RGB="#ffffff" UUID="7B519DA4-E6AE-4AB5-99DB-2122E1335D85" InternalID="5" />
+	<UserColor Name="red" RGB="#ff0000" UUID="BD823D0A-7606-42AF-85F4-ED16E38C73F7" InternalID="6" />
+	<UserColor Name="green" RGB="#00ff00" UUID="0E76FF93-7A03-4333-BD1C-4C53257CA02E" InternalID="7" />
+	<UserColor Name="blue" RGB="#0000ff" UUID="C1520ADC-BB9D-41BE-9507-5606F5495E7A" InternalID="8" />
+	<UserColor Name="yellow" RGB="#ffff00" UUID="01ADFB48-B2DA-40B5-A179-06FCD16868A0" InternalID="9" />
+	<UserColor Name="magenta" RGB="#ff00ff" UUID="DB32A058-23F4-4032-AA93-EECDFB985C4A" InternalID="10" />
+	<UserColor Name="cyan" RGB="#00ffff" UUID="2A3BC3EF-63B1-45AF-A935-C30F45DFA9A9" InternalID="11" />
+	<UserColor Name="navy blue" RGB="#000080" UUID="C2090099-C8F4-4433-84F6-AE415B33F747" InternalID="12" />
+	<UserColor Name="light grey" RGB="#c0c0c0" UUID="7A98ADED-D454-48CE-830F-A15CB24C41AB" InternalID="13" />
+	<UserColor Name="grey" RGB="#808080" UUID="C5EBC4B1-3262-449B-AB40-4A66873BCDD5" InternalID="14" />
+	<UserColor Name="dark grey" RGB="#404040" UUID="D4AD3B53-D609-4D48-AB51-36D1573E978A" InternalID="15" />
+	<UserColor Name="Paragon Purple" RGB="#4e2976" UUID="21020FDC-5353-4476-80A4-087AEFF1C56F" InternalID="16" />
+	<UserColor Name="Paragon Orange" RGB="#f4bc29" UUID="AA844FD1-2D79-4601-96E9-29A3D111D011" InternalID="17" />
+	<UserColor Name="Light Magenta" RGB="#ff96ff" UUID="2B411471-CE78-43B1-9666-05DB7F1CFEEC" InternalID="18" />
+	<UserColor Name="Very Light Grey" RGB="#e1e1e1" UUID="AE67498E-1C1E-4102-B2D9-7AC529B59476" InternalID="19" />
+</UserColors>

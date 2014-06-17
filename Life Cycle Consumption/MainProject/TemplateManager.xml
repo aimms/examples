@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="D95D0A0F-ABEC-45B6-B611-E488E0B662FC" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|93664630-71D8-427E-94C2-62C4EA43709C|Size Template">
+		<Template Name="Navigation Template" PageGUID="CC32F9A9-2934-4C9F-8F1B-75FC99D451DC" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|D99386E9-A58B-44B1-9B87-D359AF847D39|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="24BF3D93-EA06-4EA5-85F1-0F4B2AFB2B14" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|FE534F80-E832-49B0-ABDF-981E1DA4B181|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="D2E4C327-20E6-45F9-A221-B54D4191F213" />
+			</Template>
+			<Page Name="Input Parameters" PageGUID="A2561A16-7442-440D-A816-A0C23EABEF0B" />
+			<Page Name="Results Overview" PageGUID="2C19ED9B-0C19-445D-B889-A3688EB045F2" />
+		</Template>
+	</Template>
+	<Page Name="Consumption" PageGUID="EAFACEDF-0168-4DE9-8FDD-6B5EADEDB564" />
+	<Page Name="Assets" PageGUID="59770423-AD24-4CAE-AFC7-6C1D43741C0D" />
+	<Page Name="Labor" PageGUID="BBB3486E-B2D0-43BC-8DBC-14C8E47314A4" />
+</TemplateManager>

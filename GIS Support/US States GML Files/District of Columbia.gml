@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ogr:FeatureCollection
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://ogr.maptools.org/ usa_st.xsd"
+     xmlns:ogr="http://ogr.maptools.org/"
+     xmlns:gml="http://www.opengis.net/gml">
+  <gml:boundedBy>
+    <gml:Box>
+      <gml:coord><gml:X>-125.4639216131184</gml:X><gml:Y>19.89328141281156</gml:Y></gml:coord>
+      <gml:coord><gml:X>-66.9698486328125</gml:X><gml:Y>49.37173461914063</gml:Y></gml:coord>
+    </gml:Box>
+  </gml:boundedBy>
+  <gml:featureMember>
+    <ogr:usa_st fid="F27">
+      <ogr:geometryProperty><gml:Polygon><gml:outerBoundaryIs><gml:LinearRing><gml:coordinates>-77.008232116699219,38.966556549072266 -76.911209106445313,38.889987945556641 -77.045448303222656,38.788120269775391 -77.035247802734375,38.813915252685547 -77.045188903808594,38.829364776611328 -77.0404052734375,38.838413238525391 -77.039077758789063,38.862430572509766 -77.067886352539062,38.886100769042969 -77.078948974609375,38.915599822998047 -77.122627258300781,38.932060241699219 -77.042388916015625,38.993431091308594 -77.008232116699219,38.966556549072266</gml:coordinates></gml:LinearRing></gml:outerBoundaryIs></gml:Polygon></ogr:geometryProperty>
+      <ogr:AREA>66.063</ogr:AREA>
+      <ogr:STATE_NAME>District of Columbia</ogr:STATE_NAME>
+      <ogr:STATE_FIPS>11</ogr:STATE_FIPS>
+      <ogr:SUB_REGION>S Atl</ogr:SUB_REGION>
+      <ogr:STATE_ABBR>DC</ogr:STATE_ABBR>
+      <ogr:POP1990>606900</ogr:POP1990>
+      <ogr:POP1997>535027</ogr:POP1997>
+      <ogr:POP90_SQMI>9187</ogr:POP90_SQMI>
+      <ogr:HOUSEHOLDS>249634</ogr:HOUSEHOLDS>
+      <ogr:MALES>282970</ogr:MALES>
+      <ogr:FEMALES>323930</ogr:FEMALES>
+      <ogr:WHITE>179667</ogr:WHITE>
+      <ogr:BLACK>399604</ogr:BLACK>
+      <ogr:AMERI_ES>1466</ogr:AMERI_ES>
+      <ogr:ASIAN_PI>11214</ogr:ASIAN_PI>
+      <ogr:OTHER>14949</ogr:OTHER>
+      <ogr:HISPANIC>32710</ogr:HISPANIC>
+      <ogr:AGE_UNDER5>37351</ogr:AGE_UNDER5>
+      <ogr:AGE_5_17>79741</ogr:AGE_5_17>
+      <ogr:AGE_18_29>145687</ogr:AGE_18_29>
+      <ogr:AGE_30_49>187215</ogr:AGE_30_49>
+      <ogr:AGE_50_64>79059</ogr:AGE_50_64>
+      <ogr:AGE_65_UP>77847</ogr:AGE_65_UP>
+      <ogr:NEVERMARRY>242035</ogr:NEVERMARRY>
+      <ogr:MARRIED>146213</ogr:MARRIED>
+      <ogr:SEPARATED>29581</ogr:SEPARATED>
+      <ogr:WIDOWED>43608</ogr:WIDOWED>
+      <ogr:DIVORCED>46797</ogr:DIVORCED>
+      <ogr:HSEHLD_1_M>43471</ogr:HSEHLD_1_M>
+      <ogr:HSEHLD_1_F>60155</ogr:HSEHLD_1_F>
+      <ogr:MARHH_CHD>26167</ogr:MARHH_CHD>
+      <ogr:MARHH_NO_C>36943</ogr:MARHH_NO_C>
+      <ogr:MHH_CHILD>4600</ogr:MHH_CHILD>
+      <ogr:FHH_CHILD>31533</ogr:FHH_CHILD>
+      <ogr:HSE_UNITS>278489</ogr:HSE_UNITS>
+      <ogr:VACANT>28855</ogr:VACANT>
+      <ogr:OWNER_OCC>97108</ogr:OWNER_OCC>
+      <ogr:RENTER_OCC>152526</ogr:RENTER_OCC>
+      <ogr:MEDIAN_VAL>123900</ogr:MEDIAN_VAL>
+      <ogr:MEDIANRENT>441</ogr:MEDIANRENT>
+      <ogr:UNITS_1DET>34602</ogr:UNITS_1DET>
+      <ogr:UNITS_1ATT>71321</ogr:UNITS_1ATT>
+      <ogr:UNITS2>8773</ogr:UNITS2>
+      <ogr:UNITS3_9>42709</ogr:UNITS3_9>
+      <ogr:UNITS10_49>57265</ogr:UNITS10_49>
+      <ogr:UNITS50_UP>60972</ogr:UNITS50_UP>
+      <ogr:MOBILEHOME>82</ogr:MOBILEHOME>
+      <ogr:NO_FARMS87>-99</ogr:NO_FARMS87>
+      <ogr:AVG_SIZE87>-99</ogr:AVG_SIZE87>
+      <ogr:CROP_ACR87>-99</ogr:CROP_ACR87>
+      <ogr:AVG_SALE87>-99</ogr:AVG_SALE87>
+    </ogr:usa_st>
+  </gml:featureMember>
+</ogr:FeatureCollection>

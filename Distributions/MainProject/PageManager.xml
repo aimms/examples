@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="5CC3F9C7-B4FB-4A12-BA9C-FE2AC66735A4">
+		<Page Name="Overview Page" PageGUID="C2C21BC0-2D8E-4C20-90B3-8A9BF1522F94">
+			<Page Name="Distribution Descriptions" PageGUID="8480B1DB-8D09-4044-9163-C4295762F2B0">
+				<Page Name="Exponential" PageGUID="04D7F3FE-5A93-4474-89F9-81707A989252" />
+				<Page Name="Pareto" PageGUID="4C999438-8BED-4A2C-9C90-BAD36271A69F" />
+				<Page Name="LogNormal" PageGUID="989A3774-6E20-4095-90D1-CE7E83A5C401" />
+				<Page Name="Weibull" PageGUID="FB4723AE-9CCF-4425-846F-49B9423D2559" />
+				<Page Name="Gamma" PageGUID="1C3C6505-2ED0-4CB8-85B6-4FD33669D492" />
+			</Page>
+			<Page Name="Sampling and Operations" PageGUID="4DD19F5D-DE31-4C5A-A596-76E428D919ED" Marked="true">
+				<Page Name="All Pareto" PageGUID="14D2D81E-2BAB-4ABE-AF0E-B3A300FD9162" />
+				<Page Name="All LogNormal" PageGUID="C83B40AD-1319-414D-AEC3-7992178CEE90" />
+				<Page Name="All Weibull" PageGUID="D851CE2E-7334-45BC-B9E6-B1A9F2A81FC4" />
+				<Page Name="All Gamma" PageGUID="974D946B-5459-46AE-9C7D-1A169C8A8B48" />
+			</Page>
+			<Page Name="Distribution Approximations" PageGUID="DDDBB23F-BFF2-401C-B56E-612460376E89" />
+			<Page Name="Skewness and Kurtosis" PageGUID="02658FB8-3B52-4355-BBD1-CF0B4D78C2D3" />
+			<Page Name="Conclusions" PageGUID="FB848500-37A4-4FD0-921B-65BEB2156AC1" />
+		</Page>
+		<Page Name="Distribution Approximations Explanation" PageGUID="8467DA77-7601-4CAB-9A9A-93E23138E848" />
+		<Page Name="Sample Explanation" PageGUID="71578706-884B-48FE-945D-0FFA6AB0CE6C" />
+		<Page Name="Skewness and Kurtosis Explanation" PageGUID="6A8D20E7-CF4D-41E8-A379-C2D5A6C327D6" />
+	</Page>
+</PageManager>

@@ -1,0 +1,1142 @@
+## ams_version=1.0
+
+Model DataReconciliationModel {
+    Section Input_Data {
+        DeclarationSection Model_Quantities {
+            Quantity Mass {
+                BaseUnit: kg;
+                Conversions: {
+                    { ton  -> kg : # -> # * 1000,
+                      kton -> kg : # -> # * 1000000,
+                      g    -> kg : # -> # * 0.001 }
+                }
+                Comment: "Expresses the value for the amount of matter.";
+            }
+            Quantity AmountOfMatter {
+                BaseUnit: mol;
+                Conversions: {
+                    { kmol -> mol : # -> # * 1000,
+                      Mmol -> mol : # -> # * 1000000 }
+                }
+                Comment: "Expresses the value for the quantity of substance.";
+            }
+            Quantity TimeDuration {
+                BaseUnit: s;
+                Conversions: {
+                    { h    -> s : # -> # * 3600,
+                      day  -> s : # -> # * 86400 }
+                }
+                Comment: "Expresses the value for the duration of periods.";
+            }
+            Quantity Percentage {
+                BaseUnit: 1;
+                Conversions: {
+                    { % -> 1 : # -> 0.01 * # }
+                }
+                Comment: "Makes it possible to calculate with fractions and percentages";
+            }
+        }
+        DeclarationSection Reconciliation_Units {
+            Set AllUnits {
+                Index: u, v;
+                Parameter: UnitEl, SourceUnit, DestinationUnit;
+                Comment: "All units in the process flow scheme plus units for the system balance";
+            }
+            Set SortedUnits {
+                SubsetOf: AllUnits;
+                Index: u_s;
+                OrderBy: u_s;
+                Definition: AllUnits;
+            }
+            Set ProcessUnits {
+                SubsetOf: AllUnits;
+                Index: pu;
+                Comment: "All units in the process flow scheme";
+            }
+            Set ReactorUnits {
+                SubsetOf: ProcessUnits;
+                Index: ru;
+                Parameter: Reactor;
+                Comment: "The units in which a reaction can take place";
+            }
+            Set EnvironmentUnits {
+                SubsetOf: AllUnits;
+                Index: eu;
+                Definition: AllUnits - ProcessUnits;
+                Comment: "All units that are not considered part of the system";
+            }
+            Assertion EnvironmentUnitsExist {
+                Text: "There is no environment unit defined";
+                Definition: card(EnvironmentUnits);
+                Comment: "There should be at least one environment unit";
+            }
+        }
+        DeclarationSection Unit_Flows {
+            Set Flows {
+                Index: f, g;
+                Parameter: FlowEl;
+                Comment: {
+                    "All the flows in the process flow scheme plus the flows to,
+                    from and between the system balance units"
+                }
+            }
+            Set InFlows {
+                IndexDomain: u;
+                SubsetOf: Flows;
+                Definition: {
+                    { f | IndicatorInFlow(u,f) }
+                }
+                Comment: "The inflows for unit u";
+            }
+            Set OutFlows {
+                IndexDomain: u;
+                SubsetOf: Flows;
+                Definition: {
+                    { f | IndicatorOutFlow(u,f) }
+                }
+                Comment: "The outflows for unit u";
+            }
+            Set UnitFlows {
+                IndexDomain: u;
+                SubsetOf: Flows;
+                Definition: InFlows(u) + OutFlows(u);
+            }
+            Set ProcessInFlows {
+                SubsetOf: Flows;
+                Definition: {
+                    { f | Exists(eu | f in OutFlows(eu)) and Exists(pu | f in InFlows(pu)) }
+                }
+                Comment: "The flows from an environment unit to a process unit (the input in the system)";
+            }
+            Set ProcessOutFlows {
+                SubsetOf: Flows;
+                Definition: {
+                    { f | Exists(eu | f in InFlows(eu)) and Exists(pu | f in OutFlows(pu)) }
+                }
+                Comment: "The flows from a process unit to an environment unit ( the output of the system)";
+            }
+            Assertion UnitHasInAndOutputs {
+                IndexDomain: u;
+                Definition: card(Inflows(u)) and card(OutFlows(u));
+                Comment: "Each unit should have at least one input and output";
+            }
+        }
+        DeclarationSection Flow_Components {
+            Set Components {
+                Index: c, c1;
+                Parameter: Component;
+                Comment: "The components that can be in the flows";
+            }
+            Set Reactants {
+                SubsetOf: Components;
+                Index: rc;
+                Comment: "The components that can take place in the reactions";
+            }
+            ElementParameter MapCompositionTo {
+                IndexDomain: f;
+                Range: Flows;
+            }
+            ElementParameter MappedFlow {
+                IndexDomain: f;
+                Range: Flows;
+                Definition: if ( MapCompositionTo(f) ) then MapCompositionTo(f) else f endif;
+            }
+            Set NonMappedFlows {
+                SubsetOf: Flows;
+                Index: nmf;
+                Definition: {
+                    { f | not MapCompositionTo(f) }
+                }
+            }
+            Set FlowComponents {
+                IndexDomain: nmf;
+                SubsetOf: Components;
+                Definition: {
+                    { c | IndicatorFlowComponent(nmf,c) }
+                }
+                Comment: "The components that can be in flow f";
+            }
+            Set MappedFlowComponents {
+                IndexDomain: f;
+                SubsetOf: Components;
+                Definition: {
+                    { c | ( f in NonMappedFlows and c in FlowComponents(f)) or
+                          Exists( g | g = MapCompositionTo(f) and c in FlowComponents(g) ) }
+                }
+            }
+            Set ReactorReactants {
+                IndexDomain: ru;
+                SubsetOf: Reactants;
+                Definition: {
+                    { c in Reactants | IndicatorReactorReactant(ru,c) }
+                }
+                Comment: "The components participating in the reaction in reactor ru";
+            }
+            Parameter MolarComponentMass {
+                IndexDomain: c;
+                Unit: g/mol;
+                Comment: "The mass of one mol of component c";
+            }
+        }
+        DeclarationSection Natural_Elements {
+            Set NaturalElements {
+                Index: a;
+                Comment: "The elements that make up the components";
+            }
+            Parameter AtomsInComponent {
+                IndexDomain: (c,a);
+                Range: {
+                    {0..inf}
+                }
+                Comment: "The aomunt of elements a in component c";
+            }
+        }
+        DeclarationSection Measured_Flows {
+            Set MeasuredFlows {
+                SubsetOf: Flows;
+                Index: mf;
+                Comment: "The flows that have a measurement";
+            }
+            Parameter AbsoluteMeanFlowError {
+                IndexDomain: f in MeasuredFlows;
+                Unit: ton/h;
+                Comment: "The mean of the absolute error of flow f";
+            }
+            Parameter AbsoluteFlowErrorDeviation {
+                IndexDomain: f in MeasuredFlows;
+                Range: [MinimumAbsoluteFlowErrorDeviation, inf);
+                Unit: ton/h;
+                Comment: "The deviation of absolute flow error of flow f";
+            }
+            Parameter MinimumAbsoluteFlowErrorDeviation {
+                Unit: ton/h;
+                Default: 0.01;
+            }
+            Parameter MeasuredFlow {
+                IndexDomain: f in MeasuredFlows;
+                Unit: ton/h;
+                Comment: "The measurement of flow f";
+            }
+        }
+        DeclarationSection Measured_Compositions {
+            Set MeasuredComponents {
+                IndexDomain: nmf;
+                SubsetOf: FlowComponents(nmf);
+                Definition: {
+                    { c | IndicatorMeasuredComponent(nmf,c) }
+                }
+                Comment: "The measured components of flow f";
+            }
+            Parameter AbsoluteMeanCompositionError {
+                IndexDomain: (nmf,c in MeasuredComponents(nmf));
+                Unit: %;
+                Comment: "The mean of the absolute error of the component measurement c of flow f";
+            }
+            Parameter AbsoluteCompositionErrorDeviation {
+                IndexDomain: (nmf,c in MeasuredComponents(nmf));
+                Range: [MinimumAbsoluteCompositionErrorDeviation, inf);
+                Unit: %;
+                Comment: "The deviation of the absolute error of the component measurement c of flow f";
+            }
+            Parameter MinimumAbsoluteCompositionErrorDeviation {
+                Unit: %;
+                Default: 0.01;
+            }
+            Parameter MeasuredComposition {
+                IndexDomain: (nmf,c in MeasuredComponents(nmf));
+                Unit: %;
+                Comment: "The measurement of component c in flow f";
+            }
+        }
+    }
+    Section Reconciliation_Model {
+        Comment: "aap";
+        DeclarationSection Flow_Variables {
+            Variable Flow {
+                IndexDomain: f;
+                Range: nonnegative;
+                Unit: ton/h;
+                Comment: "The mass flow of flow f";
+            }
+            Variable MolarFlowMass {
+                IndexDomain: nmf;
+                Range: [1, inf);
+                Unit: g/mol;
+                Default: 1;
+                Definition: sum(c in FlowComponents(nmf), Composition(nmf,c) * MolarComponentMass(c));
+            }
+        }
+        DeclarationSection Component_Variables_and_Constraints {
+            Variable Composition {
+                IndexDomain: (nmf,c in FlowComponents(nmf));
+                Range: nonnegative;
+                Unit: %;
+                Comment: "The amount in % mol/mol of component c in flow f";
+            }
+            Variable ComponentFlow {
+                IndexDomain: (f,c in MappedFlowComponents(f));
+                Range: nonnegative;
+                Unit: Mmol/h;
+                Definition: Composition(MappedFlow(f),c) * Flow(f) / MolarFlowMass(MappedFlow(f));
+                Comment: "The component flow of component c in flow f";
+            }
+            Constraint CompositionsAddUpToOne {
+                IndexDomain: nmf;
+                Unit: %;
+                Definition: sum(c, Composition(nmf,c)) = 100 [%];
+                Comment: "The sum of all compositions in a flow must add up to 100%";
+            }
+        }
+        DeclarationSection Process_Unit_Balances {
+            Constraint MassBalance {
+                IndexDomain: pu;
+                Unit: ton/h;
+                Definition: sum(f in InFlows(pu), Flow(f)) = sum(f in OutFlows(pu), Flow(f));
+                Comment: "For all process units the inflow in mass should equal the out flow in mass";
+            }
+            Constraint ComponentBalance {
+                IndexDomain: {
+                    (pu,c) | (not pu in ReactorUnits) or
+                             (pu in ReactorUnits and not c in ReactorReactants(pu))
+                }
+                Unit: Mmol/h;
+                Definition: {
+                    sum(f in InFlows(pu),  ComponentFlow(f,c)) =
+                    sum(f in OutFlows(pu), ComponentFlow(f,c))
+                }
+                Comment: "For all process units except the reactor unit for the reagentia, the inflow in component flow should equal the outflow in component flow";
+            }
+        }
+        DeclarationSection Reactor_Unit_Variables_and_Balances {
+            Variable ReactantCreated {
+                IndexDomain: (ru,c in ReactorReactants(ru));
+                Unit: Mmol/h;
+                Definition: {
+                    sum(f in OutFlows(ru), ComponentFlow(f,c)) -
+                    sum(f in InFlows(ru), ComponentFlow(f,c))
+                }
+                Comment: "The amount of reagens c that is created in reactor unit ru";
+            }
+            Constraint ElementBalance {
+                IndexDomain: (ru,a);
+                Unit: Mmol/h;
+                Definition: {
+                    sum((f in InFlows(ru), c in ReactorReactants(ru)),
+                        AtomsInComponent(c,a) * ComponentFlow(f,c)    ) =
+                    sum((f in OutFlows(ru), c in ReactorReactants(ru)),
+                        AtomsInComponent(c,a) * ComponentFlow(f,c)    )
+                }
+                Comment: "For the reactants of reactor unit ru there should be an atom balance for atom a";
+            }
+        }
+        DeclarationSection Environment_Balances {
+            Constraint EnvironmentMassBalance {
+                Unit: ton/h;
+                Definition: sum(f in ProcessInFlows, Flow(f)) = sum(f in ProcessOutFlows, Flow(f));
+                Comment: "All mass flow into the system should equal all mass flow out of the system";
+            }
+            Constraint EnvironmentNonReactantBalance {
+                IndexDomain: c | not c in Reactants;
+                Unit: Mmol/h;
+                Definition: {
+                    sum(f in ProcessInFlows, ComponentFlow(f,c)) =
+                    sum(f in ProcessOutFlows, ComponentFlow(f,c))
+                }
+                Comment: "All non-reacting components should be in balance system-wide";
+            }
+            Constraint EnvironmentReactantBalance {
+                IndexDomain: c in Reactants;
+                Unit: Mmol/h;
+                Definition: {
+                    sum(f in ProcessInFlows, ComponentFlow(f,c))             +
+                    sum(ru | c in ReactorReactants(ru), ReactantCreated(ru,c)) =
+                    sum(f in ProcessOutFlows, ComponentFlow(f,c))
+                }
+                Comment: "Total inflow of reactants plus amount created should equal the total outflow";
+            }
+        }
+        DeclarationSection Error_Control {
+            Parameter MaxFlowErrorBound {
+                Range: nonnegative;
+                Default: 5;
+            }
+            Parameter MaxCompositionErrorBound {
+                Range: nonnegative;
+                Default: 5;
+            }
+        }
+        DeclarationSection Flow_Errors {
+            Variable PositiveFlowError {
+                IndexDomain: f in MeasuredFlows;
+                Range: [0, MaxFlowErrorBound];
+            }
+            Variable NegativeFlowError {
+                IndexDomain: f in MeasuredFlows;
+                Range: [0, MaxFlowErrorBound];
+            }
+            Constraint FlowErrorDetermination {
+                IndexDomain: f in MeasuredFlows;
+                Definition: {
+                    PositiveFlowError(f) - NegativeFlowError(f) =
+                    (Flow(f) - MeasuredFlow(f) - AbsoluteMeanFlowError(f)) / AbsoluteFlowErrorDeviation(f)
+                }
+            }
+        }
+        DeclarationSection Composition_Errors {
+            Variable PositiveCompositionError {
+                IndexDomain: (nmf,c in MeasuredComponents(nmf));
+                Range: [0, MaxCompositionErrorBound];
+            }
+            Variable NegativeCompositionError {
+                IndexDomain: (nmf,c in MeasuredComponents(nmf));
+                Range: [0, MaxCompositionErrorBound];
+            }
+            Constraint CompositionErrorDetermination {
+                IndexDomain: (nmf,c in MeasuredComponents(nmf));
+                Definition: {
+                    PositiveCompositionError(nmf,c) - NegativeCompositionError(nmf,c) =
+                    (Composition(nmf,c) - MeasuredComposition(nmf,c) - AbsoluteMeanCompositionError(nmf,c)) /
+                    AbsoluteCompositionErrorDeviation(nmf,c)
+                }
+            }
+        }
+        DeclarationSection Reconciliation_Programs {
+            Parameter FeasibilityTolerance {
+                Range: [1e-016, 1];
+                Default: 3e-008;
+            }
+            Parameter ErrorExponent {
+                Default: 1;
+            }
+            Parameter NLPErrorExponent {
+                Default: 1;
+            }
+            Variable TotalAbsoluteError {
+                Definition: {
+                    sum(f, (PositiveFlowError(f) + NegativeFlowError(f))^ErrorExponent ) +
+                    sum((nmf,c), (PositiveCompositionError(nmf,c) + NegativeCompositionError(nmf,c))^ErrorExponent )
+                }
+            }
+            MathematicalProgram FullReconciliationModel {
+                Objective: TotalAbsoluteError;
+                Direction: minimize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: NLP;
+            }
+            Parameter FlowReconciliationOnly;
+            Set FlowOnlyVariables {
+                SubsetOf: AllVariables;
+                Definition: data { Flow, PositiveFlowError, NegativeFlowError, TotalAbsoluteError };
+            }
+            Set FlowOnlyConstraints {
+                SubsetOf: AllConstraints;
+                Definition: data { MassBalance, EnvironmentMassBalance, FlowErrorDetermination, TotalAbsoluteError };
+            }
+            MathematicalProgram FlowOnlyReconciliationModel {
+                Objective: TotalAbsoluteError;
+                Direction: minimize;
+                Constraints: FlowOnlyConstraints;
+                Variables: FlowOnlyVariables;
+                Type: LP;
+            }
+        }
+        Procedure InitializeModel {
+            Body: {
+                empty Flow, Composition, PositiveFlowError, NegativeFlowError,
+                      PositiveCompositionError, NegativeCompositionError;
+                
+                ConvertRelativeToAbsoluteErrors;
+                
+                Flow(f in MeasuredFlows)         := MeasuredFlow(f);
+                Flow(f | not f in MeasuredFlows) := (Average(g in MeasuredFlows, flow(g))); ! [ton/h]
+                
+                if ( not FlowReconciliationOnly ) then
+                   Composition(nmf,c in MeasuredComponents(nmf)) := MeasuredComposition(nmf,c);
+                   Composition((nmf,c in FlowComponents(nmf)) | not c in MeasuredComponents(nmf)) :=
+                       (100 [%] - sum(c1 in MeasuredComponents(nmf), Composition(nmf,c1))) /
+                           Count(c1 in FlowComponents(nmf) | not c1 in MeasuredComponents(nmf));
+                
+                   MolarFlowMass(nmf) := sum(c in FlowComponents(nmf), Composition(nmf,c) * MolarComponentMass(c));
+                
+                   ComponentFlow(f,c) := Composition(MappedFlow(f),c) * Flow(f) / MolarFlowMass(MappedFlow(f));
+                
+                   ReactantCreated(ru,rc) := sum(f in OutFlows(ru), ComponentFlow(f,rc)) -
+                                             sum(f in InFlows(ru), ComponentFlow(f,rc));
+                endif;
+            }
+        }
+        Procedure SolveTheModel {
+            Body: {
+                InitializeModel;
+                
+                ErrorExponent := 1;
+                solve FlowOnlyReconciliationModel;
+                ModelStatus := FlowOnlyReconciliationModel.ProgramStatus;
+                
+                if ( not FlowReconciliationOnly ) then
+                   ErrorExponent := NLPErrorExponent;
+                   solve FullReconciliationModel where minimal_feasibility_tolerance := FeasibilityTolerance;
+                   ModelStatus := FullReconciliationModel.ProgramStatus;
+                endif;
+            }
+        }
+    }
+    Section Relative_Error_Support {
+        DeclarationSection Relative_Flow_Error_Support {
+            Parameter FlowAccuracyIsRelative;
+            Parameter FlowAccuracyIsAbsolute {
+                Definition: 1 - FlowAccuracyIsRelative;
+            }
+            Parameter RelativeMeanFlowError {
+                IndexDomain: f in MeasuredFlows;
+                Unit: %;
+                Comment: "The mean of the relative error of flow f";
+            }
+            Parameter RelativeFlowErrorDeviation {
+                IndexDomain: f in MeasuredFlows;
+                Unit: %;
+                Comment: "The deviation of relative flow error of flow f";
+            }
+        }
+        DeclarationSection Relative_Composition_Error_Support {
+            Parameter CompositionAccuracyIsRelative;
+            Parameter CompositionAccuracyIsAbsolute {
+                Definition: 1 - CompositionAccuracyIsRelative;
+            }
+            Parameter RelativeMeanCompositionError {
+                IndexDomain: (nmf,c in MeasuredComponents(nmf));
+                Unit: %;
+                Comment: "The mean of the relative error of the component measurement c of flow f";
+            }
+            Parameter RelativeCompositionErrorDeviation {
+                IndexDomain: (nmf,c in MeasuredComponents(nmf));
+                Unit: %;
+                Comment: "The deviation of the relative error of the component measurement c of flow f";
+            }
+        }
+        Procedure ConvertRelativeToAbsoluteErrors {
+            Body: {
+                if ( FlowAccuracyIsRelative ) then
+                   AbsoluteMeanFlowError(f)      := RelativeMeanFlowError(f)*MeasuredFlow(f);
+                   AbsoluteFlowErrorDeviation(f) :=
+                       max( MinimumAbsoluteFlowErrorDeviation, RelativeFlowErrorDeviation(f)*MeasuredFlow(f) );
+                endif;
+                
+                if ( CompositionAccuracyIsRelative ) then
+                   AbsoluteMeanCompositionError(nmf,c)      :=
+                       RelativeMeanCompositionError(nmf,c)*MeasuredComposition(nmf,c);
+                   AbsoluteCompositionErrorDeviation(nmf,c) :=
+                       max( MinimumAbsoluteCompositionErrorDeviation,
+                            RelativeCompositionErrorDeviation(nmf,c)*MeasuredComposition(nmf,c) );
+                endif;
+            }
+        }
+    }
+    Section Checks_for_Measurement_Redundancy {
+        Section Flow_Checks {
+            DeclarationSection Flow_Check_Data {
+                Parameter FlowMaxCount {
+                    IndexDomain: pu;
+                    Property: Integer;
+                    Definition: Card( UnitFlows(pu) );
+                }
+                Parameter FlowBalanceRedundancy {
+                    Property: Integer;
+                    Definition: {
+                        Card( ProcessUnits )
+                        + Card( MeasuredFlows )
+                        - Card( Flows )
+                    }
+                }
+                Parameter UnobservableFlow {
+                    IndexDomain: f;
+                }
+                Parameter RedundantFlowMeasurement {
+                    IndexDomain: f in MeasuredFlows;
+                }
+            }
+            Procedure CheckComputableFlow {
+                Arguments: (mf);
+                Body: {
+                    FlowObservable(f in MeasuredFlows) := 1;
+                    FlowObservable(mf) := 0;
+                    
+                    FlowCount(pu) := Count( f in UnitFlows(pu) | FlowObservable(f) );
+                    NewCount      := Card ( FlowObservable );
+                    
+                    while ( NewCount <> OldCount ) do
+                       OldCount := NewCount;
+                       for ( pu | FlowCount(pu) = FlowMaxCount(pu) - 1 ) do
+                           FlowObservable( f in UnitFlows(pu) ) := 1;
+                       endfor;
+                       FlowCount(pu) := Count( f in UnitFlows(pu) | FlowObservable(f) );
+                       NewCount      := Card ( FlowObservable );
+                    endwhile;
+                    
+                    RedundantFlowMeasurement(mf) := 1 $ (FlowObservable(mf));
+                    UnobservableFlow(f)          := 1 $ (not FlowObservable(f));
+                    
+                    return 1 when Card( UnobservableFlow ) = 0;
+                }
+                Comment: {
+                    "Determine recursively which flow values (except mf) can be computed
+                    from all measured flows in the network."
+                }
+                ElementParameter mf {
+                    Range: Flows;
+                    Property: Input;
+                }
+                Parameter OldCount;
+                Parameter NewCount;
+                Parameter FlowCount {
+                    IndexDomain: pu;
+                    Property: Integer;
+                }
+                Parameter FlowObservable {
+                    IndexDomain: f;
+                    Range: {
+                        {0..1}
+                    }
+                }
+            }
+            Procedure CheckComputableFlows {
+                Body: {
+                    return CheckComputableFlow('');
+                }
+            }
+        }
+        Section Composition_Checks {
+            DeclarationSection Composition_Check_Data {
+                Parameter Admissable {
+                    IndexDomain: {
+                        (pu,c,f in UnitFlows(pu),g) | c in FlowComponents(g) and ((not pu in ReactorUnits) or (not c in ReactorReactants(pu)))
+                                                      and (g = MappedFlow(f)) and (f = g or not g in UnitFlows(pu))
+                    }
+                    Definition: 1;
+                    Comment: {
+                        "Admissable computes all admissable and existing (c,f) pairs at a particular unit u where
+                        - c is not a reactant (if u in a reactor)
+                        - f is not a mappped flow which itself is connected to the unit itself as well
+                        
+                        As a bonus, g holds the mapped flow value."
+                    }
+                }
+                Parameter CompositionObservableAtUnitCount {
+                    IndexDomain: {
+                        (pu,c) | exists( f in UnitFlows(pu) | c in FlowComponents(MappedFlow(f)) )
+                                 and ((not pu in ReactorUnits) or (not c in ReactorReactants(pu)))
+                    }
+                    Property: Integer;
+                    Definition: Count( (f,g) | Admissable(pu,c,f,g) and c in MappedFlowComponents(f) ) - 1;
+                }
+                Parameter FlowsObservableInFlowCount {
+                    IndexDomain: (nmf);
+                    Definition: Card(FlowComponents(nmf)) - 1;
+                }
+                Parameter CompositionBalanceRedundancy {
+                    Definition: {
+                        FlowBalanceRedundancy
+                        + Count( (pu,c) | ((not pu in ReactorUnits) or (not c in ReactorReactants(pu)))
+                                           and CompositionObservableAtUnitCount(pu,c)                                )
+                        + Count( (ru,a) | Exists(c in ReactorReactants(ru) | AtomsInComponent(c,a)) )
+                        + Count( (nmf,c in MeasuredComponents(nmf)) )
+                        + Count( nmf )
+                        - Count( (nmf,c in FlowComponents(nmf)) )
+                    }
+                }
+                Parameter UnobservableComposition {
+                    IndexDomain: (nmf,c in FlowComponents(nmf));
+                }
+                Parameter RedundantCompositionMeasurement {
+                    IndexDomain: (nmf,c);
+                }
+            }
+            Procedure CheckComputableComposition {
+                Arguments: (mf,mc);
+                Body: {
+                    
+                        Block ! Initialize measured compositions as observable.
+                            CompositionObservable(nmf,c in MeasuredComponents(nmf)) := 1;
+                            CompositionObservable(mf,mc) := 0;
+                            
+                            if ( not CheckComputableFlows ) then
+                               UnobservableComposition(nmf,c) := 1 $ (not CompositionObservable(nmf,c));
+                               return 0;
+                            endif;
+                            
+                            CompositionCount(pu,c) := Count( (f,g) | Admissable(pu,c,f,g) and CompositionObservable(g,c) );
+                            NewCount               := Card ( CompositionObservable );
+                        EndBlock ; 
+                    
+                    while ( NewCount <> OldCount ) do
+                       
+                        Block ! Determine new observable compositions from old ones.
+                            OldCount := NewCount;
+                            
+                            ! Empty CompositionObservableAtUnit to make sure that we loop only once for every (pu,c) combination
+                            empty CompositionObservableAtUnit;
+                            CompositionObservableAtUnit((pu,c) | CompositionCount(pu,c) = CompositionObservableAtUnitCount(pu,c)) := 1;
+                            
+                            for ( (pu,c,f,g) | CompositionObservableAtUnit(pu,c) and Admissable(pu,c,f,g)) do
+                                CompositionObservable(g,c) := 1;
+                            endfor;
+                            
+                            for ( nmf | Count(c | CompositionObservable(nmf,c)) = FlowsObservableInFlowCount(nmf) ) do
+                                CompositionObservable(nmf,c) := 1;
+                            endfor;
+                            
+                            CompositionCount(pu,c) := Count( (f,g) | Admissable(pu,c,f,g) and CompositionObservable(g,c) );
+                            NewCount               := Card ( CompositionObservable );
+                        EndBlock ; 
+                    endwhile;
+                    
+                    RedundantCompositionMeasurement(mf,mc) := 1 $ (CompositionObservable(mf,mc));
+                    UnobservableComposition(nmf,c)         := 1 $ (not CompositionObservable(nmf,c));
+                    
+                    return 1 when Card( UnobservableComposition ) = 0;
+                }
+                ElementParameter mf {
+                    Range: Flows;
+                    Property: Input;
+                }
+                ElementParameter mc {
+                    Range: Components;
+                    Property: Input;
+                }
+                Parameter OldCount;
+                Parameter NewCount;
+                Parameter CompositionCount {
+                    IndexDomain: (pu,c);
+                    Property: Integer;
+                }
+                Parameter CompositionObservableAtUnit {
+                    IndexDomain: (pu,c);
+                }
+                Parameter CompositionObservable {
+                    IndexDomain: (nmf,c in FlowComponents(nmf));
+                    Range: {
+                        {0..1}
+                    }
+                }
+                Parameter FlowCompositionCount {
+                    IndexDomain: nmf;
+                }
+            }
+            Procedure CheckComputableCompositions {
+                Body: {
+                    if ( AutoCheckRedundancy ) then
+                       CheckForRedundantMeasurements;
+                    else
+                       Empty RedundantFlowMeasurement, RedundantCompositionMeasurement;
+                       CheckComputableComposition('','');
+                    endif;
+                }
+            }
+        }
+        Section Redundancy_Checks {
+            Parameter AutoCheckRedundancy;
+            Procedure CheckForRedundantMeasurements {
+                Body: {
+                    empty RedundantFlowMeasurement,
+                          RedundantCompositionMeasurement;
+                    
+                    for ( f | f in MeasuredFlows ) do
+                       CheckComputableFlow(f);
+                    endfor;
+                    
+                    for ( nmf, c in MeasuredComponents(nmf) ) do
+                       CheckComputableComposition(nmf,c);
+                    endfor;
+                    
+                    CheckComputableComposition('','');
+                }
+            }
+        }
+    }
+    Section GUI_support {
+        Section Flow_Visualization {
+            DeclarationSection Network_Nodes {
+                Set NetworkNodes {
+                    Index: n, nfrom, nto;
+                    Parameter: SourceNode, DestinationNode, NodeEl;
+                    Definition: MappedUnits + IntermediateNodes;
+                }
+                ElementParameter NodeColor {
+                    IndexDomain: n;
+                    Range: AllColors;
+                    Default: 'black';
+                    Definition: {
+                        if ( UnitMap(n) ) then
+                           if     ( UnitMap(n) in ReactorUnits ) then 'reactor'
+                           elseif ( UnitMap(n) in ProcessUnits ) then 'process'
+                           else 'environment' endif
+                        else 'black' endif
+                    }
+                }
+                Parameter NodeSize {
+                    IndexDomain: (n);
+                    Definition: 8 $ ( UnitMap(n) );
+                }
+                Parameter FlowMap {
+                    IndexDomain: (f,nto,nfrom);
+                }
+            }
+            DeclarationSection Mapped_Unit_Network_Nodes {
+                Set MappedUnits {
+                    SubsetOf: NetworkNodes;
+                    Index: u_m;
+                    Parameter: MappedUnit;
+                    Definition: union( u, ElementCast(MappedUnits, u, create: 1) );
+                }
+                ElementParameter UnitMap {
+                    IndexDomain: n;
+                    Range: AllUnits;
+                    Definition: ElementCast( AllUnits, n, create: 0 );
+                }
+                ElementParameter NodeMap {
+                    IndexDomain: (u);
+                    Range: NetworkNodes;
+                    Definition: ElementCast( NetworkNodes, u, create: 0 );
+                }
+            }
+            DeclarationSection Intermediate_Network_Nodes {
+                Parameter MaxIntermediate {
+                    Range: {
+                        {0..inf}
+                    }
+                    InitialData: 0;
+                }
+                Set IntermediateNodes {
+                    SubsetOf: NetworkNodes;
+                    Parameter: NewNode;
+                }
+            }
+            DeclarationSection Network_Coordinates {
+                Set ScreenPositions {
+                    Index: sp;
+                    Definition: DATA { Top, Bottom, Left, Right };
+                }
+                Parameter NetworkBound {
+                    IndexDomain: sp;
+                }
+                Set Coordinates {
+                    Index: crd;
+                    Definition: data { x, y };
+                }
+                Parameter NodeCoordinate {
+                    IndexDomain: (n,crd);
+                }
+            }
+            Procedure ChangeFlowSource {
+                Body: {
+                    empty DestinationNode;
+                    
+                    for ((u_m,nto) | FlowMap(FlowEl,u_m,nto) ) do
+                        DestinationNode := nto;
+                        FlowMap(FlowEl,u_m,nto) := 0;
+                    endfor;
+                    
+                    for (u | IndicatorOutFlow(u,FlowEl)) do
+                        MappedUnit := NodeMap(u);
+                    
+                        ! The following allows bootstrapping of a flow's source and destination nodes
+                    
+                        if (DestinationNode) then
+                           FlowMap(FlowEl,MappedUnit,DestinationNode) := 1;
+                        else
+                           FlowMap(FlowEl,MappedUnit,MappedUnit) := 1;
+                        endif;
+                    endfor;
+                }
+                Comment: {
+                    "This procedure changes the source of flow FlowEl to the (single) value present
+                    in the parameter IndicatorOutFlow(u,f) for FlowEl. The procedure is set up in
+                    such a way that it will allow boot strapping from empty data."
+                }
+            }
+            Procedure ChangeFlowDestination {
+                Body: {
+                    empty SourceNode;
+                    
+                    for ((nfrom, u_m) | FlowMap(FlowEl,nfrom,u_m) ) do
+                        SourceNode := nfrom;
+                        FlowMap(FlowEl,nfrom,u_m) := 0;
+                    endfor;
+                    
+                    for (u | IndicatorInFlow(u,FlowEl)) do
+                        MappedUnit := NodeMap(u);
+                    
+                        ! The following allows bootstrapping of a flow's source and destination nodes
+                        if (SourceNode) then
+                           FlowMap(FlowEl,SourceNode,MappedUnit) := 1;
+                        else
+                           FlowMap(FlowEl,MappedUnit,MappedUnit) := 1;
+                        endif;
+                    endfor;
+                }
+                Comment: {
+                    "This procedure changes the source of flow FlowEl to the (single) value present
+                    in the parameter IndicatorInFlow(u,f) for FlowEl. The procedure is set up in
+                    such a way that it will allow boot strapping from empty data."
+                }
+            }
+            Procedure AddIntermediateNode {
+                Body: {
+                    if ( FlowMap( FlowEl, SourceNode, DestinationNode ) ) then
+                       MaxIntermediate += 1;
+                    
+                       SetElementAdd( IntermediateNodes, NewNode, FormatString( "int-%i", MaxIntermediate ) );
+                    
+                       FlowMap(FlowEl, SourceNode, DestinationNode) := 0;
+                       FlowMap(FlowEl, SourceNode, NewNode        ) := 1;
+                       FlowMap(FlowEl, NewNode   , DestinationNode) := 1;
+                    
+                       NodeCoordinate(NewNode,crd) := ( NodeCoordinate(SourceNode,crd) + NodeCoordinate(DestinationNode,crd) ) / 2;
+                    else
+                       DialogError( "No valid flow has been selected for bisection" );
+                    endif;
+                }
+                Comment: "This procedure adds a newly created intermediate node between an existing source and destination node.";
+            }
+            Procedure DeleteIntermediateNode {
+                Body: {
+                    if ( NodeEl in IntermediateNodes ) then
+                       FlowEl          := first( f | exists(nto | FlowMap(f,NodeEl,nto)) );
+                       SourceNode      := first( nfrom | FlowMap(FlowEl, nfrom, NodeEl) );
+                       DestinationNode := first( nto | FlowMap(FlowEl, NodeEl, nto) );
+                    
+                       FlowMap(FlowEl, SourceNode, DestinationNode) := 1;
+                    
+                       IntermediateNodes -= NodeEl;
+                       NodeEl            := first(IntermediateNodes);
+                    
+                       cleandependents NetworkNodes;
+                    else
+                       DialogError( "Deletion of a non-intermediate node is not allowed" );
+                    endif;
+                }
+                Comment: "This procedure deletes an element from the set IntermediateNodes";
+            }
+            Procedure NetworkInitialization {
+                Body: {
+                    NetworkBound  := DATA { Top : 1, Bottom : -1, Left : -1, Right : 1 };
+                }
+                Comment: "Initializes the outer bounds of the flow network";
+            }
+        }
+        DeclarationSection Table_Views {
+            Set ResultDisplays {
+                Index: rd;
+                Parameter: ResultDisplay;
+                Definition: data { Flows, Composition };
+            }
+            Parameter ResultDisplayHidden {
+                IndexDomain: rd;
+                Definition: 1 $ ( rd <> ResultDisplay );
+            }
+        }
+        DeclarationSection Indicator_Parameters {
+            Parameter IndicatorInFlow {
+                IndexDomain: (u,f);
+            }
+            Parameter IndicatorOutFlow {
+                IndexDomain: (u,f);
+            }
+            Parameter IndicatorFlowComponent {
+                IndexDomain: (nmf,c);
+            }
+            Parameter IndicatorReactorReactant {
+                IndexDomain: (ru,rc);
+            }
+            Parameter IndicatorMeasuredComponent {
+                IndexDomain: (nmf,c in FlowComponents(nmf));
+            }
+        }
+        DeclarationSection Measurement_Overview_Data {
+            Set MeasurementComponents {
+                Index: mc;
+                Parameter: MCEl;
+                Definition: data { Mass } + Union(c,  ElementCast( MeasurementComponents, c, create: 1 ) );
+            }
+            ElementParameter MCMap {
+                IndexDomain: mc;
+                Range: Components;
+                Definition: ElementCast( Components, mc );
+            }
+            ElementParameter MeasurementFlowColor {
+                IndexDomain: (f,mc);
+                Range: AllColors;
+                Default: 'black';
+                Definition: {
+                    if ( mc = 'Mass' ) then
+                         if     ( RedundantFlowMeasurement(f) ) then 'magenta'
+                         elseif ( f in MeasuredFlows ) 	    then 'red'
+                         elseif ( not UnobservableFlow(f) )     then 'blue'
+                                                                else 'black'
+                         endif
+                    elseif ( RedundantCompositionMeasurement(MappedFlow(f),MCMap(mc)) ) then 'magenta'
+                    elseif ( MCMap(mc) in MeasuredComponents(MappedFlow(f)) ) 	    then 'red'
+                    elseif ( not MCMap(mc) in FlowComponents(MappedFlow(f)) ) 	    then 'light grey'
+                    elseif ( not UnobservableComposition(MappedFlow(f),MCMap(mc)) )     then 'blue'
+                                                                                        else 'black'
+                    endif
+                }
+            }
+            Set MeasurementCategories {
+                Index: mcat;
+                Definition: data { Total, Measured, Unobservable };
+            }
+            Parameter CompositionMeasurementCount {
+                IndexDomain: (f,mcat);
+                Definition: {
+                    if     ( mcat = 'Total' ) then Card( FlowComponents(MappedFlow(f)) )
+                    elseif ( mcat = 'Measured' ) then Card( MeasuredComponents(MappedFlow(f)) )
+                    else   Count(c | UnobservableComposition(MappedFlow(f),c)) endif
+                }
+            }
+        }
+        DeclarationSection Mapped_Model_Data {
+            Parameter MappedMoleFlow {
+                IndexDomain: f;
+                Unit: Mmol/h;
+                Definition: if ( not FlowReconciliationOnly ) then Flow(f) /$ MolarFlowMass(MappedFlow(f)) endif;
+            }
+            Parameter MappedFlowComponent {
+                IndexDomain: (f,c);
+                Definition: 1 $ IndicatorFlowComponent(MappedFlow(f),c);
+            }
+            Parameter MappedComposition {
+                IndexDomain: (f,c);
+                Unit: %;
+                Definition: Composition(MappedFlow(f),c);
+            }
+            Parameter MappedMeasuredComposition {
+                IndexDomain: (f,c);
+                Unit: %;
+                Definition: MeasuredComposition(MappedFlow(f),c);
+            }
+            ElementParameter ModelStatus {
+                Range: AllSolutionStates;
+            }
+            Parameter ObservedFlowError {
+                IndexDomain: f;
+                Definition: PositiveFlowError(f) + NegativeFlowError(f);
+            }
+            Parameter ObservedCompositionError {
+                IndexDomain: (f,c);
+                Definition: PositiveCompositionError(MappedFlow(f),c) + NegativeCompositionError(MappedFlow(f),c);
+            }
+            Parameter ShowErrorThreshold {
+                Default: 1;
+            }
+            ElementParameter UnitErrorColor {
+                IndexDomain: f;
+                Range: AllColors;
+                Default: 'black';
+                Definition: {
+                    if ( abs(ObservedFlowError(f)) + sum(c,abs(ObservedCompositionError(f,c))) > ShowErrorThreshold ) then 'red'
+                    else 'black' endif
+                }
+            }
+            ElementParameter FlowErrorColor {
+                IndexDomain: f;
+                Range: AllColors;
+                Default: 'black';
+                Definition: {
+                    if ( abs(ObservedFlowError(f)) +
+                         sum(c,abs(ObservedCompositionError(f,c))) >
+                         ShowErrorThreshold ) then 'red'
+                    else 'black' endif
+                }
+            }
+            ElementParameter CompositionErrorColor {
+                IndexDomain: (f,c);
+                Range: AllColors;
+                Definition: {
+                    if ( ObservedCompositionError(f,c) > ShowErrorThreshold )
+                    then 'red'
+                    else 'black'
+                    endif
+                }
+            }
+        }
+        Procedure ToggleMeasurement {
+            Body: {
+                if ( MCEl = 'Mass' ) then
+                   if ( FlowEl in MeasuredFlows ) then MeasuredFlows -= FlowEl;
+                                                  else MeasuredFlows += FlowEl; endif;
+                else
+                   IndicatorMeasuredComponent(MappedFlow(FlowEl),MCMap(MCEl)) :=
+                       1 - IndicatorMeasuredComponent(MappedFlow(FlowEl),MCMap(MCEl));
+                endif;
+                
+                empty RedundantFlowMeasurement,
+                      RedundantCompositionMeasurement;
+                
+                CheckComputableCompositions;
+            }
+        }
+        Procedure NewCase {
+            Body: {
+                CaseNew();
+                empty DataReconciliationModel;
+                NetworkInitialization;
+            }
+        }
+    }
+    Section Reporting_Support {
+        DeclarationSection Report_Data {
+            StringParameter CasePath;
+            StringParameter CaseOwner;
+            StringParameter CaseDescription;
+            StringParameter ReconciliationDate;
+        }
+        Procedure FillReportDescription {
+            Body: {
+                DataFileGetPath(CurrentCase,CasePath);
+                DataFileGetOwner(CurrentCase,CaseOwner);
+                ReconciliationDate := CurrentToString( "%m/%d/%C%Y, %h:%M %p" );
+            }
+        }
+        Procedure PrintReport {
+            Body: {
+                PrintPage( "Daily Reconciliation Overview" );
+            }
+        }
+    }
+    Section Example_Initialization {
+        Set XMLIdentifiers {
+            SubsetOf: AllIdentifiers;
+            OrderBy: user;
+            Definition: data { Flows, MeasuredFlow, Flow, MeasuredComposition, Composition };
+        }
+        Procedure DataReconWriteXML {
+            Body: {
+                WriteXML("recon.xml", "reconciliation.axm", 1);
+                GenerateXML("recon1.xml", XMLIdentifiers, 0, "recon1.xsd");
+                
+                DialogMessage("The data have been written to file recon.xml ");
+            }
+        }
+        Procedure DataReconReadXML {
+            Body: {
+                ReadXML("reconciliation.xml", "reconciliation.axm", 0, "reconciliation.xsd");
+            }
+        }
+        Procedure LoadNH3Example {
+            Body: {
+                empty DataReconciliationModel;
+                
+                read from file "<prj>:NH3.txt";
+                
+                update DataReconciliationModel;
+            }
+        }
+        Procedure MainTermination {
+            Body: {
+                return 1;
+            }
+        }
+    }
+}

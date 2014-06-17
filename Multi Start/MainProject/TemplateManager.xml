@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="A16AD3B4-D31F-443E-A090-1EF3318B1D8D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
+		<Template Name="Navigation Template" PageGUID="FB8A410E-8FBD-4582-8311-A67071D4D620" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="159F8C5C-4E9B-4585-9650-E5255F3173D5" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="D6A6BE11-6C5E-4088-A4D8-8F53448E17B6" />
+			</Template>
+			<Template Name="Content Page" PageGUID="1F76332B-8FFE-4254-A28F-E4C7B691C255">
+				<Page Name="Clusters View" PageGUID="1C332B2E-F733-4123-8CB5-7ACBE4ED3157" />
+				<Page Name="Sample Points View" PageGUID="1FF89625-DF68-4EA7-A720-50D02CF329F0" />
+			</Template>
+		</Template>
+		<Page Name="Settings Help" PageGUID="586F2C52-FD6F-41D9-8BCB-19AD4550B504" />
+	</Template>
+</TemplateManager>

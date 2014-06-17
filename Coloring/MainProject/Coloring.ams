@@ -1,0 +1,142 @@
+## ams_version=1.0
+
+Model Main_Coloring {
+    DeclarationSection Data_Declarations {
+        Set MySet {
+            Index: i, j;
+            InitialData: data { 1 .. 10 };
+        }
+        Parameter ElementActive {
+            IndexDomain: (i);
+        }
+        Parameter MyData {
+            IndexDomain: (i,j) | ElementActive(i) and ElementActive(j);
+        }
+    }
+    DeclarationSection Updatability_Declarations {
+        Parameter ElementUpdatable {
+            IndexDomain: (i);
+        }
+        Parameter DataReadOnly {
+            IndexDomain: (i,j);
+            Definition: 1 $ (ElementUpdatable(i)*ElementUpdatable(j) = 0);
+        }
+    }
+    DeclarationSection Color_Declarations {
+        ElementParameter SetColor {
+            IndexDomain: (i);
+            Range: AllColors;
+            Definition: if ( ElementUpdatable(i) ) then 'blue' else 'red' endif;
+        }
+        ElementParameter DataColor {
+            IndexDomain: (i,j);
+            Range: AllColors;
+            Definition: if ( ElementUpdatable(i) and ElementUpdatable(j) ) then UpdatableColor else  NonUpdatableColor endif;
+        }
+        ElementParameter UpdatableColor {
+            Range: AllColors;
+            InitialData: 'blue';
+        }
+        ElementParameter NonUpdatableColor {
+            Range: AllColors;
+            InitialData: 'red';
+        }
+        Parameter Updatable {
+            Range: binary;
+        }
+    }
+    DeclarationSection Visibility_Declarations {
+        Parameter DataVisible {
+            IndexDomain: (i);
+        }
+        Set MyVisibleSet {
+            SubsetOf: MySet;
+            Index: i_v, j_v;
+            Definition: {
+                { i | DataVisible(i) }
+            }
+            Comment: {
+                "This set is used for indexing in all graphical objects to restrict the
+                visibility of the elements of MySet"
+            }
+        }
+        Set PageObjectTypes {
+            Index: po;
+            Parameter: SelectedPOType;
+            Definition: data { 'Table', 'Composite Table','Pivot Table', 'Graph' };
+        }
+        Parameter ObjectHidden {
+            IndexDomain: (po);
+            Definition: 1 $ (SelectedPOType <> po);
+        }
+        ElementParameter BarColor {
+            IndexDomain: (i);
+            Range: AllColors;
+            Definition: {
+                data {
+                
+                   1  : 'Blue',
+                   2  : 'Yellow',
+                   3  : 'Red',
+                   4  : 'Green',
+                   5  : 'magenta',
+                   6  : 'cyan',
+                   7  : 'grey',
+                   8  : 'light grey',
+                   9  : 'Blue',
+                   10  : 'Yellow' }
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            ElementActive(i)    := 1;
+            DataVisible(i)      := 1;
+            ElementUpdatable(i) := data { 1 : 1,  3 : 1,  5 : 1,  7 : 1,  9 : 1 };
+            MyData(i,j)         := Card(MySet)*Abs(Ord(i) + Ord(j)-(Card(MySet)+1)) + Ord(i) + Ord(j);
+            SelectedPOType      := 'Table';
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure GetColor {
+        Body: {
+            Ok := DialogGetColor( RedNr, GreenNr, BlueNr );
+            
+            If Ok Then
+            
+            	If Updatable Then
+            
+            		If not UserColorAdd( "Updatable Color", RedNr, GreenNr, BlueNr ) Then
+            
+                		UserColorModify( "Updatable Color", RedNr, GreenNr, BlueNr );
+            
+                	EndIf;
+            
+                    UpdatableColor := StringToElement(AllColors, "Updatable Color", 0);
+            
+            	Else
+            
+                	If not UserColorAdd( "NonUpdatable Color", RedNr, GreenNr, BlueNr ) Then
+            
+                		UserColorModify( "NonUpdatable Color", RedNr, GreenNr, BlueNr );
+            
+                	EndIf;
+            
+                    NonUpdatableColor := StringToElement(AllColors,"NonUpdatable Color", 0);
+            
+            
+              	EndIf;
+            
+            EndIf;
+        }
+        Parameter RedNr;
+        Parameter GreenNr;
+        Parameter BlueNr;
+        Parameter Ok;
+    }
+}

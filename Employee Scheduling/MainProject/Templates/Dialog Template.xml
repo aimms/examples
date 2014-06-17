@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2008-08-12 07:55:24" NeedsCompiledModel="false">
+	<Location top="36" left="79" bottom="364" right="495" />
+	<PageEditSize Type="Inherited">
+		<Size Width="416" Height="327" />
+	</PageEditSize>
+	<ProjectUUID>47DD053E-8D9C-46A7-B851-614CA56A813B</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromBottom" Value="8">
+			<TopArea Line="FixedFromRight" Value="8" />
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Rectangle">
+		<Location top="0" left="0" bottom="69" right="417" />
+		<FillColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="0" left="0" bottom="312" right="417" />
+		<FileName LiteralFileName="true">"&lt;lib:ExampleStyle&gt;:StartPage.jpg"</FileName>
+		<Display>StretchOrShrink</Display>
+		<KeepRatio>true</KeepRatio>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

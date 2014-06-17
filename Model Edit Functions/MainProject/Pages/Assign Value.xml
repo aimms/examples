@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-08-25 12:43:10">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F9544067-E448-4C60-9F8A-54412C921446</ProjectUUID>
+	<CloseWhenInactive>true</CloseWhenInactive>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="62">
+						<BottomArea Line="FixedFromTop" Value="77">
+							<BottomArea Line="PercentageFromTop" Value="0.455556">
+								<BottomArea Line="FixedFromTop" Value="82">
+									<BottomArea Line="FixedFromBottom" Value="7.99996" />
+								</BottomArea>
+							</BottomArea>
+						</BottomArea>
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="244">
+						<TopArea Line="FixedFromTop" Value="190">
+							<BottomArea Line="FixedFromLeft" Value="69">
+								<RightArea Line="PercentageFromLeft" Value="0.4334">
+									<RightArea Line="FixedFromLeft" Value="95" />
+								</RightArea>
+							</BottomArea>
+						</TopArea>
+						<BottomArea Line="PercentageFromLeft" Value="0.5" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<Action>
+		<EntryProcedure>EmptySliceSelection</EntryProcedure>
+	</Action>
+	<PageObject Type="Button">
+		<Location top="366" left="6" bottom="390" right="192" />
+		<ReadOnly>AssignValueButtonInactive</ReadOnly>
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Assign value"</Title>
+		<ForegroundColor RGB="#000000" />
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DoAssignValue</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="379" left="210" bottom="397" right="270" />
+		<StaticText>Source:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="379" left="492" bottom="397" right="582" />
+		<StaticText>Destination:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="378" left="270" bottom="402" right="450" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>AssignValueSourceParameter</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="SelectableParameters">ParameterName( selp )</ElementText>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="432" left="210" bottom="612" right="480" />
+		<TabOrder>4</TabOrder>
+		<ObjectUUID>AB56801F-8D8C-4B58-8E1B-B086A61E5022</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" />
+		<Contents>
+			<Implicit_Identifiers ID="4010">AssignValueSourceParameterSet( SelectableParameters )</Implicit_Identifiers>
+		</Contents>
+		<General>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="378" left="582" bottom="402" right="762" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>AssignValueDestinationParameter</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="SelectableParameters">ParameterName( selp )</ElementText>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="432" left="492" bottom="612" right="762" />
+		<TabOrder>5</TabOrder>
+		<ObjectUUID>691F4BBC-2A01-4173-9F2C-73DB337BD374</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" />
+		<Contents>
+			<Implicit_Identifiers ID="4010">AssignValueDestinationParameterSet( SelectableParameters )</Implicit_Identifiers>
+		</Contents>
+		<General>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Column_Area>
+			<Auto_resize_Column_Widths ID="3006">"Upon all data changes"</Auto_resize_Column_Widths>
+		</Column_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="186" left="204" bottom="372" right="762" />
+		<StaticText>On this page, you can assign the value(s) of one parameter to another parameter. You only need to specify the source and destination parameters and, in case they have a different dimension, fix (some of) the indices (via the Slice Selection at the left).
+
+The Model Edit Functions are used to implement this functionality, because currently, it is not possible in AIMMS to have e.g. a parameter MyParameter(i), with i in { 'a', 'b', 'c' }, an element parameter MySelectedParameter in AllIdentifiers with value 'MyParameter' and then use the following: 
+
+	MyValue := MySelectedparameter('a');</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="408" left="210" bottom="426" right="264" />
+		<StaticText>Data:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="408" left="492" bottom="426" right="576" />
+		<StaticText>Data:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>AssignValueDestinationParameter</Symbol>
+			<Symbol>AssignValueSourceParameter</Symbol>
+			<Symbol>ParameterName</Symbol>
+			<Symbol>AssignValueDestinationParameterSet</Symbol>
+			<Symbol>SelectableParameters</Symbol>
+			<Symbol>DoAssignValue</Symbol>
+			<Symbol>EmptySliceSelection</Symbol>
+			<Symbol>AssignValueButtonInactive</Symbol>
+			<Symbol>AssignValueSourceParameterSet</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

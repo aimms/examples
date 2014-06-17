@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-02-26 01:52:21">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<UpdateAllIdentifiers>true</UpdateAllIdentifiers>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromBottom" Value="70">
+						<TopArea Line="FixedFromTop" Value="232" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="191" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+	</Background>
+	<Action>
+		<EntryProcedure>CheckComputableCompositions</EntryProcedure>
+		<UpdateAllIdentifiers>true</UpdateAllIdentifiers>
+	</Action>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Text">
+		<Location top="189" left="207" bottom="213" right="762" />
+		<StaticText>This page provides an overview of the available measurements per component. </StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="216" left="210" bottom="237" right="318" />
+		<StaticText>Measurements overview:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="453" left="576" bottom="483" right="765" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>MCEl</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="501" left="579" bottom="540" right="720" />
+		<StaticText>Flow measurements redundancy: </StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="501" left="732" bottom="522" right="759" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="1" MarginRight="1" MarginBottom="1" MarginLeft="1" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>none</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FlowBalanceRedundancy</Identifier>
+			<NumberFormat Width="3" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="543" left="579" bottom="582" right="720" />
+		<StaticText>Total measurements redundancy: </StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="546" left="732" bottom="567" right="759" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="1" MarginRight="1" MarginBottom="1" MarginLeft="1" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>none</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CompositionBalanceRedundancy</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="435" left="207" bottom="615" right="564" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="3" MarginRight="2" MarginBottom="3" MarginLeft="2" />
+		<MaxColWidth>12</MaxColWidth>
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<MultiLineHeaders>true</MultiLineHeaders>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>CompositionMeasurementCount( f, mcat )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Component Flow Overview"</HeaderText>
+			<NumberFormat Width="2" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="588" left="576" bottom="615" right="762" />
+		<ReadOnly>AutoCheckRedundancy</ReadOnly>
+		<TabOrder>6</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Compute redundant measurements"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CheckForRedundantMeasurements</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Network Object">
+		<Location top="237" left="207" bottom="414" right="465" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<PopupMenu ProjectUUID="F6F7BFDB-3213-402B-8599-37A1EB70A693" MenuUUID="1190D986-535F-4CEE-9ED6-A1489A5A1984" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<SelectionColor RGB="#000080" />
+		<AllowZoom>false</AllowZoom>
+		<EqualXYScale>false</EqualXYScale>
+		<ScrollControl>NoScrolling</ScrollControl>
+		<VisibleArea>
+			<Left>NetworkBound( 'Left' )</Left>
+			<Right>NetworkBound( 'Right' )</Right>
+			<Top>NetworkBound( 'Top' )</Top>
+			<Bottom>NetworkBound( 'Bottom' )</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>n</Identifier>
+			<XCoordinate>NodeCoordinate( n -&gt; NodeEl, 'x' )</XCoordinate>
+			<YCoordinate>NodeCoordinate( n, 'y' )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Top</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>NodeColor( n )</Color>
+			<Size>NodeSize( n )</Size>
+			<Text>UnitMap( n )</Text>
+			<Shape>Circle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>FlowMap( f -&gt; FlowEl, nto -&gt; SourceNode, nfrom -&gt; DestinationNode )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>MeasurementFlowColor( f, MCEl )</Color>
+			<Text>"f"</Text>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="237" left="480" bottom="426" right="765" />
+		<StaticText>In the flow chart:
+- non-present flow components are grey
+- measured flow components are red
+- redundant measurements are pink
+- observable flow components are blue
+- unobservable flow components are black</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>f</Symbol>
+			<Symbol>n</Symbol>
+			<Symbol>FlowBalanceRedundancy</Symbol>
+			<Symbol>nto</Symbol>
+			<Symbol>DestinationNode</Symbol>
+			<Symbol>CheckForRedundantMeasurements</Symbol>
+			<Symbol>FlowMap</Symbol>
+			<Symbol>NodeEl</Symbol>
+			<Symbol>UnitMap</Symbol>
+			<Symbol>MeasurementFlowColor</Symbol>
+			<Symbol>NetworkBound</Symbol>
+			<Symbol>CheckComputableCompositions</Symbol>
+			<Symbol>NodeSize</Symbol>
+			<Symbol>nfrom</Symbol>
+			<Symbol>CompositionMeasurementCount</Symbol>
+			<Symbol>MeasurementComponents</Symbol>
+			<Symbol>NodeCoordinate</Symbol>
+			<Symbol>mcat</Symbol>
+			<Symbol>NodeColor</Symbol>
+			<Symbol>MCEl</Symbol>
+			<Symbol>SourceNode</Symbol>
+			<Symbol>CompositionBalanceRedundancy</Symbol>
+			<Symbol>AutoCheckRedundancy</Symbol>
+			<Symbol>FlowEl</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

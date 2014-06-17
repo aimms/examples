@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2011-11-28 18:32:23">
+	<Location top="263" left="225" bottom="883" right="1007" />
+	<PageEditSize Type="Inherited">
+		<Size Width="786" Height="608" />
+	</PageEditSize>
+	<ProjectUUID>573E518E-6648-4442-913F-D6BBC6547C13</ProjectUUID>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.505089" />
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Pivot Table">
+		<Location top="342" left="6" bottom="606" right="384" />
+		<TabOrder>1</TabOrder>
+		<ObjectUUID>D791053E-BA7E-4BB6-A99D-AA98F781C7CB</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">WaterRequirement( t, c )</Identifier>
+				<Title ID="4120">"Required Water"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">WaterLimit( t )</Identifier>
+				<Title ID="4120">"Water Limit"</Title>
+				<Format>
+					<Alignment ID="4330">"Center"</Alignment>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"Crop"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">t</Index>
+				<Header_Title ID="6530">"Month"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">" "</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="36" left="6" bottom="306" right="384" />
+		<TabOrder>3</TabOrder>
+		<ObjectUUID>68E2CAC7-861E-4EC8-814B-7D31D8FFEB66</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">FractionOccupiesLand( t, c )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Not show units"</Show_Unit>
+				</Show_Unit>
+				<Title ID="4120">"Required Land"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Yield( c )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Show in header"</Show_Unit>
+				</Show_Unit>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Price( c )</Identifier>
+				<Show_Unit>
+					<Show_Unit ID="4112">"Show in header"</Show_Unit>
+				</Show_Unit>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"Crop"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">t</Index>
+				<Header_Title ID="6530">"Month"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">" "</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="312" left="6" bottom="336" right="384" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="6" left="6" bottom="30" right="384" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="318" left="18" bottom="336" right="396" />
+		<StaticText>Water</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="12" left="18" bottom="30" right="384" />
+		<StaticText>Land</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="36" left="402" bottom="306" right="780" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>E821E7D8-314B-400B-96A2-8C9F554F0C25</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">LaborRequired( t, c )</Identifier>
+				<Title ID="4120">"Required Labor"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">WorkingHours( t )</Identifier>
+				<Title ID="4120">"Working Hours"</Title>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"Crop"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">t</Index>
+				<Header_Title ID="6530">"Month"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">" "</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="6" left="402" bottom="30" right="780" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="12" left="408" bottom="24" right="768" />
+		<StaticText>Labor</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>c</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>WaterLimit</Symbol>
+			<Symbol>WaterRequirement</Symbol>
+			<Symbol>FractionOccupiesLand</Symbol>
+			<Symbol>WorkingHours</Symbol>
+			<Symbol>Price</Symbol>
+			<Symbol>LaborRequired</Symbol>
+			<Symbol>Yield</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

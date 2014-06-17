@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-09-25 16:41:44">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>5C856D0C-3F7D-4926-9C86-814A186CF8DF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="515" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="75" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Pivot Table">
+		<Location top="258" left="210" bottom="546" right="762" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>692F58D7-9429-4AB9-9288-0825CDB1A730</ObjectUUID>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Implicit_Identifiers ID="4010">SelectedIdentifiers( IdentifierSet )</Implicit_Identifiers>
+			<Defaults>
+				<Header_Title ID="4057">IdentifierDescription( a )</Header_Title>
+				<Format>
+					<Decimal_Places ID="4212">IdentifierNumberDecimals( a )</Decimal_Places>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">r</Index>
+				<Header_Title ID="6530">"Region"</Header_Title>
+				<Location_in_Initial_View ID="6560">"In Rows"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"Customer"</Header_Title>
+				<Location_in_Initial_View ID="6560">"In Rows"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">p</Index>
+				<Header_Title ID="6530">"Product"</Header_Title>
+				<Location_in_Initial_View ID="6560">"In Rows"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">y</Index>
+				<Header_Title ID="6530">"Year"</Header_Title>
+				<Location_in_Initial_View ID="6560">"As Outer Index"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">q</Index>
+				<Header_Title ID="6530">"Quarter"</Header_Title>
+				<Location_in_Initial_View ID="6560">"In Columns"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">m</Index>
+				<Header_Title ID="6530">"Month"</Header_Title>
+				<Location_in_Initial_View ID="6560">"In Columns"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">f</Index>
+				<Header_Title ID="6530">"Factory"</Header_Title>
+				<Location_in_Initial_View ID="6560">"In Rows"</Location_in_Initial_View>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">"Identifier"</Header_Title>
+				<Location_in_Initial_View ID="6260">"In Rows"</Location_in_Initial_View>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Save_Layout_State>
+				<By_End_User ID="1040">"On Demand"</By_End_User>
+				<By_Developer ID="1115">"When being Saved"</By_Developer>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Headers>
+				<Background_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;159,159,255&gt;</Background_Color>
+				<Text_Color ID="5230">RGB&lt;255,255,255&gt;</Text_Color>
+				<Font ExtraInfo="99627C86-4496-44E5-AA8B-405D7D3EDF65" ID="5240">"default"</Font>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;244,244,255&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="552" left="210" bottom="618" right="762" />
+		<StaticText>The Identifier index is always there in a Pivot Table object. This allows you to add more identifiers to the Pivot Table. By specifiying an Identifier Set at Implicit Identifiers (Contents tab of Pivot Table properties) you can allow the end-user to choose which identifiers he/she wants to see.
+If you want to specify some properties for the selected identifiers, you can add the identifiers as explicit identifiers and specify the properties (they will only be shown when they are in the Identifier Set). Or you can specify the properties at the Default section (Contents tab). Some of these properties can be indexed over identifiers, like you can see in the above Pivot Table. The properties are specified via the upper right Pivot Table.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="186" left="210" bottom="252" right="294" />
+		<TabOrder>5</TabOrder>
+		<ObjectUUID>231E908D-F607-4505-B375-8318070B7E0E</ObjectUUID>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="None" Width="2" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">SelectedIdentifiers( IdentifierSet )</Identifier>
+				<Format>
+					<Show_Checkboxes ID="4315">"Yes"</Show_Checkboxes>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">IdentifierSet( AllIdentifiers )</Index>
+				<Header_Title ID="6530">"Selection"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="180" left="300" bottom="246" right="762" />
+		<TabOrder>4</TabOrder>
+		<ObjectUUID>91F64859-2263-4323-AE95-AF6412E657AD</ObjectUUID>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="None" Width="2" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">IdentifierDescription( a )</Identifier>
+				<Title ID="4120">"Description"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">IdentifierNumberDecimals( a )</Identifier>
+				<Title ID="4120">STRING := formatstring("Number\nof\nDecimals")</Title>
+				<Format>
+					<Decimal_Places ID="4312">0</Decimal_Places>
+					<Show_Checkboxes ID="4315">"No"</Show_Checkboxes>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">a</Index>
+				<Header_Title ID="6530">"Selection"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Header_Title ID="6230">"Property"</Header_Title>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Save_Layout_State>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>AllIdentifiers</Symbol>
+			<Symbol>IdentifierDescription</Symbol>
+			<Symbol>a</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>m</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>q</Symbol>
+			<Symbol>r</Symbol>
+			<Symbol>y</Symbol>
+			<Symbol>IdentifierSet</Symbol>
+			<Symbol>IdentifierNumberDecimals</Symbol>
+			<Symbol>SelectedIdentifiers</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

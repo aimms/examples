@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2013-05-23 06:47:37" NeedsCompiledModel="false">
+	<Location top="387" left="217" bottom="614" right="747" />
+	<PageEditSize Type="Inherited">
+		<Size Width="532" Height="228" />
+	</PageEditSize>
+	<ProjectUUID>E7AC3880-5EC4-45DF-B4FF-C18C5CD72BD3</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.466165" />
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

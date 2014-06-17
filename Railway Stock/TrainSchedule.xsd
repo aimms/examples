@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Marcel Roelofs (Paragon Decision Technology B.V.) -->
+<xs:schema targetNamespace="http://www.Aimms.com/RailWayStock" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="TrainScheduleSchema">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Origin" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Destination" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="TrainScheduleID" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="ID" type="xs:string" use="required"/>
+												<xs:attribute name="Arrival" type="xs:string" use="required"/>
+												<xs:attribute name="Departure" type="xs:string" use="required"/>
+												<xs:attribute name="Minimal" type="xs:integer" use="required"/>
+												<xs:attribute name="Actual" type="xs:integer" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="Name" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="CityID" type="xs:int" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

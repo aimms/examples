@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="53FC8AA7-7A65-4461-BC71-E7F94EA938A0">
+		<Page Name="Input Data" PageGUID="4DD02ACB-AD86-459C-9508-D0B65BDF3B15" />
+		<Page Name="Uncertainty Sets" PageGUID="22F0B108-9FEB-47B2-B830-38FA9B86CBBE" />
+		<Page Name="Robust Optimization Model" PageGUID="44C0061D-C60C-4BBB-A116-874925E0BF86">
+			<Page Name="Non-adjustable Decisions" PageGUID="818963C0-4634-4FB7-BA1D-B2A92B2340D5" />
+			<Page Name="Adjustable Decisions" PageGUID="44734748-749E-4B2A-A1C0-8769579E29DF" />
+			<Page Name="Instantaneous Demand Realizations" PageGUID="884464D8-9FEF-46DF-ABC4-58E1067B4BE0" />
+		</Page>
+	</Page>
+</PageManager>

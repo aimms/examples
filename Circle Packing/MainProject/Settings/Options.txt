@@ -1,0 +1,10 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_string_character_encoding WINDOWS-1252
+rounding_compatibility Aimms_3_7
+* Environment
+Startup_Page "AIMMS Demo"

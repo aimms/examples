@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="2A8F101F-88CB-4FD5-AA99-5AB523BC8708">
+		<Page Name="Transport Model Example" PageGUID="E60EE4BA-E350-444F-AF09-100E1039A57B" />
+		<Page Name="Read &amp; Write Example" PageGUID="6F24DD8F-B8A0-4E1B-8D61-9ACB97ABF8FD" />
+	</Page>
+	<Page Name="All Data Pages" PageGUID="5BD41968-A17D-4952-81A8-6E5DD8BCEA87">
+		<Page Name="[Data Page] DemandInput1" PageGUID="7EAF7030-A86C-4E6C-9945-3F995B846233" />
+	</Page>
+</PageManager>

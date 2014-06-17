@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-11-13 21:38:41">
+	<Location top="22" left="4" bottom="1049" right="1112" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>54C7CF8E-331E-4E69-AC4B-9D3CA8CD5945</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Table">
+		<Location top="54" left="12" bottom="630" right="606" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfFamilies( j )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Number of Families"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>GrossIncome( j )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Gross Income"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" ThousandSeparator="true" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Members( j )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>AgeHead( j )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Age Head"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>YearsEducation( j )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Years Education"</HeaderText>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Gender( j )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>j</Symbol>
+			<Symbol>Gender</Symbol>
+			<Symbol>NumberOfFamilies</Symbol>
+			<Symbol>Members</Symbol>
+			<Symbol>YearsEducation</Symbol>
+			<Symbol>GrossIncome</Symbol>
+			<Symbol>AgeHead</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

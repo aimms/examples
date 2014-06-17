@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project AimmsVersion="4.0.0.432 unicode x86" ProjectUUID="E7AC3880-5EC4-45DF-B4FF-C18C5CD72BD3">
+	<ModelFileName>ParallelSessions.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

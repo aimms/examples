@@ -1,0 +1,149 @@
+## ams_version=1.0
+
+Model Main_PerformanceAssessmentProblem {
+    DeclarationSection Problem_Declarations {
+        Set DecisionMakingUnits {
+            Index: d;
+            Parameter: DMU;
+        }
+        Set Categories {
+            Index: c, c1, c2;
+        }
+        Set InputCategories {
+            SubsetOf: Categories;
+            Index: ic;
+            Comment: "data {\'Total Cost\', \'Staff Cost\', \'Non-staff Cost\', \'Age of Store\', \'Competition\'}";
+        }
+        Set OutputCategories {
+            SubsetOf: Categories;
+            Index: oc;
+            Comment: "data { \'Customer Service\', \'Revenue\' }";
+        }
+        Parameter Values {
+            IndexDomain: (d,c);
+        }
+        Parameter InputLevel {
+            IndexDomain: (d,ic);
+            Definition: Values(d,ic);
+        }
+        Parameter OutputLevel {
+            IndexDomain: (d,oc);
+            Definition: Values(d,oc);
+        }
+        Parameter RelativeEfficiency {
+            IndexDomain: (d);
+        }
+        Variable WeightInput {
+            IndexDomain: (d,ic);
+            Range: nonnegative;
+        }
+        Variable WeightOutput {
+            IndexDomain: (d,oc);
+            Range: nonnegative;
+        }
+        Variable RelativeEfficiencyRatio {
+            Definition: Sum[ oc, OutputLevel(DMU,oc) * WeightOutput(DMU,oc)];
+        }
+        Constraint RatioConstraint1 {
+            IndexDomain: d;
+            Definition: {
+                Sum[ oc, OutputLevel(d,oc) * WeightOutput(DMU,oc)]  <= Sum[ ic, InputLevel(d,ic) * WeightInput(DMU,ic)]
+                
+                !!sum[j, ObservedOutputLevel(j,d) * WeightOutput(j,SpecificDMU)] <= sum[i, ObservedInputLevel(i,d) * WeightInput(i,SpecificDMU)]
+            }
+            Comment: "sumsum[j, ObservedOutputLevel(j,d) * WeightOutput(j,SpecificDMU)] <= sum[i, ObservedInputLevel(i,d) * WeightInput(i,SpecificDMU)][j, ObservedOutputLevel(j,d) * WeightOutput(j,SpecificDMU)] <= sum[i, ObservedInputLevel(i,d) * WeightInput(i,SpecificDMU)]";
+        }
+        Constraint RatioContraint2 {
+            Definition: Sum[ ic, InputLevel(DMU,ic) * WeightInput(DMU,ic)] = 1;
+        }
+        MathematicalProgram PerformanceAssessment {
+            Objective: RelativeEfficiencyRatio;
+            Direction: maximize;
+            Type: LP;
+        }
+    }
+    Section Experiment_Procedures {
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+        Procedure ReadData {
+            Body: {
+                read from file "Input Data.txt";
+            }
+        }
+        Procedure DoExperiment {
+            Body: {
+                For d do
+                	DMU := d;
+                	Solve PerformanceAssessment;
+                	RelativeEfficiency(DMU) := RelativeEfficiencyRatio;
+                EndFor;
+            }
+        }
+        Procedure FirstExperiment {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	InputCategories  := data { 'Total Cost' };
+                	OutputCategories := data { 'Revenue'};
+                
+                	DoExperiment;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Thus, the result is read from a case.");
+                    CaseFind("1st Experiment Result",ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+        Procedure SecondExperiment {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	InputCategories  := data { 'Total Cost' };
+                	OutputCategories := data { 'Customer Service', 'Revenue'};
+                
+                	DoExperiment;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Thus, the result is read from a case.");
+                    CaseFind("2nd Experiment Result",ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+        Procedure ThirdExperiment {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	InputCategories  := data {'Total Cost', 'Staff Cost', 'Non-staff Cost', 'Age of Store', 'Competition'};
+                	OutputCategories := data { 'Customer Service', 'Revenue'};
+                
+                	DoExperiment;
+                
+                else
+                
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Thus, the result is read from a case.");
+                    CaseFind("3rd Experiment Result",ACase);
+                    CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            read from file "<prj>:Input Data.txt";
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+                return 1;
+        }
+    }
+}

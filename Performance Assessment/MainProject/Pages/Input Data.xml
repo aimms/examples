@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-11-09 11:04:21">
+	<Location top="237" left="208" bottom="637" right="764" />
+	<PageEditSize Type="Inherited">
+		<Size Width="628" Height="453" />
+	</PageEditSize>
+	<ProjectUUID>63C0B03F-C6A2-433C-9194-0CA43285BB2E</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.498408" />
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Pivot Table">
+		<Location top="6" left="6" bottom="426" right="600" />
+		<TabOrder>1</TabOrder>
+		<ObjectUUID>A5AA28B7-1C4F-4A4D-B1F3-19690CF15310</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Values( d, c )</Identifier>
+				<Title ID="4120">"Factors"</Title>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">d</Index>
+				<Header_Title ID="6530">"DMU"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"Category"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<Background_Color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="1010">"Background yellow"</Background_Color>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>c</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>Values</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

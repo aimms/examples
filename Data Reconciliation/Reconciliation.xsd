@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.aimms.com/XMLSchema/Reconciliation-example" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.aimms.com/XMLSchema/Reconciliation-example" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="FlowMeasurementData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Flow" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Composition" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Component" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="name" type="xs:string" use="required"/>
+												<xs:attribute name="measured" type="xs:double" use="optional"/>
+												<xs:attribute name="reconciled" type="xs:double" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="measured" type="xs:double" use="optional"/>
+						<xs:attribute name="reconciled" type="xs:double" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="date" type="xs:date" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

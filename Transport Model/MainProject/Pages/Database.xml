@@ -1,0 +1,445 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-09-04 13:08:57">
+	<Location top="27" left="8" bottom="641" right="1037" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>3155D8A9-0096-4828-B172-02689DA77AC3</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="PercentageFromLeft" Value="0.515734">
+						<LeftArea Line="FixedFromBottom" Value="43" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="2264965C-5BAC-4BC8-9BF1-C78706B5CEED">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="LinkedPage">
+				<Page PageGUID="3039BA1C-B7C8-4F2F-95E1-BEE875D9306B" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="336" left="6" bottom="360" right="192" />
+		<TabOrder>4</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve model"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DatabaseMainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="579" left="207" bottom="621" right="351" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="2264965C-5BAC-4BC8-9BF1-C78706B5CEED">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>CustomerNameLong</Identifier>
+			<Description>"Full customer name"</Description>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>DepotNameLong</Identifier>
+			<Description>"Full depot name"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="219" left="498" bottom="615" right="762" />
+		<TabOrder>17</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
+		</TextColor>
+		<AutomaticReSort>false</AutomaticReSort>
+		<Domain>
+			<Identifier>Transport( Depot, c )</Identifier>
+			<Index Name="c">
+				<TitleText>"Customer"</TitleText>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>Demand( c )</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Transport( Depot, c )</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" />
+			<TitleText>"Transport"</TitleText>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="534" left="6" bottom="558" right="192" />
+		<TabOrder>11</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Read Input Data Only"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ReadInputData</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="588" left="6" bottom="612" right="192" />
+		<TabOrder>15</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Write Transport Data"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>WriteTransport</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="561" left="6" bottom="585" right="192" />
+		<TabOrder>14</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Read Transport Data"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ReadTransport</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="393" left="6" bottom="477" right="192" />
+		<TabOrder>19</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<DisplayTextFile>true</DisplayTextFile>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>DatabaseInfo</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+			<DescriptionFromIdentifierName>false</DescriptionFromIdentifierName>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="480" left="12" bottom="498" right="144" />
+		<StaticText>Database connection</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="498" left="12" bottom="534" right="138" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" />
+		<BackgroundColor>
+			<UserColor GUID="2264965C-5BAC-4BC8-9BF1-C78706B5CEED">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>UseDatabaseConnection</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="195" left="234" bottom="213" right="456" />
+		<StaticText>The Netherlands</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="309" left="6" bottom="333" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="312" left="18" bottom="330" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="195" left="576" bottom="213" right="654" />
+		<StaticText>From depot</StaticText>
+		<Alignment>Right</Alignment>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="192" left="666" bottom="216" right="762" />
+		<TabOrder>13</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>Depot</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="22C878E3-8EF1-430D-BA9F-0CE2987004B2" Name="default" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>BasicMainInitialization</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="LinkedPage">
+				<Page PageGUID="8EAE7A11-8739-46D1-972D-201481975CE3" Name="Basic Transport Model" />
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<TabOrder>9</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="22C878E3-8EF1-430D-BA9F-0CE2987004B2" Name="default" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ExpressionsMainInitialization</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="LinkedPage">
+				<Page PageGUID="33A92D79-E032-4918-A8E4-39F9C33683ED" Name="Expressions" />
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<TabOrder>12</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="22C878E3-8EF1-430D-BA9F-0CE2987004B2" Name="default" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ConstraintSlacksMainInitialization</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="LinkedPage">
+				<Page PageGUID="E572762C-9409-488A-B94D-0924B55BF8FC" Name="Constraint Slacks" />
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Basic Transport Model</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="18" bottom="270" right="195" />
+		<StaticText>Expression</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="282" left="18" bottom="300" right="195" />
+		<StaticText>Constraint Slacks</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Network Object">
+		<Location top="219" left="207" bottom="579" right="492" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>10</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="22C878E3-8EF1-430D-BA9F-0CE2987004B2" Name="default" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<EqualXYScale>false</EqualXYScale>
+		<ScrollControl>NoScrolling</ScrollControl>
+		<VisibleArea>
+			<Left>ActiveBounds( 'Left' )</Left>
+			<Right>ActiveBounds( 'Right' )</Right>
+			<Top>ActiveBounds( 'Top' )</Top>
+			<Bottom>ActiveBounds( 'Bottom' )</Bottom>
+		</VisibleArea>
+		<Background>
+			<Background_Image_Source ID="101">"From File"</Background_Image_Source>
+			<Image_File_Name ID="200" LiteralFileName="true">"&lt;prj&gt;:Netherlands.bmp"</Image_File_Name>
+			<Left ID="210">BitmapBounds( 'Left' )</Left>
+			<Right ID="211">BitmapBounds( 'Right' )</Right>
+			<Top ID="212">BitmapBounds( 'Top' )</Top>
+			<Bottom ID="213">BitmapBounds( 'Bottom' )</Bottom>
+		</Background>
+		<Node>
+			<Identifier>d</Identifier>
+			<XCoordinate>XCoordinate( d -&gt; Depot )</XCoordinate>
+			<YCoordinate>YCoordinate( d -&gt; Depot )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>15</MaximumSize>
+			<ScaleFactor>12</ScaleFactor>
+			<TextPosition>Top</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>74513804-607A-4DF9-BFAD-35B834F57F12 light grey</Color>
+			<Text>DepotName( d )</Text>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>c</Identifier>
+			<XCoordinate>XCoordinate( c )</XCoordinate>
+			<YCoordinate>YCoordinate( c )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>15</MaximumSize>
+			<ScaleFactor>5</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>66E68EA3-CB20-4BF3-9194-89710917DDC7 navy blue</Color>
+			<Text>CustomerName( c )</Text>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>Transport( d, c )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>0.005</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<Color>RGB 808040</Color>
+			<Size>Transport( d, c )</Size>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="585" left="363" bottom="609" right="492" />
+		<TabOrder>6</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Reset network area"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DetermineDefaultNetworkBounds</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="363" left="6" bottom="387" right="192" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Database Tracing Settings"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>FirstChild</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Depots</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>ReadTransport</Symbol>
+			<Symbol>DatabaseInfo</Symbol>
+			<Symbol>Transport</Symbol>
+			<Symbol>Demand</Symbol>
+			<Symbol>WriteTransport</Symbol>
+			<Symbol>DatabaseMainExecution</Symbol>
+			<Symbol>ConstraintSlacksMainInitialization</Symbol>
+			<Symbol>DepotName</Symbol>
+			<Symbol>Depot</Symbol>
+			<Symbol>XCoordinate</Symbol>
+			<Symbol>YCoordinate</Symbol>
+			<Symbol>CustomerName</Symbol>
+			<Symbol>BasicMainInitialization</Symbol>
+			<Symbol>ExpressionsMainInitialization</Symbol>
+			<Symbol>DetermineDefaultNetworkBounds</Symbol>
+			<Symbol>BitmapBounds</Symbol>
+			<Symbol>ActiveBounds</Symbol>
+			<Symbol>DepotNameLong</Symbol>
+			<Symbol>UseDatabaseConnection</Symbol>
+			<Symbol>PossibleDatabaseConnections</Symbol>
+			<Symbol>CustomerNameLong</Symbol>
+			<Symbol>ReadInputData</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-13 21:09:34" NeedsCompiledModel="false" PrintPage="true">
+	<Location top="29" left="4" bottom="632" right="768" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>2AD06DEB-C40C-4FCA-96CC-B7090B461F1F</ProjectUUID>
+	<PaperType Standard="A4" LandScape="true" />
+	<PrintMargins top="0" left="0" bottom="0" right="0" />
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Button">
+		<Location top="360" left="270" bottom="1080" right="1620" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Page Back"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

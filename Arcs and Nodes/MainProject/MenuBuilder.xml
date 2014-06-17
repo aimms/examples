@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<UserMenuTree Version="3130" TimeStamp="2014-04-18 15:11:39">
+	<Menu Name="Network Menu" UUID="A548CA7F-2DF9-4C6B-AAF9-A9B5DC7F8F9E">
+		<Menu Name="Node" UUID="86913954-60E7-490C-9737-1C85B9B8852F">
+			<MenuItem Name="New" UUID="A7F4D368-86D7-461B-A041-46535B9AE496">
+				<ActionSequence>
+					<Action Type="Run">
+						<RunWhat>SpecificProcecure</RunWhat>
+						<Procedure>AddNode</Procedure>
+						<AbortOnError>true</AbortOnError>
+					</Action>
+				</ActionSequence>
+			</MenuItem>
+			<MenuItem Name="Delete" UUID="7E7DBCFE-8059-4989-84BC-1390F71C6BB0">
+				<ActionSequence>
+					<Action Type="Run">
+						<RunWhat>SpecificProcecure</RunWhat>
+						<Procedure>DeleteNode</Procedure>
+						<AbortOnError>true</AbortOnError>
+					</Action>
+				</ActionSequence>
+			</MenuItem>
+		</Menu>
+		<Menu Name="Arc" UUID="BBB8DE7B-115C-4D05-B47C-192BABFC86BD">
+			<MenuItem Name="Set As Source..." UUID="D79A6966-524D-45B5-AC8C-3E49BAAA416A">
+				<ActionSequence>
+					<Action Type="Run">
+						<RunWhat>SpecificProcecure</RunWhat>
+						<Procedure>SetSourceNode</Procedure>
+						<AbortOnError>true</AbortOnError>
+					</Action>
+				</ActionSequence>
+			</MenuItem>
+			<MenuItem Name="Arc To..." UUID="DB5C4CF4-84D3-4A54-BAC3-5A0395FDE0A9">
+				<ActionSequence>
+					<Action Type="Run">
+						<RunWhat>SpecificProcecure</RunWhat>
+						<Procedure>AddArc</Procedure>
+						<AbortOnError>true</AbortOnError>
+					</Action>
+				</ActionSequence>
+			</MenuItem>
+			<MenuItem Name="Swap Direction" UUID="FDD1A7E6-1FD0-4BF1-8312-F8229ED04318">
+				<ActionSequence>
+					<Action Type="Run">
+						<RunWhat>SpecificProcecure</RunWhat>
+						<Procedure>SwapSourceDestination</Procedure>
+						<AbortOnError>true</AbortOnError>
+					</Action>
+				</ActionSequence>
+			</MenuItem>
+			<MenuItem Name="Delete" UUID="568331D0-4D10-4F35-855C-97828E7F4108">
+				<ActionSequence>
+					<Action Type="Run">
+						<RunWhat>SpecificProcecure</RunWhat>
+						<Procedure>DeleteArc</Procedure>
+						<AbortOnError>true</AbortOnError>
+					</Action>
+				</ActionSequence>
+			</MenuItem>
+		</Menu>
+	</Menu>
+</UserMenuTree>

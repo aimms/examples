@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2011-04-15 10:04:11">
+	<Location top="24" left="323" bottom="455" right="876" />
+	<PageEditSize Type="Inherited">
+		<Size Width="553" Height="430" />
+	</PageEditSize>
+	<ProjectUUID>211601CD-0FDB-4C33-926A-B1BD580D7560</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromBottom" Value="30">
+			<TopArea Line="FixedFromRight" Value="8" />
+			<BottomArea Line="FixedFromLeft" Value="8">
+				<RightArea Line="FixedFromLeft" Value="537" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Network Object">
+		<Location top="0" left="6" bottom="396" right="546" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="4B953652-53CA-481B-8E9D-7FA07A2CD274" Name="LocationFont" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>VisibleBoundLeft</Left>
+			<Right>VisibleBoundRight</Right>
+			<Top>VisibleBoundTop</Top>
+			<Bottom>VisibleBoundBottom</Bottom>
+		</VisibleArea>
+		<Background>
+			<Background_Image_Source ID="101">"From GIS Source"</Background_Image_Source>
+			<Source>
+				<Name ID="1001">"Yahoo Maps"</Name>
+				<Type ID="1002">"Yahoo! Map"</Type>
+			</Source>
+			<Layer>
+				<Name ID="2001">"Yahoo Maps"</Name>
+				<Source ID="2012">"Yahoo Maps"</Source>
+			</Layer>
+		</Background>
+		<Node>
+			<Identifier>nl</Identifier>
+			<XCoordinate>NLXCoordinate( nl )</XCoordinate>
+			<YCoordinate>NLYCoordinate( nl )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>12</MaximumSize>
+			<ScaleFactor>12</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>RGB 00ff00</Color>
+			<Text>STRING( nl ) := if Showtext then nl else "" endif</Text>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>d</Identifier>
+			<XCoordinate>XCoordinate( d )</XCoordinate>
+			<YCoordinate>YCoordinate( d )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>7</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>RGB 800000</Color>
+			<Text>STRING( d ) := if Showtext then d else "" endif</Text>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>ctbs</Identifier>
+			<XCoordinate>XCoordinate( ctbs )</XCoordinate>
+			<YCoordinate>YCoordinate( ctbs )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>7</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>RGB 4080ff</Color>
+			<Text>STRING( ctbs ) := if Showtext then ctbs else "" endif</Text>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>SupplyRoute( nl, d )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Color>F45E1680-6A61-415B-9AA8-4CA2BEE097E1 arc brown</Color>
+			<ArrowPosition>80</ArrowPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="408" left="12" bottom="420" right="24" />
+		<FillColor RGB="#ff8000" />
+		<LineColor RGB="#ff8000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="408" left="30" bottom="426" right="180" />
+		<StaticText>Distribution Center Candidates</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Circle">
+		<Location top="408" left="180" bottom="420" right="192" />
+		<FillColor RGB="#000080" />
+		<LineColor RGB="#000080" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="408" left="198" bottom="426" right="294" />
+		<StaticText>Demand Locations</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Circle">
+		<Location top="408" left="294" bottom="420" right="306" />
+		<FillColor RGB="#00ff00" />
+		<LineColor RGB="#00ff00" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="408" left="312" bottom="426" right="360" />
+		<StaticText>Results</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="402" left="354" bottom="432" right="468" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>ShowText</Identifier>
+			<Description>"Show City Name"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>NLYCoordinate</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>ShowText</Symbol>
+			<Symbol>SupplyRoute</Symbol>
+			<Symbol>nl</Symbol>
+			<Symbol>VisibleBoundBottom</Symbol>
+			<Symbol>ctbs</Symbol>
+			<Symbol>XCoordinate</Symbol>
+			<Symbol>VisibleBoundTop</Symbol>
+			<Symbol>YCoordinate</Symbol>
+			<Symbol>VisibleBoundLeft</Symbol>
+			<Symbol>VisibleBoundRight</Symbol>
+			<Symbol>NLXCoordinate</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

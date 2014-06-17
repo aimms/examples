@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="F38FCC3F-7763-4564-ADB6-B44B0BE5F259" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|CEEC8770-4A92-4F13-A923-3CC077284585|Size Template">
+		<Template Name="Navigation Template" PageGUID="D7E9769A-DD7F-43DD-A9AC-551E14D13ABD" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|E9D13962-E69C-4D34-9C75-EA5D62B1DB20|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="984E5F11-188B-480C-8BAD-C06E507679FB" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|85C9B03C-CFA8-41DB-B639-AEBE3480CFFC|Background Info Template">
+				<Page Name="AIMMS Demo - A File Merge Problem" PageGUID="4A47407C-F81C-489A-BD69-D7ACE2B7E48B" />
+			</Template>
+			<Page Name="File Merge Problem" PageGUID="D740B274-73A1-4744-8E78-7D1CC690C237" />
+		</Template>
+	</Template>
+	<Template Name="Template 1" PageGUID="8E284AD8-25F5-4AA3-92B1-3D5DA06A846C">
+		<Page Name="Income Data Table" PageGUID="0938DA4C-AD5F-4504-8BA1-4DD2B032BA94" />
+		<Page Name="Population Data Table" PageGUID="486B1508-A136-4C0D-8877-978F274EA456" />
+		<Page Name="Merged Data Table" PageGUID="8B67F542-D0B4-437D-8050-A2542B360D72" />
+	</Template>
+</TemplateManager>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="CF963E05-08C6-4823-8904-75C1683E92BE">
+		<Page Name="Single Results" PageGUID="3F78F807-8A34-4A02-A8EC-AA107B737964" />
+		<Page Name="Compare Results" PageGUID="B5FA77F0-742B-4330-944B-6E52E8A705B2" />
+	</Page>
+</PageManager>

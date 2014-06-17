@@ -1,0 +1,300 @@
+## ams_version=1.0
+
+Model Main_Pivot_Table {
+    DeclarationSection Data_Declarations {
+        Set Customers {
+            Index: c;
+            Definition: ElementRange( 1, 20, prefix: "Customer-" );
+        }
+        Set Regions {
+            Index: r;
+            Definition: data { Netherlands, 'Europe (non-NL)', USA, 'North-America (non USA)', Asia, 'South America' };
+        }
+        Set ProductSizes {
+            Index: p;
+            Definition: data { Small, Medium, Large };
+        }
+        Set Factories {
+            Index: f;
+            Definition: ElementRange( 1, 6, prefix: "Factory-" );
+        }
+        ElementParameter MappingCustomer2Region {
+            IndexDomain: (c);
+            Range: Regions;
+        }
+        Parameter CustomerBuysProduct {
+            IndexDomain: (c,p);
+            Range: binary;
+        }
+        Parameter Sales {
+            IndexDomain: (c,r,p,m);
+            Unit: RegionUnit(r);
+        }
+        Parameter Supply {
+            IndexDomain: (f,r,m);
+            Unit: RegionUnit(r);
+        }
+        Set IdentifierSet {
+            SubsetOf: AllIdentifiers;
+            Index: a;
+            Definition: data { Sales, Supply };
+        }
+        Set SelectedIdentifiers {
+            SubsetOf: IdentifierSet;
+            InitialData: IdentifierSet;
+        }
+        StringParameter IdentifierDescription {
+            IndexDomain: (a);
+            InitialData: data { Sales : "Total \nSales",  Supply : "Factory \nSupply" };
+        }
+        Parameter IdentifierNumberDecimals {
+            IndexDomain: (a);
+            InitialData: data { Sales : 2 };
+        }
+        Parameter SelectedDomain {
+            IndexDomain: (c,y);
+            Range: binary;
+            InitialData: 1;
+        }
+        Parameter SalesDomain {
+            IndexDomain: (c,r,p,m);
+            Range: binary;
+            Definition: {
+                Exists(y | y = MappingQuarter2Year(MappingMonth2Quarter(m)) AND
+                	   SelectedDomain(c,y))
+                AND
+                Sales(c,r,p,m)
+            }
+        }
+        Parameter SelectedCell {
+            IndexDomain: (c,r,p,m);
+        }
+        ElementParameter DomainBackgroundColor {
+            IndexDomain: (c,y);
+            Range: AllColors;
+            Definition: {
+                if Exists((r,p,m) | SelectedCell(c,r,p,m) AND MappingQuarter2Year(MappingMonth2Quarter(m) ) = y ) then
+                
+                	'background yellow'
+                
+                else
+                
+                	'white'
+                
+                endif
+            }
+        }
+        Quantity Money {
+            BaseUnit: E;
+            Conversions: $ -> E : # -> # * 1.26;
+        }
+        UnitParameter RegionUnit {
+            IndexDomain: (r);
+            InitialData: {
+                data
+                { Netherlands               : [E],  'Europe (non-NL)'         : [E],  USA                       : [$],
+                  'North-America (non USA)' : [$],  Asia                      : [$],  'South America'           : [$] }
+            }
+        }
+        Parameter IndexedMonthColumWidth {
+            IndexDomain: (m);
+            InitialData: 20;
+        }
+        Parameter ScalarColumnWidth {
+            InitialData: 25;
+        }
+        Parameter DisplayBars {
+            Text: "Display Bars";
+            InitialData: 1;
+        }
+        StringParameter DisplayBarValue {
+            Definition: if DisplayBars then "Show value bars with values" else "Not show value bars" endif;
+        }
+        Parameter Profit {
+            IndexDomain: (r,m);
+            Unit: RegionUnit(r);
+            Definition: {
+                100 * round(Uniform(-100,200),1);
+            }
+        }
+        Parameter BarLowerValue {
+            Unit: E;
+            Definition: (min((mr,m), MainRegionProfit(mr,m)));
+        }
+        Parameter BarUpperValue {
+            Unit: E;
+            Definition: (max((mr,m), MainRegionProfit(mr,m)));
+        }
+        Set MainRegions {
+            Index: mr;
+            Definition: elementRange(1,3,Prefix:"MainRegion");
+        }
+        StringParameter MainRegionDescription {
+            IndexDomain: (mr);
+            Definition: {
+                data
+                { MainRegion1 : "EMEA: \n Europe, Middle-East, Africa",
+                  MainRegion2 : "Americas: \n North, South, USA"      ,
+                  MainRegion3 : "Asia-Pacific"                         }
+            }
+        }
+        ElementParameter MappingRegion2MainRegion {
+            IndexDomain: (r);
+            Range: MainRegions;
+            Definition: {
+                data
+                { Netherlands               : MainRegion1,
+                  'Europe (non-NL)'         : MainRegion1,
+                  USA                       : MainRegion2,
+                  'North-America (non USA)' : MainRegion2,
+                  Asia                      : MainRegion3,
+                  'South America'           : MainRegion2 }
+            }
+        }
+        Parameter MainRegionProfit {
+            IndexDomain: (mr,m);
+            Text: "Profit per Main Region";
+            Unit: E;
+            Definition: sum(r | MappingRegion2MainRegion(r)=mr, Profit(r,m) );
+        }
+        ElementParameter ProfitColor {
+            IndexDomain: (mr,m);
+            Range: AllColors;
+            Definition: {
+                if MainRegionProfit(mr,m) < 0[E] then 'red'
+                
+                elseif MainRegionProfit(mr,m) > 0[E] AND MainRegionProfit(mr,m) <= .5 * max(m1, MainRegionProfit(mr,m1)) then 'yellow'
+                
+                elseif MainRegionProfit(mr,m) > .5* max(m1, MainRegionProfit(mr,m1)) then 'green'
+                
+                else 'black'
+                
+                endif
+            }
+        }
+        Parameter UseSecondLineColor;
+        ElementParameter SecondLineColor {
+            Range: AllColors;
+            Definition: {
+                if UseSecondLineColor then
+                	'Orange'
+                else
+                	'yellow'
+                endif
+            }
+        }
+        Assertion Explicit_Assertion {
+            IndexDomain: (mr,m) | P_DomainOne(mr);
+            Text: {
+                "Explicit Assertion: \\nThe profit in EMEA or America can not be lower than -25,000!"
+            }
+            Definition: A_MainRegionProfit(mr,m) >= -25000 [E];
+        }
+        Assertion Default_Assertion {
+            IndexDomain: (mr,m) | P_DomainTwo(mr);
+            Text: {
+                "Default Assertion: \\nThe profit in Asia-Pacific cannot be lower than -10,000!"
+            }
+            Definition: A_MainRegionProfit(mr,m) >= -10000 [E];
+        }
+        Parameter A_MainRegionProfit {
+            IndexDomain: (mr,m);
+            Text: "Profit per Main Region";
+            Unit: E;
+        }
+        Parameter P_DomainOne {
+            IndexDomain: mr;
+            Definition: data { MainRegion1 : 1,  MainRegion2 : 1 };
+        }
+        Parameter P_DomainTwo {
+            IndexDomain: mr;
+            Definition: data { MainRegion3 : 1};
+        }
+        ElementParameter PE_InsertRowColor {
+            IndexDomain: (c);
+            Range: AllColors;
+            Definition: {
+                if c= 'Customer-09' then
+                	'green'
+                else
+                	'text blue'
+                endif
+            }
+        }
+    }
+    DeclarationSection Time_Declarations {
+        Quantity SI_Time_Duration {
+            BaseUnit: month;
+            Conversions: {
+                quarter -> month : # -> # * 3,
+                year    -> month : # -> # * 12
+            }
+        }
+        StringParameter StartDate {
+            Definition: "2003-01-01";
+        }
+        StringParameter EndDate {
+            Definition: "2005-06-30";
+        }
+        Calendar Months {
+            Index: m, m1;
+            Unit: month;
+            BeginDate: StartDate;
+            EndDate: EndDate;
+            TimeslotFormat: "%sAm|AllMonths|, %c%y";
+        }
+        Calendar Quarters {
+            Index: q;
+            Unit: 3 * month;
+            BeginDate: StartDate;
+            EndDate: EndDate;
+            TimeslotFormat: "Q%q, %c%y";
+        }
+        Calendar Years {
+            Index: y;
+            Unit: year;
+            BeginDate: StartDate;
+            EndDate: EndDate;
+            TimeslotFormat: "%c%y";
+        }
+        ElementParameter MappingMonth2Quarter {
+            IndexDomain: (m);
+            Range: Quarters;
+        }
+        ElementParameter MappingQuarter2Year {
+            IndexDomain: (q);
+            Range: Years;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            option seed := 1234567;
+            
+            empty Sales;
+            
+            MappingMonth2Quarter(m)   := first( q | TimeslotCharacteristic(m,'quarter') = TimeslotCharacteristic(q,'quarter') and
+                                                    TimeslotCharacteristic(m,'year')    = TimeslotCharacteristic(q,'year') );
+            
+            MappingQuarter2Year(q)      := first( y | TimeslotCharacteristic(q,'year')    = TimeslotCharacteristic(y,'year') );
+            
+            MappingCustomer2Region(c) := Element( Regions, Round( Uniform( 0.5, card(Regions) + 0.5 ) ) );
+            
+            CustomerBuysProduct(c,p) := Round( Uniform(0,1) );
+            for ( (c,r,p) | CustomerBuysProduct(c,p) and ( MappingCustomer2Region(c) = r ) ) do
+                Sales(c,r,p,m) := (Uniform(0,20) * ( Mod( Ord(p), 3 ) + 1 ))[E];
+            
+                Sales(c,r,p,m) := if ( Sales(c,r,p,m) < 5[E] ) then 0[E] else (Round( 100*Sales(c,r,p,m) ) / 100)[E] endif;
+            endfor;
+            
+            Supply((f,r,m) | Ord(f) = Ord(r)) := (Uniform(50,100))[E];
+            Supply(f,r,m) := (Round( 100*Supply(f,r,m) ))[E];
+            
+            A_MainRegionProfit(mr,m):= sum(r | MappingRegion2MainRegion(r)=mr, Profit(r,m) );
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

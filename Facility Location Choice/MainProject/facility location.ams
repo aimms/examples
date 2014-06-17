@@ -1,0 +1,446 @@
+## ams_version=1.0
+
+Model Main_Facility_Location {
+    DeclarationSection Model_Declarations {
+        Set Locations {
+            Index: l, f, t;
+        }
+        Set Commodities {
+            Index: c;
+        }
+        Set ProductPlants {
+            SubsetOf: Locations;
+            Index: p;
+        }
+        Set DistributionCenters {
+            SubsetOf: Locations;
+            Index: d;
+        }
+        Set CustomerZones {
+            SubsetOf: Locations;
+            Index: z;
+        }
+        Parameter XCoord {
+            IndexDomain: (l);
+        }
+        Parameter YCoord {
+            IndexDomain: (l);
+        }
+        Parameter Supply {
+            IndexDomain: (c,l);
+        }
+        Parameter Demand {
+            IndexDomain: (c,l);
+        }
+        Parameter MaxThroughput {
+            IndexDomain: (l);
+        }
+        Parameter MinThroughput {
+            IndexDomain: (l);
+        }
+        Parameter UnitThroughputCost {
+            IndexDomain: (l);
+        }
+        Parameter FixedThroughputCost {
+            IndexDomain: (l);
+        }
+        Parameter VariableCost {
+            IndexDomain: (c,p,d,z);
+        }
+        Variable Shipped {
+            IndexDomain: (c,p,d,z);
+            Range: nonnegative;
+        }
+        Variable Selected {
+            IndexDomain: (d);
+            Range: binary;
+        }
+        Variable Served {
+            IndexDomain: (d,z);
+            Range: binary;
+        }
+        Constraint SupplyConstraint {
+            IndexDomain: (c,p);
+            Definition: sum[ (d,z), Shipped(c,p,d,z) ] <= Supply(c,p);
+        }
+        Constraint DemandConstraint {
+            IndexDomain: (c,d,z);
+            Definition: sum[ p, Shipped(c,p,d,z) ] >= Demand(c,z) * Served(d,z);
+        }
+        Constraint MinThroughputConstraint {
+            IndexDomain: d;
+            Definition: sum[ (c,z), Served(d,z) * Demand(c,z) ] >= Selected(d) * MinThroughput(d);
+        }
+        Constraint DefThroughputConstraint {
+            IndexDomain: (d);
+            Definition: sum[ (c,p,z), Shipped(c,p,d,z) ] = sum[ (c,z), Served(d,z) * Demand(c,z) ];
+        }
+        Constraint MaxThroughputConstraint {
+            IndexDomain: d;
+            Definition: sum[ (c,z), Served(d,z) * Demand(c,z) ] <= Selected(d) * MaxThroughput(d);
+        }
+        Constraint AllocationConstraint {
+            IndexDomain: (z);
+            Definition: sum[ d, Served(d,z) ] = 1;
+        }
+        Variable TotalCost {
+            Definition: {
+                sum[ (c,p,d,z), VariableCost(c,p,d,z) * Shipped(c,p,d,z) ] +
+                sum[ d, FixedThroughputCost(d) * Selected(d) +
+                        UnitThroughputCost(d) * sum[ (c,z), Demand(c,z) * Served(d,z) ] ]
+            }
+        }
+        Set AtOnceConstraintSet {
+            SubsetOf: AllConstraints;
+            Definition: {
+                data { 'SupplyConstraint', 'DemandConstraint',
+                       'MinThroughputConstraint', 'MaxThroughputConstraint',
+                       'DefThroughputConstraint',  'AllocationConstraint' }
+            }
+        }
+        MathematicalProgram FacilityLocationAtOnce {
+            Objective: TotalCost;
+            Direction: minimize;
+            Constraints: AtOnceConstraintSet;
+            Type: MIP;
+        }
+    }
+    DeclarationSection Additional_Network_Declarations {
+        Parameter ArcShipped {
+            IndexDomain: (c,f,t);
+            Definition: sum[ z, Shipped(c,f,t,z) ] + sum[ p, Shipped(c,p,f,t) ];
+        }
+        ElementParameter NodeColor {
+            IndexDomain: (l);
+            Range: AllColors;
+        }
+        ElementParameter ArcColor {
+            IndexDomain: (c);
+            Range: AllColors;
+        }
+    }
+    DeclarationSection Master_Declarations {
+        Variable M;
+        Variable MasterObjective {
+            Definition: {
+                sum[ d, FixedThroughputCost(d) * Selected(d) +
+                        UnitThroughputCost(d) * sum[ (c,z), Demand(c,z) * Served(d,z) ] ] +
+                M
+            }
+        }
+        Parameter LastCut;
+        Set BendersCuts {
+            SubsetOf: Integers;
+            Index: b;
+            Parameter: LastBenderCut;
+        }
+        Parameter BendersConstant {
+            IndexDomain: (b);
+        }
+        Parameter BendersCoef {
+            IndexDomain: (b,d,z);
+        }
+        Constraint BendersCut {
+            IndexDomain: (b);
+            Definition: {
+                BendersConstant(b) + sum[ (d,z), BendersCoef(b,d,z) * Served(d,z) ]
+                <=
+                M
+            }
+        }
+        Set BendersConstraintSet {
+            SubsetOf: AllConstraints;
+            Definition: {
+                data { 'AllocationConstraint', 'MinThroughputConstraint',
+                       'MaxThroughputConstraint',
+                       'BendersCut' }
+            }
+        }
+        MathematicalProgram RelaxedMaster {
+            Objective: MasterObjective;
+            Direction: minimize;
+            Constraints: BendersConstraintSet;
+            Type: MIP;
+        }
+    }
+    DeclarationSection Primal_Subprogram_Declarations {
+        Variable PrimalObjective {
+            Definition: {
+                sum[ (c,p,d,z), VariableCost(c,p,d,z) * Shipped(c,p,d,z) ] +
+                sum[ d, FixedThroughputCost(d) * SelectedFixed(d) +
+                        UnitThroughputCost(d) * sum[ (c,z), Demand(c,z) * ServedFixed(d,z) ] ]
+            }
+        }
+        Constraint PrimalDemandConstraint {
+            IndexDomain: (c,d,z);
+            Definition: sum[ p, Shipped(c,p,d,z) ] >= Demand(c,z) * ServedFixed(d,z);
+        }
+        Constraint PrimalDefThroughputConstraint {
+            IndexDomain: (d);
+            Definition: sum[ (c,p,z), Shipped(c,p,d,z) ] = sum[ (c,z), ServedFixed(d,z) * Demand(c,z) ];
+        }
+        Set PrimalConstraintSet {
+            SubsetOf: AllConstraints;
+            Definition: {
+                data { 'SupplyConstraint', 'PrimalDemandConstraint',
+                       'PrimalDefThroughputConstraint' }
+            }
+        }
+        MathematicalProgram PrimalSubproblem {
+            Objective: PrimalObjective;
+            Direction: minimize;
+            Constraints: PrimalConstraintSet;
+        }
+    }
+    DeclarationSection Dual_Subprogram_Declarations {
+        Variable Sigma {
+            IndexDomain: (c,p) | Supply(c,p);
+            Range: nonpositive;
+        }
+        Variable Pi {
+            IndexDomain: (c,d,z) | ServedFixed(d,z);
+        }
+        Variable DualObjective {
+            Definition: {
+                sum[ (c,p), Supply(c,p) * Sigma(c,p) ] +
+                sum[ (c,d,z), Demand(c,z) * ServedFixed(d,z) * Pi(c,d,z) ]
+            }
+        }
+        Parameter ServedFixed {
+            IndexDomain: (d,z);
+        }
+        Parameter SelectedFixed {
+            IndexDomain: (d);
+        }
+        Constraint DualConstraint {
+            IndexDomain: (c,p,d,z) | ServedFixed(d,z);
+            Definition: Sigma(c,p) + Pi(c,d,z) <= VariableCost(c,p,d,z);
+        }
+        Set DualConstraintSet {
+            SubsetOf: AllConstraints;
+            Definition: data { 'DualConstraint' };
+        }
+        MathematicalProgram DualSubProblem {
+            Objective: DualObjective;
+            Direction: maximize;
+            Constraints: DualConstraintSet;
+            Type: LP;
+        }
+    }
+    DeclarationSection Benders_Declarations {
+        Parameter LowerBound;
+        Parameter UpperBound;
+        Parameter Epsilon {
+            Definition: 0.0001;
+        }
+    }
+    DeclarationSection Report_Declarations {
+        Parameter ReportLowerBound {
+            IndexDomain: (b);
+        }
+        Parameter ReportUpperBound {
+            IndexDomain: (b);
+        }
+        Parameter ReportM {
+            IndexDomain: (b);
+        }
+        ElementParameter BCut {
+            Range: BendersCuts;
+        }
+    }
+    Section GUI_Section {
+        Set NetworkBounds {
+            Index: nb;
+            Definition: data { Left ,  Right ,  Top ,  Bottom };
+        }
+        Parameter BitmapBounds {
+            IndexDomain: (nb);
+            Definition: data { Left : 30.0,  Right : 287.1560046, Top : 668.7231744,  Bottom : 261.0368256};
+        }
+        Parameter ActiveBounds {
+            IndexDomain: (nb);
+            InitialData: data { Left : 30.0,  Right : 287.1560046, Top : 668.7231744,  Bottom : 261.0368256};
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+        Procedure SetTableFocus {
+            Body: {
+                BCut := StringToElement( BendersCuts, FormatString( "%i", LastCut ) );
+                PageSetCursor( "Benders Decomposition", "BendersTable", ReportM( BCut ) );
+            }
+        }
+    }
+    Procedure BendersDecomposition {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	EmptySolution;
+            
+            	M := 0;
+            	M.NonVar := 1;
+            	solve RelaxedMaster;
+            	LowerBound := RelaxedMaster.Objective;
+            	M.NonVar := 0;
+            
+            	while ( UpperBound >= LowerBound * ( 1 + Epsilon ) ) do
+            		ServedFixed(d,z) := Served(d,z);
+            		solve DualSubProblem;
+            		AddBendersCut;
+            		ReportLowerBound(LastBenderCut) := LowerBound;
+            		ReportUpperBound(LastBenderCut) := UpperBound;
+            		ReportM(LastBenderCut)          := M;
+            		PageRefreshAll;
+            		UpperBound := min( UpperBound, DualSubProblem.Objective + RelaxedMaster.Objective - M );
+            		solve RelaxedMaster;
+            		LowerBound := RelaxedMaster.Objective;
+            
+            		SetTableFocus;
+            
+            	endwhile;
+            
+            	LastCut += 1;
+            	SetElementAdd( BendersCuts, LastBenderCut, FormatString("%i",LastCut) );
+            
+            	ReportLowerBound(LastBenderCut) := LowerBound;
+            	ReportUpperBound(LastBenderCut) := UpperBound;
+            	ReportM(LastBenderCut)          := M;
+            	PageRefreshAll;
+            
+            	empty Shipped;
+            
+            	ServedFixed(d,z) := Served(d,z);
+            	SelectedFixed(d) := Selected(d);
+            	solve PrimalSubproblem;
+            
+            	SetTableFocus;
+            
+            else
+            
+                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                CaseFind("Solution Benders Decomposition", ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure EmptySolution {
+        Body: {
+            empty Shipped;
+            empty Selected;
+            empty Served;
+            empty BendersCuts;
+            empty LastCut;
+            
+            UpperBound := inf;
+        }
+    }
+    Procedure AddBendersCut {
+        Body: {
+            LastCut     += 1;
+            SetElementAdd( BendersCuts, LastBenderCut, FormatString("%i",LastCut) );
+            
+            BendersConstant( LastBenderCut ) := sum[ (c,p), Supply(c,p) * Sigma(c,p) ];
+            BendersCoef( LastBenderCut,d,z ) := sum[ c, Pi(c,d,z) * Demand(c,z) ];
+        }
+    }
+    Procedure SolveAtOnce {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	EmptySolution;
+            	MainInitialization;
+            	solve FacilityLocationAtOnce;
+            
+            else
+            
+                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                CaseFind("Solution Network", ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            composite table:
+               l               XCoord      YCoord
+            !------------------------------------
+              'Amsterdam'      121         488
+              'The Hague'       79         454
+              'Utrecht'        136         455
+              'Gouda'          108         447
+              'Arnhem'         191         444
+              'Maastricht'     175         318
+              'Haarlem'        103         489
+              'Groningen'      233         582
+              'Rotterdam'       92         436
+              'Amersfoort'     155         464
+              'Zwolle'         203         503
+              'Nijmegen'       187         427
+            !  'Den Bosch'      149         412
+            ;
+            
+            composite table:
+               l              MaxThroughput      MinThroughput      UnitThroughputCost      FixedThroughputCost
+            !--------------------------------------------------------------------------------------------------
+              'Amsterdam'      20                2                  5.0                      180
+              'The Hague'      20                                   7.0                      130
+              'Utrecht'        14                                   3.0                       60
+              'Gouda'          20                                   5.5                      150
+              'Amersfoort'     21                                   6.0                      140
+              'Zwolle'         17                                   7.0                      150
+              'Nijmegen'       16                                   3.5                      100
+            ;
+            
+            
+            composite table:
+               c             l               Supply      Demand
+            !--------------------------------------------------
+              'Beer'        'Rotterdam'      15
+              'Cotton'      'Rotterdam'      40
+              'Beer'        'Arnhem'         18
+              'Cotton'      'Arnhem'         18
+              'Beer'        'Groningen'                   7
+              'Cotton'      'Groningen'                  11
+              'Beer'        'Maastricht'                  8
+              'Cotton'      'Maastricht'                  9
+              'Beer'        'Haarlem'                     9
+              'Cotton'      'Haarlem'                    10
+            !  'Beer'        'Den Bosch'                   9
+            !  'Cotton'      'Den Bosch'                  10
+            ;
+            
+            ProductPlants       := { l | exists[ c | Supply(c,l) ] };
+            CustomerZones       := { l | exists[ c | Demand(c,l) ] };
+            DistributionCenters := Locations - ProductPlants - CustomerZones;
+            
+            NodeColor( l | l in ProductPlants )       := 'red';
+            NodeColor( l | l in CustomerZones )       := 'green';
+            NodeColor( l | l in DistributionCenters ) := 'blue';
+            
+            ArcColor( 'Beer' )   := 'red';
+            ArcColor( 'Cotton' ) := 'green';
+            
+            VariableCost(c,p,d,z) := ( sqrt( sqr( XCoord(p) - XCoord(d) ) + sqr( YCoord(p) - YCoord(d) ) ) +
+                                       sqrt( sqr( XCoord(z) - XCoord(d) ) + sqr( YCoord(z) - YCoord(d) ) ) ) / 100;
+        }
+    }
+    Procedure Clear {
+        Body: {
+            Shipped(c,p,d,z):= 0;
+            PrimalObjective := 0;
+            TotalCost := 0;
+            Selected(d) := 0;
+            Served(d,z) := 0;
+            ReportLowerBound(b) := 0;
+            ReportUpperBound(b) := 0;
+            ReportM(b) := 0;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+                return 1;
+        }
+    }
+}

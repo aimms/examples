@@ -1,0 +1,17 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_string_character_encoding WINDOWS-1252
+regenerate_threshold 0
+seed 1234
+warning_derivative_evaluation_errors off
+warning_duplicate_column strict_warning_default
+warning_duplicate_row strict_warning_default
+warning_non_optimal off
+* Environment
+Project_Title "AIMMS - Multistart Algorithm"
+Startup_Page "AIMMS Demo"
+Enhanced_Long_Run_Responsiveness 1

@@ -1,0 +1,42 @@
+<html>
+
+<body>
+<link rel="stylesheet" type="text/css" href="aimms.css" />
+<H2>Instructions</H2>
+
+<P>The goal is to create a schedule for all flights that arrive at the airport in such a way
+	that the standard deviation (presented in the solution information block on the left) is as small
+	as possible. The idea is that the smaller the deviation, the more equal all separation times between 
+consecutive aircraft are, yielding a more robust solution against small deviations.</p>
+
+<p>
+Initially, all flights will be in the unassigned flights list on the bottom. By
+right-clicking on a flight, you get a context menu which allows you to move the
+flight from the unassigned list to the assigned list. Similarly, if a flight is
+already assigned, you can right-click on the flight and from the context menu
+select the option to unassign it again.</p>
+
+<p>If two flights share the same gate at the same time, both flights will be 
+colored red to indicate the conflict that needs to be resolved by the planner.</p>
+
+<p>Because flights can only be moved within each of the two gantt charts, and
+not from one to the other (i.e. move a flight from unassigned to assigned by
+dragging it from the unassigned list to the assigned list), the options to either
+move all flights at once from the unassigned list to the assigned list, or vice versa
+are provided. 
+Finally, you can also instruct the AIMMS project to solve the problem and provide
+you with a (near) optimal solution for the problem.
+</p>
+
+<p>As a planner, in the details of a flight (which can be viewed by double-clicking
+	on a flight), you also have the option to ensure a flight MUST be assigned. This means
+	that in case there are not enough gates to accommodate all flights, such flights will
+be assigned to the gates, while other flights are left on the unassigned list.</p>
+
+<p>Similarly, you also have the option to keep a flight completely out of the problem, by 
+	designating it as "Keep flight unassigned". This will allow you to solve the problem as 
+	if that particular flight is not part of the problem.
+</p>
+
+</body>
+</html>

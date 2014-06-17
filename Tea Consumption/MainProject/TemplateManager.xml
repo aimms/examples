@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="80E694F4-001B-442E-9B42-6863AC1F11F2" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|D7483CB5-5167-4562-BBAD-14D261F84737|Size Template">
+		<Template Name="Navigation Template" PageGUID="D82F953D-BA85-435D-9EB2-90AE44332E50" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|74801D1D-B210-4516-8187-CD6807A6E294|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="3935716F-BE4E-4C5A-BE8E-0D3E6CDC87BB" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|2A5AD4A8-DBB4-4299-8888-7A4974D7F57D|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="F22BD25F-046F-47BF-B41F-46ADB6B61450" />
+			</Template>
+			<Page Name="Tea Consumption Overview" PageGUID="3DB46BD4-6654-4208-AB8E-B6BC53483491" />
+		</Template>
+	</Template>
+</TemplateManager>

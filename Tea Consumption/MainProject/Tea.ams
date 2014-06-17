@@ -1,0 +1,142 @@
+## ams_version=1.0
+
+Model Main_template {
+    Section Spreadsheet_section {
+        Procedure ReadTeaConsumptionDataFromSpreadsheet {
+            Body: {
+                /* Open the workbook */
+                if not Spreadsheet::SetVisibility(WB, 'Off') then
+                  DialogMessage(CurrentErrorMessage);
+                endif;
+                
+                if not Spreadsheet::SetActiveSheet(WB, "Sheet1") then
+                  DialogMessage(CurrentErrorMessage);
+                endif;
+                
+                if not Spreadsheet::RetrieveSet(WB, Periods, "PeriodRange") then
+                  DialogMessage(CurrentErrorMessage);
+                endif;
+                
+                if not Spreadsheet::RetrieveSet(WB, Countries, "CountryRange") then
+                  DialogMessage(CurrentErrorMessage);
+                endif;
+                
+                if not Spreadsheet::RetrieveTable(WB, TeaConsumption, "ConsumptionRange", "CountryRange", "PeriodRange") then
+                  DialogMessage(CurrentErrorMessage);
+                endif;
+                
+                if not Spreadsheet::CloseWorkBook(WB, 0 ) then
+                  DialogMessage(CurrentErrorMessage);
+                endif;
+            }
+        }
+        DeclarationSection Spreadsheet_related_declarations {
+            Set SpreadsheetExtensions {
+                Index: se;
+                Definition: data { '.xls', '.ods' };
+                Comment: "The extensions of Excel and OpenOffice workbooks";
+            }
+            ElementParameter SelectedExtension {
+                Range: SpreadsheetExtensions;
+                InitialData: {
+                    '.xls' ;
+                }
+            }
+            StringParameter SpreadsheetDescription {
+                IndexDomain: (se);
+                Definition: data { '.xls' : "Use Microsoft Excel spreadsheet",  '.ods' : "Use OpenOffice Calc spreadsheet" };
+            }
+            StringParameter WB {
+                Definition: {
+                    FormatString("Tea Consumption%e", SelectedExtension);
+                }
+            }
+        }
+    }
+    Section Tea_example_section {
+        Quantity SI_Mass {
+            BaseUnit: kg;
+            Conversions: {
+                lb -> kg : # -> # * 0.4535924,
+                oz -> kg : # -> # * 0.02834952,
+                g  -> kg : # -> # / 1000
+            }
+            Comment: "Expresses the value for the amount of matter.";
+        }
+        Quantity SI_Time_Duration {
+            BaseUnit: s;
+            Conversions: {
+                year  -> s : # -> # * 31536000,
+                day   -> s : # -> # * 86400,
+                month -> s : # -> # * 2628000,
+                hour  -> s : # -> # * 3600
+            }
+            Comment: "Expresses the value for the duration of periods.";
+        }
+        Set Countries {
+            Index: c;
+            Parameter: SelectedCountry;
+        }
+        Set Periods {
+            Index: p;
+        }
+        Parameter TeaConsumption {
+            IndexDomain: (c,p);
+            Unit: MassUnit/TimeUnit;
+        }
+        UnitParameter MassUnit {
+            Quantity: SI_Mass;
+            InitialData: [kg];
+        }
+        UnitParameter TimeUnit {
+            Quantity: SI_Time_Duration;
+            InitialData: [year];
+        }
+        Set PossibleMassUnits {
+            Index: mu;
+            Parameter: SelectedMassUnit;
+            Definition: data {kg, g, lb, oz};
+        }
+        Set PossibleTimeUnits {
+            Index: tu;
+            Parameter: SelectedTimeUnit;
+            Definition: data {year, month, day, hour};
+        }
+        Parameter DisplayPercentages {
+            Text: "Display Percentages";
+            InitialData: 1;
+        }
+    }
+    Procedure TimeUnitChanged {
+        Body: {
+            switch SelectedTimeUnit do
+              'year'  : TimeUnit := [year];
+              'month' : TimeUnit := [month];
+              'day'   : TimeUnit := [day];
+              'hour'  : TimeUnit := [hour];
+            endswitch;
+        }
+    }
+    Procedure MassUnitChanged {
+        Body: {
+            switch SelectedMassUnit do
+              'kg' : MassUnit := [kg];
+              'g'  : MassUnit := [g];
+              'oz' : MassUnit := [oz];
+              'lb' : MassUnit := [lb];
+            endswitch;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            SelectedMassUnit := 'kg';
+            SelectedTimeUnit := 'year';
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

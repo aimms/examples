@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-11-09 11:04:21" NeedsCompiledModel="false">
+	<Location top="221" left="165" bottom="675" right="793" />
+	<PageEditSize Type="Inherited">
+		<Size Width="628" Height="453" />
+	</PageEditSize>
+	<ProjectUUID>63C0B03F-C6A2-433C-9194-0CA43285BB2E</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.498408" />
+	</ResizeData>
+	<Background>
+		<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+	</Background>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

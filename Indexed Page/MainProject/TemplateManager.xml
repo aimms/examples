@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="E93798C3-6FB8-4E8D-BED8-7D1F277263F2" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
+		<Template Name="Navigation Template" PageGUID="988002CA-DE57-49A6-9AC4-6A8D7A327D87" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="E9A0147A-BDD0-4F02-8634-7F3B928F90BA" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="326E2245-EFB3-4339-99DD-40C57B2AFF90" />
+			</Template>
+			<Page Name="Example Page" PageGUID="53B5046E-6620-48CF-BE73-7D1AD8F16008" />
+			<Page Name="Example Page 2" PageGUID="6E71398A-7531-4D05-99CC-A45130693F3F" />
+		</Template>
+	</Template>
+	<Page Name="CityInformation" PageGUID="8C5FA5DC-5E05-469B-BB71-60B5CC7BF948" />
+	<Page Name="OverviewPerYear" PageGUID="F470036D-4D9F-45F4-8582-11D5694C0752" />
+</TemplateManager>

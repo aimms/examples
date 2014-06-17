@@ -1,0 +1,156 @@
+## ams_version=1.0
+
+Model Main_Print_Pages {
+    DeclarationSection Unit_Declaration {
+        Quantity Money {
+            BaseUnit: $;
+            Conversions: M$   -> $ : # -> # * 1000000;
+            Comment: "Expresses the value for money";
+        }
+        Quantity SI_Temperature {
+            BaseUnit: K;
+            Conversions: {
+                F -> K : # -> # * 0.5555555556 + 255.3722,
+                C -> K : # -> # + 273.15
+            }
+            Comment: "Expresses the value for degree of heat.";
+        }
+        Quantity SI_Area {
+            BaseUnit: m2 = m^2;
+            Conversions: {
+                acre    -> m2 : # -> # * 4046.873,
+                hectare -> m2 : # -> # * 10000,
+                Km2     -> m2 : # -> # * 1000000,
+                kKm2    -> m2 : # -> # * 1000000000
+            }
+            Comment: "Expresses the value of the extent of a surface.";
+        }
+        Quantity SI_Length {
+            BaseUnit: m;
+            Conversions: mile -> m : # -> # * 1609.344;
+            Comment: "Expresses the value of a distance.";
+        }
+        Quantity SI_Unitless {
+            BaseUnit: -;
+            Conversions: {
+                Thousand -> - : # -> # * 1000,
+                Million  -> - : # -> # * 1000000
+            }
+            Comment: "Expresses a dimensionless value.";
+        }
+    }
+    DeclarationSection Print_Pages_Declaration {
+        Set States {
+            Text: "Set containing all states";
+            Index: s;
+        }
+        ElementParameter SelectedState {
+            Text: "Current selected state in the interface";
+            Range: States;
+        }
+        StringParameter AbbrName {
+            IndexDomain: (s);
+            Text: "Abbriviated name of state s";
+        }
+        Set StatesShortName {
+            Text: "Set of all abbriviated state names";
+            Index: ssn;
+            Parameter: CurrentState_Shortname;
+        }
+        Set TemperatureSet {
+            Text: "Different periods for which the average temperature is available.";
+            Index: t;
+            Definition: Data{'January average','July average', 'Year average'};
+        }
+        Set Years {
+            Text: "Years for which population size data is available";
+            Index: y;
+        }
+        Parameter Revenue {
+            IndexDomain: (s);
+            Text: "Revenue of state s";
+            Unit: M$;
+        }
+        Parameter Size {
+            IndexDomain: (s);
+            Text: "Area of state s";
+            Unit: Km2;
+        }
+        Parameter Population {
+            IndexDomain: (s,y);
+            Text: "Population of state s in year y";
+            Unit: Thousand;
+        }
+        Parameter Temperature_ShortName {
+            IndexDomain: (ssn,t);
+            Text: "Temperature for state ssn (shortname) at period t";
+            Unit: F;
+        }
+        Parameter Temperature {
+            IndexDomain: (s,t);
+            Text: "Temperature for state s at period t";
+            Unit: F;
+        }
+        StringParameter SourceDescription {
+            Text: "Source of the data";
+            Definition: "Source: U.S. Census Bureau, Statistical Abstract of the United States: 1999";
+        }
+        StringParameter DateString {
+            Text: "Printed at:";
+        }
+        Parameter AskStatus {
+            Text: "Return value of several procedures";
+        }
+        StringParameter ActivePage {
+            Text: "Name of the active page";
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            DateString := CurrentToString("%c%y-%m-%d");
+            
+            read states, AbbrName, Temperature_ShortName, revenue, Size, Population from file "Datafile.txt";
+            
+            SelectedState := first(States);
+            
+            for (s | AbbrName(s) ) do
+            	SetElementAdd(StatesShortName, CurrentState_Shortname, AbbrName(s));
+            	Temperature(s,t) := Temperature_ShortName(CurrentState_Shortname,t);
+            endfor;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure PrintReport {
+        Body: {
+            PrintStartReport("Demo PrintReport","output.psi");
+            
+            PrintPage("FrontPage");
+            PrintPage("Report Page 1");
+            PrintPage("Report Page 2");
+            
+            PrintEndReport;
+        }
+        Comment: "Print report consisting of FrontPage and the two other printpages";
+    }
+    Procedure PrintActivePage {
+        Body: {
+            if PageGetActive(ActivePage) then;
+            	AskStatus := DialogAsk(FormatString("How do you want to print the file \"%s\" ?", ActivePage),
+            				"Printer", "File", "Cancel");
+            	if AskStatus = 1 then
+            		PrintPage(ActivePage);
+            	elseif AskStatus = 2 then
+            		PrintPage(ActivePage,ActivePage+".ps");
+            		DialogMessage(FormatString("This page has been printed to a file named: %s.ps",ActivePage));
+            	endif;
+            else
+            	Dialogmessage("There is no page selected !");
+            endif;
+        }
+        Comment: "Print the current active PrintPage";
+    }
+}

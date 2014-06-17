@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="1ECDB0E4-FC21-4F82-9054-057C558C51A9" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|FD2B2D60-5D31-421D-8A5B-A14A44C584C3|Size Template">
+		<Template Name="Navigation Template" PageGUID="58BD216A-01FF-43BD-A880-C2C6976CF05D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|96D667C3-E0A6-4CC4-9BD3-B508C60A2C91|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="1857AB9E-EA37-47EC-8AB4-1275230E5B2B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|7AFD5036-0FB9-4BDF-8AEE-96E6C80CCE4A|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="D6E11857-7FE0-4E3F-810A-5DC5DC561258" />
+			</Template>
+			<Page Name="Gantt Charts" PageGUID="E4D287D4-2E53-4B3E-9D0D-90C28B1EB42E" />
+			<Page Name="Solve multiple scenarios with parallel solver sessions" PageGUID="D58BF4EF-A57D-48DB-955D-8799015425AE" />
+			<Page Name="Using Start Values" PageGUID="BAB24A6D-E46B-45F3-BEC9-983B58DD9AC7" />
+		</Template>
+	</Template>
+</TemplateManager>

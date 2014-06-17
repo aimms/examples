@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-08-25 12:43:10">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F9544067-E448-4C60-9F8A-54412C921446</ProjectUUID>
+	<CloseWhenInactive>true</CloseWhenInactive>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="62">
+						<BottomArea Line="FixedFromTop" Value="77">
+							<BottomArea Line="PercentageFromTop" Value="0.455556">
+								<BottomArea Line="FixedFromTop" Value="82">
+									<TopArea Line="FixedFromLeft" Value="40" />
+									<BottomArea Line="FixedFromBottom" Value="7.99996" />
+								</BottomArea>
+							</BottomArea>
+						</BottomArea>
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="119">
+						<BottomArea Line="FixedFromLeft" Value="283">
+							<LeftArea Line="FixedFromTop" Value="297" />
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<Action>
+		<EntryProcedure>EmptySliceSelection</EntryProcedure>
+	</Action>
+	<PageObject Type="Text">
+		<Location top="306" left="210" bottom="342" right="480" />
+		<StaticText>Select the parameters that you want to empty:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="342" left="492" bottom="612" right="762" />
+		<TabOrder>3</TabOrder>
+		<ObjectUUID>9542ADCA-803D-48B8-8600-2BADA327552D</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" />
+		<Contents>
+			<Implicit_Identifiers ID="4010">SelectedParameters( SelectableParameters )</Implicit_Identifiers>
+		</Contents>
+		<Indices>
+			<Identifier_Index>
+				<Location_in_Initial_View ID="6260">"As Outer Index"</Location_in_Initial_View>
+				<Hide_if_Single_Identifier ID="6270">"No"</Hide_if_Single_Identifier>
+			</Identifier_Index>
+		</Indices>
+		<General>
+			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Column_Area>
+			<Auto_resize_Column_Widths ID="3006">"Upon all data changes"</Auto_resize_Column_Widths>
+		</Column_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="366" left="6" bottom="390" right="192" />
+		<ReadOnly>NoSliceOrParameterSelected</ReadOnly>
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Empty Slice"</Title>
+		<TooltipText>"Empty given slice of selected parameters"</TooltipText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>DoEmptySlice</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="186" left="204" bottom="300" right="762" />
+		<StaticText>On this page, you can empty a group of identifiers where the indices have a certain value.
+
+In the Slice Selection at the left, you can specify for which slice you would like to empty the parameters.
+
+You can remove an index from the Slice Selection by selecting the index and pressing the discard (x) button.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="306" left="492" bottom="342" right="732" />
+		<StaticText>Data of selected parameters:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="342" left="210" bottom="594" right="480" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>SelectedParameters( SelectableParameters )</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="SelectableParameters">ParameterName( selp )</ElementText>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>DoEmptySlice</Symbol>
+			<Symbol>SelectedParameters</Symbol>
+			<Symbol>ParameterName</Symbol>
+			<Symbol>NoSliceOrParameterSelected</Symbol>
+			<Symbol>SelectableParameters</Symbol>
+			<Symbol>EmptySliceSelection</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

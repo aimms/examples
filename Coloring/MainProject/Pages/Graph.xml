@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-05 14:55:35">
+	<Location top="363" left="211" bottom="615" right="763" />
+	<PageEditSize Type="Inherited">
+		<Size Width="554" Height="253" />
+	</PageEditSize>
+	<ProjectUUID>815D62FB-6902-4E26-B758-332EBC8DDAA2</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.635379">
+			<RightArea Line="FixedFromTop" Value="125" />
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="2D Chart">
+		<Location top="6" left="6" bottom="246" right="546" />
+		<TabOrder>1</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">i_v</Domain>
+		</X_Axis>
+		<Y_Axis>
+			<Chart_type ID="2001">"Stacking Bar"</Chart_type>
+			<Identifier>
+				<Value ID="2007">MyData( i_v, j_v )</Value>
+				<Appearance>
+					<Fill>
+						<Foreground_color ID="2013">BarColor( j_v )</Foreground_color>
+					</Fill>
+				</Appearance>
+			</Identifier>
+			<Annotation>
+				<Precision ID="2056">0</Precision>
+				<Tick_spacing ID="2049">175</Tick_spacing>
+				<Label_spacing ID="2057">175</Label_spacing>
+			</Annotation>
+			<Gridlines>
+				<Spacing ID="2043">175</Spacing>
+				<Style>
+					<Pattern ID="2047">"Solid"</Pattern>
+				</Style>
+			</Gridlines>
+		</Y_Axis>
+		<Display>
+			<Misc_display_settings>
+				<Show_box_around_plot_area ID="66">1</Show_box_around_plot_area>
+				<Show_outlines ID="68">1</Show_outlines>
+			</Misc_display_settings>
+		</Display>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Title_text ID="57">"MyData"</Title_text>
+			<Font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="42">"Legend"</Font>
+			<Misc_display_settings>
+				<Anchor ID="41">"North"</Anchor>
+				<Orientation ID="56">"Horizontal"</Orientation>
+			</Misc_display_settings>
+		</Legend>
+		<Style>
+			<_Stacking_bar_chart>
+				<Cluster_width ID="4003">80</Cluster_width>
+			</_Stacking_bar_chart>
+		</Style>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>i_v</Symbol>
+			<Symbol>j_v</Symbol>
+			<Symbol>MyData</Symbol>
+			<Symbol>BarColor</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

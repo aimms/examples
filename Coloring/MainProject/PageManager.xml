@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="B483B505-0B9C-4DA2-9EBB-96D3D511CEAD">
+		<Page Name="Example Page" PageGUID="AAC63A69-8C32-4298-9B15-8176F20A6B4B">
+			<Page Name="Graph" PageGUID="98930E7A-5953-4646-9DF4-EBD8A57FD56A" />
+			<Page Name="Table" PageGUID="2B11528C-B3E8-445F-812D-651AB17F12E8" />
+			<Page Name="Composite Table" PageGUID="F64C14AB-B102-429D-AE30-9A980B840E08" />
+			<Page Name="Pivot Table" PageGUID="F86C1923-6E58-4572-BF93-B0DA6E351E40" />
+		</Page>
+	</Page>
+</PageManager>

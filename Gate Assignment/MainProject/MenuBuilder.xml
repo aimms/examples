@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<UserMenuTree Version="4000" TimeStamp="2010-03-02 08:05:41">
+	<Menu Name="Context Menu Selected Flights" UUID="35DC7A7E-6706-4FED-9A13-E8C5938371B7">
+		<Control>
+			<Hide>VALUE := 1 $ (SelectedFlight = '' )</Hide>
+		</Control>
+		<MenuItem Name="Show flight information" UUID="9DF6E6CE-1E73-4D20-8302-27B37B9D67C0">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>ShowFlightInformationPage</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+		<MenuItem Name="Make unassigned" UUID="FB5A2B32-9D4C-467B-9827-E707312ACD27">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>GanttMakeUnassgined</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+	</Menu>
+	<Menu Name="Context Menu Unassigned Flights" UUID="4C42174B-62B9-4E1D-8971-0B25AC538C0F">
+		<Control>
+			<Hide>VALUE := 1 $ (SelectedFlight = '' )</Hide>
+		</Control>
+		<DuplicatedMenuItem Reference="9DF6E6CE-1E73-4D20-8302-27B37B9D67C0" />
+		<MenuItem Name="Assign flight" UUID="921D4421-9639-4602-9E40-AC1142FE6434">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>ShowMoveUnassginedFlightPage</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+	</Menu>
+</UserMenuTree>

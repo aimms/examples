@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="Problem Description Page" PageGUID="897FBB56-0FC7-4D8F-8439-987439B5AC66">
+		<Page Name="Gate Assignment" PageGUID="7EE50ABF-F962-46F5-B770-5A18A0462169">
+			<Page Name="Show Input" PageGUID="CFD0050A-4200-471A-8611-5AA4F93C073C">
+				<Page Name="Flight input" PageGUID="69697515-53A9-497C-9579-03CC4A4862CB" />
+				<Page Name="Gate input" PageGUID="C2C2E6AB-FCB4-456C-BD1B-72A0A48B6EED" />
+			</Page>
+			<Page Name="Details last solve" PageGUID="A4AD1083-40C6-4AE5-92BE-182782A7F901" />
+		</Page>
+	</Page>
+	<Page Name="Progress Column Generation" PageGUID="F1E10D23-A2A5-4F64-85F9-D2625C79EB22" />
+	<Page Name="Help and Instructions" PageGUID="0C30A790-EEBA-4D8C-AEB4-C95EDEF80487" />
+	<Page Name="Progress ILP" PageGUID="BF33F5ED-8AE8-44F7-90BB-3E0ABC102435" />
+	<Page Name="Assign flight to gateplan" PageGUID="DFF5BFED-640F-44A6-BA6A-5BA70416A7B4" />
+	<Page Name="Selected Flight Information" PageGUID="BD33E1B7-D411-4A85-BF2A-E66BC9417351" />
+	<Page Name="All Data Pages" PageGUID="2039D453-2A86-410C-B624-2DD915F68145">
+		<Page Name="[Data Page] StartSolution_Flow" PageGUID="2E522175-69CD-435F-B68F-9D66D4C98781" />
+	</Page>
+</PageManager>

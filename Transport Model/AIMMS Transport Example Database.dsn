@@ -1,0 +1,6 @@
+[ODBC]
+DRIVER=Microsoft Access Driver (*.mdb)
+DBQ=TransportExample.mdb
+DriverId=281
+FIL=MS Access
+SafeTransactions=0

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AimmsXMLSchemaMapping xmlns="http://www.aimms.com/XMLSchema/AimmsXMLMappingSchema" MappedNameSpace="http://www.Aimms.com/RailWayStock">
+	<ElementMapping name="TrainScheduleSchema">
+		<ElementMapping name="Origin">
+			<AttributeMapping name="CityID" maps-to="GUI_CityRank(o)" width="16" precision="0"/>
+			<AttributeMapping name="Name" binds-to="o"/>
+			<ElementMapping name="Destination">
+				<AttributeMapping name="Name" binds-to="d"/>
+				<ElementMapping name="TrainScheduleID">
+					<AttributeMapping name="ID" binds-to="nr"/>
+					<AttributeMapping name="Arrival" maps-to="Input_TrainSchedule( nr, o, d, 'Arrival' )"/>
+					<AttributeMapping name="Departure" maps-to="Input_TrainSchedule( nr, o, d, 'Departure' )"/>
+					<AttributeMapping name="Minimal" maps-to="Input_MinimalTrains(nr,o,d)" width="16" precision="0"/>
+					<AttributeMapping name="Actual" maps-to="Table_UsedTrains(nr,o,d)" width="16" precision="0"/>
+				</ElementMapping>
+			</ElementMapping>
+		</ElementMapping>
+	</ElementMapping>
+</AimmsXMLSchemaMapping>

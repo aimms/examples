@@ -1,0 +1,493 @@
+## ams_version=1.0
+
+Model Recursive_Solve_Model {
+    Comment: "Fixed Cost Network Flow Problem with Cuts";
+    Section Model_Section {
+        DeclarationSection Node_Declarations {
+            Set NodeSet {
+                Index: n, i, j;
+                Parameter: SelectedNode, SourceNode, DestinationNode;
+            }
+            Parameter Demand {
+                IndexDomain: (n);
+            }
+        }
+        DeclarationSection Arc_Declarations {
+            Set ArcSet {
+                Index: a;
+                Parameter: SelectedArc;
+            }
+            Parameter ArcMap {
+                IndexDomain: (i,j);
+                Range: binary;
+                Definition: {
+                    if ( ArcFixedCost(i,j) > 0 ) then
+                        1
+                    else
+                        0
+                    endif;
+                }
+            }
+            Parameter ArcFixedCost {
+                IndexDomain: (i,j);
+            }
+            Parameter ArcVariableCost {
+                IndexDomain: (i,j) | i <> j;
+                InitialData: 0;
+            }
+            Parameter ArcCapacity {
+                IndexDomain: (i,j);
+            }
+            Parameter SumOfDemand;
+        }
+        DeclarationSection Network_Flow_Formulation {
+            Variable Flow {
+                IndexDomain: (i,j) | ArcMap(i,j);
+                Range: [0, ArcCapacity(i, j));
+            }
+            Variable ArcUsage {
+                IndexDomain: (i,j);
+                Range: binary;
+            }
+            Constraint NodeBalanceConstraint {
+                IndexDomain: (i);
+                Definition: Sum( j, Flow(j,i) ) - Sum( j, Flow(i,j) ) >= Demand(i);
+            }
+            Constraint ArcUsageConstraint {
+                IndexDomain: (i,j) | ArcMap(i,j);
+                Definition: Flow(i,j) <= ArcCapacity(i,j) * ArcUsage(i,j);
+            }
+            Variable TotalFlowCost {
+                Definition: {
+                    sum( (i,j), ( ArcVariableCost(i,j) * Flow(i,j)  ) +
+                                ( ArcFixedCost(i,j)    * ArcUsage(i,j) ) )
+                }
+            }
+            Set NetworkFlowConstraints {
+                SubsetOf: AllConstraints;
+                Definition: data { TotalFlowCost, NodeBalanceConstraint, ArcUsageConstraint };
+            }
+            Set NetworkFlowVariables {
+                SubsetOf: AllVariables;
+                Definition: data { Flow, TotalFlowCost, ArcUsage };
+            }
+            MathematicalProgram NetworkFlowModel {
+                Objective: TotalFlowCost;
+                Direction: minimize;
+                Constraints: NetworkFlowConstraints;
+                Variables: NetworkFlowVariables;
+                Type: MIP;
+            }
+            ElementParameter GMPNetworkFlowModel {
+                Range: AllGeneratedMathematicalPrograms;
+            }
+        }
+        DeclarationSection Dicut_Separation_Problem_Formulation {
+            Comment: "Separation Problem for simple dicut inequalities";
+            Variable DemandNode {
+                IndexDomain: (n);
+                Range: binary;
+            }
+            Variable DemandEdge {
+                IndexDomain: (i,j) | i <> j;
+                Range: [0, 1];
+                Comment: {
+                    "This continuous variable is introduced to replace the nonlinear term in the original objective
+                    function of the Separation problem, such that the Separation problem can be formulated as a MIP"
+                }
+            }
+            Constraint PositiveDemandConstraint {
+                Definition: Sum( n, Demand(n) * DemandNode(n) ) >= 1;
+            }
+            Constraint DicutSeparationConstraint1 {
+                IndexDomain: (i,j) | i <> j;
+                Definition: DemandEdge(i,j) <= DemandNode(i);
+                Comment: {
+                    "Originally the objective function of the separation problem (TotalCost) contains a nonlinear term:
+                    	DemandNode(n) * ( 1 - DemandNode(n) )
+                    
+                    This constraint and a continuous variable DemandEdge are introduced to replace the nonlinear term
+                    and reformulate the separation problem as MIP"
+                }
+            }
+            Constraint DicutSeparationConstraint2 {
+                IndexDomain: (i,j) | i <> j;
+                Definition: DemandEdge(i,j) <= DemandNode(j);
+                Comment: {
+                    "Originally the objective function of the separation problem (TotalCost) contains a nonlinear term:
+                    	DemandNode(n) * ( 1 - DemandNode(n) )
+                    
+                    This constraint and a continuous variable DemandEdge are introduced to replace the nonlinear term
+                    and reformulate the separation problem as MIP"
+                }
+            }
+            Constraint DicutSeparationConstraint3 {
+                IndexDomain: (i,j) | i <> j;
+                Definition: DemandNode(i) + DemandNode(j) - DemandEdge(i,j) <= 1;
+                Comment: {
+                    "Originally the objective function of the separation problem (TotalCost) contains a nonlinear term:
+                    	DemandNode(n) * ( 1 - DemandNode(n) )
+                    
+                    This constraint and a continuous variable DemandEdge are introduced to replace the nonlinear term
+                    and reformulate the separation problem as MIP"
+                }
+            }
+            Variable TotalCost {
+                Definition: Sum( (i,j) | i <> j, ArcUsage.level(i,j) * [ DemandNode(j) - DemandEdge(i,j)] );
+            }
+            Set DicutSeparationModelConstraints {
+                SubsetOf: AllConstraints;
+                Definition: {
+                    data { PositiveDemandConstraint, DicutSeparationConstraint1, DicutSeparationConstraint2,
+                           DicutSeparationConstraint3, TotalCost }
+                }
+            }
+            Set DicutSeparationModelVariables {
+                SubsetOf: AllVariables;
+                Definition: data { DemandEdge, DemandNode, TotalCost };
+            }
+            MathematicalProgram DicutSeparationModel {
+                Objective: TotalCost;
+                Direction: minimize;
+                Constraints: DicutSeparationModelConstraints;
+                Variables: DicutSeparationModelVariables;
+                Type: MIP;
+            }
+            ElementParameter GMPDicutSeparationModel {
+                Range: AllGeneratedMathematicalPrograms;
+            }
+            Parameter DicutSeparationModelObjective;
+            Set DemandNodes {
+                SubsetOf: NodeSet;
+                Definition: {
+                    { n | DemandNode.level(n) >= 1 }
+                }
+                Comment: "a node set for which the net demand is positive";
+            }
+            Parameter ArcEntersDemandNodesIndicator {
+                IndexDomain: (i,j);
+                Definition: {
+                    if ( not ( i in DemandNodes ) and ( j in DemandNodes ) and ArcMap(i,j) ) then
+                        1
+                    else
+                        0
+                    endif;
+                }
+                Comment: "set of arcs entering set DemandNodes";
+            }
+            Constraint DicutConstraint {
+                Definition: Sum( (i,j) | ArcEntersDemandNodesIndicator(i,j), ArcUsage(i,j) ) >= 1;
+                Comment: "Simple dicut inequality";
+            }
+            Set CallbackSolvers {
+                SubsetOf: AllSolvers;
+                OrderBy: User;
+                Definition: {
+                    { IndexSolvers | FindString(IndexSolvers,"XA") }
+                    +
+                    { IndexSolvers | FindString(IndexSolvers,"CBC") }
+                }
+                Comment: "Set of solvers that can be used inside the callback procedure";
+            }
+            ElementParameter SelectedCallbackSolver {
+                Range: CallbackSolvers;
+                Definition: First( CallbackSolvers );
+            }
+        }
+        Procedure RetrieveDataOfNewIncumbent {
+            Arguments: (ThisSession);
+            Body: {
+                !-- Get the current solution from the solver
+                GMP::Solution::RetrieveFromSolverSession( ThisSession, 1 );
+                GMP::Solution::SendToModel( GMPNetworkFlowModel, 1 );
+                
+                BestObjective   := GMP::SolverSession::GetObjective( ThisSession );
+                LinearObjective := GMP::SolverSession::GetLinearObjective( ThisSession );
+                SolutionTime    := GMP::SolverSession::GetCPUSecondsUsed( ThisSession );
+                
+                
+                UpdatePage;
+                
+                
+                !-- Set return to 1 to continue the solution process otherwise the process will stop
+                Return 1 ;
+            }
+            ElementParameter ThisSession {
+                Range: AllSolverSessions;
+                Property: Input;
+            }
+        }
+        Procedure SolveNetworkFlowModel {
+            Body: {
+                ReadData ;
+                
+                InitializePage;
+                
+                empty Flow ;
+                
+                !-- Generate the network flow model
+                GMPNetworkFlowModel := GMP::Instance::Generate( NetworkFlowModel ) ;
+                
+                CplexSolver := Last( IndexSolvers | FindString( FormatString("%e", IndexSolvers), "CPLEX", 0, 0, 1 ) ) ;
+                
+                if CplexSolver then
+                    GMP::Instance::SetSolver( GMPNetworkFlowModel, CplexSolver );
+                endif ;
+                
+                !-- Solve the MIP
+                GMP::Instance::SetCallbackNewIncumbent( GMPNetworkFlowModel, 'RetrieveDataOfNewIncumbent' );
+                GMP::Instance::SetCallbackIterations( GMPNetworkFlowModel, 'RetrieveDataOfNewIncumbent', 10000 );
+                GMP::Instance::Solve( GMPNetworkFlowModel );
+                
+                BestObjective   := GMP::Instance::GetObjective( GMPNetworkFlowModel );
+                LinearObjective := GMP::Instance::GetLinearObjective( GMPNetworkFlowModel );
+                
+                UpdatePage;
+            }
+            ElementParameter CplexSolver {
+                Range: AllSolvers;
+            }
+        }
+        Procedure DicutGeneration {
+            Arguments: (ThisSession);
+            Body: {
+                !-- Get the current solution from the solver
+                GMP::Solution::RetrieveFromSolverSession( ThisSession, 1 );
+                GMP::Solution::SendToModel( GMPNetworkFlowModel, 1 );
+                
+                !-- Generate the Dicut Generation model
+                GMPDicutSeparationModel := GMP::Instance::Generate( DicutSeparationModel ) ;
+                
+                !-- Set the solver to CBC or XA, because CPLEX does not allow to solve a model inside a callback
+                !-- using the same solver version
+                GMP::Instance::SetSolver( GMPDicutSeparationModel, SelectedCallbackSolver );
+                
+                !-- Solve the Separation problem model
+                GMP::Instance::Solve( GMPDicutSeparationModel );
+                
+                
+                DicutSeparationModelObjective := GMP::Instance::GetObjective( GMPDicutSeparationModel );
+                
+                !-- If the objective value less than 1, then a cut is generated
+                if ( DicutSeparationModelObjective <= 0.999 ) then
+                    GMP::SolverSession::GenerateCut( ThisSession, DicutConstraint, 1 );
+                endif ;
+                
+                
+                ProgramStatus := GMP::SolverSession::GetProgramStatus( ThisSession );
+                
+                if ( ProgramStatus <> 'IntermediateNonInteger' ) then
+                
+                    BestObjective   := GMP::SolverSession::GetObjective( ThisSession );
+                    LinearObjective := GMP::SolverSession::GetLinearObjective( ThisSession );
+                    SolutionTime    := GMP::SolverSession::GetCPUSecondsUsed( ThisSession );
+                
+                    UpdatePage;
+                
+                endif ;
+                
+                !-- Set return to 1 to continue the solution process otherwise the process will stop
+                return 1;
+            }
+            ElementParameter ThisSession {
+                Range: AllSolverSessions;
+                Property: Input;
+            }
+            ElementParameter ProgramStatus {
+                Range: AllSolutionStates;
+            }
+        }
+        Procedure SolveNetworkFlowModelWithNestedSolve {
+            Body: {
+                ReadData ;
+                
+                InitializePage;
+                
+                empty Flow ;
+                
+                !-- Generate the network flow model
+                GMPNetworkFlowModel := GMP::Instance::Generate( NetworkFlowModel ) ;
+                
+                CplexSolver := Last( IndexSolvers | FindString( FormatString("%e", IndexSolvers), "CPLEX", 0, 0, 1 ) ) ;
+                
+                
+                if CplexSolver then
+                    GMP::Instance::SetSolver( GMPNetworkFlowModel, CplexSolver );
+                else
+                    DialogMessage("You need to have CPLEX 8.0 or higher to run the model with nested solve") ;
+                    Halt ;
+                endif ;
+                
+                !-- Solve the MIP and use the Separation problem for simple dicut inequalities to
+                !-- cut off parts of the branch-and-bound-tree.
+                
+                GMP::Instance::SetCallbackAddCut( GMPNetworkFlowModel, 'DicutGeneration' );
+                GMP::Instance::Solve( GMPNetworkFlowModel );
+                
+                BestObjective   := GMP::Instance::GetObjective( GMPNetworkFlowModel );
+                LinearObjective := GMP::Instance::GetLinearObjective( GMPNetworkFlowModel );
+                
+                UpdatePage;
+            }
+            ElementParameter CplexSolver {
+                Range: AllSolvers;
+            }
+        }
+    }
+    Section GUI_Section {
+        DeclarationSection Data_File_Declaration {
+            Set DatafileSet {
+                Index: df;
+                Parameter: SelectedDatafile;
+                Definition: data { 'Brasil data', 'Berlin data' };
+            }
+            Parameter CurrentData {
+                IndexDomain: (df);
+            }
+            Parameter Ok;
+        }
+        Procedure ReadData {
+            Body: {
+                empty NodeSet, ArcFixedCost, ArcVariableCost, Demand, CurrentData;
+                
+                if SelectedDataFile = 'Berlin data' then
+                
+                    read from file "Berlin data.txt" ;
+                    CurrentData('Berlin data') := 1;
+                
+                elseif SelectedDataFile = 'Brasil data' then
+                
+                    read from file "Brasil data.txt" ;
+                    CurrentData('Brasil data') := 1;
+                
+                endif ;
+                
+                SumOfDemand := Sum( i | Demand(i) > 0, Demand(i) );
+                
+                ArcCapacity(i,j) $ (ArcFixedCost(i,j) > 0) := SumOfDemand;
+            }
+        }
+        DeclarationSection Page_Declarations {
+            Parameter BestObjective {
+                InitialData: na;
+            }
+            Parameter LinearObjective {
+                InitialData: na;
+            }
+            Parameter Gap {
+                InitialData: na;
+            }
+            Parameter SolutionTime;
+            Set ProgressLines {
+                SubsetOf: Integers;
+                Index: pl;
+            }
+            Parameter CurrentProgressLine {
+                Range: integer;
+                InitialData: 1;
+            }
+            Parameter MaxDisplayedProgressLines {
+                Range: integer;
+                Definition: 20;
+            }
+            Parameter ProgressBestObj {
+                IndexDomain: pl;
+                Text: "Best Integer";
+            }
+            Parameter ProgressLinearObj {
+                IndexDomain: pl;
+                Text: "Objective";
+            }
+            Parameter ProgressGap {
+                IndexDomain: pl;
+                Text: "Gap [%]";
+            }
+            Parameter ProgressSolutionTime {
+                IndexDomain: (pl);
+                Text: "Solution Time [s]";
+            }
+            Set DisplayedProgressLines {
+                SubsetOf: ProgressLines;
+                Index: dpl;
+                OrderBy: -dpl;
+                Definition: ProgressLines;
+            }
+            Parameter DisplayedProgressGap {
+                IndexDomain: pl;
+                Text: "Gap [%]";
+                Range: [0, 100];
+                Definition: {
+                    if ProgressGap(pl) = na then
+                    
+                        100
+                    
+                    else
+                    
+                        ProgressGap(pl)
+                    
+                    endif
+                }
+            }
+            StringParameter ProblemDescription {
+                Definition: "Description.txt";
+            }
+        }
+        Procedure InitializePage {
+            Body: {
+                empty ProgressLines;
+                
+                CurrentProgressLine := 1;
+            }
+        }
+        Procedure UpdatePage {
+            Body: {
+                ProgressLines += CurrentProgressLine;
+                
+                
+                !-- Calculate MIP gap.
+                
+                if ( LinearObjective = na ) OR ( BestObjective = na ) then
+                    Gap := na;
+                else
+                    if ( abs(BestObjective) < 0.1 ) then
+                        Gap := abs( ( LinearObjective - BestObjective ) / ( BestObjective + 1 ) ) * 100;
+                    else
+                        Gap := abs( ( LinearObjective - BestObjective ) / ( BestObjective ) ) * 100;
+                    endif;
+                
+                    if ( abs(Gap) < 1e-10 ) then
+                        Gap := 0.0;
+                    endif;
+                endif;
+                
+                
+                !-- Update page identifiers.
+                
+                ProgressBestObj( CurrentProgressLine )      := BestObjective ;
+                ProgressLinearObj( CurrentProgressLine )    := LinearObjective ;
+                ProgressGap( CurrentProgressLine )          := Gap ;
+                ProgressSolutionTime( CurrentProgressLine ) := SolutionTime / 100 ;
+                
+                
+                CurrentProgressLine += 1;
+                
+                PageRefreshAll;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            SelectedDatafile := First( DatafileSet ) ;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            SolveNetworkFlowModelWithNestedSolve;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1 ;
+        }
+    }
+}

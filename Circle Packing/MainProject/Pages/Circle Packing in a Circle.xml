@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-05-22 07:35:03">
+	<Location top="29" left="8" bottom="768" right="900" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>815943C0-011E-4F24-88E2-47BBE23FE82D</ProjectUUID>
+	<UpdateAllIdentifiers>true</UpdateAllIdentifiers>
+	<TemplatesTabOrderPosition>5</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<TopArea Line="FixedFromTop" Value="196">
+						<BottomArea Line="FixedFromBottom" Value="4" />
+					</TopArea>
+					<BottomArea Line="FixedFromTop" Value="311">
+						<TopArea Line="FixedFromTop" Value="242" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="26">
+						<TopArea Line="FixedFromLeft" Value="428" />
+						<BottomArea Line="FixedFromLeft" Value="428">
+							<LeftArea Line="FixedFromTop" Value="404">
+								<TopArea Line="FixedFromTop" Value="28" />
+							</LeftArea>
+							<RightArea Line="FixedFromTop" Value="404" />
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+	</Background>
+	<Action>
+		<UpdateAllIdentifiers>true</UpdateAllIdentifiers>
+	</Action>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="97B9CE4F-C6C1-48BC-9AC7-76B6FF2620E9" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="474" left="6" bottom="504" right="180" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CircleRadius2</Identifier>
+			<NumberFormat Width="11" Decimals="5" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Max Radius"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="552" left="6" bottom="576" right="192" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<ForegroundColor RGB="#000000" />
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveCirclePacking2</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Network Object">
+		<Location top="207" left="207" bottom="609" right="627" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>1</TabOrder>
+		<TabStop>false</TabStop>
+		<LeaveOnTab>false</LeaveOnTab>
+		<LeaveOnUpDown>false</LeaveOnUpDown>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor RGB="#ff8000" />
+		<SelectionColor RGB="#ffffff" />
+		<AllowZoom>false</AllowZoom>
+		<ScrollControl>NoScrolling</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-1</Left>
+			<Right>1.09278350515</Right>
+			<Top>1</Top>
+			<Bottom>-1</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>i_cp</Identifier>
+			<XCoordinate>CoordXCorner( c )</XCoordinate>
+			<YCoordinate>CoordYCorner( c )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>900</MaximumSize>
+			<ScaleFactorUnit>CoordinatePoints</ScaleFactorUnit>
+			<TextPosition>Top</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Size>2</Size>
+			<Selectable>0</Selectable>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>i</Identifier>
+			<XCoordinate>CoordXCircle2( i -&gt; SelectedCircle )</XCoordinate>
+			<YCoordinate>CoordYCircle2( i -&gt; SelectedCircle )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>400</MaximumSize>
+			<ScaleFactor>CircleRadius2</ScaleFactor>
+			<ScaleFactorUnit>CoordinatePoints</ScaleFactorUnit>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Color>Graph_SelectedColor( i )</Color>
+			<Size>2</Size>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>j</Identifier>
+			<XCoordinate>CoordXCircle2( j -&gt; SelectedCircle )</XCoordinate>
+			<YCoordinate>CoordYCircle2( j -&gt; SelectedCircle )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Top</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>RGB 0080ff</Color>
+			<Size>0</Size>
+			<Shape>Rectangle</Shape>
+		</Node>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="213" bottom="186" right="759" />
+		<StaticText>Maximize the radius of the equal size circles packed in a unit circle</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="456" left="6" bottom="486" right="174" />
+		<StaticText>Radius (Maximum)</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="216" left="627" bottom="597" right="762" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Domain>
+			<Identifier>i</Identifier>
+			<Index Name="i">
+				<TitleText>"Circle"</TitleText>
+				<Color>SelectedColor( i )</Color>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>CoordXCircle2( i -&gt; SelectedCircle )</Identifier>
+			<NumberFormat Width="6" Decimals="2" Alignment="Center" ShowDefaults="true" />
+			<TitleText>"X-Coordinate"</TitleText>
+			<Color>SelectedColor( i )</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>CoordYCircle2( i -&gt; SelectedCircle )</Identifier>
+			<NumberFormat Width="6" Decimals="2" Alignment="Center" ShowDefaults="true" />
+			<TitleText>"Y-Coordinate"</TitleText>
+			<Color>SelectedColor( i )</Color>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="627" bottom="219" right="753" />
+		<StaticText>Packing Info*</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="213" bottom="216" right="339" />
+		<StaticText>Packing Demo</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="597" left="627" bottom="621" right="762" />
+		<StaticText>*Center of Container is (0,0)</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>CoordXCircle2</Symbol>
+			<Symbol>CoordYCircle2</Symbol>
+			<Symbol>SelectedColor</Symbol>
+			<Symbol>SolveCirclePacking2</Symbol>
+			<Symbol>CoordXCorner</Symbol>
+			<Symbol>CircleRadius2</Symbol>
+			<Symbol>Graph_SelectedColor</Symbol>
+			<Symbol>CoordYCorner</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>SelectedCircle</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>i_cp</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

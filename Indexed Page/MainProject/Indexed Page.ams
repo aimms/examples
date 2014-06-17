@@ -1,0 +1,163 @@
+## ams_version=1.0
+
+Model Main_template {
+    Set Cities {
+        Index: city;
+        Definition: data { Amsterdam, Berlin, London, Madrid, Paris, Rome };
+    }
+    StringParameter CityNames {
+        IndexDomain: (city);
+        Definition: "FurniFab - " + city + " B.V.";
+    }
+    StringParameter StreetName {
+        IndexDomain: (city);
+        Definition: {
+            data
+            { Amsterdam : "Leidsegracht 21"      ,  Berlin    : "Clausstrasse 1"       ,  London    : "Buiseness street 1284",
+              Madrid    : "Del Sol 25"           ,  Paris     : "Avenue de Lion 33"    ,  Rome      : "Rimini 36"             }
+        }
+    }
+    StringParameter PCPlace {
+        IndexDomain: (city);
+        Definition: {
+            data
+            { Amsterdam : "1007 AB  Amsterdam",  Berlin    : "43990  Berlin"     ,  London    : "12093  London"     ,
+              Madrid    : "19555  Madrid"     ,  Paris     : "23044  Paris"      ,  Rome      : "20821  Rome"        }
+        }
+    }
+    StringParameter Telephone {
+        IndexDomain: (city);
+        Definition: {
+            data
+            { Amsterdam : "Tel: +31 10 234 78 90" ,  Berlin    : "Tel: +49 30 632 45 45" ,  London    : "Tel: +44 181 34 54 19" ,
+              Madrid    : "Tel: +34 1 33 43 28 36",  Paris     : "Tel: +33 1 73 42 68 30",  Rome      : "Tel: +39 6 23 25 27 18" }
+        }
+    }
+    StringParameter Fax {
+        IndexDomain: (city);
+        Definition: {
+            data
+            { Amsterdam : "Fax: +31 10 234 78 80" ,  Berlin    : "Fax: +49 30 632 45 55" ,  London    : "Fax: +44 181 34 54 20" ,
+              Madrid    : "Fax: +34 1 33 43 28 37",  Paris     : "Fax: +33 1 74 23 90 88",  Rome      : "Fax: +39 6 23 25 27 17" }
+        }
+    }
+    ElementParameter ThisCity {
+        Range: Cities;
+    }
+    Set Products {
+        Index: product;
+        Definition: data { A, B, C, D, E };
+    }
+    Parameter AmountProduced {
+        IndexDomain: (city,product);
+        Unit: pcs;
+        Comment: {
+            "data
+            { ( Amsterdam, A ) :  23,  ( Amsterdam, B ) :  75,  ( Amsterdam, C ) :  15,  ( Amsterdam, D ) :  29,  ( Amsterdam, E ) :  40,
+              ( Berlin   , A ) :  92,  ( Berlin   , B ) : 100,  ( Berlin   , C ) :  24,  ( Berlin   , D ) :  20,  ( Berlin   , E ) :  12,
+              ( London   , A ) :  85,  ( London   , B ) : 250,  ( London   , C ) :  32,  ( London   , D ) : 120,  ( London   , E ) :  30,
+              ( Madrid   , A ) : 111,  ( Madrid   , B ) :  30,  ( Madrid   , C ) :  50,  ( Madrid   , D ) :  29,  ( Madrid   , E ) :  80,
+              ( Paris    , A ) :  16,  ( Paris    , B ) :  60,  ( Paris    , C ) :  69,  ( Paris    , D ) :  99,  ( Paris    , E ) : 120,
+              ( Rome     , A ) :  20,  ( Rome     , B ) : 130,  ( Rome     , C ) :  40,  ( Rome     , D ) :  30,  ( Rome     , E ) : 103 }"
+        }
+    }
+    Parameter AmountCity {
+        IndexDomain: (city);
+        Unit: pcs;
+        Definition: sum(product,AmountProduced(city,product));
+    }
+    Parameter RevenueProduct {
+        IndexDomain: (product);
+        Unit: $/pcs;
+        Comment: "data { A : 20,  B : 79,  C : 132,  D : 56,  E : 74 }";
+    }
+    Parameter Revenues {
+        IndexDomain: (city);
+        Unit: $;
+        Definition: sum(product, RevenueProduct(product) * AmountProduced(city,product));
+    }
+    Quantity Money {
+        BaseUnit: $;
+    }
+    Quantity Amount {
+        BaseUnit: pcs;
+    }
+    Parameter AdressVisible {
+        Definition: {
+            if not ThisCity then
+            	1
+            endif
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            ThisCity := first(Cities);
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Section Multiple_Cases_Declaration {
+        ElementParameter TheCase {
+            Range: CurrentCaseSelection;
+            Property: NoSave;
+        }
+        StringParameter CaseShortName {
+            IndexDomain: IndexCases;
+            Definition: {
+                GetCaseBaseName(CaseFileURL(IndexCases), CaseShortName(IndexCases));
+            }
+        }
+        Procedure DataInitialization {
+            Body: {
+                CaseFileURLtoElement("data\\2002 Overview.data", Case1);
+                CaseFileURLtoElement("data\\2003 Overview.data", Case2);
+                CaseFileURLtoElement("data\\2004 Overview.data", Case3);
+                
+                CurrentCaseSelection := Case1;
+                TheCase              := Case1;
+                
+                CaseFileLoad("data\\2002 Overview.data");
+            }
+            ElementParameter Case1 {
+                Range: AllCases;
+            }
+            ElementParameter Case2 {
+                Range: AllCases;
+            }
+            ElementParameter Case3 {
+                Range: AllCases;
+            }
+        }
+        Procedure GetCaseBaseName {
+            Arguments: (path,basename);
+            Body: {
+                fromPos := FindNthString(path,"\\",-1)+1;
+                toPos := FindNthString(path,".data",-1);
+                if (toPos = 0) then
+                	toPos := StringLength(path);
+                else
+                	toPos-=1;
+                endif;
+                
+                basename := SubString(path,fromPos, toPos);
+            }
+            Comment: {
+                "This function determines the \'base\' name of a full path file name.
+                For example, given a case file name  \"c:\\myprojects\\data\\case1.data\" it returns the string \"case1\".
+                This short string is easier to display in a multiple case page object."
+            }
+            StringParameter path {
+                Property: Input;
+            }
+            StringParameter basename {
+                Property: Output;
+            }
+            Parameter fromPos;
+            Parameter toPos;
+        }
+    }
+}

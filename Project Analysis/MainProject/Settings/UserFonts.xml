@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Network Object" FaceName="Arial" PointSize="90" UUID="06BE7B73-2CAA-486D-A602-01D503C1855F" InternalID="1" />
+</UserFonts>

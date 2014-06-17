@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="Problem Description" PageGUID="BD25F234-2DC7-4967-B746-8F89D38169E0" />
+	<Page Name="Input Formulation" PageGUID="AC500DFE-C555-4902-8AE8-91722D740F35" />
+	<Page Name="Model Results" PageGUID="48690315-6696-4AAC-A96A-B6D172B15D6F" />
+	<Page Name="Solutions" PageGUID="2793C61C-C013-42A0-9A31-4384839BB090" />
+	<Page Name="Formulations" PageGUID="FEDC5AFA-7AFE-43B1-9643-61B1E66F6C93" />
+</PageManager>

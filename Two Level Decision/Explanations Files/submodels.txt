@@ -1,0 +1,4 @@
+As a consequence of the production process, the manufacturing companies also produce waste water, which is dumped into a river. Therefore, the plants use filters for waste removal. The government monitors the amount of waste removed and applies a tax and subsidy incentive scheme for controling it. The government also sets a target level for the amount of waste dumped and a budget for the monitoring costs. 
+
+
+On this page the input data is first presented. Then the policy receiving submodels are solved for a fixed taxation level which can be entered by the user. The corresponding subsidy rate is easily computed given the balances between expenses and incomes. The objective of each lower level submodel is to minimize the costs incurred by the corresponding company. The decision variables to be determined are the optimal removal rates for each company. Each lower level submodel is a convex unconstrained program that can be easily solved to global optimality.

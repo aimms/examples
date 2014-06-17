@@ -1,0 +1,14 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+constraint_listing_variable_values 1
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+warning_index_domain_violation off
+* Environment
+Project_Title "AIMMS - Arcs and Nodes"
+Startup_Page "AIMMS Demo"
+Startup_Case "data\Example Data.data"

@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-03-02 08:05:41">
+	<Location top="117" left="124" bottom="387" right="821" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>0C85949E-28CF-4A30-8DF0-12A5C8390841</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ToolBar None="true" />
+	<Background Inherited="true" />
+	<PageObject Type="Scalar">
+		<Location top="60" left="30" bottom="216" right="235" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<Hidden>VALUE := 1 $ (SelectedFlight = '')</Hidden>
+		<TabOrder>1</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("Flight information:")</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("   Description : %s", FlightDescription(SelectedFlight))</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("   Arrival time : %n", ArrivalTime(SelectedFlight))</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>STRING := formatstring("   Departure time : %n", Departuretime(SelectedFlight))</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="60" left="241" bottom="216" right="473" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<Hidden>VALUE := 1 $ (SelectedFlight = '')</Hidden>
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>FlightPossibleOnGateType( SelectedFlight, a )</Identifier>
+			<Permutation>[1,0]</Permutation>
+			<FirstColumn>2</FirstColumn>
+			<HeaderText>"Possible on Gate"</HeaderText>
+			<NumberFormat StandardFormatIndex="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ElementText Index="a">GateTypeDescription( a )</ElementText>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="60" left="479" bottom="216" right="684" />
+		<Hidden>VALUE := 1 $ (SelectedFlight = '')</Hidden>
+		<TabOrder>3</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>ForceFlight( SelectedFlight )</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="ForceFlightOptions">ForceFlightOptionsDescription( ffo )</ElementText>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="108" left="174" bottom="150" right="438" />
+		<Hidden>VALUE := 1 $ (SelectedFlight &lt;&gt; '')</Hidden>
+		<StaticText>No flight selected</StaticText>
+		<Font GUID="74B86C44-4FFF-4589-A0D4-951396586C93" Name="no flights selected" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="30" left="30" bottom="54" right="366" />
+		<StaticText>Information about selected flight</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="228" left="558" bottom="258" right="684" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Close"</Title>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>SelectedFlight</Symbol>
+			<Symbol>a</Symbol>
+			<Symbol>FlightPossibleOnGateType</Symbol>
+			<Symbol>ForceFlightOptionsDescription</Symbol>
+			<Symbol>FlightDescription</Symbol>
+			<Symbol>GateTypeDescription</Symbol>
+			<Symbol>Flights</Symbol>
+			<Symbol>SuperSetFlights</Symbol>
+			<Symbol>ForceFlight</Symbol>
+			<Symbol>ForceFlightOptions</Symbol>
+			<Symbol>DepartureTime</Symbol>
+			<Symbol>ArrivalTime</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

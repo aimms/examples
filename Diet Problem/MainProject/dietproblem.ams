@@ -1,0 +1,164 @@
+## ams_version=1.0
+
+Model Main_DietProblem {
+    Section Model_Section {
+        Set FoodTypes {
+            Index: f;
+        }
+        Set Nutrients {
+            Index: n;
+        }
+        Parameter NutrientValuePerUnit {
+            IndexDomain: (f,n);
+            Unit: UnitNutrients(n);
+        }
+        Parameter MaximumNumberOfServings {
+            IndexDomain: (f);
+        }
+        Parameter MaximumAllowanceOfNutrient {
+            IndexDomain: (n);
+            Text: "Maximum Allowed";
+            Unit: UnitNutrients(n);
+        }
+        Parameter MinimumRequirementOfNutrient {
+            IndexDomain: (n);
+            Text: "Minimum Requirement";
+            Unit: UnitNutrients(n);
+        }
+        Parameter PricePerUnit {
+            IndexDomain: (f);
+            Unit: Hfl;
+        }
+        Parameter WeightOfFoodType {
+            IndexDomain: (f);
+            Unit: g;
+        }
+        Variable TotalWeightOptimalDiet {
+            Unit: g;
+            Definition: Sum[ f, WeightOfFoodType(f) * NumberOfUnitsInMenu(f)];
+        }
+        Variable TotalValueOfNutrientsInOptimalDiet {
+            IndexDomain: (n);
+            Unit: UnitNutrients(n);
+            Definition: Sum[ f, NutrientValuePerUnit(f,n) * NumberOfUnitsInMenu(f)];
+        }
+        Variable NumberOfUnitsInMenu {
+            IndexDomain: (f);
+            Range: {
+                {0..MaximumNumberOfServings(f)}
+            }
+        }
+        Variable TotalCost {
+            Unit: Hfl;
+            Definition: {
+                Sum[ f, PricePerUnit(f) * NumberOfUnitsInMenu(f)];
+            }
+        }
+        Constraint AllowanceConstraint {
+            IndexDomain: n | MaximumAllowanceOfNutrient(n);
+            Unit: UnitNutrients(n);
+            Definition: {
+                Sum[ f, NutrientValuePerUnit(f,n) * NumberOfUnitsInMenu(f)] <= MaximumAllowanceOfNutrient(n);
+            }
+        }
+        Constraint RequirementConstraint {
+            IndexDomain: n | MinimumRequirementOfNutrient(n);
+            Unit: UnitNutrients(n);
+            Definition: {
+                Sum[ f, NutrientValuePerUnit(f,n) * NumberOfUnitsInMenu(f)] >= MinimumRequirementOfNutrient(n);
+            }
+        }
+        MathematicalProgram DietProblem {
+            Objective: TotalCost;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: MIP;
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    Section Quantities_and_Units_Section {
+        DeclarationSection Quantities_and_Units {
+            Quantity SI_Mass {
+                BaseUnit: g;
+                Conversions: {
+                    kg -> g : # -> # * 1000,
+                    oz -> g : # -> # * 283.4952
+                }
+                Comment: "Expresses the value for the amount of matter.";
+            }
+            Quantity SI_Energy {
+                BaseUnit: kcal;
+                Conversions: {
+                    J  -> kcal : # -> # * 0.0002388458966,
+                    kJ -> kcal : # -> # * 0.2388458966
+                }
+                Comment: "Expresses the value for the capacity to do work.";
+            }
+            Quantity Currency {
+                BaseUnit: Euro;
+                Conversions: {
+                    US$ -> Euro : # -> # * 0.9708737863,
+                    Hfl -> Euro : # -> # * 0.4368932039
+                }
+            }
+            UnitParameter UnitNutrients {
+                IndexDomain: (n);
+            }
+            StringParameter DefaultUnits {
+                IndexDomain: n;
+            }
+        }
+    }
+    Section GUI_Section {
+        Set PossibleUnits {
+            Definition: data { g, kg, oz, j, kj, kcal };
+        }
+        Set PossibleUnitsByNutrients {
+            IndexDomain: (n);
+            SubsetOf: PossibleUnits;
+            Definition: {
+                data
+                    { Calories      : { j   , kj  , kcal } ,
+                      Protein       : { g   , kg  , oz   } ,
+                      Fat           : { g   , kg  , oz   } ,
+                      Carbohydrates : { g   , kg  , oz   } } ;
+            }
+        }
+        Assertion CheckUnit {
+            IndexDomain: n;
+            Definition: StringToElement(PossibleUnits,UnitNutrients(n),0) in PossibleUnitsByNutrients(n) OR not UnitNutrients(n);
+            Action: {
+                DialogMessage(FormatString("This unit is not allowed for this value (%e)", n),"Warning");
+                empty UnitNutrients(n)
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            Empty NumberOfUnitsInMenu, TotalCost, TotalValueOfNutrientsInOptimalDiet, TotalWeightOptimalDiet;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+                Solve DietProblem;
+            
+            else
+            
+                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+                CaseFind("Solution",ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

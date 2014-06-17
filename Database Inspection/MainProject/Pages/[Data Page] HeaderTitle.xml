@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-04-07 07:35:03">
+	<Location top="30" left="30" bottom="540" right="600" />
+	<PageEditSize Type="Inherited">
+		<Size Width="570" Height="509" />
+	</PageEditSize>
+	<ProjectUUID>56C93C8B-4356-4C6F-B825-D59C428FA2FD</ProjectUUID>
+	<Title>"[Data Page] HeaderTitle"</Title>
+	<ResizeData>
+		<MainArea Line="FixedFromRight" Value="81">
+			<LeftArea Line="PercentageFromTop" Value="0.436149">
+				<BottomArea Line="FixedFromTop" Value="58" />
+			</LeftArea>
+			<RightArea Line="FixedFromTop" Value="35">
+				<BottomArea Line="FixedFromBottom" Value="106" />
+			</RightArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Button">
+		<Location top="10" left="490" bottom="35" right="560" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Close"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="404" left="490" bottom="429" right="560" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Undo"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>Edit-Undo Last</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="439" left="490" bottom="464" right="525" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\construct.bmp"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="DataPageSpecific">
+				<DoWhat>Reopen</DoWhat>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="439" left="525" bottom="464" right="560" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\totree.bmp"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="DataPageSpecific">
+				<DoWhat>LocationInTree</DoWhat>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="474" left="490" bottom="499" right="525" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\previous.bmp"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="DataPageSpecific">
+				<DoWhat>GotoPreviousSymbol</DoWhat>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="474" left="525" bottom="499" right="560" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\next.bmp"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="DataPageSpecific">
+				<DoWhat>GotoNextSymbol</DoWhat>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Floating Index">
+		<Location top="228" left="6" bottom="253" right="106" />
+		<TabOrder>9</TabOrder>
+		<ObjectUUID>F2304C5E-084F-492C-A656-A45D50C699CB</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" />
+		<Circular>true</Circular>
+		<ClickShowsList>true</ClickShowsList>
+		<BackgroundColor RGB="#ffffff" />
+		<Identifier>di</Identifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="228" left="110" bottom="278" right="476" />
+		<TabOrder>10</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<PopupMenu Default="true" DefaultPopupId="200" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>HeaderTitle( 'DatabaseName' )</Identifier>
+			<IndexLinkage>[F2304C5E-084F-492C-A656-A45D50C699CB]</IndexLinkage>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="285" left="6" bottom="498" right="476" />
+		<TabOrder>13</TabOrder>
+		<PopupMenu Default="true" DefaultPopupId="200" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<Domain>
+			<Identifier>HeaderTitle( di )</Identifier>
+			<IndexLinkage>[F2304C5E-084F-492C-A656-A45D50C699CB]</IndexLinkage>
+			<Index Name="di" />
+			<AllowRowAdd>true</AllowRowAdd>
+			<AllowRowDelete>true</AllowRowDelete>
+			<AllowRowModify>true</AllowRowModify>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>HeaderTitle( di )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<MultiLine>true</MultiLine>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="0" left="246" bottom="15" right="476" />
+		<StaticText>Subset of: AllIdentifiers</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<Location top="15" left="246" bottom="216" right="476" />
+		<TabOrder>8</TabOrder>
+		<UseTabInObject>true</UseTabInObject>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>DisplayIdentifiers( AllIdentifiers )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="0" left="6" bottom="15" right="236" />
+		<StaticText>DisplayIdentifiers</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<Location top="15" left="6" bottom="216" right="236" />
+		<TabOrder>12</TabOrder>
+		<UseTabInObject>true</UseTabInObject>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>DisplayIdentifiers(DisplayIdentifiers)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>AllIdentifiers</Symbol>
+			<Symbol>di</Symbol>
+			<Symbol>HeaderTitle</Symbol>
+			<Symbol>DisplayIdentifiers</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
