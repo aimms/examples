@@ -12,7 +12,7 @@
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
 			<BottomArea Line="FixedFromLeft" Value="200">
-				<LeftArea Line="FixedFromTop" Value="149" />
+				<LeftArea Line="FixedFromTop" Value="204" />
 				<RightArea Line="FixedFromTop" Value="85" />
 			</BottomArea>
 		</MainArea>
@@ -23,7 +23,7 @@
 		<TabOrder>2</TabOrder>
 		<Border Style="None" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<Contents>
-			<Document_URL ID="2" LiteralFileName="true">"description.html"</Document_URL>
+			<Document_URL ID="2" LiteralFileName="true">"app-description.html"</Document_URL>
 		</Contents>
 	</PageObject>
 	<UsedReferences>

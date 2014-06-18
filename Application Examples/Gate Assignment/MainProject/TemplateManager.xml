@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <TemplateManager>
-	<Template Name="Size Template" PageGUID="F572F22A-F5A8-4782-A0BC-1183F3C42D90" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|DF4BD702-D497-4628-9515-7786C77B2802|Size Template">
-		<Template Name="Navigation Template" PageGUID="86223A3C-C5AF-462A-9B02-5A3EEDB3D7BF" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B89CF654-086E-464D-9510-A3411A5F7D7C|Navigation Template">
+	<Template Name="Size Template" PageGUID="F572F22A-F5A8-4782-A0BC-1183F3C42D90" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
+		<Template Name="Navigation Template" PageGUID="86223A3C-C5AF-462A-9B02-5A3EEDB3D7BF" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
 			<Template Name="Progress Template" PageGUID="8959F18B-1452-402F-A34F-13CDEB347132">
 				<Page Name="Progress Column Generation" PageGUID="F1E10D23-A2A5-4F64-85F9-D2625C79EB22" />
 				<Page Name="Progress ILP" PageGUID="BF33F5ED-8AE8-44F7-90BB-3E0ABC102435" />
 			</Template>
-			<Template Name="Background Info Template" PageGUID="D222186B-24BE-4B72-A448-64EAB732A436" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|F8C15E97-6455-47E4-A1DA-546F8F290914|Background Info Template">
+			<Template Name="Background Info Template" PageGUID="D222186B-24BE-4B72-A448-64EAB732A436" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
 				<Page Name="Problem Description Page" PageGUID="897FBB56-0FC7-4D8F-8439-987439B5AC66" />
 			</Template>
 			<Page Name="Details last solve" PageGUID="A4AD1083-40C6-4AE5-92BE-182782A7F901" />
