@@ -1,5 +1,154 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="site-supply content management system, http://www.site-supply.nl/" />
+<base href="http://www.aimms.com/" />
+<title>AIMMS - Examples</title>
+<link rel="canonical" href="http://aimms.github.io/examples" />
+<meta name="description" content="AIMMS GitHub examples." />
+<meta name="keywords" content="AIMMS, Software, Optimization, Mathematical Programming, Modeling Language, Operations Research" />
+<meta name="xcms_id" content="aimms,p000204" />
+<link rel="alternate" type="application/rss+xml" href="http://www.aimms.com/aimms/newsitems/news.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.aimms.com/aimms/aimms-os.xml" title="aimms search" />
+<link rel="shortcut icon" type="image/x-icon" href="http://cdn2.static-cms-content.net/aimms/images/common/favicon.ico?1109012868" />
+<link href="http://fonts.googleapis.com/css?family=Cabin+Condensed:500,700" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/css/aimms3/aimms3.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/css/aimms3/jcycle.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+    var slideText = [];
+    
+    
+    
+    
+    
+//]]></script>
+<script type="text/javascript">
+//<![CDATA[
+  var gSite = 'aimms';
+//]]></script>
+<script type="text/javascript" src="/css/aimms3/style.js"></script>
+<script type="text/javascript" src="http://cdn.static-cms-content.net/js/init.js?1370522970"></script>
+<script type="text/javascript" src="http://cdn.static-cms-content.net/js/support.js?1382019303"></script>
+<script type="text/javascript">
+//<![CDATA[
+ 
+  var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-1290545-1']);
+   _gaq.push(['_setDomainName', 'aimms.com']);
+   _gaq.push(['_setAllowLinker', true]);
+   _gaq.push(['_trackPageview']);
+ 
+  (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ 
+//]]></script><!--
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1290545-1']);
+  _gaq.push(['_gat._anonymizeIp']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);    
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+-->
+<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1290545-1");
+pageTracker._trackPageview();
+</script>
+-->
+
+<script type="text/javascript">
+//<![CDATA[
+xcmsGAtype='gaq'; AddToInitArray(xcmsGoogleAnalytics);
+//]]></script>
+</head>
+<body>
+<div id="header">
+<div class="nine60">
+<div id="topmenu">
+<div class="menu-topmenu-container">
+<p align="right"><a class="xcms_external" href="http://business.aimms.com/" onclick="window.open(this.href, '', ''); return false;">Home</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="/licensing/free-licenses">Trial License</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="xcms_external" href="http://business.aimms.com/about-us/" onclick="window.open(this.href, '', ''); return false;">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp; <a class="xcms_external" href="http://business.aimms.com/contact-us/" onclick="window.open(this.href, '', ''); return false;">Contact Us</a>&nbsp;&nbsp;</p>
+</div>
+</div>
+<div id="search">
+<form method="get" id="searchform" action="/cgi/search.cgi" ><label for="s" class="assistive-text">Search</label> <input type="text" class="field" name="q" id="s" placeholder="Search" /> <input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" /> <input type="hidden" name="site" value="aimms" /></form>
+</div>
+<div id="logo"><a href="/aimms">&nbsp;</a></div>
+<div id="tagline">&nbsp;&nbsp;</div>
+</div>
+</div>
+<div id="mainmenu">
+<div class="nine60">
+<div class="menu-hoofdmenu-container" id="menu">
+<ul id="t000000" class="topmenu"><li class="p000518 pm000517 hassub li-first" id="li-topmenu1"><a class="p000518 pm000517 hassub first" id="topmenu1" href="/aimms" name="topmenu1"><span>AIMMS</span></a></li><li class="p002005 pm002006 hassub odd" id="li-topmenu2"><a class="p002005 pm002006 hassub odd" id="topmenu2" href="/aimms-pro" name="topmenu2"><span>AIMMS PRO</span></a></li><li class="p000481 pm000480 hassub" id="li-topmenu3"><a class="p000481 pm000480 hassub" id="topmenu3" href="/operations-research" name="topmenu3"><span>Operations Research</span></a></li><li class="p001097 pm001096 hassub odd" id="li-topmenu4"><a class="p001097 pm001096 hassub odd" id="topmenu4" href="/academic" name="topmenu4"><span>Academic</span></a></li><li class="p000095 pm000094 hassub" id="li-topmenu5"><a class="p000095 pm000094 hassub" id="topmenu5" href="/licensing" name="topmenu5"><span>Licensing</span></a></li><li class="p000227 pm000226 hassub odd" id="li-topmenu6"><a class="p000227 pm000226 hassub odd" id="topmenu6" href="/community" name="topmenu6"><span>Community</span></a></li><li class="li-current p000204 pm000203 hassub li-last" id="li-topmenu7"><a class="current activecurrent p000204 pm000203 hassub last" id="topmenu7" href="/downloads" name="topmenu7"><span>Downloads</span></a><ul id="m000203" class="submenu submenu7"><li class="p001190 pm001191 hassub li-first"><a class="p001190 pm001191 hassub first" id="submenu1" href="/downloads/aimms" name="submenu1"><span>AIMMS</span></a></li><li class="p001150 odd"><a class="p001150 odd" id="submenu2" href="/downloads/getting-started" name="submenu2"><span>Getting Started</span></a></li><li class="p001001 pm001000 hassub"><a class="p001001 pm001000 hassub" id="submenu3" href="/downloads/manuals" name="submenu3"><span>Manuals</span></a></li><li class="p001029 pm001028 hassub odd"><a class="p001029 pm001028 hassub odd" id="submenu4" href="/downloads/other-references-and-guides" name="submenu4"><span>Other References and Guides</span></a></li><li class="p001022 pm001021 hassub"><a class="p001022 pm001021 hassub" id="submenu5" href="/downloads/tutorials" name="submenu5"><span>Tutorials</span></a></li><li class="p001262 odd"><a class="p001262 odd" id="submenu6" href="/downloads/application-examples" name="submenu6"><span>Application Examples</span></a></li><li class="p001839"><a class="p001839" id="submenu7" href="/downloads/white-papers" name="submenu7"><span>White papers</span></a></li><li class="p002074 odd li-last"><a class="p002074 odd last" id="submenu8" href="/downloads/presentations" name="submenu8"><span>Presentations</span></a></li></ul></li></ul>
+</div>
+</div>
+</div>
+<div class="nine60">
+<div id="submenu">
+<p>Downloads</p>
+<ul><li class="li-current first"><a class="current" href="/downloads">Downloads</a></li><li class=" hassub"><a href="/downloads/aimms"><span>AIMMS</span></a></li><li><a href="/downloads/getting-started"><span>Getting Started</span></a></li><li class=" hassub"><a href="/downloads/manuals"><span>Manuals</span></a></li><li class=" hassub"><a href="/downloads/other-references-and-guides"><span>Other References and Guides</span></a></li><li class=" hassub"><a href="/downloads/tutorials"><span>Tutorials</span></a></li><li><a href="/downloads/application-examples"><span>Application Examples</span></a></li><li><a href="/downloads/white-papers"><span>White papers</span></a></li><li class="last"><a href="/downloads/presentations"><span>Presentations</span></a></li></ul>
+</div>
+<div id="content">
+<div id="tekst">
+
+
+<!--start GitHub examples-->
 <h1>Create CSV File</h1>
 This AIMMS project illustrates the use of the AIMMS API to create a comma separated file containing the data associated with a multi-dimensional identifier.
 
 <h2>Keywords</h2>
-External procedure, AIMMS Programming Interface, API, Comma Separated Value, CSV file
+External procedure, AIMMS Programming Interface, API, Comma Separated Value, CSV file<!--end GitHub examples-->
+
+
+&nbsp;
+<p>&nbsp;</p>
+<!--end--></div>
+</div>
+<div id="rightcol">
+<ul class="widget"><li id="text-2" class="widget widget_text">
+<div class="textwidget">
+<a href="https://github.com/aimms/examples/zipball/master" class="download">Download <strong>ZIP File</strong></a>
+<a href="https://github.com/aimms/examples/tarball/master" class="download">Download <strong>TAR Ball</strong></a>
+<a href="https://github.com/aimms/examples" class="newsletter">View On <strong>GitHub</strong></a>
+<a href="http://business.aimms.com/contact-us/" class="call">Call or Email Us</a>
+</div>
+</li></ul>
+</div>
+</div>
+<div id="footer">
+<div class="nine60">
+<ul><li>COMPANY</li><li><a class="xcms_external" href="http://business.aimms.com/about-us/" onclick="window.open(this.href, '', ''); return false;">About Us</a></li><li><a class="xcms_external" href="http://business.aimms.com/management/" onclick="window.open(this.href, '', ''); return false;">Management</a></li><li><a class="xcms_external" href="http://business.aimms.com/media/" onclick="window.open(this.href, '', ''); return false;">Media</a></li><li><a class="xcms_external" href="http://business.aimms.com/awards/" onclick="window.open(this.href, '', ''); return false;">Awards</a></li><li><a class="xcms_external" href="http://business.aimms.com/careers/" onclick="window.open(this.href, '', ''); return false;">Careers</a></li><li><a href="/other-languages">Other Languages<br /></a></li></ul>
+<ul><li>SERVICES</li><li><a href="/support-services">Support</a></li><li><a href="/consulting-services">Consulting</a></li><li><a href="/workshops">Workshops</a></li><li><a href="/webinars">Webinars</a></li><li><a href="/documentation">Documentation</a></li><li><a href="/knowledge-base">Knowledge Base</a></li><li><a href="/license-requests">License Requests</a><br />
+&nbsp;</li></ul>
+<ul><li>CONTACT US</li><li><a class="xcms_external" href="http://business.aimms.com/contact-us" onclick="window.open(this.href, '', ''); return false;">Contact Us</a></li><li><a class="xcms_external" href="http://business.aimms.com/contact-us/social-media/" onclick="window.open(this.href, '', ''); return false;">Social Media<br /></a></li></ul>
+<ul><li>COPYRIGHT</li><li>2013 AIMMS</li><li><a class="xcms_external" href="http://business.aimms.com/disclaimer/" onclick="window.open(this.href, '', ''); return false;">Disclaimer</a></li><li><a class="xcms_external" href="http://business.aimms.com/privacy-statement/" onclick="window.open(this.href, '', ''); return false;">Privacy Statement<br /></a></li></ul>
+</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+xcmsVCount('aimms', 'p000204');
+//]]></script><noscript>
+<div style="display:none"><img src="/cgi/vcount.cgi?site=aimms&amp;page=p000204" width="1" height="1" alt="" /></div>
+</noscript>
+</body>
+</html>
+
