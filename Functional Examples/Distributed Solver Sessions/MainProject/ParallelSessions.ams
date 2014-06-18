@@ -1,0 +1,494 @@
+## ams_version=1.0
+
+Model Main_Parallel_Sessions {
+    DeclarationSection Input_Data {
+        Set Finals {
+            Index: f;
+            OrderBy: -FinalSize(f);
+        }
+        Set AllRaws {
+            Index: ar;
+            Parameter: CurrentRaw;
+        }
+        Set Raws {
+            SubsetOf: AllRaws;
+            Index: r;
+        }
+        Parameter Demand {
+            IndexDomain: (f);
+        }
+        Parameter RawSize {
+            IndexDomain: (ar);
+        }
+        Parameter FinalSize {
+            IndexDomain: (f);
+        }
+        Parameter RawCost {
+            IndexDomain: (ar);
+            Definition: RawSize(ar);
+        }
+    }
+    DeclarationSection Extended_Cutting_Stock_Model {
+        Parameter MaxGeneratedPatterns {
+            IndexDomain: (ar);
+            InitialData: 0;
+        }
+        Parameter MaxMaxGeneratedPatterns {
+            Definition: max[ ar, MaxGeneratedPatterns(ar) ];
+        }
+        Set CuttingPatterns {
+            SubsetOf: Integers;
+            Index: p;
+            Parameter: LastPattern;
+        }
+        Parameter FinalsInPattern {
+            IndexDomain: (f,p,ar);
+        }
+        Variable RawsCutWithPattern {
+            IndexDomain: (p,ar);
+            Range: {
+                {0..inf}
+            }
+        }
+        Variable CuttingStockObjective {
+            Definition: sum((p,ar), RawCost(ar) * RawsCutWithPattern(p,ar));
+        }
+        Constraint MeetFinalDemand {
+            IndexDomain: (f);
+            Property: ShadowPrice;
+            Definition: sum((p,ar), FinalsInPattern(f,p,ar)*RawsCutWithPattern(p,ar)) >= Demand(f);
+        }
+        Set CuttingStockVariables {
+            SubsetOf: AllVariables;
+            Definition: data { RawsCutWithPattern, CuttingStockObjective };
+        }
+        Set CuttingStockConstraints {
+            SubsetOf: AllConstraints;
+            Definition: data { CuttingStockObjective, MeetFinalDemand };
+        }
+        MathematicalProgram CuttingStockModel {
+            Objective: CuttingStockObjective;
+            Direction: minimize;
+            Constraints: CuttingStockConstraints;
+            Variables: CuttingStockVariables;
+            Type: MIP;
+        }
+    }
+    DeclarationSection Pattern_Generation_Model {
+        Parameter NoNewPatternGenerated {
+            IndexDomain: (ar);
+        }
+        Variable FinalsInNewPattern {
+            IndexDomain: (f,r);
+            Range: {
+                {0..inf}
+            }
+        }
+        Variable ShadowPriceOfNewPattern {
+            Definition: sum((f,r), MeetFinalDemand.ShadowPrice(f)*FinalsInNewPattern(f,r));
+        }
+        Constraint SizeConstraintOnNewPattern {
+            IndexDomain: (r);
+            Definition: sum(f, FinalSize(f)*FinalsInNewPattern(f,r)) <= RawSize(r);
+        }
+        Set PatternGenerationVariables {
+            SubsetOf: AllVariables;
+            Definition: data { FinalsInNewPattern, ShadowPriceOfNewPattern };
+        }
+        Set PatternGenerationConstraints {
+            SubsetOf: AllConstraints;
+            Definition: data { ShadowPriceOfNewPattern, SizeConstraintOnNewPattern };
+        }
+        MathematicalProgram PatternGenerationModel {
+            Objective: ShadowPriceOfNewPattern;
+            Direction: maximize;
+            Constraints: PatternGenerationConstraints;
+            Variables: PatternGenerationVariables;
+            Type: MIP;
+        }
+        Parameter ZeroTolerance {
+            Default: 0.01;
+        }
+    }
+    Section Interface_Support {
+        DeclarationSection Waste_Determination_Declarations {
+            Parameter FinalSurplus {
+                IndexDomain: (f);
+                Definition: max( 0, sum((p,ar), FinalsInPattern(f,p,ar)*RawsCutWithPattern(p,ar)) - Demand(f) );
+            }
+            Parameter NumberOfRaws {
+                IndexDomain: (ar);
+                Definition: sum(p, RawsCutWithPattern(p,ar));
+            }
+            Parameter PatternInUseToCutFinal {
+                IndexDomain: (f,p,ar);
+                Definition: 1 onlyif FinalsInPattern(f,p,ar) and RawsCutWithPattern(p,ar);
+            }
+            Parameter TotalNumberOfRaws {
+                Definition: sum[ ar, NumberOfRaws(ar) ];
+            }
+            Parameter PatternWaste {
+                IndexDomain: (p,ar) | sum[ f, FinalsInPattern(f,p,ar) ];
+                Definition: RawSize(ar) - sum(f, FinalSize(f)*FinalsInPattern(f,p,ar));
+            }
+            Parameter WastedMaterial {
+                IndexDomain: (ar);
+                Definition: sum(p, RawsCutWithPattern(p,ar)*PatternWaste(p,ar));
+            }
+            Parameter UnusedFinalMaterial {
+                Definition: sum(f, FinalSize(f)*(sum((p,ar), FinalsInPattern(f,p,ar)*RawsCutWithPattern(p,ar)) - Demand(f)));
+            }
+        }
+        DeclarationSection Gantt_Chart_Visualization_Declarations {
+            Set Cuts {
+                SubsetOf: Integers;
+                Index: c;
+                Parameter: Cut;
+                Definition: {
+                    { 1 .. 100 }
+                }
+            }
+            Set CutTypes {
+                Index: ct;
+                OrderBy: user;
+                Definition: union(f, ElementCast( CutTypes, f, create: 1 )) + data { 'Waste' };
+            }
+            ElementParameter FinalToType {
+                IndexDomain: (f);
+                Range: CutTypes;
+                Definition: ElementCast( CutTypes, f );
+            }
+            Parameter CutDomain {
+                IndexDomain: (p,ar,c,ct);
+            }
+            Parameter CutStart {
+                IndexDomain: (p,ar,c);
+            }
+            Parameter CutLength {
+                IndexDomain: (p,ar,c);
+            }
+        }
+        Procedure VisualizePatterns {
+            Body: {
+                Empty CutDomain, CutStart, CutLength;
+                
+                for ( ar,p ) do
+                    Cut := 1;
+                
+                    for ( f | FinalsInPattern(f,p,ar) ) do
+                        CutCount := 1;
+                        while ( CutCount <= FinalsInPattern(f,p,ar) ) do
+                            CutDomain(p,ar,Cut,FinalToType(f)) := 1;
+                            CutStart(p,ar,Cut)  := CutStart(p,ar,Cut-1) + CutLength(p,ar,Cut-1);
+                            CutLength(p,ar,Cut) := FinalSize(f);
+                            Cut      += 1;
+                            CutCount += 1;
+                        endwhile;
+                    endfor;
+                
+                    if ( Exists[ f | FinalsInPattern(f,p,ar) ] and
+                         RawSize(ar) > CutStart(p,ar,Cut-1) + CutLength(p,ar,Cut-1) ) then
+                        CutDomain(p,ar,Cut,'Waste') := 1;
+                        CutStart(p,ar,Cut)  := CutStart(p,ar,Cut-1) + CutLength(p,ar,Cut-1);
+                        CutLength(p,ar,Cut) := RawSize(ar) - CutStart(p,ar,Cut);
+                    endif;
+                endfor;
+            }
+            Parameter CutCount;
+        }
+        DeclarationSection Pattern_Counting_Declarations {
+            Parameter PatternCount {
+                IndexDomain: (ar);
+            }
+            StringParameter CSCountDllName {
+                Definition: {
+                    if AimmsStringConstants('Architecture') = 'x86' then
+                            "CSCount.dll"
+                    else
+                            "CSCount64.dll"
+                    endif
+                }
+            }
+        }
+        ExternalProcedure CountPatterns {
+            Arguments: (size,sizes,pcount);
+            DllName: CSCountDllName;
+            BodyCall: {
+                CountPatterns(
+                   card : Finals,
+                   scalar integer : size,
+                   array integer : sizes,
+                   scalar integer : pcount
+                 )
+            }
+            Parameter size {
+                Property: Input;
+            }
+            Parameter sizes {
+                IndexDomain: f;
+                Property: Input;
+            }
+            Parameter pcount {
+                Property: Output;
+            }
+        }
+        DeclarationSection Auxiliary_Declarations {
+            Parameter LoopIterationCounter;
+            File ExecutionInfo {
+                Name: "ExecutionInformation.put";
+                Device: Disk;
+            }
+        }
+    }
+    Section GMP_Support {
+        ElementParameter GMPCuttingStockModel {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+        ElementParameter GMPPatternGenerationModel {
+            IndexDomain: (ar);
+            Range: AllGeneratedMathematicalPrograms;
+        }
+        ElementParameter GMP_PGM_SolverSession {
+            IndexDomain: (ar);
+            Range: AllSolverSessions;
+        }
+        ElementParameter GMP_PGM_ExecStatus {
+            IndexDomain: (ar);
+            Range: AllExecutionStatuses;
+        }
+        ElementParameter GMP_PGM_ProgrCateg {
+            IndexDomain: (ar);
+            Range: AllProgressCategories;
+        }
+        Procedure InitializeGMPs {
+            Body: {
+                
+                GMPCuttingStockModel :=
+                    GMP::Instance::Generate( CuttingStockModel, "GMP Cutting Stock Model" );
+                
+                for (ar) do
+                    Raws := ar;
+                
+                    GMPPatternGenerationModel(ar) :=
+                        GMP::Instance::Generate( PatternGenerationModel,
+                                                 FormatString("GMP Pattern Generation Model '%e'", ar) );
+                
+                    GMP_PGM_SolverSession(ar) :=
+                        GMP::Instance::CreateSolverSession ( GMPPatternGenerationModel(ar), Solver: 'XA 15' );
+                
+                    GMP_PGM_ExecStatus(ar) := GMP::SolverSession::ExecutionStatus( GMP_PGM_SolverSession(ar) );
+                
+                    display GMP_PGM_ExecStatus(ar);
+                
+                    GMP_PGM_ProgrCateg(ar) :=  GMP::SolverSession::CreateProgressCategory( GMP_PGM_SolverSession(ar) );
+                
+                endfor;
+            }
+        }
+    }
+    Procedure SolveModelSequential {
+        Body: {
+            for ar do
+              if GMP_PGM_ProgrCateg(ar) <> ''
+                 then
+                   GMP::ProgressWindow::DeleteCategory( GMP_PGM_ProgrCateg(ar) )
+              endif;
+            endfor;
+            
+            ShowProgressWindow;
+            
+            /*
+             * Generate the initial patterns by simply filling up a raw with as much
+             * finals of one size as possible
+             */
+            empty FinalsInPattern;
+            MaxGeneratedPatterns(ar)  := Card(Finals);
+            CuttingPatterns           := { 1 .. MaxMaxGeneratedPatterns };
+            FinalsInPattern((f,p,ar) | ord(f) = ord(p)) := Trunc( RawSize(ar) / FinalSize(f) );
+            
+            /*
+             * Solve the relaxed mip and generate new patterns until no
+             * improved patterns can be found anymore
+             */
+            
+            repeat
+               solve CuttingStockModel where type := rmip;
+            
+               for (ar) do
+                   Raws := ar;
+                   solve PatternGenerationModel;
+                   if ( ShadowPriceOfNewPattern <= RawCost(ar) + ZeroTolerance ) then
+                       NoNewPatternGenerated(ar) := 1;
+                   else
+                       NoNewPatternGenerated(ar) := 0;
+                       MaxGeneratedPatterns(ar) += 1;
+                       CuttingPatterns          += MaxGeneratedPatterns(ar);
+                       FinalsInPattern(f,MaxGeneratedPatterns(ar),ar) := FinalsInNewPattern(f,ar);
+                   endif;
+               endfor;
+            
+               break when forall( ar, NoNewPatternGenerated(ar) );
+            
+            endrepeat;
+            
+            /*
+             * Finally solve the full MIP model using all the generated patterns, by
+             * specifying the absolute optimality tolerance to 0.99 we indicate that
+             * the objective function only assumes integer values, in case a solver
+             * does not discover this fact itself.
+             */
+            solve CuttingStockModel where MIP_absolute_optimality_tolerance := 0.99;
+            
+            for (ar) do
+                CountPatterns(RawSize(ar), FinalSize, PatternCount(ar));
+            endfor;
+            VisualizePatterns;
+        }
+    }
+    Procedure SolveModelParallel {
+        Body: {
+            for ar do
+              if GMP_PGM_ProgrCateg(ar) <> ''
+                 then
+                   GMP::ProgressWindow::DeleteCategory( GMP_PGM_ProgrCateg(ar) )
+              endif;
+            endfor;
+            
+            ShowProgressWindow;
+            
+            put ExecutionInfo;
+            
+            /*
+             * Generate the initial patterns by simply filling up a raw with as much finals of one size as possible
+             */
+            
+            empty FinalsInPattern;
+            MaxGeneratedPatterns(ar)  := Card(Finals);
+            CuttingPatterns           := { 1 .. MaxMaxGeneratedPatterns };
+            FinalsInPattern((f,p,ar) | ord(f) = ord(p)) := Trunc( RawSize(ar) / FinalSize(f) );
+            NoNewPatternGenerated(ar) := 0;
+            
+            InitializeGMPs;
+            
+            /*
+             * Solve the relaxed mip and generate new patterns until no improved patterns can be found anymore
+             */
+            
+            GMP::Instance::SetMathematicalProgrammingType( GMPCuttingStockModel, 'rmip' );
+            
+            display "BEGIN COLUMN GENERATION LOOP"," ";
+            
+            LoopIterationCounter := 0;
+            
+            repeat
+            
+               LoopIterationCounter := LoopIterationCounter + 1;
+            
+               display "-------------------------------------------------";
+               display LoopIterationCounter;
+               display "-------------------------------------------------";
+            
+               GMP::Instance::Solve( GMPCuttingStockModel );
+            
+               display "Solved Cutting Stock MASTER Problem"," ";
+               display "Start solving sub-problems in parallel";
+            
+               for (ar) do
+                   Raws := ar;
+            
+                   for (f) do
+                       GMP::Coefficient::Set(GMPPatternGenerationModel(ar),ShadowPriceOfNewPattern,FinalsInNewPattern(f,ar),MeetFinalDemand.ShadowPrice(f));
+                   endfor;
+               endfor;
+            
+               for (ar) do
+                    Raws := ar;
+                    display NoNewPatternGenerated(ar);
+            
+                    if ( not NoNewPatternGenerated(ar) )
+                       then
+                         GMP::SolverSession::AsynchronousExecute( GMP_PGM_SolverSession(ar) );
+                         GMP_PGM_ExecStatus(ar) := GMP::SolverSession::ExecutionStatus( GMP_PGM_SolverSession(ar) );
+                       display GMP_PGM_ExecStatus(ar);
+                    endif;
+                endfor;
+            
+                GMP::SolverSession::WaitForCompletion( AllSolverSessions );
+            
+                display "Solved Pattern Generation SUBPROBLEM(S)"," ";
+            
+                for (ar) do
+                    Raws := ar;
+            
+                    if ( not NoNewPatternGenerated(ar) )
+                       then
+                         GMP_PGM_ExecStatus(ar) := GMP::SolverSession::ExecutionStatus( GMP_PGM_SolverSession(ar) );
+                         display GMP_PGM_ExecStatus(ar);
+                         GMP::Solution::RetrieveFromSolverSession( GMP_PGM_SolverSession(ar), 1 );
+                         GMP::Solution::SendToModel(GMPPatternGenerationModel(ar), 1);
+                    endif;
+                endfor;
+            
+               for (ar) do
+                    Raws := ar;
+            
+                    if ( ShadowPriceOfNewPattern <= RawCost(ar) + ZeroTolerance )
+                      then
+                           NoNewPatternGenerated(ar) := 1;
+                      else
+                           NoNewPatternGenerated(ar) := 0;
+                           MaxGeneratedPatterns(ar) += 1;
+                           CuttingPatterns          += MaxGeneratedPatterns(ar);
+                           FinalsInPattern(f,MaxGeneratedPatterns(ar),ar) := FinalsInNewPattern(f,ar);
+                           LastPattern := MaxGeneratedPatterns(ar);
+                           GMP::Column::Add( GMPCuttingStockModel, RawsCutWithPattern(LastPattern,ar) );
+                           for (f | FinalsInNewPattern(f,ar)) do
+                              GMP::Coefficient::Set(GMPCuttingStockModel,MeetFinalDemand(f),RawsCutWithPattern(LastPattern,ar),FinalsInNewPattern(f,ar));
+                           endfor;
+                           GMP::Coefficient::Set(GMPCuttingStockModel,CuttingStockObjective,RawsCutWithPattern(LastPattern,ar),RawCost(ar));
+                           FinalsInPattern(f,LastPattern,ar) := FinalsInNewPattern(f,ar);
+                    endif;
+               endfor;
+            
+               break when forall( ar, NoNewPatternGenerated(ar) );
+            
+            endrepeat;
+            
+            display "END COLUMN GENERATION LOOP";
+            
+            /*
+             * Finally solve the full MIP model using all the generated patterns, by
+             * specifying the absolute optimality tolerance to 0.99 we indicate that
+             * the objective function only assumes integer values, in case a solver
+             * does not discover this fact itself.
+             */
+            
+            GMP::Instance::SetMathematicalProgrammingType( GMPCuttingStockModel, 'mip' );
+            option MIP_absolute_optimality_tolerance := 0.99;
+            GMP::Instance::Solve( GMPCuttingStockModel );
+            
+            for (ar) do
+                CountPatterns(RawSize(ar), FinalSize, PatternCount(ar));
+            endfor;
+            VisualizePatterns;
+            
+            putclose;
+        }
+    }
+    Procedure ShowExecutionInfo {
+        Body: {
+            FileView("ExecutionInformation.put");
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            read from file "data.txt";
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

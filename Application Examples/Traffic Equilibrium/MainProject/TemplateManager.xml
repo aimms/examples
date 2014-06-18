@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="E8F9DD7E-B227-4147-8811-731B572C49BC" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|9481741B-7BAC-4286-B7CE-670EE6E912B1|Size Template">
+		<Template Name="Navigation Template" PageGUID="D4751583-4C6A-47AF-BB0B-1451DCAAAD05" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3AB5169B-A114-4C18-A342-DF45729BEE86|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="08D13C19-3F18-447D-B068-2503B4B71C26" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|F8B51232-DC14-414E-82DC-7722624FFFED|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="CF963E05-08C6-4823-8904-75C1683E92BE" />
+			</Template>
+			<Page Name="Single Results" PageGUID="3F78F807-8A34-4A02-A8EC-AA107B737964" />
+			<Page Name="Compare Results" PageGUID="B5FA77F0-742B-4330-944B-6E52E8A705B2" />
+		</Template>
+	</Template>
+</TemplateManager>

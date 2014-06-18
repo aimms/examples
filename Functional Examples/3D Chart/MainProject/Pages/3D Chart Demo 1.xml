@@ -1,0 +1,529 @@
+<?xml version="1.0"?>
+<Page Version="3130" TimeStamp="2014-03-11 15:11:15">
+	<Location top="22" left="4" bottom="1077" right="1594" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>3D1CBC88-F0BA-4206-8AC8-7864B594850E</ProjectUUID>
+	<Title>"Parabolic Curve"</Title>
+	<TemplatesTabOrderPosition>7</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="283" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromRight" Value="200">
+						<RightArea Line="FixedFromBottom" Value="142">
+							<TopArea Line="FixedFromTop" Value="288" />
+						</RightArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="47EBF9C7-3AF6-4B2F-B985-D334325E1A4B" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Slider">
+		<Location top="225" left="579" bottom="258" right="762" />
+		<TabOrder>8</TabOrder>
+		<Border Style="InShadow" Width="1" />
+		<Display>
+			<Change_properties>
+				<Large_incr_PgUp_PgDn_keys ID="1007">5</Large_incr_PgUp_PgDn_keys>
+				<Update_identifier_continuously ID="1008">0</Update_identifier_continuously>
+			</Change_properties>
+		</Display>
+		<Contents>
+			<Minimum_value ID="2001">1</Minimum_value>
+			<Maximum_value ID="2002">5</Maximum_value>
+			<Identifier ID="2003">MaxSubPointsInput</Identifier>
+		</Contents>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="195" left="732" bottom="222" right="762" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>MaxSubPoints</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Maximum X and Y-axis values"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="3D Chart">
+		<Location top="189" left="207" bottom="615" right="567" />
+		<TabOrder>3</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="InShadow" Width="2" />
+		<X_Axis>
+			<Domain ID="1001">si</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="1014">5</Show_every_n_th_label>
+			</Annotation>
+			<Gridlines>
+				<Show_on_XY_plane ID="1004">1</Show_on_XY_plane>
+				<Show_on_XZ_plane ID="1005">1</Show_on_XZ_plane>
+				<Style>
+					<Color ID="1007">RGB&lt;128,128,0&gt;</Color>
+					<Pattern ID="1008">"Solid"</Pattern>
+					<Width ID="1009">1</Width>
+				</Style>
+			</Gridlines>
+			<Misc_settings>
+				<Title ID="1011">"X-Axis"</Title>
+				<Hide_axis ID="1002">0</Hide_axis>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Domain ID="2001">sj</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="2014">2</Show_every_n_th_label>
+				<Number_of_first_label_shown ID="2013">4</Number_of_first_label_shown>
+			</Annotation>
+			<Gridlines>
+				<Show_on_XY_plane ID="2003">1</Show_on_XY_plane>
+				<Show_on_YZ_plane ID="2004">1</Show_on_YZ_plane>
+				<Style>
+					<Color ID="2006">RGB&lt;255,128,64&gt;</Color>
+					<Pattern ID="2007">"ShortDash"</Pattern>
+					<Width ID="2008">1</Width>
+				</Style>
+			</Gridlines>
+			<Misc_settings>
+				<Title ID="2010">"Y-Axis"</Title>
+			</Misc_settings>
+		</Y_Axis>
+		<Z_Axis>
+			<Identifier>
+				<Identifier_value ID="3002">PointValue( si, sj )</Identifier_value>
+			</Identifier>
+			<Gridlines>
+				<Show_on_XZ_plane ID="3004">1</Show_on_XZ_plane>
+				<Show_on_YZ_plane ID="3005">1</Show_on_YZ_plane>
+				<Style>
+					<Color ID="3007">RGB&lt;168,237,148&gt;</Color>
+					<Width ID="3009">2</Width>
+				</Style>
+			</Gridlines>
+			<Misc_settings>
+				<Title ID="3012">"Z-Axis"</Title>
+			</Misc_settings>
+		</Z_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="5003">"Background yellow"</Background_color>
+			</Surrounding_area>
+			<Chart_area>
+				<Border_type>
+					<Width ID="5017">2</Width>
+				</Border_type>
+				<Margins>
+					<Left ID="5073">10</Left>
+					<Right ID="5074">10</Right>
+					<Top ID="5075">10</Top>
+					<Bottom ID="5076">10</Bottom>
+				</Margins>
+			</Chart_area>
+			<Plot_area>
+				<Background_color ID="5055">RGB&lt;225,225,225&gt;</Background_color>
+				<Floor>
+					<Zoned ID="5057">1</Zoned>
+				</Floor>
+			</Plot_area>
+			<View_3D_properties>
+				<X_rotation ID="5020">XRotation</X_rotation>
+				<Y_rotation ID="5021">YRotation</Y_rotation>
+				<Z_rotation ID="5022">ZRotation</Z_rotation>
+			</View_3D_properties>
+			<Misc_display_settings>
+				<Font_rotation ID="5025">"2D"</Font_rotation>
+				<Preview_method ID="5026">"Full"</Preview_method>
+				<Click_label>
+					<Hide_value_label_on_click ID="5065">1</Hide_value_label_on_click>
+				</Click_label>
+			</Misc_display_settings>
+			<Chart_style>
+				<Chart_type ID="5028">"Surface"</Chart_type>
+				<Is_transparent ID="5030">0</Is_transparent>
+				<Is_meshed>
+					<Meshed ID="5032">ChartStyleVal( 'Is Meshed' )</Meshed>
+				</Is_meshed>
+				<Is_shaded>
+					<Shaded ID="5036">ChartStyleVal( 'Is Shaded' )</Shaded>
+				</Is_shaded>
+				<Is_contoured>
+					<Contoured ID="5040">ChartStyleVal( 'Is Contoured' )</Contoured>
+					<Values ID="5042">ContourLevel( c )</Values>
+					<Styles>
+						<Fill>
+							<Low_value_color ID="5069">ContourLowerColor</Low_value_color>
+							<High_value_color ID="5070">ContourUpperColor</High_value_color>
+						</Fill>
+					</Styles>
+				</Is_contoured>
+				<Is_zoned>
+					<Zoned ID="5051">ChartStyleVal( 'Is Zoned' )</Zoned>
+					<Zoning_method ID="5052">"Contours"</Zoning_method>
+				</Is_zoned>
+			</Chart_style>
+		</Display>
+		<Legend>
+			<Show ID="6001">"Show"</Show>
+			<Title_text ID="6002">"Legend"</Title_text>
+			<Labels ID="6003">ContourLabel( c )</Labels>
+			<Font ExtraInfo="3D4F8FDE-28E6-4338-998E-C89108819645" ID="6004">"Legend"</Font>
+			<Border_type>
+				<Width ID="6013">5</Width>
+			</Border_type>
+			<Misc_display_settings>
+				<Anchor ID="6015">"South"</Anchor>
+				<Distribution_range ID="6017">"All"</Distribution_range>
+				<Type ID="6018">"Stepped"</Type>
+			</Misc_display_settings>
+		</Legend>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="360" left="15" bottom="384" right="186" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>ContourLowerColor</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="408" left="15" bottom="432" right="186" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor>
+			<UserColor GUID="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>ContourUpperColor</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="342" left="15" bottom="360" right="189" />
+		<StaticText>Contour Lower Color</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="582" bottom="231" right="720" />
+		<StaticText>Maximum X and Y-axis values</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="390" left="15" bottom="408" right="188" />
+		<StaticText>Contour Upper Color</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="456" left="15" bottom="546" right="183" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>ChartStyleVal( cs )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="438" left="15" bottom="456" right="189" />
+		<StaticText>Chart Style</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="558" left="15" bottom="582" right="183" />
+		<TabOrder>16</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Reposition The Chart"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>Reposition3DChart</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Slider">
+		<Location top="294" left="579" bottom="327" right="762" />
+		<TabOrder>10</TabOrder>
+		<Border Style="InShadow" Width="1" />
+		<Display>
+			<Tick_properties>
+				<Tick_distance ID="1003">15</Tick_distance>
+			</Tick_properties>
+			<Change_properties>
+				<Small_incr_arrow_keys ID="1006">10</Small_incr_arrow_keys>
+				<Large_incr_PgUp_PgDn_keys ID="1007">45</Large_incr_PgUp_PgDn_keys>
+				<Update_identifier_continuously ID="1008">0</Update_identifier_continuously>
+			</Change_properties>
+		</Display>
+		<Contents>
+			<Minimum_value ID="2001">0</Minimum_value>
+			<Maximum_value ID="2002">360</Maximum_value>
+			<Identifier ID="2003">XRotation</Identifier>
+		</Contents>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="264" left="732" bottom="291" right="762" />
+		<TabOrder>11</TabOrder>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>XRotation</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="270" left="579" bottom="288" right="657" />
+		<StaticText>X-Rotation</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="744" left="732" bottom="762" right="936" />
+		<StaticText>X-axis Rotation</StaticText>
+		<Font GUID="A731F235-F716-4F9F-8650-54E3F3EC9D54" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="486" left="579" bottom="615" right="765" />
+		<StaticText>The graph can be rotated by pressing the left and right mouse keys simultaneously and dragging it, or by specifying its X-rotation, Y-rotation and Z-rotation properties.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Slider">
+		<Location top="363" left="579" bottom="396" right="762" />
+		<TabOrder>12</TabOrder>
+		<Border Style="InShadow" Width="1" />
+		<Display>
+			<Tick_properties>
+				<Tick_distance ID="1003">15</Tick_distance>
+			</Tick_properties>
+			<Change_properties>
+				<Small_incr_arrow_keys ID="1006">10</Small_incr_arrow_keys>
+				<Large_incr_PgUp_PgDn_keys ID="1007">45</Large_incr_PgUp_PgDn_keys>
+				<Update_identifier_continuously ID="1008">0</Update_identifier_continuously>
+			</Change_properties>
+		</Display>
+		<Contents>
+			<Minimum_value ID="2001">0</Minimum_value>
+			<Maximum_value ID="2002">360</Maximum_value>
+			<Identifier ID="2003">YRotation</Identifier>
+		</Contents>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="333" left="732" bottom="360" right="762" />
+		<TabOrder>13</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>YRotation</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="339" left="579" bottom="357" right="657" />
+		<StaticText>Y-Rotation</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Slider">
+		<Location top="432" left="579" bottom="465" right="762" />
+		<TabOrder>14</TabOrder>
+		<Border Style="InShadow" Width="1" />
+		<Display>
+			<Tick_properties>
+				<Tick_distance ID="1003">15</Tick_distance>
+			</Tick_properties>
+			<Change_properties>
+				<Small_incr_arrow_keys ID="1006">10</Small_incr_arrow_keys>
+				<Large_incr_PgUp_PgDn_keys ID="1007">45</Large_incr_PgUp_PgDn_keys>
+				<Update_identifier_continuously ID="1008">0</Update_identifier_continuously>
+			</Change_properties>
+		</Display>
+		<Contents>
+			<Minimum_value ID="2001">0</Minimum_value>
+			<Maximum_value ID="2002">360</Maximum_value>
+			<Identifier ID="2003">ZRotation</Identifier>
+		</Contents>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="402" left="732" bottom="429" right="762" />
+		<TabOrder>15</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ZRotation</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="405" left="579" bottom="423" right="657" />
+		<StaticText>Z-Rotation</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>1</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="312" left="6" bottom="336" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="315" left="18" bottom="333" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="216" bottom="177" right="384" />
+		<StaticText>X^2 + Y^2</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="21" bottom="207" right="189" />
+		<StaticText>Membrane Height</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="21" bottom="237" right="189" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ContourUpperColor</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>MaxSubPoints</Symbol>
+			<Symbol>cs</Symbol>
+			<Symbol>ZRotation</Symbol>
+			<Symbol>si</Symbol>
+			<Symbol>sj</Symbol>
+			<Symbol>ContourLabel</Symbol>
+			<Symbol>AllColors</Symbol>
+			<Symbol>ContourLevel</Symbol>
+			<Symbol>YRotation</Symbol>
+			<Symbol>PointValue</Symbol>
+			<Symbol>Reposition3DChart</Symbol>
+			<Symbol>ChartStyleVal</Symbol>
+			<Symbol>ContourLowerColor</Symbol>
+			<Symbol>XRotation</Symbol>
+			<Symbol>MaxSubPointsInput</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

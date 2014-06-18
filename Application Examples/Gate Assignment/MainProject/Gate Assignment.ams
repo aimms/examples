@@ -1,0 +1,1746 @@
+## ams_version=1.0
+
+Model Main_Gate_Assignment_in_AIMMS {
+    Section Input_Section {
+        Function CostIdleTime {
+            Arguments: (time);
+            Range: nonnegative;
+            Body: {
+                CostIdleTime := 1000*(arctan(0.0001*(-time)) + 3.1415/2) ;
+            }
+            Comment: {
+                "A way to value the idle time between two consecutive aircraft.
+                
+                Short idle times get high penalties, while longer idle times get lower cost.
+                
+                Furthermore, the rate of descend of the cost as a function of the idle time decreases when the idle time itself increases."
+            }
+            Parameter time {
+                Property: Input;
+                Comment: "The argument for which we have to give the value";
+            }
+        }
+        DeclarationSection Gate_related_declarations {
+            Set GateTypes {
+                Index: a;
+                Comment: "The set of all the gate types that we have";
+            }
+            Parameter NumberOfGatesOfType {
+                IndexDomain: (a);
+                Comment: "The number of physical gates that are available for this particular gate type";
+            }
+            StringParameter GateTypeDescription {
+                IndexDomain: (a);
+                Comment: "A more human friendly description of the gate type";
+            }
+        }
+        DeclarationSection Flight_related_declarations {
+            Set SuperSetFlights {
+                Index: ss_flight, ss_flight1, ss_flight2;
+                OrderBy: ArrivalTime(ss_flight1);
+                Comment: {
+                    "The super set of all flights. This means the set of all actual flights, combined with the two virtual flights \'s\' and \'t\' that are used
+                    for solving the pricing problems."
+                }
+            }
+            Set Flights {
+                SubsetOf: SuperSetFlights;
+                Index: flight, flight1, flight2, flight3, disable_flight;
+                OrderBy: ArrivalTime(ss_flight1);
+                Definition: {
+                    { ss_flight | ss_flight <> 's' and ss_flight <> 't' }
+                }
+                Comment: "All actual flights (i.e. not the two virtual flights \'s\' and \'t\' that are used for solving the pricing problem";
+            }
+            Parameter ArrivalTime {
+                IndexDomain: (ss_flight1);
+                Range: integer;
+                Comment: "The arrival time for each flight";
+            }
+            Parameter DepartureTime {
+                IndexDomain: (ss_flight1);
+                Range: integer;
+                Comment: "the departure time for each flight";
+            }
+            Parameter GroundTime {
+                IndexDomain: (ss_flight1);
+                Definition: DepartureTime(ss_flight1) - ArrivalTime(ss_flight1);
+                Comment: "The ground time of a flight, i.e. the length of the duration it is standing at the gate";
+            }
+            StringParameter FlightDescription {
+                IndexDomain: (flight);
+                Comment: "A human-friendly description of the flight that is used to display flight details to the end-user";
+            }
+            Parameter FlightsAreConflicting {
+                IndexDomain: (flight,flight1);
+                Definition: {
+                    1 $ ( (flight<>flight1) and  (     ((ArrivalTime(flight1) >= ArrivalTime(flight)) and (ArrivalTime(flight1) <= DepartureTime(flight)))
+                    		      or ((ArrivalTime(flight) >= ArrivalTime(flight1)) and (ArrivalTime(flight) <= DepartureTime(flight1)))
+                    		    )
+                        )
+                }
+                Comment: {
+                    "Convenience parameter that is used to determine whether two flights are conflicting in time (i.e.
+                    that they cannot be assigned to the same gateplan, because they would be at the same time at the same
+                    place then)."
+                }
+            }
+        }
+        DeclarationSection combination_related_declarations {
+            Parameter FlightPossibleOnGateType {
+                IndexDomain: (ss_flight,a);
+                Range: binary;
+            }
+            Parameter FlightCombinationPossible {
+                IndexDomain: (ss_flight1,ss_flight2);
+                Range: binary;
+            }
+        }
+    }
+    Section Master_Problem_Model_Section {
+        DeclarationSection Flight_related_Parameters_and_Sets {
+            Set ForceFlightOptions {
+                Index: ffo;
+                Definition: data { 'MustAssign', 'Free', 'MustUnassign' };
+                Comment: {
+                    "The set of options related to forced (un) assignment of a flight:
+                     * MustAssign: The flight must be assigned and cannot be left unassigned
+                     * MustUnassign: The flight must be kept on the unassigned list
+                     * Free: The solver will try to assign the flight, but will leave it unassigned in case it cannot place it."
+                }
+            }
+            StringParameter ForceFlightOptionsDescription {
+                IndexDomain: ffo;
+                Definition: {
+                    data
+                    { MustAssign   : "Flight must be assigned"       ,  Free         : "Try to assign flight"          ,
+                      MustUnassign : "Flight must be left unassigned" }
+                }
+                Comment: "Human friendly description of the different forced (un) assignment options for a flight";
+            }
+            ElementParameter ForceFlight {
+                IndexDomain: (flight);
+                Range: ForceFlightOptions;
+                Default: 'Free';
+                Comment: "Forced (un) assignment option for each flight";
+            }
+            Set UnassginedFlights {
+                SubsetOf: Flights;
+                Index: unassigned_flight1, unassigned_flight2;
+                OrderBy: arrivalTime(flight);
+                Definition: {
+                    { flight | FlightIsUnAssigned(flight) }
+                }
+                Comment: "The set of flights that currently is unassigned";
+            }
+            Parameter UnassignedCost {
+                IndexDomain: (flight);
+                Definition: 1000000;
+                Comment: "the cost for having a flight being left unassigned";
+            }
+        }
+        DeclarationSection Gateplan_related_parameters_and_sets {
+            Set Gateplans_Root {
+                Index: root_i, root_i2;
+                Comment: "Superset of all gateplans, both the ones active in the model, as well as the ones additional generated for the columnpool";
+            }
+            Set Gateplans {
+                SubsetOf: Gateplans_Root;
+                Index: i, i2;
+                Comment: "The set of gateplans that is currently in the model";
+            }
+            Set ColumnPool {
+                SubsetOf: Gateplans_Root;
+                Index: iColumnPool;
+                Comment: "the set of gateplans that has been created additionally, to be added to the model when solving the resulting ILP";
+            }
+            Set SelectedGateplans {
+                SubsetOf: Gateplans;
+                Index: si, si1, si2;
+                OrderBy: GateplanTypeNumber(si);
+                Definition: {
+                    { root_i | SelectGateplan(root_i) }
+                }
+                Comment: {
+                    "The Gateplans that are currently selected as the active gateplans by the solver.
+                    
+                    By using the GateplanTypeNumber for the order by attribute, we group the gateplans within this set nicely per type of gate."
+                }
+            }
+            Parameter GateplanTypeNumber {
+                IndexDomain: (root_i);
+                Definition: ord( first(a | GateplanIsOfType(root_i,a) ) );
+                Comment: {
+                    "The ordinal number of the type of gate that a gateplan is for. This can be used in the GUI to
+                    group the gateplans for the same type of gate together."
+                }
+            }
+            ElementParameter NewGateplan {
+                Range: Gateplans_Root;
+                Comment: "Element parameter that is set and used in procedures to refer to a specific (new) Gateplan";
+            }
+            Parameter savedReducedCosts {
+                IndexDomain: (root_i);
+                Comment: "Saved reduced cost as it was for each of the gateplans.";
+            }
+            StringParameter GateplanTypeDescription {
+                IndexDomain: (root_i);
+                Definition: GateTypeDescription(  first(a | GateplanIsOfType(root_i,a)) );
+                Comment: "Human-friendly description of the type of gate that a gateplan is for.";
+            }
+            Parameter NumberOfGateplans {
+                Comment: "The total number of gateplans that currently is in the model";
+            }
+            Parameter GateplanIsOfType {
+                IndexDomain: (root_i,a);
+                Range: binary;
+                Comment: "Binary variable that is used to denote whether a given gateplan is of a certain type or not";
+            }
+            Parameter FlightInGateplan {
+                IndexDomain: (flight,root_i);
+                Range: binary;
+                Comment: "Binary indicator denoting whether a given flight is in a given gateplan or not.";
+            }
+            Parameter CostOfGateplan {
+                IndexDomain: (root_i);
+                Comment: "The cost of a gateplan (i.e. the sum of the cost of all idle times within the gateplan)";
+            }
+            Parameter FlightsAreConsecutive {
+                IndexDomain: (si,flight,flight1) | GUI_FlightInGateplan(si,flight) and GUI_FlightInGateplan(si,flight1) and ord(flight) < ord(flight1);
+                Definition: {
+                    1 $ (not exists(flight2 | GUI_FlightInGateplan(si,flight2) and ord(flight) < ord(flight2) and ord(flight2) < ord(flight1) ))
+                    
+                    !This parameter will only get the value of 1 in case there does not exists a 3rd flight
+                    !that is within the same gateplan and that is in time between flights v and v2.
+                }
+                Comment: "Binary indicator denoting whether two flights are consecutively placed within a gateplan or not";
+            }
+        }
+        DeclarationSection Misc_parameters_and_sets {
+            Parameter UseTightUpperboundILP {
+                Range: binary;
+                InitialData: 1;
+                Comment: "Setting the user can make. If enabled, the value of the ILP will get tight bound that has value of a small multiplier times the value of the relaxation";
+            }
+            Parameter OptimalValueRelaxation {
+                InitialData: 0;
+                Comment: "The optimal value of the relxation is saved in this parameter";
+            }
+            Parameter CurrentlySolvingILP {
+                Range: binary;
+                InitialData: 0;
+                Comment: "binary indicator that is used to check whether the program is currently solving the ILP or  not";
+            }
+        }
+        DeclarationSection Constraints_and_Variables {
+            Variable TotalCost {
+                Definition: TotalCostSelectedGateplans + sum(flight, UnassignedCost(flight)* FlightIsUnassigned(flight) );
+                Comment: "Total cost for the problem is the sum of the cost of all selected gateplans plus the cost of all unassigned aircraft";
+            }
+            Variable TotalCostSelectedGateplans {
+                Definition: sum(i, CostOfGateplan(i) * SelectGateplan(i) );
+                Comment: "The sum of the cost of all selected gateplans";
+            }
+            Variable SelectGateplan {
+                IndexDomain: (i);
+                Range: binary;
+                Comment: "Binary decision variable to denote whether we select gateplan i or not.";
+            }
+            Variable FlightIsUnassigned {
+                IndexDomain: (flight);
+                Range: binary;
+                Comment: "Penalty variable that allows flights to be left unassigned.";
+            }
+            Constraint FlightInSelectedGateplans {
+                IndexDomain: (flight);
+                Property: ShadowPrice;
+                Definition: sum(i, FlightInGateplan(flight,i) * SelectGateplan(i) ) + FlightIsUnassigned(flight) = 1;
+                Comment: "Each flight must be either in exactly one of the selected gateplans, or it must explicitly be left unassigned";
+            }
+            Constraint LimitGateplansToNumberOfGates {
+                IndexDomain: a;
+                Property: ShadowPrice;
+                Definition: sum( i, GateplanIsOfType(i,a) * SelectGateplan(i) ) <= NumberOfGatesOfType(a);
+                Comment: "Make sure that we do not create more gateplans for a given type of gate than actual number of gates we have of that type";
+            }
+            Constraint ForceAssignedFlights {
+                IndexDomain: flight | ForceFlight(flight) = 'MustAssign';
+                Definition: FlightIsUnassigned(flight) = 0;
+                Comment: "In case the user decides a flight must be assigned, this constraint will ensure the unassigned variable will keep value 0 (i.e. must be assigned)";
+            }
+            Constraint ForceUnassignedFlights {
+                IndexDomain: flight | ForceFlight(flight) = 'MustUnassign';
+                Definition: FlightIsUnassigned(flight) = 1;
+                Comment: "In case the user decides a flight must be left unassigned, this constraint will ensure the unassigned variable will keep value 1 (i.e. will stay unassigned)";
+            }
+            Constraint TightUpperboundOnOptimalValue {
+                IndexDomain: |UseTightUpperboundILP and CurrentlySolvingILP;
+                Definition: {
+                    TotalCost <= 1.001 * OptimalValueRelaxation ;
+                }
+                Comment: {
+                    "Only when solving the ILP and the user has indicated in the settings screen that a tight upperbound should be used,
+                    this constraint will be active. It limits the value of the totalcost to the optimal value of the relaxed problem,
+                    multiplied with a small multiplier."
+                }
+            }
+            MathematicalProgram GateAssignmentProblem {
+                Objective: TotalCost;
+                Direction: minimize;
+                Constraints: MasterProblemConstraints;
+                Variables: MasterProblemVariables;
+                Type: MIP;
+                Comment: {
+                    "The Mathematical Program.
+                    
+                    We want to minimize the totalcost and are dealing with a MIP.
+                    
+                    Furthermore, we limit the Constraints and Variables considered by the MP to only the relevant ones
+                    (i.e. not the constraints / variables used for creating a starting solution)"
+                }
+            }
+            Set MasterProblemConstraints {
+                SubsetOf: AllConstraints;
+                Definition: AllConstraints * Master_Problem_Model_Section;
+                Comment: {
+                    "Intersection of the set allConstraints with all identifiers that are created in the section \"Master Problem Model Section\"
+                    
+                    This will ensure that only constraints declared within this section to be active in the model, while all other
+                    constraints declared in the project are discarded."
+                }
+            }
+            Set MasterProblemVariables {
+                SubsetOf: AllVariables;
+                Definition: AllVariables * Master_Problem_Model_Section;
+                Comment: {
+                    "Intersection of the set allVariables with all identifiers that are created in the section \"Master Problem Model Section\"
+                    
+                    This will ensure that only variables declared within this section to be active in the model, while all other
+                    variables declared in the project are discarded."
+                }
+            }
+        }
+        DeclarationSection Dual_Multipliers {
+            Parameter DualMultiplierCoverFlightsConstraint {
+                IndexDomain: (flight);
+                Comment: "Identifier to save the dual multiplier for each of the flight constraints";
+            }
+            Parameter DualMultiplierCoverGatetypesConstraint {
+                IndexDomain: (a);
+                Comment: "Identifier to save the dual multiplier for each of the gate type constraints";
+            }
+        }
+        DeclarationSection GMP_declarations {
+            ElementParameter GA_MasterProblem_GMP {
+                Range: AllGeneratedMathematicalPrograms;
+                Comment: "In case the user wanted to use GMP (setting in the Input/Settings screen), save the GMP in this identifier";
+            }
+            Parameter useGMP {
+                Range: binary;
+                InitialData: 1;
+                Comment: "Binary indicator denoting whether the user wants to use GMP or not (Setting in the Input/Settings screen)";
+            }
+        }
+        Procedure SolveRelaxation {
+            Body: {
+                !If using GMP, we should now generate the GMP.
+                !Furthermore, in any case we can already set the information about the solvers used. This
+                !information is displayed to the end-user in the GUI pages.
+                if (UseGMP) then
+                	GA_MasterProblem_GMP := GMP::Instance::Generate( GateAssignmentProblem , "GMP Gate Assignment Master Problem") ;
+                	GMP::Instance::SetMathematicalProgrammingType( GA_MasterProblem_GMP  , 'rmip' );
+                	SolverCurrentlyUsed := formatString("Solver currently used for solving LP is %e (GMP)", GMP::Instance::GetSolver( GA_MasterProblem_GMP ) ) ;
+                	lastSolveSolverLP := formatstring("Solver used for LP was %e (GMP)",  GMP::Instance::GetSolver( GA_MasterProblem_GMP ) ) ;
+                else
+                	SolverCurrentlyUsed := formatString("Solver currently used for solving LP is %e", currentsolver('lp')) ;
+                	lastSolveSolverLP := formatString("Solver used for LP was %e", currentsolver('lp')) ;
+                endif ;
+                
+                !Make sure that we first refresh all GUI output
+                PageRefreshAll ;
+                
+                
+                !Reset the iterating index
+                iterating_index := 0 ;
+                
+                
+                while 1.0 do "masterproblem-solve-loop"
+                
+                	!While not finished, solve the current master problem. Either via GMP functions or via the non-GMP way.
+                	if (UseGMP) then
+                		GMP::Instance::Solve( GA_MasterProblem_GMP );
+                	else
+                		solve GateAssignmentProblem where type := 'rmip' ;
+                	endif ;
+                
+                
+                	!Retrieve the dual multiplier information
+                	DualMultiplierCoverFlightsConstraint(flight) := FlightInSelectedGateplans.ShadowPrice(flight) ;
+                	DualMultiplierCoverGatetypesConstraint(a) := LimitGateplansToNumberOfGates.ShadowPrice(a) ;
+                
+                
+                	!solve the pricing problem
+                	solvePricingProblem;
+                
+                
+                
+                	!If the minimum of the reduced cost for all gate types is >= 0, then we are finished.
+                	if min(a,LastPlanReducedCost(a)) >= -0.00025 then
+                		break "masterproblem-solve-loop"
+                	endif ;
+                
+                
+                
+                
+                	for (a) do
+                		CurrentGatetype := a ;
+                		!only if the reduced cost are negative add the column for type a
+                
+                		if LastPlanReducedCost(CurrentGatetype) <= -0.00025 then
+                			!Add the new column to the master problem.
+                			SetElementAdd(Gateplans, NewGateplan, formatstring("gateplan-%05i", NumberOfGateplans ) ) ;
+                			NumberOfGateplans += 1 ;
+                
+                
+                			!If we are using GMP, update the GMP to contain the new column.
+                			!this is needed because once generated, the GMP does not look at the modified identifiers anymore
+                			if (useGMP) then
+                				AddNewGateplan_GMP  ;
+                			endif ;
+                
+                			!Also add the new data to the parameters. This information is used when not using GMP
+                			!to generate the MP for next iteration. When using GMP, this information will later
+                			!on be used to display the data.
+                			AddNewGateplanData ;
+                		endif ;
+                	endfor ;
+                
+                	!For some more information for the end-user, add set element and save
+                	!the totalcost for the current iteration
+                	setElementAdd( set_CG_Iterations, setIterations_element, formatstring("%n", iterating_index)) ;
+                	CostAt_CG_Iteration( setIterations_element ) := TotalCost  ;
+                
+                
+                
+                
+                	StopStopWatch ; !This will set the correct value of ElapsedTime (will not actually reset the stopwatch.
+                			!The value of the ElapsedTime of the Stopwatch is used in the page
+                
+                	!Refresh the page to show both the elapsed time and the plot showing the cost.
+                	PageRefreshAll ;
+                
+                
+                
+                
+                
+                
+                
+                	!Safe-guard, if more than 2500 iterations are needed, just abort the program
+                	if iterating_index > 2500 then
+                		halt "Aborting run, probably something is going wrong...." ;
+                	endif ;
+                
+                	!increase the current iteration index.
+                	iterating_index += 1 ;
+                
+                endwhile ;
+            }
+            Comment: "Actual mainloop of the column generation proces.";
+            Parameter iterating_index {
+                Range: integer;
+                Comment: "iterator that is used to keep track of the current iteration within the column generation process";
+            }
+            ElementParameter setIterations_element {
+                Range: set_CG_Iterations;
+                Comment: {
+                    "Used to point to specific (mostly last) element in the set set_cg_iterations. Can then be used to
+                    modify information wrt column generation progress"
+                }
+            }
+        }
+        Procedure InformationalCallback_GMP {
+            Arguments: (mySolverSession);
+            Body: {
+                CurrentGAP := 100* (GMP::SolverSession::GetObjective( mySolverSession ) - GMP::SolverSession::GetLinearObjective (mySolverSession) ) / GMP::SolverSession::GetObjective(mySolverSession)   ;
+                CurrentTimeElapsed :=  GMP::SolverSession::GetCPUSecondsUsed( mySolverSession ) / 100 ;
+                
+                Set_ILP_Timepoints += ceil(CurrentTimeElapsed ) ;
+                
+                ILP_GAP_At_Timepoint( ceil(CurrentTimeElapsed ) ) := CurrentGAP  ;
+                
+                
+                PageRefreshAll ;
+                
+                return 1 ;
+            }
+            Comment: {
+                "In case the user selected to use GMP AND is also using a CPLEX solver (i.e. solver capable of using callbacks) then
+                this callback will be called every given number of iterations to retrieve information about the ILP solving process.
+                This information is then presented to the end-user in a plot."
+            }
+            Parameter CurrentGAP;
+            Parameter CurrentTimeElapsed;
+            ElementParameter mySolverSession {
+                Range: AllSolverSessions;
+                Property: Input;
+            }
+        }
+        Procedure InformationalCallback {
+            Body: {
+                CurrentGap := 100 * (GateAssignmentProblem.Objective - GateAssignmentProblem.LinearObjective)  / GateAssignmentProblem.Objective ;
+                
+                CurrentTimeElapsed :=  (GateAssignmentProblem.SolutionTime)[-] / 100  ;
+                
+                Set_ILP_Timepoints += ceil(CurrentTimeElapsed ) ;
+                
+                ILP_GAP_At_Timepoint( ceil(CurrentTimeElapsed ) ) := CurrentGAP  ;
+                
+                
+                PageRefreshAll ;
+                
+                return 1 ;
+            }
+            Parameter CurrentGAP;
+            Parameter CurrentTimeElapsed;
+        }
+        Procedure AddNewGateplanData {
+            Body: {
+                !And save everything for later for viewing.
+                FlightInGatePlan(flight, NewGateplan) := 1 $ FlightInNewPlan(CurrentGatetype,flight) ;
+                CostOfGateplan(NewGateplan) := NewPlanCost(CurrentGateType)  ;
+                GateplanIsOfType( NewGateplan, CurrentGatetype) := 1  ;
+                savedReducedCosts( NewGateplan ) := LastPlanReducedCost(CurrentGateType) ;
+            }
+            Comment: "This procedure will add all the details of the new plans created by the pricing problem into the master problem";
+        }
+        Procedure SolveILP {
+            Body: {
+                !Going to start the solving of the ILP now (is used as one component in the indicator for using the UseTightUpperbound constraint
+                CurrentlySolvingILP := 1 ;
+                
+                
+                if (UseGMP) then
+                	!Try to set the callback, will fail in case of non-cplex solver
+                	GMP::Instance::SetCallbackIterations( GA_MasterProblem_GMP, 'informationalCallback_GMP' , 10 ) ;
+                
+                	!Change the type of the problem from rmip back to mip.
+                	GMP::Instance::SetMathematicalProgrammingType( GA_MasterProblem_GMP  , 'mip' );
+                
+                	!Indicator that is used in the GUI pages to either display the GAP plot, or show "Not supported" message
+                	MIPSolverSupportsCallback := 1 $ (StringOccurrences( formatstring("%e",  GMP::instance::GetSolver( GA_MasterProblem_GMP ) ) , "CPLEX") > 0  ) ;
+                
+                	!Show the end-user some information about the solver that is being used for solving the MIP problem.
+                	SolverCurrentlyUsed := formatString("Solver currently used for solving MIP/ILP is %e", GMP::Instance::GetSolver( GA_MasterProblem_GMP ) ) ;
+                	lastSolveSolverMIP := formatString("Solver used for ILP/MIP was %e",  GMP::Instance::GetSolver( GA_MasterProblem_GMP )  ) ;
+                
+                
+                	!If we should use the tight upperbound, then set its value here.
+                	if (UseTightUpperboundILP) then
+                		GMP::Row::Add( GA_MasterProblem_GMP, TightUpperboundOnOptimalValue ) ;
+                	endif ;
+                
+                
+                
+                	PageRefreshAll ;
+                
+                
+                	!Start the actual solving of the problem
+                	GMP::Instance::Solve( GA_MasterProblem_GMP );
+                	!remove the callback again.
+                	GMP::Instance::SetCallbackIterations( GA_MasterProblem_GMP, '') ;
+                else
+                
+                	!Show the end-user some information about the solver that is being used for solving the MIP problem.
+                	SolverCurrentlyUsed := formatString("Solver currently used for solving MIP/ILP is %e", currentsolver('mip')) ;
+                	lastSolveSolverMIP := formatString("Solver used for ILP/MIP was %e", currentsolver('mip')) ;
+                
+                	GateAssignmentProblem.CallbackProcedure := 'InformationalCallback' ;
+                	GateAssignmentProblem.CallbackIterations := 10 ;
+                
+                
+                	!If we should use the tight upperbound, then set its value here.
+                	if (UseTightUpperboundILP) then
+                		OptimalValueRelaxation := TotalCost  ;
+                	endif ;
+                
+                
+                	PageRefreshAll ;
+                
+                	!solve the actual problem
+                	solve GateAssignmentProblem ;
+                endif ;
+                
+                !And we are finished with solving the ILP here
+                CurrentlySolvingILP := 0 ;
+            }
+            Comment: "Procedure to solve the restuling MIP problem";
+        }
+        Procedure AddNewGateplan_GMP {
+            Body: {
+                GMP::Column::Add( GA_MasterProblem_GMP , selectGateplan(newgateplan) );
+                
+                
+                !Set the coefficient for all flights in the gateplan to 1.
+                for (flight | FlightInNewPlan(CurrentGatetype,flight)) do
+                	GMP::Coefficient::Set(GA_MasterProblem_GMP, FlightInSelectedGateplans(flight), selectGateplan(newGateplan), 1) ;
+                endfor ;
+                
+                !set the cost of the gateplan
+                GMP::Coefficient::Set( GA_MasterProblem_GMP ,  TotalCostSelectedGateplans , selectGateplan(newGateplan), -newplanCost(CurrentGatetype) );
+                !Set the type of the new gateplan to the correct type
+                GMP::Coefficient::Set( GA_MasterProblem_GMP, LimitGateplansToNumberOfGates(CurrentGatetype), SelectGateplan(NewGateplan), 1) ;
+            }
+            Comment: {
+                "This procedure will add all of the details of the new gateplans created by the pricing problem into the Generated Math Program
+                
+                Please note that this information also needs to be saved in the gateplan related parameters for future use. Without the additional
+                save, this information would not be present to show the result to the end-user after the solving is finished."
+            }
+        }
+        Procedure AddColumnPoolGateplans {
+            Body: {
+                SavedNumberOfGateplansForSolving := card(Gateplans) ;
+                for (iColumnPool)
+                do
+                	!This will copy a gateplan from the column pool to the set of gateplans used by the masterproblem
+                	Gateplans += iColumnPool ;
+                
+                
+                	!in case we are using GMP, we must also update the Generated math Program, because it will not
+                	!use/see the modfied identifiers
+                	if (UseGMP) then
+                
+                		GMP::Column::Add( GA_MasterProblem_GMP , selectGateplan( iColumnPool) );
+                
+                		!Set the coefficient for all flights in the gateplan to 1.
+                		for (flight | FlightInGateplan(flight, icolumnpool)) do
+                			GMP::Coefficient::Set(GA_MasterProblem_GMP, FlightInSelectedGateplans(flight), selectGateplan(iColumnPool), 1) ;
+                		endfor ;
+                
+                
+                
+                		!set the cost of the gateplan
+                		GMP::Coefficient::Set( GA_MasterProblem_GMP ,  TotalCostSelectedGateplans , selectGateplan(iColumnPool), -CostOfGateplan(iColumnPool) );
+                		!Set the type of the new gateplan to the correct type
+                		for (a | GateplanIsOfType( iColumnPool, a) ) do
+                			GMP::Coefficient::Set( GA_MasterProblem_GMP, LimitGateplansToNumberOfGates(a), SelectGateplan(iColumnPool), 1) ;
+                		endfor ;
+                
+                	endif ;
+                
+                endfor ;
+            }
+        }
+    }
+    Section Pricing_Problem_Model_Section {
+        Procedure UpdateArcCost {
+            Body: {
+                !First make sure that all costs are set high, i.e. reset the graph because we use
+                !one graph for all the different types
+                !CostArc(ss_flight1, ss_flight2) := 1e15 ; !TODO
+                
+                !Then set the cost of all possible combinations to the current values.
+                CostArc( ('s', flight) | FlightPossibleOnGateType(flight, CurrentGateType) )  := -DualMultiplierCoverGatetypesConstraint(CurrentGatetype) ;
+                CostArc( 's', 't' ) := -DualMultiplierCoverGatetypesConstraint (CurrentGatetype) ;
+                
+                CostArc((flight,flight1) | FlightCombinationPossible(flight,flight1) and BothFlightsPossibleOnGate(CurrentGatetype ,flight,flight1) ) := IdleTimeCostArc(flight,flight1) - DualMultiplierCoverFlightsConstraint(flight) ;
+                
+                CostArc( (flight, 't') | FlightPossibleOnGateType(flight, CurrentGatetype ) ) := -DualMultiplierCoverFlightsConstraint(flight) ;
+            }
+            Comment: "Update the cost of all of the arcs, based on the values of the dual mutlipliers.";
+        }
+        Procedure solvePricingProblem {
+            Body: {
+                !Clean up everything
+                empty FlightInNewPlan, NewPlanCost, LastPlanReducedCost ;
+                cleanup FlightInNewPlan, NewPlanCost, lastplanreducedcost ;
+                
+                
+                !For each of the gate types, we must now first update the cost of the arcs, then solve the shortest path problem
+                !and finally create the additional gateplans
+                for (a) do
+                        CurrentGatetype := a ;
+                
+                        UpdateArcCost ;
+                
+                        SolvePricingProblem_ShortestPath ;
+                
+                        SolvePricingProblem_CreateAdditionalPlans ;
+                
+                endfor ;
+            }
+        }
+        Procedure SolvePricingProblem_ShortestPath {
+            Body: {
+                !initialize the cost of all vertices
+                CumulativeCost(ss_flight1) := inf ;
+                !initialize the cost of the source vertex
+                CumulativeCost('s') := 0 ;
+                
+                
+                !Do the relaxing of neighbour vertices, based on topological ordering
+                for (ss_flight1, ss_flight2) |  FlightPossibleOnGateType( ss_flight1 , CurrentGatetype )
+                                                and FlightPossibleOnGateType( ss_flight2 , CurrentGatetype )
+                                                and  FlightCombinationPossible(ss_flight1,ss_flight2)
+                                                and ord(ss_flight2) > ord(ss_flight1)
+                                        do
+                        if  CumulativeCost(ss_flight1) + CostArc(ss_flight1,ss_flight2) < CumulativeCost(ss_flight2) then
+                                CumulativeCost(ss_flight2) :=  CumulativeCost(ss_flight1) + CostArc(ss_flight1,ss_flight2) ;
+                                !Set the predecessor
+                                PathPredecessor(ss_flight2) := ss_flight1 ;
+                        endif ;
+                endfor ;
+                
+                
+                !Save the Reduced cost of the just found plan (/shortest path)
+                LastPlanReducedCost(CurrentGatetype) := CumulativeCost('t') ;
+                
+                
+                
+                !Construct the flights in the gateplan by walking the path back from the sink to the source.
+                currentFlight := 't' ;
+                
+                while PathPredecessor(currentFlight) <> 's' do
+                        FlightInNewPlan( CurrentGatetype,  PathPredecessor(currentFlight)  ) := 1 ;
+                
+                        currentFlight := PathPredecessor(currentFlight) ;
+                endwhile ;
+                
+                
+                !Determine the cost of the just created gateplan.
+                !Done by summing the cost of each of the idle times between consecutive aircraft.
+                NewPlanCost(CurrentGatetype) := sum( (flight,flight1) | FlightInNewPlan(CurrentGatetype,  flight)
+                					                and FlightInNewPlan(CurrentGatetype, flight1)
+                					                and  (ord(flight) < ord(flight1))
+                                                               		and not exists(flight2| FlightInNewPlan(CurrentGatetype, flight2)
+                                                               					and (ord(flight) < ord(flight2))
+                                                               					and (ord(flight2) < ord(flight1))
+                                                   			)
+                
+                                 		    , IdleTimeCostArc(flight, flight1)) ;
+            }
+            ElementParameter currentFlight {
+                Range: SuperSetFlights;
+            }
+        }
+        Procedure SolvePricingProblem_CreateAdditionalPlans {
+            Body: {
+                
+                !Same as solving the shortest path, except for the fact that we
+                !disallow the flight denoted by "disable_flight" to be part of the shortest path.
+                
+                for (disable_flight | FlightInNewPlan(CurrentGatetype, disable_flight) )
+                do
+                
+                	CumulativeCost(ss_flight1) := inf ;
+                
+                	CumulativeCost('s') := 0 ;
+                
+                
+                	for (ss_flight1, ss_flight2) |  FlightPossibleOnGateType( ss_flight1 , CurrentGatetype )
+                                                	and FlightPossibleOnGateType( ss_flight2 , CurrentGatetype )
+                                                	and  FlightCombinationPossible(ss_flight1,ss_flight2)
+                	                                and ord(ss_flight2) > ord(ss_flight1)
+                	                                and ss_flight1 <> disable_flight	!The disabled flight cannot be part of the path
+                	                                and ss_flight2 <> disable_flight	!The disabled flight cannot be part of the path
+                                        	do
+                        	if  CumulativeCost(ss_flight1) + CostArc(ss_flight1,ss_flight2) < CumulativeCost(ss_flight2) then
+                                	CumulativeCost(ss_flight2) :=  CumulativeCost(ss_flight1) + CostArc(ss_flight1,ss_flight2) ;
+                                	!Set the predecessor
+                                	PathPredecessor(ss_flight2) := ss_flight1 ;
+                	        endif ;
+                	endfor ;
+                
+                
+                
+                	!Create a new Gateplan in the additional Gateplan ColumnPool
+                	SetElementAdd(ColumnPool, NewGateplan, formatstring("gateplan_column_pool-%05i", card(ColumnPool) + 1 ) ) ;
+                
+                
+                	!Save the flights that are in this additional gateplan
+                	currentFlight := 't' ;
+                	while PathPredecessor(currentFlight) <> 's' do
+                
+                		FlightInGatePlan( PathPredecessor(currentFlight)   , NewGateplan) := 1 ;
+                	        currentFlight := PathPredecessor(currentFlight) ;
+                	endwhile ;
+                
+                	!Save the cost of this additional gateplan
+                	CostOfGateplan(NewGateplan) := sum( (flight,flight1) | FlightInGateplan(flight, NewGateplan)
+                					                	and FlightInGateplan(flight1, NewGateplan)
+                					                	and  (ord(flight) < ord(flight1))
+                                                               			and not exists(flight2| flightInGateplan(flight2, NewGateplan)
+                                                               						and (ord(flight) < ord(flight2))
+                                                               						and (ord(flight2) < ord(flight1))
+                                                   				)
+                
+                 	                		    , IdleTimeCostArc(flight, flight1)) ;
+                
+                	GateplanIsOfType( NewGateplan, CurrentGatetype) := 1  ;
+                endfor ;
+            }
+            ElementParameter currentFlight {
+                Range: SuperSetFlights;
+            }
+        }
+        DeclarationSection Pricing_problem_declarations {
+            Parameter BothFlightsPossibleOnGate {
+                IndexDomain: (a,flight,flight1);
+                Definition: 1$(FlightPossibleOnGateType(flight,a) and FlightPossibleOnGateType(flight1,a));
+                Comment: "Convenience indicator that gets value 1 iff both flight and flight can be assigned to gate of type a";
+            }
+            Parameter CostArc {
+                IndexDomain: (ss_flight1,ss_flight2);
+                Comment: {
+                    "The cost of each arc in the graphs used for solving the pricing problem
+                    
+                    Consists of an idle time component and a component for each relevant dual multiplier"
+                }
+            }
+            Parameter IdleTimeCostArc {
+                IndexDomain: (ss_flight1,ss_flight2);
+                Definition: CostIdleTime( ArrivalTime(ss_flight2) - DepartureTime(ss_flight1)     ) $ ( ss_flight1 in Flights and ss_flight2 in Flights);
+                Comment: "The idle-time cost component of an arc";
+            }
+            Parameter LastPlanReducedCost {
+                IndexDomain: a;
+                Comment: "Per type of gate, this parameter will contain the reduced cost of the last solving of the pricing problem";
+            }
+            Parameter NewPlanCost {
+                IndexDomain: a;
+                Comment: "Per type of gate, this parameter will contain the actual cost of the gateplan for each type of the last solve of the pricing problem";
+            }
+            Parameter FlightInNewPlan {
+                IndexDomain: (a,flight);
+                Comment: "Indicator that gets the value 1 if the a flight is in the new gate plan of type a, and zero otherwise";
+            }
+            ElementParameter CurrentGatetype {
+                Range: GateTypes;
+                Comment: "Element parameter that is used to point to a specirfic type of gate during the solving of the pricing problem";
+            }
+            Parameter CumulativeCost {
+                IndexDomain: (ss_flight1);
+                Comment: "State per vertex/flight that denotes the minimum cost so far to get to this particular vertex";
+            }
+            ElementParameter PathPredecessor {
+                IndexDomain: (ss_flight1);
+                Range: SuperSetFlights;
+                Comment: "The predecessor for a flight in the shortest path from the source to the flight";
+            }
+        }
+    }
+    Section Start_Solution_Generator_Section {
+        Procedure Determine_Initial_Solution {
+            Body: {
+                
+                !try to determine an initial set of gateplans that fulfill the requests for the forced (un) assignments and
+                !that can be used to start up the column generation process
+                solve StartSolutionMP  ;
+                
+                !If we cannot find a set of gateplans, notify the user that he wants too much :)
+                if StartSolutionMP.ProgramStatus <> 'Optimal' then
+                
+                	halt with "With the selected forced assignments of flights it is not possible to construct a feasible solution.\n\nPlease solve this by requiring less flights to be \"Must be assigned\"";
+                endif ;
+            }
+            ElementParameter iterating_flight {
+                Range: SuperSetFlights;
+            }
+        }
+        Procedure Copy_Initial_Solution_To_MasterProblem {
+            Body: {
+                !Copy the solution information to new gateplans in the master problem.
+                
+                !Each gate plan starts with the flight that has a direct flow from the source.
+                !After that, construct the complete gateplan by following that initial flow towards the sink node.
+                for ( (a,ss_flight) | StartSolution_Flow(a, 's' , ss_flight ) and ss_flight <> 't' ) do
+                
+                	iterating_flight := ss_flight ;
+                
+                	SetElementAdd(Gateplans, NewGateplan, formatstring("gateplan-initial-solution-%05i", NumberOfGateplans ) ) ;
+                	NumberOfGateplans += 1 ;
+                
+                	GateplanIsOfType(NewGateplan, a)  := 1 ;
+                
+                	SelectGateplan(NewGateplan) := 1 ;
+                
+                
+                
+                	while iterating_flight <> 't' do
+                		FlightInGateplan(iterating_flight, NewGateplan) := 1 ;
+                		GUI_FlightInGateplan(NewGateplan, iterating_flight) := 1 ;
+                		iterating_flight := first( ss_flight2 | StartSolution_Flow(a, iterating_flight, ss_flight2 ) ) ;
+                	endwhile ;
+                
+                	CostOfGateplan(NewGateplan) := sum ( (flight, flight1) | FlightsAreConsecutive(NewGateplan, flight,flight1) , CostIdleTime( ArrivalTime(flight) - DepartureTime(flight1) )) ;
+                
+                
+                
+                endfor ;
+            }
+            ElementParameter iterating_flight {
+                Range: SuperSetFlights;
+            }
+        }
+        Parameter StartSolution_RelevantFlight {
+            IndexDomain: ss_flight;
+            Definition: 1 $ ( ss_flight in  { 's','t' } or  ForceFlight(ss_flight) = 'MustAssign');
+            Comment: "We only need to consider those flights that are set to \"MustAssign\", and also include the source and the sink node";
+        }
+        Parameter StartSolution_FlowPossible {
+            IndexDomain: (a,ss_flight1,ss_flight2);
+            Definition: {
+                1 $ ( StartSolution_RelevantFlight(ss_flight1)
+                	and StartSolution_RelevantFlight(ss_flight2)
+                	and FlightPossibleOnGateType(ss_flight1,a)
+                	and FlightPossibleOnGateType(ss_flight2,a)
+                	and  FlightCombinationPossible(ss_flight1,ss_flight2)
+                	)
+            }
+            Comment: {
+                "Parameter that can be used in domain conditions. Flow is only possible between flights, if each of the flights
+                is a relevant flight, they both can be assigned to the type of gate a and the combination of the two flights
+                is actually possible with regards to the time constraint"
+            }
+        }
+        Variable StartSolution_Flow {
+            IndexDomain: (a,ss_flight1,ss_flight2) | StartSolution_FlowPossible(a,ss_flight1,ss_flight2);
+            Range: binary;
+            Comment: "This is the flow from vertex ss_flight1 to vertex ss_flight2 for the type of gate a.";
+        }
+        Variable StartSolution_SinkInFlow {
+            Definition: sum(  (a,ss_flight) | StartSolution_FlowPossible(a,ss_flight, 't') ,   StartSolution_Flow( a, ss_flight, 't' ) );
+            Comment: "The total flow that comes into the sink. This value should be equal to the number of gateplans that are generated";
+        }
+        Constraint StartSolution_FlowBalance {
+            IndexDomain: (a,flight);
+            Definition: {
+                !IN = OUT
+                
+                !INFLOW
+                sum( ss_flight | StartSolution_FlowPossible(a, ss_flight, flight) , StartSolution_Flow(a,ss_flight, flight) )
+                =
+                !OUTFLOW
+                sum( ss_flight | StartSolution_FlowPossible(a, flight, ss_flight) , StartSolution_Flow(a,flight, ss_flight) )
+            }
+            Comment: "Standard Flow balance constraint: Everything that goes in, must go out also.";
+        }
+        Constraint StartSolution_LimitGates {
+            IndexDomain: (a);
+            Definition: sum( ss_flight | StartSolution_FlowPossible(a, 's', ss_flight) , StartSolution_Flow(a, 's', ss_flight ) ) <= NumberOfGatesOfType (a);
+            Comment: {
+                "Limit the amount of out-flow from the source vertex per type of gate to the actual number of gates that we have for
+                each gate type."
+            }
+        }
+        Constraint StartSolution_LimitSingleFlight {
+            IndexDomain: (flight) | StartSolution_RelevantFlight (flight);
+            Definition: sum( (a,ss_flight) | StartSolution_FlowPossible(a, flight, ss_flight) , StartSolution_Flow(a, flight, ss_flight) ) = 1;
+            Comment: {
+                "Make sure that each flight is only selected in one of the gate plans, not in more.
+                
+                Furthermore, we can make this an equality constraint instead of <= constraint, because the
+                user wanted us to assign all flights"
+            }
+        }
+        Set StartSolution_Constraints {
+            SubsetOf: AllConstraints;
+            Definition: Start_Solution_Generator_Section * AllConstraints;
+            Comment: "Subset of AllConstraints, used in the Mathematical Program. Constraints declared outside of this section are not considered this way";
+        }
+        Set StartSolution_Variables {
+            SubsetOf: AllVariables;
+            Definition: AllVariables * Start_Solution_Generator_Section;
+            Comment: "Subset of AllVariables, used in the Mathematical Program. Variables declared outside of this section are not considered this way";
+        }
+        MathematicalProgram StartSolutionMP {
+            Objective: StartSolution_SinkInFlow;
+            Direction: maximize;
+            Constraints: StartSolution_Constraints;
+            Variables: StartSolution_Variables;
+            Type: MIP;
+            Comment: {
+                "The Mathematical Program used for determining starting solution.
+                
+                Actually only interested in a feasible solution, does not need to be the optimal solution.
+                We just maximize the inflow of the sink. The maximum value for this can be only the number of
+                gateplans"
+            }
+        }
+    }
+    Section GUI_section {
+        Procedure ShowFlightInformationPage {
+            Body: {
+                PageOpen("Selected Flight Information") ;
+            }
+            Comment: "Utility procedure that allows us to open the Page for the selected flight information";
+        }
+        Procedure MakeEverythingAssigned {
+            Body: {
+                for (flight in GUI_UnassignedFlights) do
+                	firstPossibleGatetype(flight) := first(  a | FlightPossibleOnGateType(flight,a)) ;
+                	firstPossibleGateplan(flight) := first (si | GateplanIsOfType(si,firstPossibleGatetype(flight)) ) ;
+                
+                	GUI_DomainAssignedFlights( firstPossibleGateplan(flight) , firstPossibleGateplan(flight) , flight ) := 1 ;
+                
+                
+                	GUI_FlightInGateplan( firstPossibleGateplan(flight) , flight ) := 1 ;
+                endfor ;
+                
+                empty GUI_UnassignedFlights  ;
+                GUI_DomainUnassginedFlights( flight, flight) := 0 ;
+                
+                !Make sure that it is not selected anymore as the selected assigned flight
+                isUnassignedFlightSelected(flight) := 0 ;
+            }
+            Comment: {
+                "Move all flights from the unassigned list to the assigned list.
+                
+                However, do not consider anything fancy with scheduling this, just place them all on the
+                first gateplan that they can be assigned to. This means that if a flight can be assigned
+                to gates of type one, two, and three, we will just put the flight on the first gateplan
+                of type one.
+                
+                In almost all cases, this will result in an infeasible schedule with a lot of conflicts."
+            }
+            ElementParameter firstPossibleGatetype {
+                IndexDomain: (flight);
+                Range: GateTypes;
+            }
+            ElementParameter firstPossibleGateplan {
+                IndexDomain: (flight);
+                Range: SelectedGateplans;
+            }
+        }
+        Procedure MakeEverythingUnassigned {
+            Body: {
+                
+                
+                
+                
+                for (si,flight) do
+                
+                	GUI_DomainAssignedFlights(si,si, flight) := 0 ;
+                	GUI_FlightInGateplan(si, flight) := 0 ;
+                
+                	GUI_UnassignedFlights  += flight ;
+                	GUI_DomainUnassginedFlights( flight, flight) := 1 ;
+                endfor ;
+            }
+            Comment: "Move all flights from the Assigned state to the Unassigned state (i.e. reset the problem)";
+        }
+        Procedure CopyModelDataToparameters {
+            Body: {
+                !copy the flight in Gateplan information
+                !The GUI uses the GUI_ prefixed identifiers to show the data
+                GUI_FlightInGateplan(si, flight) := FlightInGateplan(flight,si) ;
+                
+                GUI_UnassignedFlights := UnassginedFlights ;
+                
+                GUI_DomainUnassginedFlights( gui_unassigned, flight ) := 1 $ (flight in GUI_UnassignedFlights) ;
+                
+                GUI_DomainAssignedFlights( si, si, flight) := 1 $ FlightInGateplan(flight,si) ;
+                
+                
+                UpdateGanttChartData ;
+            }
+            Comment: {
+                "Just copy all the information from the model parameters to GUI parameters. This allows
+                us to make all kinds of modifications. It could also allow us to provide some modified
+                starting information for the solver, based on the GUI information (this is not done at
+                the moment)"
+            }
+        }
+        Procedure GanttMakeUnassgined {
+            Body: {
+                if SelectedAssignedFlight <> '' then
+                
+                
+                	GUI_DomainAssignedFlights(si,si, SelectedAssignedFlight) := 0 ;
+                	GUI_FlightInGateplan(si, SelectedAssignedFlight) := 0 ;
+                
+                	GUI_UnassignedFlights  += SelectedAssignedFlight  ;
+                	GUI_DomainUnassginedFlights( SelectedAssignedFlight , SelectedAssignedFlight ) := 1 ;
+                
+                	!Make sure that it is not selected anymore as the selected assigned flight
+                	isAssignedFlightSelected(si,SelectedAssignedFlight) := 0 ;
+                endif
+            }
+            Comment: {
+                "Make the selected flight in the Assigned Gantt Chart unassigned (i.e. move the
+                flight from assigned to unassigned)"
+            }
+        }
+        Procedure GanttMakeAssigned {
+            Body: {
+                if SelectedUnassignedFlight <> '' then
+                
+                
+                	GUI_DomainAssignedFlights( MoveUnassignedToGateplan ,MoveUnassignedToGateplan  , SelectedUnassignedFlight) := 1 ;
+                	GUI_FlightInGateplan(MoveUnassignedToGateplan , SelectedUnAssignedFlight) := 1 ;
+                
+                	GUI_UnassignedFlights  -= SelectedUnassignedFlight  ;
+                	GUI_DomainUnassginedFlights( SelectedUnassignedFlight , SelectedUnassignedFlight ) := 0 ;
+                
+                	!Make sure that it is not selected anymore as the selected assigned flight
+                	isUnassignedFlightSelected(SelectedUnassignedFlight) := 0 ;
+                endif
+            }
+            Comment: {
+                "Make flight that was unassigned, assigned. i.e. Move the flight from the unassigned
+                gantt chart to the assigned gantt chart."
+            }
+        }
+        Procedure UpdateGanttChartData {
+            Body: {
+                for ( (si,si1, flight) | GUI_DomainAssignedFlights(si,si1,flight) and si <> si1 ) do
+                
+                	if not exists(a | GateplanIsOfType(si,a) and FlightPossibleOnGateType(flight,a) ) then
+                
+                			dialogError(formatstring("Flight %s cannot be assigned to the gate of type \"%s\" because the combination is not allowed.\n\nYour move action will now be reverted.",
+                					FlightDescription(flight), GateplanTypeDescription(si))) ;
+                			GUI_FlightInGateplan(si,flight) := 0 ;
+                			GUI_FlightInGateplan(si1,flight) := 1 ;
+                
+                			GUI_DomainAssignedFlights(si,si1,flight) := 0 ;
+                			GUI_DomainAssignedFlights(si1,si1,flight) := 1 ;
+                			GUI_DomainAssignedFlights(si,si,flight) := 0 ;
+                
+                			empty isAssignedFlightSelected ;
+                
+                
+                	else
+                		GUI_FlightInGateplan(si1,flight) := 0 ;
+                		GUI_FlightInGateplan(si,flight) := 1 ;
+                
+                		GUI_DomainAssignedFlights(si,si,flight) := 1 ;
+                		GUI_DomainAssignedFlights(si1,si1,flight) := 0 ;
+                		GUI_DomainAssignedFlights(si,si1,flight) := 0 ;
+                	endif ;
+                
+                endfor ;
+                PageRefreshAll ;
+            }
+            Comment: {
+                "Whenever modifications are made, this procedure will first check if a flight is moved to a
+                gateplan of a type that it cannot be assigned to. If this is the case, an error message will
+                be shown to the user, after which the action is reverted again."
+            }
+        }
+        Procedure InitializeMoveUnassignedFlightPage {
+            Body: {
+                if MoveUnassignedToGateType = '' then
+                	MoveUnassignedToGateType := first(LimitedAllowedGateTypesForMove ) ;
+                endif ;
+                
+                if MoveUnassignedToGateplan = '' then
+                	MoveUnassignedToGateplan := first(LimitedAllowedGateplansForMove) ;
+                endif ;
+            }
+            Comment: {
+                "When the user wants to move a flight from unassigned to assigned, this procedure is
+                called by the page that allows them to choose to which gateplan the flight should be
+                moved. This procedure will then initialize the different choices the user has."
+            }
+        }
+        Procedure ShowMoveUnassginedFlightPage {
+            Body: {
+                if SelectedUnassignedFlight = '' then
+                	return ;
+                endif ;
+                
+                PageOpen("Assign flight to gateplan") ;
+            }
+            Comment: "Only show the \"Assign flight to gateplan\" page if the user has selected an unassigned flight.";
+        }
+        Procedure UpdateSelectedFlight_Assigned {
+            Body: {
+                SelectedAssignedOrUnassignedFlight := SelectedAssignedFlight ;
+                PageRefreshAll ;
+            }
+            Comment: {
+                "We have two Gantt chart objects (one for assigned and one for unassigned). We would like to have
+                one general selected flight parameter, regardless whether this flight is selected in the assigned
+                or in the unassigned.
+                
+                This procedure will be called after a flight is selected in the Assigned Gantt chart and it will
+                set the general selected flight to the flight the user just selected in the Gantt chart"
+            }
+        }
+        Procedure UpdateSelectedFlight_Unassigned {
+            Body: {
+                SelectedAssignedOrUnassignedFlight := SelectedUnassignedFlight ;
+                PageRefreshAll ;
+            }
+            Comment: {
+                "We have two Gantt chart objects (one for assigned and one for unassigned). We would like to have
+                one general selected flight parameter, regardless whether this flight is selected in the assigned
+                or in the unassigned.
+                
+                This procedure will be called after a flight is selected in the Unassigned Gantt chart and it will
+                set the general selected flight to the flight the user just selected in the Gantt chart"
+            }
+        }
+        Procedure CheckExistenseSourceAndSink {
+            Body: {
+                if (not 's' in SuperSetFlights) then
+                	DialogError("You deleted the virtual flight 's', which is required for operation. This flight will be added again.") ;
+                	SuperSetFlights += 's' ;
+                
+                	DepartureTime('s') := 0  ;
+                
+                	FlightPossibleOnGateType( 's', a) := 1 ;
+                endif ;
+                
+                
+                if (not 't' in SuperSetFlights) then
+                	DialogError("You deleted the virtual flight 't', which is required for operation. This flight will be added again.") ;
+                	SuperSetFlights += 't' ;
+                
+                	ArrivalTime('t') := 100000 ;
+                	FlightPossibleOnGateType( 't', a) := 1 ;
+                endif ;
+                
+                !Also, we are modifying input data. This means we must regenerate everything when rerturning to the main screen
+                ModifyingInputData ;
+            }
+            Comment: "In case we have a user that wants to delete either the source or sink virtual aircraft (s and t), notify the user and re-add these";
+        }
+        Procedure RereadAllInputData {
+            Body: {
+                if (UserHasMadeChangesInInput) then
+                
+                	!Remove all gateplans that we might have at the moment
+                	NumberOfGateplans := 0 ;
+                	empty Gateplans_Root  ;
+                	cleandependents ;
+                
+                
+                
+                	!Make sure that s and t are possible on all types of gates
+                	FlightPossibleOnGateType( 's', a) := 1 ;
+                	FlightPossibleOnGateType( 't', a) := 1 ;
+                
+                
+                
+                	!Recalculate the FlightCombination Possible situations
+                	FlightCombinationPossible( ss_flight1, ss_flight2 ) := 0 ;
+                	FlightCombinationPossible( (ss_flight1, ss_flight2) | ArrivalTime(ss_flight2) >= DepartureTime(ss_flight1) + 20 ) := 1 ;
+                	FlightCombinationPossible( 's', ss_flight1 ) := 1 ;
+                	FlightCombinationPossible( ss_flight1, 't' ) := 1 ;
+                	FlightCombinationPossible( 's' , 's' ) := 0 ;
+                	FlightCombinationPossible( 't' , 't' ) := 0 ;
+                	FlightCombinationPossible( 't', ss_flight1 ) := 0 ;
+                
+                
+                
+                	FlightIsUnassigned(flight) := 1 ;
+                	GUI_UnassignedFlights := Flights ;
+                	GUI_DomainUnassginedFlights(flight,flight) := 1 ;
+                
+                
+                	for (a) do
+                		myIterator := 1 ;
+                
+                		while myIterator <= NumberOfGatesOfType(a) do
+                			SetElementAdd(Gateplans, NewGateplan, formatstring("gateplan-%05i", NumberOfGateplans ) ) ;
+                			NumberOfGateplans += 1 ;
+                
+                			GateplanIsOfType(NewGateplan, a) := 1 ;
+                			myIterator += 1 ;
+                		endwhile ;
+                	endfor ;
+                
+                
+                	SelectGateplan(root_i) := 1 ;
+                
+                
+                	cleandependents GateTypes ;
+                
+                
+                	!And reset back to 0
+                	UserHasMadeChangesInInput := 0 ;
+                endif ;
+            }
+            Parameter myIterator;
+        }
+        Procedure ModifyingInputData {
+            Body: {
+                UserHasMadeChangesInInput := 1 ;
+            }
+        }
+        DeclarationSection Model_data_copied_into_parameters_for_GUI {
+            Set GUI_UnassignedFlights {
+                SubsetOf: Flights;
+                Index: gui_unassigned, gui_unassigned1, gui_unassigned2;
+                OrderBy: ArrivalTime(ss_flight);
+                Comment: "Copy for the GUI of the Unassigned flight information of the model";
+            }
+            Parameter GUI_FlightInGateplan {
+                IndexDomain: (si,flight);
+                Comment: "Copy for the GUI of the flightInGateplan information of the model";
+            }
+            Parameter GUI_ArrivalTime {
+                IndexDomain: (flight);
+                Definition: ArrivalTime(flight);
+                Comment: {
+                    "Copy for the GUI of the ArrivalTime flight information of the model
+                    
+                    Using a definition here, because this will prohibit the user from modifying the arrival time
+                    using the Gantt chart (i.e. drag flight to left or right in time). Users can only modify the
+                    gateplan a flight is assigned to, and not the arrival/departure times."
+                }
+            }
+            Parameter GUI_DepartureTime {
+                IndexDomain: (flight);
+                Definition: DepartureTime(flight);
+                Comment: {
+                    "Copy for the GUI of the ArrivalTime flight information of the model
+                    
+                    Using a definition here, because this will prohibit the user from modifying the departure time
+                    using the Gantt chart (i.e. drag flight to left or right in time). Users can only modify the
+                    gateplan a flight is assigned to, and not the arrival/departure times."
+                }
+            }
+            Parameter GUI_GroundTime {
+                IndexDomain: (flight);
+                Definition: groundtime(flight);
+                Comment: {
+                    "Copy for the GUI of the ArrivalTime flight information of the model
+                    
+                    Using a definition here, because this will prohibit the user from modifying the arrival time
+                    using the Gantt chart (i.e. drag flight to left or right in time). Users can only modify the
+                    gateplan a flight is assigned to, and not the arrival/departure times.
+                    
+                    This parameter is used in the Gantt charts, because it uses starttime and duration to display
+                    the flights"
+                }
+            }
+            Parameter GUI_DomainAssignedFlights {
+                IndexDomain: (si,si2,flight);
+                Comment: {
+                    "The domain that is used for the Gantt chart of the assigned flights. There is a double
+                    occurrence of the si index, because the end-user should be able to drag flights from one
+                    gateplan to another gateplan. In order to do so, there must be a free second index
+                    (see documentation of Gantt chart for more ifnormation about this)"
+                }
+            }
+            Parameter GUI_DomainUnassginedFlights {
+                IndexDomain: (gui_unassigned,flight);
+                Comment: "The domain that is used for the Gantt chart of the unassigned flights.";
+            }
+        }
+        DeclarationSection Additional_GUI_parameters {
+            Parameter GUI_AverageIdletime {
+                Definition: average( (si,flight,flight1) | GUI_AreFlightsConsecutive(si, flight,flight1) , ArrivalTime(flight1) - DepartureTime(flight));
+                Comment: "Average idle time of the assigned flights in the assignment depicted by the Gantt Chart";
+            }
+            Parameter GUI_MinIdletime {
+                Definition: min( (si,flight,flight1) | GUI_AreFlightsConsecutive(si, flight,flight1) , ArrivalTime(flight1) - DepartureTime(flight));
+                Comment: "Minimum idle time of the assigned flights in the assignment depicted by the Gantt Chart";
+            }
+            Parameter GUI_MaxIdletime {
+                Definition: max( (si,flight,flight1) | GUI_AreFlightsConsecutive(si, flight,flight1) , ArrivalTime(flight1) - DepartureTime(flight));
+                Comment: "Maximum idle time of the assigned flights in the assignment depicted by the Gantt Chart";
+            }
+            Parameter GUI_StdDevIdleTime {
+                Definition: {
+                    if (card(GUI_AreFlightsConsecutive)) < 2 then
+                    	0
+                    else
+                    	SampleDeviation( (si,flight,flight1) | GUI_AreFlightsConsecutive(si, flight,flight1) , ArrivalTime(flight1) - DepartureTime(flight))
+                    endif ;
+                }
+                Comment: "Standard Deviation of the idle time of the assigned flights in the assignment depicted by the Gantt Chart";
+            }
+            Parameter GUI_AreFlightsConsecutive {
+                IndexDomain: (si,flight,flight1) | GUI_FlightInGateplan(si,flight) and GUI_FlightInGateplan(si,flight1) and ord(flight) < ord(flight1);
+                Definition: {
+                    1 $ (not exists(flight2 | GUI_FlightInGateplan(si,flight2) and ord(flight) < ord(flight2) and ord(flight2) < ord(flight1) ))
+                    
+                    !This parameter will only get the value of 1 in case there does not exists a 3rd flight
+                    !that is within the same gateplan and that is in time between flights v and v2.
+                }
+                Comment: "convience parameter that can be used to determine if two flights are consecutive in one gateplan";
+            }
+            Parameter SavedNumberOfGateplansForSolving {
+                Comment: "A parameter to keep the saved number of gateplans that were needed to the Gate Assignment problem";
+            }
+        }
+        DeclarationSection Selection_related_Gantt_Chart_declarations {
+            ElementParameter SelectedAssignedOrUnassignedFlight {
+                Range: Flights;
+                Comment: {
+                    "This element parameter contains the flight that is selected by the user, regardless in which
+                    of the two gantt charts it was selected (assigned or unassgined gantt chart).
+                    
+                    The value of this element parameter is updated by the two procuedrues UpdateSelectedFlight_Assigned
+                    and UpdateSelectedFlight_Unassgined"
+                }
+            }
+            ElementParameter SelectedFlight {
+                Range: Flights;
+                Definition: {
+                    if (SelectedAssignedFlight = '') and (SelectedUnassignedFlight = '') then
+                    	''
+                    else
+                    	SelectedAssignedOrUnassignedFlight
+                    endif
+                }
+                Comment: {
+                    "Additional element parameter that will also allow for the state that no flight has
+                    been selected at all. Only if there is either a selected assigned or unassigned flight
+                    will it display the value of the SelectedAssignedOrUnassignedFlight, otherwise, it will
+                    just return the empty element."
+                }
+            }
+            Parameter isAssignedFlightSelected {
+                IndexDomain: (si,flight);
+            }
+            Parameter isUnassignedFlightSelected {
+                IndexDomain: (gui_unassigned);
+                Comment: {
+                    "Parameter that will be updated by the gantt chart object to reflect which of the flights are selected
+                    by the user"
+                }
+            }
+            ElementParameter SelectedAssignedFlight {
+                Range: Flights;
+                Definition: first( flight | exists(si | isAssignedFlightSelected(si,flight) = 1 ));
+                Comment: {
+                    "Based on the isAssignedFlightSelected parameter, that is automatically updated by the Gantt chart object when
+                    the user selects a flight, this element parameter will contain the flight that is selected by the end-user"
+                }
+            }
+            ElementParameter SelectedUnassignedFlight {
+                Range: GUI_UnassignedFlights;
+                Definition: first( gui_unassigned| isUnassignedFlightSelected ( gui_unassigned ) = 1);
+                Comment: {
+                    "Based on the isUnassignedFlightSelected parameter, that is automatically updated by the Gantt chart object when
+                    the user selects a flight, this element parameter will contain the unassigned flight that is selected by the end-user"
+                }
+            }
+        }
+        DeclarationSection Other_Gantt_chart_declarations {
+            StringParameter SelectedGateplanDescription {
+                IndexDomain: (si);
+                Definition: formatstring( "%s (%n)", GateplanTypeDescription(si), 1 + ord(si) - ord(first(si2 | GateplanTypeNumber(si) = GateplanTypeNumber(si2) )));
+                Comment: {
+                    "Convenience string parameter that will contain a nicer description for the selected gateplans.
+                    
+                    It will first print the type of gate that the gateplan is for, followed by a number indicating what
+                    the number of this particular gate plan within the group is (i.e. is it the first of type a, or the second of type a, etc)
+                    
+                    In order to do this, we use the GateplanTypeNumber as a convenience parameter"
+                }
+            }
+            ElementParameter AssignedFlightColor {
+                IndexDomain: (si,flight);
+                Range: AllColors;
+                Definition: {
+                    if flight = SelectedFlight then
+                    	'Magenta'
+                    elseif exists( flight1 | (flight1 <> flight) and GUI_FlightInGateplan(si,flight1) and FlightsAreConflicting(flight,flight1) ) then
+                    	'Red'
+                    elseif(ForceFlight(flight) = 'MustAssign') then
+                    	'Green'
+                    elseif(ForceFlight(flight) = 'MustUnassign') then
+                    	'Dark Orange'
+                    else
+                    	'Yellow'
+                    endif
+                }
+                Comment: "Parameter that is used to determine which color should be used to";
+            }
+            ElementParameter UnassignedFlightColor {
+                IndexDomain: (flight) | flight in GUI_UnassignedFlights;
+                Range: AllColors;
+                Definition: {
+                    if flight = SelectedFlight then
+                    	'Magenta'
+                    elseif(ForceFlight(flight) = 'MustAssign' )then
+                    	'Green'
+                    elseif(ForceFlight(flight) = 'MustUnassign') then
+                    	'Dark Orange'
+                    else
+                    	'Yellow'
+                    endif
+                }
+                Comment: "Color parameter that is used to determine which color should be used to draw a flight";
+            }
+            ElementParameter MoveUnassignedToGateType {
+                Range: LimitedAllowedGateTypesForMove;
+                Comment: {
+                    "this element parameter contains the gatetype that the user selected to which
+                    an unassigned flight should be moved."
+                }
+            }
+            Set LimitedAllowedGateTypesForMove {
+                SubsetOf: GateTypes;
+                Index: la;
+                Definition: {
+                    {a | FlightPossibleOnGateType(SelectedUnassignedFlight, a ) }
+                }
+                Comment: {
+                    "A subset of all gatetypes: only those gate types to which the selected unassgined flight can
+                    actually be assigned to."
+                }
+            }
+            ElementParameter MoveUnassignedToGateplan {
+                Range: LimitedAllowedGateplansForMove;
+                Comment: "The gateplan to which the selected unassigned flight should be moved according to the user input";
+            }
+            Set LimitedAllowedGateplansForMove {
+                SubsetOf: SelectedGateplans;
+                Definition: {
+                    { si | exists(a | GateplanIsOfType(si,a) and a = MoveUnassignedToGateType) }
+                }
+                Comment: {
+                    "The subset of all the selected gateplans: only the gateplan of those types to which the
+                    unassigned flight could actually be assgined to."
+                }
+            }
+        }
+        DeclarationSection Solution_progress_window {
+            Parameter ILP_MaxSecondsValue {
+                Range: integer;
+                Definition: {
+                    div( Parameter_Timepoint( last(index_tp) ) , 5) * 5 + 5 ;
+                }
+                Comment: {
+                    "Convenience parameter that is used as the maximum number of seconds that should be
+                    shown in the plot of the Integrality gap as a function of the time. Increases in 5
+                    second periods (i.e. first only 5 seconds are shown, after 5 seconds a totla of
+                    10 seconds is shown, etc)"
+                }
+            }
+            Parameter CG_MaxIterationsValue {
+                Range: integer;
+                Definition: {
+                    div( card(set_CG_Iterations) , 200) * 200 + 200 ;
+                }
+                Comment: {
+                    "Convenience parameter that is used as the maximum number of iterations that should be
+                    shown in the plot of the total cost as a function of the iterations in the progress of the column
+                    generation progress window. Increases in blocks of 200 iterations as needed"
+                }
+            }
+            Parameter MIPSolverSupportsCallback {
+                Range: binary;
+                InitialData: 0;
+                Comment: {
+                    "Parameter that will be set to the value of 1 in case the solver used for solving
+                    MIP problems supports CallBack functions. Currently this is only set to 1 in case
+                    of CPLEX solver"
+                }
+            }
+            Set set_CG_Iterations {
+                SubsetOf: Integers;
+                Index: i_cg_iter;
+                Comment: "Set containing the iterations (i.e. iteration 1, iteration 2, iteration 3, etc)";
+            }
+            Parameter CostAt_CG_Iteration {
+                IndexDomain: (i_cg_iter);
+                Comment: "The totalcost of the masterproblem at each given iteration i_cg_iter";
+            }
+            Parameter MaxTotalCost {
+                Definition: {
+                    !Maximum TotalCost, i.e. make all flights unassigned
+                    sum(flight, UnassignedCost(flight)) ;
+                }
+                Comment: {
+                    "For the cost-plot in the Column generation progress window, we need a maximum cost
+                    to ensure the plot is not jumping as more information becomes available. Just set it
+                    to the maximum possible cost, which is unassigning all flights"
+                }
+            }
+            Parameter SolutionTimeRelaxation {
+                Unit: s;
+                Comment: {
+                    "Parameter contianing the number of seconds it took to solve the Relaxation of the main
+                    problem with column generation"
+                }
+            }
+            Parameter SolutionTimeILP {
+                Unit: s;
+                Comment: {
+                    "Parameter that contains the number of seconds used to solve the resulting MIP problem, with
+                    only the columns generated during the column generation and the columns from the column poolk"
+                }
+            }
+            Set Set_ILP_Timepoints {
+                SubsetOf: Integers;
+                Index: index_tp;
+                Comment: "Set of timepoints (seconds) that are used to save the integrality gap during the MIP solving phase";
+            }
+            Parameter Parameter_Timepoint {
+                IndexDomain: (index_tp);
+                Definition: index_tp;
+                Comment: {
+                    "Convenience function that converts element to number (can do that this way becuase
+                    the time_points set is a subset of the integers set)"
+                }
+            }
+            Parameter ILP_GAP_At_Timepoint {
+                IndexDomain: (index_tp);
+                Comment: "Parameter to hold the GAP at each given timepoint";
+            }
+            StringParameter SolverCurrentlyUsed {
+                Comment: {
+                    "String parameter that will hold the string:
+                    Solver currently used to solve (I)LP problem is : ...
+                    which is set by the solving procedures and displayed to the end user in the progress pages"
+                }
+            }
+        }
+        DeclarationSection Details_last_Solve {
+            StringParameter lastSolveSolverLP {
+                Comment: "String parameter that contains the last solver used for solving LP problems (used in detail last solve page)";
+            }
+            StringParameter lastSolveSolverMIP {
+                Comment: "String parameter that contains the last solver used for solving MIP problems (used in detail last solve page)";
+            }
+        }
+        DeclarationSection Input_page_related_declarations {
+            Parameter UserHasMadeChangesInInput {
+                InitialData: 0;
+                Comment: {
+                    "If this has value 1 and we get back to the main planning screen, we must ensure that
+                    everything is redrawn again:
+                    * All flights back to unassigned
+                    * Empty all gateplans
+                    * Create empty gateplans for the gateplans"
+                }
+            }
+        }
+    }
+    Section Stopwatch_Support {
+        DeclarationSection Stopwatch_Declarations {
+            Quantity SI_Time_Duration {
+                BaseUnit: s;
+                Conversions: tick -> s : # -> # / 100;
+                Comment: "Expresses the value for the duration of periods.";
+            }
+            StringParameter StartTime {
+                Comment: "Time the stop watch was started";
+            }
+            Parameter ElapsedTime {
+                Unit: s;
+                Comment: {
+                    "Time that has elapsed since the stopwatch was started. The value for this is updated
+                    by the StopStopwatch procedure"
+                }
+            }
+        }
+        Procedure StartStopwatch {
+            Body: {
+                StartTime := CurrentToString( "%c%y-%m-%d %H:%M:%S:%t");
+            }
+            Comment: "Set the starttime of the stopwatch";
+        }
+        Procedure StopStopwatch {
+            Body: {
+                ElapsedTime := CurrentToMoment( [tick], StartTime );
+            }
+            Comment: "Deterine how many ticks have elapsed since the start of the stopwatch";
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            !First check whether we need to determine an initial solution
+            if card(StartSolution_RelevantFlight) > 2 then
+            	Determine_Initial_Solution ;
+            endif ;
+            
+            
+            
+            !Ensure that we empty everything
+            empty Gateplans_Root, ColumnPool, Gateplans,  SelectGateplan, Gateplans, CostOfGateplan, FlightInGateplan, GateplanIsOfType  ;
+            numberOfGateplans := 0 ;
+            
+            cleandependents ;
+            
+            
+            
+            
+            
+            !If required, copy the initial solution found to the master problem.
+            if card(StartSolution_RelevantFlight) > 2 then
+            	Copy_Initial_Solution_To_MasterProblem ;
+            endif ;
+            
+            
+            
+            
+            
+            empty set_CG_Iterations ;
+            cleandependents set_CG_Iterations ;
+            
+            empty Set_ILP_Timepoints ;
+            cleandependents Set_ILP_Timepoints ;
+            Set_ILP_Timepoints += 0 ;
+            ILP_GAP_At_Timepoint( 0 ) := 100 ;
+            
+            
+            if (not PageClose("Gate Assignment")) then
+            	dialogMessage(CurrentErrorMessage) ;
+            	return ;
+            endif ;
+            
+            
+            
+            PageOpen("Progress Column Generation") ;
+            StartStopwatch  ;
+            SolveRelaxation ;
+            StopStopWatch ;
+            SolutionTimeRelaxation := ElapsedTime  ;
+            
+            
+            
+            AddColumnPoolGateplans ;
+            
+            
+            PageOpen("Progress ILP") ;
+            StartStopwatch  ;
+            SolveILP ;
+            StopStopWatch ;
+            SolutionTimeILP := ElapsedTime  ;
+            
+            Pageclose("Progress Column Generation") ;
+            PageClose("Progress ILP") ;
+            
+            PageOpen("Gate Assignment") ;
+            
+            
+            
+            
+            
+            
+            CopyModelDataToparameters ;
+        }
+        Comment: {
+            "First determine whether we need to create initial solution
+            then clean everything
+            After that, if needed, create the initial solution.
+            
+            Then solve the relaxation, add the additionally created columns from the column pool
+            and solve the resulting ILP.
+            
+            Finally, copy all the information from the variables in the model to the GUI parameters."
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1 ;
+            
+            /*
+            if ( CaseSaveAll( confirm:2 ) = 1 ) then
+                return 1;
+            else
+                return 0;
+            endif ;
+            */
+        }
+    }
+}

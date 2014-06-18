@@ -1,0 +1,275 @@
+## ams_version=1.0
+
+Model Main_Mail_and_Sound {
+    Section MAPI_Interface {
+        StringParameter AIMMSMapiDLL {
+            Definition: {
+                if AimmsStringConstants('Architecture') = 'x86' then
+                        "AimmsMAPI.dll"
+                else
+                        "AimmsMAPI64.dll"
+                endif
+            }
+        }
+        ExternalProcedure AIMMSMapiSetErrorMode {
+            Arguments: (AMMode);
+            DllName: AIMMSMapiDLL;
+            BodyCall: {
+                AIMMSMapiSetErrorMode(
+                   scalar integer : AMMode
+                 )
+            }
+            Comment: {
+                "With this function you can control where MAPI errors go:
+                - AMMode = 0 means no errors at all, only look at return value for errors and retrieve through AIMMSMapiLastError
+                - AMMode = 1 (default) means errors are sent to the AIMMS message window
+                - AMMode = 2 means errors are presented through a dialog box"
+            }
+            Parameter AMMode {
+                Range: {
+                    {0..2}
+                }
+                Default: 1;
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiLastError {
+            Arguments: (AMMessage);
+            DllName: AIMMSMapiDLL;
+            BodyCall: {
+                AIMMSMapiLastError(
+                   scalar string : AMMessage
+                 )
+            }
+            StringParameter AMMessage {
+                Property: Output;
+            }
+        }
+        ExternalProcedure AIMMSMapiNewMail {
+            Arguments: (AMSubject);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiNewMail(
+                   scalar string : AMSubject
+                 )
+            }
+            StringParameter AMSubject {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiAddText {
+            Arguments: (AMString);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiAddText(
+                   scalar string : AMString
+                 )
+            }
+            StringParameter AMString {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiAddLine {
+            Arguments: (AMString);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiAddLine(
+                   scalar string : AMString
+                 )
+            }
+            StringParameter AMString {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiAddParagraph {
+            Arguments: (AMString);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiAddParagraph(
+                   scalar string : AMString
+                 )
+            }
+            StringParameter AMString {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiAddTextFromFile {
+            Arguments: (AMString);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiAddTextFromFile(
+                   scalar string : AMString
+                 )
+            }
+            StringParameter AMString {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiAddRecipientTo {
+            Arguments: ( AMName, AMAddress);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiAddRecipientTo(
+                   scalar string : AMName,
+                   scalar string : AMAddress
+                 )
+            }
+            StringParameter AMName {
+                Property: Input;
+            }
+            StringParameter AMAddress {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiAddRecipientCc {
+            Arguments: ( AMName, AMAddress);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiAddRecipientCc(
+                   scalar string : AMName,
+                   scalar string : AMAddress
+                 )
+            }
+            StringParameter AMName {
+                Property: Input;
+            }
+            StringParameter AMAddress {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiAddRecipientBcc {
+            Arguments: ( AMName, AMAddress);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiAddRecipientBcc(
+                   scalar string : AMName,
+                   scalar string : AMAddress
+                 )
+            }
+            StringParameter AMName {
+                Property: Input;
+            }
+            StringParameter AMAddress {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiAddAttachment {
+            Arguments: (AMPath);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiAddAttachment(
+                   scalar string : AMPath
+                 )
+            }
+            StringParameter AMPath {
+                Property: Input;
+            }
+        }
+        ExternalProcedure AIMMSMapiSendMail {
+            Arguments: (Interactive);
+            DllName: AIMMSMapiDLL;
+            ReturnType: integer;
+            BodyCall: {
+                AIMMSMapiSendMail(
+                   scalar integer : Interactive
+                 )
+            }
+            Parameter Interactive {
+                Default: 1;
+                Property: Optional;
+            }
+        }
+    }
+    DeclarationSection Mail_Declarations {
+        StringParameter MailSubject {
+            InitialData: "Test of AIMMS Mapi Interface";
+        }
+        StringParameter MailRecipient {
+            InitialData: "Dummy Contact";
+        }
+        StringParameter MailRecipientAddress {
+            InitialData: "Dummy@dummy.dummy";
+        }
+        StringParameter MailBodyText;
+        StringParameter MailSignatureFile {
+            Default: "signature.txt";
+        }
+    }
+    Procedure SendMailMessage {
+        Body: {
+            /*
+             *  Create and send a test message illustrating various aspects of the MAPI interface.
+             *  Be aware that because of the invalid recipient address this message will bounce!
+             */
+            
+            AIMMSMapiNewMail(MailSubject);
+            AIMMSMapiAddRecipientTo(MailRecipient, MailRecipientAddress);
+            
+            AIMMSMapiAddParagraph("Hi,");
+            AIMMSMapiAddParagraph("This e-mail provides a demonstration of the AIMMS Mapi Interface.");
+            
+            AIMMSMapiAddParagraph(MailBodyText);
+            
+            AIMMSMapiAddTextFromFile(MailSignatureFile);
+            AIMMSMapiAddAttachment("Mail and Sound.prj");
+            AIMMSMapiAddAttachment("Mail and Sound.amb");
+            
+            AIMMSMapiSendMail(interactive: 1);
+        }
+    }
+    Procedure EditSignature {
+        Body: {
+            FileEdit(MailSignatureFile);
+        }
+    }
+    Section WAV_Interface {
+        StringParameter AIMMSWavDLL {
+            Definition: {
+                if AimmsStringConstants('Architecture') = 'x86' then
+                        "Aimmswav.dll"
+                else
+                        "Aimmswav64.dll"
+                endif
+            }
+        }
+        ExternalProcedure AIMMSWav {
+            Arguments: (AWWavFile,AWAsync);
+            DllName: AIMMSWavDLL;
+            ReturnType: integer;
+            BodyCall: PlayWavFile( string scalar: AWWavFile, integer scalar: AWAsync );
+            Comment: "This procedure will play the specified \'AWWavFile\' asynchronized (\'AWAsync\'=0) or synchronized (\'AWAsync\'=1)";
+            StringParameter AWWavFile {
+                Property: Input;
+            }
+            Parameter AWAsync {
+                Range: binary;
+                Default: 1;
+                Property: Optional;
+            }
+        }
+    }
+    DeclarationSection Sound_Declarations {
+        StringParameter WavFile {
+            Default: "signal.wav";
+        }
+    }
+    Procedure PlayWavFile {
+        Body: {
+            AIMMSWav(WavFile);
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

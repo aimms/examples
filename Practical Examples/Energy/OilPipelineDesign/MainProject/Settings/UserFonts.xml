@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Figure Font" FaceName="Arial Rounded MT Bold" PointSize="100" UUID="433DEA4D-2828-4315-92DA-1422A32C7521" InternalID="1" />
+	<UserFont Name="Title Font" FaceName="Arial Rounded MT Bold" PointSize="180" UUID="BC3383BE-8F81-4953-B4BE-3DBB2088C14B" InternalID="2" />
+	<UserFont Name="Main Title Font" FaceName="Arial Rounded MT Bold" PointSize="240" Italic="true" UUID="8168E4D8-7660-4E7F-8C03-78CF48EF71AA" InternalID="3" />
+</UserFonts>

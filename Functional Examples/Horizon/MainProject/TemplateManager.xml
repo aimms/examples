@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="81AD3EAA-96E4-4E8B-8DDA-CDBDD60BB8E5" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|67B8248B-52A3-4894-82F4-A964EF7ACEA3|Size Template">
+		<Template Name="Navigation Template" PageGUID="2BB30BB7-7613-4C1A-87A3-021D12C0FBB9" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|FC6A654B-1488-4BF4-B547-A2D079DFE3C8|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="048A23CF-0816-4228-B627-7CE64AAE2A52" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B5B28B43-1183-4E9C-8638-2BAEC2A24B49|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="F448B2C7-42E5-4FC5-B3C6-10B572526745" />
+			</Template>
+			<Page Name="View Horizon Intervals" PageGUID="F9BE7D98-81D2-4D69-837F-86CC2CA2C2D8" />
+		</Template>
+	</Template>
+</TemplateManager>

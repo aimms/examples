@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2011-04-27 19:30:12">
+	<Location top="27" left="8" bottom="864" right="1270" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>2F3E9C74-9B5C-49A8-892F-9A0769291905</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="29" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="58" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="26BF8C4B-70BF-4A54-8AAA-5DF8C9EF4371">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Gantt Chart">
+		<Location top="426" left="207" bottom="615" right="762" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<VerticalGridLines>true</VerticalGridLines>
+		<Background>
+			<BandPosition>0</BandPosition>
+			<BandWidth>VALUE := -inf</BandWidth>
+			<BandColor>RGB 5cadf5</BandColor>
+			<AlternatingColor>
+				<UserColor GUID="D2530E4C-DBD6-4409-A672-3B10576BCFBF">Alternating Orange</UserColor>
+			</AlternatingColor>
+		</Background>
+		<Calendar>
+			<Items>hcY</Items>
+			<MeasurementFactor>1</MeasurementFactor>
+			<MeasurementUnit>hours</MeasurementUnit>
+			<ReferenceTime>Today</ReferenceTime>
+			<LeftBound>GanttChartBegin</LeftBound>
+			<RightBound>GanttChartEnd</RightBound>
+		</Calendar>
+		<IndexLocations>
+			<RowDomain>mr</RowDomain>
+		</IndexLocations>
+		<TaskGroup>
+			<Domain>TaskDomain( m, mr, t )</Domain>
+			<Start>TaskStart( m, t )</Start>
+			<Duration>TaskDuration( m, t )</Duration>
+			<Color>TaskColor( m, t )</Color>
+		</TaskGroup>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<TabOrder>4</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Re-initialize Data"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainInitialization</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="306" left="6" bottom="330" right="192" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Change Machines"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>EffectuateMachineChanges</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="246" left="207" bottom="384" right="762" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1734F810-8D93-455C-9D3E-EC7645ADD90C">default selection</UserColor>
+		</TextColor>
+		<AutomaticReSort>false</AutomaticReSort>
+		<Domain>
+			<Identifier>TaskDomain( m, mr, t )</Identifier>
+			<Index Name="m">
+				<TitleText>"Machine"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+			<Index Name="mr">
+				<TitleText>"Row Machine"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+			<Index Name="t">
+				<TitleText>"Task"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+			<AllowRowAdd>true</AllowRowAdd>
+			<AllowRowDelete>true</AllowRowDelete>
+			<AllowRowModify>true</AllowRowModify>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>TaskStart( m, t )</Identifier>
+			<NumberFormat Width="7" Decimals="3" Alignment="Center" />
+			<TitleText>"Start"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>TaskDuration( m, t )</Identifier>
+			<NumberFormat Width="7" Decimals="3" Alignment="Center" />
+			<TitleText>"Duration"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>TaskType( m, t )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"Type"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>TaskColor( m, t )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"Color"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="210" bottom="210" right="768" />
+		<StaticText>In the table, press Ins to add a new task, and F2 to edit the task domain, or</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="1734F810-8D93-455C-9D3E-EC7645ADD90C">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="213" left="222" bottom="231" right="310" />
+		<StaticText>for machine</StaticText>
+		<Alignment>Right</Alignment>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="1734F810-8D93-455C-9D3E-EC7645ADD90C">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="210" left="654" bottom="234" right="762" />
+		<TabOrder>8</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Add Task"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>NewTask</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="210" left="317" bottom="240" right="426" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<NumItemLines>0</NumItemLines>
+		<Border Style="None" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1734F810-8D93-455C-9D3E-EC7645ADD90C">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>machine</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="215" left="432" bottom="230" right="520" />
+		<StaticText>task type</StaticText>
+		<Alignment>Right</Alignment>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="1734F810-8D93-455C-9D3E-EC7645ADD90C">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="210" left="527" bottom="240" right="636" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<NumItemLines>0</NumItemLines>
+		<Border Style="None" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1734F810-8D93-455C-9D3E-EC7645ADD90C">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>TType</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="396" left="210" bottom="426" right="768" />
+		<StaticText>Start times are shown as elapsed time (in hours) since 'Today'.
+In the Gantt Chart, click on arrows to move in time, Ctrl-click to modify interval length
+Note that the past is shown in a different color by specifying a Vertical Band ( on the Background tab)</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="1734F810-8D93-455C-9D3E-EC7645ADD90C">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="249" left="18" bottom="267" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Show without Dates</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>EffectuateMachineChanges</Symbol>
+			<Symbol>m</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>MainInitialization</Symbol>
+			<Symbol>mr</Symbol>
+			<Symbol>GanttChartEnd</Symbol>
+			<Symbol>TaskDuration</Symbol>
+			<Symbol>TaskStart</Symbol>
+			<Symbol>Machines</Symbol>
+			<Symbol>TaskDomain</Symbol>
+			<Symbol>TaskColor</Symbol>
+			<Symbol>GanttChartBegin</Symbol>
+			<Symbol>TaskType</Symbol>
+			<Symbol>machine</Symbol>
+			<Symbol>NewTask</Symbol>
+			<Symbol>TType</Symbol>
+			<Symbol>Today</Symbol>
+			<Symbol>TaskTypes</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="DB6C03A1-3839-4CB2-929A-DE7E28415A19">
+		<Page Name="The Netherlands" PageGUID="D266E602-DE33-4E68-8FC3-E1E5BB014927" />
+		<Page Name="USA" PageGUID="5D5995C1-0141-42E9-9D29-C5EBB558C2A8" />
+		<Page Name="AIMMS Offices" PageGUID="C2C707C1-FC4F-425D-A40A-96E40E4B5255" />
+		<Page Name="Legend" PageGUID="4CC0D351-9188-4D9F-B4D2-AC65C4DB9D6B" />
+	</Page>
+</PageManager>

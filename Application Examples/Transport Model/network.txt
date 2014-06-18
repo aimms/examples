@@ -1,0 +1,2 @@
+You can also zoom in the network object by selecting an area holding the left-mouse key, and then execute the pop-up action 'Zoom Selected Area'.
+Reset the zoom actions with the 'Reset network area' button.

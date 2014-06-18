@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="7EAE89DE-B427-42DD-AD8C-2A6DEF805491" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B357AB0A-931E-497D-ADF0-E96B97282F8E|Size Template">
+		<Template Name="Navigation Template" PageGUID="134FDCBD-DE11-4E3D-AF42-D956581BC95B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|D94B24D9-DCDB-4247-B1AC-F02CB89681C0|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="2BF50618-5AF4-44E1-9DAD-B166D4BF20D0" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|1F129632-F123-4E22-B6B7-025171B2B4CE|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="CD55D669-7788-4CF7-B561-72BF6320DEB6" />
+			</Template>
+			<Page Name="Cutting Pattern Results" PageGUID="01EE384F-8A6B-4056-9A0D-4B33D1ABCC17" />
+		</Template>
+	</Template>
+</TemplateManager>

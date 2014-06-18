@@ -1,0 +1,145 @@
+## ams_version=1.0
+
+Model Main_Clock {
+    DeclarationSection Timing {
+        StringParameter Today {
+            Text: "The reference data from which all time is seen.";
+        }
+        Parameter Now {
+            Text: "Number of seconds since refenence date";
+        }
+        Parameter CurrentHour {
+            Text: "Number of hours since reference date";
+        }
+        Parameter CurrentMinute {
+            Text: "Number of minutes since CurrentHour";
+        }
+        Parameter CurrentSecond {
+            Text: "Number of seconds since CurrentMinute";
+        }
+        Parameter RedrawClock {
+            Text: "Binary variable denoting whether or not the clock should be drawn a next time";
+        }
+        Parameter ClockHours {
+            Text: "The place of the hour-hand on a scale from 1 to 60";
+        }
+        Quantity SI_Time_Duration {
+            BaseUnit: s;
+            Conversions: second -> s : # -> #;
+            Comment: "Expresses the value for the duration of periods.";
+        }
+        StringParameter DisplayTime {
+            Text: "Holds the current time, format H:M:S";
+        }
+    }
+    DeclarationSection Clock_Display {
+        Set OriginSet {
+            Text: "Set containing the origin of the clock, the hands will be draw from this point";
+            Index: o;
+            Definition: Data{Origin};
+        }
+        Set HandSet {
+            Text: "The set containing the three hands of a clock";
+            Index: h;
+            Definition: Data{Hour-Hand, Minute-Hand, Second-Hand};
+        }
+        Set TimeNodes {
+            SubsetOf: Integers;
+            Text: "The nodes that are display in the clock";
+            Index: tn;
+        }
+        Set TimeNodesSmall {
+            SubsetOf: TimeNodes;
+            Text: "The nodes that are used as the end point of the small hand";
+            Index: tns;
+        }
+        Parameter TimeSize {
+            IndexDomain: (o,tn,h);
+            Text: "This denotes the size of a particular hand at a particular time";
+        }
+        Parameter OriginX {
+            IndexDomain: (o);
+            Text: "X-coordinate of the origin";
+        }
+        Parameter OriginY {
+            IndexDomain: (o);
+            Text: "Y-coordinate of the origin";
+        }
+        Parameter LocX {
+            IndexDomain: (tn);
+            Text: "X-coordinate of the elements in TimeNodes";
+            Definition: 100 * sin(2 * 3.14159265 * tn/60);
+        }
+        Parameter LocSmallX {
+            IndexDomain: (tns);
+            Text: "X-coordinate of the elements in TimeNodesSmall";
+            Definition: 0.8*LocX(tns);
+        }
+        Parameter LocY {
+            IndexDomain: (tn);
+            Text: "Y-coordinate of the elements in TimeNodes";
+            Definition: 100 * cos(2 * 3.14159264 * tn/60);
+        }
+        Parameter LocSmallY {
+            IndexDomain: (tns);
+            Text: "Y-coordinate of the elements in TimeNodesSmall";
+            Definition: 0.8*LocY(tns);
+        }
+        StringParameter Description {
+            IndexDomain: (tn);
+            Text: "Description of the nodes in the network";
+            Definition: {
+                IF (ord(tn) = 1) THEN
+                        FormatString("%i", 12)
+                ELSEIF mod(tn/5,1) = 0 THEN
+                        FormatString("%i", tn/5)
+                ENDIF
+            }
+        }
+        ElementParameter ClockColor {
+            Text: "Color of the elements in the network";
+            Range: AllColors;
+            InitialData: 'Magenta';
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            TimeNodes      := {0..59};
+            TimeNodesSmall := TimeNodes;
+            Today          := CurrentToString( "%c%y-%m-%d 00:00:00" );
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure InitClock {
+        Body: {
+            ReDrawClock := 1;
+            DrawClock;
+        }
+    }
+    Procedure DrawClock {
+        Body: {
+            Now           := CurrentToMoment([second], Today);
+            CurrentHour   := Trunc( Now / 3600 );
+            CurrentMinute := Trunc( (Now - CurrentHour*3600) / 60 );
+            CurrentSecond := Mod( Now, 60 );
+            ClockHours    := 5*Mod(CurrentHour,12) + Trunc(CurrentMinute/60*5);
+            
+            empty TimeSize;
+            TimeSize('Origin', CurrentSecond, 'Second-Hand')  := 1;
+            TimeSize('Origin', CurrentMinute, 'Minute-Hand')  := 2;
+            TimeSize('Origin', ClockHours, 'Hour-Hand')       := 2;
+            
+            DisplayTime := MomentToString( "%H:%M:%S", [second], Today, Now );
+            
+            if ( ReDrawClock ) then
+               ScheduleAt( MomentToString( "%c%y-%m-%d %H:%M:%S", [second], Today, Now + 1), 'DrawClock' );
+            endif;
+        }
+        Comment: "Retrieving the current time and display the new clock";
+    }
+}

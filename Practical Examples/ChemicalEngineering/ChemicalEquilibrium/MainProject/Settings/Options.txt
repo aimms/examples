@@ -1,0 +1,3 @@
+﻿* AIMMS
+* Environment
+Startup_Page "ChemicalEquilibrium Input and Output Data"

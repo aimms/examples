@@ -1,0 +1,4 @@
+﻿* AIMMS
+MIP_relative_optimality_tolerance 0.5
+warning_non_optimal off
+* Environment

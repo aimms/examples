@@ -1,0 +1,228 @@
+## ams_version=1.0
+
+Model Water_Distribution {
+    Comment: {
+        "Optimal Design of a Water Distribution Network
+        
+        Problem type:
+        MINLP (small)
+        
+        Keywords:
+        Branch-and-Bound, generic algorithm, GMP, sections
+        
+        Description:
+        The optimal design of a Water Distribution Network consists of the choice of
+        a diameter for each pipe, while other design properties are considered to be
+        fixed (e.g., the topology and pipe lengths).
+        
+        The Water Distribution Network is formulated as MINLP problem and solved using
+        a generic Branch-and-Bound algorithm that was created using GMP functionality.
+        The algorithm is available in the file \'BB.aim\' and can be included in any
+        AIMMS project as a Section.
+        
+        References:
+        Bragalli, C., C. D\'Ambrosio, J. Lee, A. Lodi and P. Toth, On the optimal design
+        of water distribution networks: a practical MINLP approach, Optimization and
+        Engineering 13(2), 2012, pp. 219-246.
+        
+        CMU-IBM Cyber-Infrastructure for MINLP collaborative site, at:
+        http://www.minlp.org/index.php
+        
+        Nemhauser, G.L. and L.A. Wolsey, Integer and Combinatorial Optimization, Wiley,
+        1999."
+    }
+    Set Nodes {
+        Text: "Set of Nodes, i.e., junctions";
+        Index: i, j;
+        InitialData: data { 1 .. 7 };
+    }
+    Set SourceNodes {
+        SubsetOf: Nodes;
+        Text: "Set of source nodes";
+        InitialData: data { 1 };
+    }
+    Parameter Pipes {
+        IndexDomain: (i,j);
+        Range: binary;
+        Definition: data { ( 1, 2 ) : 1,  ( 2, 3 ) : 1,  ( 2, 4 ) : 1,  ( 3, 5 ) : 1,  ( 4, 5 ) : 1,  ( 4, 6 ) : 1,  ( 5, 7 ) : 1,  ( 6, 7 ) : 1 };
+    }
+    Set Diameters {
+        Text: "Index set for the discrete diameters/costs";
+        Index: d;
+        InitialData: data { 1 .. 14 };
+    }
+    Parameter Elevation {
+        IndexDomain: i;
+        Text: "elevation";
+        InitialData: data { 2 : 150,  3 : 160,  4 : 155,  5 : 150,  6 : 165,  7 : 160 };
+    }
+    Parameter Demand {
+        IndexDomain: i;
+        Text: "demand";
+        InitialData: data { 2 : 0.027770,  3 : 0.027770,  4 : 0.033330,  5 : 0.075000,  6 : 0.091670,  7 : 0.055550 };
+    }
+    Parameter MinPressure {
+        IndexDomain: i;
+        Text: "minimum pressure";
+        InitialData: data { 1 : 210,  2 : 30,  3 : 30,  4 : 30,  5 : 30,  6 : 30,  7 : 30 };
+    }
+    Parameter MaxPressure {
+        IndexDomain: i;
+        Text: "maximum pressure";
+        InitialData: data { 1 : 210,  2 : 60,  3 : 50,  4 : 55,  5 : 60,  6 : 45,  7 : 50 };
+    }
+    Parameter PipeLength {
+        IndexDomain: (i,j);
+        Text: "pipe length";
+    }
+    Parameter MaxSpeed {
+        IndexDomain: (i,j);
+        Text: "pipe maximum speed";
+    }
+    Parameter MinPipeDiameter {
+        Text: "minimal pipe diameter";
+    }
+    Parameter MaxPipeDiameter {
+        Text: "maximal pipe diameter";
+    }
+    Parameter ResistanceCoefficient {
+        IndexDomain: (i,j);
+        Text: "coefficient of resistance";
+    }
+    Parameter Diameter {
+        IndexDomain: (i,j,d);
+        Text: "discrete diameters";
+        Definition: DiscreteDiameter(d);
+    }
+    Parameter DiscreteCost {
+        IndexDomain: d;
+        Text: "discrete costs";
+        InitialData: data { 1 : 2,  2 : 5,  3 : 8,  4 : 11,  5 : 16,  6 : 23,  7 : 32,  8 : 50,  9 : 60,  10 : 90,  11 : 130,  12 : 170,  13 : 300,  14 : 550 };
+    }
+    Parameter PI {
+        Text: "Famous constant";
+        Definition: 4*arctan(1);
+    }
+    Parameter DeltaNeighborhood {
+        Text: "delta so that we smooth the flow in a delta neighborhood of 0";
+        InitialData: 0.00005;
+    }
+    Parameter Power {
+        Text: "power in pressure loss equation";
+        InitialData: 1.852;
+    }
+    Parameter DiscreteDiameter {
+        IndexDomain: d;
+        InitialData: {
+            data
+                { 1  : 0.025400,  2  : 0.050800,  3  : 0.076200,  4  : 0.101600,  5  : 0.152400,  6  : 0.203200,  7  : 0.254000,
+                  8  : 0.304800,  9  : 0.355600,  10 : 0.406400,  11 : 0.457200,  12 : 0.508000,  13 : 0.558800,  14 : 0.609600 }
+        }
+    }
+    Variable HydraulicHead {
+        IndexDomain: i;
+        Text: "Node\'s hydraulic head";
+    }
+    Variable Flow {
+        IndexDomain: (i,j);
+        Text: "Flow in pipe";
+    }
+    Variable Area {
+        IndexDomain: (i,j);
+        Text: "Cross-sectional of pipe";
+    }
+    Variable X {
+        IndexDomain: (i,j,d);
+        Text: "forcing diameter values to discrete values";
+        Range: binary;
+    }
+    Variable TotalCost {
+        Text: "total discrete cost";
+        Definition: sum( (i,j) | Pipes(i,j), PipeLength(i,j) * sum(d, X(i,j,d)*DiscreteCost(d)) );
+    }
+    Constraint Balance {
+        IndexDomain: i | not i in SourceNodes;
+        Text: "Conservation of flow";
+        Definition: demand(i) = - sum( j | Pipes(i,j), Flow(i,j) ) + sum( j | Pipes(j,i), Flow(j,i) );
+    }
+    Constraint HydraulicHeadFlow {
+        IndexDomain: (i,j) | Pipes(i,j);
+        Text: "Headloss relationship across each link in the network";
+        Definition: abs(Flow(i,j))**(Power-1)*Flow(i,j) = (4/PI*Area(i,j))**2.435 * ResistanceCoefficient(i,j)**Power * (HydraulicHead(i)-HydraulicHead(j)) / (10.7*PipeLength(i,j));
+    }
+    Constraint PipeFlowUpperBound {
+        IndexDomain: (i,j) | Pipes(i,j);
+        Text: "Upper bound on pipe\'s flow (expressed as a function of the maximum velocity and of the diameter)";
+        Definition: Flow(i,j) <= Area(i,j) * MaxSpeed(i,j);
+    }
+    Constraint PipeFlowLowerBound {
+        IndexDomain: (i,j) | Pipes(i,j);
+        Text: "Lower bound on pipe\'s flow (expressed as a function of the maximum velocity and of the diameter)";
+        Definition: Flow(i,j) >= - Area(i,j) * MaxSpeed(i,j);
+    }
+    Constraint Linking {
+        IndexDomain: (i,j) | Pipes(i,j);
+        Text: "Linking continuous diameter variables to the discrete choices";
+        Definition: Area(i,j) = PI/4 * sum( d, sqr(Diameter(i,j,d)) * X(i,j,d) );
+    }
+    Constraint Convexity {
+        IndexDomain: (i,j) | Pipes(i,j);
+        Text: "SOS convexity constraints";
+        Definition: sum( d, X(i,j,d) ) = 1;
+    }
+    MathematicalProgram water {
+        Objective: TotalCost;
+        Direction: minimize;
+        Type: MINLP;
+    }
+    ElementParameter myGMP {
+        Range: AllGeneratedMathematicalPrograms;
+    }
+    Procedure MainInitialization {
+        Body: {
+            PipeLength(i,j) := 1000;
+            ResistanceCoefficient(i,j) := 130;
+            MaxSpeed(i,j) := 2.0;
+            
+            MinPipeDiameter := smin((i,j,d), Diameter(i,j,d));
+            MaxPipeDiameter := smax((i,j,d), Diameter(i,j,d));
+            
+            HydraulicHead.lo(i) := MinPressure(i)+Elevation(i);
+            HydraulicHead.up(i) := MaxPressure(i)+Elevation(i);
+            
+            Area.lo(i,j) | Pipes(i,j) := (PI/4)*sqr(MinPipeDiameter);
+            Area.up(i,j) | Pipes(i,j) := (PI/4)*sqr(MaxPipeDiameter);
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            ShowProgressWindow;
+            
+            myGMP := GMP::Instance::Generate( water );
+            
+            BB( myGMP );
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Section Section_BB {
+        SourceFile: "BB.ams";
+        Comment: {
+            "This section implements a generic Branch-and-Bound algorithm for MIP and MINLP
+            minimization problems containing binary variables (and not general integer
+            variables).
+            
+            The algorithm is written using the AIMMS language and uses GMP functionality.
+            The Branch-and-Bound algorithm starts with a presolve step. Nodes are selected
+            by taking the node with the best objective. Branching variables are selected
+            by taking the variable with the most fractional value.
+            
+            References:
+            Nemhauser, G.L. and L.A. Wolsey, Integer and Combinatorial Optimization, Wiley,
+            1999."
+        }
+    }
+}

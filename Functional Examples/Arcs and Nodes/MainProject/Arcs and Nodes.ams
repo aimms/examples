@@ -1,0 +1,311 @@
+## ams_version=1.0
+
+Model Main_Arcs_and_Nodes {
+    DeclarationSection Node_Declarations {
+        Set NodeSet {
+            Index: n, i, j;
+            Parameter: SelectedNode, SourceNode, DestinationNode;
+        }
+        Set Coordinates {
+            Index: c;
+            Definition: data { 'x', 'y' };
+        }
+        Parameter NodeCoordinate {
+            IndexDomain: (n,c);
+        }
+        Parameter Supply {
+            IndexDomain: (n);
+        }
+        Parameter Demand {
+            IndexDomain: (n);
+        }
+    }
+    DeclarationSection Arc_Declarations {
+        Set ArcSet {
+            Index: a;
+            Parameter: SelectedArc;
+        }
+        Parameter ArcMap {
+            IndexDomain: (a,i,j);
+        }
+        Parameter ArcCost {
+            IndexDomain: (a);
+        }
+        Parameter ArcCapacity {
+            IndexDomain: (a);
+        }
+        Parameter ArcFromMultiplier {
+            IndexDomain: (a);
+            Default: 1;
+        }
+        Parameter ArcToMultiplier {
+            IndexDomain: (a);
+            Default: 1;
+        }
+    }
+    DeclarationSection Network_Model_Formulation {
+        Node GenericNode {
+            IndexDomain: (n);
+            Property: Level;
+            Definition: NetInflow >= Demand(n) - Supply(n);
+        }
+        Arc GenericArc {
+            IndexDomain: (a,i,j) | ArcMap(a,i,j);
+            Range: [0, ArcCapacity(a)];
+            From: GenericNode(i);
+            To: GenericNode(j);
+            FromMultiplier: ArcFromMultiplier(a);
+            ToMultiplier: ArcToMultiplier(a);
+            Cost: ArcCost(a);
+        }
+        Set NetworkFlowModelConstraints {
+            SubsetOf: AllConstraints;
+            InitialData: data { GenericNode };
+        }
+        Set NetworkFlowModelVariables {
+            SubsetOf: AllVariables;
+            InitialData: data { GenericArc, FlowCost };
+        }
+        MathematicalProgram NetWorkFlowModel {
+            Objective: FlowCost;
+            Direction: minimize;
+            Constraints: NetworkFlowModelConstraints;
+            Variables: NetworkFlowModelVariables;
+            Type: LP;
+        }
+    }
+    DeclarationSection Equivalent_LP_Formulation {
+        Variable Flow {
+            IndexDomain: (a,i,j) | ArcMap(a,i,j);
+            Range: [0, ArcCapacity(a)];
+        }
+        Constraint NodeBalance {
+            IndexDomain: (n);
+            Property: Level;
+            Definition: {
+                sum((a,i), Flow(a,i,n) * ArcToMultiplier(a)) + Supply(n) >=
+                sum((a,j), Flow(a,n,j) / ArcFromMultiplier(a)) + Demand(n)
+            }
+        }
+        Variable TotalFlowCost {
+            Definition: sum( (a,i,j), Flow(a,i,j) * ArcCost(a) );
+        }
+        Set NetworkFlowLPModelConstraints {
+            SubsetOf: AllConstraints;
+            InitialData: data { NodeBalance };
+        }
+        Set NetworkFlowLPModelVariables {
+            SubsetOf: AllVariables;
+            InitialData: data { Flow, TotalFlowCost };
+        }
+        MathematicalProgram NetworkFlowLPModel {
+            Objective: TotalFlowCost;
+            Direction: minimize;
+            Constraints: NetworkFlowLPModelConstraints;
+            Variables: NetworkFlowLPModelVariables;
+            Type: LP;
+        }
+    }
+    Section GUI_Support {
+        Section Node_Administration {
+            Parameter NodeSize {
+                IndexDomain: (n);
+                Definition: abs(Supply(n) - Demand(n));
+            }
+            ElementParameter NodeColor {
+                IndexDomain: (n);
+                Range: AllColors;
+                Definition: {
+                    if     ( n = SourceNode         ) then 'SourceNode'
+                    elseif ( Supply(n) >= Demand(n) ) then 'SupplyNode'
+                    else   'DemandNode' endif
+                }
+            }
+            StringParameter NewNodeName {
+                InitialData: "";
+            }
+            Procedure AddNode {
+                Body: {
+                    empty NewNodeName;
+                    
+                    if ( DialogGetString( "Enter name for new node", NewNodeName) ) then
+                    
+                        ! First check if the node name entered does already exist
+                        SelectedNode := StringToElement( NodeSet, NewNodeName, create: 0 );
+                    
+                        if ( SelectedNode ) then
+                            DialogError( "The node name you entered already exists.\nPlease enter another name for the new node." );
+                        else
+                        	! Add the node name to the set
+                            SelectedNode := StringToElement( NodeSet, NewNodeName, create: 1 );
+                    
+                    		NodeCoordinate(SelectedNode,c) := Average(n | n <> SelectedNode, NodeCoordinate(n,c));
+                        endif;
+                    
+                    endif;
+                }
+            }
+            Procedure DeleteNode {
+                Body: {
+                    ! First, delete all arcs affected by deleting the node
+                    
+                    ! AIMMS does not allow changes to a set which is looped over
+                    ! in a FOR loop, hence the set of DeletedArcs
+                    
+                    DeletedArcs := {};
+                    
+                    for ((a,j) | ArcMap(a,SelectedNode,j)) do
+                        ArcMap(a,SelectedNode,j) := 0;
+                        DeletedArcs              += a;
+                    endfor;
+                    
+                    for ((a,i) | ArcMap(a,i,SelectedNode)) do
+                        ArcMap(a,i,SelectedNode) := 0;
+                        DeletedArcs              += a;
+                    endfor;
+                    
+                    ArcSet -= DeletedArcs;
+                    
+                    ! Set SelectedArc to an existing value, if the old value has been destroyed
+                    
+                    if ( not SelectedArc in ArcSet ) then
+                       SelectedArc  := first(ArcSet);
+                       SetSourceDestination;
+                    endif;
+                    
+                    ! Finally, update the node set
+                    
+                    NodeSet      -= SelectedNode;
+                    SelectedNode := first(NodeSet);
+                    
+                    CleanDependents NodeSet, ArcSet;
+                }
+                Set DeletedArcs {
+                    SubsetOf: ArcSet;
+                }
+            }
+        }
+        Section Arc_Administration {
+            ElementParameter ArcColor {
+                IndexDomain: (a);
+                Range: AllColors;
+                Default: 'light grey';
+                Definition: if ( a = SelectedArc ) then 'Header Blue' else 'Light Grey' endif;
+            }
+            Parameter MaxArcs {
+                InitialData: 0;
+            }
+            Procedure SetSourceNode {
+                Body: {
+                    SourceNode := SelectedNode;
+                }
+            }
+            Procedure AddArc {
+                Body: {
+                    DestinationNode := SelectedNode;
+                    
+                    if ( exists(a | ArcMap(a,SourceNode,DestinationNode)) ) then
+                       DialogError( FormatString("An arc from node '%e' to node '%e' is already defined", SourceNode, DestinationNode) );
+                       return 0;
+                    endif;
+                    
+                    MaxArcs += 1;
+                    SetElementAdd( ArcSet, SelectedArc, FormatString("arc-%i", MaxArcs) );
+                    
+                    ArcMap(SelectedArc, SourceNode, DestinationNode) := 1;
+                }
+            }
+            Procedure DeleteArc {
+                Body: {
+                    ArcSet      -= SelectedArc;
+                    SelectedArc := first(ArcSet);
+                    
+                    CleanDependents ArcSet;
+                }
+            }
+            Procedure SetSourceDestination {
+                Body: {
+                    for ((i,j) | ArcMap(SelectedArc,i,j)) do
+                        SourceNode      := i;
+                        DestinationNode := j;
+                    endfor;
+                }
+            }
+            Procedure ModifySourceDestination {
+                Body: {
+                    ArcMap(SelectedArc,i,j) := 0;
+                    ArcMap(SelectedArc,SourceNode,DestinationNode) := 1;
+                }
+            }
+            Procedure SwapSourceDestination {
+                Body: {
+                    ArcMap(SelectedArc,i,j) := 0;
+                    ArcMap(SelectedArc,DestinationNode,SourceNode) := 1;
+                    
+                    SetSourceDestination;
+                }
+            }
+        }
+        Section Model_Solution {
+            Parameter TotalSupplySurplus {
+                Definition: sum(n, Supply(n) - Demand(n));
+            }
+            Parameter SolveNetworkModel {
+                Comment: "If 1 use the network model formulation, otherwise use the equivalent LP";
+            }
+            Parameter ComputedFlow {
+                IndexDomain: (a);
+                Definition: {
+                    if ( SolveNetworkModel ) then
+                    	sum((i,j), GenericArc(a,i,j))
+                    else
+                    	sum((i,j), Flow(a,i,j))
+                    endif
+                }
+            }
+            Parameter ComputedCost {
+                Definition: {
+                    if ( SolveNetworkModel ) then
+                    	FlowCost
+                    else
+                    	TotalFlowCost
+                    endif
+                }
+            }
+            Parameter EndStock {
+                IndexDomain: (n);
+                Definition: {
+                    if ( SolveNetworkModel ) then
+                    	GenericNode(n) + Supply(n) - Demand(n)
+                    else
+                    	NodeBalance(n) + Supply(n) - Demand(n)
+                    endif
+                }
+            }
+            Procedure SolveModel {
+                Body: {
+                    if ( TotalSupplySurplus < 0 ) then
+                       	DialogMessage( "Total surplus of supply is less than 0.\nNo feasible solution possible.\nModel will not be solved." );
+                    else
+                       	if ( SolveNetworkModel ) then
+                       		solve NetWorkFlowModel;
+                       	else
+                       		solve NetworkFlowLPModel;
+                       	endif;
+                    endif;
+                }
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            SolveModel;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

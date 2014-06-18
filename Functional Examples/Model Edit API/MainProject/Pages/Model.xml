@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2013-05-23 13:33:32">
+	<Location top="98" left="92" bottom="656" right="767" />
+	<PageEditSize Type="Inherited">
+		<Size Width="675" Height="557" />
+	</PageEditSize>
+	<ProjectUUID>02720721-A221-4AD9-B8FD-820FA144B309</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromLeft" Value="0.503704">
+			<LeftArea Line="PercentageFromTop" Value="0.497307" />
+			<RightArea Line="PercentageFromTop" Value="0.495512" />
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Scalar">
+		<Location top="0" left="0" bottom="558" right="678" />
+		<TabOrder>1</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="Line" Width="1" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<DisplayTextFile>true</DisplayTextFile>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ModelOutput</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ModelOutput</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

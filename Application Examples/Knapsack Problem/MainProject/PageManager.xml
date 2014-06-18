@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="Problem Description" PageGUID="E7D6E053-6DA1-45B6-8601-158D134D3622">
+		<Page Name="Knapsack Problem" PageGUID="4377A094-DC6E-4388-819B-DE99F47B971F" />
+	</Page>
+</PageManager>

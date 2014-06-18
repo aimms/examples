@@ -1,0 +1,341 @@
+## ams_version=1.0
+
+Model Main_Calendar {
+    Section Main_Section {
+        DeclarationSection Calendar_Declarations {
+            StringParameter DefaultDateFormat {
+                Default: "%c%y-%m-%d %H:%M:%S";
+            }
+            StringParameter CalendarBeginDate {
+                Default: "2007-01-01";
+            }
+            StringParameter CalendarEndDate {
+                Default: "2007-12-31";
+            }
+            Quantity SI_Time_Duration {
+                BaseUnit: s;
+                Conversions: {
+                    hour  -> s : # -> # * 3600,
+                    day   -> s : # -> # * 86400,
+                    week  -> s : # -> # * 604800,
+                    month -> s : # -> # * 2628000
+                }
+                Comment: "Expresses the value for the duration of periods.";
+            }
+            Calendar MonthlyCalendar1 {
+                Index: m1;
+                Unit: month;
+                BeginDate: CalendarBeginDate;
+                EndDate: CalendarEndDate;
+                TimeslotFormat: "%sAm|AllMonths|, %c%y";
+            }
+            Calendar MonthlyCalendar2 {
+                Index: m2;
+                Unit: month;
+                BeginDate: CalendarBeginDate;
+                EndDate: CalendarEndDate;
+                TimeslotFormat: "%c%y/%m";
+            }
+            Calendar DailyCalendar1 {
+                Index: d1;
+                Unit: day;
+                BeginDate: CalendarBeginDate;
+                EndDate: CalendarEndDate;
+                TimeslotFormat: "%m/%d/%y";
+            }
+            Calendar DailyCalendar2 {
+                Index: d2;
+                Unit: day;
+                BeginDate: CalendarBeginDate;
+                EndDate: CalendarEndDate;
+                TimeslotFormat: "%sAw|LocaleAllAbbrWeekdays|, %sAm|LocaleAllAbbrMonths| %d, %c%y";
+            }
+            StringParameter DayDescription {
+                IndexDomain: d2;
+                Definition: TimeslotToString( "Week %W, %C%Y (%sAw|AllAbbrWeekDays|)", DailyCalendar2, d2 );
+            }
+            ElementParameter FirstCalendarDay {
+                Range: DailyCalendar2;
+                Definition: first(DailyCalendar2);
+            }
+            Parameter DaysSinceBeginCalendar {
+                IndexDomain: (d2);
+                Unit: day;
+                Definition: TimeSlotToMoment( DailyCalendar2, FirstCalendarDay, d2 );
+            }
+        }
+    }
+    Section GUI_Declarations {
+        Section Calendar_Data {
+            DeclarationSection GUI_Declarations_Upper_Part_of_Window {
+                Set DeclaredCalendars {
+                    Index: dc;
+                    Parameter: VisibleCalendar;
+                    Definition: data { 'Monthly Calendar 1', 'Monthly Calendar 2', 'Daily Calendar 1', 'Daily Calendar 2' };
+                }
+                Parameter CalendarIsHidden {
+                    IndexDomain: (dc);
+                    Definition: 1 $ (VisibleCalendar <> dc);
+                }
+            }
+            DeclarationSection GUI_Declarations_Lower_Part_of_Window {
+                Set Selections {
+                    Index: sel;
+                    Parameter: Selection;
+                    Definition: data { 'On Month', 'On Week', 'On Day' };
+                }
+                Set AllSelectionChoices {
+                    SubsetOf: Integers;
+                    Index: ch;
+                    InitialData: {
+                        { 1 .. 53 }
+                    }
+                }
+                Set SelectionChoices {
+                    SubsetOf: AllSelectionChoices;
+                    Index: selch;
+                    Parameter: SelectedChoice;
+                    Definition: {
+                        if     ( Selection = 'On Month' ) then { 1 .. 12 }
+                        elseif ( Selection = 'On Week'  ) then { 1 .. 53 }
+                        elseif ( Selection = 'On Day'   ) then { 1 .. 7 }
+                        endif
+                    }
+                }
+                StringParameter ChoiceDescription {
+                    IndexDomain: (sel,ch);
+                    InitialData: {
+                        data
+                        { ( 'On Month',  1 ) : "January"  ,  ( 'On Month',  2 ) : "February" ,
+                          ( 'On Month',  3 ) : "March"    ,  ( 'On Month',  4 ) : "April"    ,
+                          ( 'On Month',  5 ) : "May"      ,  ( 'On Month',  6 ) : "June"     ,
+                          ( 'On Month',  7 ) : "July"     ,  ( 'On Month',  8 ) : "August"   ,
+                          ( 'On Month',  9 ) : "September",  ( 'On Month', 10 ) : "October"  ,
+                          ( 'On Month', 11 ) : "November" ,  ( 'On Month', 12 ) : "December" ,
+                          ( 'On Week' ,  1 ) : "Week 1"   ,  ( 'On Week' ,  2 ) : "Week 2"   ,
+                          ( 'On Week' ,  3 ) : "Week 3"   ,  ( 'On Week' ,  4 ) : "Week 4"   ,
+                          ( 'On Week' ,  5 ) : "Week 5"   ,  ( 'On Week' ,  6 ) : "Week 6"   ,
+                          ( 'On Week' ,  7 ) : "Week 7"   ,  ( 'On Week' ,  8 ) : "Week 8"   ,
+                          ( 'On Week' ,  9 ) : "Week 9"   ,  ( 'On Week' , 10 ) : "Week 10"  ,
+                          ( 'On Week' , 11 ) : "Week 11"  ,  ( 'On Week' , 12 ) : "Week 12"  ,
+                          ( 'On Week' , 13 ) : "Week 13"  ,  ( 'On Week' , 14 ) : "Week 14"  ,
+                          ( 'On Week' , 15 ) : "Week 15"  ,  ( 'On Week' , 16 ) : "Week 16"  ,
+                          ( 'On Week' , 17 ) : "Week 17"  ,  ( 'On Week' , 18 ) : "Week 18"  ,
+                          ( 'On Week' , 19 ) : "Week 19"  ,  ( 'On Week' , 20 ) : "Week 20"  ,
+                          ( 'On Week' , 21 ) : "Week 21"  ,  ( 'On Week' , 22 ) : "Week 22"  ,
+                          ( 'On Week' , 23 ) : "Week 23"  ,  ( 'On Week' , 24 ) : "Week 24"  ,
+                          ( 'On Week' , 25 ) : "Week 25"  ,  ( 'On Week' , 26 ) : "Week 26"  ,
+                          ( 'On Week' , 27 ) : "Week 27"  ,  ( 'On Week' , 28 ) : "Week 28"  ,
+                          ( 'On Week' , 29 ) : "Week 29"  ,  ( 'On Week' , 30 ) : "Week 30"  ,
+                          ( 'On Week' , 31 ) : "Week 31"  ,  ( 'On Week' , 32 ) : "Week 32"  ,
+                          ( 'On Week' , 33 ) : "Week 33"  ,  ( 'On Week' , 34 ) : "Week 34"  ,
+                          ( 'On Week' , 35 ) : "Week 35"  ,  ( 'On Week' , 36 ) : "Week 36"  ,
+                          ( 'On Week' , 37 ) : "Week 37"  ,  ( 'On Week' , 38 ) : "Week 38"  ,
+                          ( 'On Week' , 39 ) : "Week 39"  ,  ( 'On Week' , 40 ) : "Week 40"  ,
+                          ( 'On Week' , 41 ) : "Week 41"  ,  ( 'On Week' , 42 ) : "Week 42"  ,
+                          ( 'On Week' , 43 ) : "Week 43"  ,  ( 'On Week' , 44 ) : "Week 44"  ,
+                          ( 'On Week' , 45 ) : "Week 45"  ,  ( 'On Week' , 46 ) : "Week 46"  ,
+                          ( 'On Week' , 47 ) : "Week 47"  ,  ( 'On Week' , 48 ) : "Week 48"  ,
+                          ( 'On Week' , 49 ) : "Week 49"  ,  ( 'On Week' , 50 ) : "Week 50"  ,
+                          ( 'On Week' , 51 ) : "Week 51"  ,  ( 'On Week' , 52 ) : "Week 52"  ,
+                          ( 'On Week' , 53 ) : "Week 53"  ,  ( 'On Day'  ,  1 ) : "Monday"   ,
+                          ( 'On Day'  ,  2 ) : "Tuesday"  ,  ( 'On Day'  ,  3 ) : "Wednesday",
+                          ( 'On Day'  ,  4 ) : "Thursday" ,  ( 'On Day'  ,  5 ) : "Friday"   ,
+                          ( 'On Day'  ,  6 ) : "Saturday" ,  ( 'On Day'  ,  7 ) : "Sunday"    }
+                    }
+                }
+                Set SelectedDays {
+                    SubsetOf: DailyCalendar2;
+                    Index: seld2;
+                    Definition: {
+                        if     ( Selection = 'On Month' ) then { d2 | TimeslotCharacteristic( d2, 'month' )   = SelectedChoice }
+                        elseif ( Selection = 'On Week'  ) then { d2 | TimeslotCharacteristic( d2, 'week'  )   = SelectedChoice }
+                        elseif ( Selection = 'On Day'   ) then { d2 | TimeslotCharacteristic( d2, 'weekday' ) = SelectedChoice }
+                        endif
+                    }
+                }
+            }
+        }
+        Section Inactive_Days {
+            DeclarationSection Inactive_Day_Selection {
+                Set InactiveDays {
+                    SubsetOf: DailyCalendar2;
+                    Text: "Selected inactive days";
+                    Index: id;
+                }
+                Set GroupSelectionDays {
+                    SubsetOf: DailyCalendar2;
+                    Text: "Inactive days which are selected by group selection";
+                }
+                Set InactiveDayChoices {
+                    Text: "The possible group selections";
+                    Index: idc;
+                    Definition: data{'Every Monday', 'Every Tuesday','Every Wednesday','Every Thursday','Every Friday','Every Saturday','Every Sunday'};
+                }
+                Parameter SelectedInactiveDayChoice {
+                    IndexDomain: idc;
+                    Text: "The current selected groups";
+                    Range: binary;
+                    InitialData: data { 'Every Saturday' : 1,  'Every Sunday' : 1 };
+                }
+                Set StatusSet {
+                    Text: "Auxiliary set  for Gantt chart representation";
+                    Index: st;
+                    Definition: {
+                        {'Active','Inactive'}
+                    }
+                }
+                Parameter DayStatus {
+                    IndexDomain: (d2,st);
+                    Text: "The current status of days";
+                    Range: binary;
+                }
+                StringParameter GanttChartBeginDate {
+                    Text: "The first visible day on the Gantt chart";
+                }
+                StringParameter GanttChartEndDate {
+                    Text: "The last visible day of the Gantt chart";
+                }
+            }
+            DeclarationSection Calandar_Filtering {
+                ElementParameter TodayElement {
+                    Text: "The timeslot of the current datum";
+                    Range: DailyCalendar2;
+                    Definition: CurrentToTimeSlot(DailyCalendar2);
+                }
+                Set CalendarFilters {
+                    Text: "Possible calendar filtering options";
+                    Index: cf;
+                    Parameter: CurrentFilter;
+                    OrderBy: cf;
+                    Definition: {
+                        {'All','Past','Last month','Current month','Next month','Future','Current quarter of year','Current week'}
+                    }
+                }
+                Parameter FilterDayStatus {
+                    IndexDomain: (st);
+                    Text: "Active status filters";
+                    Range: binary;
+                }
+                Parameter DayInQYear {
+                    IndexDomain: (d2);
+                    Text: "Quarter years";
+                    Definition: Ceil(TimeslotCharacteristic(d2,'month')/3);
+                }
+                Parameter DayHasFilteredStatus {
+                    IndexDomain: (d2);
+                    Text: "Day has filtered status";
+                    Range: binary;
+                    Definition: {
+                        if (sum(st,FilterDayStatus(st))) then
+                                (sum(st,(DayStatus(d2,st) = FilterDayStatus(st))) >= 1)
+                        else
+                                0
+                        endif;
+                    }
+                }
+                Set FilteredCalendarDays {
+                    SubsetOf: DailyCalendar2;
+                    Text: "Filtered calendar days";
+                    Index: fd2;
+                    Definition: {
+                        if (CurrentFilter = 'Past') then
+                                {d2 | (d2 < TodayElement) and DayHasFilteredStatus(d2)}
+                        elseif (CurrentFilter = 'Future') then
+                                {d2 | (d2 > TodayElement) and DayHasFilteredStatus(d2)}
+                        elseif (CurrentFilter = 'Last month') then
+                                { d2 | (TimeslotCharacteristic(d2,'month') = (TimeslotCharacteristic(TodayElement,'month')-1)) and DayHasFilteredStatus(d2)}
+                        elseif (CurrentFilter = 'Next month') then
+                                { d2 | (TimeslotCharacteristic(d2,'month') = (TimeslotCharacteristic(TodayElement,'month')+1)) and DayHasFilteredStatus(d2)}
+                        elseif (CurrentFilter = 'Current quarter of year') then
+                                { d2 | (DayInQYear(d2) = DayInQYear(TodayElement)) and DayHasFilteredStatus(d2)}
+                        elseif (CurrentFilter = 'Current month') then
+                                { d2 | (TimeslotCharacteristic(d2,'month') = (TimeslotCharacteristic(TodayElement,'month'))) and DayHasFilteredStatus(d2)}
+                        elseif (CurrentFilter = 'Current week') then
+                                { d2 | (TimeslotCharacteristic(d2,'week') = (TimeslotCharacteristic(TodayElement,'week'))) and DayHasFilteredStatus(d2)}
+                        else
+                                {d2 | DayHasFilteredStatus(d2)}
+                        endif;
+                    }
+                }
+                Parameter TableValues {
+                    IndexDomain: (d2);
+                    Text: "Values";
+                }
+            }
+            Procedure AddRemoveGroupToInactiveDays {
+                Body: {
+                    SelectedWeekDays := {id | not(id in GroupSelectionDays) };
+                    GroupSelectionDays := {d2 | SelectedInactiveDayChoice(Element(InactiveDayChoices,TimeslotCharacteristic(d2,'weekday'))) };
+                    InactiveDays := SelectedWeekDays + GroupSelectionDays;
+                    UpdateGanttChart;
+                }
+                Comment: {
+                    "The procedure updates the contents of the InactiveDays set, which is formed by the groups selected days and the individually selected days, and updates
+                    Gantt chart."
+                }
+                Set SelectedWeekDays {
+                    SubsetOf: DailyCalendar2;
+                }
+            }
+            Procedure ChangegeDayStatus {
+                Arguments: (day);
+                Body: {
+                    DayStatus(day,st) := 1- DayStatus(day,st);
+                    InactiveDays := {d2 | DayStatus(d2,'Inactive')}
+                }
+                Comment: "The procedure changes the status the selected day and updates the InactiveDays set";
+                ElementParameter day {
+                    Range: DailyCalendar2;
+                    Property: InOut;
+                }
+            }
+            Procedure UpdateGanttChart {
+                Body: {
+                    DayStatus(d2,st) := 0;
+                    DayStatus(d2 in InactiveDays,'Inactive') := 1;
+                    DayStatus(d2 in (DailyCalendar2-InactiveDays),'Active') := 1;
+                }
+                Comment: "Procedure for updating the parameter which is presented by the Gantt chart";
+            }
+        }
+    }
+    Procedure GetBeginDate {
+        Body: {
+            DialogGetDate("Specify the begin date of the calendar", DefaultDateFormat, CalendarBeginDate );
+        }
+    }
+    Procedure GetEndDate {
+        Body: {
+            DialogGetDate("Specify the begin date of the calendar",DefaultDateFormat,CalendarEndDate);
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            CalendarBeginDate := FormatString("%s-01-01", SubString(CurrentToString(DefaultDateFormat),1,4));
+            CalendarEndDate := FormatString("%s-12-31", SubString(CurrentToString(DefaultDateFormat),1,4));
+            ChoiceDescription('on week',ch) := FormatString( "Week %l", ch );
+            
+            GroupSelectionDays := {d2 | TimeslotCharacteristic(d2,'weekday') > 5 };
+            FilterDayStatus(st) := 1;
+            CurrentFilter := 'Current week';
+            InactiveDays := GroupSelectionDays;
+            TableValues(d2) := Round(Uniform(0,Card(DailyCalendar2)),2);
+            TableValues(d2 in InactiveDays) := 0;
+            DayStatus(d2 in InactiveDays,'Inactive') := 1;
+            DayStatus(d2 in (DailyCalendar2-InactiveDays),'Active') := 1;
+            GanttChartBeginDate := CalendarBeginDate;
+            GanttChartEndDate := MomentToString(DefaultDateFormat,[day],CalendarBeginDate,30 [day]);
+            
+            Selection       := first(Selections);
+            VisibleCalendar := first(DeclaredCalendars);
+            SelectedChoice  := first(SelectionChoices);
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

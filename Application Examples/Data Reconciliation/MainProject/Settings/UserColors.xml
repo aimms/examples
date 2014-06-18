@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<UserColors LastKnownInternalId="47">
+	<UserColor Name="default background" RGB="#f0f0f0" IsSystemBackground="true" UUID="29297A7D-164A-460A-862D-4CBE3C894ACB" InternalID="1" />
+	<UserColor Name="default foreground" RGB="#000000" UUID="408559D9-1F26-4F1E-A81B-01C1C1125675" InternalID="2" />
+	<UserColor Name="default selection" RGB="#000080" UUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9" InternalID="3" />
+	<UserColor Name="black" RGB="#000000" UUID="837C31B0-2458-47E6-996F-3902C15DB304" InternalID="4" />
+	<UserColor Name="white" RGB="#ffffff" UUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D" InternalID="5" />
+	<UserColor Name="red" RGB="#ff0000" UUID="2B027397-60EE-4D54-9DF0-7C7B28E5941A" InternalID="6" />
+	<UserColor Name="green" RGB="#00ff00" UUID="4CC1BFA5-B0F8-4E14-A3C2-30754AF3132B" InternalID="7" />
+	<UserColor Name="blue" RGB="#0000ff" UUID="90DB81F4-1BB7-476D-B771-CD51EA7A17EB" InternalID="8" />
+	<UserColor Name="yellow" RGB="#ffff00" UUID="A83B97D0-2D8D-45F7-8722-8287022D732F" InternalID="9" />
+	<UserColor Name="magenta" RGB="#ff00ff" UUID="50CE1A74-596B-474A-A0D0-93DC51C2E59E" InternalID="10" />
+	<UserColor Name="cyan" RGB="#00ffff" UUID="AC94C17B-71AA-48C9-9A42-8E3193F53363" InternalID="11" />
+	<UserColor Name="navy blue" RGB="#000080" UUID="0658B864-2299-4EE0-99DB-37C7EA1B97B2" InternalID="12" />
+	<UserColor Name="light grey" RGB="#c0c0c0" UUID="4B28AE58-BAE6-4532-AA07-F7B6596520C2" InternalID="13" />
+	<UserColor Name="grey" RGB="#808080" UUID="ACACAB8D-8EC1-4D1A-9B90-7DED6DC67028" InternalID="14" />
+	<UserColor Name="dark grey" RGB="#404040" UUID="9F71E056-1BBE-4FFB-85C0-11EAAB0EA8F0" InternalID="15" />
+	<UserColor Name="old header" RGB="#8080ff" UUID="9716FAFD-81C9-4D2D-ADB9-AA494BBF655A" InternalID="16" />
+	<UserColor Name="old background" RGB="#ffff80" UUID="06623209-0BA0-49E3-A027-A69CD2310DEE" InternalID="17" />
+	<UserColor Name="old text font" RGB="#000080" UUID="9B4C3B3E-A80D-43F1-9D8C-419D94537DE4" InternalID="18" />
+	<UserColor Name="reactor" RGB="#0000ff" UUID="652B1134-87A7-4A34-AEA9-DBFF37F316F0" InternalID="19" />
+	<UserColor Name="process" RGB="#ffff00" UUID="C5087BEA-28BC-437A-8AF0-5A02279645B6" InternalID="20" />
+	<UserColor Name="environment" RGB="#00ff00" UUID="6094DAF2-F189-40B8-B23A-9BF362FE5DD9" InternalID="21" />
+	<UserColor Name="header background" RGB="#fadf98" UUID="92C7A5F6-54BD-42A8-A910-2399FCFB5BB6" InternalID="22" />
+</UserColors>

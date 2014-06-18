@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="Settings Help" PageGUID="586F2C52-FD6F-41D9-8BCB-19AD4550B504" />
+	<Page Name="AIMMS Demo" PageGUID="D6A6BE11-6C5E-4088-A4D8-8F53448E17B6">
+		<Page Name="Sample Points View" PageGUID="1FF89625-DF68-4EA7-A720-50D02CF329F0" />
+		<Page Name="Clusters View" PageGUID="1C332B2E-F733-4123-8CB5-7ACBE4ED3157" />
+	</Page>
+</PageManager>

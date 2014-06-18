@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="3741F4CC-A460-4FB2-B352-FABD1A317071">
+		<Page Name="Employee Scheduling" PageGUID="F9B8F9FE-7D4E-4C98-9ADC-1FBC85969BC3">
+			<Page Name="Input Parameters" PageGUID="4FB3A087-2C6D-48CE-8098-D168979331FB">
+				<Page Name="Add New Restaurant" PageGUID="FCDF3E5A-4941-4A10-A50D-098BA135D6F0" />
+				<Page Name="Add New Employee" PageGUID="E50DBA24-514A-41EF-AA62-1C4435C2CF2C" />
+			</Page>
+			<Page Name="Result Overview" PageGUID="C39E72F2-2F82-4954-88DF-DF8FDDA4DFC9" />
+		</Page>
+	</Page>
+	<Page Name="All Data Pages" PageGUID="F8926304-99B5-45A1-963D-67168215160F" />
+</PageManager>

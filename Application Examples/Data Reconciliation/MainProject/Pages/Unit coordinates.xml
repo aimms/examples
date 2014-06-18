@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-02-26 01:52:21">
+	<Location top="82" left="94" bottom="447" right="371" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<MenuBar ProjectUUID="F6F7BFDB-3213-402B-8599-37A1EB70A693" MenuUUID="92A23CAD-31B3-49CC-A252-2637097F233C" />
+	<Background>
+		<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+	</Background>
+	<PageObject Type="Table">
+		<Location top="30" left="6" bottom="330" right="270" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<InputColor RGB="#000080" />
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>NodeCoordinate( n, crd )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Node coordinates"</HeaderText>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="6" left="6" bottom="36" right="192" />
+		<StaticText>Unit coordinates:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="336" left="174" bottom="360" right="270" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Close"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>MainExecution</RunWhat>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>PageProcedure</RunWhat>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>n</Symbol>
+			<Symbol>crd</Symbol>
+			<Symbol>NodeCoordinate</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

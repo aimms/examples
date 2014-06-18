@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="All Data Pages" PageGUID="51EB6BEA-D164-4E72-9B15-35375C690D84">
+		<Page Name="[Data Page] Plaats" PageGUID="59B1D160-5B22-4C69-8F81-9F8DBC1CA3B5" />
+		<Page Name="[Data Page] IsShadowPlace" PageGUID="723B933A-69AC-461C-92A6-53369A862F5F" />
+		<Page Name="[Data Page] TentAtShadowPlace" PageGUID="A905B614-6A80-4935-BF75-B52904E22A4E" />
+	</Page>
+	<Page Name="[Data Page] BoomOpPlek" PageGUID="96E7C838-B2C5-48AD-8990-29705BBA7C2B" />
+	<Page Name="[Data Page] Test" PageGUID="3F52E6E3-DF72-47A2-8CB7-FCA550FCDCB8" />
+	<Page Name="AIMMS Demo" PageGUID="75FA5FB5-C3DE-41E2-B2BE-26FE97E960D0">
+		<Page Name="Camping Page" PageGUID="798AF3B3-64B6-471B-B6ED-529BC838197F" />
+		<Page Name="Button Page" PageGUID="43EBE357-D1AB-4E5E-B452-72B1C346671E" />
+	</Page>
+</PageManager>

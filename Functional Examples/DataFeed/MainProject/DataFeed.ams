@@ -1,0 +1,138 @@
+## ams_version=1.0
+
+Model Main_Integrated {
+    DeclarationSection Input_Data {
+        Set Depots {
+            Index: d;
+        }
+        Set Customers {
+            Index: c;
+        }
+        Parameter Supply {
+            IndexDomain: (d);
+        }
+        Parameter Demand {
+            IndexDomain: (c);
+        }
+        Parameter UnitTransportCost {
+            IndexDomain: (d,c);
+        }
+    }
+    DeclarationSection Transport_Model_Formulation {
+        Variable Transport {
+            IndexDomain: (d,c) | UnitTransportCost(d,c);
+            Range: nonnegative;
+        }
+        Constraint SatisfySupply {
+            IndexDomain: (d);
+            Definition: sum(c, Transport(d,c)) <= Supply(d);
+        }
+        Constraint MeetDemand {
+            IndexDomain: c;
+            Definition: sum(d, Transport(d,c)) >= Demand(c);
+        }
+        Variable TotalCost {
+            Definition: sum((d,c), UnitTransportCost(d,c)*Transport(d,c));
+        }
+        MathematicalProgram TransportModel {
+            Objective: TotalCost;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: LP;
+        }
+    }
+    Section Data_Feed {
+        DeclarationSection Data_Feed_Declarations {
+            Parameter DataFeedRunning {
+                Comment: "This parameter indicates whether the datafeed is actually running.";
+            }
+            Parameter AutoSolve {
+                Comment: {
+                    "This parameter determines whether the model is automatically solved from
+                    within the external datafeed when it supplies new data."
+                }
+            }
+            Parameter DataFeedBlocked;
+        }
+        Section External_Functions {
+            StringParameter DataFeedDllName {
+                Definition: {
+                    if AimmsStringConstants('Architecture') = 'x86' then
+                            "DataFeed.dll"
+                    else
+                            "DataFeed64.dll"
+                    endif
+                }
+            }
+            ExternalProcedure ExtStartDataFeed {
+                Arguments: (autorun);
+                DllName: DataFeedDllName;
+                BodyCall: {
+                    StartDataFeed(
+                      scalar integer : autorun
+                    )
+                }
+                Parameter autorun {
+                    Property: Input;
+                }
+            }
+            ExternalProcedure ExtStopDataFeed {
+                DllName: DataFeedDllName;
+                BodyCall: StopDataFeed();
+            }
+            ExternalProcedure ExtSetControl {
+                Arguments: (blocked);
+                DllName: DataFeedDllName;
+                BodyCall: {
+                    SetControl(
+                      scalar integer : blocked
+                    )
+                }
+                Parameter blocked {
+                    Property: InOut;
+                }
+            }
+        }
+        Section Aimms_Functions {
+            Procedure StartStopDataFeed {
+                Body: {
+                    if ( DataFeedRunning ) then
+                       ExtStartDataFeed( AutoSolve );
+                    else
+                       ExtStopDataFeed;
+                    endif;
+                }
+            }
+            Procedure SetControl {
+                Body: {
+                    ExtSetControl( DataFeedBlocked );
+                }
+                Comment: {
+                    "This procedure retrieves or releases the exclusive control over the AIMMS
+                    execution engine. Because it is called from within the execution thread
+                    corresponding to the AIMMS GUI, exclusive control will be with that thread.
+                    
+                    The net effect is that further attempts to get exclusive control by the
+                    datafeed thread will fail."
+                }
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            solve TransportModel;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            if ( DataFeedRunning ) then
+                DialogMessage("Before exiting, you need to stop the data feed.");
+                return 0;
+            endif;
+            
+            return 1;
+        }
+    }
+}

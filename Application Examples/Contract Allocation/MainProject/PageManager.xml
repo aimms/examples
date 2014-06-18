@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="C09FCA90-6559-49C5-B075-DD85FFE20136">
+		<Page Name="Contract Allocation" PageGUID="3740A507-D227-49E7-BE8C-520CEC0FE734" />
+		<Page Name="Production and Delivery Cost" PageGUID="7021DDD4-0021-4577-9C8F-C5A652E48A1D" />
+	</Page>
+</PageManager>

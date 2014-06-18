@@ -1,0 +1,257 @@
+## ams_version=1.0
+
+Model Main_Project_Analysis {
+    DeclarationSection Model_Declaration {
+        Set Nodes {
+            Index: n, n_from, n_to;
+            Definition: data {Start, A, B, C, D, E, F, G, H, I, J, K, L, M, N, Finish };
+        }
+        Set Tasks {
+            SubsetOf: Nodes;
+            Index: t;
+            Definition: data {A, B, C, D, E, F, G, H, I, J, K, L, M, N};
+        }
+        Set Arcs {
+            SubsetOf: (Nodes, Nodes);
+            Index: ac;
+            Definition: {
+                data
+                { ( A , B   ), ( B , C   ), ( C , D   ), ( C , E   ), ( C , I   ), ( D , G   ), ( E , F   ), ( E , H   ), ( F , J   ),
+                  ( G , H   ), ( H , M   ), ( I , J   ), ( J , K   ), ( J , L   ), ( K , N   ), ( L , N   ), ( M , Finish ), ( N , Finish ),
+                  ( Start, A   ) }
+            }
+        }
+        Set TasksStatus {
+            Index: ts;
+            InitialData: data { Normal, Crash };
+        }
+        Parameter ProjectDeadline {
+            InitialData: 40;
+        }
+        Parameter Predecessors {
+            IndexDomain: (n_from,n_to);
+            Range: binary;
+            Definition: (n_from,n_to) in Arcs;
+        }
+        Parameter TaskTime {
+            IndexDomain: (n,ts);
+            Property: NoSave;
+            InitialData: {
+                data
+                { ( A, Normal ) :  2,  ( A, Crash  ) :  1,  ( B, Normal ) :  4,  ( B, Crash  ) :  2,  ( C, Normal ) : 10,  ( C, Crash  ) :  7,
+                  ( D, Normal ) :  6,  ( D, Crash  ) :  4,  ( E, Normal ) :  4,  ( E, Crash  ) :  3,  ( F, Normal ) :  5,  ( F, Crash  ) :  3,
+                  ( G, Normal ) :  7,  ( G, Crash  ) :  4,  ( H, Normal ) :  9,  ( H, Crash  ) :  6,  ( I, Normal ) :  7,  ( I, Crash  ) :  5,
+                  ( J, Normal ) :  8,  ( J, Crash  ) :  6,  ( K, Normal ) :  4,  ( K, Crash  ) :  3,  ( L, Normal ) :  5,  ( L, Crash  ) :  3,
+                  ( M, Normal ) :  2,  ( M, Crash  ) :  1,  ( N, Normal ) :  6,  ( N, Crash  ) :  3 }
+            }
+        }
+        Parameter MaxReducedTime {
+            IndexDomain: (n);
+            Property: NoSave;
+            Definition: TaskTime(n,'Normal')-TaskTime(n,'Crash');
+        }
+        Parameter TaskCompletionTime {
+            IndexDomain: (n,ts);
+            Property: NoSave;
+        }
+        Parameter TaskCost {
+            IndexDomain: (n,ts);
+            InitialData: {
+                data
+                { ( A, Normal ) :  180,  ( A, Crash  ) :  280,  ( B, Normal ) :  320,  ( B, Crash  ) :  420,  ( C, Normal ) :  620,
+                  ( C, Crash  ) :  860,  ( D, Normal ) :  260,  ( D, Crash  ) :  340,  ( E, Normal ) :  410,  ( E, Crash  ) :  570,
+                  ( F, Normal ) :  180,  ( F, Crash  ) :  260,  ( G, Normal ) :  900,  ( G, Crash  ) : 1020,  ( H, Normal ) :  200,
+                  ( H, Crash  ) :  380,  ( I, Normal ) :  210,  ( I, Crash  ) :  270,  ( J, Normal ) :  430,  ( J, Crash  ) :  490,
+                  ( K, Normal ) :  160,  ( K, Crash  ) :  200,  ( L, Normal ) :  250,  ( L, Crash  ) :  350,  ( M, Normal ) :  100,
+                  ( M, Crash  ) :  200,  ( N, Normal ) :  330,  ( N, Crash  ) :  510 }
+            }
+        }
+        Parameter TotalCost {
+            IndexDomain: (ts);
+            Definition: sum(t,TaskCost(t,ts));
+        }
+        Parameter TotalTime {
+            IndexDomain: (ts);
+            Definition: TaskCompletionTime('Finish',ts);
+        }
+        Parameter ExtraUnitCost {
+            IndexDomain: (n)|MaxReducedTime(n);
+            Definition: (TaskCost(n,'Crash')-TaskCost(n,'Normal'))/MaxReducedTime(n);
+        }
+        Variable TimeReduction {
+            IndexDomain: (n);
+            Range: nonnegative;
+        }
+        Variable ProjectCrashCost {
+            Definition: sum(t,ExtraUnitCost(t)*TimeReduction(t));
+        }
+        Variable StartTime {
+            IndexDomain: (n);
+            Range: nonnegative;
+        }
+        Variable FinishTime {
+            IndexDomain: (n);
+            Range: nonnegative;
+            Definition: StartTime(n)+Duration(n);
+        }
+        Variable Duration {
+            IndexDomain: (n);
+            Definition: TaskTime(n,'Normal')-TimeReduction(n);
+        }
+        Parameter ProjectCompletionTime {
+            Definition: FinishTime('Finish');
+        }
+        Parameter ProjectCost {
+            Definition: {
+                if FinishTime('Finish') then
+                	TotalCost('Normal')+sum(t,ExtraUnitCost(t)*TimeReduction(t))
+                else
+                	0
+                endif
+            }
+        }
+        Constraint NoTimeOverlap {
+            IndexDomain: (n,n_from)|Predecessors(n_from,n);
+            Definition: StartTime(n)>=StartTime(n_from)+Duration(n_from);
+        }
+        Constraint MaxReductioin {
+            IndexDomain: (n);
+            Definition: TimeReduction(n)<=MaxReducedTime(n);
+        }
+        Constraint NoExceedTimeTarget {
+            Definition: StartTime('Finish')<=ProjectDeadline;
+        }
+        MathematicalProgram FindFeasibleSolution {
+            Objective: ProjectCrashCost;
+            Direction: minimize;
+        }
+    }
+    DeclarationSection Node_Declaration {
+        Parameter NumberOfNodes {
+            InitialData: 15;
+        }
+        Parameter Nodes_XLocation {
+            IndexDomain: (n);
+            Definition: {
+                data{ Start  :  2,  A      :  2,  B      :  2,  C      :  2,  D      : -2,  E      :  2,  F      :  3,  G      : -2,  H      :  0,
+                  I      :  6,  J      :  6,  K      :  4,  L      :  8,  M      :  1,  N      :  6,  Finish :  2 }
+            }
+        }
+        Parameter Nodes_YLocation {
+            IndexDomain: (n);
+            Definition: data { Start : 15,  A : 14,  B : 12,  C : 10,  D : 8,  E : 8,  F : 6,  G : 6,  H : 4,  I : 8,  J : 4,  K : 2,  L : 2,  M : 2,  Finish : -1 };
+        }
+    }
+    DeclarationSection Sensitivity_Declaration {
+        Parameter LowerPlannedProjectSchedule {
+            Definition: TaskCompletionTime('Finish','Crash');
+        }
+        Parameter UpperPlannedProjectSchedule {
+            Definition: TaskCompletionTime('Finish','Normal');
+        }
+        Set Points {
+            Index: p;
+            Definition: Data{1..1001};
+        }
+        Parameter ActualPlannedProjectSchedule {
+            IndexDomain: p;
+            Definition: LowerPlannedProjectSchedule + (UpperPlannedProjectSchedule - LowerPlannedProjectSchedule)/[card(Points)-1]* [ord(p)-1];
+        }
+        Parameter ActualPlannedProjectCost {
+            IndexDomain: (p);
+        }
+    }
+    DeclarationSection GUI_Declaration {
+        ElementParameter GUI_ArcColor {
+            IndexDomain: (n_from,n_to)|Predecessors(n_from,n_to);
+            Range: AllColors;
+            Definition: {
+                if Duration(n_from) = TaskTime(n_from,'Normal') then
+                	'black'
+                elseif  Duration(n_from)=TaskTime(n_from,'Crash') then
+                	'red'
+                elseif Duration(n_from)=0 then
+                	'grey'
+                else
+                	'Navy Blue'
+                endif;
+            }
+        }
+        ElementParameter GUI_TaskColor {
+            IndexDomain: (t);
+            Range: AllColors;
+            Definition: {
+                if Duration(t) = TaskTime(t,'Normal') then
+                	'black'
+                else
+                	'red'
+                endif;
+            }
+        }
+        ElementParameter GUI_TextColor {
+            Range: AllColors;
+            Definition: {
+                if ProjectCompletionTime <= ProjectDeadline then
+                	'black'
+                else
+                	'red'
+                endif;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            !Nodes_XLocation:= data
+            !{ Start  :  3,  A      :  3,  B      :  3,  C      :  3,  D      : -1,  E      :  3,  F      :  4,  G      : -1,  H      :  1,
+            !  I      :  7,  J      :  7,  K      :  5,  L      :  9,  M      :  2,  N      :  7,  Finish :  3 }
+            !
+        }
+    }
+    Procedure InputDataAnalysis {
+        Body: {
+            empty TaskCompletionTime, AllVariables;
+            ! Data Initialization
+            
+            TaskCompletionTime('Start',ts):=0;
+            for n in Tasks do
+            	TaskCompletionTime(n,ts):=max(n_from|Predecessors(n_from,n),TaskCompletionTime(n_from,ts)+TaskTime(n,ts));
+            endfor;
+            TaskCompletionTime('Finish',ts):=max(n|Predecessors(n,'Finish'),TaskCompletionTime(n,ts));
+            StartTime(n):=TaskCompletionTime(n,'Normal')-TaskTime(n,'Normal');
+            FinishTime(n):=TaskCompletionTime(n,'Normal');
+            Duration(n):=TaskTime(n,'Normal');
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            empty AllVariables;
+            
+            if TaskCompletionTime('Finish','Normal')>=ProjectDeadline and TaskCompletionTime('Finish','Crash')<=ProjectDeadline then
+            	solve FindFeasibleSolution;
+            else
+                    DialogMessage("All tasks cannot be finished within Time Target");
+            endif;
+        }
+    }
+    Procedure DoSensitivityAnalysis {
+        Body: {
+            for (p) do
+            	ProjectDeadline := ActualPlannedProjectSchedule(p);
+            	solve FindFeasibleSolution;
+            	ActualPlannedProjectCost(p) := TotalCost('Normal')+ProjectCrashCost;
+            endfor;
+            
+            ProjectDeadline:=40;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure CleanData {
+        Body: {
+            empty AllVariables, ActualPlannedProjectCost;
+        }
+    }
+}

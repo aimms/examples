@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-09-20 18:55:06">
+	<Location top="27" left="8" bottom="920" right="1420" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>DF3BEC5E-9D0D-4DEE-8E27-EBE8628E79DA</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="PercentageFromLeft" Value="0.5">
+						<LeftArea Line="FixedFromBottom" Value="90" />
+						<RightArea Line="FixedFromBottom" Value="90" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="2D Chart">
+		<Location top="189" left="489" bottom="519" right="762" />
+		<TabOrder>4</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Xval( p )</Domain>
+			<Scale>
+				<Minimum ID="1014">-2</Minimum>
+				<Maximum ID="1015">2</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Cumulative distribution of distributions with lower bound"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">cumulative( l, p )</Value>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Misc_display_settings>
+				<Anchor ID="41">"North"</Anchor>
+				<Orientation ID="56">"Horizontal"</Orientation>
+			</Misc_display_settings>
+		</Legend>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="189" left="207" bottom="519" right="480" />
+		<TabOrder>2</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Xval( p )</Domain>
+			<Scale>
+				<Minimum ID="1014">-1.5</Minimum>
+				<Maximum ID="1015">1</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Density graph of distributions with lower bound"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">density( l, p )</Value>
+				<Appearance>
+					<Line>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Scale>
+				<Data_maximum ID="2034">1.2</Data_maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="537" left="207" bottom="615" right="762" />
+		<StaticText>Note: all distributions are scaled to a standard deviation of 1 and shifted to have a mean of 0. 
+
+Numbers indicate the used values of the shape parameters, on this page chosen such that the distributions are somewhat like the Exponential distribution. e.g. Pareto(16) indicates the Pareto(16,a,b) distribution, with a and b determined by the scaling.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="462" left="9" bottom="486" right="183" />
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Draw graphs"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CreateDistributions</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="402" left="9" bottom="465" right="189" />
+		<StaticText>Click the button below to draw distribution density and cumulative distribution graphs.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="372" left="6" bottom="396" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="375" left="18" bottom="393" right="186" />
+		<StaticText>Actions</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>l</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>Xval</Symbol>
+			<Symbol>cumulative</Symbol>
+			<Symbol>CreateDistributions</Symbol>
+			<Symbol>density</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

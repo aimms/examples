@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo - A File Merge Problem" PageGUID="4A47407C-F81C-489A-BD69-D7ACE2B7E48B">
+		<Page Name="File Merge Problem" PageGUID="D740B274-73A1-4744-8E78-7D1CC690C237">
+			<Page Name="Income Data Table" PageGUID="0938DA4C-AD5F-4504-8BA1-4DD2B032BA94" />
+			<Page Name="Population Data Table" PageGUID="486B1508-A136-4C0D-8877-978F274EA456" />
+			<Page Name="Merged Data Table" PageGUID="8B67F542-D0B4-437D-8050-A2542B360D72" />
+		</Page>
+	</Page>
+</PageManager>

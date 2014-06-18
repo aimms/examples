@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Test" FaceName="Arial Narrow" PointSize="80" Bold="true" UUID="5552634E-97F0-4DD5-B52F-6B5EBFC7FA48" InternalID="1" />
+	<UserFont Name="no flights selected" FaceName="Arial Narrow" PointSize="160" Bold="true" UUID="74B86C44-4FFF-4589-A0D4-951396586C93" InternalID="2" />
+</UserFonts>

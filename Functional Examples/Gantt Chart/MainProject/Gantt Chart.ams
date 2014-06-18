@@ -1,0 +1,137 @@
+## ams_version=1.0
+
+Model Main_Gantt_Chart {
+    DeclarationSection Basic_Declarations {
+        Set Machines {
+            Index: m, mr;
+            Parameter: machine;
+            Definition: data { m-1 .. m-10 };
+        }
+        Set Tasks {
+            SubsetOf: Integers;
+            Index: t, t1;
+            Parameter: task;
+            Definition: {
+                { 1 .. 25 }
+            }
+        }
+        Parameter TaskDomain {
+            IndexDomain: (m,mr,t);
+            Comment: {
+                "The index domain is defined over both m and mr, to accomodate
+                vertical movements in the user interface. Normally, m and mr are
+                equal, unless a vertical movement has taken place. A procedure like
+                `EffectuateMachineChanges` is necessary in that case to copy the
+                data to a non-existing tuple (mr,mr,t1) for some t1."
+            }
+        }
+        Parameter TaskStart {
+            IndexDomain: (m,t);
+        }
+        Parameter TaskDuration {
+            IndexDomain: (m,t);
+        }
+        StringParameter TooltipsText {
+            IndexDomain: (m,mr,t)|TaskDomain(mr, m, t);
+            Definition: FormatString("%e on Machine %e: starts at %n, finish at %n ", TaskType(m,t), m, TaskStart(m, t), TaskStart(m, t) + TaskDuration(m, t));
+        }
+        StringParameter TaskTooltips {
+            IndexDomain: tt;
+            Definition: {
+                data
+                { Setup    : "Warm up the machine, pre-wash the car",  'Task A' : "Wash the car with liquid soap"        ,
+                  'Task B' : "Rinse the car twice"                  ,  'Task C' : "Wax the car"                           }
+            }
+        }
+    }
+    DeclarationSection Task_Type_Declarations {
+        Set TaskTypes {
+            Index: tt;
+            Parameter: TType;
+            Definition: data { Setup, 'Task A', 'Task B', 'Task C' };
+        }
+        ElementParameter TaskTypeColor {
+            IndexDomain: (tt);
+            Range: AllColors;
+            Definition: data { Setup : yellow, 'Task A' : red , 'Task B' : green , 'Task C' : blue };
+        }
+        ElementParameter TaskType {
+            IndexDomain: (m,t);
+            Range: TaskTypes;
+        }
+        ElementParameter TaskColor {
+            IndexDomain: (m,t);
+            Range: AllColors;
+            Definition: TaskTypeColor(TaskType(m,t));
+        }
+    }
+    DeclarationSection Time_Declaration {
+        Quantity SI_Time_Duration {
+            BaseUnit: s;
+            Conversions: day -> s : # -> # * 86400;
+            Comment: "Expresses the value for the duration of periods.";
+        }
+        StringParameter Today {
+            Definition: CurrentToString("%c%y-%m-%d %H:%M:%S");
+        }
+        StringParameter GanttChartBegin;
+        StringParameter GanttChartEnd;
+    }
+    Procedure MainInitialization {
+        Body: {
+            empty TaskDomain, TaskStart, TaskDuration, TaskType;
+            
+            TaskDomain(m,m,1)   := 1;
+            TaskStart(m,1)      := ord(m);
+            TaskDuration(m,1)   := 5*Uniform(1,1.5);
+            TaskType(m,1)       := element(TaskTypes, 1+mod(ord(m)-1,Card(TaskTypes)));
+            
+            GanttChartBegin := MomentToString("%c%y-%m-%d %H:%M:%S", [day], Today, -.25[day]);
+            GanttChartEnd   := MomentToString("%c%y-%m-%d %H:%M:%S", [day], Today, 0.75[day]);
+            
+            
+            TaskDomain(m,m,2)|(not mod(ord(m),Card(TaskTypes))) := 1;
+            TaskStart(m,2)|(not mod(ord(m),Card(TaskTypes))) := ord(m) + 4;
+            TaskDuration(m,2)|(not mod(ord(m),Card(TaskTypes)) )  := 6;
+            TaskType(m,2)|(not mod(ord(m),Card(TaskTypes)))       := element(TaskTypes, mod(ord(m)*2.5+1,Card(TaskTypes)));
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure NewTask {
+        Body: {
+            task := first( t | not exists(mr | TaskDomain(machine,mr,t)) );
+            
+            TaskDomain(machine,machine,task) := 1;
+            TaskStart(machine,task)          := max(t, TaskStart(machine,t) + TaskDuration(machine,t)) + 1;
+            TaskDuration(machine,task)       := 3;
+            TaskType(machine,task)           := TType;
+        }
+    }
+    Procedure EffectuateMachineChanges {
+        Body: {
+            for ((m,mr,t) | TaskDomain(m,mr,t) and m <> mr) do
+            
+            ! Simply copying all task data to tuple (mr,mr,t) may lead to a loss of the data
+            ! already present at that tuple, therefore we have to find an empty task to represent the
+            ! moved task.
+            
+                task := first( t1 | not TaskDomain(mr,mr,t1) );
+                TaskDomain(mr,mr,task) := 1;
+                TaskStart(mr,task)     := TaskStart(m,t);
+                TaskDuration(mr,task)  := TaskDuration(m,t);
+                TaskType(mr,task)      := TaskType(m,t);
+            
+            ! Remove the old task data.
+            
+               TaskDomain(m,mr,t)  := 0;
+               TaskStart(m,t)      := 0;
+               TaskDuration(m,t)   := 0;
+               TaskType(m,t)       := '';
+            endfor;
+        }
+    }
+}

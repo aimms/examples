@@ -1,0 +1,606 @@
+## ams_version=1.0
+
+Model Main_Distribution_Center_Allocation {
+    DeclarationSection Input_Declarations {
+        Set Locations {
+            Index: l;
+        }
+        Parameter XCoordinate {
+            IndexDomain: (l);
+        }
+        Parameter YCoordinate {
+            IndexDomain: (l);
+        }
+        Set DistributionCenterCandidates {
+            SubsetOf: Locations;
+            Index: c, c2;
+        }
+        Set DistributionCenterCandidatesToBeShown {
+            SubsetOf: DistributionCenterCandidates;
+            Index: ctbs;
+            Definition: {
+                { c | not DistributionCenterInUse(c) }
+            }
+        }
+        Set DemandLocations {
+            SubsetOf: Locations;
+            Index: d;
+        }
+        Parameter ExpectedDemand {
+            IndexDomain: (d);
+        }
+    }
+    DeclarationSection General_Declarations {
+        StringParameter ModelDescription;
+        Parameter DoNotShowCOGSolution {
+            InitialData: 1;
+        }
+        Parameter DoNotShowMTCSolution {
+            InitialData: 1;
+        }
+        Parameter DoNotShowMTCMSolution {
+            InitialData: 1;
+        }
+        Parameter DoNotShowMSLSolution {
+            InitialData: 1;
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+    }
+    DeclarationSection New_DC_Declarations {
+        Set NewLocations {
+            Index: nl;
+            Parameter: NewLocation;
+        }
+        Parameter NLXCoordinate {
+            IndexDomain: (nl);
+        }
+        Parameter NLYCoordinate {
+            IndexDomain: (nl);
+        }
+        Parameter SupplyRoute {
+            IndexDomain: (nl,d);
+        }
+        Parameter TotalCost;
+    }
+    Section GIS_Section {
+        DeclarationSection GIS_Declarations {
+            Parameter VisibleBoundTop;
+            Parameter VisibleBoundBottom;
+            Parameter VisibleBoundLeft;
+            Parameter VisibleBoundRight;
+            Parameter ExtraMarginFactor {
+                InitialData: 0.25;
+            }
+            Parameter ShowText {
+                Range: binary;
+                InitialData: 0;
+            }
+        }
+        Procedure InitializeVisibleBounds {
+            Body: {
+                ! Initialize the visible bounds of the map based on the coordinates of the locations.
+                ! A margin of a factor (ExtraMarginFactor) times the maximum difference is used.
+                
+                ExtraMargin := ExtraMarginFactor * ( max( l, YCoordinate(l) ) - min( l, YCoordinate(l) ) );
+                
+                if not ExtraMargin then
+                
+                   ExtraMargin := 5;
+                
+                endif;
+                
+                VisibleBoundTop := max( l, YCoordinate(l) ) + ExtraMargin;
+                VisibleBoundBottom := min( l, YCoordinate(l) ) - ExtraMargin;
+                
+                ExtraMargin := ExtraMarginFactor * ( max( l, XCoordinate(l) ) - min( l, XCoordinate(l) ) );
+                
+                if not ExtraMargin then
+                
+                   ExtraMargin := 5;
+                
+                endif;
+                
+                VisibleBoundRight := max( l, XCoordinate(l) ) + ExtraMargin;
+                VisibleBoundLeft := min( l, XCoordinate(l) ) - ExtraMargin;
+            }
+            Parameter ExtraMargin;
+        }
+    }
+    Section Excel_Interface_Section {
+        Procedure ReadFromExcel {
+            Body: {
+                !empty current data
+                empty Input_Declarations, New_DC_Declarations;
+                DoNotShowCOGSolution := 1;
+                DoNotShowMTCSolution := 1;
+                DoNotShowMTCMSolution := 1;
+                DoNotShowMSLSolution := 1;
+                
+                ! Set the visibility off so that the user doesn't see the Excel sheet being opened when data is read
+                ! For each function if the function is not successful a dialog with error message will be shown.
+                if not Spreadsheet::SetVisibility( WB, 'Off' ) then
+                
+                   DialogMessage( CurrentErrorMessage );
+                
+                endif;
+                
+                ! Make Sheet1 the active sheet so that we don't have to specify this anymore for future Spreadsheet function calls
+                if not Spreadsheet::SetActiveSheet( WB, "Sheet1" ) then
+                
+                  DialogMessage( CurrentErrorMessage );
+                
+                endif;
+                
+                ! Read the contents of all cells in the named range LocationRange in Excel into the set Locations
+                if not Spreadsheet::RetrieveSet( WB, Locations, "LocationRange" ) then
+                
+                  DialogMessage(CurrentErrorMessage);
+                
+                endif;
+                
+                ! Read the contents of all cells in the named range XCoordinateRange in Excel into the parameter XCoordinate
+                if not Spreadsheet::RetrieveTable( WB, XCoordinate, "XCoordinateRange", "LocationRange" ) then
+                
+                  DialogMessage( CurrentErrorMessage );
+                
+                endif;
+                
+                ! Read the contents of all cells in the named range YCoordinateRange in Excel into the parameter YCoordinate
+                if not Spreadsheet::RetrieveTable( WB, YCoordinate, "YCoordinateRange", "LocationRange" ) then
+                
+                  DialogMessage( CurrentErrorMessage );
+                
+                endif;
+                
+                ! Read the contents of all cells in the named range IsDCCandidateRange in Excel into the parameter IsDCCandidate
+                if not Spreadsheet::RetrieveTable( WB, ISDCCandidate, "IsDCCandidateRange", "LocationRange" ) then
+                
+                  DialogMessage( CurrentErrorMessage );
+                
+                endif;
+                
+                ! Fill up the set DistributionCenterCandidates based on the parameter IsDCCandidate
+                DistributionCenterCandidates := { l | IsDCCandidate(l) };
+                
+                ! Read the contents of all cells in the named range IsDemandLocationRange in Excel into the parameter IsDemandLocation
+                if not Spreadsheet::RetrieveTable( WB, IsDemandLocation, "IsDemandLocationRange", "LocationRange" ) then
+                
+                  DialogMessage( CurrentErrorMessage );
+                
+                endif;
+                
+                ! Fill up the set DemandLocations based on the parameter IsDemandLocation
+                DemandLocations := { l | IsDemandLocation(l) };
+                
+                ! Read the contents of all cells in the named range ExpectedDemandRange in Excel into the parameter TempExpectedDemand
+                if not Spreadsheet::RetrieveTable( WB, TempExpectedDemand, "ExpectedDemandRange", "LocationRange" ) then
+                
+                  DialogMessage( CurrentErrorMessage );
+                
+                endif;
+                
+                if exists( l | TempExpectedDemand( l ) and not l in DemandLocations ) then
+                
+                   Inconsistentlocation := first( l | ExpectedDemand( l ) and not l in DemandLocations );
+                   DialogMessage( Formatstring( "Data inconsistency, %e is not a demand location, but has an expected demand.", InconsistentLocation ) );
+                
+                endif;
+                
+                ExpectedDemand( d ) := TempExpectedDemand( d );
+                
+                ! Close the workbook
+                if not Spreadsheet::CloseWorkBook( WB, 0 ) then
+                
+                  DialogMessage( CurrentErrorMessage );
+                
+                endif;
+                
+                InitializeVisibleBounds;
+            }
+            StringParameter WB {
+                InitialData: "input.xls";
+            }
+            ElementParameter InconsistentLocation {
+                Range: Locations;
+            }
+            Parameter IsDemandLocation {
+                IndexDomain: (l);
+            }
+            Parameter IsDCCandidate {
+                IndexDomain: (l);
+            }
+            Parameter TempExpectedDemand {
+                IndexDomain: (l);
+            }
+        }
+    }
+    Section Center_of_Gravity_Section {
+        Procedure EmptyNewLocations {
+            Body: {
+                ! empty any previous solution
+                empty NewLocations, NLXCoordinate, NLYCoordinate, TotalCost;
+            }
+        }
+        Procedure COGDetermineDistributionCenter {
+            Body: {
+                ! add the Distribution Center to the set of New Locations
+                SetElementAdd( NewLocations, NewLocation, "COG DC" );
+                
+                ! fill the x and y coordinate of the Distribution Center, use weighted average if expected demand is specified, otherwise use average
+                if exists( d | ExpectedDemand(d) ) then
+                
+                NLXCoordinate( NewLocation ) := sum( d, XCoordinate(d) * ExpectedDemand(d) ) / sum( d, ExpectedDemand(d) );
+                NLYCoordinate( NewLocation ) := sum( d, YCoordinate(d) * ExpectedDemand(d) ) / sum( d, ExpectedDemand(d) );
+                
+                TotalCost := sum[ d, arccos( sin( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * sin( ycoordinate(d)*2*arccos(0)/180 ) +
+                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation )* 2 * arccos(0) / 180 ) ) * 6371 * ExpectedDemand(d)]
+                
+                else
+                
+                NLXCoordinate( NewLocation ) := average( d, XCoordinate(d) ) ;
+                NLYCoordinate( NewLocation ) := average( d, YCoordinate(d) ) ;
+                
+                TotalCost := sum[ d, arccos( sin( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * sin( ycoordinate(d)*2*arccos(0)/180 ) +
+                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation ) * 2 * arccos(0) / 180) ) * 6371]
+                
+                endif;
+                
+                DoNotShowCOGSolution := 0;
+                DoNotShowMTCSolution := 1;
+                DoNotShowMTCMSolution := 1;
+                DoNotShowMSLSolution := 1;
+            }
+        }
+        Procedure COGFillDescription {
+            Body: {
+                ModelDescription := "With the center of gravity approach the weighted average of demand locations is used to determine the location of a distribution center.";
+                PageOpen( "Model Description");
+            }
+        }
+    }
+    Section Minimize_Expected_Transportation_Cost_Section {
+        Variable X;
+        Variable Y;
+        Variable ExpectedTransportationCost {
+            Definition: {
+                sum[ d, arccos( sin( y * 2 * arccos(0) / 180 ) * sin( ycoordinate(d)*2*arccos(0)/180 ) +
+                                cos( y * 2 * arccos(0) / 180) * cos( ycoordinate(d)*2*arccos(0)/180 ) *
+                                cos( xcoordinate( d ) * 2 * arccos(0) / 180 - x *2*arccos(0)/180 ) ) * 6371 * ExpectedDemand(d)]
+            }
+            Comment: "sum[d,sqrt((x-Xcoordinate(d))**2+(y-Ycoordinate(d))**2) * ExpectedDemand(d)]";
+        }
+        Set MTCVariablesSet {
+            SubsetOf: AllVariables;
+            Definition: data { X, Y, ExpectedTransportationCost };
+        }
+        Set MTCConstraintsSet {
+            SubsetOf: AllConstraints;
+            Definition: data { ExpectedTransportationCost };
+        }
+        MathematicalProgram MinimizeTransportCost {
+            Objective: ExpectedTransportationCost;
+            Direction: minimize;
+            Constraints: MTCConstraintsSet;
+            Variables: MTCVariablesSet;
+        }
+        Procedure MTCSolveModel {
+            Body: {
+                if (IsRunningAsViewer) then
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                
+                	if (CaseFind("UnitedStates_1DC",ACase)) then
+                		CaseLoadCurrent(ACase,0);
+                	else
+                		DialogError("Could not find the case \"Solution\".")
+                	endif;
+                
+                else
+                	! Initialize the x and y coordinate on the average
+                	x := average( d, XCoordinate( d ) );
+                	y := average( d, YCoordinate( d ) );
+                
+                	! solve the minimize expected transportation cost model
+                	solve MinimizeTransportCost;
+                
+                	! add the Distribution Center to the set of New Locations
+                	SetElementAdd( NewLocations, NewLocation, "MTC DC" );
+                
+                	! Fill the coordinates with the solution of the model
+                	NLXCoordinate( NewLocation ) := x ;
+                	NLYCoordinate( NewLocation ) := y ;
+                
+                	! Store total cost
+                	TotalCost := ExpectedTransportationCost;
+                
+                	DoNotShowCOGSolution := 1;
+                	DoNotShowMTCSolution := 0;
+                	DoNotShowMTCMSolution := 1;
+                	DoNotShowMSLSolution := 1;
+                endif;
+            }
+        }
+        Procedure MTCFillDescription {
+            Body: {
+                ModelDescription := "Using an approach to minimize the expected transportation cost would normally provide a better location than the Center of Gravity approach to determine the location of a distribution center.";
+                PageOpen( "Model Description");
+            }
+        }
+    }
+    Section Minimize_Expected_Transportation_Cost_Multiple_DC {
+        Parameter Distance {
+            IndexDomain: (c,d);
+        }
+        Parameter MaxDistributionCenters;
+        Variable DistributionCenterInUse {
+            IndexDomain: (c);
+            Range: binary;
+        }
+        Variable DCUsedToSupply {
+            IndexDomain: (c,d);
+            Range: binary;
+        }
+        Variable MTCMTotalCost {
+            Definition: sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ExpectedDemand(d) );
+        }
+        Constraint LimitOnUsedDCs {
+            Definition: sum(c, DistributionCenterInUse(c) ) <= MaxDistributionCenters;
+        }
+        Constraint DCUsedToSupplyMustBeInUse {
+            IndexDomain: (c,d);
+            Definition: DCUsedToSupply(c,d) <= DistributionCenterInUse(c);
+        }
+        Constraint OneDCUsedToSupply {
+            IndexDomain: (d);
+            Definition: sum( c, DCUsedToSupply(c,d) ) = 1;
+        }
+        Set MTCMVariableSet {
+            SubsetOf: AllVariables;
+            Definition: data { DistributionCenterInUse, DCUsedToSupply, MTCMTotalCost };
+        }
+        Set MTCMConstraintSet {
+            SubsetOf: AllConstraints;
+            Definition: data { LimitOnUsedDCs, DCUsedToSupplyMustBeInUse, OneDCUsedToSupply, MTCMTotalCost };
+        }
+        MathematicalProgram MinimizeTransportCostMulti {
+            Objective: MTCMTotalCost;
+            Direction: minimize;
+            Constraints: MTCMConstraintSet;
+            Variables: MTCMVariableSet;
+        }
+        Procedure InitDistanceBasedOnCoordinates {
+            Body: {
+                empty Distance;
+                
+                ! this is a standard method to calculate distance between two points based on longitude and latitude. This is also used
+                ! in the objective of some of the mathematical models
+                
+                pi := 2*arccos(0);
+                
+                xcorrad(l) := xcoordinate(l)*pi/180;
+                ycorrad(l) := ycoordinate(l)*pi/180;
+                
+                Distance( c, d ) := arccos( sin( ycorrad( c ) ) * sin( ycorrad( d ) ) +
+                                            cos( ycorrad( c ) ) * cos( ycorrad( d ) ) * cos( xcorrad( d ) - xcorrad(c ) ) ) * 6371;
+            }
+            Parameter pi;
+            Parameter xcorrad {
+                IndexDomain: (l);
+            }
+            Parameter ycorrad {
+                IndexDomain: (l);
+            }
+        }
+        Procedure MTCMSolveModel {
+            Body: {
+                if (IsRunningAsViewer) then
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                
+                	if (CaseFind("UnitedStates_multiDC",ACase)) then
+                		CaseLoadCurrent(ACase,0);
+                	else
+                		DialogError("Could not find the case \"Solution\".")
+                	endif;
+                
+                else
+                
+                	empty SupplyRoute, NewLocations;
+                
+                	InitDistanceBasedOnCoordinates;
+                
+                	if MaxDistributionCenters = 0 or MaxDistributionCenters > card( DistributionCenterCandidates ) then
+                
+                		DialogMessage( FormatString("The maximum number of allowed distribution centers should be between 1 and %i", card( DistributionCenterCandidates ) ) );
+                
+                	else
+                
+                		solve MinimizeTransportCostMulti;
+                
+                		TotalCost := MTCMTotalCost;
+                
+                		for ( c | DistributionCenterInUse(c) ) do
+                
+                			! add the distribution center to the set of New Locations
+                			SetElementAdd( NewLocations, NewLocation, FormatString( "%e", c ) );
+                
+                			! Fill the coordinates with the solution of the model
+                			NLXCoordinate( NewLocation ) := XCoordinate( c ) ;
+                			NLYCoordinate( NewLocation ) := YCoordinate( c ) ;
+                
+                			for ( d | DCUsedToSupply(c,d) ) do
+                
+                				SupplyRoute( NewLocation,d) := 1;
+                
+                			endfor;
+                
+                		endfor;
+                
+                		DoNotShowCOGSolution := 1;
+                		DoNotShowMTCSolution := 1;
+                		DoNotShowMTCMSolution := 0;
+                		DoNotShowMSLSolution := 1;
+                
+                	endif;
+                
+                endif;
+            }
+        }
+        Procedure MTCMFillDescription {
+            Body: {
+                ModelDescription := "If a number of candidate locations for distribution centers are available, a transport cost minimization model can be used to determine at which candidate location a distribution center can best be opened.";
+                PageOpen( "Model Description");
+            }
+        }
+    }
+    Section Maximize_Service_Level {
+        Parameter DetermineMaxServiceLevel;
+        Parameter MaxAllowedServiceLevel;
+        Variable DemandLocationServiceDistance {
+            IndexDomain: (d);
+        }
+        Variable ServiceLevel;
+        Variable SLObjective {
+            Definition: {
+                if DetermineMaxServiceLevel then
+                
+                   ServiceLevel
+                
+                else
+                
+                   sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ExpectedDemand(d) )
+                
+                endif
+            }
+        }
+        Constraint DemandLocationServiceDistanceConstraint {
+            IndexDomain: (c,d);
+            Definition: DemandLocationServiceDistance(d) >= DCUsedToSupply(c,d) * Distance(c,d);
+        }
+        Constraint MaxServiceLevelConstraint {
+            IndexDomain: (c,d);
+            Definition: DCUsedToSupply(c,d) * Distance(c,d) <= MaxAllowedServiceLevel;
+        }
+        Constraint ServiceLevelConstraint {
+            IndexDomain: (d);
+            Definition: ServiceLevel >= DemandLocationServiceDistance(d);
+        }
+        Set MSLVariableSet {
+            SubsetOf: AllVariables;
+            Definition: data { DistributionCenterInUse, DCUsedToSupply, DemandLocationServiceDistance, ServiceLevel, SLObjective };
+        }
+        Set MSLConstraintSet {
+            SubsetOf: AllConstraints;
+            Definition: {
+                data
+                    { LimitOnUsedDCs                         , DCUsedToSupplyMustBeInUse              , OneDCUsedToSupply                      ,
+                      DemandLocationServiceDistanceConstraint, ServiceLevelConstraint                 , MaxServiceLevelConstraint              ,
+                      SLObjective                            }
+            }
+        }
+        MathematicalProgram MinimizeServiceLevel {
+            Objective: ServiceLevel;
+            Direction: minimize;
+            Constraints: MSLConstraintSet;
+            Variables: MSLVariableSet;
+        }
+        Procedure MSLSolveModel {
+            Body: {
+                if (IsRunningAsViewer) then
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                
+                	if (CaseFind("UnitedStates_ServiceLevel",ACase)) then
+                		CaseLoadCurrent(ACase,0);
+                	else
+                		DialogError("Could not find the case \"Solution\".")
+                	endif;
+                
+                else
+                	empty SupplyRoute, NewLocations;
+                
+                	InitDistanceBasedOnCoordinates;
+                
+                	if MaxDistributionCenters = 0 or MaxDistributionCenters > card( DistributionCenterCandidates ) then
+                
+                	DialogMessage( FormatString("The maximum number of allowed distribution centers should be between 1 and %i", card( DistributionCenterCandidates ) ) );
+                
+                	else
+                
+                	/*
+                	We solve the model in two steps, first we maximize the service level by minimizing the maximum distance.
+                	Afterwards we run the model a second time, minimizing the overall transportation with as extra condition
+                	that the distance between distribution and demand centers cannot exceed the maximum distance determined
+                	in the first solve.
+                	*/
+                	DetermineMaxServiceLevel := 1;
+                
+                	MaxAllowedServiceLevel := max( (c,d), Distance(c,d) );
+                
+                	solve MinimizeServiceLevel;
+                
+                	DetermineMaxServiceLevel := 0;
+                
+                	MaxAllowedServiceLevel := max( (c,d), DCUsedToSupply(c,d) * Distance(c,d ) );
+                
+                	solve MinimizeServiceLevel;
+                
+                	for ( d ) do
+                
+                	DCUsedToSupply(c,d) := 0;
+                
+                	for ( c | c = argmin( c2  | DistributionCenterInUse( c2 ), Distance( c2, d ) ) ) do
+                
+                		DCUsedToSupply(c,d) := 1;
+                
+                	endfor;
+                
+                	endfor;
+                
+                	DemandLocationServiceDistance(d) := max( c, DCUsedToSupply(c,d) * Distance(c,d) );
+                
+                	TotalCost := sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ExpectedDemand(d) );
+                
+                	for ( c | DistributionCenterInUse(c) ) do
+                
+                	! add the distribution center to the set of New Locations
+                	SetElementAdd( NewLocations, NewLocation, FormatString( "%e", c ) );
+                
+                	! Fill the coordinates with the solution of the model
+                	NLXCoordinate( NewLocation ) := XCoordinate( c ) ;
+                	NLYCoordinate( NewLocation ) := YCoordinate( c ) ;
+                
+                	for ( d | DCUsedToSupply(c,d) ) do
+                
+                		SupplyRoute( NewLocation,d) := 1;
+                
+                	endfor;
+                
+                	endfor;
+                
+                	DoNotShowCOGSolution := 1;
+                	DoNotShowMTCSolution := 1;
+                	DoNotShowMTCMSolution := 1;
+                	DoNotShowMSLSolution := 0;
+                
+                	endif;
+                endif;
+            }
+        }
+        Procedure MSLFillDescription {
+            Body: {
+                ModelDescription := "If an optimal service level needs to be met, a model can also optimize on having the minimal maximum distance (time) between demand locations and distribution centers.";
+                PageOpen( "Model Description");
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

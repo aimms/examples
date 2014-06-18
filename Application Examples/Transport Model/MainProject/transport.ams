@@ -1,0 +1,552 @@
+## ams_version=1.0
+
+Model Main_Transport {
+    Comment: {
+        "This AIMMS project illustrates how to formulate and solve a mathematical
+        program in AIMMS. It contains the declarations and procedures necessary
+        to formulate and solve a simple transportation model. The objective of
+        the model is to find an optimal distribution of transports from a given
+        set of depots to a given set of customers, such that:
+        - The demand of every customer is met.
+        - The amount supplied from each depot does not exceed the total amount
+          available for supply.
+        - The total cost associated with the totality of transports is minimal.
+        For illustration this demo uses a dataset containing Dutch cities."
+    }
+    Section Basic_Section {
+        DeclarationSection Input_Data {
+            Comment: {
+                "This section contains all the declarations which together represent
+                the input data of the transport model."
+            }
+            Set Locations {
+                Text: "The set of all depots and customer locations";
+                Index: l;
+                Parameter: Location;
+                Definition: Depots + Customers;
+            }
+            Set Depots {
+                SubsetOf: Locations;
+                Text: "The set of depots from which transports can emanate ";
+                Index: d;
+                Parameter: Depot;
+                OrderBy: d;
+            }
+            Set Customers {
+                SubsetOf: Locations;
+                Text: "The set of customers to which transport should take place";
+                Index: c;
+                Parameter: Customer;
+                OrderBy: c;
+            }
+            Parameter XCoordinate {
+                IndexDomain: l;
+                Text: "The (geographical) X coordinate of location l";
+            }
+            Parameter YCoordinate {
+                IndexDomain: l;
+                Text: "The (geographical) Y coordinate of location l";
+            }
+            Parameter Supply {
+                IndexDomain: d;
+                Text: "The total amount ready for supply from depot d";
+            }
+            Parameter Demand {
+                IndexDomain: c;
+                Text: "The total demand of customer c";
+            }
+            Parameter UnitTransportCost {
+                IndexDomain: (d,c);
+                Text: "The transport cost per unit transported from depot d to customer c";
+            }
+        }
+        DeclarationSection Model_Formulation {
+            Comment: {
+                "This section contains all the declarations necessary to formulate
+                the optimization model for the transport problem."
+            }
+            Variable Transport {
+                IndexDomain: (d,c);
+                Text: "The actual amount transported from depot d to customer c";
+                Range: nonnegative;
+                Comment: "Without specifying a nonnegative range, the optimization model becomes unbounded";
+            }
+            Constraint SatisfySupply {
+                IndexDomain: d;
+                Text: "The amount supplied by depot d cannot exceed its supply amount";
+                Definition: sum(c, Transport(d,c)) <= Supply(d);
+            }
+            Constraint MeetDemand {
+                IndexDomain: c;
+                Text: "The amount transported to customer c should meet its demand";
+                Definition: sum(d, Transport(d,c)) >= Demand(c);
+            }
+            Variable TotalCost {
+                Text: "The total cost associated with a particular distribution of transports";
+                Definition: sum((d,c), UnitTransportCost(d,c)*Transport(d,c));
+            }
+            MathematicalProgram TransportModel {
+                Objective: TotalCost;
+                Direction: minimize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Text: "The optimizing transportation model";
+                Type: LP;
+                Comment: {
+                    "The mathematical program contains all variables and all constraints
+                    declared in the model. To specify this, you can make use of the predefined
+                    set AllVariables and AllConstraints, which, at any time, contain the names
+                    of all variables and constraints in your model, respectively. If you want a
+                    mathematical program to be defined over a subset of the variables or
+                    constraints, you should declare subsets of these sets in your model, and
+                    specify these in the VARIABLES and CONSTRAINTS attributes."
+                }
+            }
+        }
+        DeclarationSection Additional_Interface_Identifiers {
+            StringParameter ProblemDescriptionFile {
+                Definition: "Description.txt";
+            }
+            Parameter DepotNameLong;
+            StringParameter DepotName {
+                IndexDomain: d;
+                Definition: {
+                    if DepotNameLong then
+                       FormatString("%e",d)
+                    else
+                      substring(FormatString("%e",d),1,2)
+                    endif
+                }
+            }
+            Parameter CustomerNameLong;
+            StringParameter CustomerName {
+                IndexDomain: c;
+                Definition: {
+                    if CustomerNameLong then
+                       FormatString("%e",c)
+                    else
+                      substring(FormatString("%e",c),1,2)
+                    endif
+                }
+            }
+            Set NetworkBounds {
+                Index: nb;
+                Definition: data { Left, Right, Top, Bottom };
+            }
+            Parameter ActiveBounds {
+                IndexDomain: nb;
+            }
+            StringParameter BasicInfo {
+                Definition: "network.txt";
+            }
+            Parameter BitmapBounds {
+                IndexDomain: nb;
+            }
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+        }
+        Procedure BasicMainInitialization {
+            Body: {
+                read from file "<prj>:netherlands.txt";
+                Customer := first(c);
+                Depot    := first(d);
+                Location := first(l);
+                
+                DetermineDefaultNetworkBounds;
+                update DepotName, CustomerName;
+            }
+            Comment: {
+                "In this simple model, we obtain all input data from a single ASCII data file called \"netherlands.txt\".
+                It contains the data for depots and customers which both are a collection of Dutch cities.
+                This .txt file is stored as a project user file (see menu Tools - Project User Files);"
+            }
+        }
+        Procedure DetermineDefaultNetworkBounds {
+            Body: {
+                ActiveBounds(nb) := BitmapBounds(nb);
+            }
+            Comment: "Determines the bounds of the network object such that all locations are visible";
+            Parameter Tmax {
+                Text: "Temporary maximum";
+            }
+            Parameter Tmin {
+                Text: "Temporary minimum";
+            }
+        }
+        Procedure BasicMainExecution {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	solve TransportModel;
+                
+                else
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
+                	CaseFind("Solution Basic",ACase);
+                	CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+            Comment: {
+                "A mathematical program can be solved using the SOLVE statement.
+                It causes AIMMS to generate a matrix based on the current content
+                of the sets and parameters used in the declaration of the variables
+                and constraints in a model. This matrix is sent to a solver for
+                optimization, after which the result is read back in AIMMS."
+            }
+        }
+    }
+    Section Database_Section {
+        DeclarationSection Database_Tracing_declarations {
+            StringParameter DatabaseTracingLevelDescription {
+                IndexDomain: indexPossibleTracingLevels;
+                Definition: data { 0 : "0 (No Tracing)",  1 : "1 (Trace without data)" , 2 : "2 (Trace with data)"};
+                Comment: "Description of each of the different tracing levels";
+            }
+            Set DatabasePossibleTracingLevels {
+                SubsetOf: Integers;
+                Index: indexPossibleTracingLevels;
+                Definition: data { 0,1,2 };
+                Comment: "The set of all possible tracing levels";
+            }
+            ElementParameter DatabaseTracingLevel {
+                Range: DatabasePossibleTracingLevels;
+                Comment: "The current database tracing level";
+            }
+            StringParameter DatabaseTracingFile {
+                Comment: "the file to which the tracing is written";
+            }
+        }
+        DeclarationSection Database_Declarations {
+            Set PossibleDatabaseConnections {
+                Definition: data { ODBC, 'OLE DB'};
+            }
+            ElementParameter UseDatabaseConnection {
+                Range: PossibleDatabaseConnections;
+                Default: 'OLE DB';
+            }
+            StringParameter ExampleDataSource {
+                Default: "AIMMS Transport Example Database.dsn";
+                Definition: {
+                    if ( UseDatabaseConnection = 'ODBC' ) then
+                    
+                       "AIMMS Transport Example Database.dsn"
+                    
+                    elseif ( UseDatabaseConnection = 'OLE DB' ) then
+                    
+                       "AIMMS Transport Example Database.udl"
+                    
+                    endif
+                }
+            }
+            StringParameter DatabaseInfo {
+                Definition: "Database.txt";
+            }
+            StringParameter DatabaseTracingInfo {
+                Definition: "DatabaseTracing.txt";
+            }
+            DatabaseTable LocationTable {
+                DataSource: ExampleDataSource;
+                TableName: "Locations";
+                Mapping: {
+                    "Location" --> Locations,
+                    "XCoord"   --> XCoordinate( l ),
+                    "YCoord"   --> YCoordinate( l )
+                }
+            }
+            DatabaseTable DepotTable {
+                DataSource: ExampleDataSource;
+                TableName: "Depots";
+                Mapping: {
+                    "Depot"     --> Depots,
+                    "Supply"    --> Supply(d)
+                }
+            }
+            DatabaseTable CustomerTable {
+                DataSource: ExampleDataSource;
+                TableName: "Customers";
+                Mapping: {
+                    "Customer" --> Customers,
+                    "Demand"   --> Demand( c )
+                }
+            }
+            DatabaseTable TransportTable {
+                DataSource: ExampleDataSource;
+                TableName: "Transports";
+                Mapping: {
+                    "Depot"     --> Depots,
+                    "Customer"  --> Customers,
+                    "UnitCost"  --> UnitTransportCost(d,c),
+                    "Transport" --> Transport
+                }
+            }
+        }
+        Procedure ReadInputData {
+            Body: {
+                if CheckDatabaseLink then
+                   read from table LocationTable;
+                   read from table DepotTable;
+                   read from table CustomerTable;
+                   read UnitTransportCost from table TransportTable filtering d,c;
+                
+                   empty Transport;
+                endif;
+            }
+            Comment: "This procedure simply reads all data from the database tables";
+        }
+        Procedure ReadTransport {
+            Body: {
+                if CheckDatabaseLink then
+                   read Transport from table TransportTable filtering d,c;
+                endif;
+            }
+        }
+        Procedure WriteTransport {
+            Body: {
+                if CheckDatabaseLink then
+                   write Transport to table TransportTable in replace mode;
+                endif;
+            }
+            Comment: "This procedure write the data for Transport back into the database";
+        }
+        Procedure CheckDatabaseLink {
+            Body: {
+                if not TestDataSource(ExampleDataSource) then
+                
+                   if ( UseDatabaseConnection = 'ODBC' ) then
+                
+                      DialogMessage("Please make sure the DSN file '"+ ExampleDataSource + "' exists and links to the database of this project");
+                      return 0;
+                
+                   else
+                
+                      DialogMessage("Please make sure the UDL file '"+ ExampleDataSource + "' exists and links to the database of this project");
+                      return 0;
+                
+                   endif;
+                
+                endif;
+                return 1;
+            }
+        }
+        Procedure DatabaseMainInitialization {
+            Body: {
+                ReadInputData;
+                
+                Customer := first(c);
+                Depot    := first(d);
+                Location := first(l);
+                
+                DetermineDefaultNetworkBounds;
+                update DepotName, CustomerName;
+            }
+            Comment: {
+                "In this model, we obtain all input data from the access database transportexample.mdb (via ODBC or OLE DB link).
+                It contains the relevant data for depots and customers which both are a collection of Dutch cities."
+            }
+        }
+        Procedure DatabaseMainExecution {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	solve TransportModel;
+                
+                else
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
+                	CaseFind("Solution Database",ACase);
+                	CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+            Comment: {
+                "An mathematical program can be solved using the SOLVE statement.
+                It causes AIMMS to generate a matrix based on the current content
+                of the sets and parameters used in the declaration of the variables
+                and constraints in a model. This matrix is sent to a solver for
+                optimization, after which the result is read back in AIMMS."
+            }
+        }
+        Procedure UpdateDatabaseTracingOptions {
+            Body: {
+                OptionSetValue("Database trace level", DatabaseTracingLevel) ;
+                option database_trace_file := DatabaseTracingFile ;
+            }
+            Comment: "Sets the values of the tracing options to what the user has selected in the GUI";
+        }
+        Procedure OpenDatabaseTraceFile {
+            Body: {
+                if not FileExists(DatabaseTracingFile) then
+                	DialogError(formatstring("Tracefile with name \"%s\" does not exist yet.\n\nA tracefile is generated once the trace level is 1 or 2 and there is database activity.", DatabaseTracingFile)) ;
+                else
+                	Execute("notepad", DatabaseTracingFile) ;
+                endif ;
+            }
+            Comment: "try to open the tracing file selected by the user. If the file does not exist yet, then show the user a warning.";
+        }
+    }
+    Section Expressions_Section {
+        StringParameter ExpressionsInfo {
+            Definition: "expressions.txt";
+        }
+        Procedure ExpressionsMainInitialization {
+            Body: {
+                BasicMainInitialization;
+            }
+            Comment: {
+                "In this simple model, we obtain all input data from a single ASCII data file called \"netherlands.txt\".
+                It contains the data for depots and customers which both are a collection of Dutch cities.
+                This .txt file is stored as a project user file (see menu Tools - Project User Files);"
+            }
+        }
+        Procedure ExpressionsMainExecution {
+            Body: {
+                BasicMainExecution;
+            }
+            Comment: {
+                "An mathematical program can be solved using the SOLVE statement.
+                It causes AIMMS to generate a matrix based on the current content
+                of the sets and parameters used in the declaration of the variables
+                and constraints in a model. This matrix is sent to a solver for
+                optimization, after which the result is read back in AIMMS."
+            }
+        }
+    }
+    Section Constraint_Slacks_Section {
+        ElementParameter LastDepot {
+            Range: Depots;
+        }
+        Parameter NrOfInfeasibilities {
+            Definition: ConstraintSlacksTransportModel.NumberOfInfeasibilities;
+        }
+        Parameter SumOfInfeasibilities {
+            Definition: ConstraintSlacksTransportModel.SumOfInfeasibilities;
+        }
+        Parameter TransportViolationPenalty {
+            IndexDomain: IndexVariablesConstraints;
+        }
+        MathematicalProgram ConstraintSlacksTransportModel {
+            Objective: TotalCost;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Text: "The optimizing transportation model";
+            Type: LP;
+            ViolationPenalty: TransportViolationPenalty;
+            Comment: {
+                "The Violation penalty attribute should contain a numerical parameter declared over the set
+                AllVariablesConstraints, in this case this is TransportViolationPenalty.
+                
+                Constraints and variables with definition for which TransportViolationPenalty has the value
+                0 will be handled as in normal optimization.
+                
+                Constraints and variables with definition for which TransportViolationPenalty has a value
+                larger than 0 will get a slack variable. If the slack variable has a non-zero value, it
+                will result in a extra penalty in the objective of the value of the slack variable times
+                the value of TransportViolationPenalty.
+                
+                If the TransportViolationPenalty is zero, the constraint or variable with definition will
+                get a slack variable, but the slack variable will not result in a penalty.
+                
+                Note that when the value of TransportViolationPenalty is 0 or a positive number for the
+                objective, the objective will be regarded for the optimization. If this value is zero,
+                the objective will not be handled for the optimization. This means, only the penalties
+                from the slack variables will be minimized."
+            }
+        }
+        Set NotSatisfiedDemandNodes {
+            SubsetOf: Customers;
+            Index: nsdn;
+            Definition: {
+                { c | MeetDemand.Violation(c) <> 0}
+            }
+        }
+        StringParameter ConstraintSlacksInfo {
+            Definition: "constraintslacks.txt";
+        }
+        Procedure ConstraintSlacksMainInitialization {
+            Body: {
+                BasicMainInitialization;
+                
+                empty MeetDemand.Violation;
+                
+                TransportViolationPenalty( 'MeetDemand' ) := 100;
+                
+                LastDepot := last( Depots );
+                
+                Supply( LastDepot ) := 0;
+            }
+        }
+        Procedure ConstraintSlacksMainExecution {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	Solve ConstraintSlacksTransportModel;
+                !	for (AllCandV) do
+                !		currentConstraintVariable := AllCandV;
+                !		ConstraintIsViolated := currentConstraintVariable.violation;
+                !	endfor;
+                
+                
+                else
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
+                	CaseFind("Solution Constraint Slack",ACase);
+                	CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+            Comment: {
+                "For this optimization there will be a slack variable allowed for the MeetDemand
+                constraint, while the objective, TotalCost, will be handled as normal. The supply
+                in Zutphen is set to 0 to illustrate what happend if all the demand cannot be
+                satisfied."
+            }
+            ElementParameter currentConstraintVariable {
+                Range: AllVariablesConstraints;
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            BasicMainInitialization;
+            
+            
+            
+            OptionGetValue("Database trace level",notNeeded, OptionValue, notNeeded, notNeeded ) ;
+            DatabaseTracingLevel := OptionValue ;
+            OptionGetString("Database trace file", DatabaseTracingFile ) ;
+        }
+        Comment: {
+            "In this simple model, we obtain all input data from a single
+            ASCII data file called \"netherlands.txt\". It contains the data
+            for depots and customers which both are a collection of Dutch cities."
+        }
+        Parameter notNeeded;
+        Parameter OptionValue {
+            Range: integer;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            solve TransportModel;
+        }
+        Comment: {
+            "A mathematical program can be solved using the SOLVE statement.
+            It causes AIMMS to generate a matrix based on the current content
+            of the sets and parameters used in the declaration of the variables
+            and constraints in a model. This matrix is sent to a solver for
+            optimization, after which the result is read back in AIMMS."
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+        Comment: {
+            "The return value of 1 indicates that we are not interested in
+            saving the current data in a case."
+        }
+    }
+}

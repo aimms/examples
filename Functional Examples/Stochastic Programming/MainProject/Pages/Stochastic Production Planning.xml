@@ -1,0 +1,576 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-11-16 17:22:46">
+	<Location top="22" left="4" bottom="925" right="1394" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>9AE6DA6D-175F-47DA-A7D4-02BF52CEBB2F</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="6B7AD068-B32F-4472-A12E-CFEBD1B63406">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>-6</HorizontalGridDistance>
+	<VerticalGridDistance>-6</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="192" left="212" bottom="272" right="378" />
+		<TabOrder>12</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>UnitProductionCost</Identifier>
+			<NumberFormat Width="7" Decimals="2" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Unit Production Cost"</Title>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>UnitStockCost</Identifier>
+			<NumberFormat Width="5" Decimals="2" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>InitialStock</Identifier>
+			<NumberFormat Width="5" Decimals="2" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>MaximumProduction</Identifier>
+			<NumberFormat Width="5" Decimals="1" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>MaximumStock</Identifier>
+			<NumberFormat Width="5" Decimals="1" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="275" left="213" bottom="340" right="555" />
+		<TabOrder>13</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<AllVerticalGridLines>true</AllVerticalGridLines>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Stock( t )</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="13" Decimals="2" Alignment="Right" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Production( t )</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="13" Decimals="2" Alignment="Right" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Demand( t )</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="13" Decimals="2" Alignment="Right" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="192" left="381" bottom="217" right="554" />
+		<TabOrder>14</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="711609E6-7D59-4F2A-9E5E-DC8A0D97E7B1">blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalCosts</Identifier>
+			<NumberFormat Width="7" Decimals="2" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Color>711609E6-7D59-4F2A-9E5E-DC8A0D97E7B1 blue</Color>
+			<Title>"Deterministic Total Costs"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="355" left="575" bottom="617" right="764" />
+		<TabOrder>19</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>ScenarioTreeMapping( sc, st )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Scenario Tree Mapping"</HeaderText>
+			<NumberFormat Width="10" Decimals="0" Alignment="Right" />
+			<Color>ScenDisplayColour( sc, st )</Color>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="355" left="206" bottom="617" right="571" />
+		<TabOrder>20</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<InactiveData>true</InactiveData>
+		<AllHorizontalGridLines>true</AllHorizontalGridLines>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Stock.Stochastic( sc, t )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Stock"</HeaderText>
+			<NumberFormat Width="6" Decimals="2" Alignment="Right" ShowDefaults="true" />
+			<Color>ValueDisplayColour( sc, t )</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Production.Stochastic( sc, t )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Production"</HeaderText>
+			<NumberFormat Width="7" Decimals="2" Alignment="Right" ShowDefaults="true" />
+			<Color>ValueDisplayColour( sc, t )</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Demand.Stochastic( sc, t )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Demand"</HeaderText>
+			<NumberFormat Width="7" Decimals="2" Alignment="Right" ShowDefaults="true" />
+			<Color>ValueDisplayColour( sc, t )</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ScenarioProbability( sc )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Probability"</HeaderText>
+			<NumberFormat Width="12" Decimals="3" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>TotalCosts.Stochastic( sc )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>"Total Costs"</HeaderText>
+			<NumberFormat Width="10" Decimals="1" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="189" left="575" bottom="269" right="766" />
+		<TabOrder>17</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<AllVerticalGridLines>true</AllVerticalGridLines>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>PeriodToStageMapping( t )</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<HeaderText>"Period To Stage"</HeaderText>
+			<NumberFormat Width="9" Decimals="2" Alignment="Right" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ProductionStage( t )</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<HeaderText>"Production Stage"</HeaderText>
+			<NumberFormat Width="9" Decimals="2" Alignment="Right" />
+			<Readonly>1</Readonly>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>StockStage( t )</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<HeaderText>"Stock Stage"</HeaderText>
+			<NumberFormat Width="9" Decimals="2" Alignment="Right" />
+			<Readonly>1</Readonly>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="278" left="575" bottom="346" right="765" />
+		<TabOrder>18</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<AllHorizontalGridLines>true</AllHorizontalGridLines>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>LowerBoundFraction( c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>" Lower Bound "</HeaderText>
+			<NumberFormat Width="5" Decimals="2" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>UpperBoundFraction( c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>" Upper Bound "</HeaderText>
+			<NumberFormat Width="5" Decimals="2" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>BranchChance( c )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>" Branch Chance "</HeaderText>
+			<NumberFormat Width="5" Decimals="2" />
+		</ExplicitIdentifier>
+		<ElementText Index="c">BranchDisplayName( c )</ElementText>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="226" left="381" bottom="245" right="554" />
+		<TabOrder>15</TabOrder>
+		<TabStop>false</TabStop>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Initialize Model Data"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>InitializeDetModelData</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="251" left="381" bottom="269" right="554" />
+		<TabOrder>16</TabOrder>
+		<TabStop>false</TabStop>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Deterministic Model"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveDeterministicModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="511" left="5" bottom="528" right="193" />
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Stochastic Model"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveStochProductionModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="333" left="5" bottom="350" right="193" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Assign Decisions To Stages"</Title>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>AssignDecisionsToStages</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="Assignment">
+				<Identifier>Step1_AssignmentWasMade</Identifier>
+				<AssignedValue>1</AssignedValue>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="357" left="5" bottom="374" right="193" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Initialize Branches"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>InitializeBranchRangeAndChance</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="Assignment">
+				<Identifier>Step1_InitializationWasMade</Identifier>
+				<AssignedValue>1</AssignedValue>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="561" left="5" bottom="587" right="193" />
+		<TabOrder>10</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>TotalCosts.Stochastic( SPModel_DetOrExpValues )</Identifier>
+			<NumberFormat Width="7" Decimals="3" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Color>0E032B4C-BD27-48CB-83BA-6EDDB0E43A63 red</Color>
+			<Title>"Expected Costs"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="184" left="203" bottom="345" right="561" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#8000ff" />
+		<LineWidth>4</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="313" left="5" bottom="338" right="193" />
+		<StaticText>step 1</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="386" left="5" bottom="407" right="193" />
+		<StaticText>step 2</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="494" left="5" bottom="514" right="193" />
+		<StaticText>step 3</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="402" left="5" bottom="459" right="193" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="6B7AD068-B32F-4472-A12E-CFEBD1B63406">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23491A7F-D696-4E5F-8995-80B4052A78FD">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>MethodToApply</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="TreeCreationMethods">MethodName( m )</ElementText>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="459" left="5" bottom="476" right="193" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Create Scenario Tree"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CreateScenarioTree</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="587" left="5" bottom="616" right="193" />
+		<TabOrder>11</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="6B7AD068-B32F-4472-A12E-CFEBD1B63406">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="23491A7F-D696-4E5F-8995-80B4052A78FD">default selection</UserColor>
+		</TextColor>
+		<ProcedureUponChange>SwitchShowModes</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>ShowOnlyReprScen</Identifier>
+			<Description>"Show Representatives Only"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="281" left="5" bottom="299" right="193" />
+		<StaticText>Stochastic Steps</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="191" left="18" bottom="208" right="169" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="573" bottom="180" right="759" />
+		<StaticText>Stochastic</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="159" left="207" bottom="180" right="393" />
+		<StaticText>Deterministic</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor RGB="#8000ff" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="184" left="768" bottom="619" right="768" />
+		<LineColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</LineColor>
+		<LineWidth>4</LineWidth>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="351" left="203" bottom="620" right="204" />
+		<LineColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</LineColor>
+		<LineWidth>4</LineWidth>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="185" left="570" bottom="351" right="570" />
+		<LineColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</LineColor>
+		<LineWidth>4</LineWidth>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="184" left="569" bottom="184" right="768" />
+		<LineColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</LineColor>
+		<LineWidth>4</LineWidth>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="351" left="203" bottom="351" right="570" />
+		<LineColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</LineColor>
+		<LineWidth>4</LineWidth>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="620" left="204" bottom="619" right="768" />
+		<LineColor>
+			<UserColor GUID="0E032B4C-BD27-48CB-83BA-6EDDB0E43A63">red</UserColor>
+		</LineColor>
+		<LineWidth>4</LineWidth>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>2</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="220" left="17" bottom="237" right="168" />
+		<StaticText>Scenario Tree View</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="536" left="5" bottom="553" right="193" />
+		<TabOrder>9</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve Stochastic Benders"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveStochProductionModel_Benders</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ValueDisplayColour</Symbol>
+			<Symbol>SolveStochProductionModel</Symbol>
+			<Symbol>MaximumStock</Symbol>
+			<Symbol>Production</Symbol>
+			<Symbol>CreateScenarioTree</Symbol>
+			<Symbol>ProductionStage</Symbol>
+			<Symbol>StockStage</Symbol>
+			<Symbol>TotalCosts</Symbol>
+			<Symbol>UnitProductionCost</Symbol>
+			<Symbol>InitializeBranchRangeAndChance</Symbol>
+			<Symbol>Stock</Symbol>
+			<Symbol>ShowOnlyReprScen</Symbol>
+			<Symbol>ScenDisplayColour</Symbol>
+			<Symbol>PeriodToStageMapping</Symbol>
+			<Symbol>Demand</Symbol>
+			<Symbol>LowerBoundFraction</Symbol>
+			<Symbol>ScenarioProbability</Symbol>
+			<Symbol>UnitStockCost</Symbol>
+			<Symbol>MaximumProduction</Symbol>
+			<Symbol>BranchChance</Symbol>
+			<Symbol>Step1_AssignmentWasMade</Symbol>
+			<Symbol>SolveDeterministicModel</Symbol>
+			<Symbol>InitialStock</Symbol>
+			<Symbol>Step1_InitializationWasMade</Symbol>
+			<Symbol>AssignDecisionsToStages</Symbol>
+			<Symbol>ScenarioTreeMapping</Symbol>
+			<Symbol>UpperBoundFraction</Symbol>
+			<Symbol>BranchDisplayName</Symbol>
+			<Symbol>SwitchShowModes</Symbol>
+			<Symbol>InitializeDetModelData</Symbol>
+			<Symbol>MethodToApply</Symbol>
+			<Symbol>SolveStochProductionModel_Benders</Symbol>
+			<Symbol>MethodName</Symbol>
+			<Symbol>SPModel_DetOrExpValues</Symbol>
+			<Symbol>TreeCreationMethods</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>st</Symbol>
+			<Symbol>sc</Symbol>
+			<Symbol>c</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

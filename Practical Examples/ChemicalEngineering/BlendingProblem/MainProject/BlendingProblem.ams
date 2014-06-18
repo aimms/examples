@@ -1,0 +1,87 @@
+## ams_version=1.0
+
+Model Main_BlendingProblem {
+    Comment: {
+        "Blending problem
+        
+        Problem type:
+        LP (small)
+        
+        Description:
+        Minimization of the price of an alloy produced from other alloys available on the market.
+        
+        References:
+        Dantzig, G.B., Chapter 3.4 in: Linear Programming and Extensions, Princeton University Press,
+        Princeton, New Jersey, 1963."
+    }
+    Set AlloysOnMarket {
+        Index: a;
+        Definition: data{A,B,C,D,E,F,G,H,I};
+    }
+    Set RequiredElements {
+        Index: e;
+        Definition: data{lead, zinc, tin};
+    }
+    Parameter CompositionData {
+        IndexDomain: (e,a);
+        Definition: {
+            data
+            { ( lead, A ) : 10,  ( lead, B ) : 10,  ( lead, C ) : 40,  ( lead, D ) : 60,  ( lead, E ) : 30,
+              ( lead, F ) : 30,  ( lead, G ) : 30,  ( lead, H ) : 50,  ( lead, I ) : 20,  ( zinc, A ) : 10,
+              ( zinc, B ) : 30,  ( zinc, C ) : 50,  ( zinc, D ) : 30,  ( zinc, E ) : 30,  ( zinc, F ) : 40,
+              ( zinc, G ) : 20,  ( zinc, H ) : 40,  ( zinc, I ) : 30,  ( tin , A ) : 80,  ( tin , B ) : 60,
+              ( tin , C ) : 10,  ( tin , D ) : 10,  ( tin , E ) : 40,  ( tin , F ) : 30,  ( tin , G ) : 50,
+              ( tin , H ) : 10,  ( tin , I ) : 50 }
+        }
+    }
+    Parameter CompositionDataPercentage {
+        IndexDomain: (e,a);
+        Definition: {
+            CompositionData(e,a) / 100;
+        }
+    }
+    Parameter DesiredBlendPercentage {
+        IndexDomain: (e);
+        Definition: data { lead : 0.30,  zinc : 0.30,  tin : 0.40 };
+    }
+    Parameter AlloyPrice {
+        IndexDomain: (a);
+        Definition: {
+            data { A : 4.100,  B : 4.300,  C : 5.800,  D : 6.000,  E : 7.600,
+                   F : 7.500,  G : 7.300,  H : 6.900,  I : 7.300 }
+        }
+    }
+    Variable AlloyPurchased {
+        IndexDomain: (a);
+        Range: nonnegative;
+    }
+    Variable TotalCost {
+        Range: free;
+        Definition: sum(a, AlloyPrice(a)*AlloyPurchased(a));
+    }
+    Constraint PurchaseConstraint {
+        IndexDomain: e;
+        Definition: sum(a, CompositionDataPercentage(e,a)*AlloyPurchased(a)) = DesiredBlendPercentage(e);
+    }
+    Constraint MaterialBalance {
+        Definition: sum(a, AlloyPurchased(a)) = 1;
+    }
+    MathematicalProgram LeastCost {
+        Objective: TotalCost;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: LP;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            solve LeastCost;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

@@ -1,0 +1,422 @@
+## ams_version=1.0
+
+Model Main_Traveling_Salesman_Problem {
+    Comment: {
+        "This model illustrates some of AIMMS control flow statements by means of the
+        traveling salesman 2-opt heuristic. You will find some declarations to define
+        the problem, along with
+        - a procedure and some declarations to compute and visualize an initial tour
+          constructed by starting at some city and successively selecting the next
+          city as the closest city not yet part of the tour
+        - a procedure and some declarations to compute and visualize an improved tour
+          constructed by repetitively swapping those two arcs in the tour by means of
+          the 2-opt heuristic that give the largest overall distance improvement, until
+          no further improvement is possible or the iteration limit is reached
+        - a procedure and some declarations to compute and visualize an improved tour
+          constructed by repetitively swapping the next arc in the (modified) tour
+          with that neighbor arc which gives the largest distance improvement, until
+          the iteration limit is reached or a full cycle over the tour gives no
+          further improvement."
+    }
+    DeclarationSection Problem_Topology {
+        Comment: {
+            "This declaration section contains all declarations necessary to globally
+            define the TSP problem."
+        }
+        Parameter MaxCities {
+            Text: "Maximum number of cities in the tour";
+            Default: 100;
+        }
+        Set Cities {
+            Text: "The set of cities in the tour";
+            Index: i, j, c;
+            Parameter: City, NewNext, OCity, DCity, ODCity;
+            Definition: ElementRange( from: 1, to: MaxCities, fill: 0 );
+        }
+        Parameter XCoord {
+            IndexDomain: c;
+            Text: "X-Coordinate of city c";
+        }
+        Parameter YCoord {
+            IndexDomain: c;
+            Text: "Y-Coordinate of city c";
+        }
+        Parameter Distance {
+            IndexDomain: (i,j);
+            Text: "Distance from city i to city j";
+            Definition: sqrt( (XCoord(j) - XCoord(i))^2 + (YCoord(j) - YCoord(i))^2 );
+        }
+    }
+    DeclarationSection Algorithmic_Identifiers {
+        Comment: {
+            "This declaration section defines all identifier declarations used in either
+            algorithm."
+        }
+        Parameter IterationLimit {
+            Text: "Maximum number of iterations to improve tour";
+        }
+        Parameter MaxNeighbors {
+            Text: "Maximum number of neighbors considered for each city";
+        }
+        Set Neighbors {
+            IndexDomain: i;
+            SubsetOf: Cities;
+            Text: "The set of neighbors of city i";
+            OrderBy: user;
+            Definition: NBest( j | (i <> j), -Distance(i,j), MaxNeighbors );
+        }
+    }
+    Section Create_New_and_Initial_Tour {
+        Comment: {
+            "This section contains all declarations and procedures necessary to
+            compute and visualize the initial tour."
+        }
+        Parameter SquareSize {
+            Text: "Size of the square in which all cities are contained";
+            Default: 10;
+        }
+        Parameter InitTourDistance {
+            Text: "Total distance of the initial tour";
+        }
+        Parameter InitTourConnect {
+            IndexDomain: (i,j);
+            Text: "City i connected to city j in initial tour";
+        }
+        ElementParameter InitNextCity {
+            IndexDomain: c;
+            Text: "Next city of city c in initial tour";
+            Range: Cities;
+        }
+        ElementParameter InitPrevCity {
+            IndexDomain: c;
+            Text: "Previous city of city c in initial tour";
+            Range: Cities;
+        }
+        Parameter TourInitialized {
+            Text: "Flag to indicate that an initial tour has been computed for a newly created tour";
+        }
+        Procedure NewTour {
+            Body: {
+                XCoord(c)       := Uniform(0, SquareSize);
+                YCoord(c)       := Uniform(0, SquareSize);
+                MaxNeighbors    := floor(Sqrt(MaxCities));
+                IterationLimit  := floor(MaxCities / 3);
+                
+                empty InitTourConnect,SimTourConnect,CycTourConnect;
+                TourInitialized := 0;
+                SimInitialized  := 0;
+                CycInitialized  := 0;
+            }
+            Comment: {
+                "This procedure computes a new set of coordinates for the given set of cities, and
+                determines initial values for the iteration limit and size of the neighbor set."
+            }
+        }
+        Procedure FindInitialTour {
+            Body: {
+                Initialize_Progress_Window;
+                GMP::ProgressWindow::DisplayLine( 1, "Phase", "Find Initial Tour" );
+                
+                empty InitTourConnect;
+                RemainingCities := Cities;
+                
+                ! We start adding the first city to the tour
+                City            := First(Cities);
+                RemainingCities -= City;
+                
+                ! For every other city, the next city in the tour is the one closest to it not yet chosen
+                while ( Card( RemainingCities ) <> 0 ) do
+                    InitNextCity(City)  := ArgMin( c in RemainingCities, Distance(City,c) );
+                    City                := InitNextCity(City);
+                    RemainingCities     -= City;
+                endwhile;
+                
+                ! Finally, close the tour
+                InitNextCity(City) := First(Cities);
+                
+                InitPrevCity(InitNextCity(c))  := c;
+                InitTourConnect(c,InitNextCity(c)) := 1;
+                InitTourDistance := sum(c, Distance(c,InitNextCity(c)));
+                
+                TourInitialized := 1;
+            }
+            Comment: {
+                "This procedure computes an initial tour by starting at the first city,
+                and successively adding the closest remaining city."
+            }
+            Set RemainingCities {
+                SubsetOf: Cities;
+            }
+        }
+    }
+    Section Improve_Tour_via_Simultaneous_Improvement {
+        Comment: {
+            "This section contains all identifiers and the procedure necessary to compute
+            and visualize improved tours using an algorithm that selects the neighbor of a
+            city for swapping, considering all cities in the tour simultaneously."
+        }
+        Parameter SimDistanceChange {
+            IndexDomain: (i,j in Neighbors(i));
+            Text: "Improvement in total tour distance by swapping city i with neighbor j in simultaneous algorithm";
+            Default: -inf;
+            Definition: Distance(i,SimNextCity(i)) + Distance(j,SimNextCity(j)) - (Distance(i,j) + Distance(SimNextCity(i),SimNextCity(j)));
+        }
+        Parameter SimMaxChange {
+            Text: "Maximum possible distance improvement in simultaneous algorithm";
+            Definition: Max((i,j in Neighbors(i)), SimDistanceChange(i,j));
+        }
+        Parameter SimSwaps {
+            Text: "Number of performed swaps in simultaneous algorithm";
+        }
+        Parameter SimTourDistance {
+            Text: "Total tour distance after current iteration in simultaneous algorithm";
+        }
+        Parameter SimTourConnect {
+            IndexDomain: (i,j);
+            Text: "City i connected to city j after current iteration in simultaneous algorithm";
+        }
+        ElementParameter SimNextCity {
+            IndexDomain: c;
+            Text: "Next city of city c after current iteration in simultaneous algorithm";
+            Range: Cities;
+        }
+        ElementParameter SimPrevCity {
+            IndexDomain: c;
+            Text: "Previous city of city c after current iteration in simultaneous algorithm";
+            Range: Cities;
+        }
+        Parameter SimInitialized {
+            Text: "Flag to indicate that simultaneous algorithm has been initialized";
+        }
+        Procedure ImproveInitialTourSimultaneous {
+            Body: {
+                Initialize_Progress_Window;
+                GMP::ProgressWindow::DisplaySolver( "Simultaneous Approach" );
+                GMP::ProgressWindow::DisplayLine( 1, "Phase", "" );
+                
+                if ( not TourInitialized ) then FindInitialTour; endif;
+                if ( not SimInitialized  ) then
+                   SimNextCity(c) := InitNextCity(c);
+                   SimPrevCity(c) := InitPrevCity(c);
+                   SimInitialized := 1;
+                   SimSwaps       := 0;
+                endif;
+                
+                while ( SimMaxChange > 0 and LoopCount <= IterationLimit ) do
+                    GMP::ProgressWindow::DisplayLine( 1, "Phase", "Select cities" );
+                
+                    SimSwaps += 1;
+                
+                    ! Select City and NewNext as a (i,j) tuple which reaches the maximum change
+                    for ((i,j) | SimDistanceChange(i,j) = SimMaxChange ) do
+                        City    := i;
+                        NewNext := j;
+                        break;
+                    endfor;
+                
+                    
+                    Block ! Swap cities in tour.
+                        ! This is the hairy part of the algorithm. The direction of the tour changes from
+                        ! City to NewNext as part of the 2-opt heuristic. To modify the next and previous
+                        ! city references we have to walk over the subtour, carefully making sure we don't
+                        ! destroy any information while reversing the direction.
+                        
+                        GMP::ProgressWindow::DisplayLine( 1, "Phase", "Swap Cities" );
+                        
+                        ! Set up a link from the old destinations of City to the old destination of NewNext in the tour
+                        OCity              := SimNextCity(City);
+                        DCity              := SimNextCity(NewNext);
+                        SimNextCity(OCity) := DCity;
+                        SimPrevCity(DCity) := OCity;
+                        
+                        ! Reverse the chain from the old destination of City to NextNew
+                        OCity := NewNext;
+                        DCity := SimPrevCity(OCity);
+                        
+                        while ( DCity <> City ) do
+                             ODCity              := DCity;
+                             SimNextCity(OCity)  := ODCity;
+                             DCity               := SimPrevCity(ODCity);
+                             SimPrevCity(ODCity) := OCity;
+                             OCity               := ODCity;
+                        endwhile;
+                        
+                        ! Finally, setup the link from City to NextNew
+                        SimNextCity(City)    := NewNext;
+                        SimPrevCity(NewNext) := City;
+                    EndBlock ; 
+                    
+                    Block ! Update network flow object.
+                        empty SimTourConnect;
+                        SimTourConnect(c,SimNextCity(c)) := 1;
+                        SimTourDistance := sum(c, Distance(c,SimNextCity(c)));
+                        PageRefreshAll;
+                    EndBlock ; 
+                    
+                    Block ! Update Progress Window.
+                        GMP::ProgressWindow::DisplayLine(3,"Objective", SimTourDistance );
+                        GMP::ProgressWindow::DisplayLine( 2, "Node Swaps", SimSwaps );
+                    EndBlock ; 
+                endwhile;
+                
+                
+                    Block ! Update Progress Window.
+                        GMP::ProgressWindow::DisplayLine(3,"Objective", SimTourDistance );
+                        GMP::ProgressWindow::DisplayLine( 2, "Node Swaps", SimSwaps );
+                    EndBlock ; 
+                GMP::ProgressWindow::DisplayProgramStatus( 'LocallyOptimal' );
+                GMP::ProgressWindow::DisplaySolverStatus( 'NormalCompletion' );
+            }
+        }
+    }
+    Section Improve_Tour_via_Cyclic_Node_Walk {
+        Comment: {
+            "This section contains all identifiers and the procedure necessary to compute
+            and visualize improved tours using an algorithm that selects that neighbor of the
+            next city in the (modified) tour for swapping which causes the largest distance
+            improvement."
+        }
+        Macro CycDistanceChange {
+            Text: "Improvement in total tour distance by swapping city i with neighbor j in cyclic algorithm";
+            Arguments: (i,j);
+            Definition: Distance(i,CycNextCity(i)) + Distance(j,CycNextCity(j)) - (Distance(i,j) + Distance(CycNextCity(i),CycNextCity(j)));
+        }
+        Parameter CycSwaps {
+            Text: "Number of performed swaps in cyclic algorithm";
+        }
+        Parameter CycTourDistance {
+            Text: "Total tour distance after current iteration in cyclic algorithm";
+        }
+        Parameter CycTourConnect {
+            IndexDomain: (i,j);
+            Text: "City i connected to city j after current iteration in cyclic algorithm";
+        }
+        ElementParameter CycNextCity {
+            IndexDomain: c;
+            Text: "Next city of city c after current iteration in cyclic algorithm";
+            Range: Cities;
+        }
+        ElementParameter CycPrevCity {
+            IndexDomain: c;
+            Text: "Previous city of city c after current iteration in cyclic algorithm";
+            Range: Cities;
+        }
+        Parameter CycInitialized {
+            Text: "Flag to indicate that cyclic algorithm has been initialized";
+        }
+        Procedure ImproveInitialTourCyclic {
+            Body: {
+                GMP::ProgressWindow::DisplaySolver( "Cyclic Approach" );
+                GMP::ProgressWindow::DisplayLine( 1, "Phase", "" );
+                Initialize_Progress_Window;
+                
+                if ( not TourInitialized ) then FindInitialTour; endif;
+                
+                if ( not CycInitialized  ) then
+                   CycNextCity(c) := InitNextCity(c);
+                   CycPrevCity(c) := InitPrevCity(c);
+                   CycInitialized := 1;
+                   CycSwaps       := 0;
+                endif;
+                
+                UselessLoops := 0;
+                City         := First(Cities);
+                
+                while ( CycSwaps < IterationLimit and UselessLoops <= MaxCities ) do
+                    GMP::ProgressWindow::DisplayLine( 1, "Phase", "Select cities" );
+                
+                    UselessLoops += 1;
+                
+                    ! Select a NewNext to be swapped with City
+                    NewNext := ArgMax( c in Neighbors(City), CycDistanceChange(City,c) );
+                
+                    if ( CycDistanceChange(City,NewNext) > 0 ) then
+                        CycSwaps     += 1;
+                        UselessLoops := 0;
+                
+                
+                        Block ! Swap cities in tour.
+                            ! This is the hairy part of the algorithm. The direction of the tour changes from
+                            ! City to NewNext as part of the 2-opt heuristic. To modify the next and previous
+                            ! city references we have to walk over the subtour, carefully making sure we don't
+                            ! destroy any information while reversing the direction.
+                
+                            GMP::ProgressWindow::DisplayLine( 1, "Phase", "Swap Cities" );
+                
+                            ! Set up a link from the old destinations of City to the old destination of NewNext in the tour
+                            OCity              := CycNextCity(City);
+                            DCity              := CycNextCity(NewNext);
+                            CycNextCity(OCity) := DCity;
+                            CycPrevCity(DCity) := OCity;
+                
+                            ! Reverse the chain from the old destination of City to NextNew
+                            OCity := NewNext;
+                            DCity := CycPrevCity(OCity);
+                
+                            while ( DCity <> City ) do
+                                 ODCity          := DCity;
+                                 CycNextCity(OCity)  := ODCity;
+                                 DCity               := CycPrevCity(ODCity);
+                                 CycPrevCity(ODCity) := OCity;
+                                 OCity               := ODCity;
+                            endwhile;
+                
+                            ! Finally, setup the link from City to NextNew
+                            CycNextCity(City)    := NewNext;
+                            CycPrevCity(NewNext) := City;
+                        EndBlock ;
+                
+                        Block ! Update network flow object.
+                            empty CycTourConnect;
+                            CycTourConnect(c,CycNextCity(c)) := 1;
+                            CycTourDistance := sum(c, Distance(c,CycNextCity(c)));
+                            PageRefreshAll;
+                        EndBlock ;
+                
+                        Block ! Update Progress Window.
+                            GMP::ProgressWindow::DisplayLine( 3,"Objective", CycTourDistance );
+                            GMP::ProgressWindow::DisplayLine( 2, "Node Swaps", CycSwaps );
+                        EndBlock ;
+                    endif;
+                
+                    City := CycNextCity(City);
+                endwhile;
+                
+                GMP::ProgressWindow::DisplayProgramStatus( 'LocallyOptimal' );
+                GMP::ProgressWindow::DisplaySolverStatus( 'NormalCompletion' );
+                
+                    Block ! Update Progress Window.
+                        GMP::ProgressWindow::DisplayLine( 3,"Objective", CycTourDistance );
+                        GMP::ProgressWindow::DisplayLine( 2, "Node Swaps", CycSwaps );
+                    EndBlock ;
+            }
+            Parameter UselessLoops {
+                Text: "Counter for counting number of iterations without tour improvement";
+            }
+        }
+    }
+    Section Progress_Window {
+        Procedure Initialize_Progress_Window {
+            Body: {
+                GMP::ProgressWindow::DisplayLine( 2, "Node Swaps", "" );
+                GMP::ProgressWindow::DisplayLine( 3, "Objective", "" );
+                GMP::ProgressWindow::DisplayProgramStatus( '' );
+                GMP::ProgressWindow::DisplaySolverStatus( '' );
+            }
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+        Comment: "We return 1 to make sure AIMMS does not ask to save a case when closing the project";
+    }
+    Procedure InitialMovie {
+        Body: {
+            ShowProgressWindow;
+            NewTour;
+            FindInitialTour;
+        }
+        Comment: "This procedure is used when opening the only page of the project.";
+    }
+}

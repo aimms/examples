@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-09-25 16:41:44">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>5C856D0C-3F7D-4926-9C86-814A186CF8DF</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="515" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromBottom" Value="75">
+						<TopArea Line="FixedFromRight" Value="47" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Pivot Table">
+		<Location top="192" left="210" bottom="510" right="684" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>1CF8BC2B-8FDA-44D5-B2B3-12B5CFC0F4BA</ObjectUUID>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">Sales( c, r, p, m )</Identifier>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">p</Index>
+				<Header_Title ID="6530">"Size"</Header_Title>
+				<Show_All_Elements ID="6550">1</Show_All_Elements>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">r</Index>
+				<Header_Title ID="6530">"Region"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">c</Index>
+				<Header_Title ID="6530">"Customer"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">m</Index>
+				<Header_Title ID="6530">"Month"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<Multiple_Case_View ID="1020">"Yes"</Multiple_Case_View>
+			<User_Modifications>
+				<Indices_Showing_All_Elements ID="1212">"Allowed"</Indices_Showing_All_Elements>
+			</User_Modifications>
+			<Save_Layout_State>
+				<By_End_User ID="1040">"On Demand"</By_End_User>
+				<By_Developer ID="1115">"When being Saved"</By_Developer>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Outer_Area>
+			<Same_as_Row_Area ID="3505">"Yes"</Same_as_Row_Area>
+		</Outer_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Aggregators>
+				<Background_Color ExtraInfo="8FF23981-A94C-4E84-9FA9-DEEC106E7D2D" ID="5220">"white"</Background_Color>
+			</Aggregators>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="516" left="210" bottom="540" right="354" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Select Multiple Cases"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>Data-Multiple Cases</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="552" left="210" bottom="606" right="762" />
+		<StaticText>Both the developer (Pivot Table Properties - General tab) and end-user (Pivot Table Options) can set the Pivot Table as a multiple case object. If set, the case index will appear. On the indices tab you can specify the properties for this index. When no multiple case selection is made, the current data is shown.
+Beside the case index, you can also specify the suffix index and the identifier index.</StaticText>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextColor>
+			<UserColor GUID="F71E28AB-0EDA-44E6-BC2A-C634A85D1E85">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>c</Symbol>
+			<Symbol>m</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>r</Symbol>
+			<Symbol>Sales</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

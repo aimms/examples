@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo - A Media Selection Problem" PageGUID="7CBFB455-5717-4395-B594-E917A2055BE6">
+		<Page Name="A Media Selection Problem" PageGUID="0633EC90-31E7-47A3-91C9-2EA464B3C88A" />
+	</Page>
+	<Page Name="All Data Pages" PageGUID="9188C4EC-2C89-47C1-85B9-A81B5E26C4FF">
+		<Page Name="[Data Page] Incidence" PageGUID="DFD0D514-613B-4B70-BD19-5A944EFA8B4D" />
+	</Page>
+</PageManager>

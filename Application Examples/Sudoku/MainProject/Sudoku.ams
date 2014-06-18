@@ -1,0 +1,257 @@
+## ams_version=1.0
+
+Model Main_template {
+    DeclarationSection Declaration_Sudoku_Model {
+        Set AllRows {
+            Index: r;
+            Definition: Data{R-1..R-9};
+        }
+        Set AllColumns {
+            Index: c;
+            Definition: Data{C-1..C-9};
+        }
+        Set AllValues {
+            SubsetOf: Integers;
+            Index: v;
+            Definition: Data{1..9};
+        }
+        Set Groups {
+            Index: g;
+            Parameter: SelectedGroup;
+        }
+        ElementParameter FixedValues {
+            IndexDomain: (r,c);
+            Range: AllValues;
+        }
+        Variable Solution {
+            IndexDomain: (r,c,v);
+            Range: binary;
+        }
+        Constraint OneValuePerCell {
+            IndexDomain: (r,c);
+            Definition: sum[v,Solution(r,c,v)] = 1;
+        }
+        Parameter GroupDefinition {
+            IndexDomain: (g,r,c);
+        }
+        Constraint ValueOnePerGroup {
+            IndexDomain: (g,v);
+            Definition: {
+                sum[(r,c) | GroupDefinition(g,r,c), Solution(r,c,v)] = 1;
+            }
+        }
+        MathematicalProgram Sudoku {
+            Objective: DummyObjective;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: MIP;
+        }
+        Variable DummyObjective {
+            Definition: sum[(r,c,v), Solution(r,c,v)];
+        }
+        Variable UniquenesObjective {
+            Definition: sum[(r,c,v)|Solution(r,c,v).level, Solution(r,c,v)];
+        }
+        MathematicalProgram UniquenessSudoku {
+            Objective: UniquenesObjective;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: MIP;
+        }
+    }
+    DeclarationSection Declaration_GUI_Support {
+        Set SubAreas {
+            Index: sa_r, sa_c;
+            Definition: Data{A-1..A-3};
+        }
+        ElementParameter ColorGroups {
+            IndexDomain: (r,c);
+            Range: AllColors;
+            Definition: {
+                if div(ord(r)+2,3) + div(ord(c)+2,3) = 3 or
+                   div(ord(r)+2,3) + div(ord(c)+2,3) = 5 then
+                	'Very Light Grey'
+                endif;
+            }
+        }
+        ElementParameter InputDataColor {
+            IndexDomain: (r,c);
+            Range: AllColors;
+            Definition: {
+                if FixedValues(r,c) then
+                	'blue'
+                elseif max(ags,GUISolution(ags,r,c)) <> min(ags,GUISolution(ags,r,c)) then
+                	'red'
+                endif
+            }
+            Comment: "GUISolution(GUIFirstSolution,r,c) <> GUISolution(GUISecondSolution, r,c)";
+        }
+        ElementParameter NotUnique {
+            IndexDomain: (r,c);
+            Range: AllColors;
+            Definition: {
+                if GUISolution(GUIFirstSolution, r,c) <> GUISolution(GUISecondSolution, r,c) then
+                	'red'
+                endif;
+            }
+        }
+        Set AllGUISolutions {
+            Index: ags;
+            Definition: ElementRange(1,NoOfSolutions, prefix:"solution-");
+        }
+        Parameter NoOfSolutions {
+            Range: {
+                {0..inf}
+            }
+        }
+        Set SubsetGUISolutions {
+            SubsetOf: AllGUISolutions;
+            Index: ags_s;
+            Definition: {
+                {ags | ags > GUIFirstSolution}
+            }
+        }
+        ElementParameter GUISolution {
+            IndexDomain: (ags,r,c);
+            Range: AllValues;
+        }
+        ElementParameter GUIFirstSolution {
+            Range: AllGUISolutions;
+            Definition: first(ags);
+        }
+        ElementParameter GUISecondSolution {
+            Range: AllGUISolutions;
+            Definition: element(AllGUISolutions,2);
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+        Set MultiSolutionSolvers {
+            SubsetOf: AllSolvers;
+            Definition: {
+                {ms|FindString(Formatstring("%e",ms),"BARON")
+                or (FindString(Formatstring("%e",ms),"CPLEX") and SubString(Formatstring("%e",ms),-4,-1)>= "11.0")}
+            }
+        }
+        ElementParameter SelectedSolver {
+            Range: MultiSolutionSolvers;
+        }
+        Index ms {
+            Range: AllSolvers;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure CreateGroups {
+        Body: {
+            empty groups;
+            
+            for (sa_r,sa_c) do
+            	SetElementAdd(Groups,NewGroup,sa_r + "_" + sa_c);
+            	GroupDefinition(NewGroup,r,c) := [ord(sa_r) = div(ord(r)+2,3)   ] and
+                  					 [ord(sa_c) = div(ord(c)+2,3)]
+            endfor;
+            
+            
+            
+            for (r) do
+            	SetElementAdd(Groups,NewGroup,r);
+            	GroupDefinition(NewGroup,r,c) := 1;
+            endfor;
+            
+            for (c) do
+            	SetElementAdd(Groups,NewGroup,c);
+            	GroupDefinition(NewGroup,r,c) := 1;
+            endfor;
+            
+            SelectedGroup := first(Groups);
+        }
+        ElementParameter NewGroup {
+            Range: Groups;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            if not IsRunningAsViewer then
+            
+            	CreateGroups;
+            
+            	Solution(r,c,v).nonvar := 0;
+            
+            	Solution(r,c,FixedValues(r,c)) := 1;
+            	Solution(r,c,FixedValues(r,c)).nonvar := 1;
+            
+            	!NoOfSolutions := 2;
+            
+            	solve Sudoku;
+            	GUISolution(ags,r,c)|(ord(ags)=1) := first(v | Solution(r,c,v));
+            
+            	solve UniquenessSudoku;
+            	GUISolution(ags,r,c)|(ord(ags)=2) := first(v | Solution(r,c,v));
+            
+            
+            
+            else
+            
+            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
+                CaseFind("Solution (MIP)", ACase);
+                CaseLoadCurrent(ACase,0);
+            
+            endif;
+        }
+        Comment: {
+            "Solution(r,c,FixedValues(r,c)) := 1;"
+        }
+    }
+    Procedure MultipleSolve {
+        Body: {
+            if SelectedSolver = '' then
+            	DialogMessage("No Solver Selected or Available");
+            	return;
+            endif;
+            
+            if not IsRunningAsViewer then
+            
+            	empty GUISolution;
+            
+            	CreateGroups;
+            
+            	Solution(r,c,v).nonvar := 0;
+            
+            	Solution(r,c,FixedValues(r,c)) := 1;
+            	Solution(r,c,FixedValues(r,c)).nonvar := 1;
+            
+            	if FindString(FormatString("%e", SelectedSolver),"CPLEX") then
+            		OptionSetString(FormatString("%e::do_populate", SelectedSolver),"yes");
+            	endif;
+            	if FindString(FormatString("%e", SelectedSolver),"BARON") then
+            		OptionSetValue(FormatString("%e::number_of_best_solutions", SelectedSolver),5);
+            	endif;
+            	solve Sudoku where solver = SelectedSolver;
+            
+            	NoOfSolutions := GMP::Solution::Count('Sudoku');
+            	for ags do
+            		GMP::Solution::SendToModel('Sudoku',ord(ags));
+            		GUISolution(ags,r,c) := first(v | Solution(r,c,v));
+            	endfor;
+            
+            else
+            
+                if SelectedSolver then
+            
+                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
+                    CaseFind("Solution (Baron)", ACase);
+                    CaseLoadCurrent(ACase,0);
+            
+            	endif;
+            
+            endif;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

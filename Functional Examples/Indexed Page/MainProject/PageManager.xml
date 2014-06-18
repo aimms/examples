@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="326E2245-EFB3-4339-99DD-40C57B2AFF90">
+		<Page Name="Example Page" PageGUID="53B5046E-6620-48CF-BE73-7D1AD8F16008" />
+		<Page Name="CityInformation" PageGUID="8C5FA5DC-5E05-469B-BB71-60B5CC7BF948" />
+		<Page Name="OverviewPerYear" PageGUID="F470036D-4D9F-45F4-8582-11D5694C0752" />
+		<Page Name="Example Page 2" PageGUID="6E71398A-7531-4D05-99CC-A45130693F3F" />
+	</Page>
+</PageManager>

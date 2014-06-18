@@ -1,0 +1,34 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+aim_output_character_set ASCII
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+default_output_character_set ASCII
+external_dll_AIMMS_reference ASCII
+external_procedure_character_set ASCII
+external_string_character_encoding WINDOWS-1252
+listing_file_character_set ASCII
+progress_compilation 100000
+progress_execution 10000
+progress_generation 0
+progress_solution 1000
+warning_unknown_option off
+* AOA
+* BARON 12
+* CONOPT 3.14V
+* CPLEX 12.6
+* CPOptimizer 12.6
+* GUROBI 5.6
+* KNITRO 9.0
+* MINOS
+* MOSEK 6.0
+* SNOPT 6.1
+* SNOPT 7.2
+* XA 15
+* NETSOL
+* Environment
+Project_Title "AIMMS - Indexed Page"
+Startup_Procedure "DataInitialization"
+Startup_Page "AIMMS Demo"

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="ChemicalEquilibrium Input and Output Data" PageGUID="3DAFE046-23F0-4E57-A24E-784DEB82F38D" />
+	<Page Name="All Data Pages" PageGUID="458999A8-BECC-45D6-A13C-26613C17E13D">
+		<Page Name="[Data Page] MolesOfCompound" PageGUID="D3684C29-5F1C-4369-ADB2-78BBBDC8DAE0" />
+	</Page>
+</PageManager>

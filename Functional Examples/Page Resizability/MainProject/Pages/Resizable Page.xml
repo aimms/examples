@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2012-07-31 08:42:18">
+	<Location top="77" left="131" bottom="716" right="1127" />
+	<PageEditSize Type="Inherited">
+		<Size Width="765" Height="474" />
+	</PageEditSize>
+	<ProjectUUID>310D2727-A0A0-4B94-8F0B-A6D7E354D17A</ProjectUUID>
+	<DockAlways>true</DockAlways>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="AdjustableFromRight" Value="216">
+			<LeftArea Line="FixedFromTop" Value="39">
+				<BottomArea Line="FixedFromBottom" Value="45" />
+			</LeftArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="52FCA5EC-AE18-4B3B-A405-11261A387E41">white</UserColor>
+	</Background>
+	<PageObject Type="Curve">
+		<Location top="42" left="24" bottom="426" right="540" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<HorizontalLine>
+			<Identifier>0</Identifier>
+		</HorizontalLine>
+		<ExplicitIdentifier>
+			<Identifier>FunctionValue( i, 'Sin' )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="6" left="24" bottom="36" right="540" />
+		<StaticText>Header</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="432" left="24" bottom="462" right="540" />
+		<StaticText>Footer</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="36" left="570" bottom="432" right="744" />
+		<StaticText>There are 3 split lines present on this page:
+
+The first split line is situated on left of this description. (The vertical grey line.) This is an adjustable split line. This means that the user can influence the size of the curve. 
+
+The two other splitlines are located just below the Header and just above the Footer. Those two lines are located on a fixed distance from top and bottom, respectively.
+This means that the header and the footer area have a height that remains fix, independent of change to the page size.
+
+Please note that in the properties this page is set to dialog.</StaticText>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="444" left="570" bottom="468" right="732" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Problem Description"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>i</Symbol>
+			<Symbol>FunctionValue</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

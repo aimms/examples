@@ -1,0 +1,7 @@
+Composite table:
+    po      AIMMSOfficeAddress 
+!   ----    ------------------------- 
+    NL      "1 Schipholweg, Haarlem, NL" 
+    US      "Bellevue WA, US"
+    Sing    "Raffles Place, Singapore, Singapore"
+    ;

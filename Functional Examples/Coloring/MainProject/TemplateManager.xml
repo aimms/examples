@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="133541F8-92C5-4A04-B4EE-D4387A982CAE" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|4C6B9EDA-985B-4B2E-B2AC-0BC66922E863|Size Template">
+		<Template Name="Navigation Template" PageGUID="61672927-DA3B-419B-A6F0-403A7D9EDC4F" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|F6D39516-1EB8-42E9-BFA1-802D38AB797A|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="CD6BBD49-BF79-420B-A1A3-D081D88243DC" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|599F2DDF-AB53-42C7-A2B1-A632B727A182|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="B483B505-0B9C-4DA2-9EBB-96D3D511CEAD" />
+			</Template>
+			<Page Name="Example Page" PageGUID="AAC63A69-8C32-4298-9B15-8176F20A6B4B" />
+		</Template>
+	</Template>
+	<Template Name="Tab Template" PageGUID="78697E94-B735-4DBF-97B0-8C0292E6F934">
+		<Page Name="Graph" PageGUID="98930E7A-5953-4646-9DF4-EBD8A57FD56A" />
+		<Page Name="Table" PageGUID="2B11528C-B3E8-445F-812D-651AB17F12E8" />
+		<Page Name="Composite Table" PageGUID="F64C14AB-B102-429D-AE30-9A980B840E08" />
+		<Page Name="Pivot Table" PageGUID="F86C1923-6E58-4572-BF93-B0DA6E351E40" />
+	</Template>
+</TemplateManager>

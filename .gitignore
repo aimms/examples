@@ -1,0 +1,9 @@
+.edited
+_AIMMSpackInfo
+*/log/
+*/backup/
+*/log/*
+*/backup/*
+aimms.xlg
+debug.log
+memory.log

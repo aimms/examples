@@ -1,0 +1,223 @@
+## ams_version=1.0
+
+Model Main_Portfolio_Selection_using_Chance_Constraints {
+    Section Portfolio_Model {
+        DeclarationSection Model_Declaration {
+            Quantity SI_Unitless {
+                BaseUnit: -;
+                Conversions: % -> - : # -> # / 100;
+                Comment: "Expresses a dimensionless value.";
+            }
+            Quantity Currency {
+                BaseUnit: $;
+            }
+            Set Assets {
+                SubsetOf: Integers;
+                Text: "Set containing all assets ";
+                Index: a;
+                Definition: data { 1 .. 200 };
+            }
+            Parameter NumberOfAssets {
+                Text: "The total number of assets";
+                Definition: Card(Assets);
+            }
+            Parameter RiskLevel {
+                Text: "This is the risk level for not satisfying the chance constraint.";
+                Unit: %;
+                InitialData: 0.5;
+                Comment: "It equals one minus the probability of satisfying the chance constraint.";
+            }
+            Parameter TotalInvestedAmount {
+                Text: "This parameter shows the total amount to be invested";
+                Unit: $;
+                InitialData: 10000;
+            }
+            Parameter ReturnVariance {
+                IndexDomain: (a);
+                Text: "The variance of asset a returns";
+                Definition: {
+                    if a <> 200 then
+                    	0.05 + 0.6 * (200 - a) / 199
+                    endif
+                }
+            }
+            Parameter ExpectedReturn {
+                IndexDomain: (a);
+                Text: "The expected values of the asset a returns";
+                Property: Random;
+                Definition: 1.05 + 0.3 * (200 - a) / 199;
+                Distribution: Symmetric(ExpectedReturn(a), ReturnVariance(a)), Unimodal;
+            }
+            Parameter FixedReturn {
+                Text: "The return of asset 200 without uncertainty";
+                Definition: ExpectedReturn(200);
+            }
+            Variable InvestmentFraction {
+                IndexDomain: (a);
+                Text: "This variable corresponds to the fraction of total amount that is invested in asset a";
+                Range: nonnegative;
+                Unit: -;
+            }
+            Variable ValueAtRisk {
+                Text: "This variable corresponds to the value-at-risk corresponding to the investment decisions";
+                Range: free;
+                Unit: $;
+            }
+            Constraint TotalInvestment {
+                Text: "This constraint sets the sum of all investment fractions to 1, that is, 100%";
+                Definition: sum( a, InvestmentFraction(a) ) = 1;
+            }
+            Constraint ValueAtRiskConstraint {
+                Text: "This constraint is the chance constraint in the model.";
+                Unit: $;
+                Property: Chance;
+                Definition: {
+                    ValueAtRisk <= sum( a | a <> 200, ExpectedReturn(a) * InvestmentFraction(a) * TotalInvestedAmount)
+                                                    + FixedReturn * InvestmentFraction(200) * TotalInvestedAmount
+                }
+                Probability: ChanceConstrProbability;
+                Approximation: ApproximationType;
+                Comment: {
+                    "It expresses the condition that the investment decisions should be such that the total returns must be
+                    at least the value-at-risk in at least a (percentual) number of cases as imposed by the given probability."
+                }
+            }
+            ElementParameter ApproximationType {
+                Text: "Parameter for the safe approximation type to be used for the chance constraint";
+                Range: AllChanceApproximationTypes;
+                InitialData: 'Box';
+            }
+            MathematicalProgram PortfolioModel {
+                Objective: ValueAtRisk;
+                Direction: maximize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Text: "The optimization model that maximize the value at risk (expected return)";
+                Type: LP;
+            }
+            ElementParameter ChanceConstrModel {
+                Text: "This is the generated model that will account for the chance constraint.";
+                Range: AllGeneratedMathematicalPrograms;
+            }
+            Parameter ChanceConstrProbability {
+                Text: "This is the probability with which the chance constraint is required to hold.";
+                Definition: 1 - RiskLevel;
+            }
+            Parameter RelativeProfit {
+                Text: "This is the total profit expressed as percentage of the total invested amount.";
+                Unit: %;
+            }
+        }
+        Procedure SolveChanceConstrModel {
+            Body: {
+                if not IsRunningAsViewer then
+                
+                	ChanceConstrModel := GMP::Instance::GenerateRobustCounterpart( PortfolioModel, AllUncertainParameters, AllUncertaintyConstraints );
+                
+                	GMP::Instance::Solve( ChanceConstrModel );
+                
+                	switch ApproximationType do
+                		'Box'       : Investment_Box(a)       := InvestmentFraction.robust(a);
+                		'Ball'      : Investment_Ball(a)      := InvestmentFraction.robust(a);
+                		'BallBox'   : Investment_BallBox(a)   := InvestmentFraction.robust(a);
+                		'Budgeted'  : Investment_Budgeted(a)  := InvestmentFraction.robust(a);
+                		'Automatic' : Investment_Automatic(a) := InvestmentFraction.robust(a);
+                	endswitch;
+                
+                
+                	RelativeProfit := (ValueAtRisk.robust - TotalInvestedAmount)/TotalInvestedAmount ;
+                
+                	GMP::Instance::Delete( ChanceConstrModel );
+                
+                else
+                
+                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
+                	CaseFind("Viewer Case", ACase);
+                	CaseLoadCurrent(ACase,0);
+                
+                endif;
+            }
+            Comment: "This procedure generates the safe robust approximation of the model with chance constraints and solves it.";
+        }
+    }
+    Section GUI_Support_Section {
+        DeclarationSection GUI_Declarations {
+            Parameter LowerRangePoint {
+                IndexDomain: (a);
+                Text: "The lowest return of asset a";
+                Definition: ExpectedReturn(a) - ReturnVariance(a);
+            }
+            Parameter UpperRangePoint {
+                IndexDomain: (a);
+                Text: "The higest return of asset a";
+                Definition: ExpectedReturn(a) + ReturnVariance(a);
+            }
+            Parameter Investment_Box {
+                IndexDomain: (a);
+                Text: "Result parameter bearing the investment fractions in case of box approximation";
+            }
+            Parameter Investment_Ball {
+                IndexDomain: (a);
+                Text: "Result parameter bearing the investment fractions in case of ball approximation";
+            }
+            Parameter Investment_BallBox {
+                IndexDomain: (a);
+                Text: "Result parameter bearing the investment fractions in case of Ball-Box approximation";
+            }
+            Parameter Investment_Budgeted {
+                IndexDomain: (a);
+                Text: "Result parameter bearing the investment fractions in case of Budgeted approximation";
+            }
+            Parameter Investment_Automatic {
+                IndexDomain: (a);
+                Text: "Result parameter bearing the investment fractions in case of the approximation of Automatic type";
+            }
+            StringParameter DescriptionFile {
+                Definition: "Description.txt";
+            }
+            ElementParameter ACase {
+                Range: AllCases;
+            }
+            Index IndexAppproximationType {
+                Range: AllChanceApproximationTypes;
+            }
+            StringParameter ApproximationDescription {
+                IndexDomain: IndexAppproximationType;
+                Definition: {
+                    data
+                    { Automatic : "It uses the most accurate approximation option.",
+                      Box       : "It ignores the information on the stochastic nature of the perturbations affecting the chance constraint and uses"
+                                  " only the fact that these perturbations vary in [-1,1].",
+                      Ball      : "It approximates an ellipsoidal set with radius depending on the given chance level.",
+                      BallBox   : "It approximates the chance constraints based on the intersection of the box and the ball.",
+                      Budgeted  : "It is based on the intersection of the box approximation with another box that imposes a so-called budget restric"
+                                  "tion on the data." }
+                }
+            }
+            StringParameter ApproximationName {
+                IndexDomain: IndexAppproximationType;
+                Definition: FormatString("Type: %e",IndexAppproximationType);
+            }
+            StringParameter ResultsDiscussion {
+                Definition: {
+                    "One can see how useful the stochastic information may be. Take the risk of 0.5% as example, the value-at-risk of the portfolio " +
+                    "profits yielded by the Ball-Box RC (12%) and the Budgeted RC (10%) are twice as large as the profit guaranteed by the Box RC (5" +
+                    "%). \n\nNote also that both the Ball-Box and the Budgeted RC's suggest \"active\" investment decisions, while the Box RC sugges" +
+                    "ts keeping the initial capital in the bank. Further, the Budgeted RC is more conservative than the Ball-Box RC." ;
+                }
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            ShowProgressWindow;
+            SolveChanceConstrModel;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

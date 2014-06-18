@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-02-26 01:52:21">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromBottom" Value="70">
+						<TopArea Line="FixedFromTop" Value="232" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="170" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Composite Table">
+		<Location top="360" left="210" bottom="606" right="474" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<Domain>
+			<Identifier>MeasuredFlow( f in MeasuredFlows )</Identifier>
+			<Index Name="MeasuredFlows">
+				<TitleText>"Flow"</TitleText>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>MeasuredFlow( f in MeasuredFlows )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Measured"</TitleText>
+			<Color>FlowErrorColor( f in MeasuredFlows )</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Flow( f in MeasuredFlows )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Reconciled"</TitleText>
+			<Color>FlowErrorColor( f in MeasuredFlows )</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ObservedFlowError( f in MeasuredFlows )</Identifier>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+			<TitleText>"Error"</TitleText>
+			<SortingOrder>-1</SortingOrder>
+			<Color>FlowErrorColor( f in MeasuredFlows )</Color>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="360" left="480" bottom="606" right="768" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<Domain>
+			<Identifier>IndicatorMeasuredComponent( nmf, c )</Identifier>
+			<Index Name="nmf">
+				<TitleText>"Flow"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+			<Index Name="c">
+				<TitleText>"Component"</TitleText>
+				<AutomaticWidth>false</AutomaticWidth>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>MeasuredComposition( nmf, c )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Measured"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+			<Color>CompositionErrorColor( nmf, c )</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Composition( nmf, c )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Reconciled"</TitleText>
+			<AutomaticWidth>false</AutomaticWidth>
+			<Color>CompositionErrorColor( nmf, c )</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ObservedCompositionError( nmf, c )</Identifier>
+			<NumberFormat Width="7" Decimals="2" Alignment="Center" />
+			<TitleText>"Error"</TitleText>
+			<SortingOrder>-1</SortingOrder>
+			<AutomaticWidth>false</AutomaticWidth>
+			<Color>CompositionErrorColor( nmf, c )</Color>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="210" bottom="312" right="768" />
+		<StaticText>This page displays an overview of the set of measured values versus the set of reconciled values, and their associated errors compared to the provided standard deviations of the error distribution. Measurements that exceed the error threshold are colored red.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="9B4C3B3E-A80D-43F1-9D8C-419D94537DE4">old text font</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="336" left="210" bottom="360" right="336" />
+		<StaticText>Flows:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="9B4C3B3E-A80D-43F1-9D8C-419D94537DE4">old text font</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="336" left="480" bottom="360" right="630" />
+		<StaticText>Compositions:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="9B4C3B3E-A80D-43F1-9D8C-419D94537DE4">old text font</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>c</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>nmf</Symbol>
+			<Symbol>FlowErrorColor</Symbol>
+			<Symbol>MeasuredFlows</Symbol>
+			<Symbol>MeasuredComposition</Symbol>
+			<Symbol>Composition</Symbol>
+			<Symbol>ObservedCompositionError</Symbol>
+			<Symbol>ObservedFlowError</Symbol>
+			<Symbol>CompositionErrorColor</Symbol>
+			<Symbol>MeasuredFlow</Symbol>
+			<Symbol>IndicatorMeasuredComponent</Symbol>
+			<Symbol>Flow</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2008-05-15 09:52:13">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>C10D3CE1-94CB-4B75-989D-9745275E39D2</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="64" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="PercentageFromLeft" Value="0.5">
+						<RightArea Line="PercentageFromTop" Value="0.436073">
+							<TopArea Line="FixedFromTop" Value="32" />
+							<BottomArea Line="FixedFromTop" Value="33" />
+						</RightArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Composite Table">
+		<Location top="219" left="492" bottom="369" right="762" />
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="Line" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+		<AutomaticReSort>false</AutomaticReSort>
+		<Domain>
+			<Identifier>Shipped( c, p, d, z )</Identifier>
+			<Index Name="c">
+				<TitleText>"Commodity"</TitleText>
+			</Index>
+			<Index Name="p">
+				<TitleText>"Plant"</TitleText>
+			</Index>
+			<Index Name="d">
+				<TitleText>"Dist. Center"</TitleText>
+			</Index>
+			<Index Name="z">
+				<TitleText>"Cust. Zone"</TitleText>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>Shipped( c, p, d, z )</Identifier>
+			<NumberFormat Width="5" Decimals="1" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="309" left="6" bottom="333" right="192" />
+		<TabOrder>4</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveAtOnce</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="414" left="642" bottom="492" right="762" />
+		<TabOrder>7</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="Line" Width="2" MarginTop="3" MarginRight="3" MarginBottom="3" MarginLeft="3" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<RemoveDefaults>true</RemoveDefaults>
+		<MultiLineHeaders>true</MultiLineHeaders>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Selected( d )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>STRING := FormatString("Dist. Center \n Selected")</HeaderText>
+			<NumberFormat Width="3" Decimals="0" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="495" left="492" bottom="591" right="762" />
+		<TabOrder>8</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="Line" Width="2" MarginTop="3" MarginRight="3" MarginBottom="3" MarginLeft="3" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<RemoveDefaults>true</RemoveDefaults>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Served( d, z )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="3" Decimals="0" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="414" left="492" bottom="459" right="639" />
+		<TabOrder>9</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="Line" Width="2" MarginTop="3" MarginRight="3" MarginBottom="3" MarginLeft="3" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+		</TextColor>
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>TotalCost</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<HeaderText>"Total Cost"</HeaderText>
+			<NumberFormat Width="10" Decimals="2" Alignment="Right" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PrimalObjective</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<HeaderText>"Objective"</HeaderText>
+			<NumberFormat Width="10" Decimals="2" Alignment="Right" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="15" bottom="210" right="192" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="15" bottom="240" right="192" />
+		<StaticText>Benders' Decomposition</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="276" left="6" bottom="300" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="279" left="18" bottom="297" right="186" />
+		<StaticText>Execution</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="189" left="492" bottom="213" right="768" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="498" bottom="210" right="666" />
+		<StaticText>Optimal Flows</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="378" left="492" bottom="402" right="768" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="381" left="498" bottom="399" right="666" />
+		<StaticText>Optimal Results</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Network Object">
+		<Location top="189" left="207" bottom="591" right="483" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<EqualXYScale>false</EqualXYScale>
+		<ScrollControl>NoScrolling</ScrollControl>
+		<VisibleArea>
+			<Right>325</Right>
+			<Top>680</Top>
+			<Bottom>200</Bottom>
+		</VisibleArea>
+		<Background>
+			<Background_Image_Source ID="101">"From File"</Background_Image_Source>
+			<Image_File_Name ID="200" LiteralFileName="true">"&lt;prj&gt;:bitmaps\Netherlands.bmp"</Image_File_Name>
+			<Left ID="210">-20</Left>
+			<Right ID="211">325</Right>
+			<Top ID="212">680</Top>
+			<Bottom ID="213">200</Bottom>
+		</Background>
+		<Node>
+			<Identifier>l</Identifier>
+			<XCoordinate>XCoord( l )</XCoordinate>
+			<YCoordinate>YCoord( l )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MinimumSize>5</MinimumSize>
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Color>NodeColor( l )</Color>
+			<Shape>Circle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>ArcShipped( c, f, t )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>2</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<Color>ArcColor( c )</Color>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="336" left="6" bottom="360" right="192" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Clear"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>Clear</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="600" left="213" bottom="600" right="246" />
+		<LineColor>
+			<UserColor GUID="8C1FFC91-A781-4272-831D-2D86F23592E4">red</UserColor>
+		</LineColor>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="594" left="258" bottom="615" right="333" />
+		<StaticText>: Cotton</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="600" left="351" bottom="600" right="384" />
+		<LineColor>
+			<UserColor GUID="ABB4A8BD-7798-41D3-BA43-C629DFC98735">green</UserColor>
+		</LineColor>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="594" left="396" bottom="615" right="471" />
+		<StaticText>: Beer</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Served</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>l</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>z</Symbol>
+			<Symbol>ArcColor</Symbol>
+			<Symbol>PrimalObjective</Symbol>
+			<Symbol>SolveAtOnce</Symbol>
+			<Symbol>Selected</Symbol>
+			<Symbol>Shipped</Symbol>
+			<Symbol>XCoord</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>YCoord</Symbol>
+			<Symbol>NodeColor</Symbol>
+			<Symbol>ArcShipped</Symbol>
+			<Symbol>Clear</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

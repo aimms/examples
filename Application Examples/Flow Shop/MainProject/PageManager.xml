@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="D6E11857-7FE0-4E3F-810A-5DC5DC561258">
+		<Page Name="Gantt Charts" PageGUID="E4D287D4-2E53-4B3E-9D0D-90C28B1EB42E" />
+		<Page Name="Using Start Values" PageGUID="BAB24A6D-E46B-45F3-BEC9-983B58DD9AC7" />
+		<Page Name="Solve multiple scenarios with parallel solver sessions" PageGUID="D58BF4EF-A57D-48DB-955D-8799015425AE" />
+	</Page>
+</PageManager>

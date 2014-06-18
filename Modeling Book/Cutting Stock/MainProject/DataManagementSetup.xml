@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DataManagementSetup TimeStamp="2013-05-22 13:47:43">
+	<CaseType Name="All Identifiers" UUID="3AB5B07B-B8D7-4D9C-AC77-40B0B2D91428" InternalID="1">
+		<Properties>
+			<Contents AllIdentifiers="true" />
+			<Options ConfirmOverwriteExisting="false" />
+		</Properties>
+	</CaseType>
+	<CaseType Name="input" UUID="57FFFAF0-1E84-4A86-8111-027ACDC28AF5" InternalID="2">
+		<Properties>
+			<Contents>
+				<SelectedSymbol>Demand</SelectedSymbol>
+				<SelectedSymbol>RawSize</SelectedSymbol>
+				<SelectedSymbol>Finals</SelectedSymbol>
+				<SelectedSymbol>FinalSize</SelectedSymbol>
+			</Contents>
+		</Properties>
+	</CaseType>
+</DataManagementSetup>

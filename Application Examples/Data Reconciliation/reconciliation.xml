@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowMeasurementData xmlns="http://www.aimms.com/XMLSchema/Reconciliation-example" date="2002-06-03">
+	<Flow name="Inflow" measured="111.984" reconciled="117.034">
+		<Composition>
+			<Component name="N2" measured="26.960" reconciled="26.960"/>
+			<Component name="H2" measured="72.710" reconciled="72.710"/>
+			<Component name="Ar" measured="0.330" reconciled="0.330"/>
+		</Composition>
+	</Flow>
+	<Flow name="Mix" reconciled="475.034">
+		<Composition>
+			<Component name="N2" measured="24.560" reconciled="23.951"/>
+			<Component name="H2" reconciled="71.084"/>
+			<Component name="NH3" reconciled="0.054"/>
+			<Component name="Ar" measured="4.910" reconciled="4.910"/>
+		</Composition>
+	</Flow>
+	<Flow name="NH3-Mix" reconciled="475.034">
+		<Composition>
+			<Component name="N2" measured="19.990" reconciled="19.990"/>
+			<Component name="H2" reconciled="59.084"/>
+			<Component name="NH3" reconciled="15.269"/>
+			<Component name="Ar" reconciled="5.657"/>
+		</Composition>
+	</Flow>
+	<Flow name="NH3-Flow" measured="105.590" reconciled="105.590">
+		<Composition>
+			<Component name="NH3" reconciled="100.000"/>
+		</Composition>
+	</Flow>
+	<Flow name="Residu" reconciled="369.444">
+		<Composition>
+			<Component name="N2" reconciled="23.575"/>
+			<Component name="H2" measured="69.680" reconciled="69.680"/>
+			<Component name="NH3" reconciled="0.074"/>
+			<Component name="Ar" reconciled="6.671"/>
+		</Composition>
+	</Flow>
+	<Flow name="Ar-Flow" reconciled="11.444">
+		<Composition>
+			<Component name="N2" reconciled="89.192"/>
+			<Component name="Ar" reconciled="10.808"/>
+		</Composition>
+	</Flow>
+	<Flow name="Feedback" measured="358.000" reconciled="358.000">
+		<Composition>
+			<Component name="N2" reconciled="22.825"/>
+			<Component name="H2" reconciled="70.476"/>
+			<Component name="NH3" reconciled="0.075"/>
+			<Component name="Ar" reconciled="6.624"/>
+		</Composition>
+	</Flow>
+</FlowMeasurementData>

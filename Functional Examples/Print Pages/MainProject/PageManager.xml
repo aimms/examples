@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="EDB00864-58EF-4C7B-89AE-51FBFE18AF10">
+		<Page Name="Example Page" PageGUID="D79DF2F6-27EE-4EF2-A8C7-84A5398FE253">
+			<Page Name="Front Page" PageGUID="0CDB69E5-9880-4276-A613-1072A23F5107" />
+			<Page Name="Report Page 1" PageGUID="825DD75B-7CD8-4E3B-BA86-281E14A5F560" />
+			<Page Name="Report Page 2" PageGUID="48E11389-8ED2-4E5D-849E-D7400E3E7753" />
+		</Page>
+	</Page>
+</PageManager>

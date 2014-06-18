@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="97B9CE4F-C6C1-48BC-9AC7-76B6FF2620E9">
+		<Page Name="Circle Packing in a Square" PageGUID="4FFFDF6B-408A-43E5-98B7-ED0E80C5A804" />
+		<Page Name="Circle Packing in a Circle" PageGUID="7FDAEA4C-9B88-45BB-92DE-53EB4025BABB" />
+		<Page Name="Various Size Circle Packing" PageGUID="A4756160-BB23-4062-BDC4-05D6410B3FD8" />
+	</Page>
+</PageManager>

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-07-12 17:54:51">
+	<Location top="80" left="76" bottom="278" right="763" />
+	<PageEditSize Type="Inherited">
+		<Size Width="687" Height="197" />
+	</PageEditSize>
+	<ProjectUUID>211601CD-0FDB-4C33-926A-B1BD580D7560</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromBottom" Value="32">
+			<TopArea Line="FixedFromTop" Value="33" />
+		</MainArea>
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Button" Tag="Cancel Button">
+		<Location top="168" left="594" bottom="192" right="684" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Interrupt"</Title>
+		<Font GUID="F010E392-B47A-4A74-9978-52819BBEE28E" Name="EH Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>InterruptExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button" Tag="Report Butoon">
+		<Location top="168" left="402" bottom="192" right="492" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Edit File"</Title>
+		<Font GUID="F010E392-B47A-4A74-9978-52819BBEE28E" Name="EH Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>EditFile</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="6" left="6" bottom="30" right="684" />
+		<FillColor>
+			<UserColor GUID="79893F09-54E3-4207-8D50-39E045F57932">EH Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="79893F09-54E3-4207-8D50-39E045F57932">EH Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="12" left="12" bottom="30" right="666" />
+		<StaticText>Error</StaticText>
+		<Font GUID="43D44DA0-AE9F-4815-AC7B-2D7B27ADB9DA" Name="EH Headers" />
+		<TextColor>
+			<UserColor GUID="1F76F34D-4DCA-4D89-9203-44C612E8F660">EH Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="36" left="6" bottom="162" right="684" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>5</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="80AE16B2-C58E-4F31-A3C4-346DEA75F943" Name="EH General Text" />
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="C91D8886-20C5-4602-BB6F-6C543C528DAD">EH Text Blue</UserColor>
+		</TextColor>
+		<Layout>MultipleLineEditField</Layout>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ErrorString</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button" Tag="Report Butoon">
+		<Location top="168" left="498" bottom="192" right="588" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Retry"</Title>
+		<Font GUID="F010E392-B47A-4A74-9978-52819BBEE28E" Name="EH Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button" Tag="Report Butoon">
+		<Location top="168" left="306" bottom="192" right="396" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Select File"</Title>
+		<Font GUID="F010E392-B47A-4A74-9978-52819BBEE28E" Name="EH Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SelectFile</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>SelectFile</Symbol>
+			<Symbol>ErrorString</Symbol>
+			<Symbol>EditFile</Symbol>
+			<Symbol>InterruptExecution</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

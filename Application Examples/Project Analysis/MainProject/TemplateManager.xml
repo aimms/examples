@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="EF93283C-7F0B-4162-AD3C-64813A74FD3B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|49C03401-A90E-42F9-8AB6-F743336CA4AC|Size Template">
+		<Template Name="Navigation Template" PageGUID="8F6CC8E1-7826-4660-8A27-004E498C417A" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|2D804CA1-CF78-42B2-AB3B-AC54752E468B|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="B22F3A67-5F61-4C9E-A070-C5589B659B3F" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3666311D-C0FC-405B-94D4-7F146A10E1B2|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="FBB3844E-E35B-4479-A2A0-3E2C24F5C96B" />
+			</Template>
+			<Template Name="Content Pages" PageGUID="A4B6A3E2-0586-4DAD-AD78-9361A970ABCB">
+				<Page Name="Project Data" PageGUID="671604E5-E4A6-4473-98F8-6524D36B880A" />
+				<Page Name="Sensitivity Results" PageGUID="51FBD70A-E2EB-4C5D-BED4-B25109CB8346" />
+			</Template>
+		</Template>
+		<Template Name="Application Navigation Template" PageGUID="B72D5F57-B536-4679-8CF3-DD1E7EBE2E0D" />
+	</Template>
+</TemplateManager>

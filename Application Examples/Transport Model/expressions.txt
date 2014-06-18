@@ -1,0 +1,1 @@
+Set the page in edit mode and look at the properties dialog of the composite table to see how the expressions are specified.

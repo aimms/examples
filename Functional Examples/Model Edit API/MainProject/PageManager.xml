@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="ACB453BC-490B-45B1-BEC9-D1DD5A1D2814">
+		<Page Name="Demo Page" PageGUID="17C2E672-4B97-4839-BFA5-A23C880C34B4">
+			<Page Name="Source" PageGUID="E4C7BBBE-5856-4FED-870C-05471B619856" />
+			<Page Name="Log" PageGUID="52B805C5-B8F1-4CDA-8D26-2C120951F16B" />
+			<Page Name="Data Output" PageGUID="2D6F48E6-F466-4337-9A44-12A5ECD384B3" />
+			<Page Name="Model" PageGUID="8086904E-FB3B-4629-AAF0-FF0663B9C1D5" />
+		</Page>
+	</Page>
+</PageManager>

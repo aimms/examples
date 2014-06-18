@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AimmsXMLSchemaMapping xmlns="http://www.aimms.com/XMLSchema/AimmsXMLMappingSchema" MappedNameSpace="http://www.aimms.com/XMLSchema/Reconciliation-example" default-width="16" default-precision="2">
+	<ElementMapping name="FlowMeasurementData">
+		<AttributeMapping name="date" maps-to="ReconciliationDate"/>
+		<ElementMapping name="Flow">
+			<AttributeMapping name="measured" maps-to="MeasuredFlow(f)"/>
+			<AttributeMapping name="name" binds-to="f"/>
+			<AttributeMapping name="reconciled" maps-to="Flow(f)"/>
+			<ElementMapping name="Composition">
+				<ElementMapping name="Component">
+					<AttributeMapping name="measured" maps-to="MeasuredComposition(f,c)"/>
+					<AttributeMapping name="name" binds-to="c"/>
+					<AttributeMapping name="reconciled" maps-to="Composition(f,c)"/>
+				</ElementMapping>
+			</ElementMapping>
+		</ElementMapping>
+	</ElementMapping>
+</AimmsXMLSchemaMapping>

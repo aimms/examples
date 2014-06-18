@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<UserMenuTree NeedsCompiledModel="false" Version="4000" TimeStamp="2007-07-19 15:12:41">
+	<Toolbar Name="Print ToolBar">
+		<DefaultMenuItem InternalID="142" />
+		<Separator />
+		<MenuItem Name="Print" BitmapIndex="11">
+			<ActionSequence>
+				<Action Type="MenuCommand">
+					<Command>File-Print</Command>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+		<Separator />
+		<MenuItem Name="Close Page" BitmapIndex="19">
+			<ActionSequence>
+				<Action Type="ClosePage" />
+			</ActionSequence>
+		</MenuItem>
+		<Separator />
+	</Toolbar>
+</UserMenuTree>

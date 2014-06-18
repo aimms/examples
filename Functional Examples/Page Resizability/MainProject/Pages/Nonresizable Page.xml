@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2012-07-31 08:42:18">
+	<Location top="217" left="259" bottom="757" right="1054" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>310D2727-A0A0-4B94-8F0B-A6D7E354D17A</ProjectUUID>
+	<DockAlways>true</DockAlways>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background>
+		<UserColor GUID="52FCA5EC-AE18-4B3B-A405-11261A387E41">white</UserColor>
+	</Background>
+	<PageObject Type="Curve">
+		<Location top="42" left="24" bottom="426" right="540" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<HorizontalLine>
+			<Identifier>0</Identifier>
+		</HorizontalLine>
+		<ExplicitIdentifier>
+			<Identifier>FunctionValue( i, 'Sin' )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="6" left="24" bottom="36" right="540" />
+		<StaticText>Header</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="432" left="24" bottom="462" right="540" />
+		<StaticText>Footer</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="36" left="570" bottom="432" right="744" />
+		<StaticText>This page is the same as the page "Resizable Page", however this page does not posses any split lines.</StaticText>
+		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
+		<TextColor>
+			<UserColor GUID="900DE693-1EAA-476E-A19D-BBFB1873F940">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="444" left="576" bottom="468" right="738" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Problem Description"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>i</Symbol>
+			<Symbol>FunctionValue</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

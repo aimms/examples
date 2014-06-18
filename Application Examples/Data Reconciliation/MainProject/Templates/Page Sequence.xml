@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-02-26 01:52:21" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromBottom" Value="70">
+						<TopArea Line="FixedFromTop" Value="232" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="170" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Navigation Object">
+		<Location top="348" left="12" bottom="504" right="192" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Border Style="None" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<Display>Text</Display>
+		<NumberVisible>7</NumberVisible>
+		<Spacing>3</Spacing>
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<InputColor RGB="#000080" />
+		<NavigationData>
+			<ReferencePage>NthParent</ReferencePage>
+			<NthParentNumber>1</NthParentNumber>
+			<NumberOfGenerations>1</NumberOfGenerations>
+		</NavigationData>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="558" left="12" bottom="588" right="72" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\prev_.bmp"</BitmapFile>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage" />
+			<Action Type="Run">
+				<RunWhat>PageProcedure</RunWhat>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="558" left="72" bottom="588" right="132" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\up_.bmp"</BitmapFile>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Parent</Destination>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>PageProcedure</RunWhat>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="558" left="132" bottom="588" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\next_.bmp"</BitmapFile>
+		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>PageProcedure</RunWhat>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="588" left="12" bottom="612" right="192" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Quit"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>File-Exit</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

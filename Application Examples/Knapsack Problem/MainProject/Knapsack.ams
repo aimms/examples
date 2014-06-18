@@ -1,0 +1,187 @@
+## ams_version=1.0
+
+Model Main_Knapsack {
+    Section Knapsack_Problem {
+        Section Quantities_and_Units {
+            DeclarationSection Quantity_Declarations {
+                Quantity SI_Mass {
+                    BaseUnit: lb;
+                    Conversions: {
+                        kg -> lb : # -> # * 2.204622476,
+                        oz -> lb : # -> # * 0.06249998898
+                    }
+                    Comment: "Expresses the value for the amount of matter.";
+                }
+                Quantity Currency {
+                    BaseUnit: $;
+                    Conversions: EU -> $ : # -> # * EURO_DOLLAR_rate;
+                }
+                Parameter EURO_DOLLAR_rate {
+                    Definition: .68;
+                }
+            }
+        }
+        Section Knapsack_Model {
+            DeclarationSection Inputs {
+                Set Items {
+                    Index: i;
+                    Definition: ElementRange(1,MaxItems,prefix:"item-",fill:1);
+                }
+                Parameter MaxItems {
+                    Text: "No. of items";
+                    Range: integer;
+                    InitialData: 16;
+                }
+                Parameter ItemValue {
+                    IndexDomain: (i);
+                    Unit: $;
+                }
+                Parameter ItemWeight {
+                    IndexDomain: (i);
+                    Unit: lb;
+                }
+                Parameter MaxWeightKnapsack {
+                    Text: "Max. weight knapsack";
+                    Unit: lb;
+                    InitialData: 60;
+                }
+            }
+            DeclarationSection Model_Declarations {
+                Variable KnapsackItems {
+                    IndexDomain: i;
+                    Text: "Item i is placed in knapsack ";
+                    Range: {
+                        {ItemRangeMin(i)..ItemRangeMax(i)}
+                    }
+                }
+                Parameter ItemRangeMin {
+                    IndexDomain: (i);
+                    Range: integer;
+                }
+                Parameter ItemRangeMax {
+                    IndexDomain: (i);
+                }
+                Variable KnapsackValue {
+                    Unit: $;
+                    Definition: sum(i, KnapsackItems(i) * ItemValue(i));
+                }
+                Constraint LimitKnapsackWeight {
+                    Unit: lb;
+                    Definition: sum(i, KnapsackItems(i) * ItemWeight(i)) <= MaxWeightKnapsack;
+                }
+                MathematicalProgram KnapsackModel {
+                    Objective: KnapsackValue;
+                    Direction: maximize;
+                    Type: MIP;
+                }
+                Parameter ItemBound {
+                    IndexDomain: (i);
+                    Text: "No. of copies that is allowed";
+                    Range: integer;
+                }
+                ElementParameter ACase {
+                    Range: AllCases;
+                }
+            }
+        }
+        Section Solving_Procedures {
+            Procedure SolveKnapsackModel {
+                Body: {
+                    /* Standard model allows at most 1 copy of each item */
+                    
+                    if not IsRunningAsViewer then
+                    
+                       	ItemRangeMin(i) := 0;
+                    	ItemRangeMax(i) := 1;
+                    
+                    	solve KnapsackModel;
+                    
+                    else
+                    
+                        DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+                        CaseFind("SolutionClassic",ACase);
+                        CaseLoadCurrent(ACase,0);
+                    
+                    endif;
+                }
+            }
+            Procedure SolveKnapsackModelUnBounded {
+                Body: {
+                    /* Standard model allows at most a specific no of copies of each item */
+                    if not IsRunningAsViewer then
+                    
+                       	ItemRangeMin(i) := 0;
+                    	ItemRangeMax(i) := inf;
+                    
+                    	solve KnapsackModel;
+                    
+                    else
+                    
+                        DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+                        CaseFind("SolutionUnbounded",ACase);
+                        CaseLoadCurrent(ACase,0);
+                    
+                    endif;
+                }
+            }
+            Procedure SolveKnapsackModelBounded {
+                Body: {
+                    /* Standard model allows at most a specific no of copies of each item */
+                    if not IsRunningAsViewer then
+                    
+                       	ItemRangeMin(i) := 0;
+                    	ItemRangeMax(i) := ItemBound(i);
+                    
+                    	solve KnapsackModel;
+                    
+                    else
+                    
+                        DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
+                        CaseFind("SolutionBounded",ACase);
+                        CaseLoadCurrent(ACase,0);
+                    
+                    endif;
+                }
+            }
+        }
+    }
+    Section GUI_Support {
+        Set SelectedItems {
+            SubsetOf: Items;
+            Index: i_s;
+            Definition: {
+                { i | KnapsackItems(i) }
+            }
+        }
+        Parameter X_ {
+            IndexDomain: (i);
+            Definition: 1.5*(mod(ord(i)-1,4));
+        }
+        Parameter Y_ {
+            IndexDomain: (i);
+            Definition: 2*(4-div(ord(i)-1,4));
+        }
+        StringParameter Text_ {
+            IndexDomain: i;
+            Definition: FormatString("%i ($%> 5.2n)",ord(i),ItemValue(i));
+        }
+        StringParameter No_ {
+            IndexDomain: i | KnapsackItems(i);
+            Definition: FormatString("%ix",KnapsackItems(i));
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            ItemValue(i) := round(Uniform(1,5),2)* 1 [$];
+            ItemWeight(i):= round(Uniform(10,20),2)* 1 [lb];
+            
+            ItemBound(i)    := round(Uniform(0,10));
+        }
+    }
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="A Farm Planning Problem" PageGUID="E51C605E-0B7C-4FAD-B757-DFA4B0DD8348">
+		<Page Name="On the farm" PageGUID="652FFC5C-283A-4342-8AF1-EC3CE88E6378">
+			<Page Name="Input Data" PageGUID="FE504340-4BFA-480E-89E2-D9CBC04342E9" />
+			<Page Name="Output Data" PageGUID="54FC2968-2B88-457E-BE85-0DFA61AEBF74" />
+			<Page Name="Sensitivity Analysis" PageGUID="A1EC69DF-DF29-4C8C-B8E6-C4A7533A4E48" />
+		</Page>
+	</Page>
+</PageManager>

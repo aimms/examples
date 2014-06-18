@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-29 16:06:21">
+	<Location top="29" left="4" bottom="886" right="1144" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>D989AEA3-3E13-4FB5-B08D-534E94525677</ProjectUUID>
+	<Title>"Calendar Data"</Title>
+	<TemplatesTabOrderPosition>14</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromLeft" Value="280">
+						<LeftArea Line="PercentageFromTop" Value="0.5">
+							<TopArea Line="FixedFromTop" Value="175" />
+							<BottomArea Line="FixedFromTop" Value="160" />
+						</LeftArea>
+						<RightArea Line="PercentageFromTop" Value="0.5" />
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="8CDF7D63-C832-423F-966C-F264A2A083A5">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Button">
+		<Location top="186" left="6" bottom="210" right="192" />
+		<TabOrder>1</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="01157EE4-7A7D-40F3-ACEE-C738B6FF6588" Name="AIMMS Demo" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="216" bottom="213" right="468" />
+		<StaticText>Specify a begin and end date</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="411" left="216" bottom="447" right="465" />
+		<StaticText>Select a subset of calendar days to be displayed</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="228" left="318" bottom="249" right="450" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="1" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CalendarBeginDate</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="228" left="450" bottom="249" right="471" />
+		<TabOrder>3</TabOrder>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\wizard button.bmp"</BitmapFile>
+		<Font GUID="F5DD1C3A-58B5-41DF-8AE5-7265ACC293EA" Name="default" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>GetBeginDate</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="255" left="318" bottom="276" right="450" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="1" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CalendarEndDate</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="255" left="450" bottom="276" right="471" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\wizard button.bmp"</BitmapFile>
+		<Font GUID="F5DD1C3A-58B5-41DF-8AE5-7265ACC293EA" Name="default" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>GetEndDate</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="228" left="216" bottom="249" right="318" />
+		<StaticText>Begin date:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="255" left="216" bottom="276" right="318" />
+		<StaticText>End date:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="189" left="489" bottom="396" right="762" />
+		<Hidden>CalendarIsHidden( 'Daily Calendar 1' )</Hidden>
+		<TabOrder>11</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>DailyCalendar1(DailyCalendar1)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table">
+		<Location top="408" left="489" bottom="615" right="762" />
+		<TabOrder>13</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<CellSelection>false</CellSelection>
+		<RowSelection>false</RowSelection>
+		<Domain>
+			<Identifier>seld2</Identifier>
+			<Index Name="seld2">
+				<TitleText>"Calendar day"</TitleText>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>DayDescription( seld2 )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"Description"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>DaysSinceBeginCalendar( seld2 )</Identifier>
+			<NumberFormat Width="4" Decimals="0" Alignment="Right" ShowDefaults="true" />
+			<TitleText>"Days passed"</TitleText>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="189" left="489" bottom="396" right="762" />
+		<Hidden>CalendarIsHidden( 'Daily Calendar 2' )</Hidden>
+		<TabOrder>9</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>DailyCalendar2(DailyCalendar2)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="459" left="315" bottom="516" right="471" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor>
+			<UserColor GUID="8CDF7D63-C832-423F-966C-F264A2A083A5">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>Selection</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="528" left="330" bottom="552" right="471" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor>
+			<UserColor GUID="8CDF7D63-C832-423F-966C-F264A2A083A5">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>SelectedChoice</Identifier>
+		</ExplicitIdentifier>
+		<ElementText Index="SelectionChoices">ChoiceDescription( Selection, selch )</ElementText>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="462" left="216" bottom="483" right="270" />
+		<StaticText>Select:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="528" left="216" bottom="549" right="348" />
+		<StaticText>Current choice:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="282" left="318" bottom="354" right="471" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor>
+			<UserColor GUID="8CDF7D63-C832-423F-966C-F264A2A083A5">white</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<ExplicitIdentifier>
+			<Identifier>VisibleCalendar</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="285" left="216" bottom="306" right="318" />
+		<StaticText>Display calendar:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="189" left="489" bottom="396" right="762" />
+		<Hidden>CalendarIsHidden( 'Monthly Calendar 1' )</Hidden>
+		<TabOrder>12</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>MonthlyCalendar1(MonthlyCalendar1)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="189" left="489" bottom="396" right="762" />
+		<Hidden>CalendarIsHidden( 'Monthly Calendar 2' )</Hidden>
+		<TabOrder>10</TabOrder>
+		<TabStop>false</TabStop>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="D27BCC4E-3AD1-45FB-B641-7BE3D6D972D5">default selection</UserColor>
+		</TextColor>
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>MonthlyCalendar2(MonthlyCalendar2)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="207" right="189" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="216" left="6" bottom="240" right="192" />
+		<TabOrder>24</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<Font GUID="F5DD1C3A-58B5-41DF-8AE5-7265ACC293EA" Name="default" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="0E07DCEC-F472-47AE-ABE1-107632BCBE12" Name="Inactive Days" />
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="219" left="18" bottom="240" right="117" />
+		<StaticText>Inactive Days</StaticText>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>DayDescription</Symbol>
+			<Symbol>CalendarBeginDate</Symbol>
+			<Symbol>MonthlyCalendar1</Symbol>
+			<Symbol>MonthlyCalendar2</Symbol>
+			<Symbol>CalendarEndDate</Symbol>
+			<Symbol>CalendarIsHidden</Symbol>
+			<Symbol>SelectionChoices</Symbol>
+			<Symbol>SelectedChoice</Symbol>
+			<Symbol>DailyCalendar1</Symbol>
+			<Symbol>DailyCalendar2</Symbol>
+			<Symbol>ChoiceDescription</Symbol>
+			<Symbol>VisibleCalendar</Symbol>
+			<Symbol>Selection</Symbol>
+			<Symbol>seld2</Symbol>
+			<Symbol>Selections</Symbol>
+			<Symbol>GetBeginDate</Symbol>
+			<Symbol>GetEndDate</Symbol>
+			<Symbol>DeclaredCalendars</Symbol>
+			<Symbol>DaysSinceBeginCalendar</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,855 @@
+## ams_version=1.0
+
+LibraryModule Database_Interface_Generation {
+    Prefix: dig;
+    Interface: data { ProcWithNoArgs };
+    Comment: {
+        "This library contains all functionality needed to facilitate the otherwise cumbersome process of creating an interface
+        between AIMMS and a database table.
+        
+        It is included in the Database Interface Generation example, but it can also be used in your own projects to setup the database interface.
+        
+        The basis for the library lies in the use of the Model Edit Functions, which allow you to create a runtime library with all database related
+        identifiers that you need."
+    }
+    Section Database_Information_Section {
+        Comment: "This section contains the identifiers related to the analysis of the database structure.";
+        StringParameter DataSource {
+            InitialData: "DemoDatabaseLink.udl";
+            Comment: "The datasource from which to read the table and column information.";
+        }
+        StringParameter DataSource_WithDoubleBackSlashes {
+            Comment: "The datasource but now with double instead of single slashes in its path. This is needed when writing to the datasource attribute of the Database Table identifiers that will be generated.";
+        }
+        StringParameter DSOwner {
+            InitialData: "";
+            Comment: "This string parameter contains the owner attribute of the generated database table(s), if such an attribute is required.";
+        }
+        Parameter NumberOfTables {
+            Comment: "The number of tables that are found in the specified datasource.";
+        }
+        Set TableNames {
+            Index: tab;
+            Parameter: TheTable;
+            Comment: "The set of all table names which exist in the datasource that the user has selected.";
+        }
+        Parameter NumberOfColumns {
+            Comment: "The number of columns present in the selected database table.";
+        }
+        Set TableColumns {
+            Index: col, col2;
+            Parameter: TheTableColumn;
+            Comment: "The set with all column names of the table that the user wants to add to his model.";
+        }
+        StringParameter ColumnDataType {
+            IndexDomain: (col);
+            Comment: "The data type of the column in the database.";
+        }
+        Set AIMMSIdentifierTypes {
+            Index: par;
+            Parameter: TheAIMMSParameterType;
+            Definition: data { 'String parameter', 'Element parameter', 'Parameter', 'Set' };
+            Comment: "The four possible AIMMS identifier types to correspond with a column in a database table.";
+        }
+        ElementParameter ColumnAIMMSParameterType {
+            IndexDomain: (col);
+            Range: AIMMSIdentifierTypes;
+            Comment: "The AIMMS identifier parameter type of the column \'col\'.";
+        }
+        Parameter ColumnIsPrimaryKey {
+            IndexDomain: (col);
+            Range: binary;
+            Comment: "1 If column \'col\' is a primary key column in the database table, 0 if not.";
+        }
+        Set PossibleDBStringDataTypes {
+            Index: str_dt;
+            Definition: {
+                data { CHAR, NCHAR, NTEXT, NVARCHAR, TEXT, UNIQUEIDENTIFIER, VARCHAR		! SQLServer
+                	 , VARCHAR2																! Oracle
+                	 , MEMO																	! MS Access
+                	 , BINARY, VARBINARY, TINYTEXT, MEDIUMTEXT, LONGTEXT, BLOB, ENUM, SET	! MySQL
+                	 }
+            }
+            Comment: {
+                "This set contains the most widely used database string column types. Should you use a database where other string column types are
+                possible, then please extend this set accordingly."
+            }
+        }
+        Set PossibleDBDateDataTypes {
+            Index: dat_dt;
+            Definition: {
+                data { DATETIME, SMALLDATETIME, TIMESTAMP			! SQL Server
+                	 , DATE											! Oracle
+                	 , TIME, YEAR									! MySQL
+                	 }
+            }
+            Comment: {
+                "This set contains the most widely used database date/time column types. Should you use a database where other date/time column types are
+                possible, then please extend this set accordingly."
+            }
+        }
+        Procedure RetrieveColumnInformation {
+            Arguments: (TheTableName);
+            Body: {
+                ! Start with a clean set of table columns
+                empty TableColumns;
+                
+                ! Determine all column data for the given table
+                NumberOfColumns := SQLNumberOfColumns(DataSource, TheTableName, DSOwner);
+                
+                while LoopCount <= NumberOfColumns do
+                	ColumnName := SQLColumnData(DataSource, TheTableName, LoopCount, DSOwner, 'Name');
+                	SetElementAdd(TableColumns, TheTableColumn, ColumnName);
+                	ColumnDataType(TheTableColumn) := SQLColumnData(DataSource, TheTableName, LoopCount, DSOwner, 'DataType');
+                	ColumnIsPrimaryKey(TheTableColumn) := (SQLColumnData(DataSource, TheTableName, LoopCount, DSOwner, 'IsPrimaryKey') = "Yes");
+                endwhile;
+                
+                ! All relevant data has been retrieved from the datasource. Now, for all non-primary key columns (i.e. the data columns), determine whether the
+                ! corresponding AIMMS identifiers to be generated should be parameters, string parameters or element parameters.
+                for (col | not ColumnIsPrimaryKey(col)) do
+                	ColumnAIMMSParameterType(col) := GetAIMMSIdentifierType(ColumnDataType(col));
+                endfor;
+                
+                ! All primary key columns are always generated as a set.
+                ColumnAIMMSParameterType(col | ColumnIsPrimaryKey(col)) := 'Set';
+                
+                ! Set the initial value of the "Include" column in the Pivot Table to "Yes"
+                IncludeColumnInGeneration(col) := 1;
+                
+                ! Propose an initial identifier name prefix
+                if IdentifierNamePrefix(TheTableName) = "" then
+                	IdentifierNamePrefix(TheTableName) := FormatString("%e_", TheTableName);
+                endif;
+            }
+            Comment: "This procedure retrieves the complete column information for the given table name.";
+            StringParameter ColumnName {
+                Comment: "Temporary string to store the current column name.";
+            }
+            ElementParameter TheTableName {
+                Range: TableNames;
+                Property: Input;
+                Comment: "This argument contains the table name that is selected in the composite table.";
+            }
+        }
+        Function GetAIMMSIdentifierType {
+            Arguments: (ColumnDataType);
+            Range: AIMMSIdentifierTypes;
+            Body: {
+                ! Compare the column data type with the possible string and date data types, to see whether they match. If so, return this match. Otherwise, assume
+                ! a numeric column type.
+                
+                ! First, check the string types.
+                for (str_dt) do
+                	if StringToUpper(ColumnDataType) = str_dt then
+                		GetAIMMSIdentifierType := 'String parameter';
+                		return;
+                	endif;
+                endfor;
+                
+                ! No string type match found. Check the date/time types.
+                for (dat_dt) do
+                	if StringToUpper(ColumnDataType) = dat_dt then
+                		GetAIMMSIdentifierType := 'Element parameter';
+                		return;
+                	endif;
+                endfor;
+                
+                ! Neither a string, nor a date/time type found. Assume a numeric type.
+                GetAIMMSIdentifierType := 'Parameter';
+                
+                return;
+            }
+            Comment: {
+                "This function determines whether the to be generated AIMMS identifier for the speficied column data type should be a string parameter,
+                a numerical parameter or an element parameter."
+            }
+            StringParameter ColumnDataType {
+                Property: Input;
+                Comment: "The column data type, for which to determine the corresponding AIMMS identifier type.";
+            }
+        }
+        Procedure RetrieveTableInformation {
+            Body: {
+                ! Emtpy existing table information
+                if card(TableNames) then
+                	 Continue := DialogAsk("Existing table information will be deleted. Do you want to continue?", "Yes", "No");
+                else
+                	Continue := 1;
+                endif;
+                
+                if Continue = 1 then
+                
+                	! Replace single backslashes in the datasource name with double backslashes
+                	DataSource_WithDoubleBackSlashes := FindReplaceStrings(DataSource, "\\", "\\\\");
+                
+                	! Determine the number of tables in the current datasource
+                	NumberOfTables := SQLNumberOfTables(DataSource, DSOwner);
+                
+                	empty TableNames;
+                	! Determine the table names
+                	while LoopCount <= NumberOfTables do
+                		TableName := SQLTableName(DataSource, LoopCOunt, DSOwner);
+                		SetElementAdd(TableNames, TheTable, TableName);
+                	endwhile;
+                
+                	! Set focus to first table in 'Available tables'
+                	SelectedTable := first(TableNames);
+                	PageSetCursor("Database Interface Generation", "Available tables", SelectedTable);
+                endif;
+            }
+            Comment: "This procedure retrieves all relevant table information from the specified data source.";
+            StringParameter TableName {
+                Comment: "Temporary string parameter to store table names in.";
+            }
+            Parameter Continue;
+        }
+    }
+    Section GUI_Section {
+        Comment: "This section contains the identifiers related to the GUI of this example.";
+        StringParameter DataSourceDirectory {
+            Definition: SubString(DataSource, 1, FindNthString(DataSource, "\\", -1) );
+        }
+        Parameter HideLibraryButtons {
+            Range: binary;
+            Definition: card(GeneratedLibraries) = 0;
+            Comment: "This parameter controls whether the two buttons \"Remove Library\" and \"Export Library\" should be read-only or not.";
+        }
+        Parameter TableInfoRetrieved {
+            Range: binary;
+            InitialData: 0;
+            Comment: {
+                "This binary parameter is set to 1 if the table information has already been retrieved; 0 if not. It is used for
+                controlling the greyed-out status of the \'Generate Identifiers\' button."
+            }
+        }
+        File FieldInformationFile {
+            Name: "<lib:dig>:FieldDescriptions.txt";
+        }
+        Parameter GenerateReadProc {
+            Range: binary;
+            InitialData: 1;
+            Comment: "1 If a read procedure for the current table should be generated, 0 if not.";
+        }
+        Parameter GenerateWriteProc {
+            Range: binary;
+            InitialData: 1;
+            Comment: "1 If a write procedure for the current table should be generated, 0 if not.";
+        }
+        Set AllPagesInProject {
+            Index: app;
+            Comment: {
+                "A set containing all pages in the current project. This set is used to determine whether the Problem Description page is present, to see whether it can be
+                opened or not."
+            }
+        }
+        ElementParameter SelectedTable {
+            Range: TableNames;
+        }
+        Parameter TableIdentifiersGenerated {
+            IndexDomain: (tab);
+            Range: binary;
+            InitialData: 0;
+            Comment: "1 If the identifiers for table \'tab\' have already been generated, 0 if not.";
+        }
+        ElementParameter TableColor {
+            IndexDomain: (tab);
+            Range: AllColors;
+            Definition: {
+                if TableIdentifiersGenerated(tab) then
+                	'orange'
+                endif;
+            }
+            Comment: {
+                "The color of a table entry in the \'Available tables\' overview: green means that the identifiers related to the table have already been generated. If not, the
+                color is black."
+            }
+        }
+        Procedure BrowseForDataSources {
+            Body: {
+                CurrentDataSource := DataSource;
+                FileSelect(DataSource, DataSourceDirectory, extension : ".dsn; *.udl", title : "Select a datasource");
+                
+                if CurrentDataSource <> DataSource then
+                	DatasourceOrOwnerChanged;
+                endif;
+            }
+            Comment: {
+                "This procedure is called when the user has clicked on the \'...\' button. It makes the user select a file datasource
+                (.dsn or .udl file) from the file system.
+                If a different datasource has been selected or the owner has changed, the table information needs to be retrieved again, so
+                DatasourceSOrOwnerChanged is called."
+            }
+            StringParameter CurrentDataSource;
+        }
+        Procedure UpdateSelectedTableName {
+            Arguments: (SelectedTableName);
+            Body: {
+                ! Set the selected table
+                TheTable := SelectedTableName;
+                
+                ! Retrieve the column infomation for the selected table
+                RetrieveColumnInformation(TheTable);
+                
+                ! Since there is a table selected, signal that the table info has been retrieved.
+                TableInfoRetrieved := 1;
+            }
+            Comment: {
+                "This procedure is called when the user selects a table name from the composite table. It makes sure that the column information in
+                the Pivot Table is updated."
+            }
+            ElementParameter SelectedTableName {
+                Range: TableNames;
+                Property: Input;
+                Comment: "The table name that the user has selected and for which the column information should be updated.";
+            }
+        }
+        Procedure ForceSetForPKColumns {
+            Body: {
+                ColumnAIMMSParameterType(col | ColumnIsPrimaryKey(col)) := 'Set';
+            }
+            Comment: {
+                "This procedure is called when the user checks/unchecks the \'PK\' status of a database table column. When the column is a primary key, the corresponding
+                AIMMS identfifier type is forced to be a set."
+            }
+        }
+        Procedure OpenExplorer {
+            Body: {
+                DirectoryGetCurrent(CurrentDirectory);
+                OpenDocument(CurrentDirectory);
+            }
+            Comment: "Open the Windows explorer (if the user is sure). This makes it easier to copy the library folders to the user\'s own project directory.";
+            StringParameter CurrentDirectory;
+        }
+        Procedure OpenProblemDescription {
+            Body: {
+                ! Retrieve the set of all page names
+                PageGetAll(AllPagesInProject, 1, 0);
+                
+                ! Check whether the 'AIMMS Demo' page exists. If so, open it. If not, display a message.
+                AIMMSDemoPageFound := 0;
+                for (app) do
+                	if FormatString("%e", app) = "AIMMS Demo" then
+                		AIMMSDemoPageFound := 1;
+                		break;
+                	endif;
+                endfor;
+                
+                if AIMMSDemoPageFound then
+                	PageOpen("AIMMS Demo");
+                else
+                	DialogMessage("The Problem Description page is only available in the Database Interface Generation example, not when you use the Database Interface Generation example library in your own model.");
+                endif;
+            }
+            Comment: {
+                "This procedure opens the Problem Description page, but only does so when using the Database Interface Generation library from withing the AIMMS example.
+                When used from one of your own projects, the necessary page is not present in the model. Instead, a"
+            }
+            Parameter AIMMSDemoPageFound {
+                Range: binary;
+            }
+        }
+        Procedure DatasourceOrOwnerChanged {
+            Body: {
+                TableInfoRetrieved := 0;
+                empty TableNames;
+            }
+        }
+    }
+    Section Identifier_Creation_Section {
+        Comment: "This section contains the identifiers related to the creation of the runtime library.";
+        StringParameter IdentifierNamePrefix {
+            IndexDomain: (tab);
+            Comment: {
+                "The prefix to use for the generated identifier names. This string parameter is automatically filled in the
+                \'RetrieveColumnInformation\' procedure, with the name of the table. However, the user is free to override the
+                proposed value."
+            }
+        }
+        StringParameter RuntimeLibraryPrefix {
+            InitialData: {
+                "di"	! Being the abbreviation of "Database Identifiers"
+            }
+            Comment: {
+                "The generated database identifiers will be placed in a new runtime library. This runtime library needs a library prefix.
+                As you may want to use the \"Database Interface Generation\" library in a number of AIMMS projects, you can specify this
+                prefix yourself, to prevent name clashes with the default prefix \"di\" and some identifier in your own projects."
+            }
+        }
+        StringParameter RuntimeLibraryName {
+            InitialData: "Database_Identifiers";
+            Comment: {
+                "The name of the runtime library to generate. It can be overridden by the user, which allows more than one runtime library to be created
+                during one session."
+            }
+        }
+        ElementParameter CreatedLibHandle {
+            Range: AllSymbols;
+            Comment: "The library handle, used by the Model Edit functions.";
+        }
+        ElementParameter CreatedDBTableHandle {
+            Range: AllSymbols;
+            Comment: "The database table handle, used by the Model Edit functions.";
+        }
+        ElementParameter CreatedDeclarationsHandle {
+            Range: AllSymbols;
+            Comment: "The declaration section handle, used by the Model Edit functions.";
+        }
+        ElementParameter CreatedSetHandle {
+            Range: AllSymbols;
+            Comment: "The set handle, used by the Model Edit functions.";
+        }
+        ElementParameter CreatedParameterHandle {
+            Range: AllSymbols;
+            Comment: "The parameter handle, used by the Model Edit functions.";
+        }
+        ElementParameter CreatedProcedureHandle {
+            Range: AllSymbols;
+            Comment: "The procedure handle, used by the Model Edit functions.";
+        }
+        Parameter IncludeColumnInGeneration {
+            IndexDomain: (col);
+            Range: binary;
+            Comment: {
+                "This parameter controls which columns will be taken into account when generating the identifiers.
+                It is displayed in the Pivot Table."
+            }
+        }
+        Set GeneratedLibraries {
+            Index: gl;
+            Parameter: TheLib;
+            Comment: {
+                "A set with the names of all the libraries that the user has generated in this session. It is used in letting the user select which library to
+                remove/export."
+            }
+        }
+        StringParameter GeneratedPrefix {
+            IndexDomain: (gl);
+            Comment: "The prefix which has been generated for library gl.";
+        }
+        Set GeneratedIndices {
+            Index: gi;
+            Parameter: TheIndex, TheIndex2;
+            Comment: "All index names that haven been generated so far.";
+        }
+        Set GeneratedSets {
+            Index: gs;
+            Parameter: TheGeneratedSet;
+            Comment: "A set of all generated sets so far.";
+        }
+        Set GeneratedSetsToSelectFrom {
+            SubsetOf: GeneratedSets;
+            Index: gss;
+            Parameter: SelectedGeneratedSet;
+            Comment: "A subset of GeneratedSets, to be used in a dialog to let the user select one of the generated sets.";
+        }
+        Set GeneratedIndicesToSelectFrom {
+            SubsetOf: GeneratedIndices;
+            Comment: "A subset of GeneratedIndices, to be used in administrating the relations between generated sets and indices.";
+        }
+        Parameter SetRefersToIndex {
+            IndexDomain: (gs,gi);
+            Range: binary;
+            Comment: "1 if the generated set \'gs\' refers to the generated index \'gi\'.";
+        }
+        StringParameter IndexNameOfSet {
+            IndexDomain: (gs);
+            Comment: "The name of the index of generated set \'gs\'.";
+        }
+        Set SetsCalendarsForEltParRange {
+            Comment: "This set will contain all sets and calendars in the current model, minus the ones from the \'Database Interface Generation\' library itself.";
+        }
+        ElementParameter err {
+            Range: errh::PendingErrors;
+            Comment: "Needed for the error handling.";
+        }
+        ElementParameter TheProc {
+            Range: AllIdentifiers;
+            Default: 'dig::ProcWithNoArgs';
+            Comment: "This element parameter is needed to be able to generate a procedure in the runtime library. See \'GenerateIdentifiers\' for its use.";
+        }
+        StringParameter OutputFileName {
+            Comment: "The output file name for the exported library.";
+        }
+        Procedure GenerateIdentifiers {
+            Body: {
+                ! This is the actual ME API model text generation procedure.
+                block
+                
+                ! Create the runtime library, if it doesn't exist yet.
+                ! First replace any spaces in the name with underscores
+                RuntimeLibraryName := FindReplaceStrings(RuntimeLibraryName, " ", "_");
+                
+                CreatedLibHandle := StringToElement(AllIdentifiers, RuntimeLibraryName, create:0);
+                if not CreatedLibHandle then
+                	CreatedLibHandle := me::CreateLibrary(RuntimeLibraryName, RuntimeLibraryPrefix);
+                endif;
+                
+                ! Before the database table identifier with its mapping can be created, the identifiers corresponding to the database table columns should be created.
+                IndexDomainString := "(";
+                MappingString := "";
+                
+                ! Check whether there are PK columns. If not, the user should supply at least one, in order to create a usable mapping.
+                if count(col | (ColumnIsPrimaryKey(col) and IncludeColumnInGeneration(col))) = 0 then
+                	DialogMessage("Please specify at least 1 column that should be used as a primary key column.");
+                	return;
+                endif;
+                
+                ! If the table selected contains element parameters as AIMMS types to be generated, present a dialog to the user to make sure that the needed sets/calendars are
+                ! present, and to give him the chance to still create them.
+                if count(col | ((not ColumnIsPrimaryKey(col)) and IncludeColumnInGeneration(col)) and ColumnAIMMSParameterType(col) = 'Element parameter') <> 0 then
+                	MessageString := "The table contains columns to be mapped onto element parameters. ";
+                	MessageString += "The corresponding sets must already exist in your model before generating the identifiers. ";
+                	MessageString += "Click 'Proceed' to proceed with generating, or 'Cancel' to add the sets to your model now.";
+                	if DialogAsk(MessageString, "Proceed", "Cancel", title : "Element parameters present") = 2 then
+                		halt;
+                	endif;
+                endif;
+                
+                ! Record the name of the generated library
+                SetElementAdd(GeneratedLibraries, TheLib, RuntimeLibraryName);
+                GeneratedPrefix(TheLib) := RuntimeLibraryPrefix;
+                
+                ! Create a new declaration section for the current table
+                CreatedDeclarationsHandle := me::Create(FormatString("%e_Declarations", TheTable), 'declaration', CreatedLibHandle);
+                
+                for (col | (ColumnIsPrimaryKey(col) and IncludeColumnInGeneration(col))) do
+                	! Create sets for the primary key columns. In case the index has already been generated for this library before, this might indicate that
+                	! the user may want to use the same set as in the previous case. If not, the user should supply a new index name to prevent name clashes.
+                
+                	FullSetName := FormatString("%s::%s%e", RuntimeLibraryPrefix, IdentifierNamePrefix(TheTable), col);
+                	SetName := FormatString("%s%e", IdentifierNamePrefix(TheTable), col);
+                	FullIndexName := FormatString("%s::i_%e", RuntimeLibraryPrefix, col);
+                	IndexName := FormatString("i_%e", col);
+                
+                	ExistingSetSelected := 0;
+                	DoubleIndexFound := 0;
+                	if StringToElement(GeneratedIndices, FullIndexName) <> '' then
+                		DoubleIndexFound := 1;
+                		HandleDoubleIndices(col, FullIndexName, ExistingSetSelected);
+                		IndexName := SubString(FullIndexName, StringLength(RuntimeLibraryPrefix) + 3, StringLength(FullIndexName));
+                	endif;
+                
+                	! Record the generated index name, complete with library prefix. Also record the generated set name and the relation between the two.
+                	SetElementAdd(GeneratedIndices, TheIndex, FullIndexName);
+                
+                	if not ExistingSetSelected then
+                		! Only create a new set if no existing set has been selected by the user.
+                		CreatedSetHandle := me::Create(SetName, 'set', CreatedDeclarationsHandle);
+                		me::SetAttribute(CreatedSetHandle, 'index', IndexName);
+                		SetElementAdd(GeneratedSets, TheGeneratedSet, FullSetName);
+                		SetRefersToIndex(TheGeneratedSet, TheIndex) := 1;
+                		IndexNameOfSet(TheGeneratedSet) := FullIndexName;
+                	endif;
+                
+                	IndexDomainString += FormatString("%s, ", IndexName);
+                	MappingString += FormatString("\"%e\" --> %s,\n", col, IndexName);
+                
+                	if not ExistingSetSelected and DoubleIndexFound then
+                
+                		! Update which set refers to which index.
+                		SetRefersToIndex(gss, TheIndex) := 1;
+                		for (gs | gs <> TheGeneratedSet) do
+                			if SetRefersToIndex(gs, TheIndex) then
+                				for (gi | SetRefersToIndex(gs, gi)) do
+                					SetRefersToIndex(TheGeneratedSet, gi) := 1;
+                				endfor;
+                			endif;
+                		endfor;
+                	endif;
+                endfor;
+                
+                ! Remove the last comma from the index domain string, and replace it by a ')'
+                IndexDomainString := SubString(IndexDomainString, 1, StringLength(IndexDomainString) - 2) + ")";
+                
+                for (col | ((not ColumnIsPrimaryKey(col)) and IncludeColumnInGeneration(col)) ) do
+                	! The column is a data column
+                	if ColumnAIMMSParameterType(col) = 'Parameter' then
+                		CreatedParameterHandle := me::Create(FormatString("%s%e", IdentifierNamePrefix(TheTable), col), 'parameter', CreatedDeclarationsHandle);
+                	elseif ColumnAIMMSParameterType(col) = 'String parameter' then
+                		CreatedParameterHandle := me::Create(FormatString("%s%e", IdentifierNamePrefix(TheTable), col), 'string parameter', CreatedDeclarationsHandle);
+                	else
+                		CreatedParameterHandle := me::Create(FormatString("%s%e", IdentifierNamePrefix(TheTable), col), 'element parameter', CreatedDeclarationsHandle);
+                
+                		! For element parameters, a range should be specified. Let the user choose this range, since AIMMS cannot guess this.
+                		GetElementRangeFromUser(FormatString("%e", col), ColumnDataType(col), ElementRangeString);
+                		if ElementRangeString = "" then
+                			! The user cancelled the dialog. Stop generating and remove the library.
+                			RemoveIdentifiers(RuntimeLibraryName);
+                			DialogMessage("Interface generation cancelled");
+                			halt;
+                		endif;
+                		me::SetAttribute(CreatedParameterHandle, 'range', ElementRangeString);
+                	endif;
+                
+                	! Set the index domain for the created parameter
+                	me::SetAttribute(CreatedParameterHandle, 'index domain', IndexDomainString);
+                
+                	MappingString += FormatString("\"%e\" --> %s%e%s,\n", col, IdentifierNamePrefix(TheTable), col, IndexDomainString);
+                endfor;
+                
+                ! Remove the last comma from the mapping string
+                MappingString := SubString(MappingString, 1, StringLength(MappingString) - 2);
+                
+                ! Create the database table
+                CreatedDBTableHandle := me::Create(FormatString("%eTable", TheTable), 'database table', CreatedDeclarationsHandle);
+                
+                ! Create the datasource attribute
+                me::SetAttribute(CreatedDBTableHandle, 'data source', FormatString("\"%s\"", DataSource_WithDoubleBackSlashes));
+                me::SetAttribute(CreatedDBTableHandle, 'table name', FormatString("\"%e\"", TheTable));
+                me::SetAttribute(CreatedDBTableHandle, 'owner', FormatString("\"%s\"", DSOwner));
+                
+                ! Create the mapping attrbute
+                me::SetAttribute(CreatedDBTableHandle, 'mapping', MappingString);
+                
+                ! Create a procedure with a read statement
+                if GenerateReadProc then
+                	CreatedProcedureHandle := me::Create(FormatString("%sReadProc", IdentifierNamePrefix(TheTable)), 'procedure', CreatedLibHandle);
+                	me::SetAttribute(CreatedProcedureHandle, 'body', FormatString("Read from table %eTable;\n", TheTable));
+                endif;
+                
+                ! Create a procedure with a write statement
+                if GenerateWriteProc then
+                	CreatedProcedureHandle := me::Create(FormatString("%sWriteProc", IdentifierNamePrefix(TheTable)), 'procedure', CreatedLibHandle);
+                	me::SetAttribute(CreatedProcedureHandle, 'body', FormatString("Write to table %eTable;\n", TheTable));
+                endif;
+                
+                
+                ! Compile the just created library
+                me::Compile(CreatedLibHandle);
+                
+                ! Store a link between TheTable and the library
+                TableIdentifiersGenerated(TheTable) := 1;
+                
+                onerror err do
+                	DialogMessage("Something went wrong. See the messages window for details.");
+                endblock
+            }
+            Comment: "This is the core procedure of the example. It creates the runtime library.";
+            StringParameter IndexDomainString {
+                Comment: "Temporary string parameter for constructing the index domain attribute of the identifiers to be generated.";
+            }
+            StringParameter MappingString {
+                Comment: "Temporary string parameter for constructing the mapping attribute of the database table identifiers to be generated.";
+            }
+            StringParameter ElementRangeString {
+                Comment: "Temporary string parameter for constructing the range attribute of the element parameters to be generated.";
+            }
+            StringParameter SetName {
+                Comment: "Temporary string parameter to hold set names.";
+            }
+            StringParameter FullSetName {
+                Comment: "Temporary string parameter to hold set names, including the library prefix.";
+            }
+            StringParameter IndexName {
+                Comment: "Temporary string parameter to hold index names.";
+            }
+            StringParameter FullIndexName {
+                Comment: "Temporary string parameter to hold index names, including the library prefix.";
+            }
+            Parameter ExistingSetSelected {
+                Comment: "1 if the user selected an existing set in the procedure HandleDoubleIndices, 0 if not.";
+            }
+            Parameter DoubleIndexFound {
+                Range: binary;
+                Comment: "1 If a double index situation has been found, 0 if not.";
+            }
+            StringParameter MessageString;
+        }
+        Procedure SelectLibAndRemoveIdentifiers {
+            Body: {
+                ! If only one library exists, just remove this one.
+                if card(GeneratedLibraries) = 1 then
+                	TheLib := first(gl);
+                else
+                	if not DialogGetElement("Please select a library to remove", TheLib) then
+                		! The user has cancelled the dialog. Cancel the whole remove action.
+                		halt;
+                	endif;
+                endif;
+                
+                ! The user selected a library. Remove it.
+                if DialogAsk(FormatString("Are you sure that you want to remove library \"%e\"?", TheLib), "Yes", "No") = 1 then
+                	RemoveIdentifiers(FormatString("%e", TheLib));
+                endif;
+            }
+            Comment: "This procedure is called after the user clicks on \'Remove Library\'. It asks for a runtime library name to remove.";
+        }
+        Procedure HandleDoubleIndices {
+            Arguments: (TheCol,NewIndexName,ExistingSetSelected);
+            Body: {
+                ! The index has already been used in this library. Display the problem for the user.
+                MessageString := FormatString("The PK column '%e' might refer to a set which has already been generated for a previous table. ", TheCol);
+                MessageString += "In the following dialog, the possibilities are shown. Either select one or click cancel to specify a unique index name later.";
+                DialogMessage(MessageString);
+                
+                ! Show a dialog in which the user can select a previously generated set to map to. If he presses cancel, he will be asked to provide a new unique
+                ! index name.
+                TheIndex2 := StringToElement(GeneratedIndices, NewIndexName);
+                GeneratedSetsToSelectFrom := {gs | SetRefersToIndex(gs, TheIndex2)};
+                if DialogGetElement("Select a set to map to, or cancel", SelectedGeneratedSet) then
+                	ExistingSetSelected := 1;
+                	NewIndexName := IndexNameOfSet(SelectedGeneratedSet);
+                else
+                	! The user cancelled.
+                	ExistingSetSelected := 0;
+                
+                	! Ask the user for a new index name.
+                	while DialogGetString(FormatString("Please enter a unique index name to correspond with PK column '%e'", TheCol), NewIndexName) = 0 do
+                	endwhile;
+                endif;
+            }
+            ElementParameter TheCol {
+                Range: TableColumns;
+                Property: Input;
+            }
+            StringParameter MessageString;
+            StringParameter NewIndexName {
+                Property: InOut;
+            }
+            Parameter ExistingSetSelected {
+                Property: Output;
+            }
+        }
+        Procedure ExportSelectedLibrary {
+            Body: {
+                ! If only one library exists, just export this one.
+                if card(GeneratedLibraries) = 1 then
+                	TheLib := first(gl);
+                else
+                	if not DialogGetElement("Please select a library to export", TheLib) then
+                		! The user has cancelled the dialog. Cancel the whole remove action.
+                		halt;
+                	endif;
+                endif;
+                
+                ! Ask the user for the file name and location...
+                if FileSelectNew(OutputFileName, extension : ".ams", title : "Please select the file name for the exported library") then
+                
+                	! ... and export the library to the specified output file.
+                	me::ExportNode(ElementCast(AllIdentifiers, TheLib), OutputFileName);
+                
+                	! View the resulting output file.
+                	FileView(OutputFileName);
+                
+                endif;
+            }
+            Comment: {
+                "This procedure is called after the user clicks on \'Export Library\'. It asks for a runtime library to export and for a file name to which it
+                should be exported."
+            }
+        }
+        Procedure RemoveIdentifiers {
+            Arguments: (LibName);
+            Body: {
+                ! Actually delete the library from the model
+                if me::Delete(StringToElement(AllIdentifiers, LibName)) then
+                
+                	PrefixLength := StringLength(GeneratedPrefix(StringToElement(GeneratedLibraries, LibName)));
+                	PrefixName := GeneratedPrefix(StringToElement(GeneratedLibraries, LibName)) + "::";
+                
+                	! Remove all generated sets and indices from their corresponding sets
+                	empty GeneratedSetsToRemove;
+                	for (gs) do
+                		if SubString(gs, 1, PrefixLength + 2) = PrefixName then
+                			GeneratedSetsToRemove += gs;
+                		endif;
+                	endfor;
+                	GeneratedSets -= GeneratedSetsToRemove;
+                
+                	empty GeneratedIndicesToRemove;
+                	for (gi) do
+                		if SubString(gi, 1, PrefixLength + 2) = PrefixName then
+                			GeneratedIndicesToRemove += gi;
+                		endif;
+                	endfor;
+                	GeneratedIndices -= GeneratedIndicesToRemove;
+                
+                	! Remove the library name from the set with generated libraries
+                	GeneratedLibraries -= StringToElement(GeneratedLibraries, LibName);
+                
+                	cleandependents;
+                endif;
+            }
+            Comment: "This procedure removes the generated runtime library with the specified name from the model.";
+            StringParameter LibName {
+                Property: Input;
+            }
+            Parameter PrefixLength {
+                Comment: "The length of the prefix of the library to be removed";
+            }
+            StringParameter PrefixName {
+                Comment: "The name of the prefix of the library to be removed";
+            }
+            Set GeneratedSetsToRemove {
+                SubsetOf: GeneratedSets;
+                Comment: "All elements which must be removed from GeneratedSets as a result of removing the library.";
+            }
+            Set GeneratedIndicesToRemove {
+                SubsetOf: GeneratedIndices;
+                Comment: "All elements which must be removed from GeneratedIndices as a result of removing the library.";
+            }
+        }
+        Procedure GetElementRangeFromUser {
+            Arguments: (ColumnName,ColumnDataType,SelectedRangeString);
+            Body: {
+                ! All sets and calendars of the model should be presented to the user to select from. The predefined set 'AllSets' contains a bit too much
+                ! data, so filter it before presenting its contents to the user. All sets/calendars from the 'Database Interface Generation' library are
+                ! filtered out.
+                empty SetsCalendarsForEltParRange;
+                for (indexSets) do
+                	SetName := FormatString("%e", indexSets);
+                	if SubString(SetName, 1, 5) <> "dig::" then
+                		SetElementAdd(SetsCalendarsForEltParRange, SelectedSetOrCalendar, SetName);
+                	endif;
+                endfor;
+                
+                SelectedSetOrCalendar := '';
+                if not DialogGetElement(FormatString("Select range for column '%s' (%s)", ColumnName, ColumnDataType), SelectedSetOrCalendar) then
+                	SelectedRangeString := "";
+                endif;
+                
+                SelectedRangeString := SelectedSetOrCalendar;
+            }
+            Comment: {
+                "If a date/time data column is found in the database, the default AIMMS identifier is set to \'element parameter\'. Before an element parameter
+                can be generated in the runtime library, the user should specify the set or calendar that should be used as the \'range\' attribute of the
+                element parameter."
+            }
+            StringParameter ColumnName {
+                Property: Input;
+                Comment: "The column name for which to retrieve the set/calendar to be used as the element range.";
+            }
+            StringParameter ColumnDataType {
+                Property: Input;
+                Comment: "The data type of the column for which to retrieve the set/calendar to be used as the element range.";
+            }
+            StringParameter SelectedRangeString {
+                Property: Output;
+                Comment: "The element range that is selected by the user, in string format. \"\" if no range is selected (i.e. the user clicked on \'Cancel\').";
+            }
+            ElementParameter SelectedSetOrCalendar {
+                Range: SetsCalendarsForEltParRange;
+                Comment: "The selected set or calendar.";
+            }
+            StringParameter SetName {
+                Comment: "A temporary string paremeter to contain the set/calendar name.";
+            }
+        }
+        Procedure ProcWithNoArgs {
+            Comment: {
+                "This procedure is needed as a \'dummy\', to be able to generate the read procedures in the runtime library. See \'TheProc\' and \'GenerateIdentfiers\'
+                for more information."
+            }
+        }
+    }
+    Procedure LibraryInitialization {
+        Body: {
+            option Application_help_file := "Database Interface Generation\\Database Interface Generation.chm";
+        }
+    }
+    Procedure LibraryTermination {
+        Body: {
+            return 1 ;
+        }
+    }
+}

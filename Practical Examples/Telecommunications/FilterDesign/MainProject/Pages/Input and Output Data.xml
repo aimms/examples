@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-17 10:50:37">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>78D7E791-62E0-4AA8-ABB2-CFA62D71E0E1</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Curve">
+		<Location top="102" left="192" bottom="534" right="582" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<ExplicitIdentifier>
+			<Identifier>FilterCoefficientComplete( j )</Identifier>
+			<TitleText>"h(k)"</TitleText>
+			<Description>"h(k)"</Description>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="264" left="612" bottom="300" right="726" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="ADACBAA8-3F3D-4261-A09E-13DD6A672938" Name="Title2 Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfDiscretizationPoints</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"n"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="330" left="612" bottom="372" right="726" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Run"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="54" left="204" bottom="102" right="564" />
+		<StaticText>Output Signal</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="5C59FCC2-D701-4D77-AC91-424B9B208973" Name="Title Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>NumberOfDiscretizationPoints</Symbol>
+			<Symbol>FilterCoefficientComplete</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

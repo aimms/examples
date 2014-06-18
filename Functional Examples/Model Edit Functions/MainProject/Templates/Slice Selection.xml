@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-08-25 12:43:10">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F9544067-E448-4C60-9F8A-54412C921446</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="62">
+						<BottomArea Line="FixedFromTop" Value="77">
+							<BottomArea Line="PercentageFromTop" Value="0.455556">
+								<BottomArea Line="FixedFromTop" Value="82">
+									<BottomArea Line="FixedFromBottom" Value="7.99996" />
+								</BottomArea>
+							</BottomArea>
+						</BottomArea>
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Rectangle">
+		<Location top="396" left="6" bottom="420" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
+	</PageObject>
+	<PageObject Type="Composite Table" Tag="Slice Selection">
+		<Location top="546" left="42" bottom="618" right="192" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<SelectionColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</SelectionColor>
+		<CellSelection>false</CellSelection>
+		<MultipleRowSelection>false</MultipleRowSelection>
+		<Domain>
+			<Identifier>SelectedElements( ri -&gt; SelectedIndex )</Identifier>
+			<Index Name="ri">
+				<TitleText>"Index"</TitleText>
+				<ProcedureUponSelect>UpdateSelectedElementCT( ri )</ProcedureUponSelect>
+			</Index>
+			<AllowRowDelete>true</AllowRowDelete>
+			<DeleteProcedure>RemoveIndexElement</DeleteProcedure>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>SelectedElements( ri -&gt; SelectedIndex )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"Element"</TitleText>
+			<ProcedureUponSelect>UpdateSelectedElementCT( ri )</ProcedureUponSelect>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="426" left="12" bottom="444" right="90" />
+		<StaticText>Index:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="426" left="108" bottom="444" right="186" />
+		<StaticText>Element:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="444" left="6" bottom="522" right="96" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ProcedureUponChange>UpdateSelectedElement</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>SelectedIndex</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="444" left="102" bottom="522" right="192" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<ProcedureUponChange>AddIndexElement</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>SelectedElement</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="570" left="6" bottom="600" right="36" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"X"</Title>
+		<TooltipText>"Discard index"</TooltipText>
+		<ForegroundColor>
+			<UserColor GUID="8C1FFC91-A781-4272-831D-2D86F23592E4">red</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>RemoveIndexElement</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="401" left="18" bottom="419" right="168" />
+		<StaticText>Slice Selection</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="528" left="48" bottom="546" right="186" />
+		<StaticText>Selected Slice:</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>SelectableElements</Symbol>
+			<Symbol>UpdateSelectedElementCT</Symbol>
+			<Symbol>AddIndexElement</Symbol>
+			<Symbol>SelectedElement</Symbol>
+			<Symbol>ri</Symbol>
+			<Symbol>SelectedIndex</Symbol>
+			<Symbol>RemoveIndexElement</Symbol>
+			<Symbol>SelectedElements</Symbol>
+			<Symbol>UpdateSelectedElement</Symbol>
+			<Symbol>RelevantIndices</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

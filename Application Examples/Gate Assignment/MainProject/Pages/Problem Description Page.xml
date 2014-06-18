@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-03-02 08:05:41" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>0C85949E-28CF-4A30-8DF0-12A5C8390841</ProjectUUID>
+	<Title>"Gate Assignment"</Title>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ToolBar None="true" />
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204" />
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Document Viewer">
+		<Location top="192" left="210" bottom="612" right="762" />
+		<TabOrder>2</TabOrder>
+		<Border Style="None" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Document_URL ID="2" LiteralFileName="true">"app-description.html"</Document_URL>
+		</Contents>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

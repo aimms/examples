@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-29 16:19:44">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>46A0FA7A-949D-47F9-93D1-69BD0DE0FBB7</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background RGB="#007600" />
+	<PageObject Type="Button">
+		<Location top="0" left="0" bottom="42" right="42" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile>ImageFile( XElem, YElem )</BitmapFile>
+		<Transparent>true</Transparent>
+		<BackgroundColor RGB="#008000" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ToggleTree( XElem, YElem )</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>YElem</Symbol>
+			<Symbol>XElem</Symbol>
+			<Symbol>ToggleTree</Symbol>
+			<Symbol>ImageFile</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

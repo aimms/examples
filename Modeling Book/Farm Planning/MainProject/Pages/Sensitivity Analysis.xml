@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2011-11-28 18:32:23">
+	<Location top="234" left="216" bottom="771" right="1171" />
+	<PageEditSize Type="Inherited">
+		<Size Width="787" Height="414" />
+	</PageEditSize>
+	<ProjectUUID>573E518E-6648-4442-913F-D6BBC6547C13</ProjectUUID>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromRight" Value="276" />
+	</ResizeData>
+	<Background RGB="#ffffff" />
+	<Action>
+		<EntryProcedure>LoadSensitivityAnalysisOutput</EntryProcedure>
+	</Action>
+	<PageObject Type="Parametric Curve">
+		<Location top="12" left="12" bottom="318" right="504" />
+		<Hidden>VALUE := IsRunningAsViewer</Hidden>
+		<TabOrder>1</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<SwappedAxes>true</SwappedAxes>
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<ExplicitIdentifier>
+			<Identifier>AmountPlanted( c )</Identifier>
+			<TitleText>"Optimal Crops as function of available land"</TitleText>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<MarkPoints>true</MarkPoints>
+		<XAxisIdentifier>
+			<Identifier>LandAvailable</Identifier>
+		</XAxisIdentifier>
+		<ParametricSetup>
+			<Steps>10</Steps>
+			<Start>8</Start>
+			<Stop>12</Stop>
+		</ParametricSetup>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="324" left="12" bottom="408" right="504" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FarmEarnings</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="7" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Farm Earnings"</Title>
+			<DescriptionFromIdentifierName>false</DescriptionFromIdentifierName>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>CostOfFamilyLabor</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="7" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>CostOfPermanentLabor</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="7" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>CostOfTemporaryLabor</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="7" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Cost of Temporary Labor"</Title>
+			<DescriptionFromIdentifierName>false</DescriptionFromIdentifierName>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>CostOfWater</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="7" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Table">
+		<Location top="12" left="516" bottom="318" right="774" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>ShadowPrices( t )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<HeaderText>STRING := FormatString("Shadow Price of \nWater requirement\n constraint")</HeaderText>
+			<NumberFormat Width="7" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="12" left="12" bottom="318" right="504" />
+		<Hidden>VALUE := not(IsRunningAsViewer)</Hidden>
+		<TabOrder>4</TabOrder>
+		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<SwappedAxes>true</SwappedAxes>
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<ExplicitIdentifier>
+			<Identifier>OptimalPlanted( c, i_cp )</Identifier>
+			<IdentifierTextInCell>true</IdentifierTextInCell>
+			<TitleText>"Optimal Crops as function of available land"</TitleText>
+			<Description>PointText( c, i_cp )</Description>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<MarkPoints>true</MarkPoints>
+		<XAxisIdentifier>
+			<Identifier>LandAviablePoints( i_cp )</Identifier>
+		</XAxisIdentifier>
+		<XRange Automatic="false">
+			<Lower>8</Lower>
+			<Upper>12</Upper>
+		</XRange>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>c</Symbol>
+			<Symbol>CostOfWater</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>LoadSensitivityAnalysisOutput</Symbol>
+			<Symbol>LandAviablePoints</Symbol>
+			<Symbol>ShadowPrices</Symbol>
+			<Symbol>FarmEarnings</Symbol>
+			<Symbol>CostOfFamilyLabor</Symbol>
+			<Symbol>CostOfTemporaryLabor</Symbol>
+			<Symbol>AmountPlanted</Symbol>
+			<Symbol>i_cp</Symbol>
+			<Symbol>LandAvailable</Symbol>
+			<Symbol>OptimalPlanted</Symbol>
+			<Symbol>CostOfPermanentLabor</Symbol>
+			<Symbol>PointText</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

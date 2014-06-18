@@ -1,0 +1,339 @@
+## ams_version=1.0
+
+Model Main_TwoLevel {
+    Section Two_Level_Decision_Problem {
+        Section Quantities_and_Units {
+            DeclarationSection Quantity_Declarations {
+                Quantity Monetary {
+                    BaseUnit: $;
+                }
+                Quantity SI_Mass {
+                    BaseUnit: kg;
+                    Comment: "Expresses the value for the amount of matter.";
+                }
+                Quantity SI_Volume {
+                    BaseUnit: m3;
+                }
+            }
+        }
+        Section Two_Level_Model {
+            DeclarationSection Model_Declarations {
+                Set Companies {
+                    Index: j;
+                    Parameter: Co;
+                }
+                Parameter MonitoringCosts {
+                    Range: [200, 2000];
+                    Unit: 1000 * $;
+                }
+                Parameter WasteTargetLevel {
+                    Range: [WasteTargetLowerBound, TotalWasteWithoutRemoval];
+                    Unit: 1000 * kg;
+                }
+                Parameter TaxLowerBound {
+                    Range: nonnegative;
+                    Unit: $/kg;
+                }
+                Parameter TaxUpperBound {
+                    Unit: $/kg;
+                }
+                Parameter TaxRate {
+                    Range: [TaxRateLowerBound, TaxRateUpperBound];
+                    Unit: $/kg;
+                }
+                Parameter SubsidyRate {
+                    Range: nonnegative;
+                    Unit: $/kg;
+                }
+                Parameter TaxRateLowerBound {
+                    Range: nonnegative;
+                    Unit: $/kg;
+                    Definition: MonitoringCosts / WasteTargetLevel;
+                }
+                Parameter TaxRateUpperBound {
+                    Range: nonnegative;
+                    Unit: $/kg;
+                    Definition: 1000*TaxRateLowerBound;
+                }
+                Parameter AmountWasteWater {
+                    IndexDomain: (j);
+                    Unit: 1000 * m3;
+                }
+                Parameter WasteConcentration {
+                    IndexDomain: j;
+                    Unit: kg/m3;
+                }
+                Parameter EfficiencyCoefficient {
+                    IndexDomain: (j);
+                    Unit: $*kg/m3^2;
+                }
+                Parameter TotalWasteWithoutRemoval {
+                    Unit: 1000 * kg;
+                    Definition: Sum(j,AmountWasteWater(j)*WasteConcentration(j));
+                }
+                Parameter WasteTargetLowerBound {
+                    Range: nonnegative;
+                    Unit: 1000 * kg;
+                    Definition: TotalWasteWithoutRemoval/5;
+                }
+                Parameter WasteRemovalRateUpperBound {
+                    IndexDomain: j;
+                    Unit: kg/m3;
+                    Definition: WasteConcentration(j)*0.95;
+                }
+                Parameter WasteRemoved {
+                    IndexDomain: (j);
+                    Unit: 1000 * kg;
+                    Definition: AmountWasteWater(j) * WasteRemovalRate(j);
+                }
+                Parameter TaxMinusSubsidy {
+                    IndexDomain: (j);
+                    Unit: 1000 * $;
+                    Definition: AmountWasteWater(j) * ( TaxRate * ( WasteConcentration(j) - WasteRemovalRate(j) ) - SubsidyRate * WasteRemovalRate(j) );
+                }
+                Parameter TotalCost {
+                    IndexDomain: (j);
+                    Unit: 1000 * $;
+                    Definition: {
+                        AmountWasteWater(j) * [ ( EfficiencyCoefficient(j) / ( WasteConcentration(j) - WasteRemovalRate(j) )
+                                - EfficiencyCoefficient(j) / WasteConcentration(j) ) + TaxRate * ( WasteConcentration(j) - WasteRemovalRate(j) )
+                                - SubsidyRate * WasteRemovalRate(j) ]
+                    }
+                }
+                Parameter TotalWasteAfterRemoval {
+                    Unit: 1000 * kg;
+                    Definition: TotalWasteWithoutRemoval - TotalWasteRemoved;
+                }
+                Parameter TotalWasteRemoved {
+                    Unit: 1000 * kg;
+                    Definition: sum (j,WasteRemoved(j));
+                }
+                Parameter TotalTaxIncome {
+                    Unit: 1000 * $;
+                    Definition: TaxRate * TotalWasteAfterRemoval;
+                }
+                Parameter TotalSubsidyExpense {
+                    Unit: 1000 * $;
+                    Definition: SubsidyRate * TotalWasteRemoved;
+                }
+                Parameter CleaningCost {
+                    IndexDomain: (j);
+                    Unit: 1000 * $;
+                    Definition: {
+                        AmountWasteWater(j) *
+                        (EfficiencyCoefficient(j) / (WasteConcentration(j) - WasteRemovalRate(j)) - EfficiencyCoefficient(j) / WasteConcentration(j))
+                    }
+                }
+                Variable WasteRemovalRate {
+                    IndexDomain: (j);
+                    Range: [0, WasteRemovalRateUpperBound(j)];
+                    Unit: kg/m3;
+                }
+                Variable CompanyCosts {
+                    Unit: 1000 * $;
+                    Definition: {
+                        AmountWasteWater(Co) * [ ( EfficiencyCoefficient(Co) / ( WasteConcentration(Co) - WasteRemovalRate(Co) )
+                                - EfficiencyCoefficient(Co) / WasteConcentration(Co) ) + TaxRate * ( WasteConcentration(Co) - WasteRemovalRate(Co) )
+                                - SubsidyRate * WasteRemovalRate(Co) ]
+                    }
+                }
+                MathematicalProgram TwoLevel {
+                    Objective: CompanyCosts;
+                    Direction: minimize;
+                    Constraints: AllConstraints;
+                    Variables: AllVariables;
+                    Type: NLP;
+                }
+            }
+            Procedure ReadModelData {
+                Body: {
+                    read from file "Initial Data Files\\datacase.txt";
+                }
+            }
+        }
+        Section Solving_Procedures {
+            DeclarationSection Solving_Declarations {
+                Parameter Tollerance {
+                    Unit: 1000 * kg;
+                }
+            }
+            Procedure SolveSubmodelsForFixedTax {
+                Arguments: (FixedTaxRate);
+                Body: {
+                    if (FixedTaxRate=0[$/kg] ) then
+                    
+                       DialogMessage( FormatString("Tax rate should be a value between %5.2n and %5.2n", TaxRateLowerBound, TaxRateUpperBound ) );
+                    
+                    else
+                    
+                       TaxRate := FixedTaxRate;
+                       SubsidyRate := (TaxRate * WasteTargetLevel - MonitoringCosts) / (TotalWasteWithoutRemoval - WasteTargetLevel);
+                    
+                       Tax_and_Subsidy('Tax') := TaxRate;
+                       Tax_and_Subsidy('Subsidy') := SubsidyRate;
+                    
+                       /*Initialize WasteRemovalRate to guide the algorithm to search away from WasteRemovalRateUpperBound(j)*/
+                       WasteRemovalRate(j) := WasteRemovalRateUpperBound(j) / 2;
+                    
+                       FOR j DO
+                            Co := j;
+                            Solve TwoLevel in merge mode;
+                       ENDFOR;
+                    
+                    endif;
+                }
+                Parameter FixedTaxRate {
+                    Unit: $/kg;
+                    Property: Input;
+                }
+            }
+            Procedure SolveSubmodelsForGivenTax {
+                Body: {
+                    if not IsRunningAsViewer then
+                    
+                            SolveSubmodelsForFixedTax(TaxRate);
+                    
+                    else
+                    
+                            DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
+                            caseFind("Solution For Given Tax",ACase);
+                            CaseLoadCurrent(ACase, 0);
+                    
+                    endif;
+                }
+            }
+            Procedure HuntPhase {
+                Body: {
+                    TaxLowerBound := MonitoringCosts / WasteTargetLevel;
+                    
+                    REPEAT
+                            TaxRate := 2 * TaxLowerBound;
+                    
+                            SolveSubmodelsForFixedTax(TaxRate);
+                    
+                            BREAK WHEN (TotalWasteAfterRemoval < WasteTargetLevel);
+                    
+                            TaxLowerBound := TaxRate;
+                    
+                    ENDREPEAT;
+                    
+                    TaxUpperBound := TaxRate;
+                }
+            }
+            Procedure Bisection {
+                Body: {
+                    REPEAT
+                            TaxRate := (TaxLowerBound + TaxUpperBound) / 2;
+                    
+                            SolveSubmodelsForFixedTax(TaxRate);
+                    
+                            Tax_and_Subsidy('Tax') := TaxRate;
+                            Tax_and_Subsidy('Subsidy') := SubsidyRate;
+                    
+                            BREAK WHEN Abs(TotalWasteAfterRemoval - WasteTargetLevel) < Tollerance;
+                    
+                            IF (TotalWasteAfterRemoval < WasteTargetLevel)
+                                THEN TaxUpperBound := TaxRate;
+                            ENDIF;
+                    
+                            IF (TotalWasteAfterRemoval > WasteTargetLevel)
+                                THEN TaxLowerBound:=TaxRate;
+                            ENDIF;
+                    
+                    ENDREPEAT;
+                }
+            }
+            Procedure SolveTwoLevelModel {
+                Body: {
+                    empty TaxRate, SubsidyRate;
+                    
+                    if not IsRunningAsViewer then
+                    
+                            HuntPhase;
+                            Bisection;
+                    
+                    else
+                    
+                            DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
+                            caseFind("Solution Two-level Model",ACase);
+                            CaseLoadCurrent(ACase, 0);
+                    
+                    endif;
+                }
+            }
+        }
+    }
+    Section User_Interface {
+        StringParameter ExplanationsFiles_submodels {
+            Definition: "Explanations Files\\submodels.txt";
+        }
+        Set TaxesSubsidies {
+            Index: i;
+            Parameter: TorS;
+        }
+        Parameter Tax_and_Subsidy {
+            IndexDomain: (i);
+            Range: nonnegative;
+            Unit: $/kg;
+        }
+        ElementParameter TaxSubsidyColor {
+            IndexDomain: (i);
+            Range: AllColors;
+        }
+        ElementParameter TotalCostsColor {
+            IndexDomain: (j);
+            Range: AllColors;
+        }
+        Set SensitivityGraphs {
+            Index: g;
+        }
+        ElementParameter GraphToShow {
+            Range: SensitivityGraphs;
+        }
+        StringParameter GraphName {
+            IndexDomain: (g);
+        }
+        Parameter HideIndicator {
+            IndexDomain: (g);
+            Range: binary;
+            Definition: if ( g = GraphToShow ) then 0 else 1 endif;
+        }
+        Parameter GraphsXUpperBound {
+            Range: nonnegative;
+            Unit: 1000 * kg;
+            Definition: TotalWasteWithoutRemoval - 0.1 [1000 * kg];
+        }
+        ElementParameter ACase {
+            Range: AllCases;
+        }
+        Procedure InitializeInterfaceParameters {
+            Body: {
+                read from file "Initial Data Files\\interface.txt";
+            }
+        }
+        Procedure UpdateAllData {
+            Body: update;
+        }
+        Procedure UpdateSensivityAnalysisGraphs;
+    }
+    Procedure MainInitialization {
+        Body: {
+            if not IsRunningAsViewer then
+                    ReadModelData;
+                    InitializeInterfaceParameters;
+                    TaxRate := 0.2;
+                    update;
+            endif;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            SolveTwoLevelModel;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

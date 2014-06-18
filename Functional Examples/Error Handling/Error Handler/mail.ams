@@ -1,0 +1,185 @@
+## ams_version=1.0
+
+Module Mail {
+    Prefix: m;
+    StringParameter AIMMSMapiDLL {
+        Default: "Error Handler\\AimmsMAPI.dll";
+    }
+    ExternalProcedure AIMMSMapiSetErrorMode {
+        Arguments: (AMMode);
+        DllName: AIMMSMapiDLL;
+        BodyCall: {
+            AIMMSMapiSetErrorMode(
+               scalar integer : AMMode
+             )
+        }
+        Comment: {
+            "With this function you can control where MAPI errors go:
+            - AMMode = 0 means no errors at all, only look at return value for errors and retrieve through AIMMSMapiLastError
+            - AMMode = 1 (default) means errors are sent to the AIMMS message window
+            - AMMode = 2 means errors are presented through a dialog box"
+        }
+        Parameter AMMode {
+            Range: {
+                {0..2}
+            }
+            Default: 1;
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiLastError {
+        Arguments: (AMMessage);
+        DllName: AIMMSMapiDLL;
+        BodyCall: {
+            AIMMSMapiLastError(
+               scalar string : AMMessage
+             )
+        }
+        StringParameter AMMessage {
+            Property: Output;
+        }
+    }
+    ExternalProcedure AIMMSMapiNewMail {
+        Arguments: (AMSubject);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiNewMail(
+               scalar string : AMSubject
+             )
+        }
+        StringParameter AMSubject {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiAddText {
+        Arguments: (AMString);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiAddText(
+               scalar string : AMString
+             )
+        }
+        StringParameter AMString {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiAddLine {
+        Arguments: (AMString);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiAddLine(
+               scalar string : AMString
+             )
+        }
+        StringParameter AMString {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiAddParagraph {
+        Arguments: (AMString);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiAddParagraph(
+               scalar string : AMString
+             )
+        }
+        StringParameter AMString {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiAddTextFromFile {
+        Arguments: (AMString);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiAddTextFromFile(
+               scalar string : AMString
+             )
+        }
+        StringParameter AMString {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiAddRecipientTo {
+        Arguments: ( AMName, AMAddress);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiAddRecipientTo(
+               scalar string : AMName,
+               scalar string : AMAddress
+             )
+        }
+        StringParameter AMName {
+            Property: Input;
+        }
+        StringParameter AMAddress {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiAddRecipientCc {
+        Arguments: ( AMName, AMAddress);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiAddRecipientCc(
+               scalar string : AMName,
+               scalar string : AMAddress
+             )
+        }
+        StringParameter AMName {
+            Property: Input;
+        }
+        StringParameter AMAddress {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiAddRecipientBcc {
+        Arguments: ( AMName, AMAddress);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiAddRecipientBcc(
+               scalar string : AMName,
+               scalar string : AMAddress
+             )
+        }
+        StringParameter AMName {
+            Property: Input;
+        }
+        StringParameter AMAddress {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiAddAttachment {
+        Arguments: (AMPath);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiAddAttachment(
+               scalar string : AMPath
+             )
+        }
+        StringParameter AMPath {
+            Property: Input;
+        }
+    }
+    ExternalProcedure AIMMSMapiSendMail {
+        Arguments: (Interactive);
+        DllName: AIMMSMapiDLL;
+        ReturnType: integer;
+        BodyCall: {
+            AIMMSMapiSendMail(
+               scalar integer : Interactive
+             )
+        }
+        Parameter Interactive {
+            Default: 1;
+            Property: Optional;
+        }
+    }
+}

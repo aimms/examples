@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="96E00E26-B913-4B89-A342-D3F913A309DC" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|51F65C50-2F9A-4A80-AD42-34D895273DB5|Size Template">
+		<Template Name="Navigation Template" PageGUID="E2C974D0-95C1-4898-B012-D53CCD2D8729" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|FE9512EE-CDA4-4D21-9619-DBD3E4E979C0|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="7232253F-9F98-46F3-BE99-323F6F90D562" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|ADFF2167-1EA9-46B6-B0D4-7D62464EA183|Background Info Template">
+				<Page Name="AIMMS Demo" PageGUID="45BFA340-7D25-4274-8339-E5E6AD1961D5" />
+			</Template>
+			<Page Name="Perform Experiment" PageGUID="38128F36-D4C9-48EF-BA35-306D23BC1761" />
+		</Template>
+	</Template>
+</TemplateManager>

@@ -1,0 +1,255 @@
+## ams_version=1.0
+
+Section Section_BB {
+    Parameter NumberOfNodes {
+        Range: integer;
+    }
+    ElementParameter GMPBB {
+        Range: AllGeneratedMathematicalPrograms;
+    }
+    ElementParameter pcBB {
+        Range: AllProgressCategories;
+    }
+    Set ActiveNodes {
+        SubsetOf: Integers;
+        Index: an;
+    }
+    ElementParameter CurrentNode {
+        Range: ActiveNodes;
+    }
+    ElementParameter LastActiveNode {
+        Range: ActiveNodes;
+    }
+    Set ChildNodes {
+        SubsetOf: Integers;
+        Index: cn;
+    }
+    Parameter Child1 {
+        Range: integer;
+    }
+    Parameter Child2 {
+        Range: integer;
+    }
+    Set ColNrs {
+        SubsetOf: Integers;
+        Index: c;
+    }
+    Parameter BestObjective;
+    Parameter LB {
+        IndexDomain: (c,an);
+    }
+    Parameter UB {
+        IndexDomain: (c,an);
+    }
+    Parameter LEV {
+        IndexDomain: (c,an);
+    }
+    Parameter NodeObj {
+        IndexDomain: an;
+    }
+    Parameter IsInteger;
+    Parameter BestBound;
+    Parameter eps {
+        InitialData: 1e-8;
+    }
+    Set OptimalityStatuses {
+        SubsetOf: AllSolutionStates;
+        InitialData: {
+            { 'Optimal', 'LocallyOptimal', 'IntermediateNonOptimal' }
+        }
+    }
+    ElementParameter ProgramStatus {
+        Range: AllSolutionStates;
+    }
+    Parameter FoundSolution {
+        Range: binary;
+    }
+    Parameter RelativeGap {
+        Definition: {
+            if ( abs( BestObjective - BestBound ) <= eps ) then
+                0
+            else
+                100 * abs( BestObjective - BestBound ) / ( 1 + abs(BestObjective) )
+            endif
+        }
+    }
+    Procedure BB {
+        Arguments: (myGMP);
+        Body: {
+            ! Create presolved version of GMP and change model type into relaxed MINLP.
+            GMPBB := GMP::Instance::CreatePresolved( myGMP, 'BBPresolved' );
+            GMP::Instance::SetMathematicalProgrammingType( GMPBB, 'rminlp' );
+            
+            ! Get numbers of columns corresponding to all integer (binary) variables.
+            ColNrs := GMP::Instance::GetColumnNumbers( GMPBB, AllIntegerVariables );
+            
+            ! Initialization of Branch-and-Bound algorithm.
+            ActiveNodes := {1};
+            BestObjective := 1e30;
+            NumberOfNodes := 1;
+            FoundSolution := 0;
+            
+            ! Create initial node in which all binary variables have range [0,1].
+            LB(c,1) := 0;
+            UB(c,1) := 1;
+            for (c) do
+                GMP::Column::SetLowerBound( GMPBB, c, LB(C,1) );
+                GMP::Column::SetUpperBound( GMPBB, c, UB(C,1) );
+            endfor;
+            
+            ! Solve initial node.
+            GMP::Instance::Solve(GMPBB);
+            ProgramStatus := GMP::Solution::GetProgramStatus( GMPBB, 1 );
+            
+            ! Initialization of progress window.
+            SolSesBB := GMP::Instance::CreateSolverSession( myGMP );
+            pcBB := GMP::SolverSession::CreateProgressCategory( SolSesBB );
+            GMP::ProgressWindow::DisplaySolver( "Branch-and-Bound", pcBB );
+            
+            Obj := GMP::Solution::GetObjective( GMPBB, 1 );
+            NodeObj(1) := Obj;
+            
+            if ( ProgramStatus in OptimalityStatuses ) then
+                IsInteger := GMP::Solution::IsInteger( GMPBB, 1 );
+            
+                if ( IsInteger ) then
+                    BestObjective := Obj;
+                    GMP::Solution::RetrieveFromModel( myGMP, 1 );
+                    FoundSolution := 1;
+                    ActiveNodes := {};
+                else
+                    for (c) do
+                        LEV(c,1) := GMP::Solution::GetColumnValue( GMPBB, 1, c );
+                    endfor;
+                endif;
+            else
+                GMP::Solution::SetProgramStatus( myGMP, 1, 'Infeasible' );
+                ActiveNodes := {};
+            endif;
+            
+            ! Main loop.
+            while ( ActiveNodes <> {} ) do
+            
+                ! Select node with best objective.
+                CurrentNode := ArgMin( an, NodeObj(an) );
+                BestBound := NodeObj(CurrentNode);
+                UpdateProgressWindow;
+            
+                ! Add two child nodes (after the last active node).
+                LastActiveNode := Last(ActiveNodes);
+            
+                ! First child of the CurrentNode.
+                Child1 := val(LastActiveNode) + 1;
+                ChildNodes := Child1;
+                ! Second child of the CurrentNode.
+                Child2 := val(LastActiveNode) + 2;
+                ChildNodes += Child2;
+            
+                ActiveNodes += ChildNodes;
+            
+                for (cn) do
+                    LB(c,cn) := LB(c,CurrentNode);
+                    UB(c,cn) := UB(c,CurrentNode);
+                endfor;
+            
+                ! Select the column that has the most fractional value (i.e., is closest to 0.5) as the column to branch on.
+                HalfGap(c) := abs(LEV(c,CurrentNode) - 0.5);
+                MostFractionalColumn := ArgMin(c, HalfGap(c));
+            
+                ! Fix column to 0 in Child1 and to 1 in Child2.
+                UB(MostFractionalColumn,Child1) := 0;
+                LB(MostFractionalColumn,Child2) := 1;
+            
+                ! Process both child nodes.
+                for (cn) do
+                    for (c) do
+                        GMP::Column::SetLowerBound( GMPBB, c, LB(c,cn) );
+                        GMP::Column::SetUpperBound( GMPBB, c, UB(c,cn) );
+                    endfor;
+            
+                    GMP::Instance::Solve( GMPBB );
+            
+                    ProgramStatus := GMP::Solution::GetProgramStatus( GMPBB, 1 );
+                    Obj := GMP::Solution::GetObjective( GMPBB, 1 );
+            
+                    if ( ProgramStatus in OptimalityStatuses ) then
+                        if ( Obj < BestObjective ) then
+                            IsInteger := GMP::Solution::IsInteger( GMPBB, 1 );
+            
+                            if ( IsInteger ) then
+                                ! Found new incumbent.
+                                BestObjective := Obj;
+                                GMP::Solution::RetrieveFromModel( myGMP, 1 );
+                                FoundSolution := 1;
+            
+                                ActiveNodes -= cn; ! Fathom node
+                                FathomNodesAfterNewIncumbent;
+                            else
+                                for (c) do
+                                    LEV(c,cn) := GMP::Solution::GetColumnValue( GMPBB, 1, c );
+                                endfor;
+            
+                                NumberOfNodes += 1;
+            
+                                NodeObj(cn) := Obj;
+                            endif;
+                        else
+                            ActiveNodes -= cn;   ! Fathom node
+                        endif;
+                    else
+                        ActiveNodes -= cn;   ! Fathom node
+                    endif;
+                endfor;
+            
+                ! Remove current node from set of active nodes.
+                ActiveNodes -= CurrentNode;
+            
+            endwhile;
+            
+            UpdateProgressWindow;
+            
+            if ( FoundSolution ) then
+                GMP::Solution::SendToModel( myGMP, 1 );
+                GMP::Solution::SetProgramStatus( myGMP, 1, 'Optimal' );
+            endif;
+            
+            GMP::Instance::Delete( GMPBB );
+        }
+        ElementParameter myGMP {
+            Range: AllGeneratedMathematicalPrograms;
+            Property: Input;
+        }
+        ElementParameter SolSesBB {
+            Range: AllSolverSessions;
+        }
+        Parameter Obj;
+        Parameter HalfGap {
+            IndexDomain: c;
+        }
+        ElementParameter MostFractionalColumn {
+            Range: ColNrs;
+        }
+    }
+    Procedure FathomNodesAfterNewIncumbent {
+        Body: {
+            ActiveNodes -= { an | NodeObj(an) >= BestObjective };
+        }
+    }
+    Procedure UpdateProgressWindow {
+        Body: {
+            ValueString := FormatString("%i \t (# Active Nodes : %i)", NumberOfNodes, card(ActiveNodes));
+            
+            GMP::ProgressWindow::DisplayLine( 1, "# Nodes", ValueString, pcBB );
+            GMP::ProgressWindow::DisplayLine( 2, "Best Bound", BestBound, pcBB );
+            
+            if ( FoundSolution ) then
+                ValueString := FormatString( "%n \t (Gap: %.2n %%)", BestObjective, RelativeGap ) ;
+            else
+                ValueString := FormatString( "na" ) ;
+            endif;
+            
+            GMP::ProgressWindow::DisplayLine( 3, "Best Objective", ValueString, pcBB );
+        }
+        StringParameter ValueString;
+    }
+}

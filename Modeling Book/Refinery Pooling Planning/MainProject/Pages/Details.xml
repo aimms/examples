@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-01-26 02:08:34">
+	<Location top="26" left="8" bottom="643" right="1020" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>8F2E7F25-EE03-41BC-9A2D-7D0530DE3B45</ProjectUUID>
+	<CloseWhenInactive>true</CloseWhenInactive>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="346">
+					<BottomArea Line="FixedFromTop" Value="110" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="83">
+					<TopArea Line="FixedFromTop" Value="53">
+						<BottomArea Line="FixedFromLeft" Value="284" />
+					</TopArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="8AC7590F-4549-4E19-A63E-8B3058966075">white</UserColor>
+	</Background>
+	<Action>
+		<EntryProcedure>UpdateCurrentPage</EntryProcedure>
+	</Action>
+	<PageObject Type="Text">
+		<Location top="186" left="204" bottom="204" right="474" />
+		<StaticText>Intermediate Product Data</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="28915E7B-E9D1-41B0-BBC9-F654B9F94007">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="498" left="204" bottom="516" right="474" />
+		<StaticText>Final Product Data</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="28915E7B-E9D1-41B0-BBC9-F654B9F94007">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="186" left="558" bottom="204" right="750" />
+		<StaticText>Pool Tank Data</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="28915E7B-E9D1-41B0-BBC9-F654B9F94007">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="204" left="204" bottom="498" right="546" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>5B9284F4-8038-4A45-9157-D3A960B27086</ObjectUUID>
+		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MinimumFlow( i )</Identifier>
+				<Title ID="4120">"Minimum Flow"</Title>
+				<Format>
+					<Show_default_values ID="4320">"Yes"</Show_default_values>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">FlowToPool( i, t )</Identifier>
+				<Title ID="4120">"Flow to Pool"</Title>
+				<Colors>
+					<Text_Color ID="4165">AE89EC86-7583-449B-9BBB-CB94E25E63B3 dark green</Text_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MaximumFlow( i )</Identifier>
+				<Title ID="4120">"Maximum Flow"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">IntermediatePropertyValue( p, i )</Identifier>
+				<Title ID="4120">"Property Value"</Title>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Decimal_Places ID="4212">2</Decimal_Places>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">i</Index>
+				<Header_Title ID="6530">"Intermediates"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<General>
+			<Save_Layout_State>
+				<By_Developer ID="1115">"When being Saved"</By_Developer>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Outer_Area>
+			<Same_as_Row_Area ID="3505">"Yes"</Same_as_Row_Area>
+		</Outer_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="204" left="558" bottom="498" right="762" />
+		<TabOrder>5</TabOrder>
+		<ObjectUUID>B54CAF23-BA1E-4C8A-B5E9-2865AFA404C0</ObjectUUID>
+		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">FlowFromPool( t, f )</Identifier>
+				<Title ID="4120">"Flow from Pool"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+				<Colors>
+					<Text_Color ID="4165">AE89EC86-7583-449B-9BBB-CB94E25E63B3 dark green</Text_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">PoolAmount( t )</Identifier>
+				<Title ID="4120">"Amount"</Title>
+				<Colors>
+					<Text_Color ID="4165">AE89EC86-7583-449B-9BBB-CB94E25E63B3 dark green</Text_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MaximumPoolCapacity( t )</Identifier>
+				<Title ID="4120">"Max Capacity"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">PoolPropertyValue( p, t )</Identifier>
+				<Title ID="4120">"Property Value"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+				<Colors>
+					<Text_Color ID="4165">AE89EC86-7583-449B-9BBB-CB94E25E63B3 dark green</Text_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Decimal_Places ID="4212">1</Decimal_Places>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">t</Index>
+				<Header_Title ID="6530">"Tank"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">f</Index>
+				<Header_Title ID="6530">"Final Product"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">p</Index>
+				<Header_Title ID="6530">"Product"</Header_Title>
+			</Explicit_Index>
+			<Identifier_Index>
+				<Location_in_Initial_View ID="6260">"In Columns"</Location_in_Initial_View>
+			</Identifier_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Aggregators>
+				<Font ExtraInfo="4166DA76-F449-4BB3-A971-186250280A09" ID="5240">"default"</Font>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="516" left="204" bottom="618" right="546" />
+		<TabOrder>3</TabOrder>
+		<ObjectUUID>1BE2FAE5-48B5-4AFD-97D9-4694081EAC6C</ObjectUUID>
+		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MinimumFinalProductPropertyRequirement( p, f )</Identifier>
+				<Title ID="4120">"Min"</Title>
+				<Format>
+					<Show_Checkboxes ID="4315">"No"</Show_Checkboxes>
+					<Show_default_values ID="4320">"Yes"</Show_default_values>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">FinalProductPropertyValue( p, f )</Identifier>
+				<Title ID="4120">"Property Value"</Title>
+				<Format>
+					<Decimal_Places ID="4312">2</Decimal_Places>
+				</Format>
+				<Colors>
+					<Text_Color ID="4165">AE89EC86-7583-449B-9BBB-CB94E25E63B3 dark green</Text_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MaximumFinalProductPropertyRequirement( p, f )</Identifier>
+				<Title ID="4120">"Max"</Title>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Decimal_Places ID="4212">1</Decimal_Places>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">f</Index>
+				<Header_Title ID="6530">"Final Product"</Header_Title>
+			</Explicit_Index>
+			<Explicit_Index>
+				<Index ID="6510">p</Index>
+				<Header_Title ID="6530">"Product"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="516" left="558" bottom="618" right="762" />
+		<TabOrder>4</TabOrder>
+		<ObjectUUID>8C33067E-B9C5-40E8-A0D2-53132D9B5B33</ObjectUUID>
+		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MinimumFinalProductAmountRequirement( f )</Identifier>
+				<Title ID="4120">"Min"</Title>
+				<Format>
+					<Decimal_Places ID="4312">0</Decimal_Places>
+					<Show_default_values ID="4320">"Yes"</Show_default_values>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">MaximumFinalProductAmountRequirement( f )</Identifier>
+				<Title ID="4120">"Max"</Title>
+				<Format>
+					<Decimal_Places ID="4312">0</Decimal_Places>
+				</Format>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">BasePrice( f )</Identifier>
+				<Title ID="4120">"Base Price"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">FinalProductSalesPrice( f )</Identifier>
+				<Title ID="4120">"Sales Price"</Title>
+				<Colors>
+					<Text_Color ID="4165">AE89EC86-7583-449B-9BBB-CB94E25E63B3 dark green</Text_Color>
+				</Colors>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Decimal_Places ID="4212">2</Decimal_Places>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Indices>
+			<Explicit_Index>
+				<Index ID="6510">f</Index>
+				<Header_Title ID="6530">"Final Product"</Header_Title>
+			</Explicit_Index>
+		</Indices>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>FlowFromPool</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>MinimumFinalProductPropertyRequirement</Symbol>
+			<Symbol>MinimumFinalProductAmountRequirement</Symbol>
+			<Symbol>MaximumPoolCapacity</Symbol>
+			<Symbol>UpdateCurrentPage</Symbol>
+			<Symbol>MinimumFlow</Symbol>
+			<Symbol>FinalProductPropertyValue</Symbol>
+			<Symbol>MaximumFlow</Symbol>
+			<Symbol>FinalProductSalesPrice</Symbol>
+			<Symbol>IntermediatePropertyValue</Symbol>
+			<Symbol>FlowToPool</Symbol>
+			<Symbol>MaximumFinalProductPropertyRequirement</Symbol>
+			<Symbol>PoolAmount</Symbol>
+			<Symbol>BasePrice</Symbol>
+			<Symbol>PoolPropertyValue</Symbol>
+			<Symbol>MaximumFinalProductAmountRequirement</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

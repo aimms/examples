@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Legend Font" FaceName="Arial" PointSize="110" Bold="true" Italic="true" UUID="0192E3DF-C524-4C10-8E63-DC19834204B7" InternalID="1" />
+	<UserFont Name="Description Font" FaceName="Arial" PointSize="90" Bold="true" Italic="true" UUID="0C20B9D2-7521-41F2-9DAA-812F9D3E5E83" InternalID="2" />
+</UserFonts>

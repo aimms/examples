@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Figure" FaceName="Cooper Black" PointSize="140" UUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" InternalID="1" />
+	<UserFont Name="Figure2" FaceName="Cooper Black" PointSize="110" Italic="true" UUID="2B4834B0-9F35-4AB0-9120-B21D2D25481D" InternalID="2" />
+</UserFonts>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="588F0ADE-E587-44B7-A1EF-B3DDBA3C5E12">
+		<Page Name="Input Data and Policy Receiving Submodels" PageGUID="09F6A1D2-2AA1-463F-99FF-45ECA6B0F517" />
+		<Page Name="Policy Making and Two Level Model" PageGUID="9946A968-702B-481E-BC10-7F47E5F23FF7" />
+		<Page Name="Sensitivity Analysis" PageGUID="52D4FB74-0559-486E-BE62-915702BB7757" />
+	</Page>
+	<Page Name="Documentation" PageGUID="E6733CB0-4353-4C25-8665-4769F914FF07" />
+</PageManager>

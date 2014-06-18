@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2013-03-11 09:40:01">
+	<Location top="29" left="4" bottom="153" right="375" />
+	<PageEditSize Type="Inherited">
+		<Size Width="371" Height="123" />
+	</PageEditSize>
+	<ProjectUUID>911E8D88-0FB5-447F-ABC8-1053330CF8F7</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromRight" Value="8">
+			<LeftArea Line="FixedFromBottom" Value="9" />
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="64A69181-F0F6-4D9E-801E-0CF03514D6BE">white</UserColor>
+	</Background>
+	<PageObject Type="Text">
+		<Location top="162" left="630" bottom="396" right="774" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"network.txt"</FileName>
+		<Font GUID="03C8F639-CD1F-4C7B-AFB9-E6C8F186C198" Name="default" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Bar Chart">
+		<Location top="0" left="0" bottom="120" right="366" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="03C8F639-CD1F-4C7B-AFB9-E6C8F186C198" Name="default" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Name>true</X-Name>
+		<HorizontalGridLines>true</HorizontalGridLines>
+		<VerticalGridLines>true</VerticalGridLines>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<YRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>1000</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>Production( w, ThisProduct )</Identifier>
+			<TitleText>"Production of product p"</TitleText>
+		</ExplicitIdentifier>
+		<FillWithColor>true</FillWithColor>
+		<Overlap>0</Overlap>
+		<BarSpacing>0</BarSpacing>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Production</Symbol>
+			<Symbol>w</Symbol>
+			<Symbol>ThisProduct</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

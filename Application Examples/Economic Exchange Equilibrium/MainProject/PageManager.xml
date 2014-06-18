@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="92E35892-8588-4161-9F92-CD1A6553F897">
+		<Page Name="Input Overview" PageGUID="729BBEC7-5617-484E-9971-76814C49F351" />
+		<Page Name="Results Overview" PageGUID="A29DB1BD-CE48-41DA-8D3E-893EA1CA1659" />
+		<Page Name="Trade Network" PageGUID="520F1A74-3568-47E3-A841-104B852DBB99" />
+	</Page>
+	<Page Name="Legend" PageGUID="62444092-B55E-4582-963D-C57DDC035B8D" />
+</PageManager>

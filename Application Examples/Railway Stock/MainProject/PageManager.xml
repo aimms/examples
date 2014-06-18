@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="A4B4B523-1704-41D4-90F9-40E76E0B82B2">
+		<Page Name="Network Page" PageGUID="2A29B220-0D66-4C20-98D4-79A5FE3C1460" />
+		<Page Name="Train Schedule" PageGUID="4D869791-22D7-4DFD-AE86-410E661A4896">
+			<Page Name="Schedule 1" PageGUID="4289B0BD-7246-4344-A4D8-3B7D9D0AF36C" />
+			<Page Name="Schedule 2" PageGUID="3029B717-3A55-45D7-9CBB-782246B81A6E" />
+		</Page>
+	</Page>
+</PageManager>

@@ -1,0 +1,891 @@
+## ams_version=1.0
+
+Model Main_Scenario_Generation {
+    Comment: "Model created by Koos. Stochastic data is random.";
+    DeclarationSection Det_Model_Declarations {
+        Parameter NrOfPeriods;
+        Set AllPeriods {
+            Index: t;
+        }
+        ElementParameter FirstPeriod {
+            Range: AllPeriods;
+            Definition: first(AllPeriods);
+        }
+        Parameter UnitProductionCost;
+        Parameter MaximumProduction;
+        Parameter UnitStockCost;
+        Parameter MaximumStock;
+        Parameter InitialStock;
+        Parameter Demand {
+            IndexDomain: t;
+            Property: Stochastic;
+            Comment: "| (Ord(t) > 1)";
+        }
+        Variable Production {
+            IndexDomain: t;
+            Range: [0, MaximumProduction];
+            Property: Stochastic;
+            Stage: ProductionStage(t);
+        }
+        Variable Stock {
+            IndexDomain: t;
+            Range: [0, MaximumStock];
+            Property: Stochastic;
+            Stage: StockStage(t);
+        }
+        Variable TotalCosts {
+            Definition: {
+                sum[ t, UnitProductionCost * Production(t) ] +
+                sum[ t, UnitStockCost * Stock(t) ]
+            }
+        }
+        Constraint StockBalance {
+            IndexDomain: t;
+            Definition: {
+                Stock(t)
+                =
+                if ( t = FirstPeriod )
+                    then InitialStock
+                    else Stock(t-1)
+                endif
+                + Production(t) - Demand(t)
+            }
+            Comment: {
+                "Stock(FirstPeriod) = InitialStock + Production(FirstPeriod) - Demand(FirstPeriod)
+                
+                if Ord(t) > 1 :    Stock(t) = Stock(t-1) + Production(t) - Demand(t)"
+            }
+        }
+        MathematicalProgram DetProductionModel {
+            Objective: TotalCosts;
+            Direction: minimize;
+        }
+    }
+    Section Det_Model_Procedures {
+        Procedure InitializeDetModelData {
+            Body: {
+                NrOfPeriods        := 4;
+                AllPeriods         := ElementRange( 1, NrOfPeriods, prefix:"period-", fill:0 );
+                
+                UnitProductionCost := 2.5;
+                MaximumProduction  := 10;
+                
+                UnitStockCost      := 1;
+                MaximumStock       := 15;
+                
+                InitialStock       := 1;
+                
+                Demand(t)          := 3 * Ord(t);
+            }
+        }
+        Procedure SolveDeterministicModel {
+            Body: {
+                solve DetProductionModel;
+            }
+        }
+    }
+    DeclarationSection Stochastic_Model_Declarations {
+        Set StochProdModel_Stages {
+            SubsetOf: Integers;
+            Index: st;
+            Definition: {
+                { 1 .. max[t, PeriodToStageMapping(t)] };
+            }
+        }
+        Parameter ProductionStage {
+            IndexDomain: (t);
+        }
+        Parameter StockStage {
+            IndexDomain: (t);
+        }
+        Set StochProdModel_Scenarios {
+            SubsetOf: AllStochasticScenarios;
+            Index: sc;
+            Comment: {
+                "This set is meant to store all scenarios corresponding to the production model. It is a subset of AllStochasticScenarios.
+                
+                While the pre-defined set AllStochasticScenarios can not be ordered by the user, the model specific set
+                StochProdModel_Scenarios can be ordered by the scenario generation procedures in order to build a proper tree-based
+                ScenarioTreeMapping.
+                
+                In general, AllStochasticScenarios can contain more scenarios pertaining to several stochastic models defined in the same
+                AIMMS project."
+            }
+        }
+        ElementParameter ScenarioTreeMapping {
+            IndexDomain: (sc,st);
+            Range: StochProdModel_Scenarios;
+        }
+        Parameter IsRepresentativeScenario {
+            IndexDomain: (sc,st);
+            Range: integer;
+            Default: 1;
+        }
+        Parameter ScenarioProbability {
+            IndexDomain: sc;
+        }
+        Parameter PeriodToStageMapping {
+            IndexDomain: t;
+        }
+        Set StageChildBranches {
+            Index: c, c2;
+            Definition: data { L, M, H };
+        }
+        Parameter BranchChance {
+            IndexDomain: (c);
+        }
+        Parameter SumAllBranchChances {
+            Definition: sum(c, BranchChance(c) );
+        }
+        Parameter LowerBoundFraction {
+            IndexDomain: (c);
+        }
+        Parameter UpperBoundFraction {
+            IndexDomain: (c);
+        }
+        StringParameter SPModel_RootName {
+            Definition: "DetOrExp";
+        }
+        ElementParameter SPModel_DetOrExpValues {
+            Range: AllStochasticScenarios;
+            Definition: StringToElement( AllStochasticScenarios, SPModel_RootName, 1);
+        }
+        ElementParameter StochProductionGMP {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+    }
+    Section SP_Model_Procedures {
+        Procedure InitializePeriodToStageMapping {
+            Body: {
+                PeriodToStageMapping(t)  := Ord(t);
+            }
+        }
+        Procedure AssignDecisionsToStages {
+            Body: {
+                ProductionStage(t) := PeriodToStageMapping(t);
+                StockStage(t) := PeriodToStageMapping(t);
+            }
+        }
+        Procedure InitializeBranchRangeAndChance {
+            Body: {
+                for c do
+                  switch c do
+                     'L' : LowerBoundFraction(c) := 0.50; UpperBoundFraction(c) := 0.80; BranchChance(c) := 0.3;
+                     'M' : LowerBoundFraction(c) := 0.80; UpperBoundFraction(c) := 1.20; BranchChance(c) := 0.4;
+                     'H' : LowerBoundFraction(c) := 1.20; UpperBoundFraction(c) := 1.50; BranchChance(c) := 0.3;
+                  endswitch;
+                endfor;
+            }
+        }
+        Procedure CreateScTreeAndStochDataByBranching {
+            Body: {
+                empty AllStochasticScenarios;
+                cleandependents AllStochasticScenarios;
+                
+                ScenGen::InitializeChildBranchesCallbackFunction   := 'MyInitializeChildBranchesCallback';
+                ScenGen::InitializeStochasticDataCallbackFunction  := 'MyInitializeStochasticDataCallback';
+                ScenGen::InitializeNewScenarioCallbackFunction     := 'MyInitializeNewScenarioCallback';
+                
+                option seed := 1234567;
+                
+                ScenGen::CreateScenarioTree( StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
+                
+                DetermineRepresentativeScenarios;
+                
+                ScenGen::BuildScenarioTreeViewFromMapping( "Scenario tree by branching", StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
+                
+                ShowAllScenarios;
+            }
+            Comment: {
+                "Remark:
+                
+                Procedure CreateScenarioTree from the Scenario Generation Module is called with the set StochProdModel_Scenarios as the
+                second (output) argument. This scenario set is constructed and ordered by this procedure. The order induced allows for a
+                proper tree-based construction of the ScenarioTreeMapping."
+            }
+        }
+        Procedure CreateScTreeAndStochDataByDescriptiveSampling {
+            Body: {
+                empty AllStochasticScenarios;
+                cleandependents AllStochasticScenarios;
+                
+                ScenGen::InitializeChildBranchesCallbackFunction   := 'MyInitializeChildBranchesCallback';
+                ScenGen::InitializeStochasticDataCallbackFunction  := 'MyDSInitializeStochasticDataCallback';
+                ScenGen::InitializeNewScenarioCallbackFunction     := 'MyInitializeNewScenarioCallback';
+                
+                option seed := 1234567;
+                
+                ScenGen::CreateScenarioTree( StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
+                
+                DetermineRepresentativeScenarios;
+                
+                ScenGen::BuildScenarioTreeViewFromMapping( "Scenario tree by sampling", StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
+                
+                ShowAllScenarios;
+            }
+            Comment: {
+                "Remark:
+                
+                Procedure CreateScenarioTree from the Scenario Generation Module is called with the set StochProdModel_Scenarios as the
+                second (output) argument. This scenario set is constructed and ordered by this procedure. The order induced allows for a
+                proper tree-based construction of the ScenarioTreeMapping."
+            }
+        }
+        Procedure CreateScTreeByStochDataBundling {
+            Body: {
+                empty AllStochasticScenarios;
+                cleandependents AllStochasticScenarios;
+                
+                ScenGen::InitializeStochasticScenarioDataCallbackFunction := 'MyInitializeStochasticScenarioDataCallback';
+                ScenGen::CompareScenariosCallbackFunction := 'MyCompareScenariosCallback';
+                ScenGen::DetermineScenarioGroupsCallbackFunction := 'MyDetermineScenarioGroupsCallback';
+                ScenGen::AssignStochasticDataForScenarioGroupCallbackFunction := 'MyAssignStochasticDataForScenarioGroupCallback';
+                
+                option seed := 1234567;
+                
+                ScenGen::CreateScenarioData( StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
+                
+                DetermineRepresentativeScenarios;
+                
+                ScenGen::BuildScenarioTreeViewFromMapping( "Scenario tree by bundling", StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
+                
+                ShowAllScenarios;
+            }
+            Comment: {
+                "Remark:
+                
+                Procedure CreateScenarioData from the Scenario Generation Module is called with the set StochProdModel_Scenarios as the
+                second (output) argument. This scenario set is constructed and ordered by this procedure. The order induced allows for a
+                proper tree-based construction of the ScenarioTreeMapping."
+            }
+        }
+        Procedure DetermineRepresentativeScenarios {
+            Body: {
+                IsRepresentativeScenario(sc,st) := 1;
+                
+                for (st,sc) do
+                        if ScenarioTreeMapping(sc,st) = ScenarioTreeMapping(sc+1,st)
+                           then IsRepresentativeScenario(sc+1,st) := 0;
+                        endif;
+                endfor
+            }
+            Comment: {
+                "
+                
+                This procedure uses the fact that the set StochProdModel_Scenarios built by the scenario generation procedures is also ordered.
+                This ordering is implicitly reflected in the  ScenarioTreeMapping."
+            }
+        }
+        Procedure SolveStochProductionModel {
+            Body: {
+                if ( not Step2_WasMade) then
+                	DialogError("The model cannot be solved without a generated scenario tree.");
+                else
+                
+                	StochProductionGMP := GMP::Instance::GenerateStochasticProgram(
+                				DetProductionModel,
+                				AllStochasticParameters,
+                				AllStochasticVariables,
+                				StochProdModel_Scenarios,
+                				ScenarioProbability,
+                				ScenarioTreeMapping,
+                				SPModel_RootName,
+                				GenerationMode:'CreateNonAnticipativityConstraints', ! Alternatives: 'CreateNonAnticipativityConstraints', 'SubstituteStochasticVariables'
+                				name:"StochProductionProgram" );
+                
+                	GMP::Instance::Solve( StochProductionGMP );
+                
+                endif;
+            }
+        }
+        Procedure SolveStochProductionModel_Benders {
+            Body: {
+                if ( not Step2_WasMade) then
+                	DialogError("The model cannot be solved without a generated scenario tree.");
+                else
+                
+                	StochProductionGMP := GMP::Instance::GenerateStochasticProgram(
+                				DetProductionModel,
+                				AllStochasticParameters,
+                				AllStochasticVariables,
+                				StochProdModel_Scenarios,
+                				ScenarioProbability,
+                				ScenarioTreeMapping,
+                				SPModel_RootName,
+                				GenerationMode:'SubstituteStochasticVariables',
+                				name:"StochProductionProgram" );
+                
+                	StochDecom::DoStochasticDecomposition( StochProductionGMP, StochProdModel_Stages,StochProdModel_Scenarios);
+                
+                endif;
+            }
+        }
+    }
+    Section GUI_Support_Section {
+        DeclarationSection GUI_Auxiliary_Declarations {
+            StringParameter DescriptionFile {
+                Definition: "Description.txt";
+            }
+            ElementParameter ValueDisplayColour {
+                IndexDomain: (sc,t);
+                Range: AllColors;
+                Default: 'black';
+            }
+            ElementParameter ScenDisplayColour {
+                IndexDomain: (sc,st);
+                Range: AllColors;
+                Default: 'black';
+            }
+            ElementParameter CurrentScenario {
+                Range: StochProdModel_Scenarios;
+            }
+            Parameter MaxDemand {
+                Definition: max(c,UpperBoundFraction(c)) * max(t,Demand(t));
+            }
+            StringParameter BranchDisplayName {
+                IndexDomain: (c);
+                Definition: {
+                    data
+                    {
+                    'L' : "Low     (L)",
+                    'M' : "Medium(M)",
+                    'H' : "High     (H)"
+                    }
+                }
+            }
+            Set TreeCreationMethods {
+                Index: m;
+                Definition: {
+                    data
+                    {
+                    'CreateTreeByBranching',
+                    'CreateTreeByDescriptive',
+                    'CreateTreeByBundling'
+                    }
+                }
+            }
+            StringParameter MethodName {
+                IndexDomain: (m);
+                Definition: {
+                    data
+                    {
+                    'CreateTreeByBranching' : "Create Tree By Branching",
+                    'CreateTreeByDescriptive' : "Create Tree By Descriptive",
+                    'CreateTreeByBundling' : "Create Tree By Bundling"
+                    }
+                }
+            }
+            ElementParameter MethodToApply {
+                Range: TreeCreationMethods;
+                InitialData: 'CreateTreeByBranching';
+            }
+            Parameter ShowOnlyReprScen {
+                Range: binary;
+            }
+            Parameter Step1_AssignmentWasMade {
+                Range: binary;
+                InitialData: 0;
+            }
+            Parameter Step1_InitializationWasMade {
+                Range: binary;
+                InitialData: 0;
+            }
+            Parameter Step2_WasMade {
+                Range: binary;
+                InitialData: 0;
+            }
+        }
+        Procedure CreateScenarioTree {
+            Body: {
+                if ( not Step1_AssignmentWasMade) then
+                	DialogError("The decisions should be assigned to the stages before the scenario tree is gerenated.");
+                endif;
+                
+                if ( not Step1_InitializationWasMade ) then
+                	DialogError("The branches should be initialized before the scenario tree is gerenated.");
+                endif;
+                
+                if (Step1_AssignmentWasMade + Step1_InitializationWasMade = 2 ) then
+                
+                	if (not prod(c,(LowerBoundFraction(c) < UpperBoundFraction(c))) ) then
+                		DialogError("The lower bound of the branch should be lower than the upper bound of the branch.");
+                	else
+                
+                		ShowOnlyReprScen := 0;
+                
+                		switch MethodToApply do
+                		'CreateTreeByBranching' : CreateScTreeAndStochDataByBranching;
+                		'CreateTreeByDescriptive' : CreateScTreeAndStochDataByDescriptiveSampling;
+                		'CreateTreeByBundling' : CreateScTreeByStochDataBundling;
+                		endswitch;
+                
+                		Step2_WasMade := 1;
+                
+                	endif;
+                
+                endif;
+            }
+        }
+        Procedure ShowOnlyRepresentativeScenarios {
+            Body: {
+                for (sc,t) do
+                
+                  if IsRepresentativeScenario(sc,PeriodToStageMapping(t))
+                     then ValueDisplayColour(sc,t) := 'black';
+                     else ValueDisplayColour(sc,t) := 'white';
+                  endif;
+                
+                endfor;
+                
+                for (sc,st) do
+                
+                  if IsRepresentativeScenario(sc,st)
+                     then ScenDisplayColour(sc,st) := 'black';
+                     else ScenDisplayColour(sc,st) := 'white';
+                  endif
+                
+                endfor;
+            }
+        }
+        Procedure ShowAllScenarios {
+            Body: {
+                for (sc,t) do
+                
+                  if IsRepresentativeScenario(sc,PeriodToStageMapping(t))
+                     then ValueDisplayColour(sc,t) := 'red';
+                     else ValueDisplayColour(sc,t) := 'black';
+                  endif;
+                
+                endfor;
+                
+                for (sc,st) do
+                
+                  if IsRepresentativeScenario(sc,st)
+                     then ScenDisplayColour(sc,st) := 'red';
+                     else ScenDisplayColour(sc,st) := 'black';
+                  endif
+                
+                endfor;
+            }
+            Comment: {
+                "ValueDisplayColour(sc,t) := \'black\';
+                
+                ScenDisplayColour(sc,st) := \'black\';"
+            }
+        }
+        Procedure SwitchShowModes {
+            Body: {
+                if ShowOnlyReprScen
+                   then ShowOnlyRepresentativeScenarios;
+                   else ShowAllScenarios;
+                endif
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            InitializeDetModelData;
+            InitializePeriodToStageMapping;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            CreateScTreeAndStochDataByBranching;
+            SolveStochProductionModel;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Section Scenario_Generation_Callback_Funtions {
+        Section Callbacks_for_Scenario_Generation_by_Tree {
+            Procedure MyInitializeChildBranchesCallback {
+                Arguments: (CurrentStage,Scenario,CurrentChildBranches,CurrentChildBranchName);
+                Body: {
+                    CurrentChildBranches := { 1 .. card(::StageChildBranches) };
+                    
+                    CurrentChildBranchName(cb) := FormatString( "%e", element(::StageChildBranches,ord(cb)) );
+                }
+                ElementParameter Scenario {
+                    Range: AllStochasticScenarios;
+                    Property: Input;
+                }
+                ElementParameter CurrentStage {
+                    Range: Integers;
+                    Property: Input;
+                }
+                Set CurrentChildBranches {
+                    SubsetOf: Integers;
+                    Index: cb;
+                    Property: Output;
+                }
+                StringParameter CurrentChildBranchName {
+                    IndexDomain: cb;
+                    Property: Output;
+                }
+            }
+            Procedure MyInitializeStochasticDataCallback {
+                Arguments: (CurrentStage,CurrentScenario,CurrentChildBranch,CurrentChildBranchName);
+                Body: {
+                    ! Initialize stochastic data for all periods corresponding to the current stage and scenario (taking child branch into account)
+                    
+                    CurrentChildBranchElem := StringToElement(StageChildBranches, CurrentChildBranchName, 0);
+                    
+                    if CurrentChildBranchElem <> ''
+                           then
+                             SampleFraction := Uniform(LowerBoundFraction(CurrentChildBranchElem), UpperBoundFraction(CurrentChildBranchElem));
+                           else
+                             SampleFraction := 1;
+                         endif;
+                    
+                    for ( t | PeriodToStageMapping(t) = CurrentStage ) do
+                    
+                         Demand.Stochastic(CurrentScenario,t) := SampleFraction * Demand(t);
+                    
+                    endfor;
+                    
+                    RelativeScenarioWeight := BranchChance(CurrentChildBranchElem);
+                    
+                    return /*relative weight*/ RelativeScenarioWeight;
+                }
+                Comment: "This procedure initializes stochastic data by using common random sampling from the given parameter distribution.";
+                ElementParameter CurrentStage {
+                    Range: Integers;
+                    Property: Input;
+                }
+                ElementParameter CurrentScenario {
+                    Range: AllStochasticScenarios;
+                    Property: Input;
+                }
+                ElementParameter CurrentChildBranch {
+                    Range: Integers;
+                    Property: Input;
+                }
+                StringParameter CurrentChildBranchName {
+                    Property: Input;
+                }
+                ElementParameter CurrentChildBranchElem {
+                    Range: StageChildBranches;
+                }
+                Parameter RelativeScenarioWeight;
+                Parameter SampleFraction;
+            }
+            Procedure MyDSInitializeStochasticDataCallback {
+                Arguments: (CurrentStage,CurrentScenario,CurrentChildBranch,CurrentChildBranchName);
+                Body: {
+                    ! Initialize stochastic data for all periods corresponding to the current stage and scenario (taking child branch into account)
+                    
+                    CurrentChildBranchElem := StringToElement(StageChildBranches, CurrentChildBranchName, 0);
+                    
+                    if CurrentChildBranchElem <> ''
+                      then
+                    
+                       for ( t | PeriodToStageMapping(t) = CurrentStage ) do
+                         MinValue := LowerBoundFraction(CurrentChildBranchElem) * Demand(t);
+                         MaxValue := UpperBoundFraction(CurrentChildBranchElem) * Demand(t);
+                         if ( MaxValue > MinValue ) then
+                             Demand.Stochastic(CurrentScenario,t) := DistributionInverseCumulative( Uniform(MinValue,MaxValue), 0.5 );
+                         else
+                             Demand.Stochastic(CurrentScenario,t) := MinValue;
+                         endif;
+                       endfor;
+                    
+                    else
+                    
+                      Demand.Stochastic(CurrentScenario,t) := Demand(t);
+                    
+                    endif;
+                    
+                    RelativeScenarioWeight := BranchChance(CurrentChildBranchElem);
+                    
+                    return /*relative weight*/ RelativeScenarioWeight;
+                }
+                Comment: {
+                    "This procedure initializes stochastic data by using descriptive sampling from the given parameter distribution.
+                    
+                    In this particular example only one value is considered in each of the 3 confidence intervals of the assumed step distribution. More precisely, the middle value is taken for each of the L, M, and H intervals by taking 0.5 as the second argument of the (pre-defined) function DistributionInverseCumulative.
+                    In general, this function can be used in order to generate a number of fixed quantiles of the distribution."
+                }
+                ElementParameter CurrentStage {
+                    Range: Integers;
+                    Property: Input;
+                }
+                ElementParameter CurrentScenario {
+                    Range: AllStochasticScenarios;
+                    Property: Input;
+                }
+                ElementParameter CurrentChildBranch {
+                    Range: Integers;
+                    Property: Input;
+                }
+                StringParameter CurrentChildBranchName {
+                    Property: Input;
+                }
+                ElementParameter CurrentChildBranchElem {
+                    Range: StageChildBranches;
+                }
+                Parameter MinValue;
+                Parameter MaxValue;
+                Parameter RelativeScenarioWeight;
+            }
+            Procedure MyInitializeNewScenarioCallback {
+                Arguments: (SomeStage, NewScenario, RepresentiveScenario);
+                Body: {
+                    ! Copy stochastic data for a new scenario and a (previous) stage from the representative scenario and that stage
+                    
+                    for ( t | PeriodToStageMapping(t) = SomeStage ) do
+                        Demand.Stochastic(NewScenario,t) := Demand.Stochastic(RepresentiveScenario,t);
+                    endfor;
+                }
+                ElementParameter SomeStage {
+                    Range: Integers;
+                    Property: Input;
+                }
+                ElementParameter NewScenario {
+                    Range: AllStochasticScenarios;
+                    Property: Input;
+                }
+                ElementParameter RepresentiveScenario {
+                    Range: AllStochasticScenarios;
+                    Property: Input;
+                }
+            }
+        }
+        Section Callbacks_for_Scenario_Generation_by_Data {
+            Procedure MyInitializeStochasticScenarioDataCallback {
+                Arguments: (Scenario,CurrentScenarios);
+                Body: {
+                    if ( card(CurrentScenarios) <= 60 ) then
+                    
+                      ScenRelativeWeight := 1;
+                    
+                      for t do
+                        SampleFraction := 1;
+                    
+                        if PeriodToStageMapping(t) > 1 then
+                            ChanceIndicator := Uniform(0,SumAllBranchChances);
+                    
+                            if (ChanceIndicator = SumAllBranchChances)
+                               then
+                                 SampleFraction := Uniform(LowerBoundFraction(Last(StageChildBranches)), UpperBoundFraction(Last(StageChildBranches)));
+                                 ScenRelativeWeight *= BranchChance(Last(StageChildBranches));
+                               else
+                                 Branch := First(StageChildBranches);
+                                 while Branch do
+                                   if ( sum(c | c < Branch, BranchChance(c)) <= ChanceIndicator )
+                                     AND ( ChanceIndicator < sum(c | c <= Branch, BranchChance(c)) )
+                                     then
+                                      SampleFraction := Uniform(LowerBoundFraction(Branch), UpperBoundFraction(Branch));
+                                      ScenRelativeWeight *= BranchChance(Branch);
+                                      break;
+                                     else
+                                      Branch += 1;
+                                   endif;
+                                 endwhile;
+                            endif;
+                        endif;
+                    
+                        Demand.Stochastic(Scenario,t) := SampleFraction * Demand(t);
+                    
+                        ! To change the standard default scenario name use
+                        ! SetElementRename(CurrentScenarios,Scenario,"New name");
+                       endfor;
+                    
+                       return /*relative weight*/ ScenRelativeWeight;
+                    
+                    else
+                        FirstPeriod := First(AllPeriods);
+                        FirstScenario := First(CurrentScenarios);
+                        Demand.Stochastic(cs,FirstPeriod) := Demand.Stochastic(FirstScenario,FirstPeriod);
+                    
+                        return /*last scenario  */ 0;
+                    endif;
+                }
+                Comment: "Initialize stochastic data for all periods corresponding to the current stage(and scenario).";
+                ElementParameter Scenario {
+                    Range: AllStochasticScenarios;
+                    Property: Input;
+                }
+                Set CurrentScenarios {
+                    SubsetOf: AllStochasticScenarios;
+                    Index: cs;
+                    Property: Input;
+                }
+                ElementParameter FirstPeriod {
+                    Range: AllPeriods;
+                }
+                ElementParameter FirstScenario {
+                    Range: AllStochasticScenarios;
+                }
+                ElementParameter Branch {
+                    Range: StageChildBranches;
+                }
+                Parameter ChanceIndicator;
+                Parameter SampleFraction;
+                Parameter ScenRelativeWeight;
+            }
+            Procedure MyCompareScenariosCallback {
+                Arguments: (Scenario1,Scenario2,CurrentStages,FirstDifferentStage);
+                Body: {
+                    for (cs) do
+                        for ( t | PeriodToStageMapping(t) = cs ) do
+                            if ( Demand.Stochastic(Scenario1,t) < Demand.Stochastic(Scenario2,t) ) then
+                                FirstDifferentStage := cs;
+                                return -1;
+                            endif;
+                            if ( Demand.Stochastic(Scenario1,t) > Demand.Stochastic(Scenario2,t) ) then
+                                FirstDifferentStage := cs;
+                                return  1;
+                            endif;
+                        endfor;
+                    endfor;
+                    
+                    return 0;
+                }
+                Comment: {
+                    "This function should return 0 if the stochastic data for scenario1 and scenario2
+                    is identical. Otherwise it should return nonzero and the first stage at which
+                    both scenarios differ."
+                }
+                ElementParameter Scenario1 {
+                    Range: AllStochasticScenarios;
+                    Property: Input;
+                }
+                ElementParameter Scenario2 {
+                    Range: AllStochasticScenarios;
+                    Property: Input;
+                }
+                Set CurrentStages {
+                    SubsetOf: Integers;
+                    Index: cs;
+                    Property: Input;
+                }
+                ElementParameter FirstDifferentStage {
+                    Range: Integers;
+                    Property: Output;
+                }
+            }
+            Procedure MyDetermineScenarioGroupsCallback {
+                Arguments: (CurrentStage,ScenarioGroup,ScenarioGroupOrder);
+                Body: {
+                    ScenarioGroupSize := card(ScenarioGroup);
+                    
+                    for ( (sgr,t) | PeriodToStageMapping(t) = CurrentStage ) do
+                    
+                        DemandRatio :=  Demand.Stochastic(sgr,t) / $ Demand(t);
+                    
+                        Branch := First(StageChildBranches);
+                    
+                        while Branch do
+                           if ( LowerBoundFraction(Branch) <= DemandRatio ) AND ( DemandRatio < UpperBoundFraction(Branch) )
+                              then
+                                 BranchOfScenarioInPeriod(sgr,t) := Branch;
+                                 break;
+                              else
+                                 Branch += 1;
+                           endif;
+                        endwhile;
+                    
+                    endfor;
+                    
+                    Scenario := First(ScenarioGroup);
+                    ScenarioOrder := 1;
+                    ScenarioAssignedToGroup(sgr) := 0;
+                    
+                    while ( Scenario ) do
+                        for ( sgr | Forall( t | PeriodToStageMapping(t) = CurrentStage,
+                                            BranchOfScenarioInPeriod(sgr,t) = BranchOfScenarioInPeriod(Scenario,t) ) ) do
+                    
+                            ScenarioGroupOrder(sgr) := ScenarioOrder;
+                            ScenarioAssignedToGroup(sgr) := 1;
+                    
+                        endfor;
+                    
+                        Scenario := First( sgr | not ScenarioAssignedToGroup(sgr) );
+                        ScenarioOrder += 1;
+                    endwhile;
+                }
+                Comment: {
+                    "This function should subdivide all scenarios in the set CurrentScenarioGroup into subgroups.
+                    To do so the parameter CurrentScenarioGroupOrder should be initialized for every scenario in
+                    this group with an integer number between 1 and the number of subgroups."
+                }
+                Parameter ScenarioOrder;
+                Parameter ScenarioAssignedToGroup {
+                    IndexDomain: (sgr);
+                }
+                ElementParameter CurrentStage {
+                    Range: Integers;
+                    Property: Input;
+                }
+                ElementParameter Scenario {
+                    Range: AllStochasticScenarios;
+                }
+                Set ScenarioGroup {
+                    SubsetOf: AllStochasticScenarios;
+                    Index: sgr;
+                    Property: Input;
+                }
+                Parameter ScenarioGroupOrder {
+                    IndexDomain: (sgr);
+                    Range: {
+                        {1..ScenarioGroupSize}
+                    }
+                    Property: Output;
+                }
+                Parameter ScenarioGroupSize;
+                Parameter DemandRatio;
+                ElementParameter Branch {
+                    Range: StageChildBranches;
+                }
+                ElementParameter BranchOfScenarioInPeriod {
+                    IndexDomain: (sgr,t);
+                    Range: StageChildBranches;
+                }
+            }
+            Procedure MyAssignStochasticDataForScenarioGroupCallback {
+                Arguments: (CurrentStage,ScenarioGroup);
+                Body: {
+                    for ( t | PeriodToStageMapping(t) = CurrentStage ) do
+                        StochasticDataForScenarioGroup := Average( sgr, Demand.Stochastic(sgr,t) );
+                        Demand.Stochastic(sgr,t) := StochasticDataForScenarioGroup;
+                    endfor;
+                }
+                ElementParameter CurrentStage {
+                    Range: Integers;
+                    Property: Input;
+                }
+                Set ScenarioGroup {
+                    SubsetOf: AllStochasticScenarios;
+                    Index: sgr;
+                    Property: Input;
+                }
+                Parameter StochasticDataForScenarioGroup;
+            }
+        }
+    }
+    Module Stochastic_Decomposition_Module {
+        SourceFile: "%AIMMSMODULES%\\StochasticDecomposition.ams";
+        Comment: {
+            "This module contains an implementation of the Nested Benders algorithm using
+            the functions from the GMP library. It can be used to solve linear stochastic
+            models without integer/binary variables.
+            
+            The Nested Benders algorithm is based on a reformulation of the original model
+            as a sequence of smaller models. The solution of the original model can be
+            achieved by solving the sequence of models iteratively until a terminating
+            condition is reached. A detailed discussion of the Nested Benders algorithm
+            can be found in the AIMMS Language Reference, and in the following references:
+            
+            - F. Altenstedt, Memory consumption versus computational time in
+              nested benders decompostion for stochastic linear programmings, Tech.
+              report, Chalmers University of Technology, Goteborg, Sweden, 2003.
+            
+            - M. Dempster and R. Thompson, Parallelization and aggregation of
+              nested benders decomposition, Annals of Operations Research 81
+              (1998), pp. 163-187."
+        }
+    }
+}

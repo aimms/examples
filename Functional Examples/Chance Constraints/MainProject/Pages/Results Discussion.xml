@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-11-10 20:55:45">
+	<Location top="210" left="284" bottom="456" right="693" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>5FE92A41-D029-47D4-A21D-FE9D5CF0AC93</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background RGB="#ffffff" />
+	<PageObject Type="Text">
+		<Location top="18" left="18" bottom="222" right="306" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>ResultsDiscussion</StringParameter>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="186" left="312" bottom="216" right="396" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Close"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="18" left="318" bottom="90" right="390" />
+		<FileName LiteralFileName="true">"&lt;prj&gt;:bitmaps\boxcircle.png"</FileName>
+		<Display>StretchOrShrink</Display>
+		<KeepRatio>true</KeepRatio>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>ResultsDiscussion</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

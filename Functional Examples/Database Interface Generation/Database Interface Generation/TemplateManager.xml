@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="3E6E633A-5FAB-4AC5-92CC-80406D305A20" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
+		<Template Name="Navigation Template" PageGUID="4F7D77E7-EEB7-48CC-931A-D6647A639FD5" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
+			<Page Name="Database Interface Generation" PageGUID="0137F17E-A537-4530-96AA-E66653592128" />
+		</Template>
+	</Template>
+</TemplateManager>

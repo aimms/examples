@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<DataManagementSetup TimeStamp="2011-12-01 00:35:14">
+	<CaseType Name="All Identifiers" UUID="F2A56E0E-2090-4B45-ADB5-CC4435B74CA0" InternalID="1">
+		<Properties>
+			<Contents AllIdentifiers="true" />
+			<Options ConfirmOverwriteExisting="false" />
+		</Properties>
+	</CaseType>
+</DataManagementSetup>

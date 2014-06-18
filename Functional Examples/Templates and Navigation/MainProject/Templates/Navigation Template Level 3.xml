@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-16 08:49:05" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>8122218E-B00F-479E-A6AF-F2CCB5DBE628</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<TopArea Line="FixedFromTop" Value="196" />
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85" />
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Rectangle">
+		<Location top="189" left="207" bottom="615" right="762" />
+		<Shape>In-Shadow</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="387" left="282" bottom="417" right="690" />
+		<StaticText>Data Contents Of </StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
+		<TextColor>
+			<UserColor GUID="3D4B457F-7513-47E9-8228-8120838FC89A">default selection</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Navigation Object">
+		<Location top="408" left="282" bottom="438" right="690" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Display>Text</Display>
+		<Spacing>6</Spacing>
+		<BackgroundColor RGB="#ffffff" />
+		<InputColor>
+			<UserColor GUID="3D4B457F-7513-47E9-8228-8120838FC89A">default selection</UserColor>
+		</InputColor>
+		<NavigationData>
+			<ReferencePage>ThisPage</ReferencePage>
+			<NumberOfAncestors>1</NumberOfAncestors>
+			<CenterText>true</CenterText>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

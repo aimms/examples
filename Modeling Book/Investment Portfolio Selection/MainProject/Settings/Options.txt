@@ -1,0 +1,16 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+* AOA
+"AOA".NLP_starting_point_strategy 1
+* BARON 7.5
+"BARON 7.5".LP_solver 0
+"BARON 7.5".NLP_solver 0
+* Environment
+Project_Title "AIMMS - Investment Portfolio Selection "
+Startup_Page "AIMMS Demo"

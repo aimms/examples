@@ -1,0 +1,4 @@
+﻿* AIMMS
+rounding_compatibility Aimms_3_7
+* Environment
+Startup_Page "Input and Output Data"

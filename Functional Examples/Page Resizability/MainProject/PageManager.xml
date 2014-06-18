@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="78367511-2784-4D7A-B0E4-642DD25D9615">
+		<Page Name="Resizable Page" PageGUID="84F0A939-A49C-4441-9657-7A597EF21F24" />
+		<Page Name="Nonresizable Page" PageGUID="E61FB01B-5ED2-4A86-AF06-C92E5D668378" />
+		<Page Name="Complete Page" PageGUID="86D7D1FB-0AD7-4FF5-92A9-E208463327C8" />
+		<Page Name="Complete Page Nonresizable" PageGUID="FA67C163-D53F-4E79-8973-893DE47F626A" />
+	</Page>
+</PageManager>

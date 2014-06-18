@@ -1,0 +1,223 @@
+## ams_version=1.0
+
+Model Lag_And_Lead_in_Horizon {
+    DeclarationSection Horizon_Declaration {
+        Parameter MaxPeriod;
+        Parameter PlanningLength;
+        Horizon ModelPeriods {
+            Index: p;
+            Parameter: IntervalStart;
+            CurrentPeriod: IntervalStart;
+            IntervalLength: PlanningLength;
+            Definition: ElementRange(1, MaxPeriod, prefix: "p-");
+        }
+    }
+    DeclarationSection Horizon_Data {
+        Set ComputationMethods {
+            Index: cm;
+            Parameter: CompMethod, ThisMethod;
+            Definition: data { 'Per Horizon Interval', 'For All Intervals',  'Default Behavior' };
+        }
+        Parameter OrderingNumber {
+            IndexDomain: (cm,p);
+        }
+        ElementParameter OrderingElement {
+            IndexDomain: (cm,p);
+            Range: ModelPeriods;
+        }
+        ElementParameter Previous {
+            IndexDomain: (cm,p);
+            Range: ModelPeriods;
+        }
+        ElementParameter PreviousCyclic {
+            IndexDomain: (cm,p);
+            Range: ModelPeriods;
+        }
+        ElementParameter Next {
+            IndexDomain: (cm,p);
+            Range: ModelPeriods;
+        }
+        ElementParameter NextCyclic {
+            IndexDomain: (cm,p);
+            Range: ModelPeriods;
+        }
+    }
+    DeclarationSection Optimization_Model {
+        Set DataBounds {
+            Index: b;
+            Definition: data { Min, Max };
+        }
+        Parameter NoBounds {
+            IndexDomain: b;
+            Definition: data { Min: 0, Max: inf };
+        }
+        Parameter ProductionBounds {
+            IndexDomain: (p,b);
+        }
+        Parameter Demand {
+            IndexDomain: p;
+        }
+        Parameter StockBounds {
+            IndexDomain: (p,b);
+        }
+        Variable Production {
+            IndexDomain: p;
+            Range: [ProductionBounds(p, 'Min'), ProductionBounds(p, 'Max')];
+        }
+        Variable Sales {
+            IndexDomain: p;
+            Range: [Demand(p), inf);
+        }
+        Variable Stock {
+            IndexDomain: p;
+            Range: [StockBounds(p, 'Min'), StockBounds(p, 'Max')];
+            Definition: Stock(p-1) + Production(p) - Sales(p);
+        }
+        Variable AccumulatedProduction {
+            Definition: sum(p, Production(p));
+        }
+        MathematicalProgram ProductionModel {
+            Objective: AccumulatedProduction;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: LP;
+        }
+    }
+    DeclarationSection Interface_Declarations {
+        Set PeriodViews {
+            Parameter: View;
+            Definition: data { Past, Planning, Beyond, All };
+        }
+        Set ViewPeriods {
+            SubsetOf: ModelPeriods;
+            Index: vp;
+            Definition: {
+                if     ( View = 'Past'     ) then ModelPeriods.Past
+                elseif ( View = 'Planning' ) then ModelPeriods.Planning
+                elseif ( View = 'Beyond'   ) then ModelPeriods.Beyond
+                else ModelPeriods
+                endif
+            }
+        }
+        Set DataViews {
+            Index: dv;
+            Definition: data { 'Horizon Data', 'Optimization Data' };
+        }
+        Parameter DataView {
+            IndexDomain: dv;
+            InitialData: data { 'Horizon Data' : 1 };
+        }
+        Parameter InitializationSignature {
+            InitialData: 0;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            MaxPeriod      := 15;
+            IntervalStart  := Element(ModelPeriods,5);
+            PlanningLength := 5;
+            View           := 'All';
+            CompMethod     := 'Per Horizon Interval';
+            
+            AllUpdatableIdentifiers += AllVariables;
+            CurrentInputs           += AllVariables;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            empty OrderingNumber, OrderingElement, Previous, Next, PreviousCyclic, NextCyclic;
+            
+            ComputationPerHorizonInterval;
+            ComputationForAllIntervals;
+            ComputationDefaultBehavior;
+            
+            SolveProductionModelWithDummyData;
+        }
+    }
+    Procedure ComputationPerHorizonInterval {
+        Body: {
+            ThisMethod := 'Per Horizon Interval';
+            
+            OrderingNumber(ThisMethod, p in ModelPeriods.Past    ) := Ord(p);
+            OrderingNumber(ThisMethod, p in ModelPeriods.Planning) := Ord(p);
+            OrderingNumber(ThisMethod, p in ModelPeriods.Beyond  ) := Ord(p);
+            
+            OrderingElement(ThisMethod, p in ModelPeriods.Past    ) := Element(ModelPeriods.Past,     OrderingNumber(ThisMethod, p));
+            OrderingElement(ThisMethod, p in ModelPeriods.Planning) := Element(ModelPeriods.Planning, OrderingNumber(ThisMethod, p));
+            OrderingElement(ThisMethod, p in ModelPeriods.Beyond  ) := Element(ModelPeriods.Beyond,   OrderingNumber(ThisMethod, p));
+            
+            Previous(ThisMethod, p in ModelPeriods.Past    ) := p - 1;
+            Previous(ThisMethod, p in ModelPeriods.Planning) := p - 1;
+            Previous(ThisMethod, p in ModelPeriods.Beyond  ) := p - 1;
+            
+            Next(ThisMethod, p in ModelPeriods.Past    ) := p + 1;
+            Next(ThisMethod, p in ModelPeriods.Planning) := p + 1;
+            Next(ThisMethod, p in ModelPeriods.Beyond  ) := p + 1;
+            
+            PreviousCyclic(ThisMethod, p in ModelPeriods.Past    ) := p -- 1;
+            PreviousCyclic(ThisMethod, p in ModelPeriods.Planning) := p -- 1;
+            PreviousCyclic(ThisMethod, p in ModelPeriods.Beyond  ) := p -- 1;
+            
+            NextCyclic(ThisMethod, p in ModelPeriods.Past    ) := p ++ 1;
+            NextCyclic(ThisMethod, p in ModelPeriods.Planning) := p ++ 1;
+            NextCyclic(ThisMethod, p in ModelPeriods.Beyond  ) := p ++ 1;
+        }
+    }
+    Procedure ComputationForAllIntervals {
+        Body: {
+            ThisMethod := 'For All Intervals';
+            
+            OrderingNumber(ThisMethod, p in ModelPeriods)  := Ord(p);
+            OrderingElement(ThisMethod, p in ModelPeriods) := Element(ModelPeriods, OrderingNumber(ThisMethod, p) );
+            Previous(ThisMethod, p in ModelPeriods)        := p - 1;
+            Next(ThisMethod, p in ModelPeriods)            := p + 1;
+            PreviousCyclic(ThisMethod, p in ModelPeriods)  := p -- 1;
+            NextCyclic(ThisMethod, p in ModelPeriods)      := p ++ 1;
+        }
+    }
+    Procedure ComputationDefaultBehavior {
+        Body: {
+            ThisMethod := 'Default Behavior';
+            
+            OrderingNumber(ThisMethod, p)  := Ord(p);
+            OrderingElement(ThisMethod, p) := Element(ModelPeriods, OrderingNumber(ThisMethod, p) );
+            Previous(ThisMethod, p)        := p - 1;
+            Next(ThisMethod, p)            := p + 1;
+            PreviousCyclic(ThisMethod, p)  := p -- 1;
+            NextCyclic(ThisMethod, p)      := p ++ 1;
+        }
+    }
+    Procedure SolveProductionModelWithDummyData {
+        Body: {
+            ! This is obviously dummy data, but constructed to always give feasible results
+            ! when created at first. We only initialize when we have not done so before
+            ! for a set of horizon settings (as characterized by InitializationSignature).
+            
+            if ( InitializationSignature <> 100000*MaxPeriod + 1000*PlanningLength + ord(IntervalStart, ModelPeriods) ) then
+                    empty StockBounds, ProductionBounds, Demand, Stock, Production, Sales;
+            
+                    StockBounds(p in ModelPeriods,b) := NoBounds(b);
+            
+                    Stock(IntervalStart - 1) := 2;
+            
+                    ProductionBounds(p in ModelPeriods.Planning,'Min') :=    PlanningLength - ord(p) + 1;
+                    ProductionBounds(p in ModelPeriods.Planning,'Max') := 2*(PlanningLength - ord(p) + 1);
+            
+                    Demand(p in ModelPeriods.Planning) := 1.5*ord(p);
+            
+                    StockBounds(p in ModelPeriods.Planning,'Min') :=     PlanningLength;
+                    StockBounds(p in ModelPeriods.Planning,'Max') := 0.5*PlanningLength*(PlanningLength+1);
+            
+                    InitializationSignature := 100000*MaxPeriod + 1000*PlanningLength + ord(IntervalStart, ModelPeriods);
+            endif;
+            
+            solve ProductionModel;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

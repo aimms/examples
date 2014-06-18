@@ -1,0 +1,4 @@
+﻿* AIMMS
+warning_duplicate_column off
+* Environment
+Startup_Page "Input and Output Data"

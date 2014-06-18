@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-09-20 18:55:06">
+	<Location top="29" left="8" bottom="798" right="1180" />
+	<PageEditSize Type="Inherited">
+		<Size Width="650" Height="548" />
+	</PageEditSize>
+	<ProjectUUID>DF3BEC5E-9D0D-4DEE-8E27-EBE8628E79DA</ProjectUUID>
+	<Title>"LogNormal"</Title>
+	<TemplatesTabOrderPosition>3</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="PercentageFromTop" Value="0.53" />
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="2D Chart">
+		<Location top="300" left="222" bottom="540" right="426" />
+		<TabOrder>1</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Pval( p )</Domain>
+			<Misc_settings>
+				<Title ID="1002">"Inverse cumulative graphs"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">inversecumulative( logn, p )</Value>
+				<Appearance>
+					<Line>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Annotation>
+				<X_Axis_origin ID="2053">-1</X_Axis_origin>
+			</Annotation>
+			<Scale>
+				<Minimum ID="2035">-2</Minimum>
+				<Maximum ID="2036">3</Maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="6" left="6" bottom="288" right="318" />
+		<TabOrder>4</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Xval( p )</Domain>
+			<Scale>
+				<Minimum ID="1014">-1</Minimum>
+				<Maximum ID="1015">2</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Density graphs"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">density( logn, p )</Value>
+				<Appearance>
+					<Line>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Scale>
+				<Maximum ID="2036">3</Maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+		</Legend>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="300" left="438" bottom="540" right="642" />
+		<TabOrder>5</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Pval( p )</Domain>
+			<Misc_settings>
+				<Title ID="1002">"Inverse density graphs"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">inversedensity( logn, p )</Value>
+				<Appearance>
+					<Line>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Scale>
+				<Maximum ID="2036">10</Maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="582" left="218" bottom="606" right="302" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Take Sample"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>CreateLogNormalHistograms</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="588" left="30" bottom="612" right="114" />
+		<StaticText>sample size</StaticText>
+		<Alignment>Right</Alignment>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="300" left="6" bottom="540" right="210" />
+		<TabOrder>2</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">Xval( p )</Domain>
+			<Scale>
+				<Minimum ID="1014">-1</Minimum>
+				<Maximum ID="1015">2</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Cumulative graphs"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ExtraInfo="1 0 " ID="2007">cumulative( logn, p )</Value>
+				<Appearance>
+					<Line>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="582" left="312" bottom="606" right="396" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Smooth Sample"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SmoothLogNormalHistograms</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="6" left="330" bottom="288" right="642" />
+		<TabOrder>8</TabOrder>
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<X_Axis>
+			<Domain ID="1004">XvalS( s )</Domain>
+			<Scale>
+				<Minimum ID="1014">-1</Minimum>
+				<Maximum ID="1015">2</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Sample  (density graph)"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ID="2007">samplefrequency( s, logn )</Value>
+				<Appearance>
+					<Line>
+						<Width ID="2025">2</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Scale>
+				<Maximum ID="2036">3</Maximum>
+			</Scale>
+		</Y_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="2">"Background yellow"</Background_color>
+			</Surrounding_area>
+		</Display>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="582" left="126" bottom="606" right="210" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+		</TextColor>
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>samplesize</Identifier>
+			<NumberFormat Width="5" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>p</Symbol>
+			<Symbol>s</Symbol>
+			<Symbol>Xval</Symbol>
+			<Symbol>inversedensity</Symbol>
+			<Symbol>CreateLogNormalHistograms</Symbol>
+			<Symbol>samplesize</Symbol>
+			<Symbol>SmoothLogNormalHistograms</Symbol>
+			<Symbol>XvalS</Symbol>
+			<Symbol>Pval</Symbol>
+			<Symbol>cumulative</Symbol>
+			<Symbol>logn</Symbol>
+			<Symbol>density</Symbol>
+			<Symbol>samplefrequency</Symbol>
+			<Symbol>inversecumulative</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

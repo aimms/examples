@@ -1,0 +1,11 @@
+## ams_version=1.0
+
+Model Main_Empty_Model {
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

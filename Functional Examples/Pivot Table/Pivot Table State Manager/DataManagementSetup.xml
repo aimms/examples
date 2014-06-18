@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DataManagementSetup TimeStamp="2009-09-25 16:41:44">
+	<DataCategory Name="Pivot Table State Data" UUID="582BE5FF-830A-42F6-962E-39ECFEC22F9A" InternalID="2">
+		<Properties>
+			<Contents IncludeReferredSets="true">
+				<SelectedModelSection>State Declaration</SelectedModelSection>
+			</Contents>
+		</Properties>
+	</DataCategory>
+</DataManagementSetup>

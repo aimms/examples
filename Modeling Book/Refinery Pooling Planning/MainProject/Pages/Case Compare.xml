@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-01-26 02:08:34">
+	<Location top="26" left="8" bottom="643" right="1020" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>8F2E7F25-EE03-41BC-9A2D-7D0530DE3B45</ProjectUUID>
+	<CloseWhenInactive>true</CloseWhenInactive>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="321" />
+				<RightArea Line="FixedFromTop" Value="83">
+					<TopArea Line="FixedFromTop" Value="53">
+						<BottomArea Line="FixedFromLeft" Value="284" />
+					</TopArea>
+					<BottomArea Line="FixedFromTop" Value="48">
+						<BottomArea Line="FixedFromLeft" Value="200">
+							<LeftArea Line="FixedFromTop" Value="57" />
+						</BottomArea>
+					</BottomArea>
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="8AC7590F-4549-4E19-A63E-8B3058966075">white</UserColor>
+	</Background>
+	<Action>
+		<EntryProcedure>UpdateCurrentPage</EntryProcedure>
+	</Action>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Pivot Table">
+		<Location top="240" left="204" bottom="618" right="762" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>443D8A3A-DDF0-4640-8FA1-B22CD267872A</ObjectUUID>
+		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">FlowToPool( i, t )</Identifier>
+			</Explicit_Identifier>
+			<Defaults>
+				<Format>
+					<Decimal_Places ID="4212">3</Decimal_Places>
+				</Format>
+			</Defaults>
+		</Contents>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+			</Headers>
+		</Row_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="192" left="204" bottom="222" right="342" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Select Multiple Cases"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>Data-Multiple Cases</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>i</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>UpdateCurrentPage</Symbol>
+			<Symbol>FlowToPool</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

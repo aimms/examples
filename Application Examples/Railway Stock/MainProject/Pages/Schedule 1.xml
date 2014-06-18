@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-07-19 15:12:41">
+	<Location top="29" left="4" bottom="623" right="736" />
+	<PageEditSize Type="Inherited">
+		<Size Width="731" Height="598" />
+	</PageEditSize>
+	<ProjectUUID>8E4A45FB-800D-42D3-B2B2-0F91CF032D28</ProjectUUID>
+	<Title>"Vlissingen - Amsterdam"</Title>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromRight" Value="8" />
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Table">
+		<Location top="0" left="0" bottom="600" right="732" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="F6AC9214-33C1-4250-9ABF-15B57D1091A0" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<RemoveDefaults>true</RemoveDefaults>
+		<ElementTextAsTooltip>false</ElementTextAsTooltip>
+		<ExplicitIdentifier>
+			<Identifier>Input_TrainSchedule( inc_nr, incr_aid, 'Departure' )</Identifier>
+			<FirstColumn>3</FirstColumn>
+			<HeaderText>"Departure Time"</HeaderText>
+			<NumberFormat Width="15" Decimals="0" Alignment="Right" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Input_TrainSchedule( inc_nr, incr_aid, 'Arrival' )</Identifier>
+			<FirstColumn>3</FirstColumn>
+			<HeaderText>"Arrival Time"</HeaderText>
+			<NumberFormat Width="15" Decimals="0" Alignment="Right" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Input_MinimalTrains( inc_nr, incr_aid )</Identifier>
+			<FirstColumn>2</FirstColumn>
+			<HeaderText>"Minimal number of trains"</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>Table_UsedTrains( inc_nr, incr_aid )</Identifier>
+			<FirstColumn>2</FirstColumn>
+			<HeaderText>"Used number of Trains"</HeaderText>
+			<NumberFormat Width="5" Decimals="2" Alignment="Center" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>incr_aid</Symbol>
+			<Symbol>inc_nr</Symbol>
+			<Symbol>Table_UsedTrains</Symbol>
+			<Symbol>Input_MinimalTrains</Symbol>
+			<Symbol>Input_TrainSchedule</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

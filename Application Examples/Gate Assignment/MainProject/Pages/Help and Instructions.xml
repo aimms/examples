@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2010-03-02 08:05:41" NeedsCompiledModel="false">
+	<Location top="27" left="9" bottom="536" right="781" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>0C85949E-28CF-4A30-8DF0-12A5C8390841</ProjectUUID>
+	<Title>"Gate Assignment in AIMMS"</Title>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ToolBar None="true" />
+	<Background Inherited="true" />
+	<PageObject Type="Document Viewer">
+		<Location top="0" left="0" bottom="510" right="774" />
+		<TabOrder>1</TabOrder>
+		<Border Style="None" />
+		<Contents>
+			<Document_URL ID="2" LiteralFileName="true">"instructions.html"</Document_URL>
+		</Contents>
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

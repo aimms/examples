@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2007-11-13 21:38:41" NeedsCompiledModel="false">
+	<Location top="22" left="4" bottom="1049" right="1112" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>54C7CF8E-331E-4E69-AC4B-9D3CA8CD5945</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Navigation Object">
+		<Location top="6" left="6" bottom="43" right="568" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>1</TabOrder>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Display>Text</Display>
+		<NumberVisible>1</NumberVisible>
+		<Spacing>6</Spacing>
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+		<InputColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</InputColor>
+		<NavigationData>
+			<ReferencePage>ThisPage</ReferencePage>
+			<NumberOfAncestors>1</NumberOfAncestors>
+			<CenterText>true</CenterText>
+			<ActionSequence>
+				<Action Type="GotoNavigationPage" />
+			</ActionSequence>
+		</NavigationData>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="54" left="12" bottom="630" right="606" />
+		<Hidden>"Yes"</Hidden>
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model />
+	</UsedReferences>
+</Page>

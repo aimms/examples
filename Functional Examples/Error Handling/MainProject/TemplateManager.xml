@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="BB38E8E3-0FF7-4A31-9950-19E3D4361AA9" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|2A5BCEF1-C904-4ABD-BF0F-D570A2A5225E|Size Template">
+		<Template Name="Navigation Template" PageGUID="8D3128B2-D890-4870-B9E6-89E56B9EC9C0" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3536E5D9-A302-4B56-B3F8-A4DCD8349E7F|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="A0B2730D-5875-44E1-9991-5A1D6A102364" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|B6462424-99A8-448C-99FD-BC4493D6D048|Background Info Template">
+				<Page Name="AIMMS Demo - Error Handling" PageGUID="5DFF2690-A93B-4353-8598-E4A69A15BD59" />
+			</Template>
+			<Template Name="Example Page" PageGUID="CA2B440D-EED6-45C5-AFC2-5F72F4B3FB26">
+				<Page Name="Local Error Handling" PageGUID="F87F3F09-6629-4728-8591-2C8585444749" />
+				<Page Name="Global Error Handling" PageGUID="C86AF07D-BDD8-4F3B-902D-0EBBC9CCC388" />
+			</Template>
+		</Template>
+	</Template>
+	<Page Name="Error While Reading Data" PageGUID="9B28848D-771C-4984-96D6-67BE2B4A5A2C" />
+	<Page Name="Error Locating File" PageGUID="3BADF2BA-371D-4110-8676-66D73BCF6EB4" />
+</TemplateManager>

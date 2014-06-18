@@ -1,0 +1,1060 @@
+## ams_version=1.0
+
+Model Main_template {
+    DeclarationSection DistributionSets {
+        Set Distributions {
+            Index: d;
+            Parameter: dl;
+            Definition: {
+                {'Exponential()',
+                 'Uniform()','Triangular(0.3)','Triangular(0.9)','Beta(1.2,2)','Beta(3,1)',
+                 'Normal()','Logistic()','ExtremeValue()','Beta(30,30)','Gamma(300)','Weibull(30)',
+                 'ExtremeValue(-x)','Weibull(300)(-x)','LogNormal-skew','LogNormal-kurt','Beta-skew','Beta-kurt','Gamma-skew','Gamma-kurt',
+                 'LogNormal(3)','LogNormal(1.6)','LogNormal(1)','LogNormal(0.8)','LogNormal(0.5)','LogNormal(0.2)','LogNormal(0.001)','LogNormal(0.35)','LogNormal(0.40)',
+                 'Gamma(30)','Gamma(10)','Gamma(3)','Gamma(1.6)','Gamma(1.1)','Gamma(0.9)','Gamma(0.7)',
+                 'Weibull(3)','Weibull(1.6)','Weibull(1.1)','Weibull(0.9)','Weibull(0.7)',
+                 'Weibull0Skewness',
+                 'Pareto(2.5)','Pareto(4)','Pareto(8)','Pareto(16)','Pareto(32)',
+                 'Weibull(300)'
+                }
+            }
+        }
+        Set BoundedDistibutions {
+            SubsetOf: Distributions;
+            Index: b;
+            Definition: {
+                {'Uniform()','Triangular(0.3)','Triangular(0.9)','Beta(1.2,2)','Beta(3,1)'}
+            }
+        }
+        Set UnboundedDistributions {
+            SubsetOf: Distributions;
+            Index: u;
+            Definition: {
+                
+                
+                {'Normal()','Logistic()','ExtremeValue()'
+                !,'Beta(30,30)','LogNormal(0.001)','Gamma(300)'
+                !,'Weibull(300)','Weibull(30)','Weibull0Skewness'
+                }
+            }
+        }
+        Set UnboundedDistributionsPlus {
+            SubsetOf: Distributions;
+            Index: up;
+            Definition: {
+                !unbounded distributions and some approximations
+                
+                {'Normal()','Logistic()','ExtremeValue()',
+                 'Beta(30,30)','LogNormal(0.001)','Gamma(300)',
+                'Weibull0Skewness','Weibull(300)'}
+            }
+        }
+        Set LowBoundedDistributions {
+            SubsetOf: Distributions;
+            Index: l;
+            Definition: {
+                {'LogNormal(1)','Exponential()','Gamma(1.1)','Weibull(1.1)','Pareto(16)'}
+            }
+        }
+        Set LogNormalSet {
+            SubsetOf: Distributions;
+            Index: logn;
+            Definition: {
+                {'Exponential()', 'LogNormal(3)','LogNormal(1)','LogNormal(0.2)'
+                !,'LogNormal(0.8)','LogNormal(1.6)','LogNormal(0.5)'
+                }
+            }
+        }
+        Set BigLogNormalSet {
+            SubsetOf: Distributions;
+            Index: biglognormalindex;
+            Definition: {
+                {'Exponential()', 'LogNormal(3)','LogNormal(1)','LogNormal(0.2)'
+                ,'LogNormal(0.8)','LogNormal(1.6)','LogNormal(0.5)'
+                }
+            }
+        }
+        Set ParetoSet {
+            SubsetOf: Distributions;
+            Index: paretoindex;
+            Definition: {
+                {'Exponential()','Pareto(16)','Pareto(4)','Pareto(2.5)'
+                !,'Pareto(32)','Pareto(8)'
+                }
+            }
+        }
+        Set BigParetoSet {
+            SubsetOf: Distributions;
+            Index: bigparetoindex;
+            Definition: {
+                {'Exponential()','Pareto(16)','Pareto(4)','Pareto(2.5)'
+                ,'Pareto(32)','Pareto(8)'
+                }
+            }
+        }
+        Set WeibullSet {
+            SubsetOf: Distributions;
+            Index: weibullindex;
+            Definition: {
+                {'Exponential()','Weibull(30)','Weibull(1.6)','Weibull(0.7)'
+                !,'Weibull(1.1)','Weibull(0.9)','Weibull(3)'
+                }
+            }
+        }
+        Set BigWeibullSet {
+            SubsetOf: Distributions;
+            Index: bigweibullindex;
+            Definition: {
+                {'Exponential()','Weibull(30)','Weibull(1.6)','Weibull(0.7)'
+                ,'Weibull(1.1)','Weibull(0.9)','Weibull(3)'
+                }
+            }
+        }
+        Set GammaSet {
+            SubsetOf: Distributions;
+            Index: gammaindex;
+            Definition: {
+                {'Exponential()','Gamma(30)','Gamma(1.6)','Gamma(0.7)'
+                !,'Gamma(10)','Gamma(3)','Gamma(1.1)','Gamma(0.9)'
+                }
+            }
+        }
+        Set BigGammaSet {
+            SubsetOf: Distributions;
+            Index: biggammaindex;
+            Definition: {
+                {'Exponential()','Gamma(30)','Gamma(1.6)','Gamma(0.7)'
+                ,'Gamma(10)','Gamma(3)','Gamma(1.1)','Gamma(0.9)'
+                }
+            }
+        }
+        Set ExtremeValueSet {
+            SubsetOf: Distributions;
+            Index: extremevalueindex;
+            Definition: {
+                { 'Weibull(300)(-x)','ExtremeValue(-x)','LogNormal-skew','LogNormal-kurt','Beta-skew','Beta-kurt','Gamma-skew','Gamma-kurt'}
+            }
+        }
+        Set EVSkewnessSet {
+            SubsetOf: Distributions;
+            Index: skewnessindex;
+            Definition: {
+                { 'ExtremeValue(-x)','LogNormal-skew','Beta-skew','Gamma-skew'}
+            }
+        }
+        Set EVKurtosisSet {
+            SubsetOf: Distributions;
+            Index: kurtosisindex;
+            Definition: {
+                { 'ExtremeValue(-x)','LogNormal-kurt','Beta-kurt','Gamma-kurt'}
+            }
+        }
+    }
+    DeclarationSection MainDeclarations {
+        Set DistributionTypes {
+            Index: dt;
+            Parameter: dtl;
+            Definition: {
+                {'_uniform','_triangular','_beta','_exponential','_gamma','_weibull','_pareto','_lognormal','_normal','_logistic','_extremevalue','_beta01'}
+            }
+        }
+        Parameter numberofpoints {
+            Definition: 240;
+        }
+        Set points {
+            SubsetOf: Integers;
+            Index: p;
+            Parameter: pl;
+            Definition: {
+                {1..numberofpoints}
+            }
+        }
+        Parameter Xval {
+            IndexDomain: (p);
+            Definition: {
+                     if p/numberofpoints<1/4 then 12*p/numberofpoints-4
+                else if p/numberofpoints>2/3 then 12*p/numberofpoints-8
+                else                             2.4*p/numberofpoints-1.6
+                endif endif
+            }
+        }
+        Parameter Pval {
+            IndexDomain: (p);
+            Definition: (p-0.5)/ numberofpoints;
+        }
+        Parameter shapealpha {
+            IndexDomain: (d);
+            InitialData: 0.3;
+        }
+        Parameter shapebeta {
+            IndexDomain: (d);
+            InitialData: 2;
+        }
+        Parameter density {
+            IndexDomain: (d,p);
+        }
+        Parameter cumulative {
+            IndexDomain: (d,p);
+        }
+        Parameter inversedensity {
+            IndexDomain: (d,p);
+        }
+        Parameter inversecumulative {
+            IndexDomain: (d,p);
+        }
+    }
+    DeclarationSection SupportingDeclarations {
+        Parameter mean_distribution;
+        Parameter deviation_distribution;
+        Parameter min_;
+        Parameter max_;
+        Parameter location {
+            InitialData: 0;
+        }
+        Parameter scale {
+            InitialData: 1;
+        }
+        Parameter step;
+        Parameter draw;
+        Parameter skewnessExtremeValue {
+            InitialData: 1;
+        }
+        Parameter kurtosisExtremeValue {
+            InitialData: 1;
+        }
+        Parameter DistributionCreated {
+            Property: NoSave;
+            InitialData: 0;
+        }
+        StringParameter DescriptionFile {
+            Definition: "description.txt";
+        }
+        StringParameter CurrentSamplePage;
+    }
+    Section Distribution_graph_creation {
+        Procedure CreateDistributions {
+            Body: {
+                shapealpha('ExtremeValue()'):=5;
+                
+                ! FindDistributionApproximations:
+                ! calculates the parameters for distributions that approximate other distributions
+                ! and then calculates points for those distributions
+                
+                FindDistributionApproximations;
+                
+                ! CalculateDistribution:
+                ! calculates location and scale parameter for a distribution with given shape
+                ! such that mean and deviation are resp 0 and 1.
+                
+                for ( d ) do
+                switch d do
+                
+                'Exponential()': CalculateDistribution('_exponential',d);
+                                 CreateHistogram('_exponential',d);
+                
+                'LogNormal(0.35)': shapealpha(d) := 0.35;
+                                   CalculateDistribution('_lognormal',d);
+                
+                'LogNormal(0.40)': shapealpha(d) := 0.40;
+                                   CalculateDistribution('_lognormal',d);
+                
+                'Lognormal(3)':    shapealpha(d) := 3;
+                                   CalculateDistribution('_lognormal',d);
+                                   CreateHistogram('_lognormal',d);
+                
+                'Lognormal(1.6)':  shapealpha(d) := 1.6;
+                                   CalculateDistribution('_lognormal',d);
+                                   CreateHistogram('_lognormal',d);
+                
+                'Lognormal(1)':    shapealpha(d) := 1;
+                                   CalculateDistribution('_lognormal',d);
+                                   CreateHistogram('_lognormal',d);
+                
+                'LogNormal(0.8)':  shapealpha(d) := 0.8;
+                                   CalculateDistribution('_lognormal',d);
+                                   CreateHistogram('_lognormal',d);
+                
+                'LogNormal(0.5)':  shapealpha(d) := 0.5;
+                                   CalculateDistribution('_lognormal',d);
+                                   CreateHistogram('_lognormal',d);
+                
+                'LogNormal(0.2)':  shapealpha(d) := 0.2;
+                                   CalculateDistribution('_lognormal',d);
+                                   CreateHistogram('_lognormal',d);
+                
+                'LogNormal(0.001)': shapealpha(d) := 0.001;
+                                    CalculateDistribution('_lognormal',d);
+                
+                'Gamma(30)':	shapealpha(d) := 30;
+                                CalculateDistribution('_gamma',d);
+                                CreateHistogram('_gamma',d);
+                
+                'Gamma(10)':	shapealpha(d) := 10;
+                                CalculateDistribution('_gamma',d);
+                                CreateHistogram('_gamma',d);
+                
+                'Gamma(3)':	shapealpha(d) := 3;
+                                CalculateDistribution('_gamma',d);
+                                CreateHistogram('_gamma',d);
+                
+                'Gamma(1.6)':	shapealpha(d) := 1.6;
+                                CalculateDistribution('_gamma',d);
+                                CreateHistogram('_gamma',d);
+                
+                'Gamma(1.1)':	shapealpha(d) := 1.1;
+                                CalculateDistribution('_gamma',d);
+                                CreateHistogram('_gamma',d);
+                
+                'Gamma(0.9)':	shapealpha(d) := 0.9;
+                                CalculateDistribution('_gamma',d);
+                                CreateHistogram('_gamma',d);
+                
+                'Gamma(0.7)':	shapealpha(d) := 0.7;
+                                CalculateDistribution('_gamma',d);
+                                CreateHistogram('_gamma',d);
+                
+                'Gamma(300)':	shapealpha(d) := 300;
+                                CalculateDistribution('_gamma',d);
+                                CreateHistogram('_gamma',d);
+                
+                'Weibull(30)':	shapealpha(d) := 30;
+                                CalculateDistribution('_weibull',d);
+                                CreateHistogram('_weibull',d);
+                
+                'Weibull(300)':	shapealpha(d) := 300;
+                                CalculateDistribution('_weibull',d);
+                                CreateHistogram('_weibull',d);
+                
+                'Weibull(3)':	shapealpha(d) := 3;
+                                CalculateDistribution('_weibull',d);
+                                CreateHistogram('_weibull',d);
+                
+                'Weibull(1.6)':	shapealpha(d) := 1.6;
+                                CalculateDistribution('_weibull',d);
+                                CreateHistogram('_weibull',d);
+                
+                'Weibull(1.1)':	shapealpha(d) := 1.1;
+                                CalculateDistribution('_weibull',d);
+                                CreateHistogram('_weibull',d);
+                
+                'Weibull(0.9)':	shapealpha(d) := 0.9;
+                                CalculateDistribution('_weibull',d);
+                                CreateHistogram('_weibull',d);
+                
+                'Weibull(0.7)':	shapealpha(d) := 0.7;
+                                CalculateDistribution('_weibull',d);
+                                CreateHistogram('_weibull',d);
+                
+                'Pareto(2.5)':	shapealpha(d):=2.5;
+                                CalculateDistribution('_pareto',d);
+                                CreateHistogram('_pareto',d);
+                
+                'Pareto(4)':	shapealpha(d):=4;
+                                CalculateDistribution('_pareto',d);
+                                CreateHistogram('_pareto',d);
+                
+                'Pareto(16)':	shapealpha(d):=16;
+                                CalculateDistribution('_pareto',d);
+                                CreateHistogram('_pareto',d);
+                
+                'Pareto(8)':	shapealpha(d):=8;
+                                CalculateDistribution('_pareto',d);
+                                CreateHistogram('_pareto',d);
+                
+                'Pareto(32)':	shapealpha(d):=32;
+                                CalculateDistribution('_pareto',d);
+                                CreateHistogram('_pareto',d);
+                
+                'Normal()':	CalculateDistribution('_normal',d);
+                
+                'Logistic()':	CalculateDistribution('_logistic',d);
+                
+                'ExtremeValue()':CalculateDistribution('_extremevalue',d);
+                                 CreateHistogram('_extremevalue',d);
+                
+                'ExtremeValue(-x)':
+                	deviation_distribution 	:= DistributionDeviation( ExtremeValue() );
+                	mean_distribution 		:= DistributionMean( ExtremeValue() );
+                	scale 					:= 1/deviation_distribution;
+                	location 				:= -mean_distribution/deviation_distribution;
+                	density(d,p) 			:= DistributionDensity( ExtremeValue(location,scale),-Xval(p) );
+                	cumulative(d,p) 		:= DistributionCumulative( ExtremeValue(location,scale),-Xval(p) );
+                
+                'Weibull(300)(-x)':
+                	shapealpha(d) 			:= 300;
+                	deviation_distribution 	:= DistributionDeviation( Weibull(shapealpha(d)) );
+                	mean_distribution 		:= DistributionMean( Weibull(shapealpha(d)) );
+                	scale 					:= 1/deviation_distribution;
+                	location  				:= -mean_distribution/deviation_distribution;
+                	density(d,p) 			:= DistributionDensity(Weibull(shapealpha(d),location,scale),-Xval(p) );
+                	cumulative(d,p) 		:= DistributionCumulative( Weibull(shapealpha(d),location,scale),-Xval(p) );
+                
+                endswitch;
+                endfor;
+                DistributionCreated := 1;
+            }
+        }
+        Procedure CalculateDistribution {
+            Arguments: (dtl,dl);
+            Body: {
+                switch dtl do
+                
+                '_beta01':
+                	density(dl,p) := DistributionDensity( Beta(shapealpha(dl),shapebeta(dl)),Pval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Beta(shapealpha(dl),shapebeta),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Beta(shapealpha(dl),shapebeta(dl)),Pval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Beta(shapealpha(dl),shapebeta(dl)),Pval(p) );
+                
+                '_uniform':
+                	deviation_distribution := DistributionDeviation(Uniform() );
+                	mean_distribution := DistributionMean( Uniform() );
+                	max_ :=(1-mean_distribution)/deviation_distribution;
+                	min_ :=(0-mean_distribution)/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Uniform(min_,max_),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Uniform(min_,max_),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Uniform(min_,max_),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Uniform(min_,max_),Pval(p) );
+                '_triangular':
+                	deviation_distribution := DistributionDeviation(Triangular(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Triangular(shapealpha(dl)) );
+                	max_ :=(1-mean_distribution)/deviation_distribution;
+                	min_ :=(0-mean_distribution)/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Triangular(shapealpha(dl),min_,max_),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Triangular(shapealpha(dl),min_,max_),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Triangular(shapealpha(dl),min_,max_),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Triangular(shapealpha(dl),min_,max_),Pval(p) );
+                '_beta':
+                	deviation_distribution := DistributionDeviation( Beta(shapealpha(dl),shapebeta(dl)) );
+                	mean_distribution := DistributionMean( Beta(shapealpha(dl),shapebeta(dl)) );
+                	max_ :=(1-mean_distribution)/deviation_distribution;
+                	min_ :=(0-mean_distribution)/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Beta(shapealpha(dl),shapebeta(dl),min_,max_),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Beta(shapealpha(dl),shapebeta,min_,max_),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Beta(shapealpha(dl),shapebeta(dl),min_,max_),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Beta(shapealpha(dl),shapebeta(dl),min_,max_),Pval(p) );
+                '_lognormal':
+                	deviation_distribution := DistributionDeviation( Lognormal(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Lognormal(shapealpha(dl)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Lognormal(shapealpha(dl),location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Lognormal(shapealpha(dl),location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Lognormal(shapealpha(dl),location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Lognormal(shapealpha(dl),location,scale),Pval(p) );
+                '_exponential':
+                	deviation_distribution := DistributionDeviation( Exponential() );
+                	mean_distribution := DistributionMean( Exponential() );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Exponential(location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Exponential(location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Exponential(location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Exponential(location,scale),Pval(p) );
+                '_gamma':
+                	deviation_distribution := DistributionDeviation( Gamma(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Gamma(shapealpha(dl)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Gamma(shapealpha(dl),location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Gamma(shapealpha(dl),location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Gamma(shapealpha(dl),location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Gamma(shapealpha(dl),location,scale),Pval(p) );
+                '_weibull':
+                	deviation_distribution := DistributionDeviation( Weibull(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Weibull(shapealpha(dl)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Weibull(shapealpha(dl),location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Weibull(shapealpha(dl),location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Weibull(shapealpha(dl),location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Weibull(shapealpha(dl),location,scale),Pval(p) );
+                '_pareto':
+                	deviation_distribution := DistributionDeviation( Pareto(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Pareto(shapealpha(dl)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Pareto(shapealpha(dl),location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Pareto(shapealpha(dl),location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Pareto(shapealpha(dl),location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Pareto(shapealpha(dl),location,scale),Pval(p) );
+                '_normal':
+                	deviation_distribution := DistributionDeviation( Normal() );
+                	mean_distribution := DistributionMean( Normal() );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Normal(location,scale),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Normal(location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Normal(location,scale),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Normal(location,scale),Pval(p) );
+                '_logistic':
+                	deviation_distribution := DistributionDeviation( Logistic() );
+                	mean_distribution := DistributionMean( Logistic() );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Logistic(location,scale),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Logistic(location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Logistic(location,scale),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Logistic(location,scale),Pval(p) );
+                '_extremevalue':
+                	deviation_distribution := DistributionDeviation( ExtremeValue() );
+                	mean_distribution := DistributionMean( ExtremeValue() );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( ExtremeValue(location,scale),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( ExtremeValue(location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( ExtremeValue(location,scale),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( ExtremeValue(location,scale),Pval(p) );
+                
+                endswitch;
+                switch dtl do
+                
+                '_beta01':
+                	density(dl,p) := DistributionDensity( Beta(shapealpha(dl),shapebeta(dl)),Pval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Beta(shapealpha(dl),shapebeta),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Beta(shapealpha(dl),shapebeta(dl)),Pval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Beta(shapealpha(dl),shapebeta(dl)),Pval(p) );
+                
+                '_uniform':
+                	deviation_distribution := DistributionDeviation(Uniform() );
+                	mean_distribution := DistributionMean( Uniform() );
+                	max_ :=(1-mean_distribution)/deviation_distribution;
+                	min_ :=(0-mean_distribution)/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Uniform(min_,max_),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Uniform(min_,max_),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Uniform(min_,max_),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Uniform(min_,max_),Pval(p) );
+                '_triangular':
+                	deviation_distribution := DistributionDeviation(Triangular(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Triangular(shapealpha(dl)) );
+                	max_ :=(1-mean_distribution)/deviation_distribution;
+                	min_ :=(0-mean_distribution)/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Triangular(shapealpha(dl),min_,max_),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Triangular(shapealpha(dl),min_,max_),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Triangular(shapealpha(dl),min_,max_),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Triangular(shapealpha(dl),min_,max_),Pval(p) );
+                '_beta':
+                	deviation_distribution := DistributionDeviation( Beta(shapealpha(dl),shapebeta(dl)) );
+                	mean_distribution := DistributionMean( Beta(shapealpha(dl),shapebeta(dl)) );
+                	max_ :=(1-mean_distribution)/deviation_distribution;
+                	min_ :=(0-mean_distribution)/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Beta(shapealpha(dl),shapebeta(dl),min_,max_),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Beta(shapealpha(dl),shapebeta,min_,max_),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Beta(shapealpha(dl),shapebeta(dl),min_,max_),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Beta(shapealpha(dl),shapebeta(dl),min_,max_),Pval(p) );
+                '_lognormal':
+                	deviation_distribution := DistributionDeviation( Lognormal(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Lognormal(shapealpha(dl)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Lognormal(shapealpha(dl),location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Lognormal(shapealpha(dl),location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Lognormal(shapealpha(dl),location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Lognormal(shapealpha(dl),location,scale),Pval(p) );
+                '_exponential':
+                	deviation_distribution := DistributionDeviation( Exponential() );
+                	mean_distribution := DistributionMean( Exponential() );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Exponential(location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Exponential(location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Exponential(location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Exponential(location,scale),Pval(p) );
+                '_gamma':
+                	deviation_distribution := DistributionDeviation( Gamma(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Gamma(shapealpha(dl)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Gamma(shapealpha(dl),location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Gamma(shapealpha(dl),location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Gamma(shapealpha(dl),location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Gamma(shapealpha(dl),location,scale),Pval(p) );
+                '_weibull':
+                	deviation_distribution := DistributionDeviation( Weibull(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Weibull(shapealpha(dl)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Weibull(shapealpha(dl),location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Weibull(shapealpha(dl),location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Weibull(shapealpha(dl),location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Weibull(shapealpha(dl),location,scale),Pval(p) );
+                '_pareto':
+                	deviation_distribution := DistributionDeviation( Pareto(shapealpha(dl)) );
+                	mean_distribution := DistributionMean( Pareto(shapealpha(dl)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Pareto(shapealpha(dl),location,scale),Xval(p) );
+                	inversecumulative(dl,p) := DistributionInverseCumulative( Pareto(shapealpha(dl),location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Pareto(shapealpha(dl),location,scale),Xval(p) );
+                	inversedensity(dl,p) := DistributionInverseDensity( Pareto(shapealpha(dl),location,scale),Pval(p) );
+                '_normal':
+                	deviation_distribution := DistributionDeviation( Normal() );
+                	mean_distribution := DistributionMean( Normal() );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Normal(location,scale),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Normal(location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Normal(location,scale),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Normal(location,scale),Pval(p) );
+                '_logistic':
+                	deviation_distribution := DistributionDeviation( Logistic() );
+                	mean_distribution := DistributionMean( Logistic() );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( Logistic(location,scale),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( Logistic(location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( Logistic(location,scale),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( Logistic(location,scale),Pval(p) );
+                '_extremevalue':
+                	deviation_distribution := DistributionDeviation( ExtremeValue() );
+                	mean_distribution := DistributionMean( ExtremeValue() );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	density(dl,p) := DistributionDensity( ExtremeValue(location,scale),Xval(p) );
+                	!inversecumulative(dl,p) := DistributionInverseCumulative( ExtremeValue(location,scale),Pval(p) );
+                	cumulative(dl,p) := DistributionCumulative( ExtremeValue(location,scale),Xval(p) );
+                	!inversedensity(dl,p) := DistributionInverseDensity( ExtremeValue(location,scale),Pval(p) );
+                
+                endswitch;
+            }
+            Comment: {
+                "This function calculates the distributions with shapes defined by the (global) parameters:
+                - shapealpha(dl) and
+                - shapebeta(dl)
+                (if used by the distribution)
+                and with scale and location parameters such that:
+                - the mean equals 0 and
+                - the standard deviation equals 1.
+                
+                Only for the beta distribution is a variant ( dtl = \'_beta01\' )
+                where scale and location parameters are resp 1 and 0."
+            }
+            ElementParameter dtl {
+                Range: DistributionTypes;
+                Property: Input;
+            }
+            ElementParameter dl {
+                Range: Distributions;
+                Property: Input;
+            }
+        }
+        Procedure FindDistributionApproximations {
+            Body: {
+                deviation_distribution := DistributionDeviation( ExtremeValue() );
+                mean_distribution := DistributionMean( ExtremeValue() );
+                scale :=1/deviation_distribution;
+                location :=-mean_distribution/deviation_distribution;
+                skewnessExtremeValue := -DistributionSkewness(ExtremeValue(location,scale));
+                kurtosisExtremeValue :=  DistributionKurtosis(ExtremeValue(location,scale));
+                
+                dl:='Weibull0Skewness';
+                	shapealpha(dl) := 3;
+                	step  := 1;
+                	while (step>0.00001) do
+                		if DistributionSkewness( Weibull(shapealpha(dl)) )  > skewnessExtremeValue
+                		then shapealpha(dl)-=step
+                		else shapealpha(dl)+=step
+                		endif;
+                		step:=step/2;
+                	endwhile;
+                	CalculateDistribution('_weibull',dl);
+                dl:='LogNormal-skew';
+                	shapealpha(dl) := 0.35;
+                	step  := 0.05;
+                	while (step>0.00001) do
+                		if DistributionSkewness( Lognormal(shapealpha(dl),0,1) )  > skewnessExtremeValue
+                		then shapealpha(dl)+=step
+                		else shapealpha(dl)-=step
+                		endif;
+                		step:=step/2;
+                	endwhile;
+                	CalculateDistribution('_lognormal',dl);
+                dl:='LogNormal-kurt';
+                	shapealpha(dl) := 0.35;
+                	step  := 0.05;
+                	while (step>0.00001) do
+                		if DistributionKurtosis( Lognormal(shapealpha(dl),0,1) ) > kurtosisExtremeValue
+                		then shapealpha(dl)-=step
+                		else shapealpha(dl)+=step
+                		endif;
+                		step:=step/2;
+                	endwhile;
+                	CalculateDistribution('_lognormal',dl);
+                dl:='Gamma-skew';
+                	shapealpha(dl) := 4;
+                	step  := 1;
+                	while (step>0.00001) do
+                		if DistributionSkewness( Gamma(shapealpha(dl),0,1) )  > skewnessExtremeValue
+                		then shapealpha(dl)+=step
+                		else shapealpha(dl)-=step
+                		endif;
+                		step:=step/2;
+                	endwhile;
+                	CalculateDistribution('_gamma',dl);
+                dl:='Gamma-kurt';
+                	shapealpha(d) := 3;
+                	step  := 1;
+                	while (step>0.00001) do
+                		if DistributionKurtosis( Gamma(shapealpha(dl),0,1) ) > kurtosisExtremeValue
+                		then shapealpha(dl)+=step
+                		else shapealpha(dl)-=step
+                		endif;
+                		step:=step/2;
+                	endwhile;
+                	CalculateDistribution('_gamma',dl);
+                dl:='Beta-skew';
+                	shapealpha(dl) := 2;
+                	shapebeta(dl) :=9999;
+                	step  := 1;
+                	while (step>0.00001) do
+                		if DistributionSkewness( Beta(shapealpha(dl),shapebeta(dl),0,1) ) < skewnessExtremeValue
+                		then shapealpha(dl)-=step;
+                		else shapealpha(dl)+=step;
+                		endif;
+                		step*=0.5;
+                	endwhile;
+                	CalculateDistribution('_beta',dl);
+                dl:='Beta-kurt';
+                	shapealpha(dl) := 2;
+                	shapebeta(dl) :=9999;
+                	step  := 1;
+                	while (step>0.00001) do
+                		if DistributionKurtosis( Beta(shapealpha(dl),shapebeta(dl),0,1) ) > kurtosisExtremeValue
+                		then shapealpha(dl)+=step;
+                		else shapealpha(dl)-=step;
+                		endif;
+                		step*=0.5;
+                	endwhile;
+                	CalculateDistribution('_beta',dl);
+                
+                !
+                !The ExtremeValue distribution is an asymetrical distribution, with strongly declining density for large values.
+                !
+                !Distributions with shape parameters are used as an approximation of the ExtremeValue distribution.
+                !
+                !The Pareto distribution always has strictly decreasing form (unlike the ExtremeValuee distribution) and thus is not considered, nor is the Triangular ditribution. The Weibull(inf) distribution equals the ExtremeValue distribution (the larger the shape parameter,the better the approximation. Weibull(300) is shown to be close to the  ExtremeValue distribution in the rightmost graph (both mirrored in the y-axis).
+                !
+                !That leaves the Beta, Lognormal and Gamma distribution.
+                !
+                !The Lognormal and Gamma distribution always have positive skewness, so they will never be close to the ExtremeValue distribution which has negative skewness, however they may come close to the mirror image of the ExtremeValue distribution for some values of the shape parameter.
+                !
+                !The graphs show approximations of those distributions of the mirrored ExtremeValue distribution in which the skewness resp. kurtosis are equal.
+                !
+                !While using the Beta distribution as an approximation of the (mirrored) ExtremeValue distribution, the two shape parameters cannot be used to get the correct skewness and kurtosis. At the correct skewness, the Beta distribution cannot be made peaked enough. The closest fit is when one of the shape parameters is set to infinity, and then the Beta distribution equals the Gamma distribution.
+            }
+            Comment: {
+                "This function is used to find the right value of a shape parameter while trying
+                to approximate the (mirror image of the) ExtremeValue distribution"
+            }
+        }
+    }
+    Section Histogram_sampling {
+        Comment: "The \"Histogram\" functionality is used to create density graphs of samples (from distributions). A \"smooth\" button is supplied with  the graph, which makes the graph somewhat more readable but less acurate. It middles the value at a point with its neighbors (a proces that can applied more than once).";
+        Parameter histogramid {
+            Range: integer;
+        }
+        Parameter samplesize {
+            InitialData: 3000;
+        }
+        Parameter histogramsize {
+            Definition: 152;
+        }
+        Set samplefrequencieset {
+            SubsetOf: Integers;
+            Index: s;
+            Definition: {
+                {1..histogramsize}
+            }
+        }
+        Parameter samplefrequency {
+            IndexDomain: (s,d);
+        }
+        Parameter XvalS {
+            IndexDomain: (s);
+            Definition: 3*(s-2)/(histogramsize-3) - 1;
+        }
+        Procedure CreateHistogram {
+            Arguments: (dtl,dl);
+            Body: {
+                HistogramCreate(histogramid,0);
+                HistogramSetDomain(histogramid,histogramsize-2,-1,3/(histogramsize-2),1,1);
+                
+                if dl = 'Exponential()'
+                then
+                	!deviation_distribution := DistributionDeviation( Exponential() );
+                	!mean_distribution := DistributionMean( Exponential() );
+                	!scale :=1/deviation_distribution;
+                	!location :=-mean_distribution/deviation_distribution;
+                	while loopcount<samplesize do
+                	!	draw := Exponential(location,scale);
+                		draw := Exponential(-1,1);
+                		HistogramAddObservation(histogramid,draw);
+                	endwhile;
+                else
+                switch dtl do
+                
+                '_lognormal':
+                	while loopcount<samplesize do
+                		draw := LogNormal(shapealpha(dl),location,scale);
+                		HistogramAddObservation(histogramid,draw);
+                	endwhile;
+                '_exponential':
+                	while loopcount<samplesize do
+                		draw := Exponential(location,scale);
+                		HistogramAddObservation(histogramid,draw);
+                	endwhile;
+                '_weibull':
+                	while loopcount<samplesize do
+                		draw := Weibull(shapealpha(dl),location,scale);
+                		HistogramAddObservation(histogramid,draw);
+                	endwhile;
+                '_pareto':
+                	while loopcount<samplesize do
+                		draw := Pareto(shapealpha(dl),location,scale);
+                		HistogramAddObservation(histogramid,draw);
+                	endwhile;
+                '_gamma':
+                	while loopcount<samplesize do
+                		draw := Gamma(shapealpha(dl),location,scale);
+                		HistogramAddObservation(histogramid,draw);
+                	endwhile;
+                endswitch;
+                endif;
+                
+                HistogramGetFrequencies(histogramid,samplefrequency(s,dl));
+                HistogramDelete(histogramid);
+                samplefrequency(s,dl):=samplefrequency(s,dl)*(histogramsize-2)/samplesize/3;
+                samplefrequency(1,dl):=samplefrequency(2,dl);
+                samplefrequency(histogramsize,dl):=samplefrequency(histogramsize-1,dl);
+            }
+            ElementParameter dtl {
+                Range: DistributionTypes;
+                Property: Input;
+            }
+            ElementParameter dl {
+                Range: Distributions;
+                Property: Input;
+            }
+        }
+        Procedure CreateHistograms {
+            Body: {
+                if DistributionCreated = 0 then
+                	CreateDistributions;
+                endif;
+                if CurrentSamplePage = "All Pareto" then
+                	CreateParetoHistograms;
+                elseif CurrentSamplePage = "All LogNormal" then
+                	CreateLogNormalHistograms;
+                elseif CurrentSamplePage = "All Gamma" then
+                	CreateGammaHistograms;
+                else
+                	CreateWeibullHistograms;
+                endif;
+            }
+        }
+        Procedure SmoothHistograms {
+            Body: {
+                if CurrentSamplePage = "All Pareto" then
+                	SmoothParetoHistograms;
+                elseif CurrentSamplePage = "All LogNormal" then
+                	SmoothLogNormalHistograms;
+                elseif CurrentSamplePage = "All Gamma" then
+                	SmoothGammaHistograms;
+                else
+                	SmoothWeibullHistograms;
+                endif;
+            }
+        }
+        Procedure CreateGammaHistograms {
+            Body: {
+                for gammaindex do
+                	deviation_distribution := DistributionDeviation( Gamma(shapealpha(gammaindex)) );
+                	mean_distribution := DistributionMean( Gamma(shapealpha(gammaindex)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	CreateHistogram('_gamma',gammaindex);
+                endfor
+            }
+        }
+        Procedure CreateWeibullHistograms {
+            Body: {
+                for weibullindex do
+                	deviation_distribution := DistributionDeviation( Weibull(shapealpha(weibullindex)) );
+                	mean_distribution := DistributionMean( Weibull(shapealpha(weibullindex)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	CreateHistogram('_weibull',weibullindex);
+                endfor
+            }
+        }
+        Procedure CreateParetoHistograms {
+            Body: {
+                for paretoindex do
+                	deviation_distribution := DistributionDeviation( Pareto(shapealpha(paretoindex)) );
+                	mean_distribution := DistributionMean( Pareto(shapealpha(paretoindex)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	CreateHistogram('_pareto',paretoindex);
+                endfor
+            }
+        }
+        Procedure CreateLogNormalHistograms {
+            Body: {
+                for logn do
+                	deviation_distribution := DistributionDeviation( LogNormal(shapealpha(logn)) );
+                	mean_distribution := DistributionMean( LogNormal(shapealpha(logn)) );
+                	scale :=1/deviation_distribution;
+                	location :=-mean_distribution/deviation_distribution;
+                	CreateHistogram('_lognormal',logn);
+                endfor
+            }
+        }
+        Procedure SmoothGammaHistograms {
+            Body: {
+                for gammaindex do
+                for s do
+                	! temporarily stored in (unused) samplefrequency(s,'Uniform()')
+                	samplefrequency(s,'Uniform()') :=
+                	 	samplefrequency(s-1,gammaindex)+
+                	 	2*samplefrequency(s,gammaindex)+
+                	 	samplefrequency(s+1,gammaindex);
+                endfor;
+                samplefrequency(1,'Uniform()') += samplefrequency(1,gammaindex);
+                samplefrequency(histogramsize,'Uniform()') += samplefrequency(histogramsize,gammaindex);
+                
+                for s do
+                	samplefrequency(s,gammaindex) := samplefrequency(s,'Uniform()')/4;
+                endfor;
+                endfor;
+            }
+        }
+        Procedure SmoothWeibullHistograms {
+            Body: {
+                for weibullindex do
+                for s do
+                	! temporarily stored in (unused) samplefrequency(s,'Uniform()')
+                	samplefrequency(s,'Uniform()') :=
+                	 	samplefrequency(s-1,weibullindex)+
+                	 	2*samplefrequency(s,weibullindex)+
+                	 	samplefrequency(s+1,weibullindex);
+                endfor;
+                samplefrequency(1,'Uniform()') += samplefrequency(1,weibullindex);
+                samplefrequency(histogramsize,'Uniform()') += samplefrequency(histogramsize,weibullindex);
+                
+                for s do
+                	samplefrequency(s,weibullindex) := samplefrequency(s,'Uniform()')/4;
+                endfor;
+                endfor;
+            }
+        }
+        Procedure SmoothParetoHistograms {
+            Body: {
+                for paretoindex do
+                for s do
+                	! temporarily stored in (unused) samplefrequency(s,'Uniform()')
+                	samplefrequency(s,'Uniform()') :=
+                	 	samplefrequency(s-1,paretoindex)+
+                	 	2*samplefrequency(s,paretoindex)+
+                	 	samplefrequency(s+1,paretoindex);
+                endfor;
+                samplefrequency(1,'Uniform()') += samplefrequency(1,paretoindex);
+                samplefrequency(histogramsize,'Uniform()') += samplefrequency(histogramsize,paretoindex);
+                
+                for s do
+                	samplefrequency(s,paretoindex) := samplefrequency(s,'Uniform()')/4;
+                endfor;
+                endfor;
+            }
+        }
+        Procedure SmoothLogNormalHistograms {
+            Body: {
+                for logn do
+                for s do
+                	! temporarily stored in (unused) samplefrequency(s,'Uniform()')
+                	samplefrequency(s,'Uniform()') :=
+                	 	samplefrequency(s-1,logn)+
+                	 	2*samplefrequency(s,logn)+
+                	 	samplefrequency(s+1,logn);
+                endfor;
+                samplefrequency(1,'Uniform()') += samplefrequency(1,logn);
+                samplefrequency(histogramsize,'Uniform()') += samplefrequency(histogramsize,logn);
+                
+                for s do
+                	samplefrequency(s,logn) := samplefrequency(s,'Uniform()')/4;
+                endfor;
+                endfor;
+            }
+        }
+    }
+    Section Skewness_and_kurtosis {
+        Parameter numberofskpoints {
+            Range: integer;
+            Definition: 40;
+        }
+        Set skpoints {
+            SubsetOf: Integers;
+            Index: sk1, sk2;
+            Definition: {
+                {1..numberofskpoints}
+            }
+        }
+        Parameter SKval {
+            IndexDomain: (sk1);
+            Definition: exp( (sk1*2-numberofskpoints)/10);
+        }
+        Parameter Weibullkurt {
+            IndexDomain: (sk1);
+            Definition: {
+                DistributionKurtosis(Weibull(SKval(sk1)));
+            }
+        }
+        Parameter Gammakurt {
+            IndexDomain: (sk1);
+            Definition: {
+                DistributionKurtosis(Gamma(SKval(sk1)));
+            }
+        }
+        Parameter LogNormalkurt {
+            IndexDomain: (sk1);
+            Definition: {
+                DistributionKurtosis(LogNormal(SKval(sk1)));
+            }
+        }
+        Parameter Paretokurt {
+            IndexDomain: (sk1);
+            Definition: {
+                DistributionKurtosis(Pareto(SKval(sk1)));
+            }
+        }
+        Parameter GammaSkew {
+            IndexDomain: (sk1);
+            Definition: {
+                DistributionSkewness(Gamma(SKval(sk1)));
+            }
+        }
+        Parameter WeibullSkew {
+            IndexDomain: (sk1);
+            Definition: {
+                DistributionSkewness(Weibull(SKval(sk1)));
+            }
+        }
+        Parameter LognormalSkew {
+            IndexDomain: (sk1);
+            Definition: {
+                DistributionSkewness(LogNormal(SKval(sk1)));
+            }
+        }
+        Parameter ParetoSkew {
+            IndexDomain: (sk1);
+            Definition: {
+                DistributionSkewness(Pareto(SKval(sk1)));
+            }
+        }
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-09-25 16:41:44">
+	<Location top="123" left="96" bottom="502" right="616" />
+	<PageEditSize Type="Inherited">
+		<Size Width="759" Height="607" />
+	</PageEditSize>
+	<ProjectUUID>A1F8CE36-288A-458E-B979-D4F672A5C413</ProjectUUID>
+	<Title>"Enter State Name"</Title>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromBottom" Value="40">
+			<TopArea Line="FixedFromLeft" Value="7" />
+			<BottomArea Line="FixedFromRight" Value="192" />
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Button">
+		<Location top="570" left="582" bottom="600" right="666" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"OK"</Title>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<ActionSequence>
+			<Action Type="Assignment">
+				<Identifier>PTStateManager::StateSelected</Identifier>
+				<AssignedValue>1</AssignedValue>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="570" left="672" bottom="600" right="756" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Cancel"</Title>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="570" left="6" bottom="600" right="564" />
+		<Hidden>PTStateManager::HideEnterNameBox</Hidden>
+		<TabOrder>1</TabOrder>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>PTStateManager::StateNameSelected</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Composite Table" Tag="StateList">
+		<Location top="5" left="6" bottom="563" right="756" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>4</TabOrder>
+		<Font GUID="99627C86-4496-44E5-AA8B-405D7D3EDF65" Name="default" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<CellSelection>false</CellSelection>
+		<MultipleRowSelection>false</MultipleRowSelection>
+		<Domain>
+			<Identifier>PTStateManager::sp</Identifier>
+			<Index Name="PTStateManager::sp">
+				<TitleText>"Name"</TitleText>
+				<ProcedureUponSelect>PTStateManager::UpdateStateNameSelected( PTStateManager::sp )</ProcedureUponSelect>
+				<ProcedureUponDblClick>PTStateManager::DoubleClickStateNameSelector</ProcedureUponDblClick>
+			</Index>
+		</Domain>
+		<ExplicitIdentifier>
+			<Identifier>PTStateManager::StateLastSaved( PTStateManager::sp -&gt; PTStateManager::SelectedState )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"Last Saved"</TitleText>
+			<ProcedureUponSelect>PTStateManager::UpdateStateNameSelected( PTStateManager::sp )</ProcedureUponSelect>
+			<ProcedureUponDblClick>PTStateManager::DoubleClickStateNameSelector</ProcedureUponDblClick>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PTStateManager::StateLocation( PTStateManager::sp -&gt; PTStateManager::SelectedState )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"State File"</TitleText>
+			<ProcedureUponSelect>PTStateManager::UpdateStateNameSelected( PTStateManager::sp )</ProcedureUponSelect>
+			<ProcedureUponDblClick>PTStateManager::DoubleClickStateNameSelector</ProcedureUponDblClick>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PTStateManager::StatePage( PTStateManager::sp -&gt; PTStateManager::SelectedState )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"Page"</TitleText>
+			<ProcedureUponSelect>PTStateManager::UpdateStateNameSelected( PTStateManager::sp )</ProcedureUponSelect>
+			<ProcedureUponDblClick>PTStateManager::DoubleClickStateNameSelector</ProcedureUponDblClick>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PTStateManager::StateTag( PTStateManager::sp -&gt; PTStateManager::SelectedState )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" />
+			<TitleText>"Tag"</TitleText>
+			<ProcedureUponSelect>PTStateManager::UpdateStateNameSelected( PTStateManager::sp )</ProcedureUponSelect>
+			<ProcedureUponDblClick>PTStateManager::DoubleClickStateNameSelector</ProcedureUponDblClick>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PTStateManager::UpdateStateNameSelected</Symbol>
+			<Symbol>PTStateManager::StatePage</Symbol>
+			<Symbol>PTStateManager::StateLastSaved</Symbol>
+			<Symbol>PTStateManager::sp</Symbol>
+			<Symbol>PTStateManager::StateTag</Symbol>
+			<Symbol>PTStateManager::StateNameSelected</Symbol>
+			<Symbol>PTStateManager::StateLocation</Symbol>
+			<Symbol>PTStateManager::StateSelected</Symbol>
+			<Symbol>PTStateManager::SelectedState</Symbol>
+			<Symbol>PTStateManager::DoubleClickStateNameSelector</Symbol>
+			<Symbol>PTStateManager::HideEnterNameBox</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

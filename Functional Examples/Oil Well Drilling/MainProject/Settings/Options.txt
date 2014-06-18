@@ -1,0 +1,27 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+case_contains_runtime_libraries 0
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+errors_until_execution_interrupt 100
+external_string_character_encoding WINDOWS-1252
+warning_non_optimal warning_handle
+* AOA
+* BARON 12
+* CONOPT 3.14V
+* CPLEX 12.6
+* CPOptimizer 12.6
+* GUROBI 5.6
+* KNITRO 9.0
+* LGO 1.0
+* MINOS
+* PATH 4.6
+* SNOPT 7.2
+* XA 15
+* NETSOL
+* Environment
+Project_Title "AIMMS - Oil Well Drilling"
+Startup_Page "Problem Description"
+Startup_Case "data\Cases\Oil Well Drilling.data"

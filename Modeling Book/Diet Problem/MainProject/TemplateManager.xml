@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="4E7F0016-D869-4F67-B131-CE05E1DBDBB4" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A26F4D4-7D45-498A-A47F-E2160A5EF445|Size Template">
+		<Template Name="Navigation Template" PageGUID="C4C7C770-6356-441C-AC6C-6A6E61E8022A" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|00AF2BBC-288D-40C6-9297-60B5615210C7|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="4CD83FCF-2F49-418E-967C-FA5BDDFC05E5" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6ADCB471-430B-47F2-9D7B-8261D9957901|Background Info Template">
+				<Page Name="Problem Description" PageGUID="667FB808-A704-4E6D-B161-E9363751525B" />
+			</Template>
+			<Page Name="Diet Problem" PageGUID="00572F3C-53A8-4C9B-ABE6-998E9D245A81" />
+		</Template>
+	</Template>
+	<Page Name="All Data Pages" PageGUID="3DD93743-E309-4D40-B27D-6EF7AB9BD4EC" />
+	<Page Name="[Data Page] UnitNutrients" PageGUID="79BAEC57-BD8A-4C82-83D5-E8500FAABAEA" />
+</TemplateManager>

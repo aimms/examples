@@ -1,0 +1,116 @@
+## ams_version=1.0
+
+Model Main_CapacitatedWarehouseLocation {
+    Comment: {
+        "Capacitated warehouse location
+        
+        Problem type:
+        MIP (small)
+        
+        Description:
+        The capacitated warehouse location problem is the problem of locating
+        a number of warehouses which have to service a set of customers, at
+        minimum cost, where each customer has an associated demand and there
+        are constraints on the total demand that can be met from a warehouse.
+        
+        References:
+        Beasley, J.E., An algorithm for solving large capacitated warehouse
+        location problems, European Journal of Operational Research 33, 1988,
+        pp. 314-325."
+    }
+    Parameter NumberOfLocations;
+    Parameter NumberOfCustomers;
+    Set Locations {
+        SubsetOf: Integers;
+        Index: i;
+        Definition: {
+            {1..NumberOfLocations}
+        }
+        Comment: "Potential locations";
+    }
+    Set Customers {
+        SubsetOf: Integers;
+        Index: j;
+        Definition: {
+            {1..NumberOfCustomers}
+        }
+    }
+    Parameter Demand {
+        IndexDomain: (j);
+    }
+    Parameter AllocationCost {
+        IndexDomain: (i,j);
+    }
+    Parameter Capacity {
+        IndexDomain: (i);
+    }
+    Parameter LowerLimitOnDemand {
+        IndexDomain: (i);
+        Definition: 0;
+    }
+    Parameter LowerLimitOfOpenWarehouses {
+        Definition: 0;
+    }
+    Parameter UpperLimitOfOpenWarehouses {
+        Definition: NumberOfLocations;
+    }
+    Parameter FixedCost {
+        IndexDomain: (i);
+    }
+    Variable DemandFractionSupplied {
+        IndexDomain: (i,j);
+        Range: [0, 1];
+    }
+    Variable Open {
+        IndexDomain: (i);
+        Range: binary;
+    }
+    Variable TotalCost {
+        Range: free;
+        Definition: sum((i,j), AllocationCost(i, j) * DemandFractionSupplied(i, j)) + sum(i, FixedCost(i) * Open(i));
+    }
+    Constraint DemandSatisfaction {
+        IndexDomain: (j);
+        Definition: sum(i, DemandFractionSupplied(i, j)) >= 1;
+    }
+    Constraint WarehouseCapacity {
+        IndexDomain: (i);
+        Definition: sum(j, Demand(j) * DemandFractionSupplied(i, j)) <= Capacity(i) * Open(i);
+    }
+    Constraint MinimumSupllied {
+        IndexDomain: (i);
+        Definition: sum(j, Demand(j) * DemandFractionSupplied(i, j)) >= LowerLimitOnDemand(i) * Open(i);
+    }
+    Constraint MinimumWarehousesOpened {
+        Definition: sum(i, Open(i)) >= LowerLimitOfOpenWarehouses;
+    }
+    Constraint MaximumWarehousesOpened {
+        Definition: sum(i, Open(i)) <= UpperLimitOfOpenWarehouses;
+    }
+    Constraint EffectiveCapacity {
+        IndexDomain: (i,j);
+        Definition: DemandFractionSupplied(i, j) <= min(1, Capacity(i)/Demand(j)) * Open(i);
+    }
+    MathematicalProgram LeastCost {
+        Objective: TotalCost;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: MIP;
+    }
+    Procedure MainInitialization {
+        Body: {
+            read from file "Input//cap134.inp";
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            solve LeastCost;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

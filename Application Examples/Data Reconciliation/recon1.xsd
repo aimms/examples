@@ -1,0 +1,112 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="http://tempuri.org/AIMMS/generated-namespace-15106">
+	<xs:element name="AimmsData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Flows">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Flows" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="elem" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MeasuredFlow">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="f" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="elem" type="xs:string" use="required"/>
+									<xs:attribute name="value" type="xs:float" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Flow">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="f" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="elem" type="xs:string" use="required"/>
+									<xs:attribute name="value" type="xs:float" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Flow.basic">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="f" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="elem" type="xs:string" use="required"/>
+									<xs:attribute name="value" type="xs:float" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MeasuredComposition">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nmf" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="c" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="elem" type="xs:string" use="required"/>
+												<xs:attribute name="value" type="xs:float" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="elem" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Composition">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nmf" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="c" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="elem" type="xs:string" use="required"/>
+												<xs:attribute name="value" type="xs:float" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="elem" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Composition.basic">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nmf" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="c" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="elem" type="xs:string" use="required"/>
+												<xs:attribute name="value" type="xs:float" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="elem" type="xs:string" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,1611 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2014-04-17 10:43:16">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>E3EDF3D8-C822-4305-8114-A093A78C526C</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background RGB="#fdffff" />
+	<PageObject Type="Scalar">
+		<Location top="96" left="204" bottom="132" right="240" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face1', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="132" left="204" bottom="168" right="240" />
+		<TabOrder>19</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face2', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="204" bottom="204" right="240" />
+		<TabOrder>33</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face4', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="204" left="204" bottom="240" right="240" />
+		<TabOrder>60</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face6', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="240" bottom="204" right="276" />
+		<TabOrder>74</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face5', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="168" bottom="204" right="204" />
+		<TabOrder>78</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face3', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="78" left="150" bottom="258" right="294" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="78" left="294" bottom="258" right="438" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="258" left="150" bottom="438" right="294" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="78" left="438" bottom="258" right="582" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="438" left="150" bottom="618" right="294" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="78" left="726" bottom="258" right="870" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="258" left="438" bottom="438" right="582" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="258" left="726" bottom="438" right="870" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="438" left="438" bottom="618" right="582" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="438" left="726" bottom="618" right="870" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="42" left="150" bottom="78" right="294" />
+		<StaticText>Solution 1</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="42" left="438" bottom="78" right="582" />
+		<StaticText>Solution 3</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="42" left="726" bottom="78" right="870" />
+		<StaticText>Solution 5</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="144" left="18" bottom="180" right="162" />
+		<StaticText>Dice 1</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="330" left="18" bottom="366" right="162" />
+		<StaticText>Dice 2</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="504" left="18" bottom="540" right="162" />
+		<StaticText>Dice 3</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="96" left="348" bottom="132" right="384" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face1', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="132" left="348" bottom="168" right="384" />
+		<TabOrder>17</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face2', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="348" bottom="204" right="384" />
+		<TabOrder>32</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face4', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="204" left="348" bottom="240" right="384" />
+		<TabOrder>47</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face6', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="384" bottom="204" right="420" />
+		<TabOrder>73</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face5', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="312" bottom="204" right="348" />
+		<TabOrder>89</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face3', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="96" left="492" bottom="132" right="528" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face1', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="132" left="492" bottom="168" right="528" />
+		<TabOrder>16</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face2', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="492" bottom="204" right="528" />
+		<TabOrder>31</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face4', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="204" left="492" bottom="240" right="528" />
+		<TabOrder>49</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face6', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="528" bottom="204" right="564" />
+		<TabOrder>75</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face5', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="456" bottom="204" right="492" />
+		<TabOrder>90</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face3', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="96" left="636" bottom="132" right="672" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face1', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="132" left="636" bottom="168" right="672" />
+		<TabOrder>18</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face2', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="636" bottom="204" right="672" />
+		<TabOrder>35</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face4', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="204" left="636" bottom="240" right="672" />
+		<TabOrder>48</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face6', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="672" bottom="204" right="708" />
+		<TabOrder>72</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face5', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="600" bottom="204" right="636" />
+		<TabOrder>76</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face3', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="96" left="780" bottom="132" right="816" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face1', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="132" left="780" bottom="168" right="816" />
+		<TabOrder>30</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face2', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="780" bottom="204" right="816" />
+		<TabOrder>34</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face4', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="204" left="780" bottom="240" right="816" />
+		<TabOrder>46</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face6', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="816" bottom="204" right="852" />
+		<TabOrder>71</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face5', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="168" left="744" bottom="204" right="780" />
+		<TabOrder>77</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#82c0ff" />
+		<TextColor RGB="#004080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice1', 'face3', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="276" left="204" bottom="312" right="240" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face1', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="312" left="204" bottom="348" right="240" />
+		<TabOrder>20</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face2', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="204" bottom="384" right="240" />
+		<TabOrder>43</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face4', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="384" left="204" bottom="420" right="240" />
+		<TabOrder>57</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face6', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="240" bottom="384" right="276" />
+		<TabOrder>70</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face5', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="168" bottom="384" right="204" />
+		<TabOrder>82</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face3', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="258" left="294" bottom="438" right="438" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="438" left="294" bottom="618" right="438" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="78" left="582" bottom="258" right="726" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="258" left="582" bottom="438" right="726" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="438" left="582" bottom="618" right="726" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="276" left="348" bottom="312" right="384" />
+		<TabOrder>12</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face1', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="312" left="348" bottom="348" right="384" />
+		<TabOrder>27</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face2', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="348" bottom="384" right="384" />
+		<TabOrder>45</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face4', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="384" left="348" bottom="420" right="384" />
+		<TabOrder>51</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face6', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="384" bottom="384" right="420" />
+		<TabOrder>63</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face5', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="312" bottom="384" right="348" />
+		<TabOrder>87</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face3', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="276" left="492" bottom="312" right="528" />
+		<TabOrder>14</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face1', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="312" left="492" bottom="348" right="528" />
+		<TabOrder>28</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face2', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="492" bottom="384" right="528" />
+		<TabOrder>38</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face4', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="384" left="492" bottom="420" right="528" />
+		<TabOrder>55</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face6', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="528" bottom="384" right="564" />
+		<TabOrder>67</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face5', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="456" bottom="384" right="492" />
+		<TabOrder>86</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face3', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="276" left="636" bottom="312" right="672" />
+		<TabOrder>10</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face1', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="312" left="636" bottom="348" right="672" />
+		<TabOrder>23</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face2', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="636" bottom="384" right="672" />
+		<TabOrder>36</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face4', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="384" left="636" bottom="420" right="672" />
+		<TabOrder>53</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face6', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="672" bottom="384" right="708" />
+		<TabOrder>69</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face5', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="600" bottom="384" right="636" />
+		<TabOrder>84</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face3', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="276" left="780" bottom="312" right="816" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face1', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="312" left="780" bottom="348" right="816" />
+		<TabOrder>25</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face2', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="780" bottom="384" right="816" />
+		<TabOrder>41</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face4', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="384" left="780" bottom="420" right="816" />
+		<TabOrder>59</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face6', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="816" bottom="384" right="852" />
+		<TabOrder>62</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face5', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="348" left="744" bottom="384" right="780" />
+		<TabOrder>80</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffff80" />
+		<TextColor RGB="#8a8a00" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice2', 'face3', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="450" left="204" bottom="486" right="240" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face1', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="486" left="204" bottom="522" right="240" />
+		<TabOrder>21</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face2', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="204" bottom="558" right="240" />
+		<TabOrder>42</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face4', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="558" left="204" bottom="594" right="240" />
+		<TabOrder>56</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face6', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="240" bottom="558" right="276" />
+		<TabOrder>65</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face5', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="168" bottom="558" right="204" />
+		<TabOrder>79</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face3', '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="78" left="30" bottom="618" right="150" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="24" left="150" bottom="78" right="870" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#ffffff" />
+		<LineColor RGB="#000000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="450" left="348" bottom="486" right="384" />
+		<TabOrder>13</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face1', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="486" left="348" bottom="522" right="384" />
+		<TabOrder>26</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face2', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="348" bottom="558" right="384" />
+		<TabOrder>44</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face4', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="558" left="348" bottom="594" right="384" />
+		<TabOrder>50</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face6', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="384" bottom="558" right="420" />
+		<TabOrder>64</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face5', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="312" bottom="558" right="348" />
+		<TabOrder>88</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face3', '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="450" left="492" bottom="486" right="528" />
+		<TabOrder>15</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face1', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="486" left="492" bottom="522" right="528" />
+		<TabOrder>29</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face2', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="492" bottom="558" right="528" />
+		<TabOrder>39</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face4', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="558" left="492" bottom="594" right="528" />
+		<TabOrder>54</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face6', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="528" bottom="558" right="564" />
+		<TabOrder>66</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face5', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="456" bottom="558" right="492" />
+		<TabOrder>85</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face3', '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="450" left="636" bottom="486" right="672" />
+		<TabOrder>11</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face1', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="486" left="636" bottom="522" right="672" />
+		<TabOrder>22</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face2', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="636" bottom="558" right="672" />
+		<TabOrder>37</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face4', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="558" left="636" bottom="594" right="672" />
+		<TabOrder>52</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face6', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="672" bottom="558" right="708" />
+		<TabOrder>68</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face5', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="600" bottom="558" right="636" />
+		<TabOrder>83</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face3', '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="450" left="780" bottom="486" right="816" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face1', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="486" left="780" bottom="522" right="816" />
+		<TabOrder>24</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face2', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="780" bottom="558" right="816" />
+		<TabOrder>40</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face4', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="558" left="780" bottom="594" right="816" />
+		<TabOrder>58</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face6', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="816" bottom="558" right="852" />
+		<TabOrder>61</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face5', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="522" left="744" bottom="558" right="780" />
+		<TabOrder>81</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="OutShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ff80ff" />
+		<TextColor RGB="#a800a8" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FaceValues( 'dice3', 'face3', '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="24" left="294" bottom="78" right="438" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="42" left="294" bottom="78" right="438" />
+		<StaticText>Solution 2</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="24" left="582" bottom="78" right="726" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="42" left="582" bottom="78" right="726" />
+		<StaticText>Solution 4</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="372" left="978" bottom="432" right="1044" />
+		<TabOrder>91</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"MainProject\User Files\bitmaps\Dice.bmp"</BitmapFile>
+		<BackgroundColor RGB="#ffffff" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ButtonSelectionProcedure</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="396" left="924" bottom="438" right="990" />
+		<StaticText>Run</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2B4834B0-9F35-4AB0-9120-B21D2D25481D" Name="Figure2" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="618" left="294" bottom="672" right="438" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="618" left="582" bottom="672" right="726" />
+		<FillColor RGB="#d9f2ff" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="618" left="438" bottom="672" right="582" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="618" left="150" bottom="672" right="294" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="618" left="726" bottom="672" right="870" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="618" left="30" bottom="672" right="150" />
+		<Shape>Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="636" left="18" bottom="672" right="162" />
+		<StaticText>Wins</StaticText>
+		<Alignment>Center</Alignment>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="630" left="174" bottom="666" right="270" />
+		<TabOrder>96</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Objs( '1' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="630" left="318" bottom="666" right="414" />
+		<TabOrder>92</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Objs( '2' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="630" left="462" bottom="666" right="558" />
+		<TabOrder>93</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Objs( '3' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="630" left="606" bottom="666" right="702" />
+		<TabOrder>94</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Objs( '4' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="630" left="750" bottom="666" right="846" />
+		<TabOrder>95</TabOrder>
+		<Font GUID="2D875F72-55EC-4294-A3A8-7C0C40DACD1A" Name="Figure" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Objs( '5' )</Identifier>
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Right" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="264" left="930" bottom="366" right="1068" />
+		<TabOrder>97</TabOrder>
+		<Font GUID="2B4834B0-9F35-4AB0-9120-B21D2D25481D" Name="Figure2" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SolutionMethod</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="252" left="906" bottom="444" right="1092" />
+		<Shape>Rounded-Open</Shape>
+		<FillColor RGB="#d5f4e3" />
+		<LineColor RGB="#400040" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Objs</Symbol>
+			<Symbol>FaceValues</Symbol>
+			<Symbol>Methods</Symbol>
+			<Symbol>SolutionMethod</Symbol>
+			<Symbol>ButtonSelectionProcedure</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

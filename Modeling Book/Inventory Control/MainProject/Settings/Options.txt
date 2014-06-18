@@ -1,0 +1,13 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+rounding_compatibility Aimms_3_7
+warning_unit_consistency off
+* Environment
+Project_Title "AIMMS - Inventory Control"
+Startup_Page "AIMMS Demo - An Inventory Control Problem"

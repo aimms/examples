@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2009-02-26 01:52:21">
+	<Location top="23" left="4" bottom="644" right="768" />
+	<PageEditSize Type="Inherited">
+		<Size Width="772" Height="622" />
+	</PageEditSize>
+	<ProjectUUID>F6F7BFDB-3213-402B-8599-37A1EB70A693</ProjectUUID>
+	<Title>"Flow Network"</Title>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="99">
+			<TopArea Line="FixedFromLeft" Value="200" />
+			<BottomArea Line="FixedFromLeft" Value="200">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromBottom" Value="70">
+						<TopArea Line="FixedFromTop" Value="232" />
+					</BottomArea>
+				</LeftArea>
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromTop" Value="170" />
+				</RightArea>
+			</BottomArea>
+		</MainArea>
+	</ResizeData>
+	<Background>
+		<UserColor GUID="A3F7D4E9-6AD2-4DF0-9627-93C29DDFEB1D">white</UserColor>
+	</Background>
+	<HorizontalGridDistance>3</HorizontalGridDistance>
+	<VerticalGridDistance>3</VerticalGridDistance>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="354" left="207" bottom="615" right="351" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<AddAndRemoveButtons>true</AddAndRemoveButtons>
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<MultipleColumns>true</MultipleColumns>
+		<ExplicitIdentifier>
+			<Identifier>FlowEl</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="189" left="207" bottom="309" right="762" />
+		<StaticText>On this page you must define the network of flows between all units by specifying the source and destination of each flow. 
+
+The result is visualized in the network at the right. You can change the position of the units graphically or by entering the coordinates manually. In addition, through the right-mouse pop up menu of the network object, you can add intermediate nodes on a flow allowing you to draw flows along a rectangular path.</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="330" left="207" bottom="360" right="342" />
+		<StaticText>Select flow:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="330" left="357" bottom="360" right="492" />
+		<StaticText>Source unit:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="330" left="504" bottom="354" right="690" />
+		<StaticText>Process flow network:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="414" left="357" bottom="438" right="480" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<ProcedureUponChange>ChangeFlowDestination</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>IndicatorInFlow( u, FlowEl )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="390" left="357" bottom="420" right="483" />
+		<StaticText>Destination unit:</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="354" left="357" bottom="378" right="480" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<ProcedureUponChange>ChangeFlowSource</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>IndicatorOutFlow( u, FlowEl )</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Network Object">
+		<Location top="354" left="504" bottom="615" right="762" />
+		<TabOrder>6</TabOrder>
+		<TabStop>false</TabStop>
+		<PopupMenu ProjectUUID="F6F7BFDB-3213-402B-8599-37A1EB70A693" MenuUUID="BBCCDB4D-E97A-4585-80BE-4902B613740A" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<Border Style="InShadow" Width="2" MarginTop="2" MarginRight="2" MarginBottom="2" MarginLeft="2" />
+		<BackgroundColor>
+			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+		</BackgroundColor>
+		<TextColor>
+			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+		</TextColor>
+		<SelectionColor RGB="#000080" />
+		<AllowZoom>false</AllowZoom>
+		<EqualXYScale>false</EqualXYScale>
+		<ScrollControl>NoScrolling</ScrollControl>
+		<VisibleArea>
+			<Left>NetworkBound( 'Left' )</Left>
+			<Right>NetworkBound( 'Right' )</Right>
+			<Top>NetworkBound( 'Top' )</Top>
+			<Bottom>NetworkBound( 'Bottom' )</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>n</Identifier>
+			<XCoordinate>NodeCoordinate( n -&gt; NodeEl, 'x' )</XCoordinate>
+			<YCoordinate>NodeCoordinate( n, 'y' )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Top</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>NodeColor( n )</Color>
+			<Size>NodeSize( n )</Size>
+			<Text>UnitMap( n )</Text>
+			<Shape>Circle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>FlowMap( f -&gt; FlowEl, nto -&gt; SourceNode, nfrom -&gt; DestinationNode )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Text>"f"</Text>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="324" left="666" bottom="348" right="762" />
+		<TabOrder>5</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Unit coordinates"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>FirstChild</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>f</Symbol>
+			<Symbol>n</Symbol>
+			<Symbol>u</Symbol>
+			<Symbol>nto</Symbol>
+			<Symbol>DestinationNode</Symbol>
+			<Symbol>ChangeFlowDestination</Symbol>
+			<Symbol>FlowMap</Symbol>
+			<Symbol>NodeEl</Symbol>
+			<Symbol>UnitMap</Symbol>
+			<Symbol>IndicatorOutFlow</Symbol>
+			<Symbol>NetworkBound</Symbol>
+			<Symbol>NodeSize</Symbol>
+			<Symbol>nfrom</Symbol>
+			<Symbol>ChangeFlowSource</Symbol>
+			<Symbol>IndicatorInFlow</Symbol>
+			<Symbol>Flows</Symbol>
+			<Symbol>NodeCoordinate</Symbol>
+			<Symbol>NodeColor</Symbol>
+			<Symbol>SourceNode</Symbol>
+			<Symbol>FlowEl</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

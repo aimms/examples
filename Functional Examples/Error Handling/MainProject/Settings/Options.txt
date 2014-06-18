@@ -1,0 +1,16 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_procedure_error_handling raise_warning_when_not_checked
+external_string_character_encoding WINDOWS-1252
+Global_error_handler "eh::GlobalErrorHandler"
+intrinsic_procedure_error_handling raise_warning_when_not_checked
+warning_duplicate_column strict_warning_default
+warning_duplicate_row strict_warning_default
+* Environment
+Project_Title "AIMMS - Error Handling"
+Startup_Page "AIMMS Demo - Error Handling"

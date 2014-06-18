@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Template Name="Size Template" PageGUID="B256919C-49B8-4C29-BBCE-7C17CC8F228A" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|EED1CEE8-E10F-4823-B40E-DC51BFC41CCA|Size Template">
+		<Template Name="Navigation Template" PageGUID="AA285735-6BC5-4688-8749-B6B1D30712EC" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|EA6FDC6B-32D0-4450-9170-C2FB8CA78352|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="B268ED96-9112-4DBB-A32A-660896776C08" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|D12F7D87-9203-49BC-9848-1B5E82B87000|Background Info Template">
+				<Page Name="Problem Description" PageGUID="E7D6E053-6DA1-45B6-8601-158D134D3622" />
+			</Template>
+			<Page Name="Knapsack Problem" PageGUID="4377A094-DC6E-4388-819B-DE99F47B971F" />
+		</Template>
+	</Template>
+</TemplateManager>

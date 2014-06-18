@@ -1,0 +1,510 @@
+<?xml version="1.0"?>
+<UserMenuTree Version="4000" TimeStamp="2009-02-26 01:52:21">
+	<Menubar Name="End-User Menubar" UUID="92A23CAD-31B3-49CC-A252-2637097F233C">
+		<Menu Name="&amp;File" UUID="2F0B5E0D-FB2B-4671-BF57-539D88EEAAF9">
+			<MenuItem Name="Close Project" UUID="6378913A-0C11-4975-8454-1143B1B68435">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>File-Close Project</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Closes the current project"</StatusLineText>
+					<Tooltip>"Close Project"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Save Project" UUID="12AA80A4-C86B-4019-8F6A-3050DC4258A0" ShortcutKey="595" BitmapIndex="2">
+				<ActionSequence>
+					<Action Type="MenuCommand" />
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Saves all changes in the current project"</StatusLineText>
+					<Tooltip>"Save Project"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Close" UUID="13F3672C-BC14-4476-9C82-57D0A531DD5D" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>File-Close</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Closes the active window"</StatusLineText>
+					<Tooltip>"Close"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Print Setup..." UUID="0D4595F9-84C4-433A-A2CE-B32D2F37D160" BitmapIndex="11">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>File-Print Setup</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Opens the Windows Print Setup dialog"</StatusLineText>
+					<Tooltip>"Print Setup"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Print" UUID="5B531D29-1F81-4871-8ABF-7E9C8B8C7763" BitmapIndex="12">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>File-Print</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Prints the contents of the active window"</StatusLineText>
+					<Tooltip>"Print"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Exit" UUID="8EA28E53-8C7C-4ACB-A667-5B0C7056FA55" BitmapIndex="13">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>File-Exit</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Closes the current project and exits AIMMS"</StatusLineText>
+					<Tooltip>"Exit"</Tooltip>
+				</Help>
+			</MenuItem>
+		</Menu>
+		<Menu Name="&amp;Edit" UUID="727D5EE0-FE49-4CA0-B102-7B7055BB9007">
+			<MenuItem Name="Undo Last" UUID="E8905F87-6D0A-4AF3-80EA-FEDE437518CC" BitmapIndex="14">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Edit-Undo Last</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Undoes the last data change"</StatusLineText>
+					<Tooltip>"Undo Last"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Undo..." UUID="125BD7E4-A815-47D1-BA11-68CFB9A867DB" BitmapIndex="15">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Edit-Undo</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Undoes a set of data changes"</StatusLineText>
+					<Tooltip>"Undo"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Cut" UUID="ECF46834-D333-4A57-BB9E-D2DAC17473D7" ShortcutKey="2350" BitmapIndex="16">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Edit-Cut</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Cuts the selected data and puts it onto the clipboard"</StatusLineText>
+					<Tooltip>"Cut"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Copy" UUID="7184702F-4197-4435-9401-584C78F3349D" ShortcutKey="579" BitmapIndex="17">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Edit-Copy</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Copies the selected data onto the clipboard"</StatusLineText>
+					<Tooltip>"Copy"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Paste" UUID="A6F1DF84-BE6B-4C92-9209-789029215E66" ShortcutKey="598" BitmapIndex="18">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Edit-Paste</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Paste the data from the clipboard into the current object"</StatusLineText>
+					<Tooltip>"Paste"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Delete" UUID="7344D17E-FB9D-421B-B056-905AFEEC574C" BitmapIndex="19">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Edit-Delete</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Deletes the selected object"</StatusLineText>
+					<Tooltip>"Delete"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Keep Page Opened" UUID="9E6A3041-D3FA-42F2-9ED9-31A5E301577E" BitmapIndex="52">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Page-Keep</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Prevents the current page from being closed automatically"</StatusLineText>
+					<Tooltip>"Keep Page"</Tooltip>
+				</Help>
+			</MenuItem>
+		</Menu>
+		<Menu Name="&amp;Run" UUID="579CB723-2F64-4541-B049-B3C9C6B0587C">
+			<MenuItem Name="Collect Measurements" UUID="65499A6E-9DA2-428A-B0BB-AB355ED07BB6">
+				<ActionSequence>
+					<Action Type="Run">
+						<RunWhat>SpecificProcecure</RunWhat>
+						<AbortOnError>true</AbortOnError>
+					</Action>
+				</ActionSequence>
+			</MenuItem>
+			<MenuItem Name="Reconcile" UUID="78D35A4D-E885-4452-B4D3-98C1391557DB">
+				<ActionSequence>
+					<Action Type="Run">
+						<RunWhat>SpecificProcecure</RunWhat>
+						<Procedure>SolveTheModel</Procedure>
+						<AbortOnError>true</AbortOnError>
+					</Action>
+				</ActionSequence>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Stop" UUID="7628C6D6-2EAE-4354-87C5-A51B29D3F460" ShortcutKey="851" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Run-Stop</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Aborts the current execution"</StatusLineText>
+					<Tooltip>"Run Stop"</Tooltip>
+				</Help>
+			</MenuItem>
+		</Menu>
+		<Menu Name="&amp;Data" UUID="FFC5DEC4-F1BF-40C3-8A5E-929CD8D1E0E0">
+			<MenuItem Name="Load Case" UUID="A1A7298A-76FA-4A5E-A983-6270585C647D" BitmapIndex="21">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Case-Load As Active</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Loads an existing case and makes it the current case"</StatusLineText>
+					<Tooltip>"Load Case"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Save Case" UUID="2F5BB54A-A3B4-4778-A85F-6D058322FB78" BitmapIndex="22">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Case-Save</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Saves all data to the current case"</StatusLineText>
+					<Tooltip>"Save Case"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Save Case as..." UUID="3BFBD913-8263-41FA-8DC2-293ECB332270" BitmapIndex="23">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Case-Save As</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Saves all data to a new case"</StatusLineText>
+					<Tooltip>"Save Case As"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<Menu Name="Dataset" UUID="43041D11-BEEB-42B5-A6ED-3F7BE71DFB55">
+				<MenuItem Name="Load Dataset" UUID="CCD628ED-B01D-4075-9F6F-538CAAD78B0B" BitmapIndex="31">
+					<ActionSequence>
+						<Action Type="MenuCommand">
+							<Command>Data-Load As Active</Command>
+						</Action>
+					</ActionSequence>
+					<Help>
+						<StatusLineText>"Loads an existing dataset and makes it the current dataset"</StatusLineText>
+						<Tooltip>"Load Dataset"</Tooltip>
+					</Help>
+				</MenuItem>
+				<MenuItem Name="Save Dataset" UUID="4262CDA2-88B2-44D1-ACB5-643DB510D277" BitmapIndex="31">
+					<ActionSequence>
+						<Action Type="MenuCommand">
+							<Command>Data-Save</Command>
+						</Action>
+					</ActionSequence>
+					<Help>
+						<StatusLineText>"Saves all data to the current dataset"</StatusLineText>
+						<Tooltip>"Save Dataset"</Tooltip>
+					</Help>
+				</MenuItem>
+				<MenuItem Name="Save Dataset as..." UUID="46CA86B1-2B15-4446-9CDA-046CA9172BCC" BitmapIndex="31">
+					<ActionSequence>
+						<Action Type="MenuCommand">
+							<Command>Data-Save As</Command>
+						</Action>
+					</ActionSequence>
+					<Help>
+						<StatusLineText>"Saves all data to a new dataset"</StatusLineText>
+						<Tooltip>"Save Dataset As"</Tooltip>
+					</Help>
+				</MenuItem>
+			</Menu>
+			<Separator />
+			<MenuItem Name="Data Manager" UUID="545BA3F0-7DF8-4946-A632-FC440C191E76" ShortcutKey="121" BitmapIndex="109">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Tools-Data Manager</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Opens the data manager window"</StatusLineText>
+					<Tooltip>"Data Manager"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Menu Name="Data File" UUID="B20FAE0C-D3E5-45B2-B7A9-E4B315945D32">
+				<MenuItem Name="Open..." UUID="0910CA95-348D-4AC3-9EDE-5ACB25ED77ED" BitmapIndex="31">
+					<ActionSequence>
+						<Action Type="MenuCommand">
+							<Command>File-Open Data File</Command>
+						</Action>
+					</ActionSequence>
+					<Help>
+						<StatusLineText>""</StatusLineText>
+						<Tooltip>""</Tooltip>
+					</Help>
+				</MenuItem>
+				<MenuItem Name="New..." UUID="355948E4-C63F-424D-9B9A-44D908EACDD8" BitmapIndex="31">
+					<ActionSequence>
+						<Action Type="MenuCommand">
+							<Command>File-New Data File</Command>
+						</Action>
+					</ActionSequence>
+					<Help>
+						<StatusLineText>""</StatusLineText>
+						<Tooltip>""</Tooltip>
+					</Help>
+				</MenuItem>
+			</Menu>
+		</Menu>
+		<Menu Name="Navigation" UUID="C19547BA-A703-4C79-90C1-0CFE17456623">
+			<NavigationMenu Name="Data Reconciliation" UUID="6660CDDB-9844-4D68-A7AC-97DD63823ED0">
+				<NavigationData>
+					<ReferencePage>Other</ReferencePage>
+					<OtherPage PageGUID="282FC54F-AD33-49DE-87A1-5C3B4A176B7C" Name="Data Reconciliation Application" />
+					<NumberOfGenerations>2</NumberOfGenerations>
+					<ActionSequence>
+						<Action Type="GotoNavigationPage" />
+						<Action Type="ClosePage" />
+					</ActionSequence>
+				</NavigationData>
+			</NavigationMenu>
+		</Menu>
+		<Menu Name="Authorization" UUID="73A9BF13-6FE4-418B-AAE8-C618E7BE5420">
+			<MenuItem Name="Change Level..." UUID="6DBD0EBF-9F0A-48C0-BBED-50926A7F7775" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>File-Authorization-Change Level</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>""</StatusLineText>
+					<Tooltip>""</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Change User Password..." UUID="C70F4BB9-3A14-44E5-9A85-8CFD8DB3888F" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>File-Authorization-Change Password</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>""</StatusLineText>
+					<Tooltip>""</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Logoff.." UUID="93B15BBF-DEE9-4626-929C-EDA6608A9F23" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>File-Authorization-Logoff</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>""</StatusLineText>
+					<Tooltip>""</Tooltip>
+				</Help>
+			</MenuItem>
+		</Menu>
+		<Menu Name="&amp;Settings" UUID="3B365EC6-9A92-4EFA-A3E3-4890BC8930B5">
+			<MenuItem Name="Project Options..." UUID="D534323B-6295-46F0-AAB0-E799AF479AEB" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Settings-Project Options</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Sets AIMMS and solver options"</StatusLineText>
+					<Tooltip>"Project Settings"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="Data Backup..." UUID="2F60820B-35D8-43D4-9B77-EFBEAB34CED5" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand" />
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Sets intitial settings for the project"</StatusLineText>
+					<Tooltip>"Project Setup"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="Text Printing..." UUID="A9C0DA9D-BE24-4F5F-AB51-5770700CD31D" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand" />
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Specifies the properties for printing text files"</StatusLineText>
+					<Tooltip>"Text Printing"</Tooltip>
+				</Help>
+			</MenuItem>
+		</Menu>
+		<Menu Name="&amp;Window" UUID="C9ADFEB6-3A6D-43D3-BB64-B7B32418A6B2">
+			<Control>
+				<ShowWindowList>true</ShowWindowList>
+			</Control>
+			<MenuItem Name="&amp;Next Window" UUID="0A3F11E1-DF8E-4C8C-8EC1-88241C6F8652" BitmapIndex="44">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Window-Next Window</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Sets the next window as the active window"</StatusLineText>
+					<Tooltip>"Next Window"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="&amp;Progress Window" UUID="7F1E12AE-6C84-4904-9B17-356D070DDC5B" ShortcutKey="592" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Window-Progress Window</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Opens the Progress window containing AIMMS and solver statistics"</StatusLineText>
+					<Tooltip>"Progress Window"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="&amp;Message Window" UUID="83817C3F-3003-411F-B2CE-75F496B33A52" ShortcutKey="589" BitmapIndex="31">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Window-Message Window</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Opens the Message window containing AIMMS and solver messages"</StatusLineText>
+					<Tooltip>"Message Window"</Tooltip>
+				</Help>
+			</MenuItem>
+		</Menu>
+		<Menu Name="&amp;Help" UUID="61E30685-7DAC-4DB6-89D1-687678087D5A">
+			<MenuItem Name="&amp;Help on Window" UUID="E58D0D47-F1DF-4B09-AC8D-DF2FD5428FBF" ShortcutKey="112" BitmapIndex="47">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Help-Help on Window</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Displays the Help page for the current window"</StatusLineText>
+					<Tooltip>"Help on Window"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="&amp;Contents and Index" UUID="11DB135C-9BD9-46C7-A9D4-01784F17F333" BitmapIndex="48">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Help-Contents and Index</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Displays the index page of the HElp file"</StatusLineText>
+					<Tooltip>"Help Index"</Tooltip>
+				</Help>
+			</MenuItem>
+			<MenuItem Name="What's This?" UUID="6A740AFE-9B82-4D10-BD27-75C19BD55386" ShortcutKey="368" BitmapIndex="68">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Help-Context Help</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Sets the cursor in the context help mode"</StatusLineText>
+					<Tooltip>"Context Help"</Tooltip>
+				</Help>
+			</MenuItem>
+			<Separator />
+			<MenuItem Name="&amp;About AIMMS..." UUID="FFC3878F-7E42-4483-8281-EA9EFEC1037A" BitmapIndex="49">
+				<ActionSequence>
+					<Action Type="MenuCommand">
+						<Command>Help-About AIMMS</Command>
+					</Action>
+				</ActionSequence>
+				<Help>
+					<StatusLineText>"Displays AIMMS version information"</StatusLineText>
+					<Tooltip>"About AIMMS"</Tooltip>
+				</Help>
+			</MenuItem>
+		</Menu>
+	</Menubar>
+	<Menu Name="Measurements" UUID="1190D986-535F-4CEE-9ED6-A1489A5A1984">
+		<MenuItem Name="Toggle Measurement" UUID="350B3EC3-6AF9-4686-B18A-7D22FB78BE28">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>ToggleMeasurement</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+		<MenuItem Name="Compute Redundant Measurements" UUID="5710CA67-2586-4808-8ABE-F1E54FE31663">
+			<Control>
+				<Disable>AutoCheckRedundancy</Disable>
+			</Control>
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>CheckForRedundantMeasurements</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+		<Separator />
+		<MenuItem Name="Automatic Redundancy Check" UUID="7B1E62D1-3CC9-4E61-AFCD-B6BB551443FB">
+			<Control>
+				<Check>AutoCheckRedundancy</Check>
+			</Control>
+		</MenuItem>
+	</Menu>
+	<Menu Name="FlowNetwork" UUID="BBCCDB4D-E97A-4585-80BE-4902B613740A">
+		<MenuItem Name="Add Intermediate Node" UUID="60629713-E459-453C-B96F-2886EF812BDE">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>AddIntermediateNode</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+		<MenuItem Name="Delete Intermediate Node" UUID="EAFE702D-E719-4B17-8228-F6E5E17B61A1">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>DeleteIntermediateNode</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+	</Menu>
+</UserMenuTree>

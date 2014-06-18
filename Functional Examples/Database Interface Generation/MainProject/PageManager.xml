@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PageManager>
+	<Page Name="AIMMS Demo" PageGUID="D006F61D-200E-4C90-A3BB-858C3A24F2BC">
+		<LinkPage Name="Demo Page" PageGUID="6DDFAD80-4238-491F-99F2-A98C3C778AE7" LinkedTo="1AC72A39-F02E-43A1-B61B-CB31A3D6269F|0137F17E-A537-4530-96AA-E66653592128|Database Interface Generation" />
+	</Page>
+</PageManager>
