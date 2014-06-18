@@ -1,0 +1,11 @@
+<h1>Excel Link</h1>
+
+This example illustrates both the Spreadsheet function library and the Excel Add-In. From AIMMS.10, this example also shows how AIMMS handles run time error.
+
+If you start up the AIMMS project (ExcelLink.aimms), you can exchange the input and output data in Excel using the Spreadsheet function library. The procedures in the "Excel Linkage" section of the model tree illustrate the required calls. When reading data from Excel, a more difficult part is that the cell range information is not available. The procedure "DetermineConsecutiveRange" shows how to deal with such a situation. The example reads and writes data from and to an Excel file called AIMMSExample.xls. 
+
+If you start up the Excel spreadsheet (ExcelAddInExample.xls), you can exchange the data contained in it with AIMMS using the Excel Add-In. The example uses an AIMMS model containing a simple transport model, and stores the input and output data of the model in an Excel spreadsheet. The actions specified in the "Aimms Interface Setup" dialog box correspond one-to-one to the calls to the Excel function library in the "Excel Linkage" section of the model tree. 
+
+
+<h2>Keywords</h2>
+Excel Add-In, Spreadsheet functions, Run Time Error Handling
