@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-07-05 09:43:02">
-	<Location bottom="947" right="1920" />
+<Page Version="4000" TimeStamp="2014-06-18 16:59:21">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -43,7 +43,7 @@
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
-			<UserColor GUID="CCB23DE4-D3C9-4647-BE46-7A1779576484">Background yellow</UserColor>
+			<UserColor GUID="9CF4AA25-F1A3-4967-9860-C7A0E532F00F">white</UserColor>
 		</BackgroundColor>
 		<TextColor>
 			<Symbol>ClockColor</Symbol>
@@ -222,23 +222,23 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>InitClock</Symbol>
-			<Symbol>o</Symbol>
-			<Symbol>DisplayTime</Symbol>
-			<Symbol>Description</Symbol>
-			<Symbol>OriginX</Symbol>
-			<Symbol>OriginY</Symbol>
-			<Symbol>DrawClock</Symbol>
-			<Symbol>tn</Symbol>
-			<Symbol>ClockColor</Symbol>
 			<Symbol>AllColors</Symbol>
 			<Symbol>RedrawClock</Symbol>
-			<Symbol>tns</Symbol>
-			<Symbol>LocX</Symbol>
-			<Symbol>LocY</Symbol>
-			<Symbol>LocSmallX</Symbol>
-			<Symbol>LocSmallY</Symbol>
+			<Symbol>DisplayTime</Symbol>
 			<Symbol>TimeSize</Symbol>
+			<Symbol>OriginX</Symbol>
+			<Symbol>OriginY</Symbol>
+			<Symbol>LocX</Symbol>
+			<Symbol>LocSmallX</Symbol>
+			<Symbol>LocY</Symbol>
+			<Symbol>LocSmallY</Symbol>
+			<Symbol>Description</Symbol>
+			<Symbol>ClockColor</Symbol>
+			<Symbol>InitClock</Symbol>
+			<Symbol>DrawClock</Symbol>
+			<Symbol>o</Symbol>
+			<Symbol>tn</Symbol>
+			<Symbol>tns</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
