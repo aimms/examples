@@ -282,28 +282,35 @@ The AIMMS API supports Model Edit Functions, allowing external applications to i
 <p>
 The external program "Model Edit API.exe" performs the following steps:
 (Please note that for the 64-bit version of AIMMS, the executable is named "Model Edit API64.exe") 
-<p>
-<p>1) It starts up an AIMMS project (empty AIMMS project.prj).
-<p>2) It builds a transport model in this AIMMS project, i.e. it creates 
-<p>- sets, parameters, variables, constraints, and a math program,
-<p>- a procedure that initializes the data, solves the model, and writes the data (including the solution) to a file.
-<p>3) It exports the model to a .aim file.
-<p>4) It calls the created procedure.
-<p>5) It writes a log file, in which you can see whether the steps above were succesful.
-<p>
+<ol>
+<li>It starts up an AIMMS project (empty AIMMS project.prj).</a></li>
+<li>It builds a transport model in this AIMMS project, i.e. it creates</a></li>
+  <ul>
+  <li>sets, parameters, variables, constraints, and a math program,</a></li>
+  <li>a procedure that initializes the data, solves the model, and writes the data (including the solution) to a file.</a></li>
+  </ul>
+<li>It exports the model to a .aim file.</a></li>
+<li>It calls the created procedure.</a></li>
+<li>It writes a log file, in which you can see whether the steps above were succesful.</a></li>
+</ol>
 The source of the external program "Model Edit API.exe" is displayed on the Source tab on the demo page and it is contained in the Source directory that comes with this example.
 <p>
 To run the external program:
-<p>- make sure that the Bin directory of your AIMMS installation directory is contained in the PATH environment variable on your computer. Make sure that there is no Bin folder of an older AIMMS version in the PATH environment, this will lead to incompatibility problems.
-<p>- run the program "Model Edit API.exe", or use the corresponding button on the demo page.
-<p>
+<ul>
+<li>make sure that the Bin directory of your AIMMS installation directory is contained in the PATH environment variable on your computer. Make sure that there is no Bin folder of an older AIMMS version in the PATH environment, this will lead to incompatibility problems.</a></li>
+<li>run the program "Model Edit API.exe", or use the corresponding button on the demo page.</a></li>
+</ul>
 Afterwards, you can inspect the log file, data output file and model file, on the tabs on the Demo Page. In the log file, you can see all actions that the external program has executed. In case there are any errors (during execution), these will show up in the log file as well. You can also inspect the model by importing it into the model explorer. To do so, click on the Import Transport Model on the demo page.
 <p>
-Note:
-<p>- You can change the PATH environment variable by going to Control Panel, System... For Windows 2000, Windows XP and newer Windows versions: Advanced tab, Environment Variables, select 'Path', click on Edit, and add the path of the Bin directory (separated by ";"). For Windows NT: Environment tab, select 'Path', and add the path of the Bin directory (separated by ";").
-<p>- AIMMS projects started via the AIMMS API are in end-user mode. By default, warnings are not communicated to end-users. If you do want to check whether AIMMS has any warnings for you, you can set the option Communicate_warnings_to_end_users to 'On'.
+Notes:
+<ul>
+<li>You can change the PATH environment variable by going to Control Panel, System... For Windows 2000, Windows XP and newer Windows versions: Advanced tab, Environment Variables, select 'Path', click on Edit, and add the path of the Bin directory (separated by ";"). For Windows NT: Environment tab, select 'Path', and add the path of the Bin directory (separated by ";").</a></li>
+<li>AIMMS projects started via the AIMMS API are in end-user mode. By default, warnings are not communicated to end-users. If you do want to check whether AIMMS has any warnings for you, you can set the option Communicate_warnings_to_end_users to 'On'.</a></li>
+</ul> 
 
-<h2>Keywords</h2> Model Edit functions, AIMMS API, using AIMMS externally, C++, integrating AIMMS<!--end GitHub examples-->
+<h2>Keywords</h2>
+Model Edit functions, AIMMS API, using AIMMS externally, C++, integrating AIMMS.
+<!--end GitHub examples-->
 
 
 &nbsp;

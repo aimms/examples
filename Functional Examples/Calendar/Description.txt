@@ -9,4 +9,4 @@ In addition, the project illustrates how you can
 - use the function TimeslotToMoment to obtain the amount of time passed between two time slots.
 
 Keywords:
-Calendar, DialogGetDate, TimeslotToString, TimeSlotToMoment, TimeslotCharacteristic
+Calendar, DialogGetDate, TimeslotToString, TimeSlotToMoment, TimeslotCharacteristic.

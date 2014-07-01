@@ -2,13 +2,13 @@ This AIMMS project illustrates how to display map data obtained from a Geographi
  
 AIMMS supports various types of GIS sources:
 
-OGC Web Map Service (WMS) 
-OGC Web Feature Service (WFS)  
-Microsoft Bing Maps
-Yahoo! Maps   
-locally stored ESRI shape files, the format as used by ArcGIS and ArcView,   
-locally stored feature data stored in OGC Geography Markup Language (GML) format,   
-locally stored map image files  
+- OGC Web Map Service (WMS)
+- OGC Web Feature Service (WFS)
+- Microsoft Bing Maps
+- Yahoo! Maps
+- locally stored ESRI shape files, the format as used by ArcGIS and ArcView
+- locally stored feature data stored in OGC Geography Markup Language (GML) format
+- locally stored map image files
  
 In AIMMS, the display of GIS are available as part of the page network object. A GIS map can be displayed as a (dynamic) background image of a network. In this example, three demo pages are available. 
 

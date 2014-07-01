@@ -3,4 +3,4 @@ In this example, the use of the pivot table is illustrated. The same data is sho
 Below each Pivot Table, some comment is given. Please read these lines to become familiar with the possibilities of the Pivot Table.
 
 Keywords:
-GUI, Pivot Table
+GUI, Pivot Table.

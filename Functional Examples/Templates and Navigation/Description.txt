@@ -1,6 +1,6 @@
-This demo illustrates AIMMS' capabilities
-- to provide a common interface to your end-user interface through the use of page templates, and 
-- to add an automatic navigational structure to the end-user interface by structuring your end-user pages in the page tree.
+This demo illustrates AIMMS' capabilities to
+- provide a common interface to your end-user interface through the use of page templates, and 
+- add an automatic navigational structure to the end-user interface by structuring your end-user pages in the page tree.
 
 The model associated with this project is empty, as all illustrated functionality is completely part of the graphical user interface of AIMMS.
 

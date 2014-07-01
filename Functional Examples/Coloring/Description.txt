@@ -9,6 +9,6 @@ All these effects can be accomplished by specifying particular identifiers decla
 NOTE: on the left of the demo page, all of the Table, Composite Table and Graph objects are present. However, in end-user mode, only one of the objects will be displayed depending on the selection made on the right of the page.
 
 Keywords: 
-Color, Inactive element, DialogGetColor, UserColorAdd, UserColorModify
+Color, Inactive element, DialogGetColor, UserColorAdd, UserColorModify.
 
 

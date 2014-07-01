@@ -19,8 +19,8 @@ To run the external program:
 
 Afterwards, you can inspect the log file, data output file and model file, on the tabs on the Demo Page. In the log file, you can see all actions that the external program has executed. In case there are any errors (during execution), these will show up in the log file as well. You can also inspect the model by importing it into the model explorer. To do so, click on the Import Transport Model on the demo page.
 
-Note:
+Notes:
 - You can change the PATH environment variable by going to Control Panel, System... For Windows 2000, Windows XP and newer Windows versions: Advanced tab, Environment Variables, select 'Path', click on Edit, and add the path of the Bin directory (separated by ";"). For Windows NT: Environment tab, select 'Path', and add the path of the Bin directory (separated by ";").
 - AIMMS projects started via the AIMMS API are in end-user mode. By default, warnings are not communicated to end-users. If you do want to check whether AIMMS has any warnings for you, you can set the option Communicate_warnings_to_end_users to 'On'.
 
-Keywords: Model Edit functions, AIMMS API, using AIMMS externally, C++, integrating AIMMS
+Keywords: Model Edit functions, AIMMS API, using AIMMS externally, C++, integrating AIMMS.

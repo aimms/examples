@@ -5,4 +5,4 @@ The demo shows two charts that display the tea consumption over a number of peri
 It is shown how easy it is to use units in 2d charts and to link charts together, by using a reverse link to an element parameter.
 
 Keywords:
-2D Chart, Pie Chart, Plot / Curve Chart, reverse link, spreadsheet Interface
+2D Chart, Pie Chart, Plot / Curve Chart, reverse link, Spreadsheet Interface.
