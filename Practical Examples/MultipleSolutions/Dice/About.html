@@ -287,10 +287,11 @@ Multiple solutions, incumbent callback, solution pool, GMP
 <h2>Description</h2>
 This example demonstrates several approaches to get multiple solutions when
 solving a MIP problem. These approaches are:
-<p>- Using the incumbent (solver) callback;
-<p>- Using the solution pool (only supported by CPLEX);
-<p>- Repeatedly solve problem forbidding the previous solutions.
-<p>
+<ul>
+<li>Using the incumbent (solver) callback</li>
+<li>Using the solution pool (only supported by CPLEX)</li>
+<li>Repeatedly solve problem forbidding the previous solutions</li>
+</ul>
 In the dice problem a set of three dice has to be designed by assigning an
 integer number to each face such that on average dice 1 beats dice 2, dice
 2 beats dice 3 and dice 3 beats dice 1. The goal is to maximize the number

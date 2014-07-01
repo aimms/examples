@@ -13,7 +13,7 @@ fixed (e.g., the topology and pipe lengths).
 
 The Water Distribution Network is formulated as MINLP problem and solved using
 a generic Branch-and-Bound algorithm that was created using GMP functionality.
-The algorithm is available in the file 'BB.aim' and can be included in any
+The algorithm is available in the file 'BB.ams' and can be included in any
 AIMMS project as a Section.
 
 References:

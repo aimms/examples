@@ -18,4 +18,4 @@ Disclaimer:
 Example uses Yahoo! Maps as data source. For licensing and use rights, visit maps.yahoo.com.
 
 Keywords:
-Distribution Center Allocation, Center of Gravity, Minimize Expected Transportation Cost, Maximize Service Level, Excel, Spreadsheet, Network, GIS, Calculate distance based on longitude and latitude.
+Distribution Center Allocation, Center of Gravity, Minimize Expected Transportation Cost, Maximize Service Level, Excel, Spreadsheet, Network object, GIS, Calculate distance based on longitude and latitude.
