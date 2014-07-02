@@ -17,3 +17,5 @@ If you look at the Page Manager (F9-key), you can see a tree containing all end-
 
 In addition, the 'Navigation' menu in the menu bar contains an automatically generated menu, containing an entry for every page in the page tree. You can view how the menu is constructed in the Menu Builder tool (Ctrl-F9-key). 
 
+Keywords:
+Navigation object, navigation menu, resizability, page structure, bitmap, button, rectangle.

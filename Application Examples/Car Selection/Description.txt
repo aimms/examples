@@ -7,4 +7,4 @@ This model is an example of a matching problem. The results are illustrated in a
 The number of cars and the number of participants can be changed by the user, where the possible combinations are generated randomly. New possible combinations will be determined when the number of participants or cars is changed, or by pushing the "generate possible pairs" button.
 
 Keywords:
-Network object.
+Project User Files, Mixed Integer Programming model, MIP, Matching Problem, Network object, Nodes and arcs, Bitmap.

@@ -735,22 +735,12 @@ Model Main_Pooling {
             solve PoolingProblem;
             
             display PoolingProblem.ProgramStatus;
-            
-            PoolingStatus := if ( PoolingProblem.ProgramStatus = 'LocallyInfeasible' ) then 1 else 0 endif;
         }
         Comment: "AllSolvers";
     }
     Procedure MainTermination {
         Body: {
             return 1;
-        }
-    }
-    Section Unused {
-        DeclarationSection Case_Declaration {
-            Parameter PoolingStatus;
-            ElementParameter ACase {
-                Range: AllCases;
-            }
         }
     }
 }

@@ -13,6 +13,5 @@ In addition, the model contains a very simple horizon-dependent optimization mod
 - restrict constraint generation to the planning interval of a horizon
 - consider data of variables outside of the planning interval of the horizon as fixed
 
-
-
-
+Keywords:
+LP model, horizon, composite table.

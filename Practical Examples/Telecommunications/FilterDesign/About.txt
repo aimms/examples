@@ -12,6 +12,5 @@ solved by CPLEX and Gurobi.
 
 References:
 Lobo, M.S., L. Vandenberghe, S. Boyd, H. Lebret, Applications of Second-order
-Cone Programming, Linear Algebra and its Applications 284 (1-3), 1998,
-pp. 193-228.
+Cone Programming, Linear Algebra and its Applications 284 (1-3), 193-228 (1998).
 

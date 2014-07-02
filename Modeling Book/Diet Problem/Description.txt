@@ -2,7 +2,7 @@ This example introduces a simplified diet problem. The example considers a small
 
 This example illustrates how data consistency can be ensured through measurement units. Another feature is the availability unit conventions that allow users with different backgrounds to view and enter data in their own choice of measurement units without having to change either the model or its data.
 
-Details about this example can be read in Chapter 10 of AIMMS Optimization Modeling. An electronic version of this book is available through the `Help' menu.
+Details about this example can be read in Chapter 10 of the AIMMS Optimization Modeling book. An electronic version of this book is available through the 'Help' menu.
 
 Keywords:
 Diet problem, Blending problem, Unit-valued Parameter, Unit Parameter, Quantity, Unit conversion.

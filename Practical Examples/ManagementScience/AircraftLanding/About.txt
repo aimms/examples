@@ -13,4 +13,4 @@ aircraft, are respected.
 References:
 Beasley, J.E., M. Krishnamoorthy, Y.M. Sharaiha and D. Abramson, Displacement
 problem and dynamically scheduling aircraft landings, Journal of the Operational
-Research Society 55, 2004, pp 54-64.
+Research Society 55, 54-64 (2004).

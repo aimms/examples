@@ -10,5 +10,7 @@ The objective of the model is to check the utilization of telecommunication netw
   
 For illustration this demo uses a dataset containing Dutch cities.
 
+More information on this problem can be found in Chapter 21 of the AIMMS Optimization Modeling book.
 
-*** More information on this problem can be found in Chapter 21 of the AIMMS Optimization Guide.
+Keywords:
+Linear Program, Network Object.

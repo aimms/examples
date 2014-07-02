@@ -4,5 +4,5 @@ The call to interrupt the execution can be given from any application on this ma
 
 Once you have clicked on the button "Start Execution", AIMMS will increase "Counter" until it becomes 30. This can be seen in the data object on this page. The execution can be interrupted by executing the program "InterruptProgram.exe" that can be found in the "Interrupt AIMMS project" folder. This folder can be opened via the Open Explorer button on the left bar before you click on the "Start Execution" button.
 
-
-
+Keywords:
+AIMMS Component, AIMMSCOM.
