@@ -280,9 +280,10 @@ xcmsGAtype='gaq'; AddToInitArray(xcmsGoogleAnalytics);
 <h1>E-mail and Sound Support</h1>
 <p>
 This example, illustrates two external DLLs (complete with source) that allow you to
-<p>- programmatically generate and send e-mail messages from within a model
-<p>- play sounds from within your model
-<p>
+<ul>
+<li>programmatically generate and send e-mail messages from within a model</a></li>
+<li>play sounds from within your model</a></li>
+</ul>
 The e-mail interface makes use of the Simple MAPI API provided by Windows in Mapi32.dll. You can only use it if a MAPI compliant e-mail client (such as Outlook) is installed on your computer.
 <p>
 The sound interface makes use of the Win32 PlaySound function. You can use it, for instance, to play .wav files from within your model upon particular user interaction.
@@ -294,9 +295,9 @@ If you need e-mail and/or sound support in your AIMMS application you can simply
 If your needs go beyond the provided interface, you can modify and re-compile the provided source code to suit your own needs.
 <p>
 NOTE: The e-mail example does not fully support Unicode messages. If you want to use Unicode you must run Windows 8 or later and adapt the sources of the AimmsMapi.dll to use the new MAPISendMailW function. Documentation on this can be found on the internet, for example in the MSDN.
-
-
-
+<p>
+<h2>Keywords</h2>
+E-mail, sound, external procedure.
 <!--end GitHub examples-->
 
 

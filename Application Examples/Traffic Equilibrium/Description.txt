@@ -11,4 +11,4 @@ This example contains a small dataset because this formulation demands that ever
 In AIMMS currently the PATH and KNITRO solvers are available for solving mixed complementarity problems (MCP). The KNITRO solver also supports mathematical programs with complementarity constraints (MPCC).
 
 Keywords:
-Braess's paradox, Non-cooperative Game, Mixed Complementarity Problem(MCP), Stackelberg Game, Mathematical Programs with Complementarity Constraints(MPCC), PATH, KNITRO, Network Objective.
+Braess's paradox, Non-cooperative Game, Mixed Complementarity Problem (MCP), Stackelberg Game, Mathematical Programs with Complementarity Constraints (MPCC), PATH, KNITRO, Network Object.

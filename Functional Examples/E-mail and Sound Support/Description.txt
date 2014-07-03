@@ -14,5 +14,5 @@ If your needs go beyond the provided interface, you can modify and re-compile th
 
 NOTE: The e-mail example does not fully support Unicode messages. If you want to use Unicode you must run Windows 8 or later and adapt the sources of the AimmsMapi.dll to use the new MAPISendMailW function. Documentation on this can be found on the internet, for example in the MSDN.
 
-
-
+Keywords:
+E-mail, sound, external procedure.

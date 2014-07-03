@@ -8,7 +8,7 @@ However, parts of the branch-and-bound tree can be cut off when using the AIMMS 
 
 The LILE heuristic approach can be of advantage when the model needs to be solved over and over again using the same set of finals, but with different demand scenarios. When the set of finals is large or different for each solve, the below described alternative approach might work better, because not all patterns need to be generated.
 
-An alternative way to tackle the problem is to start with a small number of patterns, and generate new patterns on the basis of shadow prices returned by the solver. In this way, only a subset of useful patterns will be generated for the final MIP model. In practice, this will lead to very good solutions, although optimality is not necessarily guaranteed. The solution is optimal, however, if the gap between the integer and linear objective function value is less than one. For a detailed discussion of the cutting stock problem, see also Chapter 20 of the Optimization Modeling guide.
+An alternative way to tackle the problem is to start with a small number of patterns, and generate new patterns on the basis of shadow prices returned by the solver. In this way, only a subset of useful patterns will be generated for the final MIP model. In practice, this will lead to very good solutions, although optimality is not necessarily guaranteed. The solution is optimal, however, if the gap between the integer and linear objective function value is less than one. For a detailed discussion of the cutting stock problem, see also Chapter 20 of the AIMMS Optimization Modeling book.
 
 The pattern generation approach is implemented using conventional math programs that require regeneration every time and using generated math programs (GMPs) that allow for direct updates on the generated problem.
 
@@ -17,7 +17,7 @@ The demo page illustrates the solution both in tabular and graphical (not when a
 Details about this Cutting Stock problem can be read in Chapter 20 of AIMMS Optimization Modeling book.
 
 Keywords:
-Cutting Stock, Algorithmic approach, GMP, AIMMS callback, Heuristic. 
+Cutting Stock, Algorithmic approach, GMP, callback function, Heuristic, AIMMS API. 
 
 
 

@@ -287,13 +287,11 @@ This example illustrates the AIMMS support for handling uncertainty in input dat
 <p>
 In a Robust Optimization approach certain constraints are required to hold for every realization of the data within a given uncertainty set.
 In this example three choices for the uncertainty set corresponding to the instantaneous power demand are illustrated:
-<p>
-i) the (smallest) box (2-dimensional interval) that contains all the initial scenario values
-<p>
-ii) the (largest) ellipsoid contained in the box from case i)
-<p>
-iii) the convex hull of the scenario values (that is, the smallest polyhedron containing all scenarios)
-<p>
+<ol>
+<li>the (smallest) box (2-dimensional interval) that contains all the initial scenario values</a></li>
+<li>the (largest) ellipsoid contained in the box from case 1.</a></li>
+<li>the convex hull of the scenario values (that is, the smallest polyhedron containing all scenarios)</a></li>
+</ol>
 These sets are modeled by means of the Region (and Dependency) attribute of the corresponding uncertain parameters.
 <p>
 The same effect can be obtained by declaring explicit uncertainty constraints as those provided in the "Auxiliary Uncertainty" declaration section, for illustration, and including the necessary uncertainty constraints in the set of uncertainty constraints to be considered for the generation of the robust model.
@@ -302,10 +300,10 @@ There is a distinction made between non-adjustable decisions (that is, the desig
 <p>
 The approach illustrated here is based on the special Robust Optimization features offered by AIMMS through the GMP library. 
 <p>
-Details about the underlying deterministic model in this example can be read in Chapter 16 of AIMMS Optimization Modeling.
+Details about the underlying deterministic model in this example can be read in Chapter 16 of the AIMMS Optimization Modeling book.
 
 <h2>Keywords</h2>
-Linear Program, Uncertainty, Robust Optimization, Non-adjustable and Adjustable Decisions, Linear Decision Rules
+Linear Program, Uncertainty, Robust Optimization, Non-adjustable and Adjustable Decisions, Linear Decision Rules.
 
 <!--end GitHub examples-->
 

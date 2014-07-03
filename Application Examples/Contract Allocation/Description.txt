@@ -17,4 +17,4 @@ The results are displayed in a bar chart.
 This AIMMS project illustrates the use of a semi-continuous variable. A semi-continuous variable is either zero or within a certain range. This type of variables can be used in conditions like, whenever there is a transport this transport has a minimum size. 
 
 Keywords:
-Semi-continuous variables, Mixed Integer Programming model, MIP, bar Chart, table, colors
+Semi-continuous variables, Mixed Integer Programming model, MIP, bar Chart, table, colors.

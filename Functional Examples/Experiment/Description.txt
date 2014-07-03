@@ -7,5 +7,5 @@ To visualize the distribution of profit, we use AIMMS' histogram support functio
 You can use the resulting distribution, for instance, to assess the risk of losing money, given an uncertain demand and the desired margin on the commodity.
 
 Keywords:
-Histogram, statistical functions, distribution functions, bar chart, composite table, table, scalar object
+Histogram, statistical functions, distribution functions, bar chart, composite table, table, scalar object.
 

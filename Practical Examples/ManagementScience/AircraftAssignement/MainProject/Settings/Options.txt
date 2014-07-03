@@ -1,3 +1,4 @@
 ﻿* AIMMS
 rounding_compatibility Aimms_3_7
+warning_duplicate_column off
 * Environment

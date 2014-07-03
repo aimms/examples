@@ -38,4 +38,4 @@ The stochastic model is generated in its extensive form (deterministic equivalen
 Support for Benders decomposition is provided through the Stochastic Decomposition Module. 
 
 Keywords:
-Stochastic Programming, Scenario Tree, Benders Decomposition, Network Objective
+Stochastic Programming, Scenario Tree, Benders Decomposition, Network Object.

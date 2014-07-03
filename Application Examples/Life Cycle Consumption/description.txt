@@ -11,4 +11,4 @@ In addition, the user can choose to allow borrowing up to a chosen level, adding
 Please use the navigation in the left column to browse this example application.
 
 Keywords:
-Utility Function, Discount Factor, Present Value, Futrue Value, Nonlinear Programming, Nonlinear Solvers, Curve Object
+Utility Function, Discount Factor, Present Value, Futrue Value, Nonlinear Programming, Nonlinear Solvers, Curve Object.

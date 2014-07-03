@@ -11,5 +11,5 @@ are constraints on the total demand that can be met from a warehouse.
 
 References:
 Beasley, J.E., An algorithm for solving large capacitated warehouse
-location problems, European Journal of Operational Research 33, 1988,
-pp. 314-325.
+location problems, European Journal of Operational Research 33,
+314-325 (1988).

@@ -12,7 +12,7 @@ The algorithmic method contains a sequence of smaller sub-models which solves th
 
 The example reflects both methods plus a combination of the two.
 
-Details about this example can be read in Chapter 19 of AIMMS Optimization Modeling. An electronic version of this book is available through the `Help' menu.
+Details about this example can be read in Chapter 19 of the AIMMS Optimization Modeling book. An electronic version of this book is available through the 'Help' menu.
 
 Keywords:
 Linear Program, Network Program, Simplex Method, Column Generation, Mathematical Derivation, Customized Algorithm.

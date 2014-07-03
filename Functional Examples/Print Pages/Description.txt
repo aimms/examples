@@ -5,3 +5,6 @@ There are often tables that are larger than one page. These tables can be printe
 (The action behind the "Print buttons" is such that nothing is sent to the printer, unless explicitly selected in a dialogbox. Normally, the output is sent to a postscript file (*.ps).)
 
 All the data in this example is taken from: U.S. Census Bureau, Statistical Abstract of the United States: 1999.
+
+Keywords:
+Print page, print template, project user files.

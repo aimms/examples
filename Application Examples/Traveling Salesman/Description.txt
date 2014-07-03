@@ -7,3 +7,6 @@ This example illustrates some of AIMMS control flow statements by means of the t
 - A procedure and some declarations to compute and visualize an improved tour constructed by repetitively swapping the next arc in the (modified) tour with that neighbor arc which gives the largest distance improvement, until the iteration limit is reached or a full cycle over the tour gives no further improvement.
 
 When you run the procedures, the information in the progress window is updated by the functions in the GMP Progress Window library.
+
+Keywords:
+Algorithm, network object, traveling salesman problem, GMP, Progress Window.

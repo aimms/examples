@@ -284,14 +284,38 @@ This example illustrates AIMMS capabilities for stochastic programming support. 
 The basic problem illustrated in this example is a simple multi-period production and inventory planning model. In the deterministic case demand is known with certainty for each period and production and stock levels for all periods are decided upon at once. In the stochastic case however, demand for time periods is uncertain and crystalizes in a number of stages. The stages may naturally coincide with the time periods from the deterministic model, but this does not have to be the case. In general, one stage in the stochastic model may consist of multiple periods from the deterministic model.
 <p>
 In this example periods are mapped to stages. For instance, 
-
-<p>period-1   period-2   period-3   period-4
-<p>stage-1    stage-2    stage-3    stage-4 
+<p>
+<table border="1">
+<tr>
+  <td>period-1</td>
+  <td>period-2</td> 
+  <td>period-3</td>
+  <td>period-4</td>
+</tr>
+<tr>
+  <td>stage-1</td>
+  <td>stage-2</td> 
+  <td>stage-3</td>
+  <td>stage-4</td>
+</tr>
+</table>
 <p>
 may be such a mapping. However, the following mapping is also meaningful:
 <p>
-<p>period-1   period-2   period-3   period-4
-<p>stage-1    stage-2    stage-2    stage-3
+<table border="1">
+<tr>
+  <td>period-1</td>
+  <td>period-2</td> 
+  <td>period-3</td>
+  <td>period-4</td>
+</tr>
+<tr>
+  <td>stage-1</td>
+  <td>stage-2</td> 
+  <td>stage-2</td>
+  <td>stage-3</td>
+</tr>
+</table>
 <p>
 This means that decisions for periods 2 and 3 are taken in the same stage 2, so we have a 4-period deterministic model, but a 3-stage stochastic model.
 <p>
@@ -313,13 +337,14 @@ After a scenario tree has been created, it can be viewed on the "Scenario Tree V
 After creating scenario trees using at least two methods, one tree can be selected for viewing at a time.
 <p>
 The stochastic model is generated in its extensive form (deterministic equivalent) and can be solved in two ways:
-<p>- using a standard solver: button "Solve Stochastic Model", or
-<p>- using the Benders decomposition approach: button "Solve Stochastic Benders".
-<p>
+<ul>
+<li>using a standard solver: button "Solve Stochastic Model", or</a></li>
+<li>using the Benders decomposition approach: button "Solve Stochastic Benders".</a></li>
+</ul>
 Support for Benders decomposition is provided through the Stochastic Decomposition Module. 
 
 <h2>Keywords</h2>
-Stochastic Programming, Scenario Tree, Benders Decomposition, Network ive
+Stochastic Programming, Scenario Tree, Benders Decomposition, Network Object.
 <!--end GitHub examples-->
 
 

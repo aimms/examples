@@ -86,7 +86,7 @@ Model Main_VRP4 {
     Variable U {
         IndexDomain: (i,k);
         Range: free;
-        Comment: "Subtour elemination variable.";
+        Comment: "Subtour elimination variable.";
     }
     Variable TotalCost {
         Range: free;

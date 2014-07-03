@@ -21,8 +21,8 @@ There is a distinction made between non-adjustable decisions (that is, the desig
 
 The approach illustrated here is based on the special Robust Optimization features offered by AIMMS through the GMP library. 
 
-Details about the underlying deterministic model in this example can be read in Chapter 16 of AIMMS Optimization Modeling.
+Details about the underlying deterministic model in this example can be read in Chapter 16 of the AIMMS Optimization Modeling book.
 
 Keywords:
-Linear Program, Uncertainty, Robust Optimization, Non-adjustable and Adjustable Decisions, Linear Decision Rules
+Linear Program, Uncertainty, Robust Optimization, Non-adjustable and Adjustable Decisions, Linear Decision Rules.
 
