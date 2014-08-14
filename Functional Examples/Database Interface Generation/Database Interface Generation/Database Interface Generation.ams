@@ -15,7 +15,7 @@ LibraryModule Database_Interface_Generation {
     Section Database_Information_Section {
         Comment: "This section contains the identifiers related to the analysis of the database structure.";
         StringParameter DataSource {
-            InitialData: "DemoDatabaseLink.udl";
+            InitialData: "DemoDatabaseLink.dsn";
             Comment: "The datasource from which to read the table and column information.";
         }
         StringParameter DataSource_WithDoubleBackSlashes {
