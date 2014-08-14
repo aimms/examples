@@ -216,7 +216,7 @@ Model Main_Database_Inspection {
                 if Value = 1 then
                 
                 	! Select the location of the new database
-                	if not FileSelect(DatabaseLocation(_d), extension: "udl; *.dsn;"  , title : "Database Location") then
+                	if not FileSelect(DatabaseLocation(_d), extension: ".dsn;"  , title : "Database Location") then
                 
                 		! Dialog has been cancelled
                 		return 0;
