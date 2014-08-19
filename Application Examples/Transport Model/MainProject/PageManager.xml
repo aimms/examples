@@ -2,9 +2,7 @@
 <PageManager>
 	<Page Name="AIMMS Demo" PageGUID="3039BA1C-B7C8-4F2F-95E1-BEE875D9306B">
 		<Page Name="Basic Transport Model" PageGUID="8EAE7A11-8739-46D1-972D-201481975CE3" />
-		<Page Name="Database" PageGUID="9EB142AE-59D2-4CCE-9178-C1079F98F664">
-			<Page Name="Database Tracing Settings" PageGUID="92164369-57D4-46D3-81B5-942F4C00188C" />
-		</Page>
+		<Page Name="Database" PageGUID="9EB142AE-59D2-4CCE-9178-C1079F98F664" />
 		<Page Name="Expressions" PageGUID="33A92D79-E032-4918-A8E4-39F9C33683ED" />
 		<Page Name="Constraint Slacks" PageGUID="E572762C-9409-488A-B94D-0924B55BF8FC" />
 	</Page>
