@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Page Version="4000" TimeStamp="2009-09-04 13:08:57">
-	<Location top="27" left="8" bottom="641" right="1037" />
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -76,7 +76,7 @@
 	</PageObject>
 	<PageObject Type="Composite Table">
 		<Location top="219" left="498" bottom="615" right="762" />
-		<TabOrder>17</TabOrder>
+		<TabOrder>16</TabOrder>
 		<TabStop>false</TabStop>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -143,34 +143,6 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
-	<PageObject Type="Scalar">
-		<Location top="393" left="6" bottom="477" right="192" />
-		<TabOrder>19</TabOrder>
-		<TabStop>false</TabStop>
-		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
-		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
-		<BackgroundColor RGB="#ffffff" />
-		<TextColor>
-			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
-		</TextColor>
-		<Layout>MultipleLineEditField</Layout>
-		<VerticalScrollbar>true</VerticalScrollbar>
-		<DisplayTextFile>true</DisplayTextFile>
-		<SeparatorSign>=</SeparatorSign>
-		<ExplicitIdentifier>
-			<Identifier>DatabaseInfo</Identifier>
-			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
-			<DescriptionFromIdentifierName>false</DescriptionFromIdentifierName>
-		</ExplicitIdentifier>
-	</PageObject>
-	<PageObject Type="Text">
-		<Location top="480" left="12" bottom="498" right="144" />
-		<StaticText>Database connection</StaticText>
-		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
-		<TextColor>
-			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
-		</TextColor>
-	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>RadioButtons</SelectionType>
 		<Location top="498" left="12" bottom="534" right="138" />
@@ -184,9 +156,6 @@
 		<TextColor>
 			<UserColor GUID="68ECE919-4BEE-4044-9582-8F1CCA23864B">default selection</UserColor>
 		</TextColor>
-		<ExplicitIdentifier>
-			<Identifier>UseDatabaseConnection</Identifier>
-		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="195" left="234" bottom="213" right="456" />
@@ -401,45 +370,30 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
-	<PageObject Type="Button">
-		<Location top="363" left="6" bottom="387" right="192" />
-		<TabOrder>3</TabOrder>
-		<ButtonType>Text</ButtonType>
-		<Title>"Database Tracing Settings"</Title>
-		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
-		<ActionSequence>
-			<Action Type="GotoPage">
-				<Destination>FirstChild</Destination>
-			</Action>
-		</ActionSequence>
-	</PageObject>
 	<UsedReferences>
 		<Model>
 			<Symbol>Depots</Symbol>
-			<Symbol>c</Symbol>
-			<Symbol>d</Symbol>
-			<Symbol>ReadTransport</Symbol>
-			<Symbol>DatabaseInfo</Symbol>
-			<Symbol>Transport</Symbol>
-			<Symbol>Demand</Symbol>
-			<Symbol>WriteTransport</Symbol>
-			<Symbol>DatabaseMainExecution</Symbol>
-			<Symbol>ConstraintSlacksMainInitialization</Symbol>
-			<Symbol>DepotName</Symbol>
-			<Symbol>Depot</Symbol>
 			<Symbol>XCoordinate</Symbol>
 			<Symbol>YCoordinate</Symbol>
-			<Symbol>CustomerName</Symbol>
-			<Symbol>BasicMainInitialization</Symbol>
-			<Symbol>ExpressionsMainInitialization</Symbol>
-			<Symbol>DetermineDefaultNetworkBounds</Symbol>
-			<Symbol>BitmapBounds</Symbol>
-			<Symbol>ActiveBounds</Symbol>
+			<Symbol>Demand</Symbol>
+			<Symbol>Transport</Symbol>
 			<Symbol>DepotNameLong</Symbol>
-			<Symbol>UseDatabaseConnection</Symbol>
-			<Symbol>PossibleDatabaseConnections</Symbol>
+			<Symbol>DepotName</Symbol>
 			<Symbol>CustomerNameLong</Symbol>
+			<Symbol>CustomerName</Symbol>
+			<Symbol>ActiveBounds</Symbol>
+			<Symbol>BitmapBounds</Symbol>
+			<Symbol>BasicMainInitialization</Symbol>
+			<Symbol>DetermineDefaultNetworkBounds</Symbol>
 			<Symbol>ReadInputData</Symbol>
+			<Symbol>ReadTransport</Symbol>
+			<Symbol>WriteTransport</Symbol>
+			<Symbol>DatabaseMainExecution</Symbol>
+			<Symbol>ExpressionsMainInitialization</Symbol>
+			<Symbol>ConstraintSlacksMainInitialization</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>Depot</Symbol>
+			<Symbol>c</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

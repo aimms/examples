@@ -164,7 +164,7 @@ Model Dice_Model {
                 
                 GMP::Instance::Solve( myGMP );
                 
-                ! Reomve incumbent callback.
+                ! Remove incumbent callback.
                 GMP::Instance::SetCallbackNewIncumbent( myGMP, '' );
             }
             Comment: {

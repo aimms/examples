@@ -198,53 +198,12 @@ Model Main_Transport {
         }
     }
     Section Database_Section {
-        DeclarationSection Database_Tracing_declarations {
-            StringParameter DatabaseTracingLevelDescription {
-                IndexDomain: indexPossibleTracingLevels;
-                Definition: data { 0 : "0 (No Tracing)",  1 : "1 (Trace without data)" , 2 : "2 (Trace with data)"};
-                Comment: "Description of each of the different tracing levels";
-            }
-            Set DatabasePossibleTracingLevels {
-                SubsetOf: Integers;
-                Index: indexPossibleTracingLevels;
-                Definition: data { 0,1,2 };
-                Comment: "The set of all possible tracing levels";
-            }
-            ElementParameter DatabaseTracingLevel {
-                Range: DatabasePossibleTracingLevels;
-                Comment: "The current database tracing level";
-            }
-            StringParameter DatabaseTracingFile {
-                Comment: "the file to which the tracing is written";
-            }
-        }
         DeclarationSection Database_Declarations {
-            Set PossibleDatabaseConnections {
-                Definition: data { ODBC, 'OLE DB'};
-            }
-            ElementParameter UseDatabaseConnection {
-                Range: PossibleDatabaseConnections;
-                Default: 'OLE DB';
-            }
             StringParameter ExampleDataSource {
-                Default: "AIMMS Transport Example Database.dsn";
-                Definition: {
-                    if ( UseDatabaseConnection = 'ODBC' ) then
-                    
-                       "AIMMS Transport Example Database.dsn"
-                    
-                    elseif ( UseDatabaseConnection = 'OLE DB' ) then
-                    
-                       "AIMMS Transport Example Database.udl"
-                    
-                    endif
-                }
+                Definition: "AIMMS Transport Example Database.dsn";
             }
             StringParameter DatabaseInfo {
                 Definition: "Database.txt";
-            }
-            StringParameter DatabaseTracingInfo {
-                Definition: "DatabaseTracing.txt";
             }
             DatabaseTable LocationTable {
                 DataSource: ExampleDataSource;
@@ -314,17 +273,8 @@ Model Main_Transport {
             Body: {
                 if not TestDataSource(ExampleDataSource) then
                 
-                   if ( UseDatabaseConnection = 'ODBC' ) then
-                
-                      DialogMessage("Please make sure the DSN file '"+ ExampleDataSource + "' exists and links to the database of this project");
-                      return 0;
-                
-                   else
-                
-                      DialogMessage("Please make sure the UDL file '"+ ExampleDataSource + "' exists and links to the database of this project");
-                      return 0;
-                
-                   endif;
+                DialogMessage("Please make sure the DSN file '"+ ExampleDataSource + "' exists and links to the database of this project");
+                return 0;
                 
                 endif;
                 return 1;
@@ -367,23 +317,6 @@ Model Main_Transport {
                 and constraints in a model. This matrix is sent to a solver for
                 optimization, after which the result is read back in AIMMS."
             }
-        }
-        Procedure UpdateDatabaseTracingOptions {
-            Body: {
-                OptionSetValue("Database trace level", DatabaseTracingLevel) ;
-                option database_trace_file := DatabaseTracingFile ;
-            }
-            Comment: "Sets the values of the tracing options to what the user has selected in the GUI";
-        }
-        Procedure OpenDatabaseTraceFile {
-            Body: {
-                if not FileExists(DatabaseTracingFile) then
-                	DialogError(formatstring("Tracefile with name \"%s\" does not exist yet.\n\nA tracefile is generated once the trace level is 1 or 2 and there is database activity.", DatabaseTracingFile)) ;
-                else
-                	Execute("notepad", DatabaseTracingFile) ;
-                endif ;
-            }
-            Comment: "try to open the tracing file selected by the user. If the file does not exist yet, then show the user a warning.";
         }
     }
     Section Expressions_Section {
@@ -511,12 +444,6 @@ Model Main_Transport {
     Procedure MainInitialization {
         Body: {
             BasicMainInitialization;
-            
-            
-            
-            OptionGetValue("Database trace level",notNeeded, OptionValue, notNeeded, notNeeded ) ;
-            DatabaseTracingLevel := OptionValue ;
-            OptionGetString("Database trace file", DatabaseTracingFile ) ;
         }
         Comment: {
             "In this simple model, we obtain all input data from a single

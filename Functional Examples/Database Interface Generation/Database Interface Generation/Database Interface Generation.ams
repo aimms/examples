@@ -15,7 +15,7 @@ LibraryModule Database_Interface_Generation {
     Section Database_Information_Section {
         Comment: "This section contains the identifiers related to the analysis of the database structure.";
         StringParameter DataSource {
-            InitialData: "DemoDatabaseLink.udl";
+            InitialData: "DemoDatabaseLink.dsn";
             Comment: "The datasource from which to read the table and column information.";
         }
         StringParameter DataSource_WithDoubleBackSlashes {
@@ -267,7 +267,7 @@ LibraryModule Database_Interface_Generation {
         Procedure BrowseForDataSources {
             Body: {
                 CurrentDataSource := DataSource;
-                FileSelect(DataSource, DataSourceDirectory, extension : ".dsn; *.udl", title : "Select a datasource");
+                FileSelect(DataSource, DataSourceDirectory, extension : ".dsn", title : "Select a datasource");
                 
                 if CurrentDataSource <> DataSource then
                 	DatasourceOrOwnerChanged;
@@ -275,7 +275,7 @@ LibraryModule Database_Interface_Generation {
             }
             Comment: {
                 "This procedure is called when the user has clicked on the \'...\' button. It makes the user select a file datasource
-                (.dsn or .udl file) from the file system.
+                (.dsn file) from the file system.
                 If a different datasource has been selected or the owner has changed, the table information needs to be retrieved again, so
                 DatasourceSOrOwnerChanged is called."
             }
