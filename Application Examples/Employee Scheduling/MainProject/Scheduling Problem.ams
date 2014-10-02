@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_EmployeeAssignment {
+    Comment: {
+        "Keywords:
+        Employee assignment problem, scheduling."
+    }
     Section Model_Formulation {
         DeclarationSection Model_Declaration {
             Set Restaurants {
@@ -249,21 +253,7 @@ Model Main_EmployeeAssignment {
     }
     Procedure MainExecution {
         Body: {
-            if (IsRunningAsViewer) then
-            
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            
-            	if (CaseFind("Solution",ACase)) then
-            		CaseLoadCurrent(ACase,0);
-            	else
-            		DialogError("Could not find the case \"Solution\".")
-            	endif;
-            
-            else
-            
-            	solve MinimizeCost ;
-            
-            endif;
+            solve MinimizeCost;
         }
         ElementParameter ACase {
             Range: AllCases;

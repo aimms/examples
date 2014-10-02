@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Knapsack {
+    Comment: {
+        "Keywords:
+        0-1 Knapsack, Knapsack, Integer Programming, Binary Integer Programming, Cover Inequalities, Network Object."
+    }
     Section Knapsack_Problem {
         Section Quantities_and_Units {
             DeclarationSection Quantity_Declarations {
@@ -89,58 +93,30 @@ Model Main_Knapsack {
                 Body: {
                     /* Standard model allows at most 1 copy of each item */
                     
-                    if not IsRunningAsViewer then
+                    ItemRangeMin(i) := 0;
+                    ItemRangeMax(i) := 1;
                     
-                       	ItemRangeMin(i) := 0;
-                    	ItemRangeMax(i) := 1;
-                    
-                    	solve KnapsackModel;
-                    
-                    else
-                    
-                        DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-                        CaseFind("SolutionClassic",ACase);
-                        CaseLoadCurrent(ACase,0);
-                    
-                    endif;
+                    solve KnapsackModel;
                 }
             }
             Procedure SolveKnapsackModelUnBounded {
                 Body: {
                     /* Standard model allows at most a specific no of copies of each item */
-                    if not IsRunningAsViewer then
                     
-                       	ItemRangeMin(i) := 0;
-                    	ItemRangeMax(i) := inf;
+                    ItemRangeMin(i) := 0;
+                    ItemRangeMax(i) := inf;
                     
-                    	solve KnapsackModel;
-                    
-                    else
-                    
-                        DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-                        CaseFind("SolutionUnbounded",ACase);
-                        CaseLoadCurrent(ACase,0);
-                    
-                    endif;
+                    solve KnapsackModel;
                 }
             }
             Procedure SolveKnapsackModelBounded {
                 Body: {
                     /* Standard model allows at most a specific no of copies of each item */
-                    if not IsRunningAsViewer then
                     
-                       	ItemRangeMin(i) := 0;
-                    	ItemRangeMax(i) := ItemBound(i);
+                    ItemRangeMin(i) := 0;
+                    ItemRangeMax(i) := ItemBound(i);
                     
-                    	solve KnapsackModel;
-                    
-                    else
-                    
-                        DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-                        CaseFind("SolutionBounded",ACase);
-                        CaseLoadCurrent(ACase,0);
-                    
-                    endif;
+                    solve KnapsackModel;
                 }
             }
         }

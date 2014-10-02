@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Pooling {
+    Comment: {
+        "Keywords:
+        Pooling, Global optimization, Nonlinear Programming, NLP, Pivot table, Network object."
+    }
     Section Model_Formulation {
         DeclarationSection Input_Data {
             Set ProductProperties {

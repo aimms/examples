@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Cutting_Stock {
+    Comment: {
+        "Keywords:
+        Cutting Stock, Algorithmic approach, GMP, callback function, Heuristic, AIMMS API. "
+    }
     Section Model_Formulation {
         DeclarationSection Input_Data {
             Set Finals {
@@ -529,47 +533,17 @@ Model Main_Cutting_Stock {
     Procedure MainExecution;
     Procedure SolveModelWithConventionalMPs {
         Body: {
-            if not IsRunningAsViewer then
-            
-                SolveCuttingStockModelUsingConventionalMPs
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-                CaseFind("Solution",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            SolveCuttingStockModelUsingConventionalMPs;
         }
     }
     Procedure SolveModelWithGMPs {
         Body: {
-            if not IsRunningAsViewer then
-            
-                SolveCuttingStockModelUsingGMPs
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-                CaseFind("Solution using GMPs",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            SolveCuttingStockModelUsingGMPs;
         }
     }
     Procedure SolveModelWithHeuristic {
         Body: {
-            if not IsRunningAsViewer then
-            
-                SolveCuttingStockModelUsingGMPandLILE
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-                CaseFind("Solution using Heuristic",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            SolveCuttingStockModelUsingGMPandLILE;
         }
     }
     Procedure MainTermination {

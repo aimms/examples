@@ -4,6 +4,5 @@ If you start up the AIMMS project (ExcelLink.aimms), you can exchange the input 
 
 If you start up the Excel spreadsheet (ExcelAddInExample.xls), you can exchange the data contained in it with AIMMS using the Excel Add-In. The example uses an AIMMS model containing a simple transport model, and stores the input and output data of the model in an Excel spreadsheet. The actions specified in the "Aimms Interface Setup" dialog box correspond one-to-one to the calls to the Excel function library in the "Excel Linkage" section of the model tree. 
 
-
 Keywords:
 Excel Add-In, Spreadsheet functions, Run Time Error Handling.

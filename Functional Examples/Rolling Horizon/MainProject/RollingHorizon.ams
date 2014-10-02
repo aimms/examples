@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_template {
+    Comment: {
+        "Keywords:
+        Stock Model, Production Planning, Rolling Horizon, Calendar, Submodel."
+    }
     Section CalendarSection {
         Procedure SolveCalendarModel {
             Body: {

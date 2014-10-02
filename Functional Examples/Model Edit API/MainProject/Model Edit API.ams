@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Model_Edit_API {
+    Comment: {
+        "Keywords:
+        Model Edit functions, AIMMS API, using AIMMS externally, C++, integrating AIMMS."
+    }
     StringParameter ProblemDescription {
         Definition: "Description.txt";
     }

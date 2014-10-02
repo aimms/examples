@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Linked_Objects {
+    Comment: {
+        "Keywords:
+        Linking objects, network object."
+    }
     DeclarationSection Product_Declarations {
         Set Products {
             Index: p;

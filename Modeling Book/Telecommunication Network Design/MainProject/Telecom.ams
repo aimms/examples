@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_TelecomNetwork {
+    Comment: {
+        "Keywords:
+        Linear Program, Network Object."
+    }
     Section Capacity_Identification_Model {
         DeclarationSection Topology {
             Set TrafficLines {
@@ -469,34 +473,14 @@ Model Main_TelecomNetwork {
     }
     Procedure RunOverallModelForAllODpairs {
         Body: {
-            if not IsRunningAsViewer then
-            
-            	RunOverallModelGeneral;
-            	FindImprovedShortestPathsForAllODpairs;
-            
-            else
-            
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            	CaseFind("Solution All", ACase);
-            	CaseLoadCurrent(ACase,0);
-            
-            endif;
+            RunOverallModelGeneral;
+            FindImprovedShortestPathsForAllODpairs;
         }
     }
     Procedure RunOverallModelForCriticalODpairs {
         Body: {
-            if not IsRunningAsViewer then
-            
-            	RunOverallModelGeneral;
-            	FindImprovedShortestPathsForCriticalODpairs;
-            
-            else
-            
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            	CaseFind("Solution Critical", ACase);
-            	CaseLoadCurrent(ACase,0);
-            
-            endif;
+            RunOverallModelGeneral;
+            FindImprovedShortestPathsForCriticalODpairs;
         }
     }
     Section Supporting_Interface {

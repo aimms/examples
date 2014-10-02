@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Integrated {
+    Comment: {
+        "Keywords:
+        External Procedure, AIMMS API, table, Linear Program."
+    }
     DeclarationSection Input_Data {
         Set Depots {
             Index: d;

@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Page_Resizability {
+    Comment: {
+        "Keywords:
+        Resizability, split lines."
+    }
     Set Points {
         Text: "Set with all available points";
         Index: i, j;

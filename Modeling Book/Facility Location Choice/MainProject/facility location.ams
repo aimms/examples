@@ -1,6 +1,11 @@
 ## ams_version=1.0
 
 Model Main_Facility_Location {
+    Comment: {
+        "Keywords:
+        Distribution System Design, Integer Program, Mathematical Reformulation, Mathematical Derivation, Customized Algorithm,
+        Benders decomposition, Auxiliary Model, Constraint Generation."
+    }
     DeclarationSection Model_Declarations {
         Set Locations {
             Index: l, f, t;
@@ -273,55 +278,45 @@ Model Main_Facility_Location {
     }
     Procedure BendersDecomposition {
         Body: {
-            if not IsRunningAsViewer then
+            EmptySolution;
             
-            	EmptySolution;
+            M := 0;
+            M.NonVar := 1;
+            solve RelaxedMaster;
+            LowerBound := RelaxedMaster.Objective;
+            M.NonVar := 0;
             
-            	M := 0;
-            	M.NonVar := 1;
-            	solve RelaxedMaster;
-            	LowerBound := RelaxedMaster.Objective;
-            	M.NonVar := 0;
-            
-            	while ( UpperBound >= LowerBound * ( 1 + Epsilon ) ) do
-            		ServedFixed(d,z) := Served(d,z);
-            		solve DualSubProblem;
-            		AddBendersCut;
-            		ReportLowerBound(LastBenderCut) := LowerBound;
-            		ReportUpperBound(LastBenderCut) := UpperBound;
-            		ReportM(LastBenderCut)          := M;
-            		PageRefreshAll;
-            		UpperBound := min( UpperBound, DualSubProblem.Objective + RelaxedMaster.Objective - M );
-            		solve RelaxedMaster;
-            		LowerBound := RelaxedMaster.Objective;
-            
-            		SetTableFocus;
-            
-            	endwhile;
-            
-            	LastCut += 1;
-            	SetElementAdd( BendersCuts, LastBenderCut, FormatString("%i",LastCut) );
-            
+            while ( UpperBound >= LowerBound * ( 1 + Epsilon ) ) do
+            	ServedFixed(d,z) := Served(d,z);
+            	solve DualSubProblem;
+            	AddBendersCut;
             	ReportLowerBound(LastBenderCut) := LowerBound;
             	ReportUpperBound(LastBenderCut) := UpperBound;
             	ReportM(LastBenderCut)          := M;
             	PageRefreshAll;
-            
-            	empty Shipped;
-            
-            	ServedFixed(d,z) := Served(d,z);
-            	SelectedFixed(d) := Selected(d);
-            	solve PrimalSubproblem;
+            	UpperBound := min( UpperBound, DualSubProblem.Objective + RelaxedMaster.Objective - M );
+            	solve RelaxedMaster;
+            	LowerBound := RelaxedMaster.Objective;
             
             	SetTableFocus;
             
-            else
+            endwhile;
             
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-                CaseFind("Solution Benders Decomposition", ACase);
-                CaseLoadCurrent(ACase,0);
+            LastCut += 1;
+            SetElementAdd( BendersCuts, LastBenderCut, FormatString("%i",LastCut) );
             
-            endif;
+            ReportLowerBound(LastBenderCut) := LowerBound;
+            ReportUpperBound(LastBenderCut) := UpperBound;
+            ReportM(LastBenderCut)          := M;
+            PageRefreshAll;
+            
+            empty Shipped;
+            
+            ServedFixed(d,z) := Served(d,z);
+            SelectedFixed(d) := Selected(d);
+            solve PrimalSubproblem;
+            
+            SetTableFocus;
         }
     }
     Procedure EmptySolution {
@@ -346,19 +341,9 @@ Model Main_Facility_Location {
     }
     Procedure SolveAtOnce {
         Body: {
-            if not IsRunningAsViewer then
-            
-            	EmptySolution;
-            	MainInitialization;
-            	solve FacilityLocationAtOnce;
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-                CaseFind("Solution Network", ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            EmptySolution;
+            MainInitialization;
+            solve FacilityLocationAtOnce;
         }
     }
     Procedure MainInitialization {

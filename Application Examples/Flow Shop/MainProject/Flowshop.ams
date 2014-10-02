@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Flow_Shop {
+    Comment: {
+        "Keywords:
+        CallBackNewIncumbent, MIP model, Gantt chart, AsynchronousExecute, GMP."
+    }
     Parameter MaxJobs {
         Text: "Number of elements in the set Jobs";
         Range: integer;
@@ -113,60 +117,36 @@ Model Main_Flow_Shop {
     }
     Procedure MainExecution {
         Body: {
+            Empty AllVariables;
             
-            
-            
-            if not IsRunningAsViewer then
-            
-            	Empty AllVariables;
-            
-            	if ( IntermediateInterfaceUpdate ) then
-            		FlowShopModel.CallbackNewIncumbent := 'NewIncumbentCallback';
-            	else
-            		FlowShopModel.CallbackNewIncumbent := '';
-            	endif;
-            
-            	solve FlowShopModel;
-            
-            	GenerateInterface;
-            	WriteSolution;
-            
-            
+            if ( IntermediateInterfaceUpdate ) then
+            	FlowShopModel.CallbackNewIncumbent := 'NewIncumbentCallback';
             else
-            
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            	CaseFind("Solution",ACase);
-            	CaseLoadCurrent(ACase,0);
-            
+            	FlowShopModel.CallbackNewIncumbent := '';
             endif;
+            
+            solve FlowShopModel;
+            
+            GenerateInterface;
+            WriteSolution;
         }
     }
     Procedure MainExecutionWithSolution {
         Body: {
-            if not IsRunningAsViewer Then
+            Empty AllVariables;
             
-            	Empty AllVariables;
+            read from file "solution.txt";
             
-            	read from file "solution.txt";
-            
-            	if ( IntermediateInterfaceUpdate ) then
-            		FlowShopModel.CallbackNewIncumbent := 'NewIncumbentCallback';
-            	else
-            		FlowShopModel.CallbackNewIncumbent := '';
-            	endif;
-            
-            	solve FlowShopModel;
-            
-            	GenerateInterface;
-            	WriteSolution;
-            
+            if ( IntermediateInterfaceUpdate ) then
+            	FlowShopModel.CallbackNewIncumbent := 'NewIncumbentCallback';
             else
-            
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            	CaseFind("Solution with starting point",ACase);
-            	CaseLoadCurrent(ACase,0);
-            
+            	FlowShopModel.CallbackNewIncumbent := '';
             endif;
+            
+            solve FlowShopModel;
+            
+            GenerateInterface;
+            WriteSolution;
         }
     }
     Procedure MainTermination {

@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Transport {
+    Comment: {
+        "Keywords:
+        Histogram, statistical functions, distribution functions, bar chart, composite table, table, scalar object."
+    }
     DeclarationSection Input_Data {
         Set Depots {
             Text: "The set of depots from which transports can emanate ";

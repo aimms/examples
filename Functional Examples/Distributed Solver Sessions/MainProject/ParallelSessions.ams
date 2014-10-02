@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Parallel_Sessions {
+    Comment: {
+        "Keywords:
+        Parallel Solver Session, Cutting Stock example, GMP, Indexed Page object, Progress Window, FileView, External Procedure."
+    }
     DeclarationSection Input_Data {
         Set Finals {
             Index: f;

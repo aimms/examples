@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Portfolio_Selection {
+    Comment: {
+        "Keywords:
+        Mathematical Derivation, Mathematical Reformulation, Parametric Curve, Bar Chart, Mixed-Integer Nonlinear Programming, MINLP, BARON."
+    }
     Section Strategic_Investment_Model {
         Set InvestmentCategories {
             Index: j, k;
@@ -54,17 +58,7 @@ Model Main_Portfolio_Selection {
         }
         Procedure SolveStrategicInvestmentModel {
             Body: {
-                if not IsRunningAsViewer then
-                
-                	solve StrategicInvestment;
-                
-                else
-                
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution in read from a case.");
-                	CaseFind("Strategic Model Solution",ACase);
-                	CaseLoadCurrent(ACase,0);
-                
-                endif;
+                solve StrategicInvestment;
             }
         }
     }
@@ -368,47 +362,21 @@ Model Main_Portfolio_Selection {
         }
         Procedure SolveTacticalModel {
             Body: {
-                if not IsRunningAsViewer then
+                switch ( CurrentTacticalModel ) do
                 
-                	switch ( CurrentTacticalModel ) do
+                'Minimizing two-sided variance':
+                	SolveTacticalInvestmentModel;
                 
-                	'Minimizing two-sided variance':
-                		SolveTacticalInvestmentModel;
+                'Minimizing down-sided variance':
+                	SolveTacticalDownsideInvestmentModel;
                 
-                	'Minimizing down-sided variance':
-                		SolveTacticalDownsideInvestmentModel;
+                'Minimizing two-sided variance (minimal investment fraction)':
+                	SolveMinimumFractionTacticalInvestment;
                 
-                	'Minimizing two-sided variance (minimal investment fraction)':
-                		SolveMinimumFractionTacticalInvestment;
+                'Minimizing two-sided variance (minimal investment fraction, cost budget)':
+                	SolveBudgetMinimumFractionTacticalInvestment;
                 
-                	'Minimizing two-sided variance (minimal investment fraction, cost budget)':
-                		SolveBudgetMinimumFractionTacticalInvestment;
-                
-                	endswitch;
-                
-                else
-                
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution in read from a case.");
-                
-                	switch ( CurrentTacticalModel ) do
-                
-                		'Minimizing two-sided variance':
-                			CaseFind("Tactical Model Solution - two sided variance",ACase);
-                
-                		'Minimizing down-sided variance':
-                			CaseFind("Tactical Model Solution - two sided variance",ACase);
-                
-                		'Minimizing two-sided variance (minimal investment fraction)':
-                			CaseFind("Tactical Model Solution - two sided variance (min investment fraction)",ACase);
-                
-                		'Minimizing two-sided variance (minimal investment fraction, cost budget)':
-                			CaseFind("Tactical Model Solution - two sided variance (min investment fraction, cost budget)",ACase);
-                
-                	endswitch;
-                
-                	CaseLoadCurrent(ACase,0);
-                
-                endif;
+                endswitch;
             }
         }
         Procedure InitializeSolvers {

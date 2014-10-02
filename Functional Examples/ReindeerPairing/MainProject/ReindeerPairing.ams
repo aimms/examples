@@ -6,7 +6,10 @@ Model Main_ReindeerPairing {
         
         Perhaps
         http://webclipart.about.com/od/holida1/ss/How-Do-Those-Reindeer-Fly.htm
-        can be used for a background picture when presenting the solutions in the GUI."
+        can be used for a background picture when presenting the solutions in the GUI.
+        
+        Keywords:
+        Stable marriage problem, network object, constraint programming, channel constraint, if-then constraint."
     }
     Section Model_Section {
         Set Lefty {
@@ -269,19 +272,8 @@ Model Main_ReindeerPairing {
     }
     Procedure MainExecution {
         Body: {
-            
-            if IsRunningAsViewer then
-            
-                DialogMessage("In AIMMS Viewer, the SOLVE statement is disabled. Therefore the output data is read from a case");
-                CaseFind("Solved Raindeer pairing",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            else
-            
-                SolveRaindeerPairing ;
-                AssignNames ;
-            
-            endif;
+            SolveRaindeerPairing ;
+            AssignNames ;
         }
     }
     Procedure MainTermination {

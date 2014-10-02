@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Coloring {
+    Comment: {
+        "Keywords:
+        Color, Inactive element, DialogGetColor, UserColorAdd, UserColorModify."
+    }
     DeclarationSection Data_Declarations {
         Set MySet {
             Index: i, j;

@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_DLLExample {
+    Comment: {
+        "Keywords:
+        External procedure, DLL."
+    }
     Parameter MaxS {
         Range: {
             {1..1000}

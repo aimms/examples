@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Bandwidth_Allocation {
+    Comment: {
+        "Keywords:
+        Binary programming model."
+    }
     Set Links {
         Index: l, l2;
         Parameter: Link;
@@ -95,17 +99,9 @@ Model Main_Bandwidth_Allocation {
     Procedure MainInitialization;
     Procedure MainExecution {
         Body: {
-            if IsRunningAsViewer then
+            StartLink(c,l):=0;
             
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-                CaseFind("Input and Output Data", ACase);
-                CaseLoadCurrent( ACase,0);
-            else
-            
-                StartLink(c,l):=0;
-                solve bandwidthAllocation;
-            
-            endif;
+            solve bandwidthAllocation;
         }
     }
     Procedure MainTermination {

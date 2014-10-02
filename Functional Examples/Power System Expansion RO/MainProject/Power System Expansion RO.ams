@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Power_System_Expansion_RO {
+    Comment: {
+        "Keywords:
+        Linear Program, Uncertainty, Robust Optimization, Non-adjustable and Adjustable Decisions, Linear Decision Rules."
+    }
     Section Quantities_and_Units {
         DeclarationSection Declaration_Units {
             Quantity SI_Time_Duration {
@@ -740,48 +744,37 @@ Model Main_Power_System_Expansion_RO {
     Section Robust_Optimization_Procedures {
         Procedure SolveRobust {
             Body: {
+                PowerExpUncertainParameters := AllUncertainParameters;
                 
-                if not IsRunningAsViewer then
+                switch UncertaintyChoice do
+                'Box'       : PowerExpUncertainParameters -= {'RO_InstDemand_Ellipsoid', 'RO_InstDemand_ConvexHull' };
+                'Ellipsoid' : PowerExpUncertainParameters -= {'RO_InstDemand_Box', 'RO_InstDemand_ConvexHull' };
+                'ConvexHull': PowerExpUncertainParameters -= {'RO_InstDemand_Box', 'RO_InstDemand_Ellipsoid' };
+                default     :
+                endswitch;
                 
-                	PowerExpUncertainParameters := AllUncertainParameters;
+                PowerExpUncertainConstraints -=  AllUncertaintyConstraints;
                 
-                	switch UncertaintyChoice do
-                	'Box'       : PowerExpUncertainParameters -= {'RO_InstDemand_Ellipsoid', 'RO_InstDemand_ConvexHull' };
-                	'Ellipsoid' : PowerExpUncertainParameters -= {'RO_InstDemand_Box', 'RO_InstDemand_ConvexHull' };
-                	'ConvexHull': PowerExpUncertainParameters -= {'RO_InstDemand_Box', 'RO_InstDemand_Ellipsoid' };
-                	default     :
-                	endswitch;
+                !Some of the statements below could be alternatively used in case some explicit uncertainty constraints
+                !are employed instead of the Dependency attribute of uncertain parameter RO_InstDemand
                 
-                	PowerExpUncertainConstraints -=  AllUncertaintyConstraints;
+                !PowerExpUncertainConstraints :=  AllUncertaintyConstraints;
+                !PowerExpUncertainConstraints += data{'InstDemand_Box_lower','InstDemand_Box_upper'};
+                !PowerExpUncertainConstraints += data{'InstDemand_Ellipsoid_def'};
+                !PowerExpUncertainConstraints += data{'ConvexHull_1','ConvexHull_2','ConvexHull_3','ConvexHull_4'};
+                !PowerExpUncertainConstraints += data{'RequiredElectr_base_def','RequiredElectr_peak_def'};
                 
-                	!Some of the statements below could be alternatively used in case some explicit uncertainty constraints
-                	!are employed instead of the Dependency attribute of uncertain parameter RO_InstDemand
+                RO_PowerExpModel := GMP::Instance::GenerateRobustCounterpart(
+                		MP:                      PowerExpModelForRO,
+                		UncertainParameters:     PowerExpUncertainParameters,
+                		UncertaintyConstraints : PowerExpUncertainConstraints
+                		);
                 
-                	!PowerExpUncertainConstraints :=  AllUncertaintyConstraints;
-                	!PowerExpUncertainConstraints += data{'InstDemand_Box_lower','InstDemand_Box_upper'};
-                	!PowerExpUncertainConstraints += data{'InstDemand_Ellipsoid_def'};
-                	!PowerExpUncertainConstraints += data{'ConvexHull_1','ConvexHull_2','ConvexHull_3','ConvexHull_4'};
-                	!PowerExpUncertainConstraints += data{'RequiredElectr_base_def','RequiredElectr_peak_def'};
+                GMP::Instance::Solve( RO_PowerExpModel );
                 
-                	RO_PowerExpModel := GMP::Instance::GenerateRobustCounterpart(
-                			MP:                      PowerExpModelForRO,
-                			UncertainParameters:     PowerExpUncertainParameters,
-                			UncertaintyConstraints : PowerExpUncertainConstraints
-                			);
+                GMP::Instance::Delete( RO_PowerExpModel );
                 
-                	GMP::Instance::Solve( RO_PowerExpModel );
-                
-                	GMP::Instance::Delete( RO_PowerExpModel );
-                
-                	ComputeResults;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
-                    CaseFind("Viewer Case", ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                ComputeResults;
             }
             Comment: "This procedure generates the robust counterpart, solves it and computes results parameters based on its solution.";
         }

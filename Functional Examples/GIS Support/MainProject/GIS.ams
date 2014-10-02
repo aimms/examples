@@ -11,7 +11,10 @@ Model Main_Transport {
         - The amount supplied from each depot does not exceed the total amount
           available for supply.
         - The total cost associated with the totality of transports is minimal.
-        For illustration this demo uses a dataset containing Dutch cities."
+        For illustration this demo uses a dataset containing Dutch cities.
+        
+        Keywords:
+        GIS, Network Object, Bitmap, Arcs, Nodes."
     }
     Section Netherlands_Demo_Page {
         DeclarationSection Netherlands_data {
@@ -377,13 +380,7 @@ Model Main_Transport {
     }
     Procedure MainExecution {
         Body: {
-            if (IsRunningAsViewer) then
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            	CaseFind("Solution",ACase);
-            	CaseLoadCurrent(ACase,0);
-            else
-            	Solve TransportModel;
-            endif;
+            Solve TransportModel;
         }
         Comment: {
             "An mathematical program can be solved using the SOLVE statement.

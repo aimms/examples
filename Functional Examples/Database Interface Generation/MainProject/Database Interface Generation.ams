@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Database_Interface_Generation {
+    Comment: {
+        "Keywords:
+        Database, Datasource, GetDataSourceProperty, SQLNumberOfColumns, SQLNumberOfTables, SQLColumnData, SQLTableName, Mapping, Database Info, Model Edit Functions."
+    }
     File ProblemDescriptionFile {
         Name: "Description.txt";
         Comment: "This file contains the text displayed on the Problem Description page (AIMMS Demo: Database Interface Generation).";

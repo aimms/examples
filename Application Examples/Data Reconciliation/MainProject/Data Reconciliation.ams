@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model DataReconciliationModel {
+    Comment: {
+        "Keywords:
+        Template, NLP model, network object, selection object, table, composite table, assertion, indexed sets, model structure, page structure, quantities, units, XML."
+    }
     Section Input_Data {
         DeclarationSection Model_Quantities {
             Quantity Mass {

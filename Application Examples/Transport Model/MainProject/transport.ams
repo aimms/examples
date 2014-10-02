@@ -11,7 +11,10 @@ Model Main_Transport {
         - The amount supplied from each depot does not exceed the total amount
           available for supply.
         - The total cost associated with the totality of transports is minimal.
-        For illustration this demo uses a dataset containing Dutch cities."
+        For illustration this demo uses a dataset containing Dutch cities.
+        
+        Keywords:
+        Linear Programming, Network Object, Database Communication."
     }
     Section Basic_Section {
         DeclarationSection Input_Data {
@@ -176,17 +179,7 @@ Model Main_Transport {
         }
         Procedure BasicMainExecution {
             Body: {
-                if not IsRunningAsViewer then
-                
-                	solve TransportModel;
-                
-                else
-                
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
-                	CaseFind("Solution Basic",ACase);
-                	CaseLoadCurrent(ACase,0);
-                
-                endif;
+                solve TransportModel;
             }
             Comment: {
                 "A mathematical program can be solved using the SOLVE statement.
@@ -298,17 +291,7 @@ Model Main_Transport {
         }
         Procedure DatabaseMainExecution {
             Body: {
-                if not IsRunningAsViewer then
-                
-                	solve TransportModel;
-                
-                else
-                
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
-                	CaseFind("Solution Database",ACase);
-                	CaseLoadCurrent(ACase,0);
-                
-                endif;
+                solve TransportModel;
             }
             Comment: {
                 "An mathematical program can be solved using the SOLVE statement.
@@ -413,22 +396,12 @@ Model Main_Transport {
         }
         Procedure ConstraintSlacksMainExecution {
             Body: {
-                if not IsRunningAsViewer then
+                Solve ConstraintSlacksTransportModel;
                 
-                	Solve ConstraintSlacksTransportModel;
                 !	for (AllCandV) do
                 !		currentConstraintVariable := AllCandV;
                 !		ConstraintIsViolated := currentConstraintVariable.violation;
                 !	endfor;
-                
-                
-                else
-                
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
-                	CaseFind("Solution Constraint Slack",ACase);
-                	CaseLoadCurrent(ACase,0);
-                
-                endif;
             }
             Comment: {
                 "For this optimization there will be a slack variable allowed for the MeetDemand

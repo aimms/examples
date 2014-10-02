@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_DietProblem {
+    Comment: {
+        "Keywords:
+        Diet problem, Blending problem, Unit-valued Parameter, Unit Parameter, Quantity, Unit conversion."
+    }
     Section Model_Section {
         Set FoodTypes {
             Index: f;
@@ -143,17 +147,7 @@ Model Main_DietProblem {
     }
     Procedure MainExecution {
         Body: {
-            if not IsRunningAsViewer then
-            
-                Solve DietProblem;
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-                CaseFind("Solution",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            Solve DietProblem;
         }
     }
     Procedure MainTermination {

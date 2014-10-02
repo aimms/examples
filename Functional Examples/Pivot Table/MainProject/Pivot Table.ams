@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Pivot_Table {
+    Comment: {
+        "Keywords:
+        GUI, Pivot Table."
+    }
     DeclarationSection Data_Declarations {
         Set Customers {
             Index: c;

@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_GoalProgramming {
+    Comment: {
+        "Keywords:
+        Goal Programming, Violation penalty."
+    }
     DeclarationSection Model_Declaration {
         Set Products {
             Index: p;

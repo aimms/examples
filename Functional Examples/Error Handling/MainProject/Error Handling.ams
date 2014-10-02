@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Error_Handling {
+    Comment: {
+        "Keywords:
+        Error Handling, Error Handler."
+    }
     Section Local_Error_Handling {
         StringParameter LocalTestFileName {
             InitialData: "incorrectinput2.txt";

@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Clock {
+    Comment: {
+        "Keywords:
+        Network Object, ScheduleAt, CurrentToString, MomentToString."
+    }
     DeclarationSection Timing {
         StringParameter Today {
             Text: "The reference data from which all time is seen.";

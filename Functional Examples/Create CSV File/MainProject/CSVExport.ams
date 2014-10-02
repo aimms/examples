@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_CSVExport {
+    Comment: {
+        "Keywords:
+        External procedure, AIMMS Programming Interface, API, Comma Separated Value, CSV file."
+    }
     Set Cities {
         Index: i, j;
         InitialData: data { Rotterdam, Antwerp, Berlin };

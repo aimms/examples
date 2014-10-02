@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Media_Selection_Problem {
+    Comment: {
+        "Keywords:
+        Integer Program, Logical Constraint, Set Covering Problem."
+    }
     DeclarationSection General_Declaration {
         Quantity Currency {
             BaseUnit: $;
@@ -69,20 +73,10 @@ Model Main_Media_Selection_Problem {
         }
         Procedure SolveMIP {
             Body: {
-                if not IsRunningAsViewer then
+                VariablesMIP   := data { IsSelectedMIP, TotalCostMIP };
+                ConstraintsMIP := data { TotalCostMIP, AudiencesAreCoveredMIP };
                 
-                	VariablesMIP   := data { IsSelectedMIP, TotalCostMIP };
-                	ConstraintsMIP := data { TotalCostMIP, AudiencesAreCoveredMIP };
-                
-                	Solve MinimizeCostMIP;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
-                    CaseFind("LP Solution",ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                Solve MinimizeCostMIP;
             }
         }
     }
@@ -116,17 +110,7 @@ Model Main_Media_Selection_Problem {
         }
         Procedure SolveLP {
             Body: {
-                if not IsRunningAsViewer then
-                
-                	Solve MinimizeCostLP;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
-                    CaseFind("MIP Solution",ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                Solve MinimizeCostLP;
             }
         }
     }
@@ -182,18 +166,8 @@ Model Main_Media_Selection_Problem {
         }
         Procedure SolveLogicalConstraints {
             Body: {
-                if not IsRunningAsViewer then
-                
-                	UpdateConstraintsAndVariables;
-                	Solve MinimizeCostMIP;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
-                    CaseFind("Logical Condition Solution",ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                UpdateConstraintsAndVariables;
+                Solve MinimizeCostMIP;
             }
         }
         Set LogicalConstraintsSet {

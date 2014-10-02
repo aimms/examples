@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_APITest {
+    Comment: {
+        "Keywords:
+        AIMMS API, external DLL."
+    }
     Set Cities {
         Index: i, j;
         InitialData: data { Rotterdam, Antwerp, Berlin };

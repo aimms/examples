@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Lag_And_Lead_in_Horizon {
+    Comment: {
+        "Keywords:
+        LP model, horizon, composite table."
+    }
     DeclarationSection Horizon_Declaration {
         Parameter MaxPeriod;
         Parameter PlanningLength;

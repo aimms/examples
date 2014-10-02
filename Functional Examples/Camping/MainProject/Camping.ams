@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Camping {
+    Comment: {
+        "Keywords:
+        Constraint Programming, callback function."
+    }
     Section Model_Section {
         DeclarationSection Model_Declaration {
             Set Objects {
@@ -316,22 +320,12 @@ Model Main_Camping {
     Procedure MainInitialization;
     Procedure MainExecution {
         Body: {
-            if not IsRunningAsViewer then
+            /* Specify a callback procedure for the Mathematical Program. Upon finding a new incumbent during the solving process,
+               the CampingProblemCallback procedure is called automatically. */
+            CampingProblem.CallbackNewIncumbent := 'CampingProblemCallback';
             
-            	/* Specify a callback procedure for the Mathematical Program. Upon finding a new incumbent during the solving process,
-            	the CampingProblemCallback procedure is called automatically. */
-            	CampingProblem.CallbackNewIncumbent := 'CampingProblemCallback';
-            
-            	/* Perorm the actual solve. */
-            	solve CampingProblem;
-            
-            else
-            
-            	DialogMessage("In AIMMS Viewer, the SOLVE statement is disabled. Therefore, the solution is read from a case.");
-            	CaseFind("SolvedModel", TheCase);
-            	CaseLoadCurrent(TheCase, dialog : 0);
-            
-            endif;
+            /* Perform the actual solve. */
+            solve CampingProblem;
         }
     }
     Procedure MainTermination {

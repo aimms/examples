@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_PerformanceAssessmentProblem {
+    Comment: {
+        "Keywords:
+        Linear Program, What-If Analysis."
+    }
     DeclarationSection Problem_Declarations {
         Set DecisionMakingUnits {
             Index: d;
@@ -82,56 +86,26 @@ Model Main_PerformanceAssessmentProblem {
         }
         Procedure FirstExperiment {
             Body: {
-                if not IsRunningAsViewer then
+                InputCategories  := data { 'Total Cost' };
+                OutputCategories := data { 'Revenue'};
                 
-                	InputCategories  := data { 'Total Cost' };
-                	OutputCategories := data { 'Revenue'};
-                
-                	DoExperiment;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Thus, the result is read from a case.");
-                    CaseFind("1st Experiment Result",ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                DoExperiment;
             }
         }
         Procedure SecondExperiment {
             Body: {
-                if not IsRunningAsViewer then
+                InputCategories  := data { 'Total Cost' };
+                OutputCategories := data { 'Customer Service', 'Revenue'};
                 
-                	InputCategories  := data { 'Total Cost' };
-                	OutputCategories := data { 'Customer Service', 'Revenue'};
-                
-                	DoExperiment;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Thus, the result is read from a case.");
-                    CaseFind("2nd Experiment Result",ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                DoExperiment;
             }
         }
         Procedure ThirdExperiment {
             Body: {
-                if not IsRunningAsViewer then
+                InputCategories  := data {'Total Cost', 'Staff Cost', 'Non-staff Cost', 'Age of Store', 'Competition'};
+                OutputCategories := data { 'Customer Service', 'Revenue'};
                 
-                	InputCategories  := data {'Total Cost', 'Staff Cost', 'Non-staff Cost', 'Age of Store', 'Competition'};
-                	OutputCategories := data { 'Customer Service', 'Revenue'};
-                
-                	DoExperiment;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Thus, the result is read from a case.");
-                    CaseFind("3rd Experiment Result",ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                DoExperiment;
             }
         }
     }

@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_template {
+    Comment: {
+        "Keywords:
+        AIMMS Component, AIMMSCOM."
+    }
     Module Interrupt_Module {
         SourceFile: "InterruptModule.ams";
     }

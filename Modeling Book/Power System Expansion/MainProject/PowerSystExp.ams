@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_PowerSystExp {
+    Comment: {
+        "Keywords:
+        Linear Program, Stochastic Program, Two-Stage, Control-State Variables, What-If Analysis, Benders Decomposition."
+    }
     Section Quantities_and_Units {
         DeclarationSection Declaration_Units {
             Quantity SI_Time_Duration {
@@ -266,57 +270,37 @@ Model Main_PowerSystExp {
         }
         Procedure SolveScenarioModels {
             Body: {
-                if not IsRunningAsViewer then
+                for s do
                 
-                	for s do
+                	CurrentScenario := s;
+                	SetInstDemAsInCurrentScenario;
+                	SolveDet_PowerExpModel;
+                	CopyCurrentScenSolInPlan;
                 
-                		CurrentScenario := s;
-                		SetInstDemAsInCurrentScenario;
-                		SolveDet_PowerExpModel;
-                		CopyCurrentScenSolInPlan;
-                
-                	endfor
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
-                    CaseFind("Viewer Case", ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                endfor
             }
         }
         Procedure PerformScenarioAnalysis {
             Body: {
-                If not IsRunningAsViewer then
+                FixNewCapVariables;
                 
-                	FixNewCapVariables;
+                for spl do
                 
-                	for spl do
+                	CurrentPlan := spl;
+                	SetNewCapAsInCurrentPlan;
                 
-                		CurrentPlan := spl;
-                		SetNewCapAsInCurrentPlan;
+                	for s do
                 
-                		for s do
+                	CurrentScenario := s;
+                	SetInstDemAsInCurrentScenario;
+                	SolveDet_PowerExpModel;
+                	CopyCurrentPlanSolInScenario;
                 
-                		CurrentScenario := s;
-                		SetInstDemAsInCurrentScenario;
-                		SolveDet_PowerExpModel;
-                		CopyCurrentPlanSolInScenario;
+                	endfor
                 
-                		endfor
+                endfor;
                 
-                	endfor;
-                
-                	UnfixNewcapVariables;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
-                    CaseFind("Viewer Case", ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                UnfixNewcapVariables;
             }
         }
     }
@@ -493,17 +477,7 @@ Model Main_PowerSystExp {
         }
         Procedure SolveSP_PowerExpModel {
             Body: {
-                if not IsRunningAsViewer then
-                
-                    solve SPPowerExpModel;
-                
-                else
-                
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
-                    CaseFind("Viewer Case", ACase);
-                    CaseLoadCurrent(ACase,0);
-                
-                endif;
+                solve SPPowerExpModel;
             }
         }
         Procedure CopyStochSolInPlan {

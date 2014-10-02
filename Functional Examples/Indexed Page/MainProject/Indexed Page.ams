@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_template {
+    Comment: {
+        "Keywords:
+        Indexed Page, multiple cases."
+    }
     Set Cities {
         Index: city;
         Definition: data { Amsterdam, Berlin, London, Madrid, Paris, Rome };

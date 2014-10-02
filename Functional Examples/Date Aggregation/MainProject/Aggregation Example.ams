@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Aggregation_Example {
+    Comment: {
+        "Keywords:
+        CreateTimeTable, TimeSlotCharacteristic, Aggregate."
+    }
     Section Time_Definitions {
         Horizon Periods {
             Index: ti;

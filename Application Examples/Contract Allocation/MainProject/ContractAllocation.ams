@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_template {
+    Comment: {
+        "Keywords:
+        Semi-continuous variables, Mixed Integer Programming model, MIP, bar Chart, table, colors."
+    }
     Set Producers {
         Text: "The set of all producers";
         Index: p, p1;
@@ -141,17 +145,7 @@ Model Main_template {
     }
     Procedure MainExecution {
         Body: {
-            if not IsRunningAsViewer then
-            
-                solve ContractAllocation;
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the output data is read from a case");
-                CaseFind("Solution", ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            solve ContractAllocation;
         }
     }
     Procedure MainTermination {

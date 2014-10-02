@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Life_Cycle_Consumption_Model {
+    Comment: {
+        "Keywords:
+        Utility Function, Discount Factor, Present Value, Future Value, Nonlinear Programming, Nonlinear Solvers, Curve Object."
+    }
     Section Model_Section {
         DeclarationSection Input_Parameters {
             Set Time {
@@ -170,22 +174,10 @@ Model Main_Life_Cycle_Consumption_Model {
     }
     Procedure MainExecution {
         Body: {
+            empty Utility, Assets, Labor;
+            Assets(1):=0;
             
-            
-            
-            if not IsRunningAsViewer then
-            
-               	empty Utility, Assets, Labor;
-            	Assets(1):=0;
-            	solve ConsumptionModel_Exp where solver= SelectedNLPSolver;
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-                CaseFind("Solution",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            solve ConsumptionModel_Exp where solver = SelectedNLPSolver;
         }
     }
     Procedure MainTermination {

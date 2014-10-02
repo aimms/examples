@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_FileMerge {
+    Comment: {
+        "Keywords:
+        Linear Program, Network Program, Simplex Method, Column Generation, Mathematical Derivation, Customized Algorithm."
+    }
     Section Model_Formulation {
         DeclarationSection File_Merge {
             Set AllRecords {
@@ -233,58 +237,28 @@ Model Main_FileMerge {
         Section AlternativeMethods {
             Procedure RunWithAllVariables {
                 Body: {
-                    if not IsRunningAsViewer then
-                    
-                    	MainInitialization;
-                    	Permitted:={(i,j)};
-                    	Empty Merged;
-                    	Distance(i,j):=DistanceFormula(i,j);
-                    	Solve FileMerge;
-                    
-                    else
-                    
-                    	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
-                    	CaseFind("Solution Simplex", ACase);
-                    	CaseLoadCurrent(ACase);
-                    
-                    endif;
+                    MainInitialization;
+                    Permitted:={(i,j)};
+                    Empty Merged;
+                    Distance(i,j):=DistanceFormula(i,j);
+                    Solve FileMerge;
                 }
             }
             Procedure RunWithInitialSolutionOnly {
                 Body: {
-                    if not IsRunningAsViewer then
-                    
-                    	MainInitialization;
-                    	DetermineInitialSolution;
-                    	Solve FileMerge;
-                    
-                    else
-                    
-                    	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
-                    	CaseFind("Solution Heuristic", ACase);
-                    	CaseLoadCurrent(ACase);
-                    
-                    endif;
+                    MainInitialization;
+                    DetermineInitialSolution;
+                    Solve FileMerge;
                 }
             }
             Procedure RunWithColumnGeneration {
                 Body: {
-                    if not IsRunningAsViewer then
-                    
-                    	MainInitialization;
-                    	Empty Permitted;
-                    	Empty Merged;
-                    	DetermineInitialSolution;
-                    	DetermineBestCandidates;
-                    	DetermineAllCandidateVariables;
-                    
-                    else
-                    
-                    	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
-                    	CaseFind("Solution Combination", ACase);
-                    	CaseLoadCurrent(ACase);
-                    
-                    endif;
+                    MainInitialization;
+                    Empty Permitted;
+                    Empty Merged;
+                    DetermineInitialSolution;
+                    DetermineBestCandidates;
+                    DetermineAllCandidateVariables;
                 }
             }
         }

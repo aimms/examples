@@ -1,6 +1,11 @@
 ## ams_version=1.0
 
 Model Main_Distribution_Center_Allocation {
+    Comment: {
+        "Keywords:
+        Distribution Center Allocation, Center of Gravity, Minimize Expected Transportation Cost, Maximize Service Level, Excel, Spreadsheet,
+        Network object, GIS, Calculate distance based on longitude and latitude."
+    }
     DeclarationSection Input_Declarations {
         Set Locations {
             Index: l;

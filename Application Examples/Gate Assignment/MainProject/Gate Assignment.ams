@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Gate_Assignment_in_AIMMS {
+    Comment: {
+        "Keywords:
+        Mixed Integer Programming, Linear Programming, Column Generation, GMP, Gate Assignment."
+    }
     Section Input_Section {
         Function CostIdleTime {
             Arguments: (time);

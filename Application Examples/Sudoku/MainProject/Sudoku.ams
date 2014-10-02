@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_template {
+    Comment: {
+        "Keywords:
+        Mixed Integer Programming, Mixed Integer Formulations, Multiple Solutions, GMP Functions, Pivot Table."
+    }
     DeclarationSection Declaration_Sudoku_Model {
         Set AllRows {
             Index: r;
@@ -173,32 +177,20 @@ Model Main_template {
     }
     Procedure MainExecution {
         Body: {
-            if not IsRunningAsViewer then
+            CreateGroups;
             
-            	CreateGroups;
+            Solution(r,c,v).nonvar := 0;
             
-            	Solution(r,c,v).nonvar := 0;
+            Solution(r,c,FixedValues(r,c)) := 1;
+            Solution(r,c,FixedValues(r,c)).nonvar := 1;
             
-            	Solution(r,c,FixedValues(r,c)) := 1;
-            	Solution(r,c,FixedValues(r,c)).nonvar := 1;
+            !NoOfSolutions := 2;
             
-            	!NoOfSolutions := 2;
+            solve Sudoku;
+            GUISolution(ags,r,c)|(ord(ags)=1) := first(v | Solution(r,c,v));
             
-            	solve Sudoku;
-            	GUISolution(ags,r,c)|(ord(ags)=1) := first(v | Solution(r,c,v));
-            
-            	solve UniquenessSudoku;
-            	GUISolution(ags,r,c)|(ord(ags)=2) := first(v | Solution(r,c,v));
-            
-            
-            
-            else
-            
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
-                CaseFind("Solution (MIP)", ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            solve UniquenessSudoku;
+            GUISolution(ags,r,c)|(ord(ags)=2) := first(v | Solution(r,c,v));
         }
         Comment: {
             "Solution(r,c,FixedValues(r,c)) := 1;"
@@ -211,42 +203,28 @@ Model Main_template {
             	return;
             endif;
             
-            if not IsRunningAsViewer then
+            empty GUISolution;
             
-            	empty GUISolution;
+            CreateGroups;
             
-            	CreateGroups;
+            Solution(r,c,v).nonvar := 0;
             
-            	Solution(r,c,v).nonvar := 0;
+            Solution(r,c,FixedValues(r,c)) := 1;
+            Solution(r,c,FixedValues(r,c)).nonvar := 1;
             
-            	Solution(r,c,FixedValues(r,c)) := 1;
-            	Solution(r,c,FixedValues(r,c)).nonvar := 1;
-            
-            	if FindString(FormatString("%e", SelectedSolver),"CPLEX") then
-            		OptionSetString(FormatString("%e::do_populate", SelectedSolver),"yes");
-            	endif;
-            	if FindString(FormatString("%e", SelectedSolver),"BARON") then
-            		OptionSetValue(FormatString("%e::number_of_best_solutions", SelectedSolver),5);
-            	endif;
-            	solve Sudoku where solver = SelectedSolver;
-            
-            	NoOfSolutions := GMP::Solution::Count('Sudoku');
-            	for ags do
-            		GMP::Solution::SendToModel('Sudoku',ord(ags));
-            		GUISolution(ags,r,c) := first(v | Solution(r,c,v));
-            	endfor;
-            
-            else
-            
-                if SelectedSolver then
-            
-                    DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution will be read from a case.");
-                    CaseFind("Solution (Baron)", ACase);
-                    CaseLoadCurrent(ACase,0);
-            
-            	endif;
-            
+            if FindString(FormatString("%e", SelectedSolver),"CPLEX") then
+            	OptionSetString(FormatString("%e::do_populate", SelectedSolver),"yes");
             endif;
+            if FindString(FormatString("%e", SelectedSolver),"BARON") then
+            	OptionSetValue(FormatString("%e::number_of_best_solutions", SelectedSolver),5);
+            endif;
+            solve Sudoku where solver = SelectedSolver;
+            
+            NoOfSolutions := GMP::Solution::Count('Sudoku');
+            for ags do
+            	GMP::Solution::SendToModel('Sudoku',ord(ags));
+            	GUISolution(ags,r,c) := first(v | Solution(r,c,v));
+            endfor;
         }
     }
     Procedure MainTermination {

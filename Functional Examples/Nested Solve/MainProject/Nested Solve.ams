@@ -1,7 +1,12 @@
 ## ams_version=1.0
 
 Model Recursive_Solve_Model {
-    Comment: "Fixed Cost Network Flow Problem with Cuts";
+    Comment: {
+        "Fixed Cost Network Flow Problem with Cuts.
+        
+        Keywords:
+        Nested solve, Network Flow, GMP, cut, callback, CallbackAddCut, MIP, Document Viewer."
+    }
     Section Model_Section {
         DeclarationSection Node_Declarations {
             Set NodeSet {

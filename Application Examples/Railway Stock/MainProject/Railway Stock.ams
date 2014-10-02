@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Railway_Stock {
+    Comment: {
+        "Keywords:
+        XML, network object, colors, compound set, calendar, time, tabbed page."
+    }
     Section RailWay_Model {
         DeclarationSection Model_Declaration {
             Quantity Time_Duration {
@@ -414,20 +418,10 @@ Model Main_Railway_Stock {
     }
     Procedure MainExecution {
         Body: {
-            if not IsRunningAsViewer then
-            
-            	ProcessInputData;
-            	Preprocess;
-            	SolveModel;
-            	InitializeNetwork;
-            
-            else
-            
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            	CaseFind("Solution",ACase);
-            	CaseLoadCurrent(ACase);
-            
-            endif;
+            ProcessInputData;
+            Preprocess;
+            SolveModel;
+            InitializeNetwork;
         }
         ElementParameter ACase {
             Range: AllCases;

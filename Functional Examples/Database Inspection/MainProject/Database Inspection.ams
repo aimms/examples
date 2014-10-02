@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Database_Inspection {
+    Comment: {
+        "Keywords:
+        Database, Datasource, GetDataSourceProperty, SQLNumberOfColumns, SQLNumberOfTables, SQLColumnData, SQLTableName, SQL Query, Mapping, Database Info."
+    }
     Section Database_Inspection_Section {
         DeclarationSection Database_Declaration {
             Set DatabaseIDs {

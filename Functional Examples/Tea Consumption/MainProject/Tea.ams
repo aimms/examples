@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_template {
+    Comment: {
+        "Keywords:
+        2D Chart, Pie Chart, Plot / Curve Chart, reverse link, Spreadsheet Interface."
+    }
     Section Spreadsheet_section {
         Procedure ReadTeaConsumptionDataFromSpreadsheet {
             Body: {

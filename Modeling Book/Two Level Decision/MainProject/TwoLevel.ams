@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_TwoLevel {
+    Comment: {
+        "Keywords:
+        Evironmental Economics, Stackelberg Games, Nonlinear Programming, NLP."
+    }
     Section Two_Level_Decision_Problem {
         Section Quantities_and_Units {
             DeclarationSection Quantity_Declarations {
@@ -189,17 +193,7 @@ Model Main_TwoLevel {
             }
             Procedure SolveSubmodelsForGivenTax {
                 Body: {
-                    if not IsRunningAsViewer then
-                    
-                            SolveSubmodelsForFixedTax(TaxRate);
-                    
-                    else
-                    
-                            DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
-                            caseFind("Solution For Given Tax",ACase);
-                            CaseLoadCurrent(ACase, 0);
-                    
-                    endif;
+                    SolveSubmodelsForFixedTax(TaxRate);
                 }
             }
             Procedure HuntPhase {
@@ -247,18 +241,8 @@ Model Main_TwoLevel {
                 Body: {
                     empty TaxRate, SubsidyRate;
                     
-                    if not IsRunningAsViewer then
-                    
-                            HuntPhase;
-                            Bisection;
-                    
-                    else
-                    
-                            DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution will be read from a case.");
-                            caseFind("Solution Two-level Model",ACase);
-                            CaseLoadCurrent(ACase, 0);
-                    
-                    endif;
+                    HuntPhase;
+                    Bisection;
                 }
             }
         }
@@ -318,12 +302,10 @@ Model Main_TwoLevel {
     }
     Procedure MainInitialization {
         Body: {
-            if not IsRunningAsViewer then
-                    ReadModelData;
-                    InitializeInterfaceParameters;
-                    TaxRate := 0.2;
-                    update;
-            endif;
+            ReadModelData;
+            InitializeInterfaceParameters;
+            TaxRate := 0.2;
+            update;
         }
     }
     Procedure MainExecution {

@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Portfolio_Selection_using_Chance_Constraints {
+    Comment: {
+        "Keywords:
+        Portfolio Selection, Chance Constraints, Safe Approximation, Robust Optimization."
+    }
     Section Portfolio_Model {
         DeclarationSection Model_Declaration {
             Quantity SI_Unitless {
@@ -110,32 +114,22 @@ Model Main_Portfolio_Selection_using_Chance_Constraints {
         }
         Procedure SolveChanceConstrModel {
             Body: {
-                if not IsRunningAsViewer then
+                ChanceConstrModel := GMP::Instance::GenerateRobustCounterpart( PortfolioModel, AllUncertainParameters, AllUncertaintyConstraints );
                 
-                	ChanceConstrModel := GMP::Instance::GenerateRobustCounterpart( PortfolioModel, AllUncertainParameters, AllUncertaintyConstraints );
+                GMP::Instance::Solve( ChanceConstrModel );
                 
-                	GMP::Instance::Solve( ChanceConstrModel );
-                
-                	switch ApproximationType do
-                		'Box'       : Investment_Box(a)       := InvestmentFraction.robust(a);
-                		'Ball'      : Investment_Ball(a)      := InvestmentFraction.robust(a);
-                		'BallBox'   : Investment_BallBox(a)   := InvestmentFraction.robust(a);
-                		'Budgeted'  : Investment_Budgeted(a)  := InvestmentFraction.robust(a);
-                		'Automatic' : Investment_Automatic(a) := InvestmentFraction.robust(a);
-                	endswitch;
+                switch ApproximationType do
+                	'Box'       : Investment_Box(a)       := InvestmentFraction.robust(a);
+                	'Ball'      : Investment_Ball(a)      := InvestmentFraction.robust(a);
+                	'BallBox'   : Investment_BallBox(a)   := InvestmentFraction.robust(a);
+                	'Budgeted'  : Investment_Budgeted(a)  := InvestmentFraction.robust(a);
+                	'Automatic' : Investment_Automatic(a) := InvestmentFraction.robust(a);
+                endswitch;
                 
                 
-                	RelativeProfit := (ValueAtRisk.robust - TotalInvestedAmount)/TotalInvestedAmount ;
+                RelativeProfit := (ValueAtRisk.robust - TotalInvestedAmount)/TotalInvestedAmount ;
                 
-                	GMP::Instance::Delete( ChanceConstrModel );
-                
-                else
-                
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Hence the solution is read from a case.");
-                	CaseFind("Viewer Case", ACase);
-                	CaseLoadCurrent(ACase,0);
-                
-                endif;
+                GMP::Instance::Delete( ChanceConstrModel );
             }
             Comment: "This procedure generates the safe robust approximation of the model with chance constraints and solves it.";
         }

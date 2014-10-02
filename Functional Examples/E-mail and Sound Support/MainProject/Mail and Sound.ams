@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Mail_and_Sound {
+    Comment: {
+        "Keywords:
+        E-mail, sound, external procedure."
+    }
     Section MAPI_Interface {
         StringParameter AIMMSMapiDLL {
             Definition: {

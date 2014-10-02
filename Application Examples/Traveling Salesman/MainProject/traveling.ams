@@ -16,7 +16,10 @@ Model Main_Traveling_Salesman_Problem {
           constructed by repetitively swapping the next arc in the (modified) tour
           with that neighbor arc which gives the largest distance improvement, until
           the iteration limit is reached or a full cycle over the tour gives no
-          further improvement."
+          further improvement.
+          
+          Keywords:
+          Algorithm, network object, traveling salesman problem, GMP, Progress Window."
     }
     DeclarationSection Problem_Topology {
         Comment: {

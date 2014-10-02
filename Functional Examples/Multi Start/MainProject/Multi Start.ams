@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Multi_Start {
+    Comment: {
+        "Keywords:
+        Nonlinear Programming, NLP, Multistart Algorithm, GMP, Module."
+    }
     Section The_Model {
         DeclarationSection Actual_Model_Declaration {
             Parameter ARandomNumber {

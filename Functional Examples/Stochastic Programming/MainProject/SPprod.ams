@@ -1,7 +1,12 @@
 ## ams_version=1.0
 
 Model Main_Scenario_Generation {
-    Comment: "Model created by Koos. Stochastic data is random.";
+    Comment: {
+        "Stochastic data is random.
+        
+        Keywords:
+        Stochastic Programming, Scenario Tree, Benders Decomposition, Network Object."
+    }
     DeclarationSection Det_Model_Declarations {
         Parameter NrOfPeriods;
         Set AllPeriods {

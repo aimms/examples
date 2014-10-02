@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_CarSelection {
+    Comment: {
+        "Keywords:
+        Project User Files, Mixed Integer Programming model, MIP, Matching Problem, Network object, Nodes and arcs, Bitmap."
+    }
     Section Model_Formulation {
         Parameter MaxParticipants {
             Text: "The total number of participants";
@@ -342,17 +346,7 @@ Model Main_CarSelection {
     }
     Procedure MainExecution {
         Body: {
-            if not IsRunningAsViewer then
-            
-                solve CarSelection
-            
-            else
-            
-                DialogMessage("In AIMMS Viewer, the SOLVE statement is disabled. Therefore the output data is read from a case");
-                CaseFind("10 pairs",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            solve CarSelection;
         }
     }
     Procedure MainTermination {

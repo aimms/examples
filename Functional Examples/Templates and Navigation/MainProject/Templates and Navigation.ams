@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Empty_Model {
+    Comment: {
+        "Keywords:
+        Navigation object, navigation menu, resizability, page structure, bitmap, button, rectangle."
+    }
     Procedure MainInitialization;
     Procedure MainExecution;
     Procedure MainTermination {

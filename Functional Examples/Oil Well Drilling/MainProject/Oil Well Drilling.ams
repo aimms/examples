@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Oil_Drilling_Well {
+    Comment: {
+        "Keywords:
+        Model Edit Functions, Error Handling, source code generation."
+    }
     DeclarationSection Model_Declaration {
         Set SurveyResult {
             Text: "The set containing all Survey Results";

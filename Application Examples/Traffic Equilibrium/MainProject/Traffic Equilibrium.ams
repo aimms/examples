@@ -1,6 +1,11 @@
 ## ams_version=1.0
 
 Model Main_Traffic_Equilibrium {
+    Comment: {
+        "Keywords:
+        Braess's paradox, Non-cooperative Game, Mixed Complementarity Problem (MCP), Stackelberg Game, Mathematical Programs with Complementarity Constraints (MPCC),
+        PATH, KNITRO, Network Object."
+    }
     DeclarationSection Traffic_Equilibrium_Declaration {
         Set Locations {
             Text: "Set containing all locations";
@@ -167,59 +172,40 @@ Model Main_Traffic_Equilibrium {
     }
     Procedure MainExecution {
         Body: {
-            if not IsRunningAsViewer then
+            for IndexSolvers do
+            	if FindString(SearchString : FormatString("%e",IndexSolvers),Key : "PATH",CaseSensitive : 0) or
+            	   FindString(SearchString : FormatString("%e",IndexSolvers),Key : "KNITRO",CaseSensitive : 0)	then
+            		IncludeTollRoads := 0;
+            		solve TrafficEquilibrium;
+            		RoadTrafficWithoutToll(a) := RoadTraffic(a);
+            		AverageCostWithoutToll((o,d) | Demand(o,d))   := average( r  | Traffic(r) and ODPathIncidence(o,d,r),
+            				sum((a) | RoadPathIncidence(a,r), RoadLength(a) * exp[ RoadTraffic(a) / RoadCapacity(a)]));
+            		return;
+            	endif;
+            endfor;
             
-            	for IndexSolvers do
-            		if FindString(SearchString : FormatString("%e",IndexSolvers),Key : "PATH",CaseSensitive : 0) or
-            		   FindString(SearchString : FormatString("%e",IndexSolvers),Key : "KNITRO",CaseSensitive : 0)	then
-            			IncludeTollRoads := 0;
-            			solve TrafficEquilibrium;
-            			RoadTrafficWithoutToll(a) := RoadTraffic(a);
-            			AverageCostWithoutToll((o,d) | Demand(o,d))   := average( r  | Traffic(r) and ODPathIncidence(o,d,r),
-            					sum((a) | RoadPathIncidence(a,r), RoadLength(a) * exp[ RoadTraffic(a) / RoadCapacity(a)]));
-            			return;
-            		endif;
-            	endfor;
-            
-            	DialogMessage("Please install Path or Knitro in order to solve MCP.", "No Valid Solver Found");
-            else
-            
-            	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            	CaseFind("Solution Traffic Equilibrium", ACase);
-            	CaseLoadCurrent(ACase,0);
-            
-            endif;
+            DialogMessage("Please install Path or Knitro in order to solve MCP.", "No Valid Solver Found");
         }
     }
     Procedure SolveTrafficEquilibriumWithToll {
         Body: {
-            if not IsRunningAsViewer then
+            for IndexSolvers do
+            	if FindString(FormatString("%e",IndexSolvers),"KNITRO",CaseSensitive : 0) then
+            		TollFee(a) := (TollFeeUpperBound + TollFeeLowerBound)/2;
+            		TollFee.nonvar(a) := 0;
             
-            	for IndexSolvers do
-            		if FindString(FormatString("%e",IndexSolvers),"KNITRO",CaseSensitive : 0) then
-            			TollFee(a) := (TollFeeUpperBound + TollFeeLowerBound)/2;
-            			TollFee.nonvar(a) := 0;
+            		IncludeTollRoads := 1;
+            		solve TrafficEquilibriumWithToll;
             
-            			IncludeTollRoads := 1;
-            			solve TrafficEquilibriumWithToll;
+            		RoadTrafficWithToll(a) := RoadTraffic(a) ;
+            		AverageCostWithToll((o,d) | Demand(o,d))   := average( r  | Traffic(r) and ODPathIncidence(o,d,r),
+            				sum((a) | 	 RoadPathIncidence(a,r), RoadLength(a) * exp[ RoadTraffic(a) / RoadCapacity(a)]));
             
-            			RoadTrafficWithToll(a) := RoadTraffic(a) ;
-            			AverageCostWithToll((o,d) | Demand(o,d))   := average( r  | Traffic(r) and ODPathIncidence(o,d,r),
-            					sum((a) | 	 RoadPathIncidence(a,r), RoadLength(a) * exp[ RoadTraffic(a) / RoadCapacity(a)]));
-            
-            			IncludeTollRoads := 0;
-            			return;
-            		endif;
-            	endfor;
-            	DialogMessage("Please install Knitro in order to solve MPCC.", "No Valid Solver Found");
-            
-            else
-            
-            		DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-            		CaseFind("Solution with toll roads", ACase);
-            		CaseLoadCurrent(ACase,0);
-            
-            endif;
+            		IncludeTollRoads := 0;
+            		return;
+            	endif;
+            endfor;
+            DialogMessage("Please install Knitro in order to solve MPCC.", "No Valid Solver Found");
         }
     }
     Procedure MainTermination {

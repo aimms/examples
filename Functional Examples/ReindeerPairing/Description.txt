@@ -7,7 +7,8 @@ The GUI of this AIMMS project illustrates the use of a network object with a bac
 
 The art work used in the background is graciously provided by Dixie Allen. She retains the copy right of it: Art © Dixie Allan, webclipart.about.com
 
-Keywords: Stable marriage problem, network object, constraint programming, channel constraint, if-then constraint.
+Keywords:
+Stable marriage problem, network object, constraint programming, channel constraint, if-then constraint.
 
  
 

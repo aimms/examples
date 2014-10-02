@@ -4,5 +4,6 @@ All distributions are first shifted and stretched to a mean of 0 and a standard 
 
 In addition, for some distributions with shape parameter, this parameter is used as a free parameter to find the best approximation to the ExtremeValue distribution. The used skewness and kurtosis operators are displayed.
 
-Keywords: Probability Distribution, Extreme Value Distribution Approximation, Distribution Operators, 2D Chart.
+Keywords:
+Probability Distribution, Extreme Value Distribution Approximation, Distribution Operators, 2D Chart.
 

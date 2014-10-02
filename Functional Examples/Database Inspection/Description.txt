@@ -24,4 +24,5 @@ A condition can be added by checking the 'where' checkbox and specifying the con
 
 If you want to learn how to read/write data from/to tables in a database, please see the Transport Model example.
 
-Keywords: Database, Datasource, GetDataSourceProperty, SQLNumberOfColumns, SQLNumberOfTables, SQLColumnData, SQLTableName, SQL Query, Mapping, Database Info.
+Keywords:
+Database, Datasource, GetDataSourceProperty, SQLNumberOfColumns, SQLNumberOfTables, SQLColumnData, SQLTableName, SQL Query, Mapping, Database Info.

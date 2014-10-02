@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Calendar {
+    Comment: {
+        "Keywords:
+        Calendar, DialogGetDate, TimeslotToString, TimeSlotToMoment, TimeslotCharacteristic."
+    }
     Section Main_Section {
         DeclarationSection Calendar_Declarations {
             StringParameter DefaultDateFormat {

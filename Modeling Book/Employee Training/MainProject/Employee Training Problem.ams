@@ -2,8 +2,10 @@
 
 Model Main_Employee_Training_Problem {
     Comment: {
-        "An implementation of the Employee Training Problem of
-        Chapter 8 of the AIMMS Optimization Modeling book."
+        "An implementation of the Employee Training Problem of Chapter 8 of the AIMMS Optimization Modeling book.
+        
+        Keywords:
+        Linear Program, Integer Program, Control-State variables, Rounding Heuristic, Probabilistic Constraint."
     }
     DeclarationSection Flight_Attendant_Requirement_Declarations {
         Set Months {

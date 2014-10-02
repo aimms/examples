@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_template {
+    Comment: {
+        "Keywords:
+        Probability Distribution, Extreme Value Distribution Approximation, Distribution Operators, 2D Chart."
+    }
     DeclarationSection DistributionSets {
         Set Distributions {
             Index: d;

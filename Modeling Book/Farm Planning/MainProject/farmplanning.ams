@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_FarmPlanning {
+    Comment: {
+        "Keywords:
+        LP, Linear Program, Measurement Units, Sensitivity Analysis, What-If Analysis, Worked Example."
+    }
     Section Model_Formulation {
         DeclarationSection Set_Declaration {
             Set Crops {
@@ -288,29 +292,8 @@ Model Main_FarmPlanning {
     }
     Procedure MainExecution {
         Body: {
-            if not IsRunningAsViewer then
-            
-                    MainInitialization;
-                    Solve FarmPlanning;
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
-                CaseFind("Solution",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
-        }
-    }
-    Procedure LoadSensitivityAnalysisOutput {
-        Body: {
-            if IsRunningAsViewer then
-            
-                DialogMessage("In the AIMMS Viewer the SOLVE statement is disabled. Therefore the data of parametric curve is read from a case.");
-                CaseFind("Sensitivity Analysis Output",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            MainInitialization;
+            Solve FarmPlanning;
         }
     }
     Procedure MainTermination {

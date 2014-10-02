@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_SEEEq {
+    Comment: {
+        "Keywords:
+        Utility Function, Equilibrium, Duality, Nonlinear System."
+    }
     Section Model_Section {
         DeclarationSection Model_Declaration {
             Set Agents {
@@ -378,28 +382,16 @@ Model Main_SEEEq {
     }
     Procedure MainExecution {
         Body: {
+            TradeWithMarket(i,at) := 0;
             
+            solve Equilibrium_Model where solver= SelectedSolver;
             
-            if not IsRunningAsViewer then
+            TradeAmountColor(i,j) := 'bkg_green';
+            TradeAmountColor(i,j) onlyif  (TradeAmount(i,j) < 0) := 'bkg_red';
             
-                TradeWithMarket(i,at) := 0;
-            
-                solve Equilibrium_Model where solver= SelectedSolver;
-            
-                TradeAmountColor(i,j) := 'bkg_green';
-                TradeAmountColor(i,j) onlyif  (TradeAmount(i,j) < 0) := 'bkg_red';
-            
-                ShowWeightedArrows := 0;
-                ChangeNetwork;
-                CreateLegend;
-            
-            else
-            
-                DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-                CaseFind("Solution",ACase);
-                CaseLoadCurrent(ACase,0);
-            
-            endif;
+            ShowWeightedArrows := 0;
+            ChangeNetwork;
+            CreateLegend;
         }
     }
     Procedure MainTermination {

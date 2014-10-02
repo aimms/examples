@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Print_Pages {
+    Comment: {
+        "Keywords:
+        Print page, print template, project user files."
+    }
     DeclarationSection Unit_Declaration {
         Quantity Money {
             BaseUnit: $;

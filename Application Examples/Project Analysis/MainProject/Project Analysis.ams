@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Project_Analysis {
+    Comment: {
+        "Keywords:
+        Project Planning, Critical Path, Trade Off, Network Object, 2-D Chart."
+    }
     DeclarationSection Model_Declaration {
         Set Nodes {
             Index: n, n_from, n_to;

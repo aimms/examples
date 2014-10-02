@@ -9,9 +9,12 @@ Model Main_Circle_Packing {
         Mathematica in Education and Research 10 (2005), 1-18.
         (C) iJournals.net, 2005.
         
-        Extended by Paragon Decision Technology to allow adjustment of the number
-        of circles packed. Also extended with an interactive graphical representaion
-        to show results and resolve the models."
+        Extended by AIMMS B.V. to allow adjustment of the number of circles packed.
+        Also extended with an interactive graphical representaion to show results and
+        resolve the models.
+        
+        Keywords:
+        Circle Packing, Multistart Algorithm, Network Object."
     }
     Section The_Packing_Problems {
         DeclarationSection GeneralPacking {
@@ -414,9 +417,6 @@ Model Main_Circle_Packing {
     }
     Procedure MainInitialization {
         Body: {
-            if not ('LGO 1.0' in Allsolvers  ) then
-                   Raise warning "Solver LGO is not installed yet. Please install it to get the best result.";
-            endif;
             for (c) do
                 switch (c) do
             

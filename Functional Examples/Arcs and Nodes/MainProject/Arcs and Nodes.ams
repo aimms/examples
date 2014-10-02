@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Arcs_and_Nodes {
+    Comment: {
+        "Keywords:
+        Network model, Network object, Node and Arc formulation, SetElementAdd function."
+    }
     DeclarationSection Node_Declarations {
         Set NodeSet {
             Index: n, i, j;

@@ -1,6 +1,10 @@
 ## ams_version=1.0
 
 Model Main_Gantt_Chart {
+    Comment: {
+        "Keywords:
+        Gantt Chart, Overlapped Bars, Composite Table, Tooltips."
+    }
     DeclarationSection Basic_Declarations {
         Set Machines {
             Index: m, mr;

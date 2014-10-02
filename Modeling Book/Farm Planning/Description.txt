@@ -7,4 +7,5 @@ In this example, it is illustrated also how to investigate the effect of paramet
 
 Details about this example can be read in Chapter 11 of the AIMMS Optimization Modeling book.
 
-Keywords: LP, Linear Program, Measurement Units, Sensitivity Analysis, What-If Analysis, Worked Example.
+Keywords:
+LP, Linear Program, Measurement Units, Sensitivity Analysis, What-If Analysis, Worked Example.

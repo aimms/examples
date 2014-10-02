@@ -23,4 +23,5 @@ Notes:
 - You can change the PATH environment variable by going to Control Panel, System... For Windows 2000, Windows XP and newer Windows versions: Advanced tab, Environment Variables, select 'Path', click on Edit, and add the path of the Bin directory (separated by ";"). For Windows NT: Environment tab, select 'Path', and add the path of the Bin directory (separated by ";").
 - AIMMS projects started via the AIMMS API are in end-user mode. By default, warnings are not communicated to end-users. If you do want to check whether AIMMS has any warnings for you, you can set the option Communicate_warnings_to_end_users to 'On'.
 
-Keywords: Model Edit functions, AIMMS API, using AIMMS externally, C++, integrating AIMMS.
+Keywords:
+Model Edit functions, AIMMS API, using AIMMS externally, C++, integrating AIMMS.

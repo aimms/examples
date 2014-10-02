@@ -3,7 +3,10 @@
 Model Main_Integrated {
     Comment: {
         "This model is not intended to be run interactively. It is called from the external
-        program RunAIMMS.exe, which uses the AIMMS API to connect to this model."
+        program RunAIMMS.exe, which uses the AIMMS API to connect to this model.
+        
+        Keywords:
+        Excel Add-In, Spreadsheet functions, Run Time Error Handling."
     }
     Section Transportation_Model {
         DeclarationSection Input_Data {
