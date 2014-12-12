@@ -323,7 +323,6 @@ Model Main_Integrated {
             }
         }
     }
-    Procedure MainInitialization;
     Procedure MainExecution {
         Body: {
             solve TransportModel;
@@ -335,6 +334,7 @@ Model Main_Integrated {
             !endif;
         }
     }
+    Procedure MainInitialization;
     Procedure MainTermination {
         Body: {
             return 1;
