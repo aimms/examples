@@ -183,7 +183,7 @@ Model Main_Cutting_Stock {
                    GMP::Instance::Solve( CuttingStockGMP );
                 
                    for (f) do
-                       GMP::Coefficient::Set(PatternGenerationGMP,ShadowPriceOfNewPattern,FinalsInNewPattern(f),MeetFinalDemand.ShadowPrice(f));
+                       GMP::Coefficient::Set(PatternGenerationGMP,ShadowPriceOfNewPattern,FinalsInNewPattern(f),-MeetFinalDemand.ShadowPrice(f));
                    endfor;
                    GMP::Instance::Solve( PatternGenerationGMP );
                 
@@ -202,7 +202,7 @@ Model Main_Cutting_Stock {
                    endfor;
                 
                    ! Specify the cost for the new pattern
-                   GMP::Coefficient::Set(CuttingStockGMP,CuttingStockObjective,RawsCutWithPattern(LastPattern),1);
+                   GMP::Coefficient::Set(CuttingStockGMP,CuttingStockObjective,RawsCutWithPattern(LastPattern),-1);
                 
                    ! Update 'FinalsInPattern' in order to visualize the patterns at the end of this procedure
                    FinalsInPattern(f,LastPattern) := FinalsInNewPattern(f);

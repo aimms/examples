@@ -401,7 +401,7 @@ Model Main_Parallel_Sessions {
                    Raws := ar;
             
                    for (f) do
-                       GMP::Coefficient::Set(GMPPatternGenerationModel(ar),ShadowPriceOfNewPattern,FinalsInNewPattern(f,ar),MeetFinalDemand.ShadowPrice(f));
+                       GMP::Coefficient::Set(GMPPatternGenerationModel(ar),ShadowPriceOfNewPattern,FinalsInNewPattern(f,ar),-MeetFinalDemand.ShadowPrice(f));
                    endfor;
                endfor;
             
@@ -449,7 +449,7 @@ Model Main_Parallel_Sessions {
                            for (f | FinalsInNewPattern(f,ar)) do
                               GMP::Coefficient::Set(GMPCuttingStockModel,MeetFinalDemand(f),RawsCutWithPattern(LastPattern,ar),FinalsInNewPattern(f,ar));
                            endfor;
-                           GMP::Coefficient::Set(GMPCuttingStockModel,CuttingStockObjective,RawsCutWithPattern(LastPattern,ar),RawCost(ar));
+                           GMP::Coefficient::Set(GMPCuttingStockModel,CuttingStockObjective,RawsCutWithPattern(LastPattern,ar),-RawCost(ar));
                            FinalsInPattern(f,LastPattern,ar) := FinalsInNewPattern(f,ar);
                     endif;
                endfor;
