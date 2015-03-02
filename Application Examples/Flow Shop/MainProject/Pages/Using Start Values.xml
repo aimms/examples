@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2012-05-21 18:53:32">
-	<Location top="35" left="9" bottom="918" right="1909" />
+<Page Version="4000" TimeStamp="2015-01-13 16:58:32">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -87,16 +87,19 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="189" left="210" bottom="435" right="762" />
-		<StaticText>The file "solution.txt" holds the initial values for the MIP variables. CPLEX will only use these values as a start solution for the solve if the user has specified so in the Project Options. 
+		<StaticText>The file "solution.txt" holds the initial values for the MIP variables. CPLEX and Gurobi will only use these values as a start solution for the solve if the user has specified so in the Project Options. 
 
-Depending on the CPLEX version, the CPLEX settings should be changed as follows:
-	- For CPLEX 10 or newer, set "Advanced Start" to "Use advanced basis" 
-	- For CPLEX 9.1 and earlier, set "MIP Start Values" to "Yes"
+CPLEX settings should be changed as follows:
+	- Set the CPLEX option "Advanced Start" to "Use advanced basis".
+
+Gurobi settings should be changed as follows:
+	- Set the Gurobi option "MIP Start" to "On".
  	
-Once, these options have been set, CPLEX will (try to) use the initial values provided in the solution file. You can verify the use of the start values by setting the following options:
+Once, these options have been set, CPLEX/Gurobi will (try to) use the initial values provided in the solution file. You can verify the use of the start values by setting the following options:
 	- Solver Listing Messages to "all"
-	- MIP Display to "Display each nth node"
-and then inspect the file "CPLEX xxx.sta" that is in the Log subfolder</StaticText>
+	- MIP Display to "Display each nth node" (CPLEX)
+	- Output File to "Yes" (Gurobi)
+and then inspect the file "CPLEX xxx.sta" or "gurobi.log" that is in the Log subfolder.</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -242,15 +245,15 @@ You can check which  CPLEX version you are running by opening the Solver Configu
 	<UsedReferences>
 		<Model>
 			<Symbol>MaxJobs</Symbol>
+			<Symbol>MaxMachines</Symbol>
+			<Symbol>ProcesTime</Symbol>
+			<Symbol>TimeSpan</Symbol>
+			<Symbol>InterfaceStartTime</Symbol>
+			<Symbol>JobDescription</Symbol>
+			<Symbol>MainExecutionWithSolution</Symbol>
+			<Symbol>GenerateData</Symbol>
 			<Symbol>j</Symbol>
 			<Symbol>m</Symbol>
-			<Symbol>ProcesTime</Symbol>
-			<Symbol>MaxMachines</Symbol>
-			<Symbol>InterfaceStartTime</Symbol>
-			<Symbol>GenerateData</Symbol>
-			<Symbol>TimeSpan</Symbol>
-			<Symbol>MainExecutionWithSolution</Symbol>
-			<Symbol>JobDescription</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -127,6 +127,8 @@ Model Main_Flow_Shop {
             
             solve FlowShopModel;
             
+            FlowShopModel.CallbackNewIncumbent := '';
+            
             GenerateInterface;
             WriteSolution;
         }
@@ -144,6 +146,8 @@ Model Main_Flow_Shop {
             endif;
             
             solve FlowShopModel;
+            
+            FlowShopModel.CallbackNewIncumbent := '';
             
             GenerateInterface;
             WriteSolution;
