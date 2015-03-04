@@ -8,11 +8,14 @@ Model Main_Aggregation_Example {
     Section Time_Definitions {
         Horizon Periods {
             Index: ti;
-            Parameter: CurrentPeriod;
             CurrentPeriod: CurrentPeriod;
             Definition: {
                 ElementRange(1, MaxPeriods, prefix: BaseUnits);
             }
+        }
+        ElementParameter CurrentPeriod {
+            Range: Periods;
+            Definition: First(Periods);
         }
         Calendar Days {
             Index: di;
@@ -135,15 +138,14 @@ Model Main_Aggregation_Example {
             Body: {
                 empty DaysInPeriod(ti);
                 
-                CurrentPeriod 	:= Element( Periods, 1 );
-                CurrentDay    := Element( days, 1 );
+                CurrentDay := Element( days, 1 );
                 
                 If BaseUnits = 'Day' then
                 	TimeTableDay;
-                	elseif BaseUnits = 'Week' then
-                		TimeTableWeek;
-                			else
-                			TimeTableMonth;
+                elseif BaseUnits = 'Week' then
+                	TimeTableWeek;
+                else
+                	TimeTableMonth;
                 endif;
             }
         }
@@ -183,7 +185,7 @@ Model Main_Aggregation_Example {
     }
     Procedure MainTermination {
         Body: {
-                return 1;
+            return 1;
         }
     }
 }
