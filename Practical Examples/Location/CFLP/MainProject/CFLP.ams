@@ -1,0 +1,213 @@
+## ams_version=1.0
+
+Model Main_CFLP {
+    Comment: {
+        "Capacitated facility location problem (CFLP)
+        
+        Problem type:
+        MIP (medium: instances capa, capb and capc; small: rest)
+        
+        Keywords:
+        Benders Decomposition, GMP, Reading numbers from text file, Warehouse location
+        
+        Description:
+        Capacitated facility location problems deal with locating an undetermined
+        number of facilities in order to serve customers, at minumum cost. The
+        potential facility locations and the customer zones are considered fixed
+        points in a network.
+        
+        The data is provided in text files obtained from the OR-Library by J.E.
+        Beasley (from the set Capacitated warehouse location). External functions,
+        that read integer and double numbers from a text file, are used to read
+        the data.
+        
+        References:
+        Wentges, P., Accelerating Benders\' decomposition for the capacitated facility
+        location problem, Mathematical Methods of Operations Research 44 (2), 1996,
+        pp. 267-290.
+        
+        OR-Library: http://people.brunel.ac.uk/~mastjjb/jeb/info.html
+        
+        Note: The facility location problem is also known as the warehouse location
+        problem."
+    }
+    Parameter NrFacilities {
+        Range: integer;
+        Default: 10;
+        Comment: "Number of potential facility locations.";
+    }
+    Parameter NrCustomers {
+        Range: integer;
+        Default: 10;
+    }
+    Set Facilities {
+        SubsetOf: Integers;
+        Index: j;
+        Definition: {
+            { 1 .. NrFacilities }
+        }
+    }
+    Set Customers {
+        SubsetOf: Integers;
+        Index: i;
+        Definition: {
+            { 1 .. NrCustomers }
+        }
+    }
+    Parameter FixedCost {
+        IndexDomain: j;
+        Comment: "Fixed cost of maintaining/building a facility.";
+    }
+    Parameter TransportCost {
+        IndexDomain: (i,j);
+        Comment: "Cost of assigning facility i to customer j.";
+    }
+    Parameter Capacity {
+        IndexDomain: j;
+        Comment: "Capacity of the facilities.";
+    }
+    Parameter Demand {
+        IndexDomain: (i);
+        Comment: "Demand of the customers.";
+    }
+    Variable y {
+        IndexDomain: j;
+        Range: binary;
+        Comment: "Represents whether facility j is open (y(j)=1) or not (y(j)=0).";
+    }
+    Variable x {
+        IndexDomain: (i,j);
+        Range: nonnegative;
+        Comment: "Represents the amoun shipped from facility j to customer i.";
+    }
+    Variable obj {
+        Range: free;
+        Definition: {
+            sum( j, FixedCost(j) * y(j) )
+            +
+            sum( (i,j), TransportCost(i,j) * x(i,j) / Demand(i) )
+        }
+        Comment: {
+            "The total distribution cost, consisting of the fixed costs of mainaining/building
+            the facilities plus the variable transportation costs.
+            
+            Note: The transport cost used in the data files is described as the cost of allocating
+            all of the demand of customer i to facility j. Therefore we have to divide the transport
+            cost by the demand."
+        }
+    }
+    Constraint cD {
+        IndexDomain: i;
+        Definition: sum( j, x(i,j) ) = Demand(i);
+        Comment: "Demand constraint: the demand of all customers should be met.";
+    }
+    Constraint cB {
+        IndexDomain: (i,j);
+        Definition: x(i,j) <= Demand(i) * y(j);
+        Comment: {
+            "Valid constraint to stengthen the formulation. This constraint is implied by constraint
+            cC and the nature of the variables (i.e., y being binary and x being nonnegative)."
+        }
+    }
+    Constraint cC {
+        IndexDomain: j;
+        Definition: sum( i, x(i,j) ) <= Capacity(j) * y(j);
+        Comment: "Capacity restrictions for the facilities.";
+    }
+    MathematicalProgram CFLP {
+        Objective: obj;
+        Direction: minimize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: MIP;
+    }
+    ElementParameter myGMP {
+        Range: AllGeneratedMathematicalPrograms;
+    }
+    Procedure MainInitialization {
+        Body: {
+            ReadData( "cap134" );
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            solve CFLP;
+        }
+    }
+    Procedure DoBenders {
+        Body: {
+            myGMP := GMP::Instance::Generate( CFLP );
+            
+            GMPBenders::FeasibilityOnly := 0;
+            GMPBenders::CreateStatusFile := 1;
+            GMPBenders::DisplayInterval := 1;
+            
+            ! Possible Benders modes:
+            ! 'Classic', 'Modern', 'TwoPhaseClassic' and 'TwoPhaseModern'.
+            
+            GMPBenders::DoBendersDecomposition( myGMP, AllIntegerVariables, 'TwoPhaseModern' );
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure ReadData {
+        Arguments: (instanceName);
+        Body: {
+            actualFileName := "Input\\" + instanceName + ".txt" ;
+            block
+                pti::open(actualFileName,instanceFileHandle);
+            onError err do
+                dialogMessage( errh::Message( err ) );
+                errh::MarkAsHandled(err);
+            endblock ;
+            
+            pti::int(instanceFileHandle, NrFacilities);
+            pti::int(instanceFileHandle, NrCustomers);
+            
+            for (j) do
+            	pti::int(instanceFileHandle,Capacity(j));
+            	pti::int(instanceFileHandle,FixedCost(j));
+            endfor;
+            
+            for (i) do
+            	pti::int(instanceFileHandle,Demand(i));
+            	for (j) do
+            		pti::dbl(instanceFileHandle,TransportCost(i,j));
+            	endfor;
+            endfor;
+            
+            pti::close(instanceFileHandle);
+        }
+        Comment: {
+            "Read text files from the OR-Library by J.E. Beasley (from the set Capacitated
+            warehouse location) at http://people.brunel.ac.uk/~mastjjb/jeb/info.html
+            
+            The format of these data files is:
+            Number of potential warehouse locations (m), number of customers (n).
+            For each potential warehouse location j (j=1,...,m): capacity, fixed cost.
+            For each customer i (i=1,...,n): demand, cost of allocating all of the demand
+            of i to warehouse j (j=1,...,m)."
+        }
+        ElementParameter err {
+            Range: errh::PendingErrors;
+        }
+        StringParameter instanceName {
+            Property: Input;
+        }
+        StringParameter actualFileName;
+        Parameter instanceFileHandle;
+    }
+    Module GMP_Benders_Decomposition_Module {
+        SourceFile: "%AIMMSMODULES%\\GMPBendersDecomposition.ams";
+        Comment: {
+            "This module contains an implementation of an automatic Benders\' Decomposition algorithm
+            using functions from the GMP library. It can be used to solve linear problems (LP and MIP).
+            
+            See the chapter Automatic Benders\' Decomposition in the Language Reference for more
+            information."
+        }
+    }
+}

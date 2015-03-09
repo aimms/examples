@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PlainTextInput">
+</Property><Property Name="Solution File" Value="C:\u\s\ChrisKuip\AIMMS blog posts\External function to input\csplib\PlainTextInputCPP\PlainTextInput.sln">
+</Property><Property Name="User Options File" Value="C:\u\s\ChrisKuip\AIMMS blog posts\External function to input\csplib\PlainTextInputCPP\PlainTextInput.suo">
+</Property><Property Name="Date" Value="Thursday, January 16, 2014">
+</Property><Property Name="Time" Value="10:40">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="PlainTextInput.sln" Description="File successfully backed up as C:\u\s\ChrisKuip\AIMMS blog posts\External function to input\csplib\PlainTextInputCPP\PlainTextInput.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="PlainTextInput.suo" Description="File successfully backed up as C:\u\s\ChrisKuip\AIMMS blog posts\External function to input\csplib\PlainTextInputCPP\PlainTextInput.suo.old">
+</Event><Event ErrorLevel="0" Project="PlainTextInput" Source="PlainTextInput\PlainTextInput.vcproj" Description="Converting project file 'C:\u\s\ChrisKuip\AIMMS blog posts\External function to input\csplib\PlainTextInputCPP\PlainTextInput\PlainTextInput.vcproj'.">
+</Event><Event ErrorLevel="1" Project="PlainTextInput" Source="PlainTextInput\PlainTextInput.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="1" Project="PlainTextInput" Source="PlainTextInput\PlainTextInput.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="PlainTextInput" Source="PlainTextInput\PlainTextInput.vcproj" Description="Attribute 'Detect64BitPortabilityProblems' of 'VCCLCompilerTool' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="0" Project="PlainTextInput" Source="PlainTextInput\PlainTextInput.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="PlainTextInput" Source="PlainTextInput\PlainTextInput.vcproj" Description="Attribute 'Detect64BitPortabilityProblems' of 'VCCLCompilerTool' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="0" Project="PlainTextInput" Source="PlainTextInput\PlainTextInput.vcproj" Description="Done converting to new project file 'C:\u\s\ChrisKuip\AIMMS blog posts\External function to input\csplib\PlainTextInputCPP\PlainTextInput\PlainTextInput.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="PlainTextInput" Source="PlainTextInput\PlainTextInput.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="PlainTextInput.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="PlainTextInput.sln" Description="Converted">
+</Event></UpgradeLog>

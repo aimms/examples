@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2015-02-12 14:58:00">
+	<Location top="30" left="30" bottom="540" right="600" />
+	<PageEditSize Type="Inherited">
+		<Size Width="600" Height="540" />
+	</PageEditSize>
+	<ProjectUUID>195320CD-8587-44A4-9C84-A09A9A46F30D</ProjectUUID>
+	<Title>"[Data Page] x"</Title>
+	<ResizeData>
+		<MainArea Line="FixedFromRight" Value="81">
+			<LeftArea Line="FixedFromTop" Value="10" />
+			<RightArea Line="FixedFromTop" Value="35">
+				<BottomArea Line="FixedFromBottom" Value="106" />
+			</RightArea>
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Button">
+		<Location top="10" left="520" bottom="35" right="590" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Close"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="435" left="520" bottom="460" right="590" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Undo"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>Edit-Undo Last</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="470" left="520" bottom="495" right="555" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\construct.png"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="DataPageSpecific">
+				<DoWhat>Reopen</DoWhat>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="470" left="555" bottom="495" right="590" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\totree.png"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="DataPageSpecific">
+				<DoWhat>LocationInTree</DoWhat>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="505" left="520" bottom="530" right="555" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\previous.png"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="DataPageSpecific">
+				<DoWhat>GotoPreviousSymbol</DoWhat>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="505" left="555" bottom="530" right="590" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Bitmap</ButtonType>
+		<BitmapFile LiteralFileName="true">"&lt;prj&gt;:bitmaps\next.png"</BitmapFile>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="DataPageSpecific">
+				<DoWhat>GotoNextSymbol</DoWhat>
+			</Action>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Pivot Table">
+		<Location top="10" left="10" bottom="530" right="510" />
+		<TabOrder>6</TabOrder>
+		<ObjectUUID>709510C3-1DFE-4517-BE01-2D4E94B35576</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Contents>
+			<Explicit_Identifier>
+				<Identifier ID="4110">x( i, j )</Identifier>
+			</Explicit_Identifier>
+		</Contents>
+		<Indices>
+			<Suffix_Index>
+				<Explicit_Suffix>
+					<Suffix ID="6620">"Level"</Suffix>
+				</Explicit_Suffix>
+				<Explicit_Suffix>
+					<Suffix ID="6620">"basic"</Suffix>
+				</Explicit_Suffix>
+				<Location_in_Initial_View ID="6660">"As Outer Index"</Location_in_Initial_View>
+			</Suffix_Index>
+		</Indices>
+		<General>
+			<Dense_Aggregation_restricts_to_Domain ID="1022">"Yes"</Dense_Aggregation_restricts_to_Domain>
+			<Save_Layout_State>
+				<By_End_User ID="1040">"No"</By_End_User>
+			</Save_Layout_State>
+		</General>
+		<Row_Area>
+			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
+			<Text_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2020">"default selection"</Text_Color>
+			<Headers>
+				<Background_Color ExtraInfo="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" ID="2120">"default selection"</Background_Color>
+				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
+				<Show_Sub_Headers ID="2150">"No"</Show_Sub_Headers>
+			</Headers>
+			<Grid_Focus_Indicator>
+				<Background_Color ID="2270">RGB&lt;0,0,168&gt;</Background_Color>
+				<Text_Color ID="2280">RGB&lt;255,255,200&gt;</Text_Color>
+			</Grid_Focus_Indicator>
+		</Row_Area>
+		<Column_Area>
+			<Headers>
+				<Show_Sub_Headers ID="3150">"No"</Show_Sub_Headers>
+			</Headers>
+		</Column_Area>
+		<Grid_Area>
+			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
+			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
+			<Aggregators>
+				<Background_Color ID="5220">RGB&lt;255,128,128&gt;</Background_Color>
+			</Aggregators>
+			<Sub_Header_Row_or_Column>
+				<Background_Color ID="5320">RGB&lt;255,255,200&gt;</Background_Color>
+			</Sub_Header_Row_or_Column>
+		</Grid_Area>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>x</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>i</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

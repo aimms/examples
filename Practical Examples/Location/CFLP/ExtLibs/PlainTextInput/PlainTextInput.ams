@@ -1,0 +1,189 @@
+## ams_version=1.0
+
+LibraryModule PlainTextInput {
+    Prefix: pti;
+    Interface: data { open, line, close, int, dbl };
+    StringParameter DLL_Filename {
+        Definition: {
+            if AimmsStringConstants('Architecture') = "x86" then
+                 "PlainTextInputCPP\\Release\\PlainTextInput.dll"
+            else
+                 "PlainTextInputCPP\\x64\\Release\\PlainTextInput.dll"
+            endif
+        }
+    }
+    ElementParameter DLL_Encoding {
+        Range: AllCharacterEncodings;
+        InitialData: 'UTF-16LE';
+    }
+    Procedure LibraryInitialization;
+    Procedure open {
+        Arguments: (fn,hndl);
+        Body: {
+            rc := openFileHandle( fn, hndl );
+            if not rc then
+                    ErrorMessage(msg) ;
+                    raise error msg ;
+            endif ;
+        }
+        StringParameter fn {
+            Property: Input;
+        }
+        Parameter hndl {
+            Property: Output;
+        }
+        Parameter rc;
+        StringParameter msg;
+    }
+    Procedure line {
+        Arguments: (hndl,aline);
+        Body: {
+            rc := getLine(hndl,aline,256);
+        }
+        Parameter hndl {
+            Property: Input;
+        }
+        StringParameter aline {
+            Property: Output;
+        }
+        Parameter rc;
+    }
+    Procedure int {
+        Arguments: (hndl,anint);
+        Body: {
+            rc := getInt(hndl,anint);
+            if not rc then
+                    ErrorMessage(msg);
+                    raise error msg ;
+            endif ;
+        }
+        Parameter rc;
+        Parameter hndl {
+            Property: Input;
+        }
+        Parameter anint {
+            Property: Output;
+        }
+        StringParameter msg;
+    }
+    Procedure dbl {
+        Arguments: (hndl,adbl);
+        Body: {
+            rc := getDbl(hndl,adbl);
+            if not rc then
+                    ErrorMessage(msg);
+                    raise error msg ;
+            endif ;
+        }
+        Parameter rc;
+        Parameter hndl {
+            Property: Input;
+        }
+        Parameter anint;
+        StringParameter msg;
+        Parameter adbl {
+            Property: InOut;
+        }
+    }
+    Procedure close {
+        Arguments: (hndl);
+        Body: {
+            rc := closeFileHandle(hndl);
+        }
+        Parameter hndl {
+            Property: Input;
+        }
+        Parameter rc;
+    }
+    Procedure ErrorMessage {
+        Arguments: (msg);
+        Body: {
+            lastError(msg);
+        }
+        StringParameter msg {
+            Property: Output;
+        }
+    }
+    Section ExternalProcedures {
+        ExternalProcedure openFileHandle {
+            Arguments: (fn,hndl);
+            DllName: DLL_Filename;
+            ReturnType: integer;
+            Encoding: DLL_Encoding;
+            BodyCall: openFileHandle(  string : fn, integer : hndl );
+            StringParameter fn {
+                Property: Input;
+            }
+            Parameter hndl {
+                Property: Output;
+            }
+        }
+        ExternalProcedure getLine {
+            Arguments: (hndl,aline,maxsize);
+            DllName: DLL_Filename;
+            ReturnType: integer;
+            Encoding: DLL_Encoding;
+            BodyCall: getLine( integer : hndl, scalar string : aline,  integer : maxsize );
+            StringParameter aline {
+                Property: Output;
+            }
+            Parameter hndl {
+                Property: Input;
+            }
+            Parameter maxsize {
+                Property: Input;
+            }
+        }
+        ExternalProcedure getInt {
+            Arguments: (hndl,anint);
+            DllName: DLL_Filename;
+            ReturnType: integer;
+            Encoding: DLL_Encoding;
+            BodyCall: getInt(integer : hndl, integer : anint );
+            Parameter hndl {
+                Property: Input;
+            }
+            Parameter anint {
+                Property: Output;
+            }
+        }
+        ExternalProcedure getDbl {
+            Arguments: (hndl,adbl);
+            DllName: DLL_Filename;
+            ReturnType: integer;
+            Encoding: DLL_Encoding;
+            BodyCall: getDouble(integer : hndl, double : adbl );
+            Parameter hndl {
+                Property: Input;
+            }
+            Parameter adbl {
+                Property: Output;
+            }
+        }
+        ExternalProcedure closeFileHandle {
+            Arguments: (hndl);
+            DllName: DLL_Filename;
+            ReturnType: integer;
+            Encoding: DLL_Encoding;
+            BodyCall: closeFileHandle( integer : hndl );
+            Parameter hndl {
+                Property: Input;
+            }
+        }
+        ExternalProcedure lastError {
+            Arguments: (errmsg);
+            DllName: DLL_Filename;
+            ReturnType: integer;
+            Encoding: DLL_Encoding;
+            BodyCall: lastErrorMessage( string : errmsg );
+            StringParameter errmsg {
+                Property: Output;
+            }
+        }
+    }
+    Procedure LibraryTermination {
+        Body: {
+            return 1 ;
+        }
+    }
+}
