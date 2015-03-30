@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
 <TemplateManager>
-	<Template Name="Modified Size Template" PageGUID="24FA49B7-DEEF-4DAD-A8EA-B137DC03C829">
+	<Template Name="Size Template" PageGUID="933CBBF8-63F5-4F2A-972A-876E01569CD4" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
 		<Template Name="Modified Navigation Template" PageGUID="9444A14F-E020-450F-A50D-FCD651DDABEE">
 			<Page Name="Strategic Investment Model" PageGUID="A714204D-1623-4EC8-BBAE-F7E52738376E" />
 			<Page Name="Tactical Investment Model" PageGUID="8E472A20-2EBF-4CA9-8296-5365E0FDF556" />
 		</Template>
-	</Template>
-	<Template Name="Size Template" PageGUID="933CBBF8-63F5-4F2A-972A-876E01569CD4" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|0A8CFC2F-FDC3-44B7-B271-C8FB75FE459C|Size Template">
-		<Template Name="Navigation Template" PageGUID="52C51F4C-9F75-4571-A1DA-D495BA319DF7" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|344FA8A2-0C3B-4313-BC6D-3FD66E3D59F5|Navigation Template">
-			<Template Name="Background Info Template" PageGUID="7595BB46-6446-453C-82EC-3AC1AA8D72C8" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|97AB224C-A870-4CA3-8DD5-57253557CD34|Background Info Template">
+		<Template Name="Navigation Template" PageGUID="52C51F4C-9F75-4571-A1DA-D495BA319DF7" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
+			<Template Name="Background Info Template" PageGUID="7595BB46-6446-453C-82EC-3AC1AA8D72C8" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
 				<Page Name="AIMMS Demo" PageGUID="6B1C3CC9-4D7C-439F-94A0-B57158F5BF3D" />
 			</Template>
 		</Template>
