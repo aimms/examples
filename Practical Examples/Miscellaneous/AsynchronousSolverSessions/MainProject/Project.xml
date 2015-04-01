@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project AimmsVersion="4.1.1.4 unicode x86" ProjectUUID="C300D12E-29C8-41AB-AF19-FE1DB416817F">
+	<ModelFileName>Flowshop.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>

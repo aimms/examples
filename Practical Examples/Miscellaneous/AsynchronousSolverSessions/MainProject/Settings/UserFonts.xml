@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Proc" FaceName="Arial" PointSize="180" UUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" InternalID="1" />
+	<UserFont Name="Large" FaceName="Arial" PointSize="280" UUID="22EB1E73-57AE-44FD-8499-944A66D23513" InternalID="2" />
+</UserFonts>

@@ -277,86 +277,23 @@ xcmsGAtype='gaq'; AddToInitArray(xcmsGoogleAnalytics);
 
 
 <!--start GitHub examples-->
+<h1>Asynchronous solver sessions</h1>
 
-<h1>Practical Examples</h1>
-<p>The practical examples listed below illustrate applications of optimization modeling taken from literature, without a AIMMS-style end-user UI.</p>
+<h2>Problem Type</h2>
+MIP (medium)
 
-<ul>
+<h2>Keywords</h2>
+Parallel solver sessions, asynchronous, GMP, threads
 
-<li>Chemical Engineering</li>
-<ul>
+<h2>Description</h2>
+This example demonstrates how asynchronous solver sessions can be used
+to solve multiple instances of the FlowShop problem in parallel. For
+each solver session you can specify the amount of threads to be used by
+the solver. That way you can, e.g., solve two instances in parallel by
+using two solver sessions whereby each solver session uses 4 threads.
 
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ChemicalEngineering/BlendingProblem/MainProject/BlendingProblem.ams">Blending Problem</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/ChemicalEngineering/BlendingProblem/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ChemicalEngineering/ChemicalEquilibrium/MainProject/ChemicalEquilibrium.ams">Chemical Equilibrium</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/ChemicalEngineering/ChemicalEquilibrium/Description.html">description</a>)</li>
-</ul>
-
-<li>Energy</li>
-<ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Energy/OilPipelineDesign/MainProject/OilPipelineDesign.ams">Oil Pipeline Design</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Energy/OilPipelineDesign/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Energy/WaterDistribution/MainProject/WaterDistribution.ams">Water Distribution</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Energy/WaterDistribution/Description.html">description</a>)</li>
-</ul>
-
-<li>Engineering</li>
-<ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/2DStripPacking/MainProject/2DStripPacking.ams">2D Strip Packing</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Engineering/2DStripPacking/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/GoddardRocket/MainProject/GoddardRocket.ams">Goddard Rocket</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Engineering/GoddardRocket/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/HangingChain/MainProject/HangingChain.ams">Hanging Chain</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Engineering/HangingChain/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/LargestSmallPolygon/MainProject/LargestSmallPolygon.ams">Largest Small Polygon</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Engineering/LargestSmallPolygon/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/RobotArm/MainProject/RobotArm.ams">Robot Arm</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Engineering/RobotArm/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Engineering/StructuralOptimization/MainProject/StructuralOptimization.ams">Structural Optimization</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Engineering/StructuralOptimization/Description.html">description</a>)</li>
-</ul>
-
-<li>Location</li>
-<ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Location/CFLP/MainProject/CFLP.ams">Capacitated Facility Location</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Location/CFLP/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Location/CapacitatedWarehouseLocation/MainProject/CapacitatedWarehouseLocation.ams">Capacitated Warehouse Location</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Location/CapacitatedWarehouseLocation/Description.html">description</a>)</li>
-</ul>
-
-<li>Lot Sizing</li>
-<ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/MultiLevelBucket/MainProject/MultiLevelBucket.ams">Multi Level Bucket</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/LotSizing/MultiLevelBucket/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelBigBucket/MainProject/SingleLevelBigBucket.ams">Single Level Big Bucket</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/LotSizing/SingleLevelBigBucket/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelSmallBucket/MainProject/SingleLevelSmallBucket.ams">Single Level Small Bucket</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/LotSizing/SingleLevelSmallBucket/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/LotSizing/SingleLevelSmallBucketTwoItems/MainProject/SingleLevelSmallBucketTwoItems.ams">Single Level Small Bucket Two Items</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/LotSizing/SingleLevelSmallBucketTwoItems/Description.html">description</a>)</li>
-</ul>
-
-<li>Management Science</li>
-<ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ManagementScience/AircraftAssignement/MainProject/AircraftAssignement.ams">Aircraft Assignement</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/ManagementScience/AircraftAssignement/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/ManagementScience/AircraftLanding/MainProject/AircraftLanding.ams">Aircraft Landing</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/ManagementScience/AircraftLanding/Description.html">description</a>)</li>
-</ul>
-
-<li>Miscellaneous</li>
-<ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Miscellaneous/AsynchronousSolverSessions/MainProject/FlowShop.ams">Asynchronous Solver Sessions</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Miscellaneous/AsynchronousSolverSessions/Description.html">description</a>)</li>
-</ul>
-
-<li>Multiple Solutions</li>
-<ul>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/MultipleSolutions/Dice/MainProject/dice.ams">Dice</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/MultipleSolutions/Dice/Description.html">description</a>)</li>
-</ul>
-
-<li>Telecommunications</li>
-<ul>
-
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/DelayConstrainedRouting/MainProject/DelayConstrainedRouting.ams">Delay Constrained Routing</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Telecommunications/DelayConstrainedRouting/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/FilterDesign/MainProject/FilterDesign.ams">Filter Design</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Telecommunications/FilterDesign/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/Telecommunications/NetworkDesign/MainProject/NetworkDesign.ams">Network Design</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/Telecommunications/NetworkDesign/Description.html">description</a>)</li>
-</ul>
-
-<li>Vehicle Routing</li>
-<ul>
-
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/VehicleRouting/CVRP/MainProject/CVRP.ams">Vehicle Routing CVRP</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/VehicleRouting/CVRP/Description.html">description</a>)</li>
-<li><a href="https://raw.github.com/aimms/examples/master/Practical%20Examples/VehicleRouting/VRPTW/MainProject/VRPTW.ams">Vehicle Routing VRPTW</a> (<a href="http://aimms.github.io/examples/Practical%20Examples/VehicleRouting/VRPTW/Description.html">description</a>)</li>
-</ul>
-
-</ul>
-<br>
-<h2>AIMMS 3.14 projects</h2> For this set of examples you can
-<a href="https://github.com/aimms/examples/tree/aimms3-master">download projects</a>
-from GitHub that can be opened with AIMMS 3.14.
-<p><a href="http://aimms.github.io/examples/index.html">Back</a> to all examples.</p>
+<h2>Note</h2>
+Multiple threads are only supported by CPLEX and Gurobi.
 <!--end GitHub examples-->
 
 
@@ -416,3 +353,4 @@ from GitHub that can be opened with AIMMS 3.14.
 
 </body>
 </html>
+

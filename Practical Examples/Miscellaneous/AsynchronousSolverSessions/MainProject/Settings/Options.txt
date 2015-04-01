@@ -1,0 +1,4 @@
+﻿* AIMMS
+* Environment
+Startup_Page "Parallel Solver Session Display"
+Data_Management_Style 1

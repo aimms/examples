@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2015-04-01 14:21:25">
+	<Location top="29" left="4" bottom="830" right="1024" />
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>C300D12E-29C8-41AB-AF19-FE1DB416817F</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Bar Chart">
+		<Location top="18" left="18" bottom="600" right="906" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<HorizontalGridLines>true</HorizontalGridLines>
+		<DescriptionAsTooltip>false</DescriptionAsTooltip>
+		<ValueInTooltip>false</ValueInTooltip>
+		<YRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>60</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>sessionStart( uss )</Identifier>
+			<TitleText>"Start"</TitleText>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>sessionEnd( uss )</Identifier>
+			<TitleText>"End"</TitleText>
+			<Color>sessionColor( uss )</Color>
+		</ExplicitIdentifier>
+		<Overlap>100</Overlap>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="498" left="918" bottom="600" right="1212" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"RUN"</Title>
+		<Font GUID="22EB1E73-57AE-44FD-8499-944A66D23513" Name="Large" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="18" left="918" bottom="114" right="1212" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#808080" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>sessionStringA</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Right" ShowDefaults="true" />
+			<Color>RGB ff0000</Color>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>"                  vs"</Identifier>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>sessionStringB</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Right" ShowDefaults="true" />
+			<Color>RGB 00ffff</Color>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="177" left="918" bottom="219" right="1212" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SessionA_Solver</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="147" left="918" bottom="177" right="1212" />
+		<StaticText>Select solver for session A</StaticText>
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="357" left="918" bottom="399" right="1212" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SessionB_Solver</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="327" left="918" bottom="357" right="1212" />
+		<StaticText>Select solver for session B</StaticText>
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="405" left="918" bottom="435" right="1212" />
+		<StaticText>Thread limit for session B</StaticText>
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="435" left="918" bottom="474" right="1212" />
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ThreadLimitB</Identifier>
+			<NumberFormat Width="3" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="225" left="918" bottom="255" right="1212" />
+		<StaticText>Thread limit for session A</StaticText>
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="255" left="918" bottom="294" right="1212" />
+		<Font GUID="9C22FC20-B3E5-4E95-988D-52E7A4E53A6E" Name="Proc" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>ThreadLimitA</Identifier>
+			<NumberFormat Width="3" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>SessionA_Solver</Symbol>
+			<Symbol>SessionB_Solver</Symbol>
+			<Symbol>sessionStart</Symbol>
+			<Symbol>sessionEnd</Symbol>
+			<Symbol>sessionColor</Symbol>
+			<Symbol>sessionStringA</Symbol>
+			<Symbol>sessionStringB</Symbol>
+			<Symbol>SolversMIP</Symbol>
+			<Symbol>ThreadLimitA</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>uss</Symbol>
+			<Symbol>ThreadLimitB</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
