@@ -169,6 +169,8 @@ Model Main_Scenario_Generation {
             Body: {
                 ProductionStage(t) := PeriodToStageMapping(t);
                 StockStage(t) := PeriodToStageMapping(t);
+                
+                Step1_AssignmentWasMade := 1;
             }
         }
         Procedure InitializeBranchRangeAndChance {
@@ -180,10 +182,22 @@ Model Main_Scenario_Generation {
                      'H' : LowerBoundFraction(c) := 1.20; UpperBoundFraction(c) := 1.50; BranchChance(c) := 0.3;
                   endswitch;
                 endfor;
+                
+                Step1_InitializationWasMade := 1;
             }
         }
         Procedure CreateScTreeAndStochDataByBranching {
             Body: {
+                if ( not Step1_AssignmentWasMade) then
+                	DialogError("The decisions should be assigned to the stages before the scenario tree is generated.");
+                	return;
+                endif;
+                
+                if ( not Step1_InitializationWasMade ) then
+                	DialogError("The branches should be initialized before the scenario tree is generated.");
+                	return;
+                endif;
+                
                 empty AllStochasticScenarios;
                 cleandependents AllStochasticScenarios;
                 
@@ -200,6 +214,8 @@ Model Main_Scenario_Generation {
                 ScenGen::BuildScenarioTreeViewFromMapping( "Scenario tree by branching", StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
                 
                 ShowAllScenarios;
+                
+                Step2_WasMade := 1;
             }
             Comment: {
                 "Remark:
@@ -211,6 +227,16 @@ Model Main_Scenario_Generation {
         }
         Procedure CreateScTreeAndStochDataByDescriptiveSampling {
             Body: {
+                if ( not Step1_AssignmentWasMade) then
+                	DialogError("The decisions should be assigned to the stages before the scenario tree is generated.");
+                	return;
+                endif;
+                
+                if ( not Step1_InitializationWasMade ) then
+                	DialogError("The branches should be initialized before the scenario tree is generated.");
+                	return;
+                endif;
+                
                 empty AllStochasticScenarios;
                 cleandependents AllStochasticScenarios;
                 
@@ -227,6 +253,8 @@ Model Main_Scenario_Generation {
                 ScenGen::BuildScenarioTreeViewFromMapping( "Scenario tree by sampling", StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
                 
                 ShowAllScenarios;
+                
+                Step2_WasMade := 1;
             }
             Comment: {
                 "Remark:
@@ -238,6 +266,16 @@ Model Main_Scenario_Generation {
         }
         Procedure CreateScTreeByStochDataBundling {
             Body: {
+                if ( not Step1_AssignmentWasMade) then
+                	DialogError("The decisions should be assigned to the stages before the scenario tree is generated.");
+                	return;
+                endif;
+                
+                if ( not Step1_InitializationWasMade ) then
+                	DialogError("The branches should be initialized before the scenario tree is generated.");
+                	return;
+                endif;
+                
                 empty AllStochasticScenarios;
                 cleandependents AllStochasticScenarios;
                 
@@ -255,6 +293,8 @@ Model Main_Scenario_Generation {
                 ScenGen::BuildScenarioTreeViewFromMapping( "Scenario tree by bundling", StochProdModel_Stages, StochProdModel_Scenarios, ScenarioProbability, ScenarioTreeMapping );
                 
                 ShowAllScenarios;
+                
+                Step2_WasMade := 1;
             }
             Comment: {
                 "Remark:
@@ -283,7 +323,7 @@ Model Main_Scenario_Generation {
         }
         Procedure SolveStochProductionModel {
             Body: {
-                if ( not Step2_WasMade) then
+                if ( not Step2_WasMade ) then
                 	DialogError("The model cannot be solved without a generated scenario tree.");
                 else
                 
@@ -305,7 +345,7 @@ Model Main_Scenario_Generation {
         }
         Procedure SolveStochProductionModel_Benders {
             Body: {
-                if ( not Step2_WasMade) then
+                if ( not Step2_WasMade ) then
                 	DialogError("The model cannot be solved without a generated scenario tree.");
                 else
                 
@@ -403,30 +443,28 @@ Model Main_Scenario_Generation {
         Procedure CreateScenarioTree {
             Body: {
                 if ( not Step1_AssignmentWasMade) then
-                	DialogError("The decisions should be assigned to the stages before the scenario tree is gerenated.");
+                	DialogError("The decisions should be assigned to the stages before the scenario tree is generated.");
+                	return;
                 endif;
                 
                 if ( not Step1_InitializationWasMade ) then
-                	DialogError("The branches should be initialized before the scenario tree is gerenated.");
+                	DialogError("The branches should be initialized before the scenario tree is generated.");
+                	return;
                 endif;
                 
-                if (Step1_AssignmentWasMade + Step1_InitializationWasMade = 2 ) then
+                if (not prod(c,(LowerBoundFraction(c) < UpperBoundFraction(c))) ) then
+                	DialogError("The lower bound of the branch should be lower than the upper bound of the branch.");
+                else
                 
-                	if (not prod(c,(LowerBoundFraction(c) < UpperBoundFraction(c))) ) then
-                		DialogError("The lower bound of the branch should be lower than the upper bound of the branch.");
-                	else
+                	ShowOnlyReprScen := 0;
                 
-                		ShowOnlyReprScen := 0;
+                	switch MethodToApply do
+                	'CreateTreeByBranching' : CreateScTreeAndStochDataByBranching;
+                	'CreateTreeByDescriptive' : CreateScTreeAndStochDataByDescriptiveSampling;
+                	'CreateTreeByBundling' : CreateScTreeByStochDataBundling;
+                	endswitch;
                 
-                		switch MethodToApply do
-                		'CreateTreeByBranching' : CreateScTreeAndStochDataByBranching;
-                		'CreateTreeByDescriptive' : CreateScTreeAndStochDataByDescriptiveSampling;
-                		'CreateTreeByBundling' : CreateScTreeByStochDataBundling;
-                		endswitch;
-                
-                		Step2_WasMade := 1;
-                
-                	endif;
+                	Step2_WasMade := 1;
                 
                 endif;
             }
@@ -495,6 +533,8 @@ Model Main_Scenario_Generation {
     }
     Procedure MainExecution {
         Body: {
+            AssignDecisionsToStages;
+            InitializeBranchRangeAndChance;
             CreateScTreeAndStochDataByBranching;
             SolveStochProductionModel;
         }
