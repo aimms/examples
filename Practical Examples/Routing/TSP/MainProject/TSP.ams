@@ -8,14 +8,14 @@ Model Main_TSP {
         MIP (medium - hard)
         
         Keywords:
-        Lazy constraints callback, subtour elimination constraints, GMP, network object
+        Lazy constraint callback, subtour elimination constraints, GMP, network object
         
         Description:
         In this example the (symmetric) Traveling Salesman Problem (TSP) is formulated
         using subtour elimination constraints. The amount of subtour elimination constraints
-        is exponential, and therefore they are added using a lazy constraints callback. Lazy
+        is exponential, and therefore they are added using a lazy constraint callback. Lazy
         constraints are constraints that should be satisfied by any solution to the problem,
-        but they are not generated upfront. The lazy constraints callback checks whether the
+        but they are not generated upfront. The lazy constraint callback checks whether the
         incumbent solution found by the solver contains subtours. If yes, then subtour
         elimination constraints are added that forbid these subtours. If not, then the
         incumbent solution forms a true solution of the TSP problem, as it contains only one
@@ -25,7 +25,7 @@ Model Main_TSP {
         http://www.iwr.uni-heidelberg.de/groups/comopt/software/TSPLIB95/
         
         Note:
-        The lazy constraints callback is only supported by CPLEX and Gurobi.
+        The lazy constraint callback is only supported by CPLEX and Gurobi.
         
         References:
         Applegate, D.L., R. E. Bixby, V. Chvátal, and W. J. Cook, The Traveling Salesman
@@ -211,7 +211,7 @@ Model Main_TSP {
             endif;
         }
         Comment: {
-            "This lazy constraints callback is called whenever the solver finds a new candidate incumbent
+            "This lazy constraint callback is called whenever the solver finds a new candidate incumbent
             solution. It checks whether the incumbent solution found by the solver contains subtours.
             If yes, then subtour elimination constraints are added, using GMP::SolverSession::GenerateCut,
             that forbid these subtours. If not, then the incumbent solution forms a true solution of the
