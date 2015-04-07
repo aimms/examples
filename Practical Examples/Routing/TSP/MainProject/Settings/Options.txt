@@ -1,0 +1,17 @@
+﻿* AIMMS
+warning_duplicate_column off
+* AOA
+* BARON 15
+* CONOPT 3.14V
+* CPLEX 12.6.1
+* CPOptimizer 12.6
+* GUROBI 6.0
+* KNITRO 9.1
+* MINOS
+* PATH 4.6
+* SNOPT 7.2
+* XA 15
+* NETSOL
+* Environment
+Startup_Page "Tour"
+Startup_Case "data\eil101.data"

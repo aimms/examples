@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2015-04-07 12:41:49">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>3955686E-2040-4C38-B0C6-5D44BFD2370C</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="18" left="30" bottom="762" right="1062" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<EqualXYScale>false</EqualXYScale>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<VisibleArea>
+			<Left>Min_X_Axis</Left>
+			<Right>Max_X_Axis</Right>
+			<Top>Max_Y_Axis</Top>
+			<Bottom>Min_Y_Axis</Bottom>
+		</VisibleArea>
+		<TotalArea>
+			<Left>110</Left>
+			<Right>100</Right>
+		</TotalArea>
+		<Node>
+			<Identifier>c</Identifier>
+			<XCoordinate>X_Coordinate( c )</XCoordinate>
+			<YCoordinate>Y_Coordinate( c )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>3</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>RGB 800080</Color>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>Tour( i, j )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="774" left="396" bottom="822" right="696" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="26AED1FC-F002-4F12-AAF8-01837BAA21A7" Name="Arial11" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor>
+			<UserColor GUID="4C29CF98-3E51-4BAA-8563-90FCE3E3DF3B">default background</UserColor>
+		</BackgroundColor>
+		<ExplicitIdentifier>
+			<Identifier>ShowSolutionsWithSubtours</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="774" left="762" bottom="822" right="1062" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve TSP"</Title>
+		<BackgroundColor>
+			<UserColor GUID="4C29CF98-3E51-4BAA-8563-90FCE3E3DF3B">default background</UserColor>
+		</BackgroundColor>
+		<Font GUID="26AED1FC-F002-4F12-AAF8-01837BAA21A7" Name="Arial11" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="774" left="30" bottom="822" right="330" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Select instance"</Title>
+		<BackgroundColor>
+			<UserColor GUID="4C29CF98-3E51-4BAA-8563-90FCE3E3DF3B">default background</UserColor>
+		</BackgroundColor>
+		<ForegroundColor>
+			<UserColor GUID="701D5E4D-A50B-4FD8-B7AD-7ED61961A523">default foreground</UserColor>
+		</ForegroundColor>
+		<Font GUID="26AED1FC-F002-4F12-AAF8-01837BAA21A7" Name="Arial11" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ResetCase</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="MenuCommand">
+				<Command>Case-Load As Active</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>X_Coordinate</Symbol>
+			<Symbol>Y_Coordinate</Symbol>
+			<Symbol>Tour</Symbol>
+			<Symbol>Min_X_Axis</Symbol>
+			<Symbol>Max_X_Axis</Symbol>
+			<Symbol>Min_Y_Axis</Symbol>
+			<Symbol>Max_Y_Axis</Symbol>
+			<Symbol>ShowSolutionsWithSubtours</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>ResetCase</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>c</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,259 @@
+## ams_version=1.0
+
+Model Main_TSP {
+    Comment: {
+        "Traveling Salesman Problem
+        
+        Problem type:
+        MIP (medium - hard)
+        
+        Keywords:
+        Lazy constraints callback, subtour elimination constraints, GMP, network object
+        
+        Description:
+        In this example the (symmetric) Traveling Salesman Problem (TSP) is formulated
+        using subtour elimination constraints. The amount of subtour elimination constraints
+        is exponential, and therefore they are added using a lazy constraints callback. Lazy
+        constraints are constraints that should be satisfied by any solution to the problem,
+        but they are not generated upfront. The lazy constraints callback checks whether the
+        incumbent solution found by the solver contains subtours. If yes, then subtour
+        elimination constraints are added that forbid these subtours. If not, then the
+        incumbent solution forms a true solution of the TSP problem, as it contains only one
+        tour.
+        
+        This example contains several euclidean TSP instances from TSPLIB at:
+        http://www.iwr.uni-heidelberg.de/groups/comopt/software/TSPLIB95/
+        
+        Note:
+        The lazy constraints callback is only supported by CPLEX and Gurobi.
+        
+        References:
+        Applegate, D.L., R. E. Bixby, V. Chvátal, and W. J. Cook, The Traveling Salesman
+        Problem: A Computational Study, Princeton University Press, Princeton, 2007."
+    }
+    DeclarationSection Declaration_Model {
+        Set Cities {
+            Index: i, j, c;
+            OrderBy: User;
+        }
+        Parameter X_Coordinate {
+            IndexDomain: i;
+        }
+        Parameter Y_Coordinate {
+            IndexDomain: i;
+        }
+        Parameter Tour {
+            IndexDomain: (i,j);
+        }
+        Parameter Distance {
+            IndexDomain: (i,j);
+            Definition: round( sqrt( (X_Coordinate(i) - X_Coordinate(j))^2 + (Y_Coordinate(i) - Y_Coordinate(j))^2 ) );
+            Comment: "Euclidean distance from city i to city j (rounded)";
+        }
+        Variable x {
+            IndexDomain: (i,j) | i <> j;
+            Range: binary;
+        }
+        Variable obj {
+            Range: free;
+            Definition: sum( (i,j), Distance(i,j) * x(i,j) );
+        }
+        Constraint ArrivalConstraints {
+            IndexDomain: j;
+            Definition: sum( i, x(i,j) ) = 1;
+        }
+        Constraint DepatureConstraints {
+            IndexDomain: i;
+            Definition: sum( j, x(i,j) ) = 1;
+        }
+        Set ConstraintsTSP {
+            SubsetOf: AllConstraints;
+            Definition: AllConstraints - data { 'SubtourEliminationConstraint1', 'SubtourEliminationConstraint2' };
+        }
+        MathematicalProgram TSP {
+            Objective: obj;
+            Direction: minimize;
+            Constraints: ConstraintsTSP;
+            Variables: AllVariables;
+            Type: MIP;
+        }
+        ElementParameter myGMP {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+    }
+    DeclarationSection Declaration_Subtours {
+        Set Subtour {
+            SubsetOf: Cities;
+        }
+        Constraint SubtourEliminationConstraint1 {
+            Definition: sum( (i,j) | i in Subtour and not j in Subtour, x(i,j) ) >= 1;
+        }
+        Constraint SubtourEliminationConstraint2 {
+            Definition: sum( (j,i) | i in Subtour and not j in Subtour, x(j,i) ) >= 1;
+        }
+    }
+    DeclarationSection Declaration_Network {
+        Parameter Min_X_Coord {
+            Definition: min( i, X_Coordinate(i) );
+        }
+        Parameter Max_X_Coord {
+            Definition: max( i, X_Coordinate(i) );
+        }
+        Parameter Min_Y_Coord {
+            Definition: min( i, Y_Coordinate(i) );
+        }
+        Parameter Max_Y_Coord {
+            Definition: max( i, Y_Coordinate(i) );
+        }
+        Parameter Min_X_Axis {
+            Definition: Min_X_Coord - 0.05 * (Max_X_Coord - Min_X_Coord);
+        }
+        Parameter Max_X_Axis {
+            Definition: Max_X_Coord + 0.05 * (Max_X_Coord - Min_X_Coord);
+        }
+        Parameter Min_Y_Axis {
+            Definition: Min_Y_Coord - 0.05 * (Max_Y_Coord - Min_Y_Coord);
+        }
+        Parameter Max_Y_Axis {
+            Definition: Max_Y_Coord + 0.05 * (Max_Y_Coord - Min_Y_Coord);
+        }
+        Parameter ShowSolutionsWithSubtours {
+            Text: "Show incumbents with subtours";
+            Range: binary;
+            Property: NoSave;
+            InitialData: 1;
+        }
+        StringParameter SelectedCase;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            empty Tour;
+            PageRefreshAll;
+            
+            myGMP := GMP::Instance::Generate( TSP );
+            
+            GMP::Instance::SetCallbackAddLazyConstraint( myGMP, 'CB_Lazy' );
+            
+            GMP::Instance::Solve( myGMP );
+        }
+    }
+    Procedure CB_Lazy {
+        Arguments: ThisSession;
+        Body: {
+            ! Retrieve solution from solver session and send it to the AIMMS variables.
+            GMP::Solution::RetrieveFromSolverSession( ThisSession, 1 );
+            GMP::Solution::SendToModelSelection( myGMP, 1, AllVariables, Suffices );
+            
+            DetermineSubtours( ThisSession );
+            
+            return 1;
+        }
+        ElementParameter ThisSession {
+            Range: AllSolverSessions;
+            Property: Input;
+        }
+        Set Suffices {
+            SubsetOf: AllSuffixNames;
+            InitialData: data { 'Level' };
+        }
+    }
+    Procedure DetermineSubtours {
+        Arguments: ThisSession;
+        Body: {
+            empty Subtour, FoundSubtour;
+            
+            RemainingCities := Cities;
+            
+            ! We start adding the first city to the tour.
+            FirstCity       := First(RemainingCities);
+            City            := FirstCity;
+            RemainingCities -= City;
+            Subtour         := City;
+            
+            while ( Card( RemainingCities ) > 0 ) do
+            	! For every other city, the next city in the tour is the one closest to it not yet chosen.
+                InitNextCity(City) := ArgMax( c in RemainingCities, x(City,c) );
+            
+                if ( x(City, InitNextCity(City)) > 0.5 ) then
+                	! Add city to current (sub)tour.
+                	City            := InitNextCity(City);
+                	RemainingCities -= City;
+                	Subtour         += City;
+                else
+                	! Close the (sub)tour.
+                	InitNextCity(City) := FirstCity;
+            
+                	if ( card(Subtour) < card(Cities) ) then
+                		! Add lazy constraints that forbid the subtour just found.
+            			GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint1 );
+            			GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint2 );
+            			FoundSubtour := 1;
+            		endif;
+            
+            		! Start next subtour by adding the first remaining city.
+                	FirstCity       := First(RemainingCities);
+            		City            := FirstCity;
+            		RemainingCities -= City;
+            		Subtour         := City;
+                endif;
+            endwhile;
+            
+            ! Finally, close the last subtour.
+            InitNextCity(City) := FirstCity;
+            
+            ! Determine tour to display on page.
+            if ( ( not FoundSubtour          ) or
+                 ( ShowSolutionsWithSubtours ) ) then
+            	empty Tour;
+            	Tour(c,InitNextCity(c)) := 1;
+            	PageRefreshAll;
+            endif;
+        }
+        Comment: {
+            "This lazy constraints callback is called whenever the solver finds a new candidate incumbent
+            solution. It checks whether the incumbent solution found by the solver contains subtours.
+            If yes, then subtour elimination constraints are added, using GMP::SolverSession::GenerateCut,
+            that forbid these subtours. If not, then the incumbent solution forms a true solution of the
+            TSP problem, as it contains only one tour."
+        }
+        ElementParameter ThisSession {
+            Range: AllSolverSessions;
+            Property: Input;
+        }
+        ElementParameter City {
+            Range: Cities;
+        }
+        ElementParameter FirstCity {
+            Range: Cities;
+        }
+        Set RemainingCities {
+            SubsetOf: Cities;
+        }
+        ElementParameter InitNextCity {
+            IndexDomain: c;
+            Range: Cities;
+        }
+        Parameter FoundSubtour {
+            Range: binary;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure ResetCase {
+        Body: {
+            DataChangeMonitorReset( DataManagementMonitorID, MonitoredIdentifiers );
+        }
+        Comment: {
+            "To avoid a dialog that will ask the user to save the case if the \'Select instance\'
+            button is pressed."
+        }
+        Set MonitoredIdentifiers {
+            SubsetOf: AllIdentifiers;
+            InitialData: AllIdentifiers - Declaration_Model * AllIdentifiers;
+        }
+    }
+}
