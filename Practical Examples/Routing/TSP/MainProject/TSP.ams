@@ -202,6 +202,13 @@ Model Main_TSP {
             ! Finally, close the last subtour.
             InitNextCity(City) := FirstCity;
             
+            if ( card(Subtour) < card(Cities) ) then
+            	! Add lazy constraints that forbid the last subtour.
+            	GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint1 );
+            	GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint2 );
+            	FoundSubtour := 1;
+            endif;
+            
             ! Determine tour to display on page.
             if ( ( not FoundSubtour          ) or
                  ( ShowSolutionsWithSubtours ) ) then

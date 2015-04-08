@@ -14,4 +14,4 @@ warning_duplicate_column off
 * NETSOL
 * Environment
 Startup_Page "Tour"
-Startup_Case "data\eil101.data"
+Startup_Case "data\ch130.data"
