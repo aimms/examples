@@ -51,24 +51,20 @@ Model Main_TSP {
             Comment: "Euclidean distance from city i to city j (rounded)";
         }
         Variable x {
-            IndexDomain: (i,j) | i <> j;
+            IndexDomain: (i,j) | i > j;
             Range: binary;
         }
         Variable obj {
             Range: free;
             Definition: sum( (i,j), Distance(i,j) * x(i,j) );
         }
-        Constraint ArrivalConstraints {
+        Constraint DegreeConstraint {
             IndexDomain: j;
-            Definition: sum( i, x(i,j) ) = 1;
-        }
-        Constraint DepatureConstraints {
-            IndexDomain: i;
-            Definition: sum( j, x(i,j) ) = 1;
+            Definition: sum( i, x(i,j) + x(j,i) ) = 2;
         }
         Set ConstraintsTSP {
             SubsetOf: AllConstraints;
-            Definition: AllConstraints - data { 'SubtourEliminationConstraint1', 'SubtourEliminationConstraint2' };
+            Definition: AllConstraints - data { 'SubtourEliminationConstraint' };
         }
         MathematicalProgram TSP {
             Objective: obj;
@@ -85,11 +81,8 @@ Model Main_TSP {
         Set Subtour {
             SubsetOf: Cities;
         }
-        Constraint SubtourEliminationConstraint1 {
-            Definition: sum( (i,j) | i in Subtour and not j in Subtour, x(i,j) ) >= 1;
-        }
-        Constraint SubtourEliminationConstraint2 {
-            Definition: sum( (j,i) | i in Subtour and not j in Subtour, x(j,i) ) >= 1;
+        Constraint SubtourEliminationConstraint {
+            Definition: sum( (i,j) | i in Subtour and not j in Subtour, x(i,j) + x(j,i) ) >= 2;
         }
     }
     DeclarationSection Declaration_Network {
@@ -125,7 +118,6 @@ Model Main_TSP {
         }
         StringParameter SelectedCase;
     }
-    Procedure MainInitialization;
     Procedure MainExecution {
         Body: {
             empty Tour;
@@ -173,9 +165,9 @@ Model Main_TSP {
             
             while ( Card( RemainingCities ) > 0 ) do
             	! For every other city, the next city in the tour is the one closest to it not yet chosen.
-                InitNextCity(City) := ArgMax( c in RemainingCities, x(City,c) );
+                InitNextCity(City) := ArgMax( c in RemainingCities, x(City,c) + x(c,City) );
             
-                if ( x(City, InitNextCity(City)) > 0.5 ) then
+                if ( x(City, InitNextCity(City)) + x(InitNextCity(City), City) > 0.5 ) then
                 	! Add city to current (sub)tour.
                 	City            := InitNextCity(City);
                 	RemainingCities -= City;
@@ -186,8 +178,7 @@ Model Main_TSP {
             
                 	if ( card(Subtour) < card(Cities) ) then
                 		! Add lazy constraints that forbid the subtour just found.
-            			GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint1 );
-            			GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint2 );
+            			GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint );
             			FoundSubtour := 1;
             		endif;
             
@@ -204,8 +195,7 @@ Model Main_TSP {
             
             if ( card(Subtour) < card(Cities) ) then
             	! Add lazy constraints that forbid the last subtour.
-            	GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint1 );
-            	GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint2 );
+            	GMP::SolverSession::GenerateCut( ThisSession, SubtourEliminationConstraint );
             	FoundSubtour := 1;
             endif;
             
