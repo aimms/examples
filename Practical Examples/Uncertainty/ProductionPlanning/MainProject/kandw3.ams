@@ -1,0 +1,242 @@
+## ams_version=1.0
+
+Model Main_KandW3 {
+    Comment: {
+        "Production planning with uncertain demand
+        
+        Problem type:
+        LP (small)
+        
+        Keywords:
+        Uncertain data, stochastic programming, scenarios
+        
+        Description:
+        A refinery can blend N raw materials into M different products. At present,
+        the management is trying to decide how much of each of the raw materials to
+        purchase and stock, so that they can be blended to satisfy the demand for the
+        products in future T time periods. The demand has to be completely satisfied,
+        and in case of raw material shortage the products can be outsourced at a higher
+        cost. There is an inventory constraint on how much raw material can be stocked
+        in total.
+        
+        References:
+        Kall, P., S.W. Wallace, Stochastic Programming, John Wiley and Sons, Chichester,
+        England, 1994.
+        
+        http://www.cenapad.unicamp.br/parque/manuais/OSL/oslweb/features/Stochast/node4.htm
+        (problem KandW3)"
+    }
+    DeclarationSection Declaration_Model {
+        Set RawMaterials {
+            SubsetOf: Integers;
+            Index: i;
+            Definition: data { 1, 2 };
+        }
+        Set Products {
+            SubsetOf: Integers;
+            Index: j;
+            Definition: data { 1, 2 };
+        }
+        Set TimePeriods {
+            SubsetOf: Integers;
+            Index: t;
+            Definition: data { 1, 2 };
+        }
+        Variable x {
+            IndexDomain: (i,t);
+            Text: "Quantity of raw material i purchased for use in period t";
+            Range: nonnegative;
+            Comment: "The variable is deterministic (i.e., non-stochastic).";
+        }
+        Variable y {
+            IndexDomain: (j,t);
+            Text: "Quantity of product j outsourced in period t";
+            Range: nonnegative;
+            Property: Stochastic;
+            Stage: StageMapping(t);
+            Comment: {
+                "This variable is stochastic; y(j,1) is a 2 stage variable while y(j,2) is a 3 stage variable,
+                as specified by the StageMapping(t) parameter."
+            }
+        }
+        Parameter c {
+            IndexDomain: i;
+            Text: "Present cost of raw material i";
+            Definition: data { 1 : 2,  2 : 3 };
+        }
+        Parameter a {
+            IndexDomain: (i,j);
+            Text: "Raw material i required per unit of product j";
+            Definition: data { ( 1, 1 ) : 2.000,  ( 1, 2 ) : 3.000,  ( 2, 1 ) : 6.000,  ( 2, 2 ) : 3.400 };
+            Comment: {
+                "According to
+                  http://www.cenapad.unicamp.br/parque/manuais/OSL/oslweb/features/Stochast/node4.htm
+                the data for this parameter is
+                  data { ( 1, 1 ) : 2.000,  ( 1, 2 ) : 6.000,  ( 2, 1 ) : 3.000,  ( 2, 2 ) : 3.400 }
+                but then the solution does not match."
+            }
+        }
+        Parameter f {
+            IndexDomain: (j,t);
+            Text: "Cost of outsourcing product j in time period t";
+            Definition: data { ( 1, 1 ) : 7,  ( 1, 2 ) : 10,  ( 2, 1 ) : 12,  ( 2, 2 ) : 15 };
+        }
+        Parameter b {
+            Text: "Inventory capacity";
+            Definition: 50;
+        }
+        Parameter d {
+            IndexDomain: (j,t);
+            Text: "Random demand of product j in time period t";
+            Property: Stochastic;
+            InitialData: 0;
+        }
+        Variable obj {
+            Definition: sum[ (i,t), c(i) * x(i,t) ] + sum[ (j,t), f(j,t) * y(j,t) ];
+        }
+        Constraint InventoryConstraint {
+            Definition: sum[ (i,t), x(i,t) ] <= b;
+            Comment: "Inventory constraint on how much raw material can be stocked in total.";
+        }
+        Constraint DemandConstraint {
+            IndexDomain: (j,t);
+            Definition: sum[ i, a(i,j) * x(i,t) ] + y(j,t) >= d(j,t);
+            Comment: {
+                "The demand has to be completely satisfied, and in case of raw material shortage the products
+                can be outsourced at a higher cost."
+            }
+        }
+        MathematicalProgram KandW3 {
+            Objective: obj;
+            Direction: minimize;
+            Type: LP;
+        }
+    }
+    DeclarationSection Declaration_Stochastic {
+        Set MyStages {
+            SubsetOf: Integers;
+            Index: st;
+            Definition: data { 1 .. 3 };
+        }
+        Set MyScenarios {
+            SubsetOf: AllStochasticScenarios;
+            Index: sc;
+            Definition: data { sc1 .. sc9 };
+        }
+        Parameter ScenarioProb {
+            IndexDomain: (sc);
+            Definition: {
+                data { sc1 : 0.060,  sc2 : 0.150,  sc3 : 0.090,  sc4 : 0.120,  sc5 : 0.160,
+                       sc6 : 0.120,  sc7 : 0.120,  sc8 : 0.120,  sc9 : 0.060 }
+            }
+        }
+        ElementParameter ScenarioTreeMapping {
+            IndexDomain: (sc,st);
+            Range: MyScenarios;
+            Definition: {
+                data
+                { ( sc1, 1 ) : sc1,  ( sc1, 2 ) : sc1,  ( sc1, 3 ) : sc1,  ( sc2, 1 ) : sc1,  ( sc2, 2 ) : sc1,  ( sc2, 3 ) : sc2,
+                  ( sc3, 1 ) : sc1,  ( sc3, 2 ) : sc1,  ( sc3, 3 ) : sc3,  ( sc4, 1 ) : sc1,  ( sc4, 2 ) : sc4,  ( sc4, 3 ) : sc4,
+                  ( sc5, 1 ) : sc1,  ( sc5, 2 ) : sc4,  ( sc5, 3 ) : sc5,  ( sc6, 1 ) : sc1,  ( sc6, 2 ) : sc4,  ( sc6, 3 ) : sc6,
+                  ( sc7, 1 ) : sc1,  ( sc7, 2 ) : sc7,  ( sc7, 3 ) : sc7,  ( sc8, 1 ) : sc1,  ( sc8, 2 ) : sc7,  ( sc8, 3 ) : sc8,
+                  ( sc9, 1 ) : sc1,  ( sc9, 2 ) : sc7,  ( sc9, 3 ) : sc9 }
+            }
+            Comment: {
+                "The scenario tree mapping represents the scenario tree. It provides a mapping from every scenario
+                during every stage to a single representative scenario for the scenario bundle in which the given
+                scenario is contained during this stage."
+            }
+        }
+        ElementParameter StochasticGMP {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+        Parameter StageMapping {
+            IndexDomain: t;
+            Range: integer;
+            Definition: data { 1 : 2,  2 : 3 };
+        }
+        ElementParameter DeterministicScenario {
+            Range: AllStochasticScenarios;
+            Comment: {
+                "This artificial scenario will be used by AIMMS to store the solution of
+                non-stochastic variables in their respective .Stochastic suffices. For
+                example, for the non-stochastic variable x(i,t) the solution will be
+                stored in x.stochastic(DeterministicScenario,i,t).
+                
+                For the objective variable, this scenario will be used to store the
+                weighted average of the objective over all scenarios."
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            AllStochasticScenarios := data { sc1 .. sc9 };
+            
+            GetStochasticData;
+        }
+    }
+    Procedure GetStochasticData {
+        Body: {
+            d.Stochastic('sc1',1,1) := 200.0;
+            d.Stochastic('sc1',2,1) := 180.0;
+            d.Stochastic('sc2',1,1) := 200.0;
+            d.Stochastic('sc2',2,1) := 180.0;
+            d.Stochastic('sc3',1,1) := 200.0;
+            d.Stochastic('sc3',2,1) := 180.0;
+            d.Stochastic('sc4',1,1) := 180.0;
+            d.Stochastic('sc4',2,1) := 160.0;
+            d.Stochastic('sc5',1,1) := 180.0;
+            d.Stochastic('sc5',2,1) := 160.0;
+            d.Stochastic('sc6',1,1) := 180.0;
+            d.Stochastic('sc6',2,1) := 160.0;
+            d.Stochastic('sc7',1,1) := 160.0;
+            d.Stochastic('sc7',2,1) := 140.0;
+            d.Stochastic('sc8',1,1) := 160.0;
+            d.Stochastic('sc8',2,1) := 140.0;
+            d.Stochastic('sc9',1,1) := 160.0;
+            d.Stochastic('sc9',2,1) := 140.0;
+            
+            d.Stochastic('sc1',1,2) := 200.0;
+            d.Stochastic('sc1',2,2) := 180.0;
+            d.Stochastic('sc2',1,2) := 180.0;
+            d.Stochastic('sc2',2,2) := 160.0;
+            d.Stochastic('sc3',1,2) := 160.0;
+            d.Stochastic('sc3',2,2) := 140.0;
+            d.Stochastic('sc4',1,2) := 200.0;
+            d.Stochastic('sc4',2,2) := 180.0;
+            d.Stochastic('sc5',1,2) := 180.0;
+            d.Stochastic('sc5',2,2) := 160.0;
+            d.Stochastic('sc6',1,2) := 160.0;
+            d.Stochastic('sc6',2,2) := 140.0;
+            d.Stochastic('sc7',1,2) := 200.0;
+            d.Stochastic('sc7',2,2) := 180.0;
+            d.Stochastic('sc8',1,2) := 180.0;
+            d.Stochastic('sc8',2,2) := 160.0;
+            d.Stochastic('sc9',1,2) := 160.0;
+            d.Stochastic('sc9',2,2) := 140.0;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            StochasticGMP := GMP::Instance::GenerateStochasticProgram(
+                                          KandW3,
+                                          AllStochasticParameters,
+                                          AllStochasticVariables,
+                                          MyScenarios,
+                                          ScenarioProb,
+                                          ScenarioTreeMapping,
+                                          "Expected",
+                                          GenerationMode:'SubstituteStochasticVariables',
+                                          name:"MyStochasticProgram" );
+            
+            DeterministicScenario := 'Expected';
+            
+            GMP::Instance::Solve( StochasticGMP );
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

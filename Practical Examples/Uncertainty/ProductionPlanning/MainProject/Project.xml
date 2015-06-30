@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project AimmsVersion="4.6.1.259 unicode x86" ProjectUUID="FEB014A3-4DCF-4F53-A1A5-5FDDB7A0E245">
+	<ModelFileName>kandw3.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>
