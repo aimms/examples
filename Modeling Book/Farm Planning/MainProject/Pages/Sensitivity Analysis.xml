@@ -11,12 +11,9 @@
 		<MainArea Line="FixedFromRight" Value="276" />
 	</ResizeData>
 	<Background RGB="#ffffff" />
-	<Action>
-		<EntryProcedure>LoadSensitivityAnalysisOutput</EntryProcedure>
-	</Action>
 	<PageObject Type="Parametric Curve">
 		<Location top="12" left="12" bottom="318" right="504" />
-		<Hidden>VALUE := IsRunningAsViewer</Hidden>
+		<Hidden>VALUE := 0</Hidden>
 		<TabOrder>1</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -102,7 +99,7 @@
 	</PageObject>
 	<PageObject Type="Curve">
 		<Location top="12" left="12" bottom="318" right="504" />
-		<Hidden>VALUE := not(IsRunningAsViewer)</Hidden>
+		<Hidden>VALUE := 1</Hidden>
 		<TabOrder>4</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -139,7 +136,6 @@
 			<Symbol>c</Symbol>
 			<Symbol>CostOfWater</Symbol>
 			<Symbol>t</Symbol>
-			<Symbol>LoadSensitivityAnalysisOutput</Symbol>
 			<Symbol>LandAviablePoints</Symbol>
 			<Symbol>ShadowPrices</Symbol>
 			<Symbol>FarmEarnings</Symbol>

@@ -251,7 +251,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
 		<Location top="504" left="534" bottom="561" right="714" />
-		<Hidden>VALUE := (1 - InternetConnectionExist) and (not IsRunningAsViewer)</Hidden>
+		<Hidden>VALUE := (1 - InternetConnectionExist)</Hidden>
 		<TabOrder>14</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<TextShown>IdentifierText</TextShown>

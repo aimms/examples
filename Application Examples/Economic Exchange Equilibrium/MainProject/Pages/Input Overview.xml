@@ -45,7 +45,6 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="408" left="18" bottom="435" right="192" />
-		<ReadOnly>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</ReadOnly>
 		<TabOrder>6</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -277,7 +276,6 @@ SNOPT, CONOPT and MINOS are local optimizers, thus it could be that they find a 
 			<Symbol>UtilityWeight</Symbol>
 			<Symbol>Endowment</Symbol>
 			<Symbol>AvailableNLPSolvers</Symbol>
-			<Symbol>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

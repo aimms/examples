@@ -28,7 +28,6 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
-		<ReadOnly>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</ReadOnly>
 		<TabOrder>2</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -95,7 +94,6 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</Symbol>
 			<Symbol>ExampleStyle::ButtonColor</Symbol>
 		</Model>
 	</UsedReferences>

@@ -292,39 +292,27 @@ Model Main_Distribution_Center_Allocation {
         }
         Procedure MTCSolveModel {
             Body: {
-                if (IsRunningAsViewer) then
+                ! Initialize the x and y coordinate on the average
+                x := average( d, XCoordinate( d ) );
+                y := average( d, YCoordinate( d ) );
                 
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                ! solve the minimize expected transportation cost model
+                solve MinimizeTransportCost;
                 
-                	if (CaseFind("UnitedStates_1DC",ACase)) then
-                		CaseLoadCurrent(ACase,0);
-                	else
-                		DialogError("Could not find the case \"Solution\".")
-                	endif;
+                ! add the Distribution Center to the set of New Locations
+                SetElementAdd( NewLocations, NewLocation, "MTC DC" );
                 
-                else
-                	! Initialize the x and y coordinate on the average
-                	x := average( d, XCoordinate( d ) );
-                	y := average( d, YCoordinate( d ) );
+                ! Fill the coordinates with the solution of the model
+                NLXCoordinate( NewLocation ) := x ;
+                NLYCoordinate( NewLocation ) := y ;
                 
-                	! solve the minimize expected transportation cost model
-                	solve MinimizeTransportCost;
+                ! Store total cost
+                TotalCost := ExpectedTransportationCost;
                 
-                	! add the Distribution Center to the set of New Locations
-                	SetElementAdd( NewLocations, NewLocation, "MTC DC" );
-                
-                	! Fill the coordinates with the solution of the model
-                	NLXCoordinate( NewLocation ) := x ;
-                	NLYCoordinate( NewLocation ) := y ;
-                
-                	! Store total cost
-                	TotalCost := ExpectedTransportationCost;
-                
-                	DoNotShowCOGSolution := 1;
-                	DoNotShowMTCSolution := 0;
-                	DoNotShowMTCMSolution := 1;
-                	DoNotShowMSLSolution := 1;
-                endif;
+                DoNotShowCOGSolution := 1;
+                DoNotShowMTCSolution := 0;
+                DoNotShowMTCMSolution := 1;
+                DoNotShowMSLSolution := 1;
             }
         }
         Procedure MTCFillDescription {
@@ -400,55 +388,41 @@ Model Main_Distribution_Center_Allocation {
         }
         Procedure MTCMSolveModel {
             Body: {
-                if (IsRunningAsViewer) then
+                empty SupplyRoute, NewLocations;
                 
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                InitDistanceBasedOnCoordinates;
                 
-                	if (CaseFind("UnitedStates_multiDC",ACase)) then
-                		CaseLoadCurrent(ACase,0);
-                	else
-                		DialogError("Could not find the case \"Solution\".")
-                	endif;
+                if MaxDistributionCenters = 0 or MaxDistributionCenters > card( DistributionCenterCandidates ) then
+                
+                	DialogMessage( FormatString("The maximum number of allowed distribution centers should be between 1 and %i", card( DistributionCenterCandidates ) ) );
                 
                 else
                 
-                	empty SupplyRoute, NewLocations;
+                	solve MinimizeTransportCostMulti;
                 
-                	InitDistanceBasedOnCoordinates;
+                	TotalCost := MTCMTotalCost;
                 
-                	if MaxDistributionCenters = 0 or MaxDistributionCenters > card( DistributionCenterCandidates ) then
+                	for ( c | DistributionCenterInUse(c) ) do
                 
-                		DialogMessage( FormatString("The maximum number of allowed distribution centers should be between 1 and %i", card( DistributionCenterCandidates ) ) );
+                		! add the distribution center to the set of New Locations
+                		SetElementAdd( NewLocations, NewLocation, FormatString( "%e", c ) );
                 
-                	else
+                		! Fill the coordinates with the solution of the model
+                		NLXCoordinate( NewLocation ) := XCoordinate( c ) ;
+                		NLYCoordinate( NewLocation ) := YCoordinate( c ) ;
                 
-                		solve MinimizeTransportCostMulti;
+                		for ( d | DCUsedToSupply(c,d) ) do
                 
-                		TotalCost := MTCMTotalCost;
-                
-                		for ( c | DistributionCenterInUse(c) ) do
-                
-                			! add the distribution center to the set of New Locations
-                			SetElementAdd( NewLocations, NewLocation, FormatString( "%e", c ) );
-                
-                			! Fill the coordinates with the solution of the model
-                			NLXCoordinate( NewLocation ) := XCoordinate( c ) ;
-                			NLYCoordinate( NewLocation ) := YCoordinate( c ) ;
-                
-                			for ( d | DCUsedToSupply(c,d) ) do
-                
-                				SupplyRoute( NewLocation,d) := 1;
-                
-                			endfor;
+                			SupplyRoute( NewLocation,d) := 1;
                 
                 		endfor;
                 
-                		DoNotShowCOGSolution := 1;
-                		DoNotShowMTCSolution := 1;
-                		DoNotShowMTCMSolution := 0;
-                		DoNotShowMSLSolution := 1;
+                	endfor;
                 
-                	endif;
+                	DoNotShowCOGSolution := 1;
+                	DoNotShowMTCSolution := 1;
+                	DoNotShowMTCMSolution := 0;
+                	DoNotShowMSLSolution := 1;
                 
                 endif;
             }
@@ -513,26 +487,15 @@ Model Main_Distribution_Center_Allocation {
         }
         Procedure MSLSolveModel {
             Body: {
-                if (IsRunningAsViewer) then
+                empty SupplyRoute, NewLocations;
                 
-                	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case.");
+                InitDistanceBasedOnCoordinates;
                 
-                	if (CaseFind("UnitedStates_ServiceLevel",ACase)) then
-                		CaseLoadCurrent(ACase,0);
-                	else
-                		DialogError("Could not find the case \"Solution\".")
-                	endif;
-                
-                else
-                	empty SupplyRoute, NewLocations;
-                
-                	InitDistanceBasedOnCoordinates;
-                
-                	if MaxDistributionCenters = 0 or MaxDistributionCenters > card( DistributionCenterCandidates ) then
+                if MaxDistributionCenters = 0 or MaxDistributionCenters > card( DistributionCenterCandidates ) then
                 
                 	DialogMessage( FormatString("The maximum number of allowed distribution centers should be between 1 and %i", card( DistributionCenterCandidates ) ) );
                 
-                	else
+                else
                 
                 	/*
                 	We solve the model in two steps, first we maximize the service level by minimizing the maximum distance.
@@ -553,15 +516,13 @@ Model Main_Distribution_Center_Allocation {
                 	solve MinimizeServiceLevel;
                 
                 	for ( d ) do
+                		DCUsedToSupply(c,d) := 0;
                 
-                	DCUsedToSupply(c,d) := 0;
+                		for ( c | c = argmin( c2  | DistributionCenterInUse( c2 ), Distance( c2, d ) ) ) do
                 
-                	for ( c | c = argmin( c2  | DistributionCenterInUse( c2 ), Distance( c2, d ) ) ) do
+                			DCUsedToSupply(c,d) := 1;
                 
-                		DCUsedToSupply(c,d) := 1;
-                
-                	endfor;
-                
+                		endfor;
                 	endfor;
                 
                 	DemandLocationServiceDistance(d) := max( c, DCUsedToSupply(c,d) * Distance(c,d) );
@@ -570,18 +531,16 @@ Model Main_Distribution_Center_Allocation {
                 
                 	for ( c | DistributionCenterInUse(c) ) do
                 
-                	! add the distribution center to the set of New Locations
-                	SetElementAdd( NewLocations, NewLocation, FormatString( "%e", c ) );
+                		! add the distribution center to the set of New Locations
+                		SetElementAdd( NewLocations, NewLocation, FormatString( "%e", c ) );
                 
-                	! Fill the coordinates with the solution of the model
-                	NLXCoordinate( NewLocation ) := XCoordinate( c ) ;
-                	NLYCoordinate( NewLocation ) := YCoordinate( c ) ;
+                		! Fill the coordinates with the solution of the model
+                		NLXCoordinate( NewLocation ) := XCoordinate( c ) ;
+                		NLYCoordinate( NewLocation ) := YCoordinate( c ) ;
                 
-                	for ( d | DCUsedToSupply(c,d) ) do
-                
-                		SupplyRoute( NewLocation,d) := 1;
-                
-                	endfor;
+                		for ( d | DCUsedToSupply(c,d) ) do
+                			SupplyRoute( NewLocation,d) := 1;
+                		endfor;
                 
                 	endfor;
                 
@@ -590,7 +549,6 @@ Model Main_Distribution_Center_Allocation {
                 	DoNotShowMTCMSolution := 1;
                 	DoNotShowMSLSolution := 0;
                 
-                	endif;
                 endif;
             }
         }

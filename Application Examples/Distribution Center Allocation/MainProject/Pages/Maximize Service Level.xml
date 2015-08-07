@@ -182,7 +182,6 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="372" left="6" bottom="402" right="192" />
-		<ReadOnly>VALUE := IsRunningAsViewer</ReadOnly>
 		<TabOrder>8</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>

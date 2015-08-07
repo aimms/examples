@@ -2,31 +2,15 @@
 
 LibraryModule Example_Base {
     Prefix: ExampleStyle;
-    Interface: data { InactiveIfOpenedInAIMMSVIewer, ButtonColor, DialogIfOpenedInAIMMSVIewer };
-    Parameter InactiveIfOpenedInAIMMSVIewer {
-        Definition: 1 onlyif IsRunningAsViewer;
-    }
+    Interface: data { ButtonColor };
     ElementParameter ButtonColor {
         Range: AllColors;
-        Definition: {
-            if IsRunningAsViewer Then
-                'Grey'
-            else
-                'Text Blue'
-            endif;
-        }
+        Definition: 'Text Blue';
     }
     Procedure LibraryInitialization;
     Procedure LibraryTermination {
         Body: {
             return 1 ;
-        }
-    }
-    Procedure DialogIfOpenedInAIMMSVIewer {
-        Body: {
-            if IsRunningAsViewer Then
-                    DialogMessage("This action is disabled in AIMMS Viewer.");
-            endif;
         }
     }
 }
