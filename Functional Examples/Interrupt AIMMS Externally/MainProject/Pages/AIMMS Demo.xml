@@ -72,7 +72,6 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
-		<ReadOnly>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</ReadOnly>
 		<TabOrder>5</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -153,7 +152,6 @@
 			<Symbol>MainInitialization</Symbol>
 			<Symbol>OpenExplorer</Symbol>
 			<Symbol>Counter</Symbol>
-			<Symbol>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</Symbol>
 			<Symbol>ExampleStyle::ButtonColor</Symbol>
 			<Symbol>im::InterruptEventName</Symbol>
 		</Model>

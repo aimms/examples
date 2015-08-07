@@ -580,6 +580,7 @@ LibraryModule Scenario_Tree_Generation_Library {
         }
         Parameter ScenarioTreeNodeInTree {
             IndexDomain: (ast,astn);
+            Default: 0;
         }
         Set ScenarioTreeNodes {
             SubsetOf: AllScenarioTreeNodes;
@@ -659,10 +660,10 @@ LibraryModule Scenario_Tree_Generation_Library {
                 
                 !Create scenario tree arcs
                 for ( (sosc,sost) | ScenarioTreeNodeMapping(sosc,sost) ) do
-                    Scenario := first( sosc2 | ScenarioTreeNodeMapping(sosc2,sost+1) and ( Ord(sosc2,AllScenarios) >= Ord(sosc,AllScenarios) ) );
+                    Scenario := first( sosc2 | ScenarioTreeNodeMapping(sosc2,sost+1) and ( Ord(sosc2,AllScenarios) >= Ord(sosc,Scenarios) ) );
                     while ( Scenario ) do
                     	ScenarioTreeArcIndicator( CurrentScenarioTree, ScenarioTreeNodeMapping(sosc,sost), ScenarioTreeNodeMapping(Scenario,sost+1) ) := 1;
-                    	Scenario := first( sosc2 | ScenarioTreeNodeMapping(sosc2,sost+1) and ( Ord(sosc2,AllScenarios) > Ord(Scenario,AllScenarios) ) );
+                    	Scenario := first( sosc2 | ScenarioTreeNodeMapping(sosc2,sost+1) and ( Ord(sosc2,AllScenarios) > Ord(Scenario,Scenarios) ) );
                     	break when ScenarioTreeNodeMapping(Scenario,sost);
                     endwhile;
                 endfor;
@@ -725,10 +726,10 @@ LibraryModule Scenario_Tree_Generation_Library {
                 Property: Input;
             }
             ElementParameter Scenario {
-                Range: AllScenarios;
+                Range: Scenarios;
             }
             ElementParameter NextScenario {
-                Range: AllScenarios;
+                Range: Scenarios;
             }
             ElementParameter ScenarioTreeNode {
                 Range: ScenarioTreeNodes;

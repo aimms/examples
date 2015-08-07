@@ -20,7 +20,6 @@
 	<Background Inherited="true" />
 	<PageObject Type="Scalar">
 		<Location top="444" left="6" bottom="489" right="192" />
-		<ReadOnly>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</ReadOnly>
 		<TabOrder>5</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -238,7 +237,6 @@
 			<Symbol>ItemBound</Symbol>
 			<Symbol>Text_</Symbol>
 			<Symbol>SolveKnapsackModelBounded</Symbol>
-			<Symbol>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -2,10 +2,7 @@
 
 LibraryModule Example_Base {
     Prefix: ExampleStyle;
-    Interface: data { InactiveIfOpenedInAIMMSVIewer, ButtonColor, DialogIfOpenedInAIMMSVIewer };
-    Parameter InactiveIfOpenedInAIMMSVIewer {
-        Definition: 1 onlyif IsRunningAsViewer;
-    }
+    Interface: data { ButtonColor };
     ElementParameter ButtonColor {
         Range: AllColors;
         Definition: {

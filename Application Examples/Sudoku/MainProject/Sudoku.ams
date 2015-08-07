@@ -136,7 +136,8 @@ Model Main_template {
             SubsetOf: AllSolvers;
             Definition: {
                 {ms|FindString(Formatstring("%e",ms),"BARON")
-                or (FindString(Formatstring("%e",ms),"CPLEX") and SubString(Formatstring("%e",ms),-4,-1)>= "11.0")}
+                or (FindString(Formatstring("%e",ms),"CPLEX") and SubString(Formatstring("%e",ms),-4,-1)>= "11.0")
+                or (FindString(Formatstring("%e",ms),"CPLEX") and SubString(Formatstring("%e",ms),-6,-1)>= "11.0.0")}
             }
         }
         ElementParameter SelectedSolver {
@@ -184,8 +185,6 @@ Model Main_template {
             Solution(r,c,FixedValues(r,c)) := 1;
             Solution(r,c,FixedValues(r,c)).nonvar := 1;
             
-            !NoOfSolutions := 2;
-            
             solve Sudoku;
             GUISolution(ags,r,c)|(ord(ags)=1) := first(v | Solution(r,c,v));
             
@@ -214,6 +213,7 @@ Model Main_template {
             
             if FindString(FormatString("%e", SelectedSolver),"CPLEX") then
             	OptionSetString(FormatString("%e::do_populate", SelectedSolver),"yes");
+            	OptionSetString(FormatString("%e::pool_intensity", SelectedSolver),"aggressive");
             endif;
             if FindString(FormatString("%e", SelectedSolver),"BARON") then
             	OptionSetValue(FormatString("%e::number_of_best_solutions", SelectedSolver),5);

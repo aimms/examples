@@ -304,62 +304,22 @@ Model Main_Employee_Training_Problem {
     }
     Procedure SolveModelInteger {
         Body: {
-            if not IsRunningAsViewer then
-            
-                SolveIntegerModel;
-            
-            else
-            
-               	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-               	CaseFind("Solution Integer",ACase);
-               	CaseLoadCurrent(ACase,0);
-            
-            endif;
+            SolveIntegerModel;
         }
     }
     Procedure SolveModelWithRoundingUp {
         Body: {
-            if not IsRunningAsViewer then
-            
-                SolveLinearModelAndRoundUp ;
-            
-            else
-            
-               	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-               	CaseFind("Solution Rounding Up",ACase);
-               	CaseLoadCurrent(ACase,0);
-            
-            endif;
+            SolveLinearModelAndRoundUp ;
         }
     }
     Procedure SolveModelWithRoundingAndReserves {
         Body: {
-            if not IsRunningAsViewer then
-            
-                SolveLinearModelAndRoundWithReserves ;
-            
-            else
-            
-               	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-               	CaseFind("Solution Rounding with Reserves",ACase);
-               	CaseLoadCurrent(ACase,0);
-            
-            endif;
+            SolveLinearModelAndRoundWithReserves ;
         }
     }
     Procedure SolveModelWithProbabilistic {
         Body: {
-            if not IsRunningAsViewer then
-            
-                SolveProbabilisticModel ;
-            
-            else
-            
-               	DialogMessage("In the AIMMS Viewer, the SOLVE statement is disabled. Therefore the solution is read from a case");
-               	CaseFind("Solution Probabilistic",ACase);
-               	CaseLoadCurrent(ACase,0);
-            
-            endif;
+            SolveProbabilisticModel ;
         }
     }
 }

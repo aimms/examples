@@ -265,7 +265,6 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="468" left="6" bottom="492" right="192" />
-		<ReadOnly>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</ReadOnly>
 		<TabOrder>5</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Change Demand"</Title>
@@ -344,7 +343,6 @@
 			<Symbol>CuttingStockObjective</Symbol>
 			<Symbol>PatternCount</Symbol>
 			<Symbol>RawsCutWithPattern</Symbol>
-			<Symbol>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

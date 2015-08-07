@@ -144,7 +144,6 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="342" left="7" bottom="365" right="193" />
-		<ReadOnly>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</ReadOnly>
 		<TabOrder>2</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Generate Possible Pairs"</Title>
@@ -294,7 +293,6 @@
 			<Symbol>MaxParticipants</Symbol>
 			<Symbol>SelectedCar</Symbol>
 			<Symbol>PictureSize</Symbol>
-			<Symbol>ExampleStyle::InactiveIfOpenedInAIMMSVIewer</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
