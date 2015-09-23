@@ -1053,7 +1053,7 @@ Model Main_Multi_Start {
         Section SubRoutines {
             Procedure ChangeOptionSettings {
                 Body: {
-                    ! Showing warnings for infeasible Benders problems is unwanted.
+                    ! Showing warnings for infeasible problems is unwanted.
                     rval := OptionGetString( 'warning_non_optimal', CurrentValueWarningNonOptimal );
                     OptionSetString( 'warning_non_optimal', 'off' );
                     
