@@ -1,3 +1,4 @@
 ﻿* AIMMS
 * Environment
 Startup_Page "Input and Output Data"
+Startup_Case "data\E-n23-k3.data"

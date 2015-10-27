@@ -1,6 +1,6 @@
 ## ams_version=1.0
 
-Model Main_VRP4 {
+Model Main_VRP {
     Comment: {
         "Capacitated Vehicle Routing Problem
         
@@ -14,7 +14,10 @@ Model Main_VRP4 {
         The Vehicle Routing Problem (VRP) deals with the distribution of goods between depots
         and customers using vehicles. In the Capacitated VRP the vehicles have a limited
         capacity. The model formulation in this project uses the three-index vehicle flow
-        model of Toth and Vigo (2002) denoted by VRP4 on pp. 15-16.
+        model of Toth and Vigo (2002), denoted by VRP4 on pp. 15-16. In this project two
+        variants on this formulation are used. In the first variant the constraint (1.33) is
+        replaced by the Miller-Tucker-Zemlin constraints (1.37) and (1.38). In the second
+        variant it is replaced by the subtour elimination constraints (1.36).
         
         This project uses the data instance \'E-n23-k3\' from the Christofides and Eilon
         set on http://neo.lcc.uma.es/vrp/
@@ -24,28 +27,57 @@ Model Main_VRP4 {
         Routing Problem, P. Toth and D. Vigo (eds), SIAM Monographs on Discrete Mathematics
         and Applications, Philadelphia, 2002, pp. 1-26."
     }
-    Parameter CustomersNumber {
-        Definition: 13;
+    Set PossibleFormulations {
+        Definition: {
+            { 'Miller-Tucker-Zemlin', 'Subtour elimination' }
+        }
+        Comment: {
+            "The possible formulations that can be used:
+            (1) the generalized Miller-Tucker-Zemlin subtour elimination constraints;
+            (2) the \"normal\" subtour elimination constraint."
+        }
     }
-    Set Customers {
+    ElementParameter Formulation {
+        Range: PossibleFormulations;
+        InitialData: 'Miller-Tucker-Zemlin';
+        Comment: {
+            "Specifies the formulation used. the generalized Miller-Tucker-Zemlin subtour elimination
+            constraints are used. Otherwise, the \"normal\" subtour elimination
+            constraint."
+        }
+    }
+    Parameter NumberOfCustomers {
+        Range: integer;
+        InitialData: 13;
+    }
+    Set CustomersAndDepot {
         SubsetOf: Integers;
         Index: i, j;
         Definition: {
-            {1..CustomersNumber}
+            { 1 .. NumberOfCustomers }
         }
+    }
+    ElementParameter Depot {
+        Range: CustomersAndDepot;
+        InitialData: 1;
+    }
+    Set Customers {
+        SubsetOf: CustomersAndDepot;
+        Index: c;
+        Definition: CustomersAndDepot - Depot;
     }
     Parameter CustomersDemand {
         IndexDomain: (i);
     }
-    Parameter VehiclesNumber {
+    Parameter NumberOfVehicles {
         Range: integer;
-        Definition: VehicleLowerBound + 2;
+        InitialData: 4;
     }
     Set Vehicles {
         SubsetOf: Integers;
-        Index: k;
+        Index: k, Vehicle;
         Definition: {
-            {1..VehiclesNumber}
+            { 1 .. NumberOfVehicles }
         }
     }
     Parameter XCoordinate {
@@ -57,24 +89,11 @@ Model Main_VRP4 {
     Parameter Distance {
         IndexDomain: (i,j);
     }
-    Parameter FullDistance {
-        IndexDomain: (i,j);
-        Definition: {
-            if ( i>j ) then
-                Distance(i,j)
-            else
-                Distance(j,i)
-            endif
-        }
-    }
     Parameter LoadCapacity {
         InitialData: 6000;
     }
-    Parameter VehicleLowerBound {
-        Definition: ceil(sum(i, CustomersDemand(i)) / LoadCapacity);
-    }
     Variable X {
-        IndexDomain: (i,j,k) | i<>j;
+        IndexDomain: (i,j,k) | i <> j;
         Range: binary;
         Comment: "Indicates if vehicle k uses arc (i,j).";
     }
@@ -84,29 +103,28 @@ Model Main_VRP4 {
         Comment: "Takes value 1 if customer i is served by vehicle k.";
     }
     Variable U {
-        IndexDomain: (i,k);
+        IndexDomain: (i,k) | Formulation='Miller-Tucker-Zemlin';
         Range: free;
-        Comment: "Subtour elimination variable.";
+        Comment: "Subtour elimination variable used in the Miller-Tucker-Zemlin constraints.";
     }
     Variable TotalCost {
         Range: free;
-        Definition: sum( (i,j), FullDistance(i,j) * sum( k, X(i,j,k) ) );
+        Definition: sum( (i,j), Distance(i,j) * sum( k, X(i,j,k) ) );
     }
     Constraint CustomerAssignment {
-        IndexDomain: i | i>1;
+        IndexDomain: i | i <> Depot;
         Definition: sum( k, Y(i,k) ) = 1;
         Comment: "Imposes that each customer is visited exactly once.";
     }
-    Constraint VehiclesLimit {
-        Definition: sum( k, Y(1,k) ) >= VehicleLowerBound;
-        Comment: "Minimum number of vehicles.";
+    Constraint VehiclesConstraint {
+        Definition: sum( k, Y(Depot,k) ) = NumberOfVehicles;
     }
-    Constraint RouteConstraint1 {
+    Constraint IndegreeConstraint {
         IndexDomain: (i,k);
         Definition: sum( j, X(i,j,k) ) = Y(i,k);
         Comment: "The same vehicle enters and leaves a given customer.";
     }
-    Constraint RouteConstraint2 {
+    Constraint OutdegreeConstraint {
         IndexDomain: (i,k);
         Definition: sum( j, X(j,i,k) ) = Y(i,k);
         Comment: "The same vehicle enters and leaves a given customer.";
@@ -116,29 +134,20 @@ Model Main_VRP4 {
         Definition: sum( i, CustomersDemand(i) * Y(i,k) ) <= LoadCapacity;
         Comment: "The capacity restriction for each vehicle k.";
     }
-    Constraint SubtourElimination1 {
-        IndexDomain: (i,j,k) | i>1 and j>0 and i<>j;
+    Constraint SubtourEliminationMKZ1 {
+        IndexDomain: (i,j,k) | Formulation='Miller-Tucker-Zemlin' and i<>Depot and j<>Depot and i<>j;
         Definition: U(i,k) - U(j,k) + LoadCapacity * X(i,j,k) <= LoadCapacity - CustomersDemand(j);
-        Comment: "Subtour elimination constraints (Miller, Tucker, Zemlin).";
+        Comment: "Miller-Tucker-Zemlin Subtour elimination constraint (1.37).";
     }
-    Constraint SubtourElimination2 {
-        IndexDomain: (i,k) | i<>1;
-        Definition: U(i,k) >= CustomersDemand(i);
-        Comment: "Subtour elimination constraints (Miller, Tucker, Zemlin).";
+    Constraint SubtourEliminationMKZ2 {
+        IndexDomain: (i,k) | Formulation='Miller-Tucker-Zemlin' and i<>Depot;
+        Definition: CustomersDemand(i) <= U(i,k) <= LoadCapacity;
+        Comment: "Miller-Tucker-Zemlin Subtour elimination constraint (1.38).";
     }
-    Constraint SubtourElimination3 {
-        IndexDomain: (i,k) | i<>1;
-        Definition: U(i,k) <= LoadCapacity;
-        Comment: "Subtour elimination constraints (Miller, Tucker, Zemlin).";
-    }
-    Constraint VehicleOrder {
-        IndexDomain: k | k < VehiclesNumber;
-        Definition: Y(1,k) >= Y(1,k+1);
-        Comment: {
-            "This constraint enforces that vehicle 1 is used before vehicle 2, which is used
-            before vehicle 3, etc. This constraint is added to improve the performance of the
-            model as it breaks some symmetry in the model."
-        }
+    Constraint SubtourElimination {
+        IndexDomain: (s,k) | Formulation='Subtour elimination';
+        Definition: sum( (i,j) | SubsetIndicator(s,i) and SubsetIndicator(s,j), X(i,j,k) ) <= sum( i, SubsetIndicator(s,i) ) - 1;
+        Comment: "Subtour elimination constraints (1.36).";
     }
     MathematicalProgram LeastCost {
         Objective: TotalCost;
@@ -147,142 +156,150 @@ Model Main_VRP4 {
         Variables: AllVariables;
         Type: MIP;
     }
-    Procedure MainInitialization {
-        Body: {
-             COMPOSITE TABLE
-              i   j    Distance
-            !--  --    --------
-              2   1       9
-              3   1      14
-              3   2      21
-              4   1      23
-              4   2      22
-              4   3      25
-              5   1      32
-              5   2      36
-              5   3      38
-              5   4      42
-              6   1      50
-              6   2      52
-              6   3       5
-              6   4      12
-              6   5      22
-              7   1      21
-              7   2      24
-              7   3      31
-              7   4      35
-              7   5      37
-              7   6      41
-              8   1      49
-              8   2      51
-              8   3       7
-              8   4      17
-              8   5      16
-              8   6      23
-              8   7      26
-              9   1      30
-              9   2      36
-              9   3      36
-              9   4      44
-              9   5      46
-              9   6      10
-              9   7      21
-              9   8      30
-             10   1      27
-             10   2      37
-             10   3      43
-             10   4      31
-             10   5      37
-             10   6      39
-             10   7      19
-             10   8      28
-             10   9      25
-             11   1      35
-             11   2      41
-             11   3      29
-             11   4      31
-             11   5      29
-             11   6       9
-             11   7      10
-             11   8      16
-             11   9      22
-             11  10      20
-             12   1      28
-             12   2      30
-             12   3       7
-             12   4      11
-             12   5      13
-             12   6      17
-             12   7      25
-             12   8      27
-             12   9      10
-             12  10      16
-             12  11      10
-             13   1      18
-             13   2      20
-             13   3       6
-             13   4       6
-             13   5      14
-             13   6      16
-             13   7      12
-             13   8      12
-             13   9      20
-             13  10       8
-             13  11      10
-             13  12      10
-             ;
-            
-             COMPOSITE TABLE
-             i  CustomersDemand
-            !--  --------------
-             1     0
-             2     1200
-             3     1700
-             4     1500
-             5     1400
-             6     1700
-             7     1400
-             8     1200
-             9     1900
-             10    1800
-             11    1600
-             12    1700
-             13    1100
-            ;
-            
-             COMPOSITE TABLE
-              i   XCoordinate     YCoordinate
-             !--  -----------     -----------
-              1       0                 0
-              2       2                25
-              3      12               -12
-              4      10                -2
-              5       2               -20
-              6      30                 5
-              7      -8                 8
-              8      13               -18
-              9       4                 9
-             10     -10                -7
-             11     -20                10
-             12       0               -10
-             13     -19                -3
-            ;
+    Section Subtours {
+        Set SubtourCombinations {
+            SubsetOf: Integers;
+            Index: s;
+        }
+        Parameter SubsetIndicator {
+            IndexDomain: (s,i);
+        }
+        Parameter NumberOfSubtours {
+            Range: integer;
+        }
+        Procedure CreateSubsets {
+            Body: {
+                empty SubtourCombinations, CurrentSubset, SubsetIndicator;
+                
+                LastPosition := Last(c);
+                
+                comb := 0;
+                
+                repeat
+                
+                	CurrentPosition := LastPosition;
+                
+                	while CurrentPosition and CurrentSubset(CurrentPosition) do
+                		CurrentPosition -= 1;
+                	endwhile;
+                
+                	break when (CurrentPosition = Depot);
+                
+                	CurrentSubset(CurrentPosition) := 1;
+                	CurrentSubset(c | CurrentPosition < c) := 0;
+                
+                	if ( sum( c, CurrentSubset(c) ) >= 2 ) then
+                		comb +=1;
+                		SubtourCombinations += comb;
+                		SubsetIndicator(comb, c) := CurrentSubset(c);
+                	endif;
+                
+                endrepeat;
+            }
+            Parameter comb;
+            Parameter CurrentSubset {
+                IndexDomain: (c);
+            }
+            ElementParameter LastPosition {
+                Range: Customers;
+            }
+            Parameter CurrentPosition {
+                Range: integer;
+            }
         }
     }
+    Section Page {
+        ElementParameter Xcolor {
+            IndexDomain: (k);
+            Range: AllColors;
+        }
+        Parameter XCoordMax {
+            Definition: {
+                if ( max( i, XCoordinate(i) ) > 0 ) then
+                	max( i, XCoordinate(i) ) * 1.08
+                else
+                	max( i, XCoordinate(i) ) * 0.92
+                endif
+            }
+        }
+        Parameter XCoordMin {
+            Definition: {
+                if ( min( i, XCoordinate(i) ) > 0 ) then
+                	min( i, XCoordinate(i) ) * 0.92
+                else
+                	min( i, XCoordinate(i) ) * 1.08
+                endif
+            }
+        }
+        Parameter YCoordMax {
+            Definition: {
+                if ( max( i, YCoordinate(i) ) > 0 ) then
+                	max( i, YCoordinate(i) ) * 1.08
+                else
+                	max( i, YCoordinate(i) ) * 0.92
+                endif
+            }
+        }
+        Parameter YCoordMin {
+            Definition: {
+                if ( min( i, YCoordinate(i) ) > 0 ) then
+                	min( i, YCoordinate(i) ) * 0.92
+                else
+                	min( i, YCoordinate(i) ) * 1.08
+                endif
+            }
+        }
+        Procedure DetermineColors {
+            Body: {
+                for (k) do
+                	switch (k) do
+                		1:
+                			Xcolor(k) := 'red';
+                		2:
+                			Xcolor(k) := 'blue';
+                		3:
+                			Xcolor(k) := 'green';
+                		4:
+                			Xcolor(k) := 'yellow';
+                		5:
+                			Xcolor(k) := 'cyan';
+                		6:
+                			Xcolor(k) := 'magenta';
+                		7:
+                			Xcolor(k) := 'navy blue';
+                		default:
+                			Xcolor(k) := Element( AllColors, k );
+                	endswitch;
+                endfor;
+            }
+        }
+        Procedure IncumbentCallback {
+            Body: {
+                RetrieveCurrentVariableValues( AllVariables );
+                
+                DetermineColors;
+                
+                PageRefreshAll;
+            }
+        }
+    }
+    Procedure MainInitialization;
     Procedure MainExecution {
         Body: {
             ShowProgressWindow;
             
+            empty X, Y, TotalCost;
+            PageRefreshAll;
+            
+            if ( Formulation = 'Subtour elimination' ) then
+            	CreateSubsets;
+            endif;
+            
             LeastCost.CallbackNewIncumbent := 'IncumbentCallback';
             
             solve LeastCost;
-        }
-    }
-    Procedure IncumbentCallback {
-        Body: {
-            RetrieveCurrentVariableValues( AllVariables );
             
-            PageRefreshAll;
+            DetermineColors;
         }
     }
     Procedure MainTermination {

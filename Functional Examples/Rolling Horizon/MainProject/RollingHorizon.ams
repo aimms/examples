@@ -441,33 +441,33 @@ Model Main_template {
             Body: {
                 ! The horizon needs to be initialized:
                 
-                	NumberOfPeriodsInPlanningInterval := InitialNumberOfPeriodsInPlanningInterval ;
+                NumberOfPeriodsInPlanningInterval := InitialNumberOfPeriodsInPlanningInterval ;
                 
-                	FirstWeekInPlanningInterval   := First(WeeklyCalendar) ;
-                	FirstPeriodInPlanningInterval := First(Periods) ;
+                FirstWeekInPlanningInterval   := First(WeeklyCalendar) ;
+                FirstPeriodInPlanningInterval := First(Periods) ;
                 
-                	CreateWeekPeriodsTimeTable ;
+                CreateWeekPeriodsTimeTable ;
                 
                 ! Normally at this point the first submodel is solved.
                 
-                	Delay(0.5) ;
+                Delay(0.5) ;
                 
                 ! The horizon is rolled forward, untill the end of the horizon is reached.
                 
-                	while NotFinished do
-                		PageRefreshAll ;
-                		Delay(0.5) ;		! Normally at this point the next submodel is solved.
-                		RollHorizonOnce ;
-                	endwhile ;
+                while NotFinished do
+                	PageRefreshAll ;
+                	Delay(0.5) ;		! Normally at this point the next submodel is solved.
+                	RollHorizonOnce ;
+                endwhile ;
             }
         }
     }
     Procedure MainInitialization {
         Body: {
             Products := data { white_bar_2oz,
-            		   white_bar_4oz,
-            		   milk_bar_2oz ,
-            		   milk_bar_4oz } ;
+            		           white_bar_4oz,
+            		           milk_bar_2oz ,
+            		           milk_bar_4oz } ;
             
             Demand(w,'white_bar_2oz') := Normal(200,50) ;
             Demand(w,'white_bar_4oz') := Normal(300,100) ;
@@ -475,21 +475,21 @@ Model Main_template {
             Demand(w,'milk_bar_4oz')  := Normal(450,100) ;
             
             InitialStock(p) := data { white_bar_2oz : 3000,
-                		          white_bar_4oz : 2800,
-            		     	  milk_bar_2oz  : 4200,
-            		     	  milk_bar_4oz  : 4400 } ;
+                		              white_bar_4oz : 2800,
+            		     	          milk_bar_2oz  : 4200,
+            		     	          milk_bar_4oz  : 4400 } ;
             
             MaximumProduction(p) := data { white_bar_2oz : 20000,
-            			       white_bar_4oz : 60000,
-            			       milk_bar_2oz  : 70000,
-            			       milk_bar_4oz  : 90000 } ;
+            			                   white_bar_4oz : 60000,
+            			                   milk_bar_2oz  : 70000,
+            			                   milk_bar_4oz  : 90000 } ;
             
             MaximumTotalProduction := 1200000 ;
             
             StockCost(p) := data { white_bar_2oz : 0.100,
-            		       white_bar_4oz : 0.200,
-            		       milk_bar_2oz  : 0.100,
-            		       milk_bar_4oz  : 0.200 } ;
+            		               white_bar_4oz : 0.200,
+            		               milk_bar_2oz  : 0.100,
+            		               milk_bar_4oz  : 0.200 } ;
             
             StepSize := 3 ;
             NumberOfPeriodsInPlanningInterval := 10 ;
