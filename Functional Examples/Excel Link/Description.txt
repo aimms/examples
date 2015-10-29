@@ -16,7 +16,7 @@ library in the "Excel Linkage" section of the model tree.
 Keywords:
 Excel Add-In, Spreadsheet functions, Run Time Error Handling.
 
-Notes:
+Note:
 If you start up the Excel spreadsheet by ExcelAddInExample.xls or Excel64AddInExample.xls then AIMMS will try
 to open the AIMMS version as specified in the ExcelLink.aimms file. If you want to use a newer version of AIMMS
 then you have to make sure that the AIMMS version in the ExcelLink.aimms file is updated to that version. You

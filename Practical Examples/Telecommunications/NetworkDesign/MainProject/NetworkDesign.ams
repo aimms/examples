@@ -41,9 +41,6 @@ Model Main_NetworkDesign {
         Parameter Demand {
             IndexDomain: q;
         }
-        Parameter SetupCost {
-            IndexDomain: (i,j);
-        }
         ElementParameter FromCity {
             IndexDomain: q;
             Range: Cities;
@@ -51,6 +48,10 @@ Model Main_NetworkDesign {
         ElementParameter ToCity {
             IndexDomain: q;
             Range: Cities;
+        }
+        Parameter SetupCost {
+            IndexDomain: (i,j);
+            Comment: "Dummy parameter needed to read XML file. It is not used in the model.";
         }
         Set Links {
             Index: l;
@@ -77,10 +78,12 @@ Model Main_NetworkDesign {
         Variable Flow {
             IndexDomain: (i,j,k) | ( ModuleCapacity(i, j) or ModuleCapacity(j, i) ) and k <> i;
             Range: nonnegative;
+            Comment: "Flow variables corresponding to commodity k.";
         }
         Variable NumberOfModules {
             IndexDomain: (i,j) | ModuleCapacity(i, j);
             Range: integer;
+            Comment: "The number of installed capacity modules on arc/edge (i,j).";
         }
         Variable TotalCost {
             Range: free;
@@ -89,7 +92,7 @@ Model Main_NetworkDesign {
         Constraint DemandConstraint {
             IndexDomain: (k,i);
             Definition: sum(j, Flow(j, i, k)) - sum(j, Flow(i, j, k)) = AggrDemand(k,i);
-            Comment: "Flow conservation constraint";
+            Comment: "Flow conservation constraint. It ensures a feasible flow.";
         }
         Constraint CapacityConstraintDirected {
             IndexDomain: {
@@ -97,6 +100,10 @@ Model Main_NetworkDesign {
                 and ( LinkModel = 'DIRECTED' or LinkModel = 'BIDIRECTED' )
             }
             Definition: sum(k, Flow(i, j, k)) <= ModuleCapacity(i, j) * NumberOfModules(i, j);
+            Comment: {
+                "Capacity constraint for the directed and bidirected model type. Please note that the
+                bidirected model type also uses the constraint CapacityConstraintBidirected."
+            }
         }
         Constraint CapacityConstraintBidirected {
             IndexDomain: {
@@ -104,6 +111,10 @@ Model Main_NetworkDesign {
                 and LinkModel = 'BIDIRECTED'
             }
             Definition: sum(k, Flow(i, j, k)) <= ModuleCapacity(j, i) * NumberOfModules(j, i);
+            Comment: {
+                "Capacity constraint for the bidirected model type. Please note that the
+                bidirected model type also uses the constraint CapacityConstraintDirected."
+            }
         }
         Constraint CapacityConstraintUndirected {
             IndexDomain: {
@@ -111,6 +122,7 @@ Model Main_NetworkDesign {
                 and LinkModel = 'UNDIRECTED'
             }
             Definition: sum(k, Flow(i, j, k) + Flow(j, i, k)) <= ModuleCapacity(i, j) * NumberOfModules(i, j);
+            Comment: "Capacity constraint for the undirected model type.";
         }
         MathematicalProgram LeastCost {
             Objective: TotalCost;
