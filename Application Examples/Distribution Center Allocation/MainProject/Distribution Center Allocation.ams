@@ -34,6 +34,16 @@ Model Main_Distribution_Center_Allocation {
         Parameter ExpectedDemand {
             IndexDomain: (d);
         }
+        Parameter ShippingCost {
+            Definition: 6371;
+            Comment: {
+                "The cost for shipping one unit of the good over one unit of the distance from a
+                distribution center \'c\' to a demand locations \'d\'. The amount of goods that have
+                to be shipped to demand location \'d\' are given by the parameter ExpectedDemand(d).
+                
+                Note that each demand location will be served by exactly one distribution center."
+            }
+        }
     }
     DeclarationSection General_Declarations {
         StringParameter ModelDescription;
@@ -240,7 +250,7 @@ Model Main_Distribution_Center_Allocation {
                 NLYCoordinate( NewLocation ) := sum( d, YCoordinate(d) * ExpectedDemand(d) ) / sum( d, ExpectedDemand(d) );
                 
                 TotalCost := sum[ d, arccos( sin( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * sin( ycoordinate(d)*2*arccos(0)/180 ) +
-                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation )* 2 * arccos(0) / 180 ) ) * 6371 * ExpectedDemand(d)]
+                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation )* 2 * arccos(0) / 180 ) ) * ShippingCost * ExpectedDemand(d)]
                 
                 else
                 
@@ -248,7 +258,7 @@ Model Main_Distribution_Center_Allocation {
                 NLYCoordinate( NewLocation ) := average( d, YCoordinate(d) ) ;
                 
                 TotalCost := sum[ d, arccos( sin( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * sin( ycoordinate(d)*2*arccos(0)/180 ) +
-                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation ) * 2 * arccos(0) / 180) ) * 6371]
+                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation ) * 2 * arccos(0) / 180) ) * ShippingCost]
                 
                 endif;
                 
@@ -272,7 +282,7 @@ Model Main_Distribution_Center_Allocation {
             Definition: {
                 sum[ d, arccos( sin( y * 2 * arccos(0) / 180 ) * sin( ycoordinate(d)*2*arccos(0)/180 ) +
                                 cos( y * 2 * arccos(0) / 180) * cos( ycoordinate(d)*2*arccos(0)/180 ) *
-                                cos( xcoordinate( d ) * 2 * arccos(0) / 180 - x *2*arccos(0)/180 ) ) * 6371 * ExpectedDemand(d)]
+                                cos( xcoordinate( d ) * 2 * arccos(0) / 180 - x *2*arccos(0)/180 ) ) * ShippingCost * ExpectedDemand(d)]
             }
             Comment: "sum[d,sqrt((x-Xcoordinate(d))**2+(y-Ycoordinate(d))**2) * ExpectedDemand(d)]";
         }
@@ -336,7 +346,7 @@ Model Main_Distribution_Center_Allocation {
             Range: binary;
         }
         Variable MTCMTotalCost {
-            Definition: sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ExpectedDemand(d) );
+            Definition: sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ShippingCost * ExpectedDemand(d) );
         }
         Constraint LimitOnUsedDCs {
             Definition: sum(c, DistributionCenterInUse(c) ) <= MaxDistributionCenters;
@@ -376,14 +386,16 @@ Model Main_Distribution_Center_Allocation {
                 ycorrad(l) := ycoordinate(l)*pi/180;
                 
                 Distance( c, d ) := arccos( sin( ycorrad( c ) ) * sin( ycorrad( d ) ) +
-                                            cos( ycorrad( c ) ) * cos( ycorrad( d ) ) * cos( xcorrad( d ) - xcorrad(c ) ) ) * 6371;
+                                            cos( ycorrad( c ) ) * cos( ycorrad( d ) ) * cos( xcorrad( d ) - xcorrad(c ) ) );
             }
             Parameter pi;
             Parameter xcorrad {
                 IndexDomain: (l);
+                Comment: "x-coordinates in radians.";
             }
             Parameter ycorrad {
                 IndexDomain: (l);
+                Comment: "yx-coordinates in radians.";
             }
         }
         Procedure MTCMSolveModel {
@@ -449,7 +461,7 @@ Model Main_Distribution_Center_Allocation {
                 
                 else
                 
-                   sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ExpectedDemand(d) )
+                   sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ShippingCost * ExpectedDemand(d) )
                 
                 endif
             }
@@ -480,7 +492,7 @@ Model Main_Distribution_Center_Allocation {
             }
         }
         MathematicalProgram MinimizeServiceLevel {
-            Objective: ServiceLevel;
+            Objective: SLObjective;
             Direction: minimize;
             Constraints: MSLConstraintSet;
             Variables: MSLVariableSet;
@@ -527,7 +539,7 @@ Model Main_Distribution_Center_Allocation {
                 
                 	DemandLocationServiceDistance(d) := max( c, DCUsedToSupply(c,d) * Distance(c,d) );
                 
-                	TotalCost := sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ExpectedDemand(d) );
+                	TotalCost := sum( (c,d), Distance(c,d) * DCUsedToSupply(c,d) * ShippingCost * ExpectedDemand(d) );
                 
                 	for ( c | DistributionCenterInUse(c) ) do
                 
