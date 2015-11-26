@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2008-10-22 19:27:55">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -25,7 +25,7 @@
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="2D Chart">
 		<Location top="252" left="207" bottom="615" right="753" />
-		<TabOrder>3</TabOrder>
+		<TabOrder>2</TabOrder>
 		<Border Style="InShadow" Width="2" />
 		<X_Axis>
 			<Domain ID="1004">ActualPlannedProjectSchedule( p )</Domain>
@@ -54,12 +54,12 @@
 		<StaticText>Execute</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="369" left="6" bottom="396" right="192" />
-		<TabOrder>6</TabOrder>
+		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Clear Results"</Title>
@@ -77,7 +77,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="339" left="6" bottom="366" right="192" />
-		<TabOrder>5</TabOrder>
+		<TabOrder>3</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Run Sensitivity"</Title>
@@ -95,7 +95,7 @@
 	</PageObject>
 	<PageObject Type="Table">
 		<Location top="189" left="207" bottom="249" right="405" />
-		<TabOrder>7</TabOrder>
+		<TabOrder>5</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -116,14 +116,14 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>p</Symbol>
-			<Symbol>ts</Symbol>
 			<Symbol>TotalCost</Symbol>
-			<Symbol>DoSensitivityAnalysis</Symbol>
-			<Symbol>ActualPlannedProjectSchedule</Symbol>
-			<Symbol>CleanData</Symbol>
-			<Symbol>ActualPlannedProjectCost</Symbol>
 			<Symbol>TotalTime</Symbol>
+			<Symbol>ActualPlannedProjectSchedule</Symbol>
+			<Symbol>ActualPlannedProjectCost</Symbol>
+			<Symbol>DoSensitivityAnalysis</Symbol>
+			<Symbol>CleanData</Symbol>
+			<Symbol>ts</Symbol>
+			<Symbol>p</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2009-02-26 01:52:21">
+<Page Version="4000" TimeStamp="2015-03-09 13:28:12">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="249">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromBottom" Value="70">
 						<TopArea Line="FixedFromTop" Value="232" />
@@ -35,7 +35,7 @@
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="186" left="210" bottom="291" right="768" />
+		<Location top="189" left="207" bottom="291" right="768" />
 		<StaticText>This page display the reconciled values in tabular format.  It shows:
 
 - all reconciled flows
@@ -44,7 +44,7 @@
 - the amount of reactant created/consumed in every reactor</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="9B4C3B3E-A80D-43F1-9D8C-419D94537DE4">old text font</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Table">
@@ -136,17 +136,17 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>c</Symbol>
-			<Symbol>f</Symbol>
-			<Symbol>ResultDisplay</Symbol>
-			<Symbol>ReactantCreated</Symbol>
-			<Symbol>ru</Symbol>
-			<Symbol>ResultDisplays</Symbol>
-			<Symbol>ComponentFlow</Symbol>
-			<Symbol>Composition</Symbol>
-			<Symbol>ResultDisplayHidden</Symbol>
 			<Symbol>Flow</Symbol>
 			<Symbol>MolarFlowMass</Symbol>
+			<Symbol>Composition</Symbol>
+			<Symbol>ComponentFlow</Symbol>
+			<Symbol>ReactantCreated</Symbol>
+			<Symbol>ResultDisplays</Symbol>
+			<Symbol>ResultDisplayHidden</Symbol>
+			<Symbol>ru</Symbol>
+			<Symbol>f</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>ResultDisplay</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

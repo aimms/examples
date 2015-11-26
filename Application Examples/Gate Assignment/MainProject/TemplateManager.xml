@@ -9,8 +9,8 @@
 			<Template Name="Background Info Template" PageGUID="D222186B-24BE-4B72-A448-64EAB732A436" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
 				<Page Name="Problem Description Page" PageGUID="897FBB56-0FC7-4D8F-8439-987439B5AC66" />
 			</Template>
-			<Page Name="Details last solve" PageGUID="A4AD1083-40C6-4AE5-92BE-182782A7F901" />
 			<Page Name="Gate Assignment" PageGUID="7EE50ABF-F962-46F5-B770-5A18A0462169" />
+			<Page Name="Details last solve" PageGUID="A4AD1083-40C6-4AE5-92BE-182782A7F901" />
 			<Page Name="Show Input" PageGUID="CFD0050A-4200-471A-8611-5AA4F93C073C" />
 			<Page Name="Gate input" PageGUID="C2C2E6AB-FCB4-456C-BD1B-72A0A48B6EED" />
 			<Page Name="Flight input" PageGUID="69697515-53A9-497C-9579-03CC4A4862CB" />

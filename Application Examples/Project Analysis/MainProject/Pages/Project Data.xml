@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2008-10-22 19:27:55">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -29,12 +29,12 @@
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Button">
 		<Location top="186" left="6" bottom="210" right="192" />
-		<TabOrder>12</TabOrder>
+		<TabOrder>10</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</ForegroundColor>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<ActionSequence>
@@ -47,7 +47,7 @@
 	</PageObject>
 	<PageObject Type="Network Object">
 		<Location top="213" left="204" bottom="561" right="567" />
-		<TabOrder>3</TabOrder>
+		<TabOrder>2</TabOrder>
 		<Font GUID="06BE7B73-2CAA-486D-A602-01D503C1855F" Name="Network Object" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -87,7 +87,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="186" left="204" bottom="213" right="567" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>9</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -104,7 +104,7 @@
 	</PageObject>
 	<PageObject Type="2D Chart">
 		<Location top="438" left="570" bottom="615" right="768" />
-		<TabOrder>4</TabOrder>
+		<TabOrder>3</TabOrder>
 		<Border Style="InShadow" Width="2" />
 		<X_Axis>
 			<Domain ID="1004">t</Domain>
@@ -128,7 +128,7 @@
 	<PageObject Type="Scalar">
 		<Location top="561" left="204" bottom="588" right="567" />
 		<ReadOnly>"Yes"</ReadOnly>
-		<TabOrder>10</TabOrder>
+		<TabOrder>8</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -144,7 +144,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="588" left="204" bottom="615" right="567" />
-		<TabOrder>7</TabOrder>
+		<TabOrder>5</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -159,7 +159,7 @@
 	</PageObject>
 	<PageObject Type="Table">
 		<Location top="186" left="570" bottom="435" right="768" />
-		<TabOrder>13</TabOrder>
+		<TabOrder>11</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -223,7 +223,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="366" left="6" bottom="393" right="192" />
-		<TabOrder>8</TabOrder>
+		<TabOrder>6</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Crash Project"</Title>
@@ -253,12 +253,12 @@
 		<StaticText>Execute</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="396" left="6" bottom="423" right="192" />
-		<TabOrder>6</TabOrder>
+		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Clear Solution"</Title>
@@ -276,7 +276,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="336" left="6" bottom="363" right="192" />
-		<TabOrder>9</TabOrder>
+		<TabOrder>7</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Normal Completion"</Title>
@@ -294,32 +294,32 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>GUI_TaskColor</Symbol>
-			<Symbol>MainExecution</Symbol>
-			<Symbol>n_from</Symbol>
-			<Symbol>n</Symbol>
-			<Symbol>t</Symbol>
-			<Symbol>TaskTime</Symbol>
-			<Symbol>TimeReduction</Symbol>
-			<Symbol>n_to</Symbol>
-			<Symbol>MainInitialization</Symbol>
-			<Symbol>FinishTime</Symbol>
 			<Symbol>ProjectDeadline</Symbol>
-			<Symbol>GUI_TextColor</Symbol>
-			<Symbol>ProjectCost</Symbol>
-			<Symbol>ts</Symbol>
-			<Symbol>MaxReducedTime</Symbol>
-			<Symbol>InputDataAnalysis</Symbol>
-			<Symbol>ProjectCompletionTime</Symbol>
-			<Symbol>GUI_ArcColor</Symbol>
-			<Symbol>Nodes_XLocation</Symbol>
-			<Symbol>CleanData</Symbol>
-			<Symbol>Nodes_YLocation</Symbol>
-			<Symbol>ExtraUnitCost</Symbol>
-			<Symbol>Duration</Symbol>
 			<Symbol>Predecessors</Symbol>
+			<Symbol>TaskTime</Symbol>
+			<Symbol>MaxReducedTime</Symbol>
 			<Symbol>TaskCost</Symbol>
+			<Symbol>ExtraUnitCost</Symbol>
+			<Symbol>TimeReduction</Symbol>
 			<Symbol>StartTime</Symbol>
+			<Symbol>FinishTime</Symbol>
+			<Symbol>Duration</Symbol>
+			<Symbol>ProjectCompletionTime</Symbol>
+			<Symbol>ProjectCost</Symbol>
+			<Symbol>Nodes_XLocation</Symbol>
+			<Symbol>Nodes_YLocation</Symbol>
+			<Symbol>GUI_ArcColor</Symbol>
+			<Symbol>GUI_TaskColor</Symbol>
+			<Symbol>GUI_TextColor</Symbol>
+			<Symbol>MainInitialization</Symbol>
+			<Symbol>InputDataAnalysis</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>CleanData</Symbol>
+			<Symbol>n</Symbol>
+			<Symbol>n_from</Symbol>
+			<Symbol>n_to</Symbol>
+			<Symbol>t</Symbol>
+			<Symbol>ts</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

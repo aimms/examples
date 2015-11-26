@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2009-09-04 13:08:57">
-	<Location top="29" left="4" bottom="914" right="1367" />
+<Page Version="4000" TimeStamp="2014-10-02 10:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="175" />
 				</LeftArea>
@@ -115,7 +115,7 @@
 		<StaticText>Information</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -123,7 +123,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -214,7 +214,7 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -258,7 +258,7 @@
 		<StaticText>Database</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -266,7 +266,7 @@
 		<StaticText>Constraint Slacks</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -292,7 +292,7 @@
 		<StaticText>Basic Transport Model</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Network Object">
@@ -361,26 +361,26 @@
 	<UsedReferences>
 		<Model>
 			<Symbol>Depots</Symbol>
-			<Symbol>c</Symbol>
-			<Symbol>d</Symbol>
-			<Symbol>Transport</Symbol>
-			<Symbol>DatabaseMainInitialization</Symbol>
-			<Symbol>Demand</Symbol>
-			<Symbol>ConstraintSlacksMainInitialization</Symbol>
-			<Symbol>DepotName</Symbol>
-			<Symbol>Depot</Symbol>
-			<Symbol>ExpressionsMainExecution</Symbol>
 			<Symbol>XCoordinate</Symbol>
 			<Symbol>YCoordinate</Symbol>
-			<Symbol>ExpressionsInfo</Symbol>
-			<Symbol>CustomerName</Symbol>
-			<Symbol>BasicMainInitialization</Symbol>
+			<Symbol>Demand</Symbol>
 			<Symbol>UnitTransportCost</Symbol>
-			<Symbol>DetermineDefaultNetworkBounds</Symbol>
-			<Symbol>BitmapBounds</Symbol>
-			<Symbol>ActiveBounds</Symbol>
+			<Symbol>Transport</Symbol>
 			<Symbol>DepotNameLong</Symbol>
+			<Symbol>DepotName</Symbol>
 			<Symbol>CustomerNameLong</Symbol>
+			<Symbol>CustomerName</Symbol>
+			<Symbol>ActiveBounds</Symbol>
+			<Symbol>BitmapBounds</Symbol>
+			<Symbol>BasicMainInitialization</Symbol>
+			<Symbol>DetermineDefaultNetworkBounds</Symbol>
+			<Symbol>DatabaseMainInitialization</Symbol>
+			<Symbol>ExpressionsInfo</Symbol>
+			<Symbol>ExpressionsMainExecution</Symbol>
+			<Symbol>ConstraintSlacksMainInitialization</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>Depot</Symbol>
+			<Symbol>c</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

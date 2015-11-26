@@ -1,21 +1,22 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-02 15:56:00">
-	<Location bottom="947" right="1920" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>02720721-A221-4AD9-B8FD-820FA144B309</ProjectUUID>
 	<Title>"AIMMS Demo: A car matching problem"</Title>
-	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="249">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="311" />
 				</LeftArea>
 				<RightArea Line="FixedFromTop" Value="85">
 					<TopArea Line="FixedFromTop" Value="77" />
+					<BottomArea Line="FixedFromRight" Value="515" />
 				</RightArea>
 			</BottomArea>
 		</MainArea>
@@ -30,9 +31,9 @@
 		<Location top="189" left="207" bottom="615" right="762" />
 		<SourceType>File</SourceType>
 		<FileName LiteralFileName="true">"Description.txt"</FileName>
-		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="CE751F75-C40E-4CE7-998A-8E00115EC81E">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>

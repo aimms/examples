@@ -185,10 +185,10 @@ Model Main_template {
             Solution(r,c,FixedValues(r,c)) := 1;
             Solution(r,c,FixedValues(r,c)).nonvar := 1;
             
-            solve Sudoku;
+            solve Sudoku where solver = SelectedSolver;
             GUISolution(ags,r,c)|(ord(ags)=1) := first(v | Solution(r,c,v));
             
-            solve UniquenessSudoku;
+            solve UniquenessSudoku where solver = SelectedSolver;
             GUISolution(ags,r,c)|(ord(ags)=2) := first(v | Solution(r,c,v));
         }
         Comment: {

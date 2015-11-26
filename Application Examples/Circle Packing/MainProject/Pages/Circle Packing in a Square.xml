@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-22 07:35:03">
-	<Location top="29" left="8" bottom="768" right="900" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>815943C0-011E-4F24-88E2-47BBE23FE82D</ProjectUUID>
 	<UpdateAllIdentifiers>true</UpdateAllIdentifiers>
-	<TemplatesTabOrderPosition>6</TemplatesTabOrderPosition>
+	<TemplatesTabOrderPosition>4</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<TopArea Line="FixedFromTop" Value="196">
 						<BottomArea Line="FixedFromBottom" Value="4" />
@@ -20,12 +20,8 @@
 					</BottomArea>
 				</LeftArea>
 				<RightArea Line="FixedFromTop" Value="85">
-					<BottomArea Line="FixedFromTop" Value="26">
-						<TopArea Line="FixedFromLeft" Value="428" />
-						<BottomArea Line="FixedFromLeft" Value="428">
-							<LeftArea Line="FixedFromTop" Value="404" />
-							<RightArea Line="FixedFromTop" Value="404" />
-						</BottomArea>
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
 					</BottomArea>
 				</RightArea>
 			</BottomArea>
@@ -53,9 +49,9 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Network Object">
-		<Location top="207" left="207" bottom="606" right="627" />
+		<Location top="207" left="207" bottom="609" right="459" />
 		<ReadOnly>"Yes"</ReadOnly>
-		<TabOrder>7</TabOrder>
+		<TabOrder>5</TabOrder>
 		<TabStop>false</TabStop>
 		<LeaveOnTab>false</LeaveOnTab>
 		<LeaveOnUpDown>false</LeaveOnUpDown>
@@ -72,7 +68,7 @@
 		<AutoAdjust>Right</AutoAdjust>
 		<VisibleArea>
 			<Left>-0.51</Left>
-			<Right>0.565636363636</Right>
+			<Right>0.115670103093</Right>
 			<Top>0.51</Top>
 			<Bottom>-0.51</Bottom>
 		</VisibleArea>
@@ -138,8 +134,8 @@
 		</Arc>
 	</PageObject>
 	<PageObject Type="Scalar">
-		<Location top="474" left="6" bottom="504" right="180" />
-		<TabOrder>8</TabOrder>
+		<Location top="474" left="12" bottom="504" right="186" />
+		<TabOrder>6</TabOrder>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -152,8 +148,8 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="552" left="6" bottom="576" right="192" />
-		<TabOrder>4</TabOrder>
+		<Location top="552" left="12" bottom="576" right="189" />
+		<TabOrder>3</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Solve"</Title>
 		<ForegroundColor RGB="#000000" />
@@ -167,15 +163,15 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="213" bottom="186" right="747" />
-		<StaticText>Maximize the radius of the equal-size circles packed in a unit square</StaticText>
+		<Location top="159" left="201" bottom="183" right="768" />
+		<StaticText>  Maximize the radius of the equal-size circles packed in a unit square</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="456" left="6" bottom="486" right="174" />
+		<Location top="453" left="12" bottom="486" right="177" />
 		<StaticText>Radius (Maximum)</StaticText>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor RGB="#000000" />
@@ -187,7 +183,7 @@
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Composite Table">
-		<Location top="216" left="627" bottom="597" right="762" />
+		<Location top="216" left="486" bottom="588" right="726" />
 		<TabOrder>2</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -213,28 +209,28 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="189" left="627" bottom="210" right="765" />
+		<Location top="189" left="486" bottom="210" right="732" />
 		<StaticText>Packing Info*</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="597" left="627" bottom="615" right="765" />
+		<Location top="597" left="486" bottom="609" right="765" />
 		<StaticText>*Center of Container is (0,0)</StaticText>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>Box</Symbol>
 			<Symbol>CoordXCircle1</Symbol>
 			<Symbol>CoordYCircle1</Symbol>
-			<Symbol>Box</Symbol>
-			<Symbol>SelectedColor</Symbol>
+			<Symbol>CircleRadius1</Symbol>
 			<Symbol>SolveCirclePacking1</Symbol>
 			<Symbol>CoordXCorner</Symbol>
-			<Symbol>CircleRadius1</Symbol>
-			<Symbol>Graph_SelectedColor</Symbol>
 			<Symbol>CoordYCorner</Symbol>
+			<Symbol>SelectedColor</Symbol>
+			<Symbol>Graph_SelectedColor</Symbol>
 			<Symbol>i</Symbol>
 			<Symbol>j</Symbol>
 			<Symbol>SelectedCircle</Symbol>

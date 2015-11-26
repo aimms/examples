@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-22 07:35:03">
-	<Location top="29" left="8" bottom="768" right="900" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -10,7 +10,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<TopArea Line="FixedFromTop" Value="196">
 						<BottomArea Line="FixedFromBottom" Value="4" />
@@ -20,14 +20,8 @@
 					</BottomArea>
 				</LeftArea>
 				<RightArea Line="FixedFromTop" Value="85">
-					<BottomArea Line="FixedFromTop" Value="26">
-						<TopArea Line="FixedFromLeft" Value="428" />
-						<BottomArea Line="FixedFromLeft" Value="428">
-							<LeftArea Line="FixedFromTop" Value="404">
-								<TopArea Line="FixedFromTop" Value="28" />
-							</LeftArea>
-							<RightArea Line="FixedFromTop" Value="404" />
-						</BottomArea>
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
 					</BottomArea>
 				</RightArea>
 			</BottomArea>
@@ -55,7 +49,7 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="552" left="6" bottom="576" right="192" />
+		<Location top="552" left="12" bottom="576" right="189" />
 		<TabOrder>3</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Solve"</Title>
@@ -70,16 +64,16 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="213" bottom="186" right="759" />
-		<StaticText>Minimize the radius of the circle containing number of different size circles (between 0 and 1)</StaticText>
+		<Location top="159" left="201" bottom="183" right="768" />
+		<StaticText>  Minimize the radius of the circle containing number of different size circles (between 0 and 1)</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Composite Table">
-		<Location top="216" left="627" bottom="597" right="762" />
-		<TabOrder>11</TabOrder>
+		<Location top="216" left="486" bottom="588" right="759" />
+		<TabOrder>6</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -114,7 +108,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Scalar">
-		<Location top="474" left="6" bottom="504" right="180" />
+		<Location top="474" left="12" bottom="504" right="186" />
 		<TabOrder>5</TabOrder>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -128,13 +122,13 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="456" left="6" bottom="477" right="174" />
+		<Location top="453" left="12" bottom="486" right="177" />
 		<StaticText>Radius (Minimum)</StaticText>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="189" left="627" bottom="216" right="750" />
+		<Location top="189" left="486" bottom="210" right="732" />
 		<StaticText>Packing Info*</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor RGB="#000000" />
@@ -146,13 +140,13 @@
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="597" left="627" bottom="618" right="726" />
+		<Location top="597" left="486" bottom="609" right="765" />
 		<StaticText>*Center of Container is (0,0)</StaticText>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Network Object">
-		<Location top="213" left="207" bottom="609" right="624" />
+		<Location top="207" left="207" bottom="609" right="459" />
 		<ReadOnly>"Yes"</ReadOnly>
 		<Hidden>VALUE := Objective_Packing3 = 0</Hidden>
 		<TabOrder>1</TabOrder>
@@ -169,7 +163,7 @@
 		<AutoAdjust>Right</AutoAdjust>
 		<VisibleArea>
 			<Left>-3.54553870578</Left>
-			<Right>3.8518393131</Right>
+			<Right>0.755579326275</Right>
 			<Top>3.50595335386</Top>
 			<Bottom>-3.50595335386</Bottom>
 		</VisibleArea>
@@ -215,7 +209,7 @@
 		</Node>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="396" left="315" bottom="417" right="510" />
+		<Location top="396" left="235" bottom="417" right="430" />
 		<Hidden>Objective_Packing3</Hidden>
 		<StaticText>No Solution Yet</StaticText>
 		<Font GUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" Name="Page Title" />
@@ -225,17 +219,17 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>CircleRadius3</Symbol>
 			<Symbol>CoordXCircle3</Symbol>
-			<Symbol>Objective_Packing3</Symbol>
 			<Symbol>CoordYCircle3</Symbol>
-			<Symbol>SelectedColor</Symbol>
+			<Symbol>CircumscribingCircleRadius3</Symbol>
+			<Symbol>Objective_Packing3</Symbol>
 			<Symbol>SolveCirclePacking3</Symbol>
 			<Symbol>CoordXCorner</Symbol>
-			<Symbol>CircleRadius3</Symbol>
-			<Symbol>Graph_SelectedColor</Symbol>
-			<Symbol>CircumscribingCircleRadius3</Symbol>
-			<Symbol>CheckCircleRadius3</Symbol>
 			<Symbol>CoordYCorner</Symbol>
+			<Symbol>CheckCircleRadius3</Symbol>
+			<Symbol>SelectedColor</Symbol>
+			<Symbol>Graph_SelectedColor</Symbol>
 			<Symbol>SelectedCircle</Symbol>
 			<Symbol>i3</Symbol>
 			<Symbol>j3</Symbol>

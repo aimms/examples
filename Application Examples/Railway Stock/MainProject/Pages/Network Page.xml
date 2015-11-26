@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-07-19 15:12:41">
-	<Location top="29" left="4" bottom="888" right="1274" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="311" />
 				</LeftArea>
@@ -26,7 +26,7 @@
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Network Object">
 		<Location top="189" left="210" bottom="612" right="660" />
-		<TabOrder>8</TabOrder>
+		<TabOrder>6</TabOrder>
 		<TabStop>false</TabStop>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -92,7 +92,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="411" left="6" bottom="438" right="192" />
-		<TabOrder>9</TabOrder>
+		<TabOrder>7</TabOrder>
 		<Font GUID="F6AC9214-33C1-4250-9ABF-15B57D1091A0" Name="default" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -108,7 +108,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="513" left="6" bottom="570" right="192" />
-		<TabOrder>10</TabOrder>
+		<TabOrder>8</TabOrder>
 		<Font GUID="F6AC9214-33C1-4250-9ABF-15B57D1091A0" Name="default" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -129,7 +129,7 @@
 	</PageObject>
 	<PageObject Type="Table">
 		<Location top="570" left="6" bottom="612" right="192" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>9</TabOrder>
 		<Font GUID="F6AC9214-33C1-4250-9ABF-15B57D1091A0" Name="default" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -205,15 +205,15 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="213" bottom="177" right="561" />
-		<StaticText>Flow of trains in circular network</StaticText>
+		<Location top="159" left="201" bottom="177" right="561" />
+		<StaticText>  Flow of trains in circular network</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -230,23 +230,23 @@
 		<StaticText>Linked Tables</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="192" left="18" bottom="210" right="195" />
 		<StaticText>Problem Description</StaticText>
-		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="222" left="18" bottom="240" right="195" />
 		<StaticText>Train Schedule</StaticText>
-		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -279,21 +279,21 @@ Green line: Trains currently not in use.</StaticText>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>Rw_TotalTrainsNeeded</Symbol>
+			<Symbol>GUI_TextNodesDescription</Symbol>
 			<Symbol>Network_XCoordinateNode</Symbol>
+			<Symbol>Network_YCoordinateNode</Symbol>
+			<Symbol>Network_UsedTrains</Symbol>
+			<Symbol>Network_UnusedTrains</Symbol>
+			<Symbol>Network_UsedTrainColor</Symbol>
+			<Symbol>Network_UnusedTrainColor</Symbol>
+			<Symbol>Network_OriginNode</Symbol>
+			<Symbol>Network_DestinationNode</Symbol>
 			<Symbol>MainExecution</Symbol>
+			<Symbol>Create_XMLResultFile</Symbol>
 			<Symbol>n</Symbol>
 			<Symbol>an</Symbol>
 			<Symbol>dn</Symbol>
-			<Symbol>Create_XMLResultFile</Symbol>
-			<Symbol>Network_UsedTrains</Symbol>
-			<Symbol>GUI_TextNodesDescription</Symbol>
-			<Symbol>Network_OriginNode</Symbol>
-			<Symbol>Network_UsedTrainColor</Symbol>
-			<Symbol>Network_DestinationNode</Symbol>
-			<Symbol>Network_UnusedTrainColor</Symbol>
-			<Symbol>Rw_TotalTrainsNeeded</Symbol>
-			<Symbol>Network_YCoordinateNode</Symbol>
-			<Symbol>Network_UnusedTrains</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2009-02-26 01:52:21">
+<Page Version="4000" TimeStamp="2015-03-09 13:28:12">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,11 +9,15 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="116" />
 				</LeftArea>
-				<RightArea Line="FixedFromTop" Value="85" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
+					</BottomArea>
+				</RightArea>
 			</BottomArea>
 		</MainArea>
 	</ResizeData>
@@ -23,17 +27,17 @@
 	<HorizontalGridDistance>3</HorizontalGridDistance>
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Navigation Object">
-		<Location top="186" left="6" bottom="333" right="196" />
+		<Location top="186" left="15" bottom="333" right="195" />
 		<TabOrder>1</TabOrder>
 		<TabStop>false</TabStop>
-		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<Border Style="None" Width="2" />
 		<Display>Text</Display>
 		<NumberVisible>5</NumberVisible>
 		<Spacing>4</Spacing>
 		<BackgroundColor Transparent="true" />
 		<TextColor>
-			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 		<NavigationData>
 			<ReferencePage>ThisPage</ReferencePage>
@@ -57,8 +61,8 @@
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="597" left="3" bottom="615" right="207" />
-		<StaticText>(c) Paragon Decision Technology, 1999</StaticText>
+		<Location top="597" left="14" bottom="615" right="207" />
+		<StaticText>© AIMMS B.V., 2015</StaticText>
 		<Font GUID="EB2FCD65-1A81-45EB-BE5B-E26C38FA5C00" Name="default" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -107,25 +111,25 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="336" left="6" bottom="354" right="195" />
+		<Location top="336" left="18" bottom="354" right="198" />
 		<StaticText>Clear Dataset</StaticText>
-		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="366" left="6" bottom="387" right="195" />
+		<Location top="366" left="18" bottom="387" right="195" />
 		<StaticText>Load Complete NH3 Example</StaticText>
-		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="1605E3DF-B5DF-451D-96AE-49E4D21C92F9">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>LoadNH3Example</Symbol>
 			<Symbol>NewCase</Symbol>
+			<Symbol>LoadNH3Example</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

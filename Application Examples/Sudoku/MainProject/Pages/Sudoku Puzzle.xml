@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-21 11:48:24">
-	<Location top="29" left="8" bottom="668" right="1270" />
+<Page Version="4000" TimeStamp="2015-11-26 12:11:04">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="223" />
 				</LeftArea>
@@ -253,15 +253,19 @@
 	</PageObject>
 	<PageObject Type="Rectangle">
 		<Location top="246" left="6" bottom="270" right="192" />
-		<FillColor RGB="#e0e0ff" />
-		<LineColor RGB="#e0e0ff" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="249" left="18" bottom="267" right="180" />
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -269,7 +273,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="A9A370C5-BE9F-4E4D-A3A0-0A9269889C7D">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -286,28 +290,32 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="207" bottom="177" right="369" />
-		<StaticText>Problem</StaticText>
+		<Location top="159" left="201" bottom="177" right="369" />
+		<StaticText>  Problem</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
-		<Location top="363" left="6" bottom="387" right="192" />
-		<FillColor RGB="#e0e0ff" />
-		<LineColor RGB="#e0e0ff" />
+		<Location top="369" left="6" bottom="393" right="192" />
+		<FillColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</FillColor>
+		<LineColor>
+			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
+		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="366" left="18" bottom="384" right="180" />
+		<Location top="372" left="18" bottom="390" right="180" />
 		<StaticText>Information</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="396" left="6" bottom="513" right="192" />
+		<Location top="402" left="12" bottom="519" right="198" />
 		<StaticText>Blue indicates the problem.
 
 Black indicates fixed values.
@@ -321,7 +329,7 @@ Red indicates values that can be placed in other places. </StaticText>
 	<PageObject Type="Selection Object">
 		<SelectionType>DropDownList</SelectionType>
 		<Location top="336" left="6" bottom="363" right="192" />
-		<TabOrder>20</TabOrder>
+		<TabOrder>9</TabOrder>
 		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
 		<TextShown>ElementName</TextShown>
 		<Border Style="None" />
@@ -332,18 +340,18 @@ Red indicates values that can be placed in other places. </StaticText>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>MainExecution</Symbol>
-			<Symbol>MultiSolutionSolvers</Symbol>
-			<Symbol>c</Symbol>
-			<Symbol>r</Symbol>
-			<Symbol>ColorGroups</Symbol>
-			<Symbol>SelectedSolver</Symbol>
-			<Symbol>GUISolution</Symbol>
-			<Symbol>MultipleSolve</Symbol>
 			<Symbol>FixedValues</Symbol>
-			<Symbol>ags_s</Symbol>
+			<Symbol>ColorGroups</Symbol>
 			<Symbol>InputDataColor</Symbol>
+			<Symbol>GUISolution</Symbol>
 			<Symbol>GUIFirstSolution</Symbol>
+			<Symbol>MultiSolutionSolvers</Symbol>
+			<Symbol>SelectedSolver</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>MultipleSolve</Symbol>
+			<Symbol>r</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>ags_s</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -27,7 +27,7 @@
 	<HorizontalGridDistance>3</HorizontalGridDistance>
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Text">
-		<Location top="192" left="210" bottom="321" right="765" />
+		<Location top="189" left="207" bottom="321" right="765" />
 		<StaticText>On this page you can compare the computed flows and compositions of two or more cases.
 
 You can create a selection of multiple cases by 

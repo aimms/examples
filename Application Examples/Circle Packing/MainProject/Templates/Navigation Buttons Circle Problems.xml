@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-22 07:35:03">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,19 +9,15 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="311">
 						<TopArea Line="FixedFromTop" Value="242" />
 					</BottomArea>
 				</LeftArea>
 				<RightArea Line="FixedFromTop" Value="85">
-					<BottomArea Line="FixedFromTop" Value="26">
-						<TopArea Line="FixedFromLeft" Value="428" />
-						<BottomArea Line="FixedFromLeft" Value="428">
-							<LeftArea Line="FixedFromTop" Value="404" />
-							<RightArea Line="FixedFromTop" Value="404" />
-						</BottomArea>
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
 					</BottomArea>
 				</RightArea>
 			</BottomArea>
@@ -38,7 +34,7 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="582" left="6" bottom="606" right="192" />
+		<Location top="582" left="12" bottom="606" right="189" />
 		<TabOrder>5</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Clear Solutions"</Title>
@@ -53,7 +49,7 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="216" left="6" bottom="240" right="192" />
+		<Location top="216" left="18" bottom="240" right="192" />
 		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Invisible</ButtonType>
@@ -72,11 +68,11 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="222" left="12" bottom="240" right="189" />
+		<Location top="222" left="18" bottom="240" right="192" />
 		<StaticText>Circle Packing in a Square</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -100,11 +96,11 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="252" left="12" bottom="270" right="189" />
+		<Location top="252" left="18" bottom="270" right="192" />
 		<StaticText>Circle Packing in a Circle</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -128,29 +124,29 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="282" left="12" bottom="300" right="189" />
+		<Location top="282" left="18" bottom="300" right="189" />
 		<StaticText>Various Size Circle Packing</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="396" left="6" bottom="414" right="168" />
+		<Location top="396" left="12" bottom="414" right="174" />
 		<StaticText>Number of Circles (1..30)</StaticText>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="192" left="12" bottom="210" right="189" />
+		<Location top="192" left="18" bottom="210" right="189" />
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Scalar">
-		<Location top="414" left="6" bottom="444" right="180" />
+		<Location top="414" left="12" bottom="444" right="186" />
 		<TabOrder>6</TabOrder>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -166,11 +162,11 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="318" left="18" bottom="336" right="186" />
+		<Location top="316" left="18" bottom="336" right="186" />
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Line">
@@ -186,8 +182,8 @@
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>DropDownList</SelectionType>
-		<Location top="360" left="6" bottom="390" right="186" />
-		<TabOrder>17</TabOrder>
+		<Location top="360" left="12" bottom="390" right="186" />
+		<TabOrder>7</TabOrder>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextShown>ElementName</TextShown>
 		<Border Style="None" />
@@ -197,7 +193,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="342" left="6" bottom="360" right="168" />
+		<Location top="342" left="12" bottom="360" right="174" />
 		<StaticText>Select an NLP solver</StaticText>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor RGB="#000000" />
@@ -205,10 +201,10 @@
 	<UsedReferences>
 		<Model>
 			<Symbol>NoOfCircles</Symbol>
-			<Symbol>PE_CurrentSolver</Symbol>
 			<Symbol>ClearSolutions</Symbol>
-			<Symbol>S_SuitableSolvers</Symbol>
 			<Symbol>MaxCircles</Symbol>
+			<Symbol>PE_CurrentSolver</Symbol>
+			<Symbol>S_SuitableSolvers</Symbol>
 			<Symbol>SelectedCircle</Symbol>
 		</Model>
 	</UsedReferences>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2008-08-12 07:55:24">
+<Page Version="4000" TimeStamp="2015-11-25 16:24:21">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,11 +9,11 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204" />
 				<RightArea Line="FixedFromTop" Value="85">
-					<BottomArea Line="FixedFromBottom" Value="158">
-						<TopArea Line="PercentageFromTop" Value="0.97" />
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
 					</BottomArea>
 				</RightArea>
 			</BottomArea>
@@ -121,27 +121,27 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="189" left="18" bottom="216" right="168" />
+		<Location top="192" left="18" bottom="210" right="195" />
 		<StaticText>Employee Scheduling</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>Restaurants</Symbol>
+			<Symbol>Employees</Symbol>
+			<Symbol>Assignment</Symbol>
+			<Symbol>StartTime</Symbol>
+			<Symbol>CompanyColor</Symbol>
+			<Symbol>SkillColor</Symbol>
+			<Symbol>r</Symbol>
 			<Symbol>SelectedRestaurant</Symbol>
 			<Symbol>e</Symbol>
-			<Symbol>r</Symbol>
-			<Symbol>Employees</Symbol>
-			<Symbol>CompanyColor</Symbol>
+			<Symbol>SelectedEmployee</Symbol>
 			<Symbol>sh</Symbol>
 			<Symbol>sk</Symbol>
-			<Symbol>Restaurants</Symbol>
-			<Symbol>Assignment</Symbol>
-			<Symbol>SelectedEmployee</Symbol>
-			<Symbol>SkillColor</Symbol>
-			<Symbol>StartTime</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

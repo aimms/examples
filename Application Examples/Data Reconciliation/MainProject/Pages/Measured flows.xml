@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2009-02-26 01:52:21">
+<Page Version="4000" TimeStamp="2015-03-09 13:28:12">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="249">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromBottom" Value="70">
 						<TopArea Line="FixedFromTop" Value="232" />
@@ -27,13 +27,13 @@
 	<HorizontalGridDistance>3</HorizontalGridDistance>
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Text">
-		<Location top="192" left="210" bottom="324" right="759" />
+		<Location top="189" left="207" bottom="324" right="759" />
 		<StaticText>On this page you must select the flows for which measurements are available. In addition, you must provide information about the distribution of absolute or relative errors in the flow measurements by specifying the systematic error (if any), as well as (an estimate of) its standard deviation.
 
 This accuracy indication plays a key role in the data reconconciliation: changes in less accurate measurements (i.e. with a large deviation) are preferred over changes in more accurate values.</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="9B4C3B3E-A80D-43F1-9D8C-419D94537DE4">old text font</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -154,15 +154,15 @@ This accuracy indication plays a key role in the data reconconciliation: changes
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>f</Symbol>
-			<Symbol>RelativeFlowErrorDeviation</Symbol>
-			<Symbol>FlowAccuracyIsAbsolute</Symbol>
-			<Symbol>MeasuredFlows</Symbol>
 			<Symbol>Flows</Symbol>
+			<Symbol>MeasuredFlows</Symbol>
 			<Symbol>AbsoluteMeanFlowError</Symbol>
-			<Symbol>FlowAccuracyIsRelative</Symbol>
-			<Symbol>RelativeMeanFlowError</Symbol>
 			<Symbol>AbsoluteFlowErrorDeviation</Symbol>
+			<Symbol>FlowAccuracyIsRelative</Symbol>
+			<Symbol>FlowAccuracyIsAbsolute</Symbol>
+			<Symbol>RelativeMeanFlowError</Symbol>
+			<Symbol>RelativeFlowErrorDeviation</Symbol>
+			<Symbol>f</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

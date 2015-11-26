@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-07-19 15:12:41">
-	<Location top="29" left="4" bottom="632" right="768" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="249">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="139" />
 				</LeftArea>
@@ -37,7 +37,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="411" left="6" bottom="438" right="192" />
-		<TabOrder>8</TabOrder>
+		<TabOrder>4</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -51,7 +51,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="381" left="6" bottom="405" right="192" />
-		<TabOrder>5</TabOrder>
+		<TabOrder>3</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Results -&gt; XML"</Title>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
@@ -91,14 +91,14 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>Rw_TotalTrainsNeeded</Symbol>
 			<Symbol>MainExecution</Symbol>
 			<Symbol>Create_XMLResultFile</Symbol>
-			<Symbol>Rw_TotalTrainsNeeded</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

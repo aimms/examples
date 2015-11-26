@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.0.0.432 unicode x86" ProjectUUID="F726EABE-8D3D-4E3E-94BE-4700EF7E9162">
+<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="F726EABE-8D3D-4E3E-94BE-4700EF7E9162">
 	<ModelFileName>Economic Exchange Equilibrium.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

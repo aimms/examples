@@ -32,7 +32,7 @@
 	<HorizontalGridDistance>3</HorizontalGridDistance>
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Text">
-		<Location top="192" left="207" bottom="327" right="753" />
+		<Location top="189" left="207" bottom="327" right="753" />
 		<StaticText>On this page you can execute the data reconciliation model, where you have the choice to reconcile flows only, or both flows and composition.
 
 In the table the observed errors are displayed as factors of the specified deviation of every measurement. If these errors become too big, you can globally limit the maximum error for either the flows and/or compositions and resolve the model.</StaticText>

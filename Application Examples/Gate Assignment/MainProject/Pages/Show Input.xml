@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-03-02 08:05:41">
-	<Location top="23" left="8" bottom="644" right="772" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>0C85949E-28CF-4A30-8DF0-12A5C8390841</ProjectUUID>
 	<Title>"Input / Settings"</Title>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ToolBar None="true" />
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
 			<BottomArea Line="FixedFromLeft" Value="200">
-				<LeftArea Line="FixedFromTop" Value="149" />
+				<LeftArea Line="FixedFromTop" Value="204" />
 				<RightArea Line="FixedFromTop" Value="85">
 					<BottomArea Line="FixedFromTop" Value="35">
 						<TopArea Line="FixedFromLeft" Value="377" />
@@ -60,13 +61,13 @@
 		<StaticText>Main planning screen</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
 		<Location top="546" left="210" bottom="606" right="570" />
-		<TabOrder>9</TabOrder>
+		<TabOrder>6</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<TextShown>IdentifierText</TextShown>
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -97,7 +98,7 @@
 		<StaticText>Flight and gate details</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -114,7 +115,7 @@
 		<StaticText>Flight / Gate combinations</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Pivot Table">
@@ -187,7 +188,7 @@
 		<StaticText>Settings</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -212,7 +213,7 @@
 		<StaticText>Input data Flights</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -238,20 +239,20 @@
 		<StaticText>Input data Gates</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>GateTypeDescription</Symbol>
+			<Symbol>FlightDescription</Symbol>
+			<Symbol>FlightPossibleOnGateType</Symbol>
+			<Symbol>UseTightUpperboundILP</Symbol>
+			<Symbol>useGMP</Symbol>
+			<Symbol>RereadAllInputData</Symbol>
 			<Symbol>ModifyingInputData</Symbol>
 			<Symbol>a</Symbol>
-			<Symbol>FlightPossibleOnGateType</Symbol>
-			<Symbol>RereadAllInputData</Symbol>
-			<Symbol>useGMP</Symbol>
 			<Symbol>flight</Symbol>
-			<Symbol>FlightDescription</Symbol>
-			<Symbol>GateTypeDescription</Symbol>
-			<Symbol>UseTightUpperboundILP</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

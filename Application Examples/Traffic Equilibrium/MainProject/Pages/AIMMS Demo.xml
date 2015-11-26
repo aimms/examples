@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2009-01-15 21:33:13" NeedsCompiledModel="false">
-	<Location bottom="947" right="1920" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>892CE764-3D68-4B5D-85C3-38539348B1FB</ProjectUUID>
 	<Title>"AIMMS Demo: Traffic Equilibrium Model"</Title>
-	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
@@ -25,7 +25,7 @@
 		<Location top="189" left="207" bottom="615" right="762" />
 		<SourceType>File</SourceType>
 		<FileName LiteralFileName="true">"Description.txt"</FileName>
-		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>

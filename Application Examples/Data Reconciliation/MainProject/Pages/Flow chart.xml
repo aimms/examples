@@ -31,7 +31,7 @@
 	<HorizontalGridDistance>3</HorizontalGridDistance>
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Text">
-		<Location top="192" left="207" bottom="285" right="768" />
+		<Location top="189" left="207" bottom="285" right="768" />
 		<StaticText>This page displays the errors in a flow chart. 
 
 Flows with any flow or composition error above the threshold are displayed red. By clicking on a flow you get to see all relevant data in tabular format on the left.</StaticText>

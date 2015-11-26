@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-03-02 08:05:41">
-	<Location top="23" left="8" bottom="644" right="772" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -12,13 +12,13 @@
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
 			<BottomArea Line="FixedFromLeft" Value="200">
-				<LeftArea Line="FixedFromTop" Value="149">
-					<BottomArea Line="FixedFromTop" Value="364" />
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="311" />
 				</LeftArea>
 				<RightArea Line="FixedFromTop" Value="85">
 					<BottomArea Line="FixedFromBottom" Value="116">
 						<TopArea Line="PercentageFromTop" Value="0.56546" />
-						<BottomArea Line="FixedFromLeft" Value="564" />
+						<BottomArea Line="FixedFromLeft" Value="515" />
 					</BottomArea>
 				</RightArea>
 			</BottomArea>
@@ -134,7 +134,7 @@ Right-click on a flight to move it from unassigned to assigned and vice versa.</
 		<StaticText>Actions</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button" Tag="Move all to unassigned">
@@ -237,7 +237,7 @@ Right-click on a flight to move it from unassigned to assigned and vice versa.</
 		<StaticText>Problem description</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -250,15 +250,15 @@ Right-click on a flight to move it from unassigned to assigned and vice versa.</
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="417" left="18" bottom="435" right="186" />
+		<Location top="417" left="18" bottom="455" right="186" />
 		<StaticText>Solution Information</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button" Tag="Show details last solve">
-		<Location top="576" left="6" bottom="600" right="192" />
+		<Location top="596" left="6" bottom="620" right="192" />
 		<TabOrder>10</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -276,15 +276,15 @@ Right-click on a flight to move it from unassigned to assigned and vice versa.</
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="582" left="18" bottom="600" right="195" />
+		<Location top="602" left="18" bottom="620" right="195" />
 		<StaticText>Show details last solve</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Scalar">
-		<Location top="444" left="6" bottom="564" right="192" />
+		<Location top="444" left="6" bottom="588" right="186" />
 		<Hidden>VALUE := 1 $ (GUI_MinIdletime &lt; 0)</Hidden>
 		<TabOrder>1</TabOrder>
 		<TabStop>false</TabStop>
@@ -350,7 +350,7 @@ Right-click on a flight to move it from unassigned to assigned and vice versa.</
 		<StaticText>Input/Settings</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -438,33 +438,33 @@ exists</StaticText>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>Flights</Symbol>
+			<Symbol>FlightDescription</Symbol>
+			<Symbol>ShowFlightInformationPage</Symbol>
+			<Symbol>MakeEverythingAssigned</Symbol>
+			<Symbol>MakeEverythingUnassigned</Symbol>
+			<Symbol>UpdateGanttChartData</Symbol>
+			<Symbol>UpdateSelectedFlight_Assigned</Symbol>
+			<Symbol>UpdateSelectedFlight_Unassigned</Symbol>
+			<Symbol>GUI_UnassignedFlights</Symbol>
+			<Symbol>GUI_ArrivalTime</Symbol>
+			<Symbol>GUI_GroundTime</Symbol>
+			<Symbol>GUI_DomainAssignedFlights</Symbol>
 			<Symbol>GUI_DomainUnassginedFlights</Symbol>
-			<Symbol>MainExecution</Symbol>
-			<Symbol>GUI_StdDevIdleTime</Symbol>
-			<Symbol>gui_unassigned</Symbol>
-			<Symbol>SelectedGateplanDescription</Symbol>
+			<Symbol>GUI_AverageIdletime</Symbol>
 			<Symbol>GUI_MinIdletime</Symbol>
 			<Symbol>GUI_MaxIdletime</Symbol>
-			<Symbol>GUI_GroundTime</Symbol>
-			<Symbol>UpdateSelectedFlight_Assigned</Symbol>
-			<Symbol>si2</Symbol>
-			<Symbol>UpdateSelectedFlight_Unassigned</Symbol>
-			<Symbol>si</Symbol>
-			<Symbol>GUI_UnassignedFlights</Symbol>
-			<Symbol>UnassignedFlightColor</Symbol>
-			<Symbol>UpdateGanttChartData</Symbol>
-			<Symbol>flight</Symbol>
+			<Symbol>GUI_StdDevIdleTime</Symbol>
 			<Symbol>isAssignedFlightSelected</Symbol>
-			<Symbol>FlightDescription</Symbol>
 			<Symbol>isUnassignedFlightSelected</Symbol>
-			<Symbol>GUI_AverageIdletime</Symbol>
-			<Symbol>Flights</Symbol>
-			<Symbol>MakeEverythingUnassigned</Symbol>
-			<Symbol>GUI_ArrivalTime</Symbol>
-			<Symbol>MakeEverythingAssigned</Symbol>
-			<Symbol>GUI_DomainAssignedFlights</Symbol>
-			<Symbol>ShowFlightInformationPage</Symbol>
+			<Symbol>SelectedGateplanDescription</Symbol>
 			<Symbol>AssignedFlightColor</Symbol>
+			<Symbol>UnassignedFlightColor</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>flight</Symbol>
+			<Symbol>si</Symbol>
+			<Symbol>si2</Symbol>
+			<Symbol>gui_unassigned</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

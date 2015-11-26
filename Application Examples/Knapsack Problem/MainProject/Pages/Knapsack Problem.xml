@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2009-01-15 01:09:09">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="311" />
 				</LeftArea>
@@ -56,7 +56,7 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Network Object">
-		<Location top="198" left="510" bottom="606" right="756" />
+		<Location top="192" left="216" bottom="600" right="558" />
 		<TabOrder>7</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -103,7 +103,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -111,7 +111,7 @@
 		<StaticText>Navigation</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -124,11 +124,11 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="318" left="18" bottom="342" right="186" />
+		<Location top="316" left="18" bottom="342" right="186" />
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -177,7 +177,7 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Pivot Table">
-		<Location top="198" left="216" bottom="606" right="498" />
+		<Location top="192" left="588" bottom="600" right="744" />
 		<TabOrder>6</TabOrder>
 		<ObjectUUID>3B3D3CAF-671F-4F3B-9896-7D0649576E1D</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -220,23 +220,23 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>ItemWeight</Symbol>
-			<Symbol>i</Symbol>
-			<Symbol>KnapsackItems</Symbol>
-			<Symbol>i_s</Symbol>
-			<Symbol>No_</Symbol>
-			<Symbol>MainInitialization</Symbol>
 			<Symbol>MaxItems</Symbol>
+			<Symbol>ItemValue</Symbol>
+			<Symbol>ItemWeight</Symbol>
 			<Symbol>MaxWeightKnapsack</Symbol>
+			<Symbol>KnapsackItems</Symbol>
+			<Symbol>ItemRangeMax</Symbol>
+			<Symbol>ItemBound</Symbol>
+			<Symbol>SolveKnapsackModel</Symbol>
+			<Symbol>SolveKnapsackModelUnBounded</Symbol>
+			<Symbol>SolveKnapsackModelBounded</Symbol>
 			<Symbol>X_</Symbol>
 			<Symbol>Y_</Symbol>
-			<Symbol>SolveKnapsackModelUnBounded</Symbol>
-			<Symbol>ItemValue</Symbol>
-			<Symbol>ItemRangeMax</Symbol>
-			<Symbol>SolveKnapsackModel</Symbol>
-			<Symbol>ItemBound</Symbol>
 			<Symbol>Text_</Symbol>
-			<Symbol>SolveKnapsackModelBounded</Symbol>
+			<Symbol>No_</Symbol>
+			<Symbol>MainInitialization</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>i_s</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
