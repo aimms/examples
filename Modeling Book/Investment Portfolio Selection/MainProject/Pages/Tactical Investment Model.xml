@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-04-04 04:02:00">
-	<Location top="27" left="8" bottom="864" right="1270" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -22,7 +22,7 @@
 	<VerticalGridDistance>1</VerticalGridDistance>
 	<PageObject Type="Parametric Curve">
 		<Location top="505" left="517" bottom="609" right="767" />
-		<TabOrder>13</TabOrder>
+		<TabOrder>12</TabOrder>
 		<TabStop>false</TabStop>
 		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
 		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -57,7 +57,7 @@
 	</PageObject>
 	<PageObject Type="2D Chart">
 		<Location top="335" left="625" bottom="467" right="766" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>10</TabOrder>
 		<TabStop>false</TabStop>
 		<Border Style="Line" Width="2" />
 		<X_Axis>
@@ -128,7 +128,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="338" left="6" bottom="362" right="192" />
+		<Location top="337" left="5" bottom="361" right="191" />
 		<TabOrder>2</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -277,7 +277,7 @@
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>DropDownList</SelectionType>
-		<Location top="365" left="6" bottom="386" right="192" />
+		<Location top="365" left="6" bottom="386" right="191" />
 		<Hidden>HideMINLPSolvers</Hidden>
 		<TabOrder>5</TabOrder>
 		<TabStop>false</TabStop>
@@ -300,7 +300,7 @@
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>DropDownList</SelectionType>
-		<Location top="365" left="6" bottom="386" right="192" />
+		<Location top="365" left="6" bottom="386" right="191" />
 		<Hidden>HideMIQPSolvers</Hidden>
 		<TabOrder>6</TabOrder>
 		<TabStop>false</TabStop>
@@ -326,7 +326,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="191" left="201" bottom="526" right="517" />
-		<TabOrder>12</TabOrder>
+		<TabOrder>11</TabOrder>
 		<TabStop>false</TabStop>
 		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
 		<Border Style="None" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -386,26 +386,26 @@
 		<StaticText>Strategic Model</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>MINLPSolvers</Symbol>
-			<Symbol>SolveTacticalModel</Symbol>
-			<Symbol>HideMINLPSolvers</Symbol>
 			<Symbol>SecurityValue</Symbol>
-			<Symbol>MinimumFraction</Symbol>
-			<Symbol>HideMinimalInvestment</Symbol>
-			<Symbol>HideAOAoption</Symbol>
-			<Symbol>CostBudget</Symbol>
-			<Symbol>MIQPSolvers</Symbol>
-			<Symbol>HideMIQPSolvers</Symbol>
 			<Symbol>ExpectedSecurityReturn</Symbol>
+			<Symbol>TacticalInvestedFraction</Symbol>
+			<Symbol>DesiredExpectedSecurityReturn</Symbol>
+			<Symbol>MinimumFraction</Symbol>
+			<Symbol>CostBudget</Symbol>
 			<Symbol>TacticalModels</Symbol>
 			<Symbol>SecurityColors</Symbol>
-			<Symbol>DesiredExpectedSecurityReturn</Symbol>
-			<Symbol>TacticalInvestedFraction</Symbol>
+			<Symbol>HideMinimalInvestment</Symbol>
+			<Symbol>HideMINLPSolvers</Symbol>
+			<Symbol>HideMIQPSolvers</Symbol>
+			<Symbol>MINLPSolvers</Symbol>
+			<Symbol>MIQPSolvers</Symbol>
+			<Symbol>HideAOAoption</Symbol>
+			<Symbol>SolveTacticalModel</Symbol>
 			<Symbol>GMPOuterApprox::IterationMax</Symbol>
 			<Symbol>s</Symbol>
 			<Symbol>tt</Symbol>

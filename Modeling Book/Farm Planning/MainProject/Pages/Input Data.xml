@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2011-11-28 18:32:23">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="263" left="225" bottom="883" right="1007" />
 	<PageEditSize Type="Inherited">
 		<Size Width="786" Height="608" />
@@ -140,19 +140,19 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="318" left="18" bottom="336" right="396" />
-		<StaticText>Water</StaticText>
+		<Location top="318" left="6" bottom="342" right="396" />
+		<StaticText>  Water</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="12" left="18" bottom="30" right="384" />
-		<StaticText>Land</StaticText>
+		<Location top="12" left="6" bottom="30" right="384" />
+		<StaticText>  Land</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Pivot Table">
@@ -213,24 +213,24 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="12" left="408" bottom="24" right="768" />
-		<StaticText>Labor</StaticText>
+		<Location top="12" left="402" bottom="24" right="768" />
+		<StaticText>  Labor</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>c</Symbol>
-			<Symbol>t</Symbol>
+			<Symbol>Yield</Symbol>
+			<Symbol>Price</Symbol>
+			<Symbol>FractionOccupiesLand</Symbol>
+			<Symbol>LaborRequired</Symbol>
+			<Symbol>WorkingHours</Symbol>
 			<Symbol>WaterLimit</Symbol>
 			<Symbol>WaterRequirement</Symbol>
-			<Symbol>FractionOccupiesLand</Symbol>
-			<Symbol>WorkingHours</Symbol>
-			<Symbol>Price</Symbol>
-			<Symbol>LaborRequired</Symbol>
-			<Symbol>Yield</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>t</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

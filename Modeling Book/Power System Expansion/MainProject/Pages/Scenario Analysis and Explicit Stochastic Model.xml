@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-11-09 11:08:59">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="131" />
 				</LeftArea>
@@ -82,7 +82,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="315" left="9" bottom="339" right="192" />
-		<TabOrder>9</TabOrder>
+		<TabOrder>7</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Restart"</Title>
@@ -97,7 +97,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="192" left="210" bottom="288" right="672" />
-		<TabOrder>13</TabOrder>
+		<TabOrder>10</TabOrder>
 		<ObjectUUID>1387FF93-9BAD-4978-B809-98C70810DB9A</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -161,7 +161,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="300" left="210" bottom="396" right="672" />
-		<TabOrder>14</TabOrder>
+		<TabOrder>11</TabOrder>
 		<ObjectUUID>51A16E77-15CD-4E38-A2EC-9FA080AC3093</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -221,7 +221,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="408" left="210" bottom="504" right="672" />
-		<TabOrder>15</TabOrder>
+		<TabOrder>12</TabOrder>
 		<ObjectUUID>4AE91375-9A9D-44CE-BBE1-A890A81F042C</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -278,7 +278,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="516" left="210" bottom="612" right="672" />
-		<TabOrder>16</TabOrder>
+		<TabOrder>13</TabOrder>
 		<ObjectUUID>1A55BE03-70CE-47E2-B65A-E5BEF6748063</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -333,7 +333,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>8</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
@@ -360,7 +360,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="186" left="6" bottom="210" right="192" />
-		<TabOrder>12</TabOrder>
+		<TabOrder>9</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
@@ -377,7 +377,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -385,7 +385,7 @@
 		<StaticText>Input Data</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -393,24 +393,24 @@
 		<StaticText>Stochastic Program</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>PlanNewCap</Symbol>
+			<Symbol>SolveScenarioModels</Symbol>
+			<Symbol>PerformScenarioAnalysis</Symbol>
+			<Symbol>SolveSP_PowerExpModel</Symbol>
+			<Symbol>CopyStochSolInPlan</Symbol>
 			<Symbol>AllPlans</Symbol>
+			<Symbol>ScenOrStoch</Symbol>
+			<Symbol>PlanNewCap</Symbol>
+			<Symbol>PlanTotalCap</Symbol>
+			<Symbol>PlanTotalCosts</Symbol>
 			<Symbol>PlanCapImportedInScenario</Symbol>
+			<Symbol>PlanTotalCostsInScenario</Symbol>
 			<Symbol>PlanTotalExpectedCosts</Symbol>
 			<Symbol>Restart</Symbol>
-			<Symbol>ScenOrStoch</Symbol>
-			<Symbol>PerformScenarioAnalysis</Symbol>
-			<Symbol>CopyStochSolInPlan</Symbol>
-			<Symbol>SolveScenarioModels</Symbol>
-			<Symbol>PlanTotalCosts</Symbol>
-			<Symbol>PlanTotalCostsInScenario</Symbol>
-			<Symbol>PlanTotalCap</Symbol>
-			<Symbol>SolveSP_PowerExpModel</Symbol>
 			<Symbol>p</Symbol>
 			<Symbol>s</Symbol>
 			<Symbol>spl</Symbol>

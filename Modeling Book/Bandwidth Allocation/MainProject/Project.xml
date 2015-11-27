@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.0.0.319 unicode x86" ProjectUUID="EC850015-3923-450C-930F-E9A1219C5E19">
+<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="EC850015-3923-450C-930F-E9A1219C5E19">
 	<ModelFileName>Bandwidth Allocation.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-01-26 02:08:34">
-	<Location top="26" left="8" bottom="643" right="1020" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>8F2E7F25-EE03-41BC-9A2D-7D0530DE3B45</ProjectUUID>
-	<TemplatesTabOrderPosition>5</TemplatesTabOrderPosition>
+	<TemplatesTabOrderPosition>4</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204" />
 				<RightArea Line="FixedFromTop" Value="85">
 					<BottomArea Line="FixedFromLeft" Value="240" />
@@ -38,7 +38,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="327" left="6" bottom="360" right="192" />
-		<TabOrder>9</TabOrder>
+		<TabOrder>6</TabOrder>
 		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -53,7 +53,7 @@
 	<PageObject Type="Scalar">
 		<Location top="189" left="207" bottom="255" right="435" />
 		<ReadOnly>"Yes"</ReadOnly>
-		<TabOrder>10</TabOrder>
+		<TabOrder>7</TabOrder>
 		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -81,7 +81,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>DropDownList</SelectionType>
 		<Location top="276" left="6" bottom="300" right="192" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>8</TabOrder>
 		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
 		<TextShown>ElementName</TextShown>
 		<Border Style="None" />
@@ -92,7 +92,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="261" left="207" bottom="612" right="435" />
-		<TabOrder>13</TabOrder>
+		<TabOrder>10</TabOrder>
 		<ObjectUUID>C1C7ED45-126D-4FC9-83C5-6C1779ED502E</ObjectUUID>
 		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
 		<Border Style="Line" Width="1" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -124,7 +124,7 @@
 		<Indices>
 			<Explicit_Index>
 				<Index ID="6510">e</Index>
-				<Header_Title ID="6530">"Experiment"</Header_Title>
+				<Header_Title ID="6530">"Run"</Header_Title>
 			</Explicit_Index>
 			<Identifier_Index>
 				<Header_Title ID="6230">""</Header_Title>
@@ -132,6 +132,11 @@
 				<Hide_if_Single_Identifier ID="6270">"No"</Hide_if_Single_Identifier>
 			</Identifier_Index>
 		</Indices>
+		<General>
+			<Save_Layout_State>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
+		</General>
 		<Row_Area>
 			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
 			<Text_Color ExtraInfo="28915E7B-E9D1-41B0-BBC9-F654B9F94007" ID="2020">"default selection"</Text_Color>
@@ -155,11 +160,11 @@
 		</Grid_Area>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="210" bottom="177" right="762" />
+		<Location top="159" left="204" bottom="177" right="756" />
 		<StaticText>Result of Solver Comparison</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -176,12 +181,12 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Bar Chart">
 		<Location top="189" left="441" bottom="612" right="765" />
-		<TabOrder>14</TabOrder>
+		<TabOrder>11</TabOrder>
 		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -217,7 +222,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>DropDownList</SelectionType>
 		<Location top="303" left="6" bottom="327" right="192" />
-		<TabOrder>12</TabOrder>
+		<TabOrder>9</TabOrder>
 		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
 		<TextShown>ElementName</TextShown>
 		<Border Style="None" />
@@ -229,7 +234,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
 		<Location top="423" left="6" bottom="453" right="192" />
-		<TabOrder>15</TabOrder>
+		<TabOrder>12</TabOrder>
 		<Font GUID="4166DA76-F449-4BB3-A971-186250280A09" Name="default" />
 		<TextShown>IdentifierText</TextShown>
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -240,7 +245,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
-		<TabOrder>6</TabOrder>
+		<TabOrder>5</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
@@ -269,33 +274,33 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="219" left="18" bottom="237" right="195" />
+		<Location top="222" left="18" bottom="237" right="195" />
 		<StaticText>Single Solver</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>e</Symbol>
+			<Symbol>UsedSolver</Symbol>
+			<Symbol>ExperimentColor</Symbol>
+			<Symbol>ShowProgress</Symbol>
+			<Symbol>NLPSolvers</Symbol>
 			<Symbol>SelectedSolverB</Symbol>
-			<Symbol>SolutionValue</Symbol>
-			<Symbol>NrExperiments</Symbol>
 			<Symbol>SolutionTime</Symbol>
+			<Symbol>SolutionTimeParallel</Symbol>
+			<Symbol>NrExperiments</Symbol>
+			<Symbol>SolutionValue</Symbol>
+			<Symbol>BestSoFar</Symbol>
 			<Symbol>RunExperiment</Symbol>
 			<Symbol>RunExperimentParallel</Symbol>
-			<Symbol>UsedSolver</Symbol>
 			<Symbol>SelectedNLPSolver</Symbol>
-			<Symbol>NLPSolvers</Symbol>
-			<Symbol>SolutionTimeParallel</Symbol>
-			<Symbol>BestSoFar</Symbol>
-			<Symbol>ShowProgress</Symbol>
-			<Symbol>ExperimentColor</Symbol>
+			<Symbol>e</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

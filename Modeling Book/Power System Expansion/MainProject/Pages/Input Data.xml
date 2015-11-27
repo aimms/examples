@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-11-09 11:08:59">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204" />
 				<RightArea Line="FixedFromTop" Value="85" />
 			</BottomArea>
@@ -247,7 +247,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="186" left="6" bottom="210" right="192" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>8</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
@@ -261,7 +261,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
-		<TabOrder>10</TabOrder>
+		<TabOrder>7</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
@@ -289,7 +289,7 @@
 		<StaticText>Stochastic Program</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -297,7 +297,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -305,18 +305,18 @@
 		<StaticText>Scenario Analysis</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>ImportCosts</Symbol>
-			<Symbol>CapitalCosts</Symbol>
 			<Symbol>ExistingCap</Symbol>
+			<Symbol>CapitalCosts</Symbol>
+			<Symbol>OperatingCosts</Symbol>
+			<Symbol>ImportCosts</Symbol>
 			<Symbol>SPInstDemand</Symbol>
 			<Symbol>SPDemandDuration</Symbol>
 			<Symbol>SPRequiredElectr</Symbol>
-			<Symbol>OperatingCosts</Symbol>
 			<Symbol>p</Symbol>
 			<Symbol>k</Symbol>
 			<Symbol>s</Symbol>

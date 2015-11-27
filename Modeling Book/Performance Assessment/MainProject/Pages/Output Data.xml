@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-11-09 11:04:21">
-	<Location top="239" left="209" bottom="877" right="1018" />
+<Page Version="4000" TimeStamp="2015-11-27 11:01:26">
+	<Location top="221" left="165" bottom="675" right="793" />
 	<PageEditSize Type="Inherited">
 		<Size Width="628" Height="453" />
 	</PageEditSize>
@@ -22,6 +22,7 @@
 				<Identifier ID="4110">RelativeEfficiency( d )</Identifier>
 				<Title ID="4120">"Relative Efficiency"</Title>
 				<Format>
+					<Standard_Format ID="4316">0</Standard_Format>
 					<Decimal_Places ID="4312">3</Decimal_Places>
 				</Format>
 			</Explicit_Identifier>
@@ -35,6 +36,10 @@
 		<General>
 			<Background_Color ExtraInfo="CCB23DE4-D3C9-4647-BE46-7A1779576484" ID="1010">"Background yellow"</Background_Color>
 			<Font ExtraInfo="428A93A5-26E1-4F42-8B0F-227299B289C7" ID="1030">"Table Text"</Font>
+			<Save_Layout_State>
+				<By_End_User ID="1040">"When page is closing"</By_End_User>
+				<Store_Entire_Tree_Layout ID="1110">1</Store_Entire_Tree_Layout>
+			</Save_Layout_State>
 		</General>
 		<Row_Area>
 			<Background_Color ID="2010">RGB&lt;255,255,200&gt;</Background_Color>
@@ -44,6 +49,9 @@
 				<Text_Color ID="2130">RGB&lt;255,255,255&gt;</Text_Color>
 			</Headers>
 		</Row_Area>
+		<Column_Area>
+			<Auto_resize_Column_Widths ID="3006">"Never"</Auto_resize_Column_Widths>
+		</Column_Area>
 		<Grid_Area>
 			<Background_Color ID="5010">RGB&lt;255,255,255&gt;</Background_Color>
 			<Alternating_Background_Color ID="5011">RGB&lt;225,225,225&gt;</Alternating_Background_Color>
@@ -66,7 +74,7 @@
 	</PageObject>
 	<PageObject Type="2D Chart">
 		<Location top="24" left="252" bottom="444" right="618" />
-		<TabOrder>3</TabOrder>
+		<TabOrder>2</TabOrder>
 		<Border Style="InShadow" Width="2" />
 		<X_Axis>
 			<Domain ID="1004">d</Domain>
@@ -93,8 +101,8 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>d</Symbol>
 			<Symbol>RelativeEfficiency</Symbol>
+			<Symbol>d</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

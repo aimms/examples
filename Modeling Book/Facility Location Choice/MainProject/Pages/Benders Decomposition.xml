@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2008-05-15 09:52:13">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="67" />
 				</LeftArea>
@@ -112,7 +112,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -133,7 +133,7 @@
 		<StaticText>Solution Network</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -150,7 +150,7 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -171,8 +171,8 @@
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="345" left="213" bottom="363" right="453" />
-		<StaticText>Optimal Flows</StaticText>
+		<Location top="345" left="204" bottom="363" right="453" />
+		<StaticText>  Optimal Flows</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
 			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
@@ -194,16 +194,16 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>Served</Symbol>
-			<Symbol>b</Symbol>
-			<Symbol>d</Symbol>
-			<Symbol>z</Symbol>
-			<Symbol>ReportLowerBound</Symbol>
 			<Symbol>Selected</Symbol>
+			<Symbol>Served</Symbol>
+			<Symbol>ReportLowerBound</Symbol>
+			<Symbol>ReportUpperBound</Symbol>
 			<Symbol>ReportM</Symbol>
 			<Symbol>BendersDecomposition</Symbol>
 			<Symbol>Clear</Symbol>
-			<Symbol>ReportUpperBound</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>z</Symbol>
+			<Symbol>b</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

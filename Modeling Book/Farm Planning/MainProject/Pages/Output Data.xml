@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2011-11-28 18:32:23">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="237" left="211" bottom="637" right="761" />
 	<PageEditSize Type="Inherited">
 		<Size Width="782" Height="414" />
@@ -99,24 +99,24 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="12" left="18" bottom="30" right="396" />
-		<StaticText>Labor</StaticText>
+		<Location top="12" left="6" bottom="30" right="396" />
+		<StaticText>  Labor</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="12" left="414" bottom="30" right="786" />
-		<StaticText>Land</StaticText>
+		<Location top="12" left="402" bottom="30" right="786" />
+		<StaticText>  Land</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="372" left="6" bottom="402" right="384" />
-		<TabOrder>10</TabOrder>
+		<TabOrder>4</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -139,24 +139,24 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="348" left="18" bottom="366" right="396" />
-		<StaticText>Objective Function</StaticText>
+		<Location top="348" left="6" bottom="366" right="390" />
+		<StaticText>  Objective Function</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>c</Symbol>
-			<Symbol>t</Symbol>
-			<Symbol>Consumption</Symbol>
+			<Symbol>AmountPlanted</Symbol>
 			<Symbol>PermanentLaborHired</Symbol>
+			<Symbol>TemporaryLaborHired</Symbol>
 			<Symbol>Sales</Symbol>
 			<Symbol>ObjectiveFunction</Symbol>
-			<Symbol>AmountPlanted</Symbol>
 			<Symbol>AbsYield</Symbol>
-			<Symbol>TemporaryLaborHired</Symbol>
+			<Symbol>Consumption</Symbol>
+			<Symbol>c</Symbol>
+			<Symbol>t</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

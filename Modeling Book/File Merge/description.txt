@@ -1,4 +1,3 @@
-
 This problem deals with merging two statistical database files; the Income Data File and the Population Data File. Because of the large sample sizes, the problem can be solved with an algorithmic evaluation approach that controls the size of the network, and systematically considers a subset of all columns at each iteration.
 
 There are two methods of solving this problem:

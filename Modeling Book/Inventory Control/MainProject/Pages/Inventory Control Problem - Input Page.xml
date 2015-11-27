@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-11-09 11:00:58">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,13 +9,13 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="149" />
 				</LeftArea>
 				<RightArea Line="FixedFromTop" Value="85">
 					<BottomArea Line="PercentageFromLeft" Value="0.477273">
-						<RightArea Line="FixedFromLeft" Value="290.999844" />
+						<RightArea Line="FixedFromLeft" Value="290.477117" />
 					</BottomArea>
 				</RightArea>
 			</BottomArea>
@@ -39,11 +39,11 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="192" left="12" bottom="207" right="189" />
+		<Location top="192" left="18" bottom="207" right="189" />
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -146,11 +146,11 @@ Regular beer = 35 [hl]</StaticText>
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="303" left="6" bottom="327" right="192" />
+		<Location top="309" left="6" bottom="333" right="192" />
 		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -168,11 +168,11 @@ Regular beer = 35 [hl]</StaticText>
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="207" bottom="177" right="375" />
-		<StaticText>Input Data</StaticText>
+		<Location top="159" left="204" bottom="180" right="375" />
+		<StaticText> Input Data</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -189,11 +189,11 @@ Regular beer = 35 [hl]</StaticText>
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="222" left="12" bottom="237" right="189" />
+		<Location top="222" left="18" bottom="237" right="189" />
 		<StaticText>Output Page</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Table">
@@ -257,17 +257,17 @@ Regular beer = 35 [hl]</StaticText>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>sellingPrice</Symbol>
+			<Symbol>productionCost</Symbol>
+			<Symbol>inventoryCost</Symbol>
+			<Symbol>externalSupplyCost</Symbol>
+			<Symbol>overallCapacity</Symbol>
+			<Symbol>maximumInventory</Symbol>
+			<Symbol>demandOfBeerInState</Symbol>
+			<Symbol>probabilityOfReachingState</Symbol>
 			<Symbol>MainExecution</Symbol>
 			<Symbol>b</Symbol>
 			<Symbol>s</Symbol>
-			<Symbol>externalSupplyCost</Symbol>
-			<Symbol>productionCost</Symbol>
-			<Symbol>sellingPrice</Symbol>
-			<Symbol>probabilityOfReachingState</Symbol>
-			<Symbol>overallCapacity</Symbol>
-			<Symbol>inventoryCost</Symbol>
-			<Symbol>demandOfBeerInState</Symbol>
-			<Symbol>maximumInventory</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

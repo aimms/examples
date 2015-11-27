@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-11-13 21:38:41">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="284" />
 				</LeftArea>
@@ -38,11 +38,11 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="189" left="18" bottom="207" right="183" />
+		<Location top="192" left="18" bottom="207" right="183" />
 		<StaticText>Problem Description</StaticText>
-		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Tabbed Page Object">
@@ -55,8 +55,8 @@
 		<SelectedPageSymbol>ActivePage</SelectedPageSymbol>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="210" bottom="177" right="450" />
-		<StaticText>Merge Data Tables</StaticText>
+		<Location top="159" left="204" bottom="174" right="450" />
+		<StaticText> Merge Data Tables</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor RGB="#000080" />
 	</PageObject>
@@ -74,7 +74,7 @@
 		<StaticText>Execution - Method 1</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -143,10 +143,12 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="309" left="24" bottom="342" right="195" />
+		<Location top="309" left="18" bottom="342" right="186" />
 		<StaticText>Minimizes the distance between all data sets.</StaticText>
 		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
-		<TextColor RGB="#000080" />
+		<TextColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
@@ -162,10 +164,12 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="219" left="15" bottom="240" right="156" />
+		<Location top="222" left="18" bottom="240" right="156" />
 		<StaticText>Quit AIMMS</StaticText>
-		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
-		<TextColor RGB="#000080" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
 		<Location top="462" left="6" bottom="486" right="192" />
@@ -181,7 +185,7 @@
 		<StaticText>Execution - Combined</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -189,7 +193,7 @@
 		<StaticText>Execution - Method 2</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -210,10 +214,10 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>RunWithColumnGeneration</Symbol>
-			<Symbol>Solved</Symbol>
 			<Symbol>RunWithAllVariables</Symbol>
 			<Symbol>RunWithInitialSolutionOnly</Symbol>
+			<Symbol>RunWithColumnGeneration</Symbol>
+			<Symbol>Solved</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -60,7 +60,7 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="2D Chart">
-		<Location top="441" left="205" bottom="615" right="387" />
+		<Location top="441" left="206" bottom="615" right="388" />
 		<TabOrder>5</TabOrder>
 		<TabStop>false</TabStop>
 		<Border Style="Line" Width="2" />
@@ -108,7 +108,7 @@
 		</Header_Footer>
 	</PageObject>
 	<PageObject Type="2D Chart">
-		<Location top="441" left="391" bottom="615" right="573" />
+		<Location top="441" left="393" bottom="615" right="575" />
 		<TabOrder>6</TabOrder>
 		<TabStop>false</TabStop>
 		<Border Style="Line" Width="2" />

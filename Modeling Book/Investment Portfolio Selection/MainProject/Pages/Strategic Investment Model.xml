@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-04-04 04:02:00">
-	<Location top="29" left="4" bottom="888" right="1274" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -187,7 +187,7 @@
 		</Header_Footer>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="341" left="5" bottom="365" right="191" />
+		<Location top="337" left="5" bottom="361" right="191" />
 		<TabOrder>3</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -223,12 +223,12 @@
 		<StaticText>Tactical Model</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Scalar">
-		<Location top="193" left="201" bottom="615" right="420" />
-		<TabOrder>10</TabOrder>
+		<Location top="191" left="201" bottom="615" right="420" />
+		<TabOrder>8</TabOrder>
 		<TabStop>false</TabStop>
 		<Font GUID="9EE32D48-F52A-4B50-891C-669A3B2A569A" Name="default" />
 		<Border Style="None" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -250,12 +250,12 @@
 	<UsedReferences>
 		<Model>
 			<Symbol>ExpectedValueOfReturn</Symbol>
-			<Symbol>InvestedFraction</Symbol>
-			<Symbol>CategoryColor</Symbol>
-			<Symbol>SolveStrategicInvestmentModel</Symbol>
 			<Symbol>DesiredExpectedPortfolioReturn</Symbol>
-			<Symbol>TotalRisk</Symbol>
+			<Symbol>InvestedFraction</Symbol>
 			<Symbol>Covariance</Symbol>
+			<Symbol>TotalRisk</Symbol>
+			<Symbol>SolveStrategicInvestmentModel</Symbol>
+			<Symbol>CategoryColor</Symbol>
 			<Symbol>j</Symbol>
 			<Symbol>k</Symbol>
 		</Model>
