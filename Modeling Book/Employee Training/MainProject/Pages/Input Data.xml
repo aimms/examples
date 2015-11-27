@@ -48,7 +48,7 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="159" left="204" bottom="180" right="756" />
-		<StaticText>  Flight attendant requirements and resignations</StaticText>
+		<StaticText> Flight attendant requirements and resignations</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
 			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
@@ -64,7 +64,7 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="360" left="204" bottom="378" right="756" />
+		<Location top="358" left="204" bottom="376" right="756" />
 		<StaticText>  Normally distributed resignation data and critical values</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
@@ -99,7 +99,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Scalar">
-		<Location top="390" left="204" bottom="417" right="390" />
+		<Location top="390" left="207" bottom="417" right="390" />
 		<TabOrder>6</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />

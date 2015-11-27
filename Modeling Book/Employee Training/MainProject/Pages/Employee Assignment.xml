@@ -174,7 +174,7 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="159" left="204" bottom="174" right="753" />
-		<StaticText>  Solutions</StaticText>
+		<StaticText> Solutions</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
 			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
