@@ -179,7 +179,7 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="438" left="138" bottom="456" right="642" />
-		<StaticText>(c) Paragon Decision Technology</StaticText>
+		<StaticText>© AIMMS B.V.</StaticText>
 		<Alignment>Center</Alignment>
 		<Font GUID="4E7DCA69-8FF6-4BA9-ABD0-7C10D90638AB" Name="default" />
 		<TextColor>

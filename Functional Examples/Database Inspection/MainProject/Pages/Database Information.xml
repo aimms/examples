@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-04-07 07:35:03">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="31" />
 				</LeftArea>
@@ -163,7 +163,7 @@
 		<StaticText>Add Database</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<Symbol>ExampleStyle::ButtonColor</Symbol>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -179,7 +179,7 @@
 		<StaticText>View Data</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -200,7 +200,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -224,33 +224,32 @@
 		<StaticText>Remove Database</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<Symbol>ExampleStyle::ButtonColor</Symbol>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>d</Symbol>
-			<Symbol>ci</Symbol>
-			<Symbol>di</Symbol>
-			<Symbol>NumberOfColumns</Symbol>
-			<Symbol>HeaderTitle</Symbol>
-			<Symbol>InspectAllDatabases</Symbol>
-			<Symbol>TheDatabase</Symbol>
-			<Symbol>ColumnCharacteristics</Symbol>
-			<Symbol>NumberOfTables</Symbol>
-			<Symbol>RemoveDatabase</Symbol>
-			<Symbol>ti</Symbol>
-			<Symbol>TableName</Symbol>
-			<Symbol>DatabaseProperty</Symbol>
-			<Symbol>DatabaseLocation</Symbol>
-			<Symbol>DatabaseName</Symbol>
-			<Symbol>AddDatabase</Symbol>
-			<Symbol>InitialOuterAreaWidth</Symbol>
-			<Symbol>ColumnName</Symbol>
 			<Symbol>IndexDatasourceProperties</Symbol>
-			<Symbol>TheTableInInformation</Symbol>
 			<Symbol>IndexDataColumnCharacteristics</Symbol>
-			<Symbol>ExampleStyle::ButtonColor</Symbol>
+			<Symbol>DatabaseName</Symbol>
+			<Symbol>DatabaseLocation</Symbol>
+			<Symbol>DatabaseProperty</Symbol>
+			<Symbol>NumberOfTables</Symbol>
+			<Symbol>TableName</Symbol>
+			<Symbol>NumberOfColumns</Symbol>
+			<Symbol>ColumnName</Symbol>
+			<Symbol>ColumnCharacteristics</Symbol>
+			<Symbol>InspectAllDatabases</Symbol>
+			<Symbol>AddDatabase</Symbol>
+			<Symbol>RemoveDatabase</Symbol>
+			<Symbol>HeaderTitle</Symbol>
+			<Symbol>InitialOuterAreaWidth</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>TheDatabase</Symbol>
+			<Symbol>di</Symbol>
+			<Symbol>ti</Symbol>
+			<Symbol>TheTableInInformation</Symbol>
+			<Symbol>ci</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.0.0.432 unicode x86" ProjectUUID="C5933ECF-9849-41DE-B626-2E28D4DB35F9">
+<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="C5933ECF-9849-41DE-B626-2E28D4DB35F9">
 	<ModelFileName>DLLExample.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

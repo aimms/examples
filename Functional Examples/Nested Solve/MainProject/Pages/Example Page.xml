@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-20 13:20:27">
-	<Location top="22" left="4" bottom="1077" right="1594" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="125">
 						<BottomArea Line="FixedFromTop" Value="66" />
@@ -38,20 +38,20 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="276" left="18" bottom="300" right="162" />
+		<Location top="279" left="18" bottom="300" right="159" />
 		<StaticText>Select Data file</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="2CBBC267-5646-4250-8746-43D852803F0C">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="432" left="12" bottom="492" right="195" />
+		<Location top="432" left="12" bottom="522" right="195" />
 		<StaticText>To interrupt the solution process, press &lt;Ctrl&gt; + &lt; Shift&gt; + S. 
 To open the progress window, press &lt;Ctrl&gt; + P.</StaticText>
-		<Font GUID="A5D088DF-E841-49CF-B5FB-6F96F0BD3D3B" Name="default" />
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor>
-			<UserColor GUID="2CBBC267-5646-4250-8746-43D852803F0C">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Selection Object">
@@ -178,11 +178,11 @@ To open the progress window, press &lt;Ctrl&gt; + P.</StaticText>
 		<DrawLines>true</DrawLines>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="498" left="12" bottom="621" right="192" />
-		<StaticText>The table gives an overview of the objective, best integer and gap that is retrieved every time CPLEX finds a new incumbent (if you solve model without recursive solve), or every time CPLEX adds a new cut (if you solve model with recursive solve) .</StaticText>
-		<Font GUID="A5D088DF-E841-49CF-B5FB-6F96F0BD3D3B" Name="default" />
+		<Location top="528" left="12" bottom="651" right="192" />
+		<StaticText>The table to the right gives an overview of the objective, best integer and gap that is retrieved every time CPLEX finds a new incumbent (if you solve the model without recursive solve), or every time CPLEX adds a new cut (if you solve the model with recursive solve) .</StaticText>
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor>
-			<UserColor GUID="2CBBC267-5646-4250-8746-43D852803F0C">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -203,7 +203,7 @@ To open the progress window, press &lt;Ctrl&gt; + P.</StaticText>
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -211,7 +211,7 @@ To open the progress window, press &lt;Ctrl&gt; + P.</StaticText>
 		<StaticText>Source Article</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -228,7 +228,7 @@ To open the progress window, press &lt;Ctrl&gt; + P.</StaticText>
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -245,23 +245,23 @@ To open the progress window, press &lt;Ctrl&gt; + P.</StaticText>
 		<StaticText>Information</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>SolveNetworkFlowModelWithNestedSolve</Symbol>
-			<Symbol>InitializePage</Symbol>
-			<Symbol>ProgressSolutionTime</Symbol>
 			<Symbol>SolveNetworkFlowModel</Symbol>
+			<Symbol>SolveNetworkFlowModelWithNestedSolve</Symbol>
 			<Symbol>DatafileSet</Symbol>
-			<Symbol>ProgressGap</Symbol>
-			<Symbol>pl</Symbol>
-			<Symbol>DisplayedProgressGap</Symbol>
-			<Symbol>SelectedDatafile</Symbol>
-			<Symbol>dpl</Symbol>
-			<Symbol>ProgressLinearObj</Symbol>
 			<Symbol>ProgressBestObj</Symbol>
+			<Symbol>ProgressLinearObj</Symbol>
+			<Symbol>ProgressGap</Symbol>
+			<Symbol>ProgressSolutionTime</Symbol>
+			<Symbol>DisplayedProgressGap</Symbol>
+			<Symbol>InitializePage</Symbol>
+			<Symbol>SelectedDatafile</Symbol>
+			<Symbol>pl</Symbol>
+			<Symbol>dpl</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

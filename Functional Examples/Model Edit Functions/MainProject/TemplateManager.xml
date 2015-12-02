@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <TemplateManager>
-	<Template Name="Size Template" PageGUID="CF5102A4-E852-415E-A675-44584DE4488D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6FAD23C7-6BBF-4268-98B2-7EE3C9BB59D5|Size Template">
-		<Template Name="Navigation Template" PageGUID="EC8EC33D-B73F-490D-AAE7-DB6532103233" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3DD6319B-A3C0-4BF5-8858-39D3796ECB42|Navigation Template">
+	<Template Name="Size Template" PageGUID="CF5102A4-E852-415E-A675-44584DE4488D" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
+		<Template Name="Navigation Template" PageGUID="EC8EC33D-B73F-490D-AAE7-DB6532103233" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
 			<Template Name="Example Pages Template" PageGUID="63413CFD-4673-4E07-AF47-7B0ED84040BC">
 				<Template Name="Slice Selection" PageGUID="CBADF664-B773-4259-A274-7B9B5E2225D0">
 					<Page Name="Empty Slice" PageGUID="855BEB20-435E-48F9-AAE5-DEC27F99632C" />
@@ -9,7 +9,7 @@
 				</Template>
 				<Page Name="Read From Excel" PageGUID="6C1A75BB-B056-4DEB-B6E3-A3A1E0FE2429" />
 			</Template>
-			<Template Name="Background Info Template" PageGUID="6B104255-8F9D-4F6C-8385-B7CF57F2628B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|9AD4053E-BE3B-4735-A0D7-0CC6E30A679E|Background Info Template">
+			<Template Name="Background Info Template" PageGUID="6B104255-8F9D-4F6C-8385-B7CF57F2628B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
 				<Page Name="AIMMS Demo" PageGUID="5F3F2AA8-284D-45A8-95EA-3EB68F4DE9A3" />
 			</Template>
 		</Template>

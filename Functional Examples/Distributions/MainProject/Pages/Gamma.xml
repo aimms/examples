@@ -18,9 +18,9 @@
 		<Location top="486" left="12" bottom="540" right="636" />
 		<StaticText>The Weibull and Gamma distribution are much alike. 
 Their shape starts very peaked  at low values; becomes Exponential at shape=1 and then changes into the 'smooth' shape of the Extremevalue resp. Normal distribution.</StaticText>
-		<Font GUID="46D05E58-942E-4033-933A-740958D80946" Name="Button font" />
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor>
-			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="2D Chart">

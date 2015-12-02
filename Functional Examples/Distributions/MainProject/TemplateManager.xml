@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <TemplateManager>
-	<Template Name="Size Template" PageGUID="16103B04-484B-4EF1-B4F2-0DAAB6C9B21B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|F481EC98-58CD-4617-97E1-673A5EB4C0DE|Size Template">
-		<Template Name="Navigation Template" PageGUID="3703A65D-9326-4A17-B7AF-E7A81FA5F444" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|DCCF0C9E-7D36-4599-8E56-9550FB175CEE|Navigation Template">
+	<Template Name="Size Template" PageGUID="16103B04-484B-4EF1-B4F2-0DAAB6C9B21B" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|6A8815C4-5811-47AB-BC76-82C3180C1295|Size Template">
+		<Template Name="Navigation Template" PageGUID="3703A65D-9326-4A17-B7AF-E7A81FA5F444" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|3241DDB1-55C5-441B-9DC8-359086631B74|Navigation Template">
 			<Template Name="Page Navigation" PageGUID="57935D92-D6E4-44F0-9D03-72C3EE2E5FBE">
 				<Page Name="Overview Page" PageGUID="C2C21BC0-2D8E-4C20-90B3-8A9BF1522F94" />
 				<Page Name="Skewness and Kurtosis" PageGUID="02658FB8-3B52-4355-BBD1-CF0B4D78C2D3" />
-				<Page Name="Sampling and Operations" PageGUID="4DD19F5D-DE31-4C5A-A596-76E428D919ED" Marked="true" />
+				<Page Name="Sampling and Operations" PageGUID="4DD19F5D-DE31-4C5A-A596-76E428D919ED" />
 				<Page Name="Distribution Descriptions" PageGUID="8480B1DB-8D09-4044-9163-C4295762F2B0" />
 				<Page Name="Conclusions" PageGUID="FB848500-37A4-4FD0-921B-65BEB2156AC1" />
 				<Page Name="Distribution Approximations" PageGUID="DDDBB23F-BFF2-401C-B56E-612460376E89" />
 			</Template>
-			<Template Name="Background Info Template" PageGUID="E7E9BCF5-2BCE-4FDB-8299-93EA165F89C0" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|AC16E258-3C40-437D-AB07-433DA9FBC321|Background Info Template">
+			<Template Name="Background Info Template" PageGUID="E7E9BCF5-2BCE-4FDB-8299-93EA165F89C0" CrossLibraryDuplicate="66E08D8C-5677-49B5-970F-BB85475A48BE|153A8CDB-E916-4F3B-B652-41C25F2C9CB5|Background Info Template">
 				<Page Name="AIMMS Demo" PageGUID="5CC3F9C7-B4FB-4A12-BA9C-FE2AC66735A4" />
 			</Template>
 		</Template>

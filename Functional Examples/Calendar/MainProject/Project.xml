@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.0.0.319 unicode x86" ProjectUUID="D989AEA3-3E13-4FB5-B08D-534E94525677">
+<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="D989AEA3-3E13-4FB5-B08D-534E94525677">
 	<ModelFileName>Calendar.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

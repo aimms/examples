@@ -10,6 +10,6 @@
 				<Page Name="Sample Points View" PageGUID="1FF89625-DF68-4EA7-A720-50D02CF329F0" />
 			</Template>
 		</Template>
-		<Page Name="Settings Help" PageGUID="586F2C52-FD6F-41D9-8BCB-19AD4550B504" />
 	</Template>
+	<Page Name="Settings Help" PageGUID="586F2C52-FD6F-41D9-8BCB-19AD4550B504" />
 </TemplateManager>

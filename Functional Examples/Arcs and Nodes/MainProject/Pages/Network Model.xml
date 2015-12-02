@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-04-18 15:11:39">
-	<Location top="29" left="4" bottom="888" right="1274" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="299" />
 				</LeftArea>
@@ -563,15 +563,15 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="212" bottom="177" right="477" />
-		<StaticText>Network Object and Output Data</StaticText>
+		<Location top="159" left="201" bottom="177" right="466" />
+		<StaticText>  Network Object and Output Data</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="3B5F60E5-DB96-4AF9-9F8C-4B9CE2602A01">default selection</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -579,40 +579,40 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>SetSourceDestination</Symbol>
-			<Symbol>a</Symbol>
-			<Symbol>i</Symbol>
-			<Symbol>j</Symbol>
-			<Symbol>n</Symbol>
-			<Symbol>SelectedNode</Symbol>
-			<Symbol>ModifySourceDestination</Symbol>
-			<Symbol>ArcCost</Symbol>
-			<Symbol>ComputedCost</Symbol>
-			<Symbol>ArcColor</Symbol>
-			<Symbol>ArcMap</Symbol>
-			<Symbol>Demand</Symbol>
-			<Symbol>DestinationNode</Symbol>
-			<Symbol>EndStock</Symbol>
-			<Symbol>SolveNetworkModel</Symbol>
-			<Symbol>NodeSize</Symbol>
-			<Symbol>ArcToMultiplier</Symbol>
-			<Symbol>SolveModel</Symbol>
 			<Symbol>NodeSet</Symbol>
-			<Symbol>SelectedArc</Symbol>
 			<Symbol>NodeCoordinate</Symbol>
-			<Symbol>NodeColor</Symbol>
 			<Symbol>Supply</Symbol>
+			<Symbol>Demand</Symbol>
 			<Symbol>ArcSet</Symbol>
-			<Symbol>ComputedFlow</Symbol>
-			<Symbol>TotalSupplySurplus</Symbol>
-			<Symbol>SourceNode</Symbol>
+			<Symbol>ArcMap</Symbol>
+			<Symbol>ArcCost</Symbol>
 			<Symbol>ArcCapacity</Symbol>
 			<Symbol>ArcFromMultiplier</Symbol>
+			<Symbol>ArcToMultiplier</Symbol>
+			<Symbol>NodeSize</Symbol>
+			<Symbol>NodeColor</Symbol>
+			<Symbol>ArcColor</Symbol>
+			<Symbol>SetSourceDestination</Symbol>
+			<Symbol>ModifySourceDestination</Symbol>
+			<Symbol>TotalSupplySurplus</Symbol>
+			<Symbol>SolveNetworkModel</Symbol>
+			<Symbol>ComputedFlow</Symbol>
+			<Symbol>ComputedCost</Symbol>
+			<Symbol>EndStock</Symbol>
+			<Symbol>SolveModel</Symbol>
+			<Symbol>n</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+			<Symbol>SelectedNode</Symbol>
+			<Symbol>SourceNode</Symbol>
+			<Symbol>DestinationNode</Symbol>
+			<Symbol>a</Symbol>
+			<Symbol>SelectedArc</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

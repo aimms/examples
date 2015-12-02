@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-05-11 08:35:53">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="27" left="8" bottom="864" right="1020" />
 	<PageEditSize Type="Inherited">
 		<Size Width="789" Height="620" />
@@ -314,7 +314,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="216" left="186" bottom="285" right="330" />
-		<TabOrder>9</TabOrder>
+		<TabOrder>7</TabOrder>
 		<ObjectUUID>4D86F93B-AFAB-41E6-80B6-F9422E2939BD</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" />
@@ -372,7 +372,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="207" left="360" bottom="282" right="528" />
-		<TabOrder>10</TabOrder>
+		<TabOrder>8</TabOrder>
 		<ObjectUUID>502590FA-9B5E-49E7-8E6E-D751E8CCE6AB</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" />
@@ -431,7 +431,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="216" left="564" bottom="285" right="666" />
-		<TabOrder>11</TabOrder>
+		<TabOrder>9</TabOrder>
 		<ObjectUUID>4C469DAB-857F-4E71-BB50-C5893D658E41</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" />
@@ -583,26 +583,26 @@
 	<PageObject Type="Text">
 		<Location top="300" left="6" bottom="612" right="672" />
 		<StaticText>The value of an adjustable variable is not fully determined by solving the robust optimization problem but instead any adjustable variable will be expressed as an affine relation in terms of the uncertain parameters which it depends on. This page shows how the adjustable variables RO_CapAllocation and RO_ImportCap depend on the uncertain parameter RO_RequiredElectr. For possible realizations of the data for RO_RequiredElectr, given by four scenarios, it is possible to calculate the values for RO_CapAllocation and RO_ImportCap.</StaticText>
-		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>CurrentScenario</Symbol>
-			<Symbol>k</Symbol>
-			<Symbol>p</Symbol>
-			<Symbol>Set_RO_InstDemand_AsInCurrentScenario</Symbol>
-			<Symbol>ROScenarios</Symbol>
-			<Symbol>k_</Symbol>
-			<Symbol>Coeffs_ImportCap_RequiredElectr</Symbol>
-			<Symbol>Const_CapAllocation_RequiredElectr</Symbol>
-			<Symbol>Const_ImportCap_RequiredElectr</Symbol>
-			<Symbol>RO_SolutionImportCap</Symbol>
 			<Symbol>RO_RequiredElectr</Symbol>
-			<Symbol>Coeffs_CapAllocation_RequiredElectr</Symbol>
+			<Symbol>ROScenarios</Symbol>
+			<Symbol>CurrentScenario</Symbol>
 			<Symbol>RO_SolutionCapAllocation</Symbol>
+			<Symbol>Const_CapAllocation_RequiredElectr</Symbol>
+			<Symbol>Coeffs_CapAllocation_RequiredElectr</Symbol>
+			<Symbol>RO_SolutionImportCap</Symbol>
+			<Symbol>Const_ImportCap_RequiredElectr</Symbol>
+			<Symbol>Coeffs_ImportCap_RequiredElectr</Symbol>
+			<Symbol>Set_RO_InstDemand_AsInCurrentScenario</Symbol>
+			<Symbol>p</Symbol>
+			<Symbol>k</Symbol>
+			<Symbol>k_</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

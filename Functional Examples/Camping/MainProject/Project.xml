@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.0.0.319 unicode x86" ProjectUUID="46A0FA7A-949D-47F9-93D1-69BD0DE0FBB7">
+<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="46A0FA7A-949D-47F9-93D1-69BD0DE0FBB7">
 	<ModelFileName>Camping.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

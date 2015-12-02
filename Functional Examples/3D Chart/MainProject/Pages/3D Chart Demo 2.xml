@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="3130" TimeStamp="2014-03-11 15:11:16">
-	<Location top="22" left="4" bottom="1077" right="1594" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -10,7 +10,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="189" />
 				</LeftArea>
@@ -21,7 +21,7 @@
 		</MainArea>
 	</ResizeData>
 	<Background>
-		<UserColor GUID="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB">white</UserColor>
+		<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
 	</Background>
 	<HorizontalGridDistance>3</HorizontalGridDistance>
 	<VerticalGridDistance>3</VerticalGridDistance>
@@ -44,7 +44,7 @@
 	<PageObject Type="Text">
 		<Location top="744" left="732" bottom="762" right="936" />
 		<StaticText>X-axis Rotation</StaticText>
-		<Font GUID="A731F235-F716-4F9F-8650-54E3F3EC9D54" Name="default" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Button">
@@ -65,7 +65,7 @@
 This graph presents the height of a membrane in a rectangular (x,y)-grid, with a uniform external force acting on each cell in the grid. The membrane height is restricted by a complementarity condition.
 
 The complementarity condition expresses that either the membrane reaches one its given bounds (for instance, an obstacle placed in the way of the membrane), or the external force on the cell must be equal to the internal forces acting on the cell caused by differences in height with neighboring cells.</StaticText>
-		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
@@ -125,8 +125,8 @@ The complementarity condition expresses that either the membrane reaches one its
 					<Values ID="5042">ObsContourLevel( oc )</Values>
 					<Styles>
 						<Fill>
-							<Low_value_color ExtraInfo="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB" ID="5069">"white"</Low_value_color>
-							<High_value_color ExtraInfo="A20EF015-3818-48AB-877A-759D32A3AE2D" ID="5070">"red"</High_value_color>
+							<Low_value_color ExtraInfo="33BB2465-9D09-4035-9765-4D4D12BABAAE" ID="5069">"white"</Low_value_color>
+							<High_value_color ExtraInfo="8C1FFC91-A781-4272-831D-2D86F23592E4" ID="5070">"red"</High_value_color>
 						</Fill>
 					</Styles>
 				</Is_contoured>
@@ -182,8 +182,8 @@ The complementarity condition expresses that either the membrane reaches one its
 					<Values ID="5042">ObsContourLevel( oc )</Values>
 					<Styles>
 						<Fill>
-							<Low_value_color ExtraInfo="BC24D24A-7B5B-487C-ACAD-4EA8D893E7FB" ID="5069">"white"</Low_value_color>
-							<High_value_color ExtraInfo="ABA9761C-8B8D-4070-84F5-E0C9079DDFCB" ID="5070">"blue"</High_value_color>
+							<Low_value_color ExtraInfo="33BB2465-9D09-4035-9765-4D4D12BABAAE" ID="5069">"white"</Low_value_color>
+							<High_value_color ExtraInfo="257CED91-8909-41AC-BED6-911268D7BBCE" ID="5070">"blue"</High_value_color>
 						</Fill>
 					</Styles>
 				</Is_contoured>
@@ -254,7 +254,7 @@ The complementarity condition expresses that either the membrane reaches one its
 		<Alignment>Center</Alignment>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="15A67CE2-7003-45B4-97CE-E2888A4BF5A2">default selection</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -263,7 +263,7 @@ The complementarity condition expresses that either the membrane reaches one its
 		<Alignment>Center</Alignment>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="15A67CE2-7003-45B4-97CE-E2888A4BF5A2">default selection</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -280,7 +280,7 @@ The complementarity condition expresses that either the membrane reaches one its
 		<StaticText>Note</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="A20EF015-3818-48AB-877A-759D32A3AE2D">red</UserColor>
+			<UserColor GUID="8C1FFC91-A781-4272-831D-2D86F23592E4">red</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -297,7 +297,7 @@ The complementarity condition expresses that either the membrane reaches one its
 		<StaticText>Force Constant</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -305,7 +305,7 @@ The complementarity condition expresses that either the membrane reaches one its
 		<StaticText>Parabolic Curve</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -313,19 +313,19 @@ The complementarity condition expresses that either the membrane reaches one its
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>ForceConstant</Symbol>
+			<Symbol>MembraneLowerBound</Symbol>
+			<Symbol>MembraneHeight</Symbol>
+			<Symbol>ObsContourLevel</Symbol>
+			<Symbol>SolveObstacleMP</Symbol>
 			<Symbol>x</Symbol>
 			<Symbol>y</Symbol>
-			<Symbol>SolveObstacleMP</Symbol>
-			<Symbol>ForceConstant</Symbol>
 			<Symbol>oc</Symbol>
-			<Symbol>MembraneHeight</Symbol>
-			<Symbol>MembraneLowerBound</Symbol>
-			<Symbol>ObsContourLevel</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

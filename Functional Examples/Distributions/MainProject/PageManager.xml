@@ -9,7 +9,7 @@
 				<Page Name="Weibull" PageGUID="FB4723AE-9CCF-4425-846F-49B9423D2559" />
 				<Page Name="Gamma" PageGUID="1C3C6505-2ED0-4CB8-85B6-4FD33669D492" />
 			</Page>
-			<Page Name="Sampling and Operations" PageGUID="4DD19F5D-DE31-4C5A-A596-76E428D919ED" Marked="true">
+			<Page Name="Sampling and Operations" PageGUID="4DD19F5D-DE31-4C5A-A596-76E428D919ED">
 				<Page Name="All Pareto" PageGUID="14D2D81E-2BAB-4ABE-AF0E-B3A300FD9162" />
 				<Page Name="All LogNormal" PageGUID="C83B40AD-1319-414D-AEC3-7992178CEE90" />
 				<Page Name="All Weibull" PageGUID="D851CE2E-7334-45BC-B9E6-B1A9F2A81FC4" />

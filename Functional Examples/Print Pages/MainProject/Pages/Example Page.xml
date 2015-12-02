@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-07-13 21:09:34">
-	<Location top="22" left="4" bottom="1077" right="1594" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="32" />
 				</LeftArea>
@@ -45,7 +45,7 @@
 		<Spacing>6</Spacing>
 		<BackgroundColor Transparent="true" />
 		<TextColor>
-			<UserColor GUID="AF81EC14-F173-4768-BC46-A26F76AB6BF1">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 		<InputColor>
 			<UserColor GUID="5E8ED2AC-DDDF-4276-A7C0-0392881F7EA2">dark grey</UserColor>
@@ -165,7 +165,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="339" left="8" bottom="564" right="191" />
+		<Location top="339" left="12" bottom="564" right="195" />
 		<StaticText>The data on this page can only be printed for one state at the time directly. 
 
 Print pages allow the user to make paper reports with large amounts of data.
@@ -173,7 +173,7 @@ Print pages allow the user to make paper reports with large amounts of data.
 The buttons on the print pages will not be printed on the paper version !</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="AF81EC14-F173-4768-BC46-A26F76AB6BF1">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -181,7 +181,7 @@ The buttons on the print pages will not be printed on the paper version !</Stati
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -198,19 +198,19 @@ The buttons on the print pages will not be printed on the paper version !</Stati
 		<StaticText>Information</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>Size</Symbol>
+			<Symbol>States</Symbol>
+			<Symbol>SelectedState</Symbol>
+			<Symbol>Revenue</Symbol>
+			<Symbol>Population</Symbol>
+			<Symbol>Temperature</Symbol>
 			<Symbol>t</Symbol>
 			<Symbol>y</Symbol>
-			<Symbol>Revenue</Symbol>
-			<Symbol>States</Symbol>
-			<Symbol>Temperature</Symbol>
-			<Symbol>SelectedState</Symbol>
-			<Symbol>Population</Symbol>
-			<Symbol>Size</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

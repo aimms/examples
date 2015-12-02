@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.0.0.432 unicode x86" ProjectUUID="894D76AE-7EA1-4115-B498-4CFD422DA695">
+<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="894D76AE-7EA1-4115-B498-4CFD422DA695">
 	<ModelFileName>Horizon.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

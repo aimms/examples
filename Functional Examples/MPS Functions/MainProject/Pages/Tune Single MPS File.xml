@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-20 12:19:16">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="311" />
 				</LeftArea>
@@ -27,22 +27,30 @@
 		<TabOrder>2</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Introduction Page"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</ForegroundColor>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<ActionSequence>
-			<Action Type="GotoPage" />
+			<Action Type="LinkedPage">
+				<Page PageGUID="A2923B85-6D0D-408F-B400-3D6AD1E2DEEB" Name="Introduction" />
+			</Action>
 		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Introduction Page</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="246" left="6" bottom="270" right="192" />
 		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Tune Multiple MPS Files"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -53,6 +61,14 @@
 				<Destination>Next</Destination>
 			</Action>
 		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="18" bottom="270" right="195" />
+		<StaticText>Tune Multiple MPS Files</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="198" left="207" bottom="216" right="762" />
@@ -68,7 +84,6 @@
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Tune MPS File"</Title>
-		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</ForegroundColor>
@@ -127,7 +142,6 @@
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"View Tuning Options"</Title>
-		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</ForegroundColor>
@@ -146,7 +160,6 @@
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Reset Data"</Title>
-		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</ForegroundColor>
@@ -197,12 +210,12 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="360" left="207" bottom="381" right="762" />
-		<StaticText>Select only CPLEX 11.0 or higher </StaticText>
+		<StaticText>Select only CPLEX 11.2 or higher </StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -225,7 +238,6 @@
 		<TabOrder>3</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Solve Single MPS File"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -237,18 +249,26 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Solve Single MPS File</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>s</Symbol>
-			<Symbol>ResetCPLEXOptions</Symbol>
-			<Symbol>CPLEXSolvers</Symbol>
 			<Symbol>TuneSingleMPSFile</Symbol>
-			<Symbol>ResetData</Symbol>
-			<Symbol>ViewOptionFiles</Symbol>
-			<Symbol>SelectCPLEX</Symbol>
-			<Symbol>SolverValues_TuneSingle</Symbol>
 			<Symbol>MPSFileName</Symbol>
+			<Symbol>SolverValues_TuneSingle</Symbol>
 			<Symbol>GAPSetting</Symbol>
+			<Symbol>CPLEXSolvers</Symbol>
+			<Symbol>ViewOptionFiles</Symbol>
+			<Symbol>ResetData</Symbol>
+			<Symbol>ResetCPLEXOptions</Symbol>
+			<Symbol>s</Symbol>
+			<Symbol>SelectCPLEX</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

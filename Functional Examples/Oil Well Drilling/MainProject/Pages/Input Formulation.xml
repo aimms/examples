@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-07-23 00:22:34">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>2B7E71F6-A21C-40EE-A485-B75A84B1EEB2</ProjectUUID>
-	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<TemplatesTabOrderPosition>3</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="123" />
 				</LeftArea>
@@ -39,16 +39,16 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="195" left="219" bottom="213" right="387" />
-		<StaticText>Cost of drilling</StaticText>
+		<Location top="195" left="207" bottom="213" right="375" />
+		<StaticText>  Cost of drilling</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="225" left="207" bottom="282" right="648" />
-		<TabOrder>25</TabOrder>
+		<TabOrder>18</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -62,7 +62,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="195" left="513" bottom="216" right="573" />
-		<TabOrder>16</TabOrder>
+		<TabOrder>9</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Clean"</Title>
@@ -81,7 +81,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="195" left="639" bottom="216" right="699" />
-		<TabOrder>14</TabOrder>
+		<TabOrder>7</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Check"</Title>
@@ -100,7 +100,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="195" left="576" bottom="216" right="636" />
-		<TabOrder>19</TabOrder>
+		<TabOrder>12</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Default"</Title>
@@ -119,7 +119,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="195" left="702" bottom="216" right="762" />
-		<TabOrder>20</TabOrder>
+		<TabOrder>13</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Apply"</Title>
@@ -146,11 +146,11 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="291" left="219" bottom="309" right="387" />
-		<StaticText>Pay Off</StaticText>
+		<Location top="291" left="207" bottom="309" right="375" />
+		<StaticText>  Pay Off</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -163,16 +163,16 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="402" left="219" bottom="420" right="501" />
-		<StaticText>Probability of Oil, by results of survey</StaticText>
+		<Location top="402" left="207" bottom="420" right="489" />
+		<StaticText>  Probability of Oil, by results of survey</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="321" left="207" bottom="378" right="648" />
-		<TabOrder>24</TabOrder>
+		<TabOrder>17</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -186,7 +186,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="429" left="282" bottom="486" right="648" />
-		<TabOrder>21</TabOrder>
+		<TabOrder>14</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -200,7 +200,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="492" left="282" bottom="549" right="648" />
-		<TabOrder>22</TabOrder>
+		<TabOrder>15</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -214,7 +214,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="555" left="282" bottom="612" right="648" />
-		<TabOrder>23</TabOrder>
+		<TabOrder>16</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<Font GUID="62C14667-D15F-4531-8B62-EB7A584408E7" Name="Formulation Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -228,7 +228,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="291" left="513" bottom="312" right="573" />
-		<TabOrder>15</TabOrder>
+		<TabOrder>8</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Clean"</Title>
@@ -247,7 +247,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="291" left="639" bottom="312" right="699" />
-		<TabOrder>13</TabOrder>
+		<TabOrder>6</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Check"</Title>
@@ -266,7 +266,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="291" left="576" bottom="312" right="636" />
-		<TabOrder>17</TabOrder>
+		<TabOrder>10</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Default"</Title>
@@ -285,7 +285,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="291" left="702" bottom="312" right="762" />
-		<TabOrder>18</TabOrder>
+		<TabOrder>11</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Apply"</Title>
@@ -304,7 +304,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="402" left="513" bottom="423" right="573" />
-		<TabOrder>27</TabOrder>
+		<TabOrder>20</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Clean"</Title>
@@ -323,7 +323,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="402" left="639" bottom="423" right="699" />
-		<TabOrder>26</TabOrder>
+		<TabOrder>19</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Check"</Title>
@@ -342,7 +342,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="402" left="576" bottom="423" right="636" />
-		<TabOrder>28</TabOrder>
+		<TabOrder>21</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Default"</Title>
@@ -361,7 +361,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="402" left="702" bottom="423" right="762" />
-		<TabOrder>29</TabOrder>
+		<TabOrder>22</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Apply"</Title>
@@ -478,7 +478,6 @@
 		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Problem Description"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -490,9 +489,17 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<PageObject Type="Button">
 		<Location top="336" left="6" bottom="360" right="192" />
-		<TabOrder>30</TabOrder>
+		<TabOrder>23</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Solve"</Title>
 		<ForegroundColor>
@@ -521,7 +528,7 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -553,10 +560,9 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
-		<TabOrder>7</TabOrder>
+		<TabOrder>5</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Solutions"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -568,12 +574,43 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Solutions</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="246" left="6" bottom="270" right="192" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Transparent>true</Transparent>
+		<ForegroundColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+		</ForegroundColor>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="MenuCommand">
+				<Command>Tools-Model Explorer</Command>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="18" bottom="270" right="195" />
+		<StaticText>Open Model Explorer</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<PageObject Type="Button">
 		<Location top="276" left="6" bottom="300" right="192" />
 		<TabOrder>1</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Quit AIMMS"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -585,22 +622,30 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="282" left="18" bottom="300" right="195" />
+		<StaticText>Quit AIMMS</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>Status_MessageForProbability</Symbol>
-			<Symbol>MainExecution</Symbol>
-			<Symbol>Status_MessageForPayOff</Symbol>
-			<Symbol>Status_MessageForCost</Symbol>
-			<Symbol>CreateConstraint</Symbol>
-			<Symbol>CleanFormulation</Symbol>
-			<Symbol>Color_BackgroundForPayOff</Symbol>
-			<Symbol>Color_BackgroundForCost</Symbol>
 			<Symbol>InputExpression_CostOfDrilling</Symbol>
-			<Symbol>CheckButtonProcedure</Symbol>
-			<Symbol>AssignDefaultFormulation</Symbol>
-			<Symbol>InputExpression_ProbabilityOfOutcome</Symbol>
 			<Symbol>InputExpression_PayOffForOil</Symbol>
+			<Symbol>InputExpression_ProbabilityOfOutcome</Symbol>
+			<Symbol>Status_MessageForCost</Symbol>
+			<Symbol>Status_MessageForPayOff</Symbol>
+			<Symbol>Status_MessageForProbability</Symbol>
+			<Symbol>Color_BackgroundForCost</Symbol>
+			<Symbol>Color_BackgroundForPayOff</Symbol>
 			<Symbol>Color_BackgroundForProbability</Symbol>
+			<Symbol>CheckButtonProcedure</Symbol>
+			<Symbol>CleanFormulation</Symbol>
+			<Symbol>AssignDefaultFormulation</Symbol>
+			<Symbol>CreateConstraint</Symbol>
+			<Symbol>MainExecution</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

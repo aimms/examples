@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-20 12:37:20">
+<Page Version="4000" TimeStamp="2015-09-23 09:55:58">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="311" />
 				</LeftArea>
@@ -21,7 +21,7 @@
 	<HorizontalGridDistance>3</HorizontalGridDistance>
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Rectangle">
-		<Location top="486" left="3" bottom="510" right="189" />
+		<Location top="486" left="6" bottom="510" right="192" />
 		<FillColor>
 			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
 		</FillColor>
@@ -53,7 +53,8 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
-		<Location top="156" left="6" bottom="180" right="192" />
+		<Location top="156" left="12" bottom="180" right="192" />
+		<Shape>Rounded-Filled</Shape>
 		<FillColor>
 			<UserColor GUID="A3839E01-47DC-46BB-819D-6CECB851B151">Bar Blue</UserColor>
 		</FillColor>
@@ -66,7 +67,7 @@
 		<StaticText>Navigation</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
@@ -134,11 +135,11 @@
 		</LineColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="255" left="15" bottom="273" right="183" />
+		<Location top="252" left="18" bottom="270" right="186" />
 		<StaticText>Settings</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -226,11 +227,11 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="489" left="15" bottom="507" right="183" />
+		<Location top="489" left="18" bottom="507" right="186" />
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -238,7 +239,7 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">

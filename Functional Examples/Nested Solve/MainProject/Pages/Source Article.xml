@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-05-20 13:20:27" NeedsCompiledModel="false">
-	<Location top="29" left="4" bottom="888" right="1274" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204" />
 				<RightArea Line="FixedFromTop" Value="85" />
 			</BottomArea>
@@ -42,7 +42,7 @@ Francisco Ortega, Laurence Wolsey
 A branch-and-cut algorithm for the single-commodity, uncapacitated, fixed-charge network flow problem.
 
 Networks 41 (2003), no. 3, 143-158. </StaticText>
-		<Font GUID="A5D088DF-E841-49CF-B5FB-6F96F0BD3D3B" Name="default" />
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
@@ -69,7 +69,7 @@ Networks 41 (2003), no. 3, 143-158. </StaticText>
 	<PageObject Type="Text">
 		<Location top="516" left="18" bottom="603" right="189" />
 		<StaticText>With a document viewer, a document can be displayed embedded on an AIMMS page.</StaticText>
-		<Font GUID="A5D088DF-E841-49CF-B5FB-6F96F0BD3D3B" Name="default" />
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
@@ -88,7 +88,7 @@ Networks 41 (2003), no. 3, 143-158. </StaticText>
 		<StaticText>Information</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -96,7 +96,7 @@ Networks 41 (2003), no. 3, 143-158. </StaticText>
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -104,7 +104,7 @@ Networks 41 (2003), no. 3, 143-158. </StaticText>
 		<StaticText>Demo Page</StaticText>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>

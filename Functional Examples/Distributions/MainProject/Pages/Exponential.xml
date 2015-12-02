@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-09-20 18:55:06">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="29" left="8" bottom="798" right="1180" />
 	<PageEditSize Type="Inherited">
 		<Size Width="650" Height="548" />
@@ -53,17 +53,17 @@
 	<PageObject Type="Text">
 		<Location top="486" left="12" bottom="540" right="636" />
 		<StaticText>Exponential distribution has no shape parameter.  More versatile distributions are the LogNormal, Gamma, Weibull and Pareto distributions; each with a shape parameter. The Gamma(1) and Weibul(1) distribution, and the Pareto(inf) distribution are equal to the Exponential distribution.</StaticText>
-		<Font GUID="46D05E58-942E-4033-933A-740958D80946" Name="Button font" />
+		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
 		<TextColor>
-			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>l</Symbol>
-			<Symbol>p</Symbol>
 			<Symbol>Xval</Symbol>
 			<Symbol>density</Symbol>
+			<Symbol>l</Symbol>
+			<Symbol>p</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

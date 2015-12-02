@@ -1,49 +1,36 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-11-10 20:55:45">
-	<Location bottom="947" right="1920" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
-	<ProjectUUID>5FE92A41-D029-47D4-A21D-FE9D5CF0AC93</ProjectUUID>
+	<ProjectUUID>46A0FA7A-949D-47F9-93D1-69BD0DE0FBB7</ProjectUUID>
 	<Title>"AIMMS Demo: Portfolio Selection using Chance Constraints"</Title>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204" />
 				<RightArea Line="FixedFromTop" Value="85">
-					<TopArea Line="FixedFromTop" Value="77" />
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
+					</BottomArea>
 				</RightArea>
 			</BottomArea>
 		</MainArea>
 	</ResizeData>
-	<Background RGB="#ffffff" />
-	<Action>
-		<EntryProcedure>MainInitialization</EntryProcedure>
-	</Action>
-	<PageObject Type="Scalar">
-		<Location top="186" left="205" bottom="620" right="763" />
-		<TabOrder>2</TabOrder>
-		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
-		<Border Style="None" />
-		<BackgroundColor RGB="#ffffff" />
+	<Background Inherited="true" />
+	<PageObject Type="Text">
+		<Location top="192" left="210" bottom="612" right="756" />
+		<SourceType>File</SourceType>
+		<FileName LiteralFileName="true">"Description.txt"</FileName>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
-		<Layout>MultipleLineEditField</Layout>
-		<VerticalScrollbar>true</VerticalScrollbar>
-		<DisplayTextFile>true</DisplayTextFile>
-		<SeparatorSign>=</SeparatorSign>
-		<ExplicitIdentifier>
-			<Identifier>DescriptionFile</Identifier>
-			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
-		</ExplicitIdentifier>
 	</PageObject>
 	<UsedReferences>
-		<Model>
-			<Symbol>DescriptionFile</Symbol>
-			<Symbol>MainInitialization</Symbol>
-		</Model>
+		<Model />
 	</UsedReferences>
 </Page>

@@ -1,19 +1,22 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2013-05-22 13:24:48">
-	<Location bottom="947" right="1920" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>F13CECE4-DBCA-4ED2-A83C-F694EC48C0B4</ProjectUUID>
 	<Title>"AIMMS Demo: AIMMS CSV Export"</Title>
-	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204" />
 				<RightArea Line="FixedFromTop" Value="85">
 					<TopArea Line="FixedFromTop" Value="77" />
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
+					</BottomArea>
 				</RightArea>
 			</BottomArea>
 		</MainArea>
@@ -28,9 +31,9 @@
 		<Location top="188" left="212" bottom="614" right="767" />
 		<SourceType>File</SourceType>
 		<FileName LiteralFileName="true">"Description.txt"</FileName>
-		<Font GUID="3D4F8FDE-28E6-4338-998E-C89108819645" Name="Legend" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="53F36336-0CAF-4C3D-B0EE-1C7917253A91">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>

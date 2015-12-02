@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-07-23 00:22:34">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="310" />
 				</LeftArea>
@@ -85,7 +85,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="204" left="300" bottom="240" right="453" />
-		<TabOrder>29</TabOrder>
+		<TabOrder>24</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -100,7 +100,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="315" left="300" bottom="351" right="453" />
-		<TabOrder>19</TabOrder>
+		<TabOrder>14</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -158,7 +158,7 @@
 	<PageObject Type="Scalar">
 		<Location top="360" left="300" bottom="396" right="453" />
 		<Hidden>VALUE := not Drill( ObtainedResult_Survey )</Hidden>
-		<TabOrder>18</TabOrder>
+		<TabOrder>13</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -174,7 +174,7 @@
 	<PageObject Type="Scalar">
 		<Location top="405" left="300" bottom="441" right="453" />
 		<Hidden>VALUE := not Drill( ObtainedResult_Survey )</Hidden>
-		<TabOrder>17</TabOrder>
+		<TabOrder>12</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -190,7 +190,7 @@
 	<PageObject Type="Scalar">
 		<Location top="249" left="300" bottom="284" right="471" />
 		<Hidden>VALUE := not DoSurvey</Hidden>
-		<TabOrder>27</TabOrder>
+		<TabOrder>22</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffb895" />
@@ -212,7 +212,7 @@
 	<PageObject Type="Scalar">
 		<Location top="450" left="300" bottom="485" right="471" />
 		<Hidden>VALUE := not Drill( ObtainedResult_Survey )</Hidden>
-		<TabOrder>26</TabOrder>
+		<TabOrder>21</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffb895" />
@@ -264,7 +264,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="513" left="300" bottom="549" right="438" />
-		<TabOrder>24</TabOrder>
+		<TabOrder>19</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -279,7 +279,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="555" left="300" bottom="591" right="438" />
-		<TabOrder>25</TabOrder>
+		<TabOrder>20</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -294,7 +294,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="513" left="438" bottom="549" right="462" />
-		<TabOrder>22</TabOrder>
+		<TabOrder>17</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -309,7 +309,7 @@
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="555" left="438" bottom="591" right="462" />
-		<TabOrder>21</TabOrder>
+		<TabOrder>16</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -343,7 +343,7 @@
 	<PageObject Type="Scalar">
 		<Location top="360" left="504" bottom="396" right="612" />
 		<Hidden>VALUE := not Drill( ObtainedResult_Survey )</Hidden>
-		<TabOrder>23</TabOrder>
+		<TabOrder>18</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -359,7 +359,7 @@
 	<PageObject Type="Scalar">
 		<Location top="405" left="504" bottom="441" right="612" />
 		<Hidden>VALUE := not Drill( ObtainedResult_Survey )</Hidden>
-		<TabOrder>20</TabOrder>
+		<TabOrder>15</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -373,25 +373,10 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="588" left="6" bottom="612" right="192" />
-		<TabOrder>28</TabOrder>
-		<ButtonType>Text</ButtonType>
-		<Title>"Solve"</Title>
-		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
-		<ActionSequence>
-			<Action Type="Run">
-				<RunWhat>SpecificProcecure</RunWhat>
-				<Procedure>MainExecution</Procedure>
-				<AbortOnError>true</AbortOnError>
-			</Action>
-		</ActionSequence>
-	</PageObject>
-	<PageObject Type="Button">
 		<Location top="276" left="6" bottom="300" right="192" />
 		<TabOrder>1</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Quit AIMMS"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -403,12 +388,19 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="282" left="18" bottom="300" right="195" />
+		<StaticText>Quit AIMMS</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
 		<TabOrder>5</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Formulations"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -420,12 +412,19 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Formulations</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<PageObject Type="Button">
 		<Location top="246" left="6" bottom="270" right="192" />
 		<TabOrder>2</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Open Model Explorer"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -437,12 +436,19 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="18" bottom="270" right="195" />
+		<StaticText>Open Model Explorer</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<PageObject Type="Button">
 		<Location top="186" left="6" bottom="210" right="192" />
 		<TabOrder>4</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Problem Description"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -454,19 +460,26 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Problem Description</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>MainExecution</Symbol>
-			<Symbol>Results_SurveyDecision</Symbol>
 			<Symbol>SurveyResults_AfterDrilling</Symbol>
-			<Symbol>CostOfDrilling</Symbol>
-			<Symbol>Results_DrillDecision</Symbol>
-			<Symbol>Results_DrillDepthDecision</Symbol>
+			<Symbol>DoSurvey</Symbol>
 			<Symbol>Drill</Symbol>
+			<Symbol>CostOfDrilling</Symbol>
 			<Symbol>ObtainedResult_Survey</Symbol>
+			<Symbol>Results_DrillDecision</Symbol>
+			<Symbol>Results_SurveyDecision</Symbol>
+			<Symbol>Results_DrillDepthDecision</Symbol>
 			<Symbol>Results_HoleDiameterDecision</Symbol>
 			<Symbol>SolutionsOutput</Symbol>
-			<Symbol>DoSurvey</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

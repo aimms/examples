@@ -15,7 +15,7 @@ The graph on right demostrates the fact that there is no unique way to measure t
 See the skewness and kurtosis page for graphs of their nonlinear behaviour.</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="1BE59229-23DC-4488-8590-3884E0094C7A">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">

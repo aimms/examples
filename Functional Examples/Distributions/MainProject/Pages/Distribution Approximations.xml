@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-09-20 18:55:06">
-	<Location top="23" left="8" bottom="644" right="772" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>DF3BEC5E-9D0D-4DEE-8E27-EBE8628E79DA</ProjectUUID>
 	<Title>"Distribution Approximations"</Title>
-	<TemplatesTabOrderPosition>3</TemplatesTabOrderPosition>
+	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="311" />
 				</LeftArea>
@@ -64,7 +64,7 @@
 	</PageObject>
 	<PageObject Type="2D Chart">
 		<Location top="417" left="207" bottom="615" right="495" />
-		<TabOrder>4</TabOrder>
+		<TabOrder>3</TabOrder>
 		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<X_Axis>
 			<Domain ID="1004">Xval( p )</Domain>
@@ -105,7 +105,7 @@
 	</PageObject>
 	<PageObject Type="2D Chart">
 		<Location top="189" left="207" bottom="399" right="495" />
-		<TabOrder>5</TabOrder>
+		<TabOrder>4</TabOrder>
 		<Border Style="Line" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<X_Axis>
 			<Domain ID="1004">Xval( p )</Domain>
@@ -158,12 +158,12 @@
 		<StaticText>Actions</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="408" left="12" bottom="432" right="186" />
-		<TabOrder>7</TabOrder>
+		<TabOrder>5</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"View Explanation"</Title>
@@ -176,12 +176,12 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>p</Symbol>
-			<Symbol>kurtosisindex</Symbol>
 			<Symbol>Xval</Symbol>
-			<Symbol>skewnessindex</Symbol>
-			<Symbol>extremevalueindex</Symbol>
 			<Symbol>density</Symbol>
+			<Symbol>extremevalueindex</Symbol>
+			<Symbol>skewnessindex</Symbol>
+			<Symbol>kurtosisindex</Symbol>
+			<Symbol>p</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

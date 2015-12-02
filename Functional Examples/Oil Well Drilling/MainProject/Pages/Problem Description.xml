@@ -5,13 +5,18 @@
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>2B7E71F6-A21C-40EE-A485-B75A84B1EEB2</ProjectUUID>
+	<Title>"AIMMS Demo: Oil Well Drilling"</Title>
 	<TemplatesTabOrderPosition>2</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204" />
-				<RightArea Line="FixedFromTop" Value="85" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
+					</BottomArea>
+				</RightArea>
 			</BottomArea>
 		</MainArea>
 	</ResizeData>
@@ -32,7 +37,6 @@
 		<TabOrder>5</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Formulations"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -44,12 +48,19 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="192" left="18" bottom="210" right="195" />
+		<StaticText>Formulations</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<PageObject Type="Button">
 		<Location top="216" left="6" bottom="240" right="192" />
 		<TabOrder>6</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Solutions"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -61,12 +72,19 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="222" left="18" bottom="240" right="195" />
+		<StaticText>Solutions</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<PageObject Type="Button">
 		<Location top="246" left="6" bottom="270" right="192" />
 		<TabOrder>3</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Open Model Explorer"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -78,12 +96,19 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="252" left="18" bottom="270" right="195" />
+		<StaticText>Open Model Explorer</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
 	<PageObject Type="Button">
 		<Location top="276" left="6" bottom="300" right="192" />
 		<TabOrder>1</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
-		<Title>"Quit AIMMS"</Title>
 		<Transparent>true</Transparent>
 		<ForegroundColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
@@ -94,6 +119,20 @@
 				<Command>File-Exit</Command>
 			</Action>
 		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="282" left="18" bottom="300" right="195" />
+		<StaticText>Quit AIMMS</StaticText>
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
+		<TextColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="189" left="267" bottom="624" right="780" />
+		<FileName LiteralFileName="true">"&lt;lib:ExampleStyle&gt;:TextBackground.png"</FileName>
+		<Display>ActualSize</Display>
+		<Center>true</Center>
 	</PageObject>
 	<UsedReferences>
 		<Model />

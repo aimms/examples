@@ -1,18 +1,22 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2007-07-16 08:49:05" NeedsCompiledModel="false">
-	<Location bottom="947" right="1920" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38" NeedsCompiledModel="false">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
 	<ProjectUUID>8122218E-B00F-479E-A6AF-F2CCB5DBE628</ProjectUUID>
-	<Title>"Interface Structure and Navigation"</Title>
+	<Title>"AIMMS Demo: Interface Structure and Navigation"</Title>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204" />
-				<RightArea Line="FixedFromTop" Value="85" />
+				<RightArea Line="FixedFromTop" Value="85">
+					<BottomArea Line="FixedFromLeft" Value="47">
+						<RightArea Line="FixedFromRight" Value="516" />
+					</BottomArea>
+				</RightArea>
 			</BottomArea>
 		</MainArea>
 	</ResizeData>
@@ -20,16 +24,24 @@
 	<HorizontalGridDistance>3</HorizontalGridDistance>
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Text">
+		<Location top="159" left="201" bottom="180" right="768" />
+		<StaticText>  Problem Description</StaticText>
+		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
 		<Location top="186" left="207" bottom="615" right="762" />
 		<SourceType>File</SourceType>
 		<FileName LiteralFileName="true">"Description.txt"</FileName>
-		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="3D4B457F-7513-47E9-8228-8120838FC89A">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Navigation Object">
-		<Location top="189" left="9" bottom="483" right="189" />
+		<Location top="189" left="18" bottom="483" right="189" />
 		<TabOrder>2</TabOrder>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<Border Style="None" Width="2" />
@@ -38,11 +50,9 @@
 		<Spacing>3</Spacing>
 		<BackgroundColor Transparent="true" />
 		<TextColor>
-			<UserColor GUID="3D4B457F-7513-47E9-8228-8120838FC89A">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
-		<InputColor>
-			<UserColor GUID="1EFA6A2C-38C9-40E6-8AE6-8AA73C50C4C2">dark grey</UserColor>
-		</InputColor>
+		<InputColor RGB="#009B00" />
 		<NavigationData>
 			<ReferencePage>ThisPage</ReferencePage>
 			<NumberOfGenerations>1</NumberOfGenerations>
@@ -51,6 +61,12 @@
 				<Action Type="ClosePage" />
 			</ActionSequence>
 		</NavigationData>
+	</PageObject>
+	<PageObject Type="Picture">
+		<Location top="189" left="267" bottom="624" right="780" />
+		<FileName LiteralFileName="true">"&lt;lib:ExampleStyle&gt;:TextBackground.png"</FileName>
+		<Display>ActualSize</Display>
+		<Center>true</Center>
 	</PageObject>
 	<UsedReferences>
 		<Model />

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2013-05-22 13:24:48">
-	<Location top="22" left="4" bottom="1077" right="1594" />
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
 	</PageEditSize>
@@ -9,18 +9,17 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="92" />
 				</LeftArea>
 				<RightArea Line="FixedFromTop" Value="85">
-					<TopArea Line="FixedFromLeft" Value="255" />
 					<BottomArea Line="FixedFromTop" Value="50">
 						<TopArea Line="FixedFromLeft" Value="255">
-							<RightArea Line="FixedFromLeft" Value="309" />
+							<RightArea Line="FixedFromLeft" Value="308" />
 						</TopArea>
 						<BottomArea Line="FixedFromLeft" Value="255">
-							<RightArea Line="FixedFromLeft" Value="309" />
+							<RightArea Line="FixedFromLeft" Value="308" />
 						</BottomArea>
 					</BottomArea>
 				</RightArea>
@@ -126,7 +125,7 @@
 		<StaticText>Add or delete elements to the set Cities</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="53F36336-0CAF-4C3D-B0EE-1C7917253A91">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -134,7 +133,7 @@
 		<StaticText>Select a row and then press Ins or Del to add or remove a row</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="53F36336-0CAF-4C3D-B0EE-1C7917253A91">default selection</UserColor>
+			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Rectangle">
@@ -151,15 +150,15 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="159" left="216" bottom="177" right="384" />
-		<StaticText>Input Tables</StaticText>
+		<Location top="159" left="201" bottom="177" right="369" />
+		<StaticText>  Input Tables</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
@@ -167,17 +166,17 @@
 		<StaticText>Problem Description</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>i</Symbol>
-			<Symbol>j</Symbol>
 			<Symbol>Cities</Symbol>
-			<Symbol>ViewOutput</Symbol>
 			<Symbol>TransportCost</Symbol>
 			<Symbol>RunExternalProcedure</Symbol>
+			<Symbol>ViewOutput</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

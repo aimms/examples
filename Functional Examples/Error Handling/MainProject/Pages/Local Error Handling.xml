@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2010-07-12 17:54:51">
+<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,9 +9,9 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
-				<LeftArea Line="FixedFromTop" Value="237">
-					<BottomArea Line="FixedFromTop" Value="29">
+			<BottomArea Line="FixedFromLeft" Value="201">
+				<LeftArea Line="FixedFromTop" Value="204">
+					<BottomArea Line="FixedFromTop" Value="74">
 						<BottomArea Line="FixedFromTop" Value="63" />
 					</BottomArea>
 				</LeftArea>
@@ -30,7 +30,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="372" left="6" bottom="396" right="192" />
-		<TabOrder>4</TabOrder>
+		<TabOrder>3</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>
@@ -66,7 +66,7 @@ With the 'Reset' button you can revert to the original, erroneous, situation.</S
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="402" left="6" bottom="426" right="192" />
-		<TabOrder>3</TabOrder>
+		<TabOrder>2</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Transparent>true</Transparent>

@@ -26,7 +26,6 @@
 			<Page Name="Assertions" PageGUID="AA5314FE-F8BD-448C-A0B4-DD4BB309CA72" />
 		</Template>
 	</Template>
-	<Template Name="Copy Size Template" PageGUID="521F452E-522E-4F7E-908F-9C8A5FE95CFA" />
 	<Page Name="Navigation" PageGUID="3966F681-405B-4DD8-8DAA-0C0EF3589D1A" />
 	<Page Name="All Data Pages" PageGUID="5D27A3A6-A068-4122-A7BC-21FCAE492599" />
 	<Page Name="[Data Page] SelectedCell" PageGUID="29A828A4-63F4-4190-8EA4-7B21DE86AF2A" />

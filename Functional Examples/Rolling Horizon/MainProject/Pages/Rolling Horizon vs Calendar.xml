@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2013-03-11 09:40:01">
+<Page Version="4000" TimeStamp="2015-10-27 19:35:11">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -9,7 +9,7 @@
 	<ResizeData>
 		<MainArea Line="FixedFromTop" Value="99">
 			<TopArea Line="FixedFromLeft" Value="200" />
-			<BottomArea Line="FixedFromLeft" Value="200">
+			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
 					<BottomArea Line="FixedFromTop" Value="161" />
 				</LeftArea>
@@ -174,7 +174,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Navigation Object">
-		<Location top="180" left="0" bottom="246" right="198" />
+		<Location top="180" left="12" bottom="246" right="198" />
 		<TabOrder>1</TabOrder>
 		<UseTabInObject>true</UseTabInObject>
 		<LeaveOnEnter>false</LeaveOnEnter>
@@ -184,11 +184,9 @@
 		<Spacing>6</Spacing>
 		<BackgroundColor Transparent="true" />
 		<TextColor>
-			<UserColor GUID="04959515-D061-4A73-88CD-51B94616B7E3">default selection</UserColor>
+			<UserColor GUID="1798981A-C40D-4713-BC08-E97545963465">Link</UserColor>
 		</TextColor>
-		<InputColor>
-			<UserColor GUID="627BC6D1-6FCB-4558-B9B0-16B93007FA09">dark grey</UserColor>
-		</InputColor>
+		<InputColor RGB="#009b00" />
 		<NavigationData>
 			<ReferencePage>NthParent</ReferencePage>
 			<NthParentNumber>1</NthParentNumber>
@@ -260,12 +258,12 @@
 		<StaticText>Execution</StaticText>
 		<Font GUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" Name="Headers" />
 		<TextColor>
-			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Scalar">
 		<Location top="468" left="6" bottom="606" right="192" />
-		<TabOrder>18</TabOrder>
+		<TabOrder>12</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -284,18 +282,18 @@ FormatString("\n\n") +
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>InitialNumberOfPeriodsInPlanningInterval</Symbol>
-			<Symbol>RunRollingHorizon</Symbol>
-			<Symbol>Begin_Date</Symbol>
-			<Symbol>MainInitialization</Symbol>
-			<Symbol>End_Date</Symbol>
-			<Symbol>ThisProduct</Symbol>
-			<Symbol>Horizon_ComputationalTime</Symbol>
-			<Symbol>TotalCost</Symbol>
-			<Symbol>Horizon_TotalCost</Symbol>
 			<Symbol>SolveCalendarModel</Symbol>
+			<Symbol>Begin_Date</Symbol>
+			<Symbol>End_Date</Symbol>
+			<Symbol>TotalCost</Symbol>
+			<Symbol>RunRollingHorizon</Symbol>
 			<Symbol>StepSize</Symbol>
+			<Symbol>Horizon_TotalCost</Symbol>
+			<Symbol>ThisProduct</Symbol>
+			<Symbol>InitialNumberOfPeriodsInPlanningInterval</Symbol>
 			<Symbol>ComputationalTime</Symbol>
+			<Symbol>Horizon_ComputationalTime</Symbol>
+			<Symbol>MainInitialization</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
