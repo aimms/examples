@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.0.0.275 unicode x86" ProjectUUID="38F166E4-D3B7-49EB-8A4E-EAD6296EEFB6">
+<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="38F166E4-D3B7-49EB-8A4E-EAD6296EEFB6">
 	<ModelFileName>2DStripPacking.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

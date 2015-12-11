@@ -78,7 +78,7 @@ Model Main_CFLP {
     Variable x {
         IndexDomain: (i,j);
         Range: nonnegative;
-        Comment: "Represents the amoun shipped from facility j to customer i.";
+        Comment: "Represents the amount shipped from facility j to customer i.";
     }
     Variable obj {
         Range: free;
