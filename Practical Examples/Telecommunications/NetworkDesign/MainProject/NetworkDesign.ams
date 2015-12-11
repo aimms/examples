@@ -140,18 +140,24 @@ Model Main_NetworkDesign {
     Procedure MainInitialization;
     Procedure ReadAndProcessData {
         Body: {
-            ! The folder Input contains the following instances (in XML format):
+            ! The folder Input contains several instances (in XML format) including:
             !   franceDBSNCANN, geantDBSNCANN, janos-usDDSNCANN, sunDDSNCANN.
             ! The instances are from SNDlib at http://sndlib.zib.de/home.action .
             
-            ReadXML( "Input\\franceDBSNCANN.xml", "NetworkDesign.axm" );
+            InstanceFile := "Input\\franceDBSNCANN.xml";
+            
+            ReadXML( InstanceFile, "NetworkDesign.axm" );
             
             ! Unfortunately, the XML input files do not contain information on
             ! the link model so we have to assign it manually. Instances that
             ! contain 'DB' in their name use the BIDIRECTED link model; instances
             ! that contain 'DD' use the DIRECTED link model.
             
-            LinkModel := 'BIDIRECTED';
+            if ( FindString( InstanceFile, "DDSN", CaseSensitive : 0 ) ) then
+            	LinkModel := 'DIRECTED';
+            else
+            	LinkModel := 'BIDIRECTED';
+            endif;
             
             empty Commodities, AggrDemand;
             
@@ -161,6 +167,7 @@ Model Main_NetworkDesign {
                 AggrDemand(FromCity(q),  ToCity(q)) -= Demand(q);
             endfor;
         }
+        StringParameter InstanceFile;
     }
     Procedure MainExecution {
         Body: {
