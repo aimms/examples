@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2015-12-29 12:44:21">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>3D1CBC88-F0BA-4206-8AC8-7864B594850E</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Button">
+		<Location top="414" left="1080" bottom="462" right="1284" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Toggle 2D-3D Chart"</Title>
+		<Font GUID="38E90C6B-48DC-4E39-B5C9-A61AAE623EAB" Name="Medium" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>Switch3D2D</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="3D Chart">
+		<Location top="60" left="78" bottom="864" right="1062" />
+		<TabOrder>1</TabOrder>
+		<TabStop>false</TabStop>
+		<Border Style="None" Width="2" />
+		<X_Axis>
+			<Domain ID="1001">XPointName( x1 )</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="1014">20</Show_every_n_th_label>
+			</Annotation>
+			<Gridlines>
+				<Show_on_XY_plane ID="1004">0</Show_on_XY_plane>
+				<Show_on_XZ_plane ID="1005">0</Show_on_XZ_plane>
+				<Style>
+					<Color ID="1007">RGB&lt;128,128,0&gt;</Color>
+					<Pattern ID="1008">"Solid"</Pattern>
+					<Width ID="1009">1</Width>
+				</Style>
+			</Gridlines>
+			<Misc_settings>
+				<Show_unit_in_title ID="1016">0</Show_unit_in_title>
+				<Hide_axis ID="1002">0</Hide_axis>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Domain ID="2001">YPointName( x2 )</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="2014">20</Show_every_n_th_label>
+			</Annotation>
+			<Gridlines>
+				<Show_on_XY_plane ID="2003">0</Show_on_XY_plane>
+				<Show_on_YZ_plane ID="2004">0</Show_on_YZ_plane>
+				<Style>
+					<Color ID="2006">RGB&lt;255,128,64&gt;</Color>
+					<Pattern ID="2007">"ShortDash"</Pattern>
+					<Width ID="2008">1</Width>
+				</Style>
+			</Gridlines>
+		</Y_Axis>
+		<Z_Axis>
+			<Identifier>
+				<Identifier_value ID="3002">PointValue( x1, x2 )</Identifier_value>
+			</Identifier>
+			<Gridlines>
+				<Show_on_XZ_plane ID="3004">0</Show_on_XZ_plane>
+				<Show_on_YZ_plane ID="3005">0</Show_on_YZ_plane>
+				<Style>
+					<Color ID="3007">RGB&lt;168,237,148&gt;</Color>
+					<Width ID="3009">2</Width>
+				</Style>
+			</Gridlines>
+		</Z_Axis>
+		<Display>
+			<Surrounding_area>
+				<Background_color ExtraInfo="4C29CF98-3E51-4BAA-8563-90FCE3E3DF3B" ID="5003">"default background"</Background_color>
+			</Surrounding_area>
+			<Chart_area>
+				<Border_type>
+					<Width ID="5017">2</Width>
+				</Border_type>
+				<Margins>
+					<Left ID="5073">10</Left>
+					<Right ID="5074">10</Right>
+					<Top ID="5075">10</Top>
+					<Bottom ID="5076">10</Bottom>
+				</Margins>
+			</Chart_area>
+			<Plot_area>
+				<Background_color ExtraInfo="4C29CF98-3E51-4BAA-8563-90FCE3E3DF3B" ID="5055">"default background"</Background_color>
+				<Floor>
+					<Zoned ID="5057">1</Zoned>
+				</Floor>
+			</Plot_area>
+			<View_3D_properties>
+				<X_rotation ID="5020">XRotation</X_rotation>
+				<Y_rotation ID="5021">YRotation</Y_rotation>
+				<Z_rotation ID="5022">ZRotation</Z_rotation>
+			</View_3D_properties>
+			<Misc_display_settings>
+				<Font_rotation ID="5025">"2D"</Font_rotation>
+				<Preview_method ID="5026">"Full"</Preview_method>
+				<Click_label>
+					<Hide_value_label_on_click ID="5065">1</Hide_value_label_on_click>
+				</Click_label>
+			</Misc_display_settings>
+			<Chart_style>
+				<Chart_type ID="5028">"Surface"</Chart_type>
+				<Is_transparent ID="5030">0</Is_transparent>
+				<Is_meshed>
+					<Meshed ID="5032">ChartStyleVal( 'Is Meshed' )</Meshed>
+				</Is_meshed>
+				<Is_shaded>
+					<Shaded ID="5036">ChartStyleVal( 'Is Shaded' )</Shaded>
+				</Is_shaded>
+				<Is_contoured>
+					<Contoured ID="5040">ChartStyleVal( 'Is Contoured' )</Contoured>
+					<Values ID="5042">ContourLevel( c )</Values>
+					<Styles>
+						<Fill>
+							<Color_scheme ID="5071">"User-defined"</Color_scheme>
+							<Color ID="5045">ContourColor( c )</Color>
+							<Highest_level_color ExtraInfo="ABB4A8BD-7798-41D3-BA43-C629DFC98735" ID="5053">"green"</Highest_level_color>
+						</Fill>
+					</Styles>
+				</Is_contoured>
+				<Is_zoned>
+					<Zoned ID="5051">ChartStyleVal( 'Is Zoned' )</Zoned>
+					<Zoning_method ID="5052">"Contours"</Zoning_method>
+				</Is_zoned>
+			</Chart_style>
+		</Display>
+		<Legend>
+			<Title_text ID="6002">"Legend"</Title_text>
+			<Font ExtraInfo="00000000-0000-0000-0000-000000000001" ID="6004">"Main Font"</Font>
+			<Border_type>
+				<Width ID="6013">5</Width>
+			</Border_type>
+			<Misc_display_settings>
+				<Anchor ID="6015">"South"</Anchor>
+				<Distribution_range ID="6017">"All"</Distribution_range>
+				<Type ID="6018">"Stepped"</Type>
+			</Misc_display_settings>
+		</Legend>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="486" left="1080" bottom="534" right="1284" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Reposition 3D Chart"</Title>
+		<Font GUID="38E90C6B-48DC-4E39-B5C9-A61AAE623EAB" Name="Medium" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>Reposition3DChart</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="630" left="1080" bottom="678" right="1284" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Next Page"</Title>
+		<Font GUID="38E90C6B-48DC-4E39-B5C9-A61AAE623EAB" Name="Medium" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ResetDemo</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>StartPoint</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="558" left="1080" bottom="606" right="1284" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Reverse Colors"</Title>
+		<Font GUID="38E90C6B-48DC-4E39-B5C9-A61AAE623EAB" Name="Medium" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ReverseColors</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="156" left="1086" bottom="372" right="1278" />
+		<StaticText>This page shows the heath map (with contour lines) for the objective function. Because we are minimizing the objective function, the global optimum is at the red bottom.
+
+The 3D map can be rotated by pressing the left and right mouse keys simultaneously and dragging it.</StaticText>
+		<Font GUID="DFECE976-1EF4-44D8-AB0F-1C24368EA0A7" Name="Arial10" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="126" left="1086" bottom="150" right="1272" />
+		<StaticText>Description</StaticText>
+		<Font GUID="DA039AF6-8F8F-4980-9240-1ECCA17EA9F5" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PointValue</Symbol>
+			<Symbol>XPointName</Symbol>
+			<Symbol>YPointName</Symbol>
+			<Symbol>XRotation</Symbol>
+			<Symbol>YRotation</Symbol>
+			<Symbol>ZRotation</Symbol>
+			<Symbol>ChartStyleVal</Symbol>
+			<Symbol>ContourLevel</Symbol>
+			<Symbol>ContourColor</Symbol>
+			<Symbol>Switch3D2D</Symbol>
+			<Symbol>Reposition3DChart</Symbol>
+			<Symbol>ReverseColors</Symbol>
+			<Symbol>ResetDemo</Symbol>
+			<Symbol>StartPoint</Symbol>
+			<Symbol>x1</Symbol>
+			<Symbol>x2</Symbol>
+			<Symbol>c</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

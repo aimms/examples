@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Main Font" FaceName="Arial" PointSize="80" UUID="00000000-0000-0000-0000-000000000001" />
+	<UserFont Name="Huge" FaceName="Arial" PointSize="200" UUID="15BECD1F-B269-44B2-B6DF-175ADB1B40E0" InternalID="1" />
+	<UserFont Name="Medium" FaceName="Arial" PointSize="140" UUID="38E90C6B-48DC-4E39-B5C9-A61AAE623EAB" InternalID="2" />
+	<UserFont Name="Arial10" FaceName="Arial" PointSize="100" UUID="DFECE976-1EF4-44D8-AB0F-1C24368EA0A7" InternalID="3" />
+	<UserFont Name="Headers" FaceName="Arial" PointSize="110" Bold="true" UUID="DA039AF6-8F8F-4980-9240-1ECCA17EA9F5" InternalID="4" />
+</UserFonts>

@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2015-12-29 13:09:24">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>3D1CBC88-F0BA-4206-8AC8-7864B594850E</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="115" left="289" bottom="785" right="959" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Right>10</Right>
+			<Bottom>10</Bottom>
+		</VisibleArea>
+		<Background>
+			<Background_Image_Source ID="101">"From File"</Background_Image_Source>
+			<Image_File_Name ID="200" LiteralFileName="true">"MainProject\User Files\cn2.png"</Image_File_Name>
+			<Left ID="210">0</Left>
+			<Right ID="211">10</Right>
+			<Top ID="212">10</Top>
+			<Bottom ID="213">0</Bottom>
+		</Background>
+		<Node>
+			<Identifier>n</Identifier>
+			<XCoordinate>x_coord( n )</XCoordinate>
+			<YCoordinate>y_coord( n )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>10000</MaximumSize>
+			<ScaleFactor>Size2Pixels</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>node_color( n )</Color>
+			<Size>node_size( n )</Size>
+			<Text>node_name( n )</Text>
+			<Shape>Circle</Shape>
+		</Node>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="114" left="36" bottom="162" right="276" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>2</TabOrder>
+		<Font GUID="15BECD1F-B269-44B2-B6DF-175ADB1B40E0" Name="Huge" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>iterstring</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="186" left="36" bottom="264" right="276" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>4</TabOrder>
+		<Font GUID="15BECD1F-B269-44B2-B6DF-175ADB1B40E0" Name="Huge" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>phasestring1</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>phasestring2</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="702" left="1080" bottom="750" right="1284" />
+		<TabOrder>6</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Previous Page"</Title>
+		<Font GUID="38E90C6B-48DC-4E39-B5C9-A61AAE623EAB" Name="Medium" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ResetDemo</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>StartPoint</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="GotoPage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="126" left="1086" bottom="150" right="1272" />
+		<StaticText>Description</StaticText>
+		<Font GUID="DA039AF6-8F8F-4980-9240-1ECCA17EA9F5" Name="Headers" />
+		<TextColor>
+			<UserColor GUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991">Header Blue</UserColor>
+		</TextColor>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="156" left="1086" bottom="612" right="1278" />
+		<StaticText>This page demonstrates the AIMMS multistart algorithm. As we have seen on the previous page, starting points close to each other will often lead to the same local solution. Therefore the multistart algorithm tries to identify areas of points that will likely lead to the same local solution.
+
+Clicking on the Start Multistart button below will start the demo. You can change the Iteration Limit, Points or Selected Points beforehand.
+
+Points specifies the number of starting points that the multistart algorithm will randomly create in each iteration. After calculating the (penalized) objective value for each of these starting points, the best starting points are selected. The number of selected starting points is specified by Selected Points.</StaticText>
+		<Font GUID="DFECE976-1EF4-44D8-AB0F-1C24368EA0A7" Name="Arial10" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="630" left="1080" bottom="678" right="1284" />
+		<TabOrder>5</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Start Multistart"</Title>
+		<Font GUID="38E90C6B-48DC-4E39-B5C9-A61AAE623EAB" Name="Medium" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="24" left="234" bottom="72" right="480" />
+		<TabOrder>7</TabOrder>
+		<Font GUID="15BECD1F-B269-44B2-B6DF-175ADB1B40E0" Name="Huge" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>IterationLimit</Identifier>
+			<NumberFormat Width="2" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Iteration Limit"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="24" left="504" bottom="72" right="660" />
+		<TabOrder>8</TabOrder>
+		<Font GUID="15BECD1F-B269-44B2-B6DF-175ADB1B40E0" Name="Huge" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfPoints</Identifier>
+			<NumberFormat Width="2" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Points"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="24" left="684" bottom="72" right="960" />
+		<TabOrder>9</TabOrder>
+		<Font GUID="15BECD1F-B269-44B2-B6DF-175ADB1B40E0" Name="Huge" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor Transparent="true" />
+		<TextColor>
+			<UserColor GUID="8387D389-3F4A-4D87-9199-53B0EDCD0359">navy blue</UserColor>
+		</TextColor>
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>:</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>NumberOfSelectedPoints</Identifier>
+			<NumberFormat Width="2" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Selected Points"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="18" left="36" bottom="18" right="966" />
+		<LineColor RGB="#000000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="72" left="36" bottom="72" right="966" />
+		<LineColor RGB="#000000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="31" left="48" bottom="61" right="180" />
+		<StaticText>Multistart</StaticText>
+		<Font GUID="15BECD1F-B269-44B2-B6DF-175ADB1B40E0" Name="Huge" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="17" left="966" bottom="72" right="966" />
+		<LineColor RGB="#000000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Line">
+		<Location top="17" left="36" bottom="72" right="36" />
+		<LineColor RGB="#000000" />
+		<LineWidth>2</LineWidth>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="288" left="36" bottom="336" right="276" />
+		<ReadOnly>"Yes"</ReadOnly>
+		<TabOrder>3</TabOrder>
+		<Font GUID="15BECD1F-B269-44B2-B6DF-175ADB1B40E0" Name="Huge" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>MulStart::BestObjectiveValue</Identifier>
+			<NumberFormat Width="8" Decimals="3" Scientific="IfTooLarge" Alignment="Center" ShowDefaults="true" />
+			<Title>"Obj"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>x_coord</Symbol>
+			<Symbol>y_coord</Symbol>
+			<Symbol>node_size</Symbol>
+			<Symbol>node_color</Symbol>
+			<Symbol>ResetDemo</Symbol>
+			<Symbol>StartPoint</Symbol>
+			<Symbol>Size2Pixels</Symbol>
+			<Symbol>node_name</Symbol>
+			<Symbol>iterstring</Symbol>
+			<Symbol>phasestring1</Symbol>
+			<Symbol>phasestring2</Symbol>
+			<Symbol>IterationLimit</Symbol>
+			<Symbol>NumberOfPoints</Symbol>
+			<Symbol>NumberOfSelectedPoints</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>MulStart::BestObjectiveValue</Symbol>
+			<Symbol>n</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

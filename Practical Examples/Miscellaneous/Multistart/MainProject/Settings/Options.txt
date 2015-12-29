@@ -1,0 +1,27 @@
+﻿* AIMMS
+aim_character_encoding WINDOWS-1252
+ascii_case_character_encoding WINDOWS-1252
+datatable_character_encoding WINDOWS-1252
+default_input_character_encoding WINDOWS-1252
+default_output_character_encoding WINDOWS-1252
+external_dll_AIMMS_reference ASCII
+external_string_character_encoding WINDOWS-1252
+seed 1234
+warning_derivative_evaluation_errors off
+warning_non_optimal off
+* AOA
+* BARON 15
+* CONOPT 3.14V
+* CPLEX 12.6
+* CPLEX 12.6.2
+* CPOptimizer 12.6
+* GUROBI 6.0
+* KNITRO 9.1
+* MINOS
+* PATH 4.6
+* SNOPT 7.2
+* XA 15
+* NETSOL
+* Environment
+Project_Title "AIMMS - Multistart"
+Startup_Page "Page 1"

@@ -1,0 +1,2195 @@
+## ams_version=1.0
+
+Model Main_multistart {
+    Comment: {
+        "Keywords:
+        3D Chart, Slider, Complementarity Model, Complementarity Variable."
+    }
+    Section Chart_Demo {
+        Parameter MaxSubPointsInput {
+            Definition: 5;
+        }
+        Parameter MaxSubPoints {
+            Definition: 20;
+        }
+        Set XPoints {
+            SubsetOf: Integers;
+            Index: x1;
+            Definition: ElementRange(0,MaxSubpoints*MaxSubPointsInput);
+        }
+        Set YPoints {
+            SubsetOf: Integers;
+            Index: x2;
+            Definition: ElementRange(0,MaxSubpoints*MaxSubPointsInput);
+        }
+        Parameter PointValue {
+            IndexDomain: (x1,x2);
+            Definition: {
+                - [
+                1/(0.806 + (0.1*x1 - 9.681)^2 + (0.1*x2 - 0.667)^2) +
+                1/(0.517 + (0.1*x1 - 9.400)^2 + (0.1*x2 - 2.041)^2) +
+                1/(0.100 + (0.1*x1 - 8.025)^2 + (0.1*x2 - 9.152)^2) +
+                1/(0.908 + (0.1*x1 - 2.196)^2 + (0.1*x2 - 0.415)^2) +
+                1/(0.965 + (0.1*x1 - 8.074)^2 + (0.1*x2 - 8.777)^2) +
+                1/(0.669 + (0.1*x1 - 7.650)^2 + (0.1*x2 - 5.658)^2) +
+                1/(0.524 + (0.1*x1 - 1.256)^2 + (0.1*x2 - 3.605)^2) +
+                1/(0.902 + (0.1*x1 - 8.314)^2 + (0.1*x2 - 2.261)^2) +
+                1/(0.531 + (0.1*x1 - 0.226)^2 + (0.1*x2 - 8.858)^2) +
+                1/(0.876 + (0.1*x1 - 7.305)^2 + (0.1*x2 - 2.228)^2) +
+                1/(0.462 + (0.1*x1 - 0.652)^2 + (0.1*x2 - 7.027)^2) +
+                1/(0.491 + (0.1*x1 - 2.699)^2 + (0.1*x2 - 3.516)^2) +
+                1/(0.463 + (0.1*x1 - 8.327)^2 + (0.1*x2 - 3.897)^2) +
+                1/(0.714 + (0.1*x1 - 2.132)^2 + (0.1*x2 - 7.006)^2) +
+                1/(0.352 + (0.1*x1 - 4.707)^2 + (0.1*x2 - 5.579)^2) +
+                1/(0.869 + (0.1*x1 - 8.304)^2 + (0.1*x2 - 7.559)^2) +
+                1/(0.813 + (0.1*x1 - 8.632)^2 + (0.1*x2 - 4.409)^2) +
+                1/(0.811 + (0.1*x1 - 4.887)^2 + (0.1*x2 - 9.112)^2) +
+                1/(0.828 + (0.1*x1 - 2.440)^2 + (0.1*x2 - 6.686)^2) +
+                1/(0.964 + (0.1*x1 - 6.306)^2 + (0.1*x2 - 8.583)^2) +
+                1/(0.789 + (0.1*x1 - 0.652)^2 + (0.1*x2 - 2.343)^2) +
+                1/(0.360 + (0.1*x1 - 5.558)^2 + (0.1*x2 - 1.272)^2) +
+                1/(0.369 + (0.1*x1 - 3.352)^2 + (0.1*x2 - 7.549)^2) +
+                1/(0.992 + (0.1*x1 - 8.798)^2 + (0.1*x2 - 0.880)^2) +
+                1/(0.332 + (0.1*x1 - 1.460)^2 + (0.1*x2 - 8.057)^2) +
+                1/(0.817 + (0.1*x1 - 0.432)^2 + (0.1*x2 - 8.645)^2) +
+                1/(0.632 + (0.1*x1 - 0.679)^2 + (0.1*x2 - 2.800)^2) +
+                1/(0.883 + (0.1*x1 - 4.263)^2 + (0.1*x2 - 1.074)^2) +
+                1/(0.608 + (0.1*x1 - 9.496)^2 + (0.1*x2 - 4.830)^2) +
+                1/(0.326 + (0.1*x1 - 4.138)^2 + (0.1*x2 - 2.562)^2)
+                ]
+            }
+            Comment: {
+                "sin(x1)*[cos(x1) - sin(x1)]^2 + sin(x2)*[cos(x2) - sin(x2)]^2;"
+            }
+        }
+        Parameter XPointName {
+            IndexDomain: x1;
+            Definition: 0.1 * x1;
+        }
+        Parameter YPointName {
+            IndexDomain: x2;
+            Definition: 0.1 * x2;
+        }
+        Parameter XRotation {
+            InitialData: 33;
+        }
+        Parameter YRotation {
+            InitialData: 0;
+        }
+        Parameter ZRotation {
+            InitialData: 45;
+        }
+        Set ChartStyles {
+            Index: cs;
+            Definition: data { 'Is Meshed', 'Is Shaded', 'Is Contoured', 'Is Zoned' };
+        }
+        Parameter ChartStyleVal {
+            IndexDomain: (cs);
+            Range: binary;
+            InitialData: data { 'Is Meshed' : 1,  'Is Shaded' : 1,  'Is Zoned' : 1 };
+        }
+        Set Contours {
+            Index: c;
+            Definition: data { 1 .. 10 };
+        }
+        Parameter ContourLevel {
+            IndexDomain: (c);
+            Definition: data { 1 : -0.5,  2 : -1.5,  3 : -2,  4 : -2.5,  5 : -3,  6 : -3.5,  7 : -4,  8 : -4.5,  9 : -5,  10 : -8 };
+            Comment: {
+                "(Max( (x1,x2), PointValue(x1,x2) )) * (ord(c));"
+            }
+        }
+        ElementParameter ContourColor {
+            IndexDomain: c;
+            Range: AllColors;
+        }
+        Parameter Is3D {
+            Range: binary;
+            Default: 1;
+        }
+        Procedure Switch3D2D {
+            Body: {
+                if ( Is3D ) then
+                	ChartStyleVal('Is Meshed')    := 0;
+                	ChartStyleVal('Is Shaded')    := 0;
+                	ChartStyleVal('Is Contoured') := 1;
+                	ChartStyleVal('Is Zoned')     := 1;
+                
+                	Is3D := 0;
+                else
+                	ChartStyleVal('Is Meshed')    := 1;
+                	ChartStyleVal('Is Shaded')    := 1;
+                	ChartStyleVal('Is Contoured') := 0;
+                	ChartStyleVal('Is Zoned')     := 1;
+                
+                	Is3D := 1;
+                endif;
+            }
+            Comment: {
+                "data { \'Is Meshed\', \'Is Shaded\', \'Is Contoured\', \'Is Zoned\' }
+                
+                data { \'Is Meshed\' : 1,  \'Is Shaded\' : 1,  \'Is Zoned\' : 1 }"
+            }
+        }
+        Procedure Reposition3DChart {
+            Body: {
+                XRotation := -1 ;
+                YRotation := -1 ;
+                ZRotation := -1 ;
+                
+                PageRefreshAll ;
+                
+                XRotation := 33 ;
+                YRotation := 0 ;
+                ZRotation := 45 ;
+                
+                PageRefreshAll ;
+            }
+        }
+        Procedure ReverseColors {
+            Body: {
+                if ( ContourColor('1') = 'red' ) then
+                
+                	ContourColor := data
+                	{ 10 : red        ,  9  : orange     ,  8  : yellow     ,  7  : yellowgreen,  6  : green      ,  5  : darkgreen  ,
+                	  4  : cyan       ,  3  : blue       ,  2  : 'navy blue',  1  : purple      };
+                
+                else
+                
+                	ContourColor := data
+                	{ 1  : red        ,  2  : orange     ,  3  : yellow     ,  4  : yellowgreen,  5  : green      ,  6  : darkgreen  ,
+                  	  7  : cyan       ,  8  : blue       ,  9  : 'navy blue',  10 : purple      };
+                
+                endif;
+            }
+        }
+    }
+    Section Page_Starting_Point {
+        Parameter x_start;
+        Parameter y_start;
+        Set AllNodes {
+            SubsetOf: Integers;
+            Index: n, n1;
+        }
+        Parameter x_coord {
+            IndexDomain: n;
+        }
+        Parameter y_coord {
+            IndexDomain: n;
+        }
+        Parameter node_size {
+            IndexDomain: n;
+        }
+        ElementParameter node_color {
+            IndexDomain: n;
+            Range: NodeColors;
+        }
+        Parameter arcs {
+            IndexDomain: (n,n1);
+        }
+        Procedure ResetDemo {
+            Body: {
+                empty AllNodes;
+                NumberOfNodes := 0;
+                
+                continue_demo := 1;
+                
+                solve_cnt := 0;
+                
+                empty node_name, iterstring, phasestring1, phasestring2;
+                
+                x_start := 1;
+                y_start := 1;
+                
+                while ( loopcount <= 8 ) do
+                	GMP::ProgressWindow::UnfreezeLine( loopcount );
+                endwhile;
+                
+                ShowProgressWindow;
+            }
+        }
+        Procedure StartPoint {
+            Body: {
+                x := x_start;
+                y := y_start;
+                
+                NumberOfNodes += 1;
+                
+                AllNodes += NumberOfNodes;
+                
+                x_coord(NumberOfNodes) := x;
+                y_coord(NumberOfNodes) := 10-y;
+                node_size(NumberOfNodes) := 0.14;
+                node_color(NumberOfNodes) := 'blue';
+                
+                PageRefreshAll;
+            }
+        }
+        Procedure UpdateCoord {
+            Arguments: CurNode;
+            Body: {
+                x_start := x_coord(CurNode);
+                y_start := 10 - y_coord(CurNode);
+                
+                x_coord(CurNode) := x_coord(NumberOfNodes);
+                y_coord(CurNode) := y_coord(NumberOfNodes);
+                
+                x_coord(NumberOfNodes) := x_start;
+                y_coord(NumberOfNodes) := 10 - y_start;
+                
+                PageRefreshAll;
+            }
+            ElementParameter CurNode {
+                Range: AllNodes;
+                Property: Input;
+            }
+        }
+        Procedure SelectNode {
+            Arguments: CurNode;
+            Body: {
+                x := x_coord(CurNode);
+                y := 10 - y_coord(CurNode);
+                
+                NumberOfNodes += 1;
+                
+                AllNodes += NumberOfNodes;
+                
+                x_coord(NumberOfNodes) := x;
+                y_coord(NumberOfNodes) := 10 - y;
+                node_size(NumberOfNodes) := 0.14;
+                node_color(NumberOfNodes) := 'blue';
+                
+                PageRefreshAll;
+            }
+            ElementParameter CurNode {
+                Range: AllNodes;
+                Property: Input;
+            }
+        }
+        Procedure SolveNode {
+            Arguments: CurNode;
+            Body: {
+                x := x_coord(CurNode);
+                y := 10 - y_coord(CurNode);
+                
+                DoSolve;
+            }
+            ElementParameter CurNode {
+                Range: AllNodes;
+                Property: Input;
+            }
+        }
+        Procedure DoSolve {
+            Body: {
+                solve mp;
+                
+                NumberOfNodes += 1;
+                
+                AllNodes += NumberOfNodes;
+                
+                x_coord(NumberOfNodes) := x;
+                y_coord(NumberOfNodes) := 10-y;
+                node_size(NumberOfNodes) := 0.14;
+                node_color(NumberOfNodes) := 'red';
+                
+                arcs(NumberOfNodes-1,NumberOfNodes) := 1;
+                
+                PageRefreshAll;
+            }
+        }
+    }
+    Section Page_Multistart_Algorithm {
+        Parameter NumberOfNodes {
+            Range: integer;
+        }
+        Set NodeColors {
+            SubsetOf: AllColors;
+            Index: nc;
+            Definition: data { red, green, blue, yellow, magenta, cyan, 'orange', 'navy blue', pink, darkgreen, purple, yellowgreen, brown };
+        }
+        Parameter Size2Pixels {
+            Definition: 66;
+        }
+        StringParameter node_name {
+            IndexDomain: n;
+        }
+        Parameter continue_demo {
+            Range: binary;
+        }
+        Parameter solve_cnt {
+            Range: integer;
+        }
+        StringParameter iterstring;
+        StringParameter phasestring1;
+        StringParameter phasestring2;
+        Parameter IterationLimit {
+            Range: {
+                {1..inf}
+            }
+            Default: 3;
+        }
+        Parameter NumberOfPoints {
+            Range: {
+                {1..inf}
+            }
+            Default: 20;
+        }
+        Parameter NumberOfSelectedPoints {
+            Range: {
+                {1..NumberOfPoints}
+            }
+            Default: 10;
+        }
+        Procedure InitDemo {
+            Body: {
+                empty AllNodes;
+                NumberOfNodes := 0;
+                
+                option seed := 1234;
+                
+                continue_demo := 1;
+                
+                solve_cnt := 0;
+                
+                empty node_name, iterstring, phasestring1, phasestring2;
+                
+                MulStart::BestObjectiveValue := 1e20;
+                
+                Pause;
+            }
+        }
+        Procedure Pause {
+            Body: {
+                PageRefreshAll;
+                
+                PageOpen( "Page 4" );
+                
+                if ( not continue_demo ) then
+                	halt;
+                endif;
+            }
+        }
+        Procedure StopDemo {
+            Body: {
+                continue_demo := 0;
+            }
+        }
+        Procedure SelectPoints {
+            Arguments: (Points,BestPoints);
+            Body: {
+                for (p) do
+                	NumberOfNodes += 1;
+                
+                	AllNodes += NumberOfNodes;
+                	NewNodes += NumberOfNodes;
+                
+                	GMP::Solution::SendToModel( MulStart::GNLP, p );
+                
+                	x_coord(NumberOfNodes) := x;
+                	y_coord(NumberOfNodes) := 10-y;
+                	node_size(NumberOfNodes) := 0.1;
+                	node_color(NumberOfNodes) := 'blue';
+                endfor;
+                
+                iterstring := FormatString( "Iteration %i", MulStart::IterationCount );
+                phasestring1 := FormatString( "Generate %i", MulStart::NumberOfSamplePoints );
+                phasestring2 := FormatString( "points at random" );
+                
+                Pause;
+                
+                AllNodes -= NewNodes;
+                
+                for (b) do
+                	NumberOfNodes += 1;
+                
+                	AllNodes += NumberOfNodes;
+                
+                	GMP::Solution::SendToModel( MulStart::GNLP, b );
+                
+                	CurNode := b;
+                
+                	x_coord(NumberOfNodes) := x;
+                	y_coord(NumberOfNodes) := 10-y;
+                	node_size(NumberOfNodes) := 0.1;
+                	node_color(NumberOfNodes) := 'blue';
+                endfor;
+                
+                phasestring1 := FormatString( "Remove %i Points", MulStart::NumberOfSamplePoints - MulStart::NumberOfSelectedSamplePoints );
+                empty phasestring2;
+                
+                Pause;
+            }
+            Set Points {
+                SubsetOf: Integers;
+                Index: p;
+                Property: InOut;
+            }
+            Set BestPoints {
+                SubsetOf: Integers;
+                Index: b;
+                Property: InOut;
+            }
+            Set NewNodes {
+                SubsetOf: AllNodes;
+            }
+            ElementParameter CurNode {
+                Range: Points;
+            }
+        }
+        Procedure AddCircle {
+            Arguments: (Center,Point,Solution);
+            Body: {
+                for (n) do
+                	if ( node_color(n) = 'red' ) then
+                		node_color(n) := 'green';
+                	endif;
+                endfor;
+                
+                NumberOfNodes += 1;
+                
+                AllNodes += NumberOfNodes;
+                
+                GMP::Solution::SendToModel( MulStart::GNLP, Center );
+                
+                x_coord(NumberOfNodes) := x;
+                y_coord(NumberOfNodes) := 10-y;
+                node_size(NumberOfNodes) := 2*MulStart::ClusterRadius(Center);
+                node_color(NumberOfNodes) := 'red';
+                
+                NumberOfNodes += 1;
+                
+                AllNodes += NumberOfNodes;
+                
+                solve_cnt += 1;
+                
+                GMP::Solution::SendToModel( MulStart::GNLP, Point );
+                
+                x_coord(NumberOfNodes) := x;
+                y_coord(NumberOfNodes) := 10-y;
+                node_size(NumberOfNodes) := 0.1;
+                node_color(NumberOfNodes) := 'blue';
+                node_name(NumberOfNodes) := FormatString( "%i", solve_cnt );
+                
+                NumberOfNodes += 1;
+                
+                AllNodes += NumberOfNodes;
+                
+                GMP::Solution::SendToModel( MulStart::GNLP, Solution );
+                
+                x_coord(NumberOfNodes) := x;
+                y_coord(NumberOfNodes) := 10-y;
+                node_size(NumberOfNodes) := 0.1;
+                node_color(NumberOfNodes) := 'yellow';
+                
+                phasestring1 := FormatString( "Solve %i:", solve_cnt );
+                phasestring2 := FormatString( "New cluster" );
+                
+                Pause;
+            }
+            Parameter Center {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter Point {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter Solution {
+                Range: integer;
+                Property: Input;
+            }
+        }
+        Procedure UpdateCircle {
+            Arguments: (Center,Point);
+            Body: {
+                for (n) do
+                	if ( node_color(n) = 'red' ) then
+                		node_color(n) := 'green';
+                	endif;
+                endfor;
+                
+                NumberOfNodes += 1;
+                
+                AllNodes += NumberOfNodes;
+                
+                FirstNode := First(AllNodes);
+                CurNode := NumberOfNodes;
+                while (CurNode <> FirstNode) do
+                	x_coord(CurNode) := x_coord(CurNode-1);
+                	y_coord(CurNode) := y_coord(CurNode-1);
+                	node_size(CurNode) := node_size(CurNode-1);
+                	node_color(CurNode) := node_color(CurNode-1);
+                	node_name(CurNode) := node_name(CurNode-1);
+                
+                	CurNode -= 1;
+                endwhile;
+                
+                GMP::Solution::SendToModel( MulStart::GNLP, Center );
+                
+                x_coord(FirstNode) := x;
+                y_coord(FirstNode) := 10-y;
+                node_size(FirstNode) := 2*MulStart::ClusterRadius(Center);
+                node_color(FirstNode) := 'red';
+                
+                NumberOfNodes += 1;
+                
+                AllNodes += NumberOfNodes;
+                
+                solve_cnt += 1;
+                
+                GMP::Solution::SendToModel( MulStart::GNLP, Point );
+                
+                x_coord(NumberOfNodes) := x;
+                y_coord(NumberOfNodes) := 10-y;
+                node_size(NumberOfNodes) := 0.1;
+                node_color(NumberOfNodes) := 'blue';
+                node_name(NumberOfNodes) := FormatString( "%i", solve_cnt );
+                
+                phasestring1 := FormatString( "Solve %i:", solve_cnt );
+                phasestring2 := FormatString( "Update cluster" );
+                
+                Pause;
+            }
+            Parameter Center {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter Point {
+                Range: integer;
+                Property: Input;
+            }
+            ElementParameter FirstNode {
+                Range: AllNodes;
+            }
+            ElementParameter CurNode {
+                Range: AllNodes;
+            }
+        }
+        Procedure NextIter {
+            Arguments: Finished;
+            Body: {
+                for (n) do
+                	if ( node_color(n) = 'red' ) then
+                		node_color(n) := 'green';
+                	endif;
+                endfor;
+                
+                phasestring1 := FormatString( "Finished solves" );
+                empty phasestring2;
+                
+                Pause;
+                
+                for (n) do
+                	if ( node_color(n) = 'blue' ) then
+                		DeleteNodes += n;
+                	endif;
+                endfor;
+                
+                AllNodes -= DeleteNodes;
+                
+                if ( Finished ) then
+                
+                	empty node_name;
+                	phasestring1 := FormatString( "Finished!" );
+                	empty phasestring2;
+                
+                else
+                
+                	for (n) do
+                		if ( node_color(n) = 'green' ) then
+                			node_size(n) *= MulStart::ShrinkFactor;
+                		endif;
+                	endfor;
+                
+                	solve_cnt := 0;
+                	empty node_name;
+                
+                	phasestring1 := FormatString( "Shrink clusters" );
+                	empty phasestring2;
+                
+                	Pause;
+                
+                endif;
+            }
+            Parameter Finished {
+                Range: binary;
+                Property: Input;
+            }
+            Set DeleteNodes {
+                SubsetOf: AllNodes;
+            }
+        }
+    }
+    Section Math_Program {
+        Variable x {
+            Range: [0, 10];
+        }
+        Variable y {
+            Range: [0, 10];
+        }
+        Variable obj {
+            Range: free;
+            Definition: {
+                - [
+                  1/(0.806 + (x - 9.681)^2 + (y - 0.667)^2) +
+                  1/(0.517 + (x - 9.400)^2 + (y - 2.041)^2) +
+                  1/(0.100 + (x - 8.025)^2 + (y - 9.152)^2) +
+                  1/(0.908 + (x - 2.196)^2 + (y - 0.415)^2) +
+                  1/(0.965 + (x - 8.074)^2 + (y - 8.777)^2) +
+                  1/(0.669 + (x - 7.650)^2 + (y - 5.658)^2) +
+                  1/(0.524 + (x - 1.256)^2 + (y - 3.605)^2) +
+                  1/(0.902 + (x - 8.314)^2 + (y - 2.261)^2) +
+                  1/(0.531 + (x - 0.226)^2 + (y - 8.858)^2) +
+                  1/(0.876 + (x - 7.305)^2 + (y - 2.228)^2) +
+                  1/(0.462 + (x - 0.652)^2 + (y - 7.027)^2) +
+                  1/(0.491 + (x - 2.699)^2 + (y - 3.516)^2) +
+                  1/(0.463 + (x - 8.327)^2 + (y - 3.897)^2) +
+                  1/(0.714 + (x - 2.132)^2 + (y - 7.006)^2) +
+                  1/(0.352 + (x - 4.707)^2 + (y - 5.579)^2) +
+                  1/(0.869 + (x - 8.304)^2 + (y - 7.559)^2) +
+                  1/(0.813 + (x - 8.632)^2 + (y - 4.409)^2) +
+                  1/(0.811 + (x - 4.887)^2 + (y - 9.112)^2) +
+                  1/(0.828 + (x - 2.440)^2 + (y - 6.686)^2) +
+                  1/(0.964 + (x - 6.306)^2 + (y - 8.583)^2) +
+                  1/(0.789 + (x - 0.652)^2 + (y - 2.343)^2) +
+                  1/(0.360 + (x - 5.558)^2 + (y - 1.272)^2) +
+                  1/(0.369 + (x - 3.352)^2 + (y - 7.549)^2) +
+                  1/(0.992 + (x - 8.798)^2 + (y - 0.880)^2) +
+                  1/(0.332 + (x - 1.460)^2 + (y - 8.057)^2) +
+                  1/(0.817 + (x - 0.432)^2 + (y - 8.645)^2) +
+                  1/(0.632 + (x - 0.679)^2 + (y - 2.800)^2) +
+                  1/(0.883 + (x - 4.263)^2 + (y - 1.074)^2) +
+                  1/(0.608 + (x - 9.496)^2 + (y - 4.830)^2) +
+                  1/(0.326 + (x - 4.138)^2 + (y - 2.562)^2)
+                  ]
+            }
+        }
+        MathematicalProgram mp {
+            Objective: obj;
+            Direction: minimize;
+            Type: NLP;
+        }
+        ElementParameter myGMP {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            ContourColor := data
+            { 1  : red        ,  2  : orange     ,  3  : yellow     ,  4  : yellowgreen,  5  : green      ,  6  : darkgreen  ,
+              7  : cyan       ,  8  : blue       ,  9  : 'navy blue',  10 : purple      };
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            option seed := 1234;
+            
+            myGMP := GMP::Instance::Generate( mp );
+            
+            MulStart::IterationLimit := IterationLimit;
+            MulStart::ThreadLimit := 1;
+            MulStart::UseInitialPoint := 0;
+            
+            MulStart::DoMultiStart( myGMP, NumberOfPoints, NumberOfSelectedPoints );
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Module Multi_Start_Module {
+        Prefix: MulStart;
+        Comment: {
+            "The basic MultiStart algorithm:
+            -------------------------------
+            
+            Input: GMP corresponding to the NLP problem, NumberOfSamplePoints, NumberOfSelectedSamplePoints.
+            
+            0.      Set IterationCount equal to 1.
+            1.      Generate NumberOfSamplePoints sample points from the uniform distribution.
+                    Calculate the penalized objective for all sample points and select the best
+                    NumberOfSelectedSamplePoints sample points.
+            2.      For all sample points (NumberOfSelectedSamplePoints in total) do:
+            			For all clusters, calculate the distance between the sample point and the center
+                    	of the cluster. If the distance is smaller than the radius of the cluster (i.e.,
+                    	the sample point belongs to the cluster) then delete the sample point.
+            3.      For all (remaining) sample points do:
+            			Solve the NLP by using the sample point as its starting point to obtain a candidate
+            			local solution.
+                    	For all clusters do:
+                    	a.	Calculate the distance between the candidate local solution and the local
+                    		solution belonging to the cluster.
+                		b.	If the distance equals 0 (which implies that the candidate local solution is the
+                			same as the local solution belonging to the cluster) then update the center and
+                			radius of the cluster by using the sample point.
+                		c.	Else, construct a new cluster by using the mean of the sample point and the
+                			candidate local solution as its center with radius equal to half the distance
+                			between these two points. Assign the candidate local solution as the local
+                			solution belonging to the cluster.
+                		d. 	For all remaining sample points, calculate the distance between the sample point
+                			and the center of the updated or the new cluster. If the distance is smaller
+                			than the radius of the cluster then delete the sample point.
+            4.      Increment IterationCount. If the number of iterations exceeds the IterationLimit,
+                    then go to step (5). Else go to step (1).
+            5.      Order the local solutions and store the NumberOfBestSolutions solutions in the
+                    solution repository.
+            
+            By default, the algorithm uses the starting point as the first \"sample\" point in the first
+            iteration.
+            
+            The algorithm deletes all initial solutions present in the solution repository of the GMP."
+        }
+        DeclarationSection MultiStart_Control_Declarations {
+            Comment: {
+                "Contains parameters (\'options\') that influence the performance of
+                the MultiStart algorithm."
+            }
+            Parameter NumberOfSamplePoints {
+                Range: {
+                    {0..maxint}
+                }
+                Comment: {
+                    "The number of randomly generated points in each iteration. The sample point are
+                    randomly generated by using the intervals defined by the lower and upper bounds
+                    of the variables."
+                }
+            }
+            Parameter NumberOfSelectedSamplePoints {
+                Range: {
+                    {0..maxint}
+                }
+                Comment: {
+                    "The number of points that are selected from the set of randomly generated points in each
+                    iteration. The points that are selected are the points with the best penalty function value.
+                    
+                    If NumberOfSelectedSamplePoints equals NumberOfSamplePoints then all sample points are
+                    automatically selected."
+                }
+            }
+            Parameter IterationLimit {
+                Range: {
+                    {1..maxint}
+                }
+                Default: 5;
+                Comment: "Limits the number of iterations by the MultiStart algorithm.";
+            }
+            Parameter ThreadLimit {
+                Range: {
+                    {0..maxint}
+                }
+                Default: 0;
+                Comment: {
+                    "Limits the number of threads (one for each asynchronous solver session) used
+                    by the MultiStart algorithm. If set to 0 (the default) then the MultiStart
+                    algorithm will automatically use the maximum number of threads, which is
+                    limited by the number of cores on the machine and the amount of solver
+                    sessions allowed by the AIMMS license."
+                }
+            }
+            Parameter UseOpportunisticAlgorithm {
+                Range: binary;
+                InitialData: 0;
+                Comment: {
+                    "If 1, the MultiStart algorithm will run in opportunistic mode instead of
+                    deterministic mode. Deterministic means that multiple runs with the same
+                    model using the same parameter settings and the same solver on the same
+                    computer will reproduce the same results. The number of NLP problems
+                    solved by the MultiStart algorithm will then be the same.
+                    
+                    In contrast, opportunistic implies that the results might be different,
+                    and the number of NLP problems solved might be different. Usually the
+                    opportunistic mode provides better performance."
+                }
+            }
+            Parameter NumberOfBestSolutions {
+                Range: {
+                    {1..1000}
+                }
+                Default: 1;
+                Comment: {
+                    "The MultiStart algorithm will return with the best \'NumberOfBestSolutions\' solutions stored
+                    at the first \'NumberOfBestSolutions\' positions in the solution repository."
+                }
+            }
+            Parameter InitialPenaltyWeight {
+                Range: nonnegative;
+                InitialData: 1000;
+                Comment: {
+                    "To calculate the penalty function, the violation of each constraint is multiplied by the
+                    shadow price of each constraint. This initial penalty weight acts as a lower bound on each
+                    shadow price, i.e., if the shadow price of a constraint is lower than the initial penalty
+                    weight then the initial penalty weight is used instead of the shadow price."
+                }
+            }
+            Parameter ClusterRadiusMultiplier {
+                Range: nonnegative;
+                InitialData: 0.6;
+                Comment: "If a new cluster is created then the radius will be multiplied by this parameter.";
+            }
+            Parameter ShrinkFactor {
+                Range: [0, 1];
+                InitialData: 0.95;
+                Comment: {
+                    "At the end of each iteration each cluster is multiplied by this factor to
+                    shrink the size of the cluster. Points are then less often assigned to clusters
+                    that were initially too large."
+                }
+            }
+            Parameter UsePresolver {
+                Range: binary;
+                InitialData: 1;
+                Comment: {
+                    "If 1, the MultiStart algorithm will start by generating the presolved GMP of
+                    the original GMP, and use that presolved GMP in the algorithm. By presolving
+                    the model, many ranges of the columns become smaller, and rows and columns
+                    might be deleted. Using this smaller GMP might speed up the MultiStart algorithm.
+                    
+                    Moreover, if the ranges of the columns become smaller then the MultiStart
+                    algorithm will more likely generate good starting points, thereby increasing
+                    the chance that the MultiStart algorithm will find a good (or global) solution."
+                }
+            }
+            Parameter UseInitialPoint {
+                Range: binary;
+                InitialData: 1;
+                Comment: {
+                    "If 1, the MultiStart algorithm will select the starting point, as provided
+                    by the user, as the first sample point."
+                }
+            }
+            Parameter UseConstraintConsensusMethod {
+                Range: binary;
+                InitialData: 0;
+                Comment: {
+                    "The sample point are randomly generated by using the intervals defined by the lower
+                    and upper bounds of the variables. Such a sample point is very likely to be infeasible
+                    with respect to the constraints. The constraint consensus method (CCM) tries to find
+                    an approximately feasible point for a sample point. If 1, the MultiStart algorithm
+                    will apply CCM to each sample point generated. This might slow down the MultiStart
+                    algorithm but the chance of generating (almost) feasible sample points increases.
+                    
+                    The constraint consensus method is described in: John W. Chinneck, The Constraint
+                    Consensus Method for Finding Approximately Feasible Points in Nonlinear Programs,
+                    INFORMS Journal on Computing 16(3) (2004), pp. 255-265."
+                }
+            }
+            Parameter MaximalVariableBound {
+                Range: nonnegative;
+                InitialData: 1000;
+                Comment: {
+                    "If a variable has no upper bound then the upper bound used for generating sample points
+                    will be equal to the value of this parameter. If a variable has no lower bound then the
+                    value of this parameter multiplied by -1 will be used as lower bound."
+                }
+            }
+            Parameter ShowSolverProgress {
+                Range: binary;
+                InitialData: 0;
+                Comment: {
+                    "If 1, the MultiStart algorithm will show progress information for the
+                    NLP problems that are solved. If multiple NLP problems are solved in
+                    parallel then only the progress information of one of them will be
+                    shown."
+                }
+            }
+            Parameter Epsilon {
+                Definition: 1e-6;
+                Comment: {
+                    "If the distance between two feasible solutions is smaller or equal to the
+                    value of this parameter, then the solutions are considered to be identical."
+                }
+            }
+        }
+        DeclarationSection MultiStart_Status_Declarations {
+            Comment: "Identifiers used by the MultiStart algorithm.";
+            ElementParameter OriginalNLP {
+                Range: AllGeneratedMathematicalPrograms;
+                Comment: {
+                    "The original GMP as passed to the MultiStart algorithm. In case the parameter
+                    UsePresolver equals 1, the MultiStart algorithm will use a different GMP,
+                    namely the presolved GMP."
+                }
+            }
+            ElementParameter GNLP {
+                Range: AllGeneratedMathematicalPrograms;
+                Comment: {
+                    "The GMP used by the MultiStart algorithm. Either the original GMP or the
+                    presolved GMP (if parameter UsePresolver equals 1)."
+                }
+            }
+            ElementParameter ssNLP {
+                IndexDomain: (thr);
+                Range: AllSolverSessions;
+                Comment: "Solver sessions belonging to GNLP.";
+            }
+            ElementParameter pcNLP {
+                Range: AllProgressCategories;
+                Comment: "Progress category used to display information about current NLP solve.";
+            }
+            Set Threads {
+                SubsetOf: Integers;
+                Index: thr;
+            }
+            Parameter OptimizationDirection {
+                Range: {
+                    {-1..1}
+                }
+                Comment: "The optimization direction: 1 if maximization and -1 otherwise.";
+            }
+            Macro SolutionImprovement {
+                Arguments: (new,old);
+                Definition: OptimizationDirection*new > OptimizationDirection*old;
+                Comment: {
+                    "Macro to check whether a new solution is better than an old
+                    one. Works for both minimization and maximization problems."
+                }
+            }
+            Parameter IterationCount {
+                Range: {
+                    {0..inf}
+                }
+                Property: Integer;
+                Comment: "Iteration count for the MultiStart algorithm.";
+            }
+            Parameter MultiStartAlgorithmFinished {
+                Range: binary;
+                InitialData: 1;
+                Comment: "Indicates whether the MultiStart algorithm has finished.";
+            }
+            Set Points {
+                SubsetOf: Integers;
+                Index: p;
+                Comment: {
+                    "Set of integer references to points used by the MultiStart algorithm.
+                    Contains sampled points, cluster points and local solutions (as given
+                    by the sets SampledPoints, ClusterPoints and LocalSolutions respectively)."
+                }
+            }
+            Set SampledPoints {
+                SubsetOf: Points;
+                Index: sp;
+                Comment: {
+                    "Set of integer references to the sampled points. The first sample point is
+                    stored at position 1 and the last sample point at position NumberOfSamplePoints."
+                }
+            }
+            Set ClusterPoints {
+                SubsetOf: Points;
+                Index: cp;
+                Comment: {
+                    "Set of integer references to the cluster points. For each cluster
+                    two points are stored, namely the cluster centre and the local
+                    solution belonging to the cluster. These two points are stored in pairs,
+                    i.e., at position i the centre point and at position i+1 the local
+                    solution. The first cluster point is stored at position FirstClusterPoint
+                    and the last cluster point at position LastClusterPoint-1.
+                    
+                    The set LocalSolutions is the set of integer references to the local
+                    solutions."
+                }
+            }
+            Set LocalSolutions {
+                SubsetOf: Points;
+                Index: ls;
+                Comment: {
+                    "Set of integer references to the local solutions. For each cluster
+                    two points are stored, namely the cluster centre and the local
+                    solution belonging to the cluster. These two points are stored in pairs,
+                    i.e., at position i the centre point and at position i+1 the local
+                    solution. The first local solution is stored at position FirstClusterPoint+1
+                    and the last local solution at position LastClusterPoint.
+                    
+                    ClusterPoints is the set of integer references to the cluster points.
+                    
+                    Local solutions are solutions returned by the NLP solver. The local
+                    solution can refer to an infeasible point."
+                }
+            }
+            Parameter SelectInitialPoint {
+                Range: binary;
+                InitialData: 1;
+                Comment: {
+                    "If 1, the MultiStart algorithm will select the initial point as the
+                    next sample point."
+                }
+            }
+            Parameter PenaltyWeightsPoint {
+                Range: integer;
+                Comment: {
+                    "The penalty function is calculated as the objective value plus the
+                    sum over all constraints of the violation multiplied by its shadow
+                    price. The shadow prices of the constraints are stored in a special
+                    point, and this parameter is the integer reference to that point."
+                }
+            }
+            Parameter FirstClusterPoint {
+                Range: integer;
+                Comment: {
+                    "Integer reference to the first cluster point. Note that for each cluster
+                    a pair consisting of a centre point and a local solution is stored."
+                }
+            }
+            Parameter LastClusterPoint {
+                Range: integer;
+                Comment: {
+                    "Integer reference to the last cluster point. Note that for each cluster
+                    a pair consisting of a centre point and a local solution is stored."
+                }
+            }
+            Parameter PenaltyFunctionValue {
+                IndexDomain: sp;
+                Comment: {
+                    "Parameter used to store the penalty function values of the
+                    sample points."
+                }
+            }
+            Parameter SamplePointSelected {
+                IndexDomain: sp;
+                Range: binary;
+                Comment: {
+                    "Indicator for which sample points are selected. If a sample point
+                    is selected then the MultiStart algorithm will try to assign it
+                    to an existing cluster, and if it fails a NLP solve is started by
+                    using this sample point as the starting point.
+                    
+                    If NumberOfSelectedSamplePoints equals NumberOfSamplePoints then
+                    all sample points are automatically selected."
+                }
+            }
+            Parameter ClusterRadius {
+                IndexDomain: (cp);
+                Range: nonnegative;
+                Comment: "The radius of all clusters.";
+            }
+            Parameter NumberOfClusterPoints {
+                IndexDomain: (cp);
+                Range: integer;
+                Comment: {
+                    "Number of points found by the algorithm that belong to a certain cluster.
+                    This includes the local solution corresponding to the cluster."
+                }
+            }
+            Parameter BestObjectiveValue {
+                Comment: "Objective value of best solution found by the multi-start algorithm.";
+            }
+            Parameter ObjectiveValue {
+                IndexDomain: (ls);
+                Comment: {
+                    "The objective value for each local solution. Local solutions are solutions
+                    returned by the NLP solver. The local solution can refer to an infeasible
+                    point and in that case the value of the objective value is set equal to \'na\'."
+                }
+            }
+            Parameter NumberOfLocalSolutions {
+                Range: integer;
+                Comment: {
+                    "The number of distinguished feasible local solutions found by the
+                    MultiStart algorithm. A local solution is a solution returned by
+                    the NLP solver."
+                }
+            }
+            Parameter FoundSolution {
+                Range: binary;
+            }
+            Set NLPOptimalityStatuses {
+                SubsetOf: AllSolutionStates;
+                Definition: {
+                    data { 'Optimal'                ,
+                           'LocallyOptimal'         ,
+                           'IntermediateNonOptimal' }
+                }
+                Comment: {
+                    "The program statusses which indicate that the solver has found a
+                    solution."
+                }
+            }
+            ElementParameter ProgramStatus {
+                Range: AllSolutionStates;
+                Comment: {
+                    "Parameter for holding the program status corresponding to
+                    a solution."
+                }
+            }
+            Parameter NumberOfSolves {
+                Range: integer;
+                Comment: {
+                    "The number of times the NLP solver is called to solve the NLP
+                    problem. Used to show progress information in the progress window."
+                }
+            }
+            Parameter PresolveInfeasible {
+                Range: binary;
+                Comment: {
+                    "If 1, the (nonlinear) presolver has detected that the NLP problem
+                    is infeasible. In that case the MultiStart algorithm terminates
+                    immediately. This parameter is only relevant if the parameter
+                    UsePresolver is set to 1."
+                }
+            }
+            Parameter MaxNumberOfSolverThreads {
+                Range: integer;
+            }
+        }
+        DeclarationSection Option_Declarations {
+            StringParameter CurrentValueWarningNonOptimal {
+                Comment: {
+                    "The current value of the option \'Warning non optimal\'. This option is
+                    temporary switched off by the MultiStart algorithm, and at the end its
+                    value is switched back to the option value just before the MultiStart
+                    algorithm was called."
+                }
+            }
+            StringParameter CurrentValueWarningDerivativeEvaluation {
+                Comment: {
+                    "The current value of the option \'Warning derivative evaluation errors\'.
+                    This option is temporary switched off by the MultiStart algorithm, and
+                    at the end its value is switched back to the option value just before
+                    the MultiStart algorithm was called."
+                }
+            }
+            StringParameter CurrentValueNonlinearPresolve {
+                Comment: {
+                    "The current value of the option \'Nonlinear presolve\'. This option is
+                    temporary switched off by the MultiStart algorithm, and at the end its
+                    value is switched back to the option value just before the MultiStart
+                    algorithm was called.
+                    
+                    Using the nonlinear presolver each time the NLP model is solved during
+                    the MultiStart algorithm is not efficient. It is much more efficient
+                    to call the presolver just once at start of the algorithm, as controlled
+                    by the parameter UsePresolver."
+                }
+            }
+            Parameter OptionsChanged {
+                Range: binary;
+                Comment: {
+                    "If 1, the value of one of the three options was changed by the
+                    MultiStart algorithm."
+                }
+            }
+        }
+        Procedure DoMultiStart {
+            Arguments: (MyGMP,MyNumberOfSamplePoints,MyNumberOfSelectedSamplePoints);
+            Body: {
+                InitializeAlgorithm( MyGMP, MyNumberOfSamplePoints, MyNumberOfSelectedSamplePoints, ThreadLimit );
+                
+                IterationCount := 1;
+                
+                UpdateMultiStartProgressWindowIterations;
+                
+                while ( not MultiStartAlgorithmFinished ) do
+                
+                    SamplePoints;
+                
+                    AssignPointsToClusters;
+                
+                    PrepareForNextIteration;
+                
+                endwhile;
+            }
+            Comment: "The main procedure used by the MultiStart algorithm showing the major steps.";
+            ElementParameter MyGMP {
+                Range: AllGeneratedMathematicalPrograms;
+                Property: Input;
+            }
+            Parameter MyNumberOfSamplePoints {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter MyNumberOfSelectedSamplePoints {
+                Range: integer;
+                Property: Input;
+            }
+        }
+        Procedure InitializeAlgorithm {
+            Arguments: (MyGMP,MyNumberOfSamplePoints,MyNumberOfSelectedSamplePoints,ThreadLimit);
+            Body: {
+                StartStopwatch;
+                
+                if ( MyNumberOfSamplePoints < MyNumberOfSelectedSamplePoints ) then
+                    halt with "Procedure DoMultiStart: 'MyNumberOfSamplePoints' smaller than 'MyNumberOfSelectedSamplePoints'.";
+                    return;
+                endif;
+                
+                ChangeOptionSettings;
+                
+                NLPSolver := GMP::Instance::GetSolver( MyGMP );
+                
+                SessionsLimit := GMP::Solver::GetAsynchronousSessionsLimit( NLPSolver, cores : 1 );
+                if ( SessionsLimit = 0 ) then
+                    halt with "Procedure DoMultiStart: NLP solver not licensed, or cannot be used for multistart.";
+                    return;
+                endif;
+                
+                if ( GMP::Solver::GetAsynchronousSessionsLimit( NLPSolver, GMP : MyGMP ) = 0 ) then
+                    halt with "Procedure DoMultiStart: The multistart algorithm cannot be used if the mathematical program contains external functions.";
+                    return;
+                endif;
+                
+                if ( ThreadLimit = 0 ) then
+                	ThreadLimit := SessionsLimit;
+                else
+                	ThreadLimit := min( ThreadLimit, SessionsLimit );
+                endif;
+                
+                Threads := { 1 .. ThreadLimit };
+                
+                PresolveInfeasible := 0;
+                NumberOfLocalSolutions := 0;
+                FoundSolution := 0;
+                
+                if ( UsePresolver ) then
+                    GNLP := GMP::Instance::CreatePresolved( MyGMP, "PresolvedModel" );
+                    if ( GNLP = "" ) then
+                        PresolveInfeasible := 1;
+                        return AlgorithmTerminate;
+                    endif;
+                else
+                    GNLP := MyGMP;
+                endif;
+                
+                for (thr) do
+                	ssNLP(thr) := GMP::Instance::CreateSolverSession( GNLP, Solver : NLPSolver ) ;
+                endfor;
+                
+                if ( ShowSolverProgress ) then
+                	pcNLP := GMP::SolverSession::CreateProgressCategory( ssNLP(1) );
+                endif;
+                
+                OriginalNLP := MyGMP;
+                
+                NumberOfSamplePoints         := MyNumberOfSamplePoints;
+                NumberOfSelectedSamplePoints := MyNumberOfSelectedSamplePoints;
+                
+                InitDemo;
+                
+                IterationCount              := 0;
+                MultiStartAlgorithmFinished := 0;
+                
+                ! Get optimization direction.
+                if ( GMP::Instance::GetDirection( GNLP ) = 'maximize' ) then
+                    OptimizationDirection := 1;
+                    BestObjectiveValue := -1e+20;
+                else
+                    OptimizationDirection := -1;
+                    BestObjectiveValue := 1e+20;
+                endif;
+                
+                PenaltyWeightsPoint := NumberOfSamplePoints + 2;
+                FirstClusterPoint := NumberOfSamplePoints + 3;
+                LastClusterPoint := FirstClusterPoint - 1;
+                SelectInitialPoint := UseInitialPoint;
+                
+                empty Points, SampledPoints, ClusterPoints;
+                cleandependents Points, SampledPoints, ClusterPoints;
+                empty PenaltyFunctionValue, SamplePointSelected, ClusterRadius, ObjectiveValue;
+                
+                while ( LoopCount <= NumberOfSamplePoints ) do
+                   Points += LoopCount;
+                endwhile;
+                
+                SampledPoints := Points;
+                
+                NumberOfSolves := 0;
+                MaxNumberOfSolverThreads := 0;
+                
+                ! Empty solution set.
+                GMP::Solution::DeleteAll( OriginalNLP );
+                
+                ! Assign initial penalty weights to the shadow prices.
+                GMP::Solution::UpdatePenaltyWeights( GNLP, PenaltyWeightsPoint, PenaltyWeightsPoint, InitialPenaltyWeight );
+                
+                InitlializeMultiStartProgressWindow;
+            }
+            Comment: {
+                "Initialize the MultiStart algorithm. The model is presolved if the
+                corresponding parameter is switched on. (Step 0 in the basic algorithm.)"
+            }
+            ElementParameter MyGMP {
+                Range: AllGeneratedMathematicalPrograms;
+                Property: Input;
+            }
+            Parameter MyNumberOfSamplePoints {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter MyNumberOfSelectedSamplePoints {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter ThreadLimit {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter SessionsLimit {
+                Range: integer;
+            }
+            ElementParameter NLPSolver {
+                Range: AllSolvers;
+            }
+        }
+        Procedure SamplePoints {
+            Body: {
+                NumberOfPointsSelected := 0;
+                CurrentPoint := 1;
+                empty SelectedPoints;
+                
+                if ( SelectInitialPoint ) then
+                	GMP::Solution::RetrieveFromModel( GNLP, CurrentPoint );
+                	PenaltyFunctionValue(CurrentPoint) := OptimizationDirection * 1e80;
+                	SelectedPoints += 1;
+                    NumberOfPointsSelected += 1;
+                	CurrentPoint += 1;
+                	SelectInitialPoint := 0;
+                endif;
+                
+                while ( CurrentPoint <= NumberOfSamplePoints ) do
+                    GMP::Solution::RandomlyGenerate( GNLP, CurrentPoint, MaximalVariableBound );
+                
+                    if ( UseConstraintConsensusMethod ) then
+                        GMP::Instance::FindApproximatelyFeasibleSolution( GNLP, CurrentPoint, CurrentPoint, IterCCM, 1000, 1e-3, 1e-3, 0.0 );
+                    endif;
+                
+                    PenaltyFunctionValue(CurrentPoint) := GMP::Solution::GetPenalizedObjective( GNLP, CurrentPoint, PenaltyWeightsPoint );
+                
+                    if ( PenaltyFunctionValue(CurrentPoint) <> na ) then
+                        SelectedPoints += CurrentPoint;
+                        NumberOfPointsSelected += 1;
+                    endif;
+                
+                    CurrentPoint += 1;
+                endwhile;
+                
+                if ( NumberOfSelectedSamplePoints < NumberOfSamplePoints   and
+                     NumberOfSelectedSamplePoints < NumberOfPointsSelected ) then
+                    BestPoints := NBest( spts, OptimizationDirection * PenaltyFunctionValue(spts), NumberOfSelectedSamplePoints );
+                else
+                    BestPoints := SelectedPoints;
+                endif;
+                
+                SelectPoints(SelectedPoints,BestPoints);
+                
+                SamplePointSelected(sp) := 0;
+                SamplePointSelected(bp) := 1;
+            }
+            Comment: {
+                "Generate NumberOfSamplePoints sample points from the uniform distribution.
+                Calculate the penalized objective for all sample points and select the best
+                NumberOfSelectedSamplePoints sample points. Optionally the algorithm will
+                try to find an approximately feasible point for each sample point. (Step 1
+                in the basic algorithm.)"
+            }
+            Parameter CurrentPoint {
+                Range: integer;
+            }
+            Parameter NumberOfPointsSelected {
+                Range: integer;
+            }
+            Set SelectedPoints {
+                SubsetOf: SampledPoints;
+                Index: spts;
+            }
+            Set BestPoints {
+                SubsetOf: SelectedPoints;
+                Index: bp;
+                OrderBy: user;
+            }
+            Parameter IterCCM;
+        }
+        Procedure AssignPointsToClusters {
+            Body: {
+                for ( sp | SamplePointSelected(sp) ) do
+                    ! Check whether current sample point is inside an existing cluster.
+                
+                    for ( cp ) do
+                        Distance := GMP::Solution::GetDistance( GNLP, cp, sp );
+                
+                        if ( Distance <= ClusterRadius(cp) ) then
+                            SamplePointSelected(sp) := 0;
+                            break;
+                        endif;
+                    endfor;
+                endfor;
+                
+                CurrentPoints := { sp | SamplePointSelected(sp) };
+                
+                if ( card(CurrentPoints) >= 1 ) then
+                	if ( UseOpportunisticAlgorithm ) then
+                		DoLocalSearchOpportunistic( CurrentPoints );
+                	else
+                		DoLocalSearchDeterministic( CurrentPoints );
+                	endif;
+                endif;
+            }
+            Comment: {
+                "Assign selected sample points to the clusters. For all clusters, calculate
+                the distance between the sample point and the center of the cluster. If
+                the distance is smaller than the radius of the cluster (i.e., the sample
+                point belongs to the cluster) then the next sample point is taken. (Step 2
+                in the basic algorithm.)
+                
+                For the remaining sample points a local search is done. (Step 3 in the
+                basic algorithm.)"
+            }
+            Parameter Distance {
+                Range: nonnegative;
+            }
+            Set CurrentPoints {
+                SubsetOf: Points;
+                Index: c;
+            }
+        }
+        Procedure DoLocalSearchDeterministic {
+            Arguments: (Points);
+            Body: {
+                CurrentPoints := Points;
+                
+                CurrentLocalSolution := LastClusterPoint;
+                
+                while ( Card(CurrentPoints) >= 1 ) do
+                	empty CurrentSolverSessions, StartPoint, NumberOfSolverThreads;
+                
+                	for (thr | Card(CurrentPoints) >= 1) do
+                		CurrentSolverSessions += ssNLP(thr);
+                
+                		StartSolverSession( ssNLP(thr), CurrentSolverSessions, StartPoint, CurrentPoints );
+                
+                		NumberOfSolverThreads += 1;
+                	endfor;
+                	
+                	MaxNumberOfSolverThreads := Max( MaxNumberOfSolverThreads, NumberOfSolverThreads );
+                
+                	UpdateMultiStartProgressWindowThreads( NumberOfSolverThreads );
+                
+                	NumberOfSolves += NumberOfSolverThreads;
+                
+                	GMP::SolverSession::WaitForCompletion( CurrentSolverSessions );
+                
+                	for (css | StartPoint(css)) do
+                		CurrentLocalSolution += 2;
+                
+                		ProcessLocalSolution( css, StartPoint(css), CurrentLocalSolution, CurrentPoints );
+                	endfor;
+                endwhile;
+                
+                UpdateMultiStartProgressWindow( /* IsFinalProgress */ 0 );
+            }
+            Comment: {
+                "Solve the NLP by using the current sample point as its starting point to obtain a
+                candidate local solution. (Step 3 in the basic algorithm.)"
+            }
+            Set Points {
+                SubsetOf: Integers;
+                Index: p;
+                Property: InOut;
+            }
+            Set CurrentSolverSessions {
+                SubsetOf: AllSolverSessions;
+                Index: css;
+            }
+            ElementParameter StartPoint {
+                IndexDomain: css;
+                Range: Points;
+            }
+            Set CurrentPoints {
+                SubsetOf: Integers;
+                Index: c;
+            }
+            Parameter NumberOfSolverThreads {
+                Range: integer;
+            }
+            Parameter CurrentLocalSolution {
+                Range: integer;
+            }
+        }
+        Procedure DoLocalSearchOpportunistic {
+            Arguments: (Points);
+            Body: {
+                CurrentPoints := Points;
+                
+                CurrentLocalSolution := LastClusterPoint;
+                
+                empty CurrentSolverSessions, StartPoint, NumberOfSolverThreads;
+                
+                for (thr | Card(CurrentPoints) >= 1) do
+                	CurrentSolverSessions += ssNLP(thr);
+                
+                	StartSolverSession( ssNLP(thr), CurrentSolverSessions, StartPoint, CurrentPoints );
+                
+                	NumberOfSolverThreads += 1;
+                endfor;
+                
+                MaxNumberOfSolverThreads := Max( MaxNumberOfSolverThreads, NumberOfSolverThreads );
+                
+                while ( Card(CurrentSolverSessions) >= 1 ) do
+                	UpdateMultiStartProgressWindowThreads( NumberOfSolverThreads );
+                
+                	SolverSession := GMP::SolverSession::WaitForSingleCompletion( CurrentSolverSessions );
+                
+                	NumberOfSolves += 1;
+                
+                	CurrentLocalSolution += 2;
+                
+                	ProcessLocalSolution( SolverSession, StartPoint(SolverSession), CurrentLocalSolution, CurrentPoints );
+                
+                	if ( Card(CurrentPoints) >= 1 ) then
+                		StartSolverSession( SolverSession, CurrentSolverSessions, StartPoint, CurrentPoints );
+                	else
+                		CurrentSolverSessions -= SolverSession;
+                		NumberOfSolverThreads -= 1;
+                	endif;
+                endwhile;
+                
+                UpdateMultiStartProgressWindow( /* IsFinalProgress */ 0 );
+            }
+            Comment: {
+                "Solve the NLP by using the current sample point as its starting point to obtain a
+                candidate local solution. (Step 3 in the basic algorithm.)"
+            }
+            Set Points {
+                SubsetOf: Integers;
+                Index: p;
+                Property: InOut;
+            }
+            Set CurrentSolverSessions {
+                SubsetOf: AllSolverSessions;
+                Index: css;
+            }
+            ElementParameter StartPoint {
+                IndexDomain: css;
+                Range: Points;
+            }
+            Set CurrentPoints {
+                SubsetOf: Integers;
+                Index: c;
+            }
+            Parameter NumberOfSolverThreads {
+                Range: integer;
+            }
+            Parameter CurrentLocalSolution {
+                Range: integer;
+            }
+            ElementParameter SolverSession {
+                Range: AllSolverSessions;
+            }
+        }
+        Procedure ProcessLocalSolution {
+            Arguments: (SolverSession,StartPoint,LocalSolution,CurrentPoints);
+            Body: {
+                GMP::Solution::RetrieveFromSolverSession( SolverSession, LocalSolution );
+                
+                ProgramStatus := GMP::SolverSession::GetProgramStatus( SolverSession ) ;
+                if ( ProgramStatus in NLPOptimalityStatuses ) then
+                	ObjectiveValue := GMP::SolverSession::GetObjective( SolverSession );
+                
+                	if ( SolutionImprovement( ObjectiveValue, BestObjectiveValue ) ) then
+                		BestObjectiveValue := ObjectiveValue;
+                		FoundSolution := 1;
+                	endif;
+                endif;
+                
+                if ( ProgramStatus <> 'NoSolution'   and
+                	 ProgramStatus <> 'UnknownError' ) then
+                	! Check whether new local solution is already a local solution belonging to an existing cluster.
+                	LocalSolutionFoundBefore := 0;
+                	for ( cp ) do
+                		Distance := GMP::Solution::GetDistance( GNLP, cp+1, LocalSolution );
+                
+                		if ( Distance <= Epsilon ) then
+                			! StartPoint leads to a local solution that is already the center of an existing cluster.
+                			UpdateCluster( StartPoint, cp, CurrentPoints );
+                			LocalSolutionFoundBefore := 1;
+                		endif;
+                	endfor;
+                
+                	if ( LocalSolutionFoundBefore ) then
+                		GMP::Solution::Delete( GNLP, LocalSolution );
+                	else
+                		! New local solution defines a new cluster.
+                		CreateNewCluster( StartPoint, LocalSolution, CurrentPoints );
+                	endif;
+                endif;
+                
+                UpdateMultiStartProgressWindow( /* IsFinalProgress */ 0 );
+            }
+            Comment: {
+                "For all clusters, calculate the distance between the candidate local solution and
+                the local solution belonging to the cluster. (Step 3a in the basic algorithm.) If
+                the distance is 0 then the candidate local solution is the same as the local solution
+                belonging to the cluster. (Step 3b in the basic algorithm.) Else, construct a new
+                cluster and assign the candidate local solution as the local solution belonging to
+                the cluster. (Step 3c in the basic algorithm.)"
+            }
+            ElementParameter SolverSession {
+                Range: AllSolverSessions;
+                Property: Input;
+            }
+            Parameter StartPoint {
+                Property: Input;
+            }
+            Parameter LocalSolution {
+                Range: integer;
+                Property: Input;
+            }
+            Set CurrentPoints {
+                SubsetOf: Integers;
+                Index: c;
+                Property: InOut;
+            }
+            Set CurrentSolverSessions {
+                SubsetOf: AllSolverSessions;
+                Index: css;
+            }
+            ElementParameter ThreadPoint {
+                IndexDomain: css;
+                Range: CurrentPoints;
+            }
+            Parameter Distance {
+                Range: nonnegative;
+            }
+            Parameter LocalSolutionFoundBefore {
+                Range: binary;
+            }
+            Parameter ObjectiveValue;
+        }
+        Procedure UpdateCluster {
+            Arguments: (CurrentPoint,CurrentCluster,CurrentPoints);
+            Body: {
+                ! Temporary copy the current cluster center to a solution buffer that is not used yet.
+                CurrentClusterCopy := LastClusterPoint + 1;
+                GMP::Solution::Copy( GNLP, CurrentCluster, CurrentClusterCopy );
+                
+                ! Replace the cluster center by the weighted mean of the cluster center and the CurrentPoint.
+                MeanWeight := NumberOfClusterPoints(CurrentCluster);
+                GMP::Solution::ConstructMean( GNLP, CurrentCluster, CurrentPoint, MeanWeight );
+                
+                ! Update the radius of the cluster.
+                ClusterRadius(CurrentCluster) += GMP::Solution::GetDistance( GNLP, CurrentCluster, CurrentClusterCopy );
+                
+                NumberOfClusterPoints(CurrentCluster) += 1;
+                
+                ! Delete temporary solution buffer used to store copy of cluster center.
+                GMP::Solution::Delete( GNLP, CurrentClusterCopy );
+                
+                ! For all (remaining sample) points, check whether the point now belongs to the updated
+                ! cluster in which case it is removed.
+                for (c) do
+                    Distance := GMP::Solution::GetDistance( GNLP, CurrentCluster, c );
+                
+                    if ( Distance <= ClusterRadius(CurrentCluster) ) then
+                        DeletedPoints += c;
+                    endif;
+                endfor;
+                
+                CurrentPoints -= DeletedPoints;
+                
+                UpdateMultiStartProgressWindow( /* IsFinalProgress */ 0 );
+                
+                UpdateCircle(CurrentCluster,CurrentPoint);
+            }
+            Comment: {
+                "Update the center and radius of the current cluster by using the current sample
+                point. (Step 3b in the basic algorithm.)
+                
+                For all remaining sample points, calculate the distance between the sample point
+                and the center of this updated cluster. If the distance is smaller than the radius
+                of the cluster then delete the sample point. (Step 3d in the basic algorithm.)"
+            }
+            Parameter CurrentPoint {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter CurrentCluster {
+                Range: integer;
+                Property: Input;
+            }
+            Set CurrentPoints {
+                SubsetOf: Integers;
+                Index: c;
+                Property: InOut;
+            }
+            Parameter CurrentClusterCopy {
+                Range: integer;
+            }
+            Parameter MeanWeight;
+            Set DeletedPoints {
+                SubsetOf: CurrentPoints;
+            }
+            Parameter Distance;
+        }
+        Procedure CreateNewCluster {
+            Arguments: (CurrentPoint,CurrentLocalSolution,CurrentPoints);
+            Body: {
+                ! Add center of new cluster to set of ClusterPoints.
+                ClusterCenter := LastClusterPoint + 1;
+                ClusterSolution := LastClusterPoint + 2;
+                Points += ClusterCenter;
+                ClusterPoints += ClusterCenter;
+                GMP::Solution::Copy( GNLP, CurrentPoint, ClusterCenter );
+                
+                if ( ClusterSolution <> CurrentLocalSolution ) then
+                	GMP::Solution::Copy( GNLP, CurrentLocalSolution, ClusterSolution );
+                	GMP::Solution::Delete( GNLP, CurrentLocalSolution );
+                	CurrentLocalSolution := ClusterSolution;
+                endif;
+                
+                ! Construct cluster center by taking the mean of the CurrentPoint and the CurrentLocalSolution.
+                GMP::Solution::ConstructMean( GNLP, ClusterCenter, CurrentLocalSolution, 1 );
+                ClusterRadius(ClusterCenter) := ClusterRadiusMultiplier * GMP::Solution::GetDistance( GNLP, CurrentPoint, CurrentLocalSolution );
+                NumberOfClusterPoints(ClusterCenter) := 2;
+                
+                ! Add local solution belonging to new cluster to set of LocalSolutions.
+                Points += CurrentLocalSolution;
+                LocalSolutions += CurrentLocalSolution;
+                
+                ProgramStatus := GMP::Solution::GetProgramStatus( GNLP, CurrentLocalSolution ) ;
+                if ( ProgramStatus in NLPOptimalityStatuses ) then
+                    ObjectiveValue(CurrentLocalSolution) := GMP::Solution::GetObjective( GNLP, CurrentLocalSolution );
+                
+                    NumberOfLocalSolutions += 1;
+                else
+                    ObjectiveValue(CurrentLocalSolution) := na;
+                endif;
+                
+                LastClusterPoint += 2;
+                
+                ! For all (remaining sample) points, check whether the point now belongs to the new
+                ! cluster in which case it is removed.
+                for (c) do
+                    Distance := GMP::Solution::GetDistance( GNLP, ClusterCenter, c );
+                
+                    if ( Distance <= ClusterRadius(ClusterCenter) ) then
+                        DeletedPoints += c;
+                    endif;
+                endfor;
+                
+                CurrentPoints -= DeletedPoints;
+                
+                UpdateMultiStartProgressWindow( /* IsFinalProgress */ 0 );
+                
+                AddCircle(ClusterCenter,CurrentPoint,CurrentLocalSolution);
+            }
+            Comment: {
+                "Construct new cluster by using the mean of the current sample point and the
+                current candidate local solution as its center with radius equal to half the
+                distance between these two points. Assign the candidate local solution as the
+                local solution belonging to the cluster. (Step 3c in the basic algorithm.)
+                
+                For all remaining sample points, calculate the distance between the sample point
+                and the center of this new cluster. If the distance is smaller than the radius
+                of the cluster then delete the sample point. (Step 3d in the basic algorithm.)"
+            }
+            Parameter CurrentPoint {
+                Range: integer;
+                Property: Input;
+            }
+            Parameter CurrentLocalSolution {
+                Range: integer;
+                Property: Input;
+            }
+            Set CurrentPoints {
+                SubsetOf: Integers;
+                Index: c;
+                Property: InOut;
+            }
+            Parameter ClusterCenter {
+                Range: integer;
+            }
+            Parameter ClusterSolution {
+                Range: integer;
+            }
+            Parameter Distance {
+                Range: nonnegative;
+            }
+            Set DeletedPoints {
+                SubsetOf: CurrentPoints;
+            }
+        }
+        Procedure PrepareForNextIteration {
+            Body: {
+                if ( IterationCount >= IterationLimit ) then
+                
+                	NextIter( 1 );
+                
+                    AlgorithmTerminate;
+                
+                else
+                
+                    IterationCount += 1;
+                
+                    NextIter( 0 );
+                
+                    UpdateMultiStartProgressWindowIterations;
+                
+                    ClusterRadius(p) *= ShrinkFactor;
+                
+                endif;
+            }
+            Comment: {
+                "Prepare algorithm for the next iteration. If the number of iterations exceeds
+                the IterationLimit then terminate the algorithm. (Step 4 in the basic algorithm.)"
+            }
+        }
+        Procedure AlgorithmTerminate {
+            Body: {
+                MultiStartAlgorithmFinished := 1;
+                
+                ! Switch back options that were changed during the initialization phase of the algorithm.
+                if ( OptionsChanged ) then
+                    OptionSetString( 'warning_non_optimal', CurrentValueWarningNonOptimal );
+                    OptionSetString( 'warning_derivative_evaluation_errors', CurrentValueWarningDerivativeEvaluation );
+                    OptionSetString( 'nonlinear_presolve', CurrentValueNonlinearPresolve );
+                endif;
+                
+                if ( not PresolveInfeasible ) then
+                    OrderLocalSolutions;
+                endif;
+                
+                if ( ShowSolverProgress ) then
+                	GMP::ProgressWindow::DeleteCategory( pcNLP );
+                endif;
+                
+                UpdateMultiStartProgressWindow( /* IsFinalProgress */ 1 );
+                
+                if ( UsePresolver and not PresolveInfeasible ) then
+                    GMP::Instance::Delete( GNLP );
+                endif;
+            }
+            Comment: {
+                "Terminate the MultiStart algorithm. Order the local solutions
+                found by the algorithm. (Step 5 in the basic algorithm.)"
+            }
+        }
+        Section SubRoutines {
+            Procedure ChangeOptionSettings {
+                Body: {
+                    ! Showing warnings for infeasible problems is unwanted.
+                    rval := OptionGetString( 'warning_non_optimal', CurrentValueWarningNonOptimal );
+                    OptionSetString( 'warning_non_optimal', 'off' );
+                    
+                    ! Do not show derivative evaluation errors.
+                    rval := OptionGetString( 'warning_derivative_evaluation_errors', CurrentValueWarningDerivativeEvaluation );
+                    OptionSetString( 'warning_derivative_evaluation_errors', 'off' );
+                    
+                    ! Switch off option for nonlinear presolve. Use control parameter 'UsePresolver' to use the
+                    ! nonlinear presolver in combination with multistart.
+                    rval := OptionGetString( 'nonlinear_presolve', CurrentValueNonlinearPresolve );
+                    OptionSetString( 'nonlinear_presolve', 'off' );
+                    
+                    OptionsChanged := 1;
+                }
+                Comment: {
+                    "Temporary switch off some options. At the end of the algorithm
+                    the options are switched back to their initial value."
+                }
+                Parameter rval;
+            }
+            Procedure StartSolverSession {
+                Arguments: (SolverSession,CurrentSolverSessions,ThreadPoint,CurrentPoints);
+                Body: {
+                    CurrentPoint := First(CurrentPoints);
+                    
+                    ThreadPoint(SolverSession) := CurrentPoint;
+                    
+                    ! Solve model with CurrentPoint as the starting point.
+                    GMP::Solution::SendToSolverSession( SolverSession, CurrentPoint );
+                    
+                    CurrentPoints -= CurrentPoint;
+                    
+                    GMP::SolverSession::AsynchronousExecute( SolverSession );
+                }
+                ElementParameter SolverSession {
+                    Range: AllSolverSessions;
+                    Property: Input;
+                }
+                Set CurrentSolverSessions {
+                    SubsetOf: AllSolverSessions;
+                    Index: css;
+                    Property: InOut;
+                }
+                ElementParameter ThreadPoint {
+                    IndexDomain: css;
+                    Range: Points;
+                    Property: InOut;
+                }
+                Set CurrentPoints {
+                    SubsetOf: Integers;
+                    Index: c;
+                    Property: InOut;
+                }
+                ElementParameter CurrentPoint {
+                    Range: Integers;
+                }
+            }
+            Procedure OrderLocalSolutions {
+                Body: {
+                    ! Delete sampled points.
+                    for ( sp ) do
+                        GMP::Solution::Delete( GNLP, sp );
+                    endfor;
+                    
+                    ! Order the local solutions.
+                    if ( NumberOfBestSolutions < NumberOfLocalSolutions ) then
+                        NumberOfStoredSolutions := NumberOfBestSolutions;
+                    else
+                        NumberOfStoredSolutions := NumberOfLocalSolutions;
+                    endif;
+                    
+                    FeasibleLocalSolutions := { ls | ObjectiveValue(ls) <> na };
+                    BestPoints := NBest( fls, OptimizationDirection * ObjectiveValue(fls), NumberOfStoredSolutions );
+                    
+                    if ( NumberOfStoredSolutions <= NumberOfSamplePoints ) then
+                        CurrentLocalSolution := 1;
+                        for ( bp ) do
+                            GMP::Solution::Move( GNLP, bp, CurrentLocalSolution );
+                            CurrentLocalSolution += 1;
+                        endfor;
+                    else ! Slightly more complicated if the set SampledPoints is too small to contain best solutions.
+                        CurrentLocalSolution := LastClusterPoint + 1;
+                        for ( bp ) do
+                            GMP::Solution::Move( GNLP, bp, CurrentLocalSolution );
+                            CurrentLocalSolution += 1;
+                        endfor;
+                    
+                        CurrentLocalSolution := 1;
+                        for ( bp ) do
+                            GMP::Solution::Move( GNLP, CurrentLocalSolution+LastClusterPoint, CurrentLocalSolution );
+                            CurrentLocalSolution += 1;
+                        endfor;
+                    endif;
+                    
+                    ! If no feasible solution was found then get the least infeasible solution.
+                    if ( NumberOfLocalSolutions = 0 and NumberOfBestSolutions >= 1 ) then
+                        GetLeastInfeasibleSolution( NumberOfStoredSolutions );
+                    endif;
+                    
+                    ! Delete solutions.
+                    SolutionSet := GMP::Solution::GetSolutionsSet( GNLP );
+                    for ( sols | sols > NumberOfStoredSolutions ) do
+                        GMP::Solution::Delete( GNLP, sols );
+                    endfor;
+                    
+                    ! Copy best solutions from the presolved GMP to the original GMP.
+                    if ( UsePresolver ) then
+                        SolutionSet := GMP::Solution::GetSolutionsSet( GNLP );
+                        for ( sols ) do
+                            GMP::Solution::SendToModel( GNLP, sols );
+                            GMP::Solution::RetrieveFromModel( OriginalNLP, sols );
+                        endfor;
+                    endif;
+                    
+                    if ( PresolveInfeasible ) then
+                    	GMP::Solution::SetProgramStatus( OriginalNLP, 1, 'Infeasible' ) ;
+                    	GMP::Solution::SetSolverStatus( OriginalNLP, 1, 'NormalCompletion' ) ;
+                    elseif ( NumberOfLocalSolutions = 0 ) then
+                    	GMP::Solution::SetProgramStatus( OriginalNLP, 1, 'LocallyInfeasible' ) ;
+                    	GMP::Solution::SetSolverStatus( OriginalNLP, 1, 'NormalCompletion' ) ;
+                    else
+                    	GMP::Solution::SetProgramStatus( OriginalNLP, 1, 'LocallyOptimal' ) ;
+                    	GMP::Solution::SetSolverStatus( OriginalNLP, 1, 'NormalCompletion' ) ;
+                    endif;
+                    
+                    ! Send best solution found to AIMMS identifiers.
+                    if ( NumberOfStoredSolutions > 0 ) then
+                        GMP::Solution::SendToModel( OriginalNLP, 1 );
+                        
+                        if ( NumberOfLocalSolutions = 0 ) then
+                        	GMP::Solution::SetObjective( OriginalNLP, 1, na );
+                        endif
+                    endif;
+                }
+                Comment: {
+                    "Order the local solutions found by the MultiStart algorithm.
+                    The solutions with the best objective values are placed at the
+                    first positions in the solution repository."
+                }
+                Parameter NumberOfStoredSolutions {
+                    Range: integer;
+                }
+                Set FeasibleLocalSolutions {
+                    SubsetOf: Points;
+                    Index: fls;
+                }
+                Set BestPoints {
+                    SubsetOf: FeasibleLocalSolutions;
+                    Index: bp;
+                    OrderBy: user;
+                }
+                Set SolutionSet {
+                    SubsetOf: Integers;
+                    Index: sols;
+                }
+                Parameter CurrentLocalSolution {
+                    Range: integer;
+                }
+            }
+            Procedure GetLeastInfeasibleSolution {
+                Arguments: (NumberOfStoredSolutions);
+                Body: {
+                    BestSumInfeas := 1.0e20;
+                    BestSolution := 0;
+                    
+                    for ( ls ) do
+                        GMP::Solution::Check( GNLP, ls, NumInfeas, SumInfeas, skipObj : 1 );
+                    
+                        if ( SumInfeas < BestSumInfeas ) then
+                            BestSolution := ls;
+                            BestSumInfeas := SumInfeas;
+                        endif;
+                    endfor;
+                    
+                    if ( BestSolution > 0 ) then
+                        GMP::Solution::Move( GNLP, BestSolution, 1 );
+                        NumberOfStoredSolutions := 1;
+                    else
+                        NumberOfStoredSolutions := 0;
+                    endif;
+                }
+                Comment: {
+                    "No feasible solution was found by the MultiStart algorithm. Get the least
+                    infeasible solution and place that at position 1 in the solution repository."
+                }
+                Parameter NumberOfStoredSolutions {
+                    Range: integer;
+                    Property: Output;
+                }
+                Parameter NumInfeas;
+                Parameter SumInfeas;
+                Parameter BestSumInfeas;
+                Parameter BestSolution {
+                    Range: integer;
+                }
+            }
+            Procedure InitlializeMultiStartProgressWindow {
+                Body: {
+                    while ( loopcount <= 8 ) do
+                    	GMP::ProgressWindow::FreezeLine( loopcount, totalFreeze : 0 );
+                    endwhile;
+                    
+                    GMP::ProgressWindow::DisplayLine( 7, "", "" );
+                    GMP::ProgressWindow::DisplayLine( 8, "", "" );
+                    
+                    GMP::ProgressWindow::DisplaySolver( GMP::Instance::GetSolver(GNLP) );
+                    
+                    UpdateMultiStartProgressWindow( /* IsFinalProgress */ 0 );
+                }
+                Comment: "Initialize the progress window at the start of the algorithm.";
+            }
+            Procedure UpdateMultiStartProgressWindowIterations {
+                Body: {
+                    ValueString := FormatString( "%i", IterationCount );
+                    GMP::ProgressWindow::DisplayLine( 2, "Iterations", ValueString );
+                }
+                StringParameter ValueString;
+            }
+            Procedure UpdateMultiStartProgressWindowThreads {
+                Arguments: (NumberOfSolverThreads);
+                Body: {
+                    ValueString := FormatString( "%<12i\t(Threads: %i)", NumberOfSolves, NumberOfSolverThreads );
+                    GMP::ProgressWindow::DisplayLine( 3, "Solves", ValueString );
+                }
+                Parameter NumberOfSolverThreads {
+                    Range: integer;
+                    Property: Input;
+                }
+                StringParameter ValueString;
+            }
+            Procedure UpdateMultiStartProgressWindow {
+                Arguments: (IsFinalProgress);
+                Body: {
+                    if ( PresolveInfeasible ) then
+                        GMP::ProgressWindow::DisplaySolver( "Presolve" );
+                    endif;
+                    
+                    GMP::ProgressWindow::DisplayLine( 1, "Phase", "MultiStart" );
+                    
+                    ValueString := FormatString( "%i", IterationCount );
+                    GMP::ProgressWindow::DisplayLine( 2, "Iterations", ValueString );
+                    
+                    if ( IsFinalProgress ) then
+                    	ValueString := FormatString( "%<12i\t(Threads: %i)", NumberOfSolves, MaxNumberOfSolverThreads );
+                    else
+                    	ValueString := FormatString( "%<12i", NumberOfSolves );
+                    endif;
+                    GMP::ProgressWindow::DisplayLine( 3, "Solves", ValueString );
+                    
+                    ValueString := FormatString( "%i", NumberOfLocalSolutions );
+                    GMP::ProgressWindow::DisplayLine( 4, "Solutions", ValueString );
+                    
+                    if ( FoundSolution ) then
+                    	if (IsFinalProgress) then
+                        	BestSolution := GMP::Solution::GetObjective( GNLP, 1 );
+                    	else
+                    		BestSolution := BestObjectiveValue;
+                    	endif;
+                    	ValueString := FormatString( "%.5n", BestSolution );
+                    else
+                    	ValueString := FormatString( "na" );
+                    endif;
+                    GMP::ProgressWindow::DisplayLine( 5, "Best Solution", ValueString );
+                    
+                    CheckStopwatch;
+                    ValueString := FormatString( "%.2n sec", ElapsedTime );
+                    GMP::ProgressWindow::DisplayLine( 6, "Time", ValueString );
+                    
+                    if ( IsFinalProgress ) then
+                    	if ( PresolveInfeasible ) then
+                    		GMP::ProgressWindow::DisplayProgramStatus( 'Infeasible', lineNo : 7 ) ;
+                    		GMP::ProgressWindow::DisplaySolverStatus( 'NormalCompletion', lineNo : 8 ) ;
+                    	elseif ( NumberOfLocalSolutions = 0 ) then
+                    		GMP::ProgressWindow::DisplayProgramStatus( 'LocallyInfeasible', lineNo : 7 ) ;
+                    		GMP::ProgressWindow::DisplaySolverStatus( 'NormalCompletion', lineNo : 8 ) ;
+                    	else
+                    		GMP::ProgressWindow::DisplayProgramStatus( 'LocallyOptimal', lineNo : 7 ) ;
+                    		GMP::ProgressWindow::DisplaySolverStatus( 'NormalCompletion', lineNo : 8 ) ;
+                    	endif;
+                    
+                    	while ( loopcount <= 8 ) do
+                    		GMP::ProgressWindow::UnfreezeLine( loopcount );
+                    	endwhile;
+                    endif;
+                }
+                Comment: {
+                    "Display the information in the progress window during and at the end
+                    of the algorithm."
+                }
+                Parameter IsFinalProgress {
+                    Range: binary;
+                    Property: Input;
+                }
+                StringParameter ValueString;
+                Parameter BestSolution;
+            }
+        }
+        Section StopWatch {
+            Quantity SI_Time_Duration {
+                BaseUnit: s;
+                Conversions: tick -> s : # -> # / 100;
+                Comment: "Expresses the value for the duration of periods.";
+            }
+            StringParameter StartTime {
+                Comment: "Time the stopwatch was started.";
+            }
+            Parameter ElapsedTime {
+                Unit: s;
+                Comment: {
+                    "Time that has elapsed since the stopwatch was started. The value for this is updated
+                    by the StopStopwatch procedure."
+                }
+            }
+            Procedure StartStopwatch {
+                Body: {
+                    StartTime := CurrentToString( "%c%y-%m-%d %H:%M:%S:%t");
+                }
+                Comment: "Set the starttime of the stopwatch.";
+            }
+            Procedure CheckStopwatch {
+                Body: {
+                    ElapsedTime := CurrentToMoment( [tick], StartTime );
+                }
+                Comment: "Deterine how many ticks have elapsed since the start of the stopwatch.";
+            }
+        }
+    }
+}

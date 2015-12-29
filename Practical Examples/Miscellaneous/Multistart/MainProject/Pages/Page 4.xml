@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2015-10-19 20:29:26">
+	<PageEditSize Type="Specified">
+		<Size Width="180" Height="54" />
+	</PageEditSize>
+	<ProjectUUID>3D1CBC88-F0BA-4206-8AC8-7864B594850E</ProjectUUID>
+	<Title>"Continue?"</Title>
+	<IsDialogPage>true</IsDialogPage>
+	<Positioning>Save Last Position</Positioning>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Button">
+		<Location top="0" left="0" bottom="54" right="90" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Continue"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="ClosePage" />
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="0" left="90" bottom="54" right="180" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Stop"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>StopDemo</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+			<Action Type="ClosePage">
+				<AbortIfNotClose>true</AbortIfNotClose>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>StopDemo</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
