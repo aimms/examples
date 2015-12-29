@@ -1,0 +1,14 @@
+Multistart
+
+Problem type:
+NLP (small)
+
+Keywords:
+Multistart, Starting point, GMP, 3D chart, Network object
+
+Description:
+This example demonstrates the AIMMS multistart algorithm. On the first
+page the heath map of the non-convex objective funtion is plotted. On
+the second page the impact of starting points is demonstrated. On the
+third and last page the multistart algorithm is demonstrated step by
+step.
