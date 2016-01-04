@@ -82,7 +82,9 @@ Model Main_NetworkDesign {
         }
         Variable NumberOfModules {
             IndexDomain: (i,j) | ModuleCapacity(i, j);
-            Range: integer;
+            Range: {
+                {0..1000}
+            }
             Comment: "The number of installed capacity modules on arc/edge (i,j).";
         }
         Variable TotalCost {
@@ -144,7 +146,7 @@ Model Main_NetworkDesign {
             !   franceDBSNCANN, geantDBSNCANN, janos-usDDSNCANN, sunDDSNCANN.
             ! The instances are from SNDlib at http://sndlib.zib.de/home.action .
             
-            InstanceFile := "Input\\franceDBSNCANN.xml";
+            InstanceFile := "Input\\janos-usDDSNCANN.xml";
             
             ReadXML( InstanceFile, "NetworkDesign.axm" );
             
@@ -191,7 +193,7 @@ Model Main_NetworkDesign {
             !   'Classic', 'Modern', 'TwoPhaseClassic', 'TwoPhaseModern'
             ! The modes 'Modern' and 'TwoPhaseModern' can only be used by CPLEX and Gurobi.
             
-            GMPBenders::DoBendersDecomposition( myGMP, AllIntegerVariables, 'Classic' );
+            GMPBenders::DoBendersDecomposition( myGMP, AllIntegerVariables, 'TwoPhaseModern' );
         }
     }
     Procedure MainTermination {
