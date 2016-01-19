@@ -1,0 +1,132 @@
+## ams_version=1.0
+
+Model Main_drug {
+    Comment: {
+        "Production planning with uncertain contents
+        
+        Problem type:
+        LP (small)
+        
+        Keywords:
+        Uncertain data, Robust optimization
+        
+        Description:
+        A company produces two kinds of drugs, DrugI and DrugII, containing a specific active
+        agent A, which is extracted from raw materials purchased on the market. There are two
+        kinds of raw materials, RawI and RawII, which can be used as sources of the active
+        agent. The related production, cost, and resource data are given. The goal is to
+        find the production plan that maximizes the profit of the company.
+        
+        This is Example 1.1.1 from the book Robust Optimization by Aharon Ben-Tal, Laurent El
+        Ghaoui and Arkadi Nemirovski (2009).
+        
+        Note:
+        The objective function used in this model is \'total profit\' instead of \'minus
+        total profit\' as used in the book. The total profit is maximized in this model.
+        
+        References:
+        Ben-Tal, A., L. El Ghaoui, and A. Nemirovski, Robust Optimization, Princeton University
+        Press, 2009."
+    }
+    Variable RawI {
+        Range: nonnegative;
+    }
+    Variable RawII {
+        Range: nonnegative;
+    }
+    Variable DrugI {
+        Range: nonnegative;
+    }
+    Variable DrugII {
+        Range: nonnegative;
+    }
+    Variable Profit {
+        Range: free;
+        Definition: {
+            6200 * DrugI + 6900 * DrugII
+            -
+            (100 * RawI + 199.90 * RawII + 700 * DrugI + 800 * DrugII)
+        }
+        Comment: "The profit is equal to the income from selling the drugs minus purchasing and operational costs.";
+    }
+    Constraint Balance {
+        Text: "balance of active agent";
+        Definition: anI * RawI + anII * RawII - 0.500 * DrugI - 0.600 * DrugII >= 0;
+    }
+    Constraint Storage {
+        Definition: RawI + RawII <= 1000;
+    }
+    Constraint Manpower {
+        Definition: 90.0 * DrugI + 100.0 * DrugII <= 2000;
+    }
+    Constraint Equipment {
+        Definition: 40.0 * DrugI + 50.0 * DrugII <= 800;
+    }
+    Constraint Budget {
+        Definition: 100.0 * RawI + 199.90 * RawII + 700 * DrugI + 800 * DrugII <= 100000;
+    }
+    Parameter anI {
+        Property: Uncertain;
+        Definition: 0.01;
+        Region: Box( 0.01 * (1-0.005), 0.01 * (1+0.005) );
+        Comment: "Uncertain coefficient for variable RawI in the constraint Balance.";
+    }
+    Parameter anII {
+        Property: Uncertain;
+        Definition: 0.02;
+        Region: Box( 0.02 * (1-0.02), 0.02 * (1+0.02) );
+        Comment: "Uncertain coefficient for variable RawII in the constraint Balance.";
+    }
+    MathematicalProgram Drug {
+        Objective: Profit;
+        Direction: maximize;
+        Constraints: AllConstraints;
+        Variables: AllVariables;
+        Type: LP;
+    }
+    DeclarationSection Declaration_GMP {
+        ElementParameter gmp_rc {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+        File ResultsLog {
+            Name: "Results.log";
+            Device: window;
+            Mode: merge;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure SolveDeterministicModel {
+        Body: {
+            solve drug;
+            
+            put ResultsLog;
+            put "Deterministic:" / ;
+            put "Profit:", Profit:>9:3, /, "RawI  :", RawI:>9:3, "   RawII :", RawII:>9:3, /, "DrugI :", DrugI:>9:3, "   DrugII:", DrugII:>9:3, //;
+            putclose;
+        }
+    }
+    Procedure SolveRobustModel {
+        Body: {
+            gmp_rc := GMP::Instance::GenerateRobustCounterpart( drug, AllUncertainParameters, AllUncertaintyConstraints );
+            
+            GMP::Instance::Solve( gmp_rc );
+            
+            put ResultsLog;
+            put "Robust:" / ;
+            put "Profit:", Profit.robust:>9:3, /, "RawI  :", RawI.robust:>9:3, "   RawII :", RawII.robust:>9:3, /, "DrugI :", DrugI.robust:>9:3, "   DrugII:", DrugII.robust:>9:3, //;
+            putclose;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            SolveDeterministicModel;
+            
+            SolveRobustModel;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="CB4BA792-25E7-4B7F-B7B9-D54CB5B7E0BC">
+	<ModelFileName>drugs.ams</ModelFileName>
+	<AutoSaveAndBackup>
+		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
+	</AutoSaveAndBackup>
+</Project>
