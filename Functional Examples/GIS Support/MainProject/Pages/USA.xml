@@ -73,31 +73,31 @@
 				<Shape_File ID="1011">"Roads Shape Files\road.shp"</Shape_File>
 			</Source>
 			<Source>
-				<Name ID="1001">"Yahoo! Maps"</Name>
+				<Name ID="1001">"OpenStreetMap"</Name>
 				<Type ID="1002">"OpenStreetMap"</Type>
 			</Source>
 			<Layer>
 				<Name ID="2001">"Oceans"</Name>
 				<Source ID="2012">"Demis"</Source>
 				<External_Name ID="2002">"Bathymetry"</External_Name>
-				<Show_Layer ID="2010">VALUE := 1 - YahooMapsBackground</Show_Layer>
+				<Show_Layer ID="2010">VALUE := 1 - OpenStreetMapBackground</Show_Layer>
 			</Layer>
 			<Layer>
 				<Name ID="2001">"Land"</Name>
 				<Source ID="2012">"Demis"</Source>
 				<External_Name ID="2002">"Topography"</External_Name>
-				<Show_Layer ID="2010">VALUE := 1 - YahooMapsBackground</Show_Layer>
+				<Show_Layer ID="2010">VALUE := 1 - OpenStreetMapBackground</Show_Layer>
 			</Layer>
 			<Layer>
 				<Name ID="2001">"Borders"</Name>
 				<Source ID="2012">"Demis"</Source>
 				<External_Name ID="2002">"Borders"</External_Name>
-				<Show_Layer ID="2010">VALUE := 1 - YahooMapsBackground</Show_Layer>
+				<Show_Layer ID="2010">VALUE := 1 - OpenStreetMapBackground</Show_Layer>
 			</Layer>
 			<Layer>
-				<Name ID="2001">"US Yahoo Map"</Name>
-				<Source ID="2012">"Yahoo! Maps"</Source>
-				<Show_Layer ID="2010">YahooMapsBackground</Show_Layer>
+				<Name ID="2001">"US OpenStreetMap"</Name>
+				<Source ID="2012">"OpenStreetMap"</Source>
+				<Show_Layer ID="2010">OpenStreetMapBackground</Show_Layer>
 			</Layer>
 			<Layer>
 				<Name ID="2001">StateLayer( s )</Name>
@@ -328,7 +328,7 @@ Example uses Demis Web Map Server as data source with permission of Demis. For l
 			<Symbol>NetworkInfo</Symbol>
 			<Symbol>AState</Symbol>
 			<Symbol>ShowRoad</Symbol>
-			<Symbol>YahooMapsBackground</Symbol>
+			<Symbol>OpenStreetMapBackground</Symbol>
 			<Symbol>ZoomToUSA</Symbol>
 			<Symbol>ResetNetworkArea</Symbol>
 			<Symbol>s</Symbol>

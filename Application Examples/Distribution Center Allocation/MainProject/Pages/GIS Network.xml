@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2011-04-15 10:04:11">
+<Page Version="4000" TimeStamp="2015-10-29 16:26:10">
 	<Location top="24" left="323" bottom="455" right="876" />
 	<PageEditSize Type="Inherited">
 		<Size Width="553" Height="430" />
@@ -34,12 +34,12 @@
 		<Background>
 			<Background_Image_Source ID="101">"From GIS Source"</Background_Image_Source>
 			<Source>
-				<Name ID="1001">"Yahoo Maps"</Name>
-				<Type ID="1002">"Yahoo! Map"</Type>
+				<Name ID="1001">"OpenStreetMap"</Name>
+				<Type ID="1002">"OpenStreetMap"</Type>
 			</Source>
 			<Layer>
-				<Name ID="2001">"Yahoo Maps"</Name>
-				<Source ID="2012">"Yahoo Maps"</Source>
+				<Name ID="2001">"OpenStreetMapLayer"</Name>
+				<Source ID="2012">"OpenStreetMap"</Source>
 			</Layer>
 		</Background>
 		<Node>
@@ -129,7 +129,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
 		<Location top="402" left="354" bottom="432" right="468" />
-		<TabOrder>3</TabOrder>
+		<TabOrder>2</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>IdentifierText</TextShown>
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -141,19 +141,19 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>NLYCoordinate</Symbol>
-			<Symbol>d</Symbol>
-			<Symbol>ShowText</Symbol>
-			<Symbol>SupplyRoute</Symbol>
-			<Symbol>nl</Symbol>
-			<Symbol>VisibleBoundBottom</Symbol>
-			<Symbol>ctbs</Symbol>
 			<Symbol>XCoordinate</Symbol>
-			<Symbol>VisibleBoundTop</Symbol>
 			<Symbol>YCoordinate</Symbol>
+			<Symbol>NLXCoordinate</Symbol>
+			<Symbol>NLYCoordinate</Symbol>
+			<Symbol>SupplyRoute</Symbol>
+			<Symbol>VisibleBoundTop</Symbol>
+			<Symbol>VisibleBoundBottom</Symbol>
 			<Symbol>VisibleBoundLeft</Symbol>
 			<Symbol>VisibleBoundRight</Symbol>
-			<Symbol>NLXCoordinate</Symbol>
+			<Symbol>ShowText</Symbol>
+			<Symbol>ctbs</Symbol>
+			<Symbol>d</Symbol>
+			<Symbol>nl</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

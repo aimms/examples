@@ -353,7 +353,7 @@ Model Main_Transport {
             Parameter ShowRoad {
                 InitialData: 0;
             }
-            Parameter YahooMapsBackground;
+            Parameter OpenStreetMapBackground;
         }
     }
     Procedure MainInitialization {

@@ -12,10 +12,10 @@ The fourth model also makes a selection of one or more distribution centers from
 
 The model uses Excel for importing data and contains two different data sets (The Netherlands and US) in two different workbooks. The two data sets are also available as cases from within the AIMMS example.
 
-The results are displayed in a network object using a map as background generated via the Yahoo Maps GIS server.
+The results are displayed in a network object using a map as background generated via the OpenStreetMap GIS server.
 
 Disclaimer:
-Example uses Yahoo! Maps as data source. For licensing and use rights, visit maps.yahoo.com.
+Example uses OpenStreetMap as data source. For licensing and use rights, visit www.openstreetmap.org.
 
 Keywords:
 Distribution Center Allocation, Center of Gravity, Minimize Expected Transportation Cost, Maximize Service Level, Excel, Spreadsheet, Network object, GIS, Calculate distance based on longitude and latitude.

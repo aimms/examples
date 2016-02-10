@@ -147,7 +147,7 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="566" left="6" bottom="624" right="198" />
-		<StaticText>Disclaimer: Example uses Yahoo! Maps as data source. For licensing and use rights, visit maps.yahoo.com.</StaticText>
+		<StaticText>Disclaimer: Example uses OpenStreetMap as data source. For licensing and use rights, visit www.openstreetmap.org.</StaticText>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>

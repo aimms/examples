@@ -54,12 +54,12 @@
 		<Background>
 			<Background_Image_Source ID="101">"From GIS Source"</Background_Image_Source>
 			<Source>
-				<Name ID="1001">"Yahoo! Maps"</Name>
+				<Name ID="1001">"OpenStreetMap"</Name>
 				<Type ID="1002">"OpenStreetMap"</Type>
 			</Source>
 			<Layer>
-				<Name ID="2001">"US Yahoo Map"</Name>
-				<Source ID="2012">"Yahoo! Maps"</Source>
+				<Name ID="2001">"OpenStreetMapLayer"</Name>
+				<Source ID="2012">"OpenStreetMap"</Source>
 			</Layer>
 		</Background>
 		<Node>
@@ -190,7 +190,7 @@
 	<PageObject Type="Text">
 		<Location top="585" left="207" bottom="615" right="762" />
 		<StaticText>Disclaimer:
-Example uses OpenStreet Maps as data source. For licensing and use rights, visit www.openstreetmap.org.</StaticText>
+Example uses OpenStreetMap as data source. For licensing and use rights, visit www.openstreetmap.org.</StaticText>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<TextColor>
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
