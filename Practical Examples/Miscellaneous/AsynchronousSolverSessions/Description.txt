@@ -14,4 +14,4 @@ the solver. That way you can, e.g., solve two instances in parallel by
 using two solver sessions whereby each solver session uses 4 threads.
 
 Note:
-Multiple threads are only supported by CPLEX and Gurobi.
+Multiple threads for MIP problems are only supported by CPLEX and Gurobi.

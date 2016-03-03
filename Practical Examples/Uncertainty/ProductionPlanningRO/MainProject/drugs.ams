@@ -2,13 +2,13 @@
 
 Model Main_drug {
     Comment: {
-        "Production planning with uncertain contents
+        "Production Planning - Robust Optimization
         
         Problem type:
         LP (small)
         
         Keywords:
-        Uncertain data, Robust optimization
+        Uncertain data, robust optimization
         
         Description:
         A company produces two kinds of drugs, DrugI and DrugII, containing a specific active

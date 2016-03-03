@@ -18,6 +18,6 @@ The data of the instances are read using XML files.
 
 References:
 Raack, C., A.M.C.A. Koster, S. Orlowski, R. Wessaly, On cut-based inequalities
-for capacitated network design polyhedra, Networks 57 (2), 141-156 (2011).
+for capacitated network design polyhedra, Networks 57(2) (2011), pp. 141-156.
 
 SNDlib: http://sndlib.zib.de/

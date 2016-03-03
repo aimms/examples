@@ -11,7 +11,7 @@ This example demonstrates several approaches to get multiple solutions when
 solving a MIP problem. These approaches are:
 - Using the incumbent (solver) callback;
 - Using the solution pool (only supported by CPLEX);
-- Repeatedly solve problem forbidding the previous solutions.
+- Repeatedly solve the problem forbidding the previous solutions.
 
 In the dice problem a set of three dice has to be designed by assigning an
 integer number to each face such that on average dice 1 beats dice 2, dice
@@ -19,4 +19,6 @@ integer number to each face such that on average dice 1 beats dice 2, dice
 of total wins on average. The dice problem has many solutions.
 
 References:
-Paul van der Eijk
+Bosch, R.A., Mindsharpener - Monochromatic Squares, OPTIMA Newsletter 71 (2004),
+Mathematical Optimization Society, pp. 6-7.
+

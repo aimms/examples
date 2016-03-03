@@ -4,7 +4,7 @@ Problem type:
 MINLP (small)
 
 Keywords:
-Outer Approximation, GMP-AOA, convex, lazy constraints callback
+Outer Approximation, GMP-AOA, convex, lazy constraint callback
 
 Description:
 The Delay-Constrained Routing Problem is a problem in telecommunications.
@@ -16,4 +16,4 @@ AIMMS Outer Approximation (AOA) algorithm.
 References:
 Hijazi, H., P. Bonami, G. Cornuéjols, A. Ouorou, Mixed-integer nonlinear
 programs featuring "on/off" constraints, Computational Optimization and
-Applications 52 (2), 537-558 (2012).
+Applications 52(2) (2012), pp. 537-558.

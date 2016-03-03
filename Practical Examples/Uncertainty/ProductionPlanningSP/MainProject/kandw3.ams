@@ -2,7 +2,7 @@
 
 Model Main_KandW3 {
     Comment: {
-        "Production planning with uncertain demand
+        "Production Planning - Stochastic Programming
         
         Problem type:
         LP (small)

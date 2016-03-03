@@ -1,4 +1,4 @@
-Production planning with uncertain demand
+Production Planning - Stochastic Programming
         
 Problem type:
 LP (small)

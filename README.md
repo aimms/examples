@@ -1,8 +1,8 @@
 AIMMS (an acronym for "Advanced Interactive Multidimensional Modeling System") is a software system designed for modeling
 and solving large-scale optimization and scheduling-type problems. It consists of an algebraic modeling language, an
 integrated development environment for both editing models and creating a graphical user interface around these models,
-and a graphical end-user environment. AIMMS is linked to multiple solvers including CPLEX, Gurobi, CBC, Conopt, IPOPT,
-SNOPT, KNITRO, MINOS, BARON, PATH and CP Optimizer.
+and a graphical end-user environment. AIMMS is linked to multiple solvers including CPLEX, Gurobi, CBC, CONOPT, IPOPT,
+SNOPT, Knitro, MINOS, BARON, PATH and CP Optimizer.
 
 The AIMMS website can be found at:
 

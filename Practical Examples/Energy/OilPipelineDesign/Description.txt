@@ -15,4 +15,4 @@ be chosen to minimize construction costs.
 
 References:
 Brimberg, J., P. Hansen, K. Lih, N. Mladenovic and M. Breton, An Oil Pipeline Design
-Problem, Operations Research 51 (2), 228-239 (2003).
+Problem, Operations Research 51(2) (2003), pp. 228-239.

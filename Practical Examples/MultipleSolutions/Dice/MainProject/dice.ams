@@ -23,7 +23,8 @@ Model Dice_Model {
         of total wins on average. The dice problem has many solutions.
         
         References:
-        Paul van der Eijk"
+        Bosch, R.A., Mindsharpener - Monochromatic Squares, OPTIMA Newsletter 71 (2004),
+        Mathematical Optimization Society, pp. 6-7."
     }
     DeclarationSection Declaration_Model {
         Set Faces {

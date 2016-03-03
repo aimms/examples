@@ -1,7 +1,10 @@
-FIR filter design
+Filter design
 
 Problem type:
 SOCP (small)
+
+Keywords:
+FIR, conic programming, second-order cone, SOCP.
 
 Description:
 Minimax dB linear phase lowpass filter design. The problem is to find the
@@ -12,5 +15,5 @@ solved by CPLEX and Gurobi.
 
 References:
 Lobo, M.S., L. Vandenberghe, S. Boyd, H. Lebret, Applications of Second-order
-Cone Programming, Linear Algebra and its Applications 284 (1-3), 193-228 (1998).
+Cone Programming, Linear Algebra and its Applications 284(1-3) 1998, pp. 193-228.
 
