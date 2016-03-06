@@ -13,6 +13,8 @@ transport model, and stores the input and output data of the model in an Excel s
 specified in the "Aimms Interface Setup" dialog box correspond one-to-one to the calls to the Excel function
 library in the "Excel Linkage" section of the model tree.
 
+To use the Excel Add-In you have to install the AIMMS Launcher, which can be downloaded from www.aimms.com.
+
 Keywords:
 Excel Add-In, Spreadsheet functions, Run Time Error Handling.
 
