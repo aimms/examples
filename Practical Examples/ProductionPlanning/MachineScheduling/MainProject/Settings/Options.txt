@@ -1,0 +1,4 @@
+﻿* AIMMS
+warning_non_optimal off
+* Environment
+Startup_Page "GanttChart"

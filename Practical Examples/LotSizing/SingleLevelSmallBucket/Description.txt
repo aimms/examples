@@ -1,7 +1,7 @@
 Single level small bucket (Lot sizing)
 
 Problem type:
-MIP (hard)
+MIP (medium)
 
 Description:
 Lot-sizing problems are production planning problems in which the periods

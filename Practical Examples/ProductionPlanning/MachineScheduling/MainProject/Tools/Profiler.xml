@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<ProfilerSettings>
+	<TimeUnit>seconds</TimeUnit>
+	<StatementMargin>
+		<Entry Value="hits" Format="4" />
+		<Entry Value="gross time" Format="6:3" />
+		<Entry Value="net time" Format="6:2" />
+	</StatementMargin>
+	<StatementTooltip>
+		<Entry Value="hits" Format="4" />
+		<Entry Value="gross time" Format="6:3" />
+		<Entry Value="net time" Format="6:3" />
+	</StatementTooltip>
+	<ProcedureMargin>
+		<Entry Value="hits" Format="4" />
+		<Entry Value="gross time" Format="6:3" />
+		<Entry Value="net time" Format="6:3" />
+	</ProcedureMargin>
+	<ProcedureTooltip>
+		<Entry Value="hits" Format="4" />
+		<Entry Value="gross time" Format="6:3" />
+		<Entry Value="net time" Format="6:3" />
+		<Entry Value="average gross time" Format="6:3" />
+		<Entry Value="average net time" Format="6:3" />
+	</ProcedureTooltip>
+	<ProfilerListingFile>
+		<Entry Value="hits" Format="4" />
+		<Entry Value="gross time" Format="6:3" />
+		<Entry Value="net time" Format="6:3" />
+		<Entry Value="average gross time" Format="6:3" />
+		<Entry Value="average net time" Format="6:3" />
+	</ProfilerListingFile>
+</ProfilerSettings>

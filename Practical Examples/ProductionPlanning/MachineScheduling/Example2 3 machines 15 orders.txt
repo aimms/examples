@@ -1,0 +1,36 @@
+﻿    begHourCal := "2016-05-09 00:00" ;
+
+    numberOfDaysInCalendar := 3 ;
+
+    S_AvailableLines := data { 'King Kong', Hercules, 'Ant Man' } ;
+
+
+    ( P_Capac(i,pt) ) [lpu/hour] := data table 
+              small  medium   large
+          !  ------  ------  ------
+'King Kong'       2       5      10
+   Hercules       5       5       5
+  'Ant Man'      10       5       2
+    ;
+
+
+    S_ProductNames := data { pr1, pr2, pr3, pr4, pr5, pr6 } ;
+
+    EP_ProductType(pn) := data { pr1 : small,  pr2 : medium,  pr3 : large,  pr4 : large,  pr5 : medium,  pr6 : small } ;
+
+
+    EP_OrderProduct(o) := data 
+    {  1 : pr5,   2 : pr1,   3 : pr2,   4 : pr3,   5 : pr4,   6 : pr5,   7 : pr3,   8 : pr1,   9 : pr5,  10 : pr1,  11 : pr2,
+      12 : pr5,  13 : pr6,  14 : pr6,  15 : pr2 } ;
+
+
+    ( P_OrderQuantity(o) ) [lpu] := data 
+    {  1 : 120,   2 :  60,   3 :  40,   4 :  10,   5 : 120,   6 :  60,   7 : 120,   8 :  20,   9 :  80,  10 : 100,  11 :  70,
+      12 : 100,  13 :  10,  14 :  10,  15 :  20 } ;
+
+
+    EP_OrderDeliveryDate(o) := data 
+    {  1 : '2016-05-10 15:00',   2 : '2016-05-11 19:00',   3 : '2016-05-11 04:00',   4 : '2016-05-11 15:00',   5 : '2016-05-11 12:00',
+       6 : '2016-05-10 03:00',   7 : '2016-05-11 04:00',   8 : '2016-05-10 23:00',   9 : '2016-05-11 21:00',  10 : '2016-05-11 09:00',
+      11 : '2016-05-10 05:00',  12 : '2016-05-10 03:00',  13 : '2016-05-11 18:00',  14 : '2016-05-10 18:00',  15 : '2016-05-10 03:00' } ;
+
