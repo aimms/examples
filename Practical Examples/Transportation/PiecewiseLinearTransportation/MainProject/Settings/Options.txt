@@ -1,0 +1,18 @@
+﻿* AIMMS
+infeasibility_finder on
+seed 20
+warning_duplicate_column off
+warning_duplicate_row off
+* BARON 15
+* CONOPT 3.14V
+* CPLEX 12.6
+* CPLEX 12.6.3
+* CPOptimizer 12.6.3
+* GUROBI 6.5
+* Knitro 10.0
+* MINOS
+* SNOPT 7.2
+* XA 15
+* NETSOL
+* Environment
+Startup_Page "Costs"
