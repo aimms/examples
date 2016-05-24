@@ -2,3 +2,4 @@
 rounding_compatibility Aimms_3_7
 warning_duplicate_column off
 * Environment
+Startup_Page "Input and Output Data"

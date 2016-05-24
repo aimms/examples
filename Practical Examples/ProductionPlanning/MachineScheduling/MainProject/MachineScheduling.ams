@@ -8,7 +8,7 @@ Model Main_MachineScheduling {
         MIP (hard)
         
         Keywords:
-        Gantt chart, MIP Gap, Callback procedures, GMP
+        Gantt chart, MIP Gap, Callback procedures, GMP, Calendar.
         
         Description:
         In this multi-machine scheduling problem activities have to be assigned to
