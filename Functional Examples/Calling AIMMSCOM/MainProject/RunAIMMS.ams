@@ -46,13 +46,19 @@ Model Main_Integrated {
             Type: LP;
         }
         Parameter TransportModelStatus;
+        StringParameter AimmsVersion;
     }
     Procedure MainInitialization;
     Procedure MainExecution {
         Body: {
             display Depots, Customers, Supply(d), Demand(c), UnitTransportCost(d,c) ;
+            
             solve TransportModel;
             TransportModelStatus := ord(TransportModel.ProgramStatus);
+            
+            ! Print AIMMS version number (to listing file).
+            AimmsRevisionString( AimmsVersion );
+            display AimmsVersion;
         }
     }
     Procedure MainTermination {
