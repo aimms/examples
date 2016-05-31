@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2015-11-26 12:11:04">
+<Page Version="4000" TimeStamp="2016-05-14 22:10:08">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -11,7 +11,7 @@
 			<TopArea Line="FixedFromLeft" Value="200" />
 			<BottomArea Line="FixedFromLeft" Value="201">
 				<LeftArea Line="FixedFromTop" Value="204">
-					<BottomArea Line="FixedFromTop" Value="223" />
+					<BottomArea Line="FixedFromTop" Value="299" />
 				</LeftArea>
 				<RightArea Line="FixedFromTop" Value="85">
 					<BottomArea Line="FixedFromTop" Value="197">
@@ -29,7 +29,7 @@
 	<VerticalGridDistance>3</VerticalGridDistance>
 	<PageObject Type="Button">
 		<Location top="648" left="642" bottom="672" right="798" />
-		<TabOrder>8</TabOrder>
+		<TabOrder>9</TabOrder>
 		<TabStop>false</TabStop>
 		<ButtonType>Text</ButtonType>
 		<Title>"Problem Description"</Title>
@@ -39,8 +39,8 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Pivot Table">
-		<Location top="186" left="204" bottom="384" right="762" />
-		<TabOrder>5</TabOrder>
+		<Location top="186" left="204" bottom="384" right="507" />
+		<TabOrder>6</TabOrder>
 		<ObjectUUID>65D90613-9BF5-4B48-B509-87A4F22F4F4B</ObjectUUID>
 		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
 		<Border Style="None" />
@@ -93,7 +93,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="417" left="204" bottom="594" right="480" />
-		<TabOrder>6</TabOrder>
+		<TabOrder>7</TabOrder>
 		<TabStop>false</TabStop>
 		<ObjectUUID>925B5F8C-A2AE-49AF-BECF-AED1F9F8DBD4</ObjectUUID>
 		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
@@ -158,7 +158,7 @@
 	</PageObject>
 	<PageObject Type="Pivot Table">
 		<Location top="417" left="492" bottom="609" right="765" />
-		<TabOrder>7</TabOrder>
+		<TabOrder>8</TabOrder>
 		<TabStop>false</TabStop>
 		<ObjectUUID>546D1CCE-F015-48FB-81BA-F317426AF8CC</ObjectUUID>
 		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
@@ -239,7 +239,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="306" left="6" bottom="330" right="192" />
-		<TabOrder>4</TabOrder>
+		<TabOrder>5</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Find Multiple Solutions"</Title>
 		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
@@ -315,7 +315,7 @@
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="402" left="12" bottom="519" right="198" />
+		<Location top="402" left="12" bottom="501" right="198" />
 		<StaticText>Blue indicates the problem.
 
 Black indicates fixed values.
@@ -329,7 +329,7 @@ Red indicates values that can be placed in other places. </StaticText>
 	<PageObject Type="Selection Object">
 		<SelectionType>DropDownList</SelectionType>
 		<Location top="336" left="6" bottom="363" right="192" />
-		<TabOrder>9</TabOrder>
+		<TabOrder>10</TabOrder>
 		<Font GUID="CE4C1BB5-668F-44B4-B957-75D961205B69" Name="default" />
 		<TextShown>ElementName</TextShown>
 		<Border Style="None" />
@@ -338,9 +338,43 @@ Red indicates values that can be placed in other places. </StaticText>
 			<Identifier>SelectedSolver</Identifier>
 		</ExplicitIdentifier>
 	</PageObject>
+	<PageObject Type="Button">
+		<Location top="519" left="6" bottom="543" right="192" />
+		<TabOrder>4</TabOrder>
+		<ButtonType>Text</ButtonType>
+		<Title>"Generate new Sudoku"</Title>
+		<Font GUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" Name="Buttons" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>GenerateSudoku2</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="546" left="147" bottom="564" right="192" />
+		<TabOrder>11</TabOrder>
+		<Font GUID="C385B3DF-0280-44EF-95CA-D62834B4CD35" Name="Description" />
+		<Border Style="None" Width="2" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>SingleLineEditField</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>GeneratedSize</Identifier>
+			<NumberFormat Width="7" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="546" left="6" bottom="567" right="156" />
+		<StaticText>Generated size:</StaticText>
+		<Font GUID="C385B3DF-0280-44EF-95CA-D62834B4CD35" Name="Description" />
+		<TextColor RGB="#000000" />
+	</PageObject>
 	<UsedReferences>
 		<Model>
 			<Symbol>FixedValues</Symbol>
+			<Symbol>GeneratedSize</Symbol>
 			<Symbol>ColorGroups</Symbol>
 			<Symbol>InputDataColor</Symbol>
 			<Symbol>GUISolution</Symbol>
@@ -349,6 +383,7 @@ Red indicates values that can be placed in other places. </StaticText>
 			<Symbol>SelectedSolver</Symbol>
 			<Symbol>MainExecution</Symbol>
 			<Symbol>MultipleSolve</Symbol>
+			<Symbol>GenerateSudoku2</Symbol>
 			<Symbol>r</Symbol>
 			<Symbol>c</Symbol>
 			<Symbol>ags_s</Symbol>

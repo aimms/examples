@@ -5,5 +5,7 @@
 	</Page>
 	<Page Name="All Data Pages" PageGUID="0394A048-D3B3-4441-A240-9A6B1AE6E34D">
 		<Page Name="[Data Page] Solution" PageGUID="7695936B-CE1E-4EA7-B01A-5C7309E9E273" />
+		<Page Name="[Data Page] UniquenessCoefficient" PageGUID="E734519D-3197-4BED-A574-AF97A4F4160E" />
+		<Page Name="[Data Page] GroupWeight" PageGUID="B91E5CAD-8BEE-4623-9528-9F89125B5938" />
 	</Page>
 </PageManager>

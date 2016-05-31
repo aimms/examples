@@ -5,9 +5,7 @@ LibraryModule Example_Base {
     Interface: data { ButtonColor };
     ElementParameter ButtonColor {
         Range: AllColors;
-        Definition: {
-            'Text Blue'
-        }
+        Definition: 'Text Blue';
     }
     Procedure LibraryInitialization;
     Procedure LibraryTermination {

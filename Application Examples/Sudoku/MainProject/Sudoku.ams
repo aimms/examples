@@ -8,20 +8,47 @@ Model Main_template {
     DeclarationSection Declaration_Sudoku_Model {
         Set AllRows {
             Index: r;
+            Parameter: Row;
             Definition: Data{R-1..R-9};
         }
         Set AllColumns {
             Index: c;
+            Parameter: Column;
             Definition: Data{C-1..C-9};
         }
         Set AllValues {
             SubsetOf: Integers;
             Index: v;
+            Parameter: Value;
             Definition: Data{1..9};
         }
         Set Groups {
             Index: g;
             Parameter: SelectedGroup;
+        }
+        Set SelectedGroups {
+            SubsetOf: Groups;
+            Index: sg;
+        }
+        Set SubAreas {
+            Index: sa_r, sa_c;
+            Definition: Data{A-1..A-3};
+        }
+        Set Diagonals {
+            Index: d;
+            Definition: data { D-1 .. D-9 };
+        }
+        Set ReverseDiagonals {
+            Index: rd;
+            Definition: data { RD-1 .. RD-9 };
+        }
+        Set SubAreaCenters {
+            Index: ac;
+            Definition: data { AC-1 };
+        }
+        Set NRCAreas {
+            Index: n_r, n_c;
+            Definition: data { N-1 .. N-2 };
         }
         ElementParameter FixedValues {
             IndexDomain: (r,c);
@@ -31,6 +58,10 @@ Model Main_template {
             IndexDomain: (r,c,v);
             Range: binary;
         }
+        Constraint FixValues {
+            IndexDomain: (r,c) | FixedValues(r, c);
+            Definition: Solution(r,c,FixedValues(r,c)) = 1;
+        }
         Constraint OneValuePerCell {
             IndexDomain: (r,c);
             Definition: sum[v,Solution(r,c,v)] = 1;
@@ -39,23 +70,29 @@ Model Main_template {
             IndexDomain: (g,r,c);
         }
         Constraint ValueOnePerGroup {
-            IndexDomain: (g,v);
+            IndexDomain: (g in SelectedGroups,v);
             Definition: {
                 sum[(r,c) | GroupDefinition(g,r,c), Solution(r,c,v)] = 1;
             }
         }
         MathematicalProgram Sudoku {
-            Objective: DummyObjective;
+            Objective: RandomObjective;
             Direction: minimize;
             Constraints: AllConstraints;
             Variables: AllVariables;
             Type: MIP;
         }
-        Variable DummyObjective {
-            Definition: sum[(r,c,v), Solution(r,c,v)];
+        Parameter RandomCoefficient {
+            IndexDomain: (r,c,v);
+        }
+        Variable RandomObjective {
+            Definition: sum[(r,c,v), RandomCoefficient(r,c,v)*Solution(r,c,v)];
+        }
+        Parameter UniquenessCoefficient {
+            IndexDomain: (r,c,v);
         }
         Variable UniquenesObjective {
-            Definition: sum[(r,c,v)|Solution(r,c,v).level, Solution(r,c,v)];
+            Definition: sum[(r,c,v), UniquenessCoefficient(r,c,v)*Solution(r,c,v)];
         }
         MathematicalProgram UniquenessSudoku {
             Objective: UniquenesObjective;
@@ -64,12 +101,17 @@ Model Main_template {
             Variables: AllVariables;
             Type: MIP;
         }
+        Parameter GeneratedSize;
+        Parameter GroupWeight {
+            IndexDomain: (sg);
+            Definition: sum((r,c), GroupDefinition(sg,r,c) $ FixedValues(r, c));
+        }
+        Parameter CellWeight {
+            IndexDomain: (c,r);
+            Definition: sum(sg | GroupDefinition(sg, r, c), GroupWeight(sg));
+        }
     }
     DeclarationSection Declaration_GUI_Support {
-        Set SubAreas {
-            Index: sa_r, sa_c;
-            Definition: Data{A-1..A-3};
-        }
         ElementParameter ColorGroups {
             IndexDomain: (r,c);
             Range: AllColors;
@@ -146,28 +188,62 @@ Model Main_template {
         Index ms {
             Range: AllSolvers;
         }
+        StringParameter SudokuString;
     }
-    Procedure MainInitialization;
+    Procedure MainInitialization {
+        Body: {
+            CreateGroups;
+        }
+    }
     Procedure CreateGroups {
         Body: {
             empty groups;
             
+            ! 3x3 blocks
             for (sa_r,sa_c) do
             	SetElementAdd(Groups,NewGroup,sa_r + "_" + sa_c);
+            	SelectedGroups += NewGroup;
             	GroupDefinition(NewGroup,r,c) := [ord(sa_r) = div(ord(r)+2,3)   ] and
                   					 [ord(sa_c) = div(ord(c)+2,3)]
             endfor;
             
-            
-            
+            ! rows
             for (r) do
             	SetElementAdd(Groups,NewGroup,r);
+            	SelectedGroups += NewGroup;
             	GroupDefinition(NewGroup,r,c) := 1;
             endfor;
             
+            ! columns
             for (c) do
             	SetElementAdd(Groups,NewGroup,c);
+            	SelectedGroups += NewGroup;
             	GroupDefinition(NewGroup,r,c) := 1;
+            endfor;
+            
+            ! diagonals (not selected by default)
+            for (d) do
+            	SetElementAdd(Groups,NewGroup,d);
+            	GroupDefinition(NewGroup,r,c) := (mod(ord(r) - ord(c), 9) = (ord(d) - 1));
+            endfor;
+            
+            ! reverse diagonals (not selected by default)
+            for (rd) do
+            	SetElementAdd(Groups,NewGroup,rd);
+            	GroupDefinition(NewGroup,r,c) := (mod(ord(r) + ord(c) - 1, 9) = (ord(rd) - 1));
+            endfor;
+            
+            ! block centers (not selected by default)
+            for (ac) do
+            	SetElementAdd(Groups,NewGroup,ac);
+            	GroupDefinition(NewGroup,r,c) := [mod(ord(r), 3) = 2 and mod(ord(c), 3) = 2];
+            endfor;
+            
+            ! NRC sudoku (not selected by default)
+            for (n_r,n_c) do
+            	SetElementAdd(Groups,NewGroup,n_r + "_" + n_c);
+            	GroupDefinition(NewGroup,r,c) := [ord(n_r) = div(ord(r) + (2 - ord(n_r)),3)   ] and
+                  					 [ord(n_c) = div(ord(c) + (2 - ord(n_c)),3)]
             endfor;
             
             SelectedGroup := first(Groups);
@@ -178,16 +254,12 @@ Model Main_template {
     }
     Procedure MainExecution {
         Body: {
-            CreateGroups;
-            
-            Solution(r,c,v).nonvar := 0;
-            
-            Solution(r,c,FixedValues(r,c)) := 1;
-            Solution(r,c,FixedValues(r,c)).nonvar := 1;
-            
+            RandomCoefficient(r,c,v) := 1;
             solve Sudoku where solver = SelectedSolver;
             GUISolution(ags,r,c)|(ord(ags)=1) := first(v | Solution(r,c,v));
             
+            NoOfSolutions := 2;
+            UniquenessCoefficient(r, c, v) := Solution(r, c, v);
             solve UniquenessSudoku where solver = SelectedSolver;
             GUISolution(ags,r,c)|(ord(ags)=2) := first(v | Solution(r,c,v));
         }
@@ -206,11 +278,6 @@ Model Main_template {
             
             CreateGroups;
             
-            Solution(r,c,v).nonvar := 0;
-            
-            Solution(r,c,FixedValues(r,c)) := 1;
-            Solution(r,c,FixedValues(r,c)).nonvar := 1;
-            
             if FindString(FormatString("%e", SelectedSolver),"CPLEX") then
             	OptionSetString(FormatString("%e::do_populate", SelectedSolver),"yes");
             	OptionSetString(FormatString("%e::pool_intensity", SelectedSolver),"aggressive");
@@ -225,6 +292,125 @@ Model Main_template {
             	GMP::Solution::SendToModel('Sudoku',ord(ags));
             	GUISolution(ags,r,c) := first(v | Solution(r,c,v));
             endfor;
+        }
+    }
+    Procedure GenerateSudoku1 {
+        Body: {
+            BestFixedValues(r,c) := FixedValues(r, c);
+            
+            while (LoopCount <= 25) do
+            	FixedValues(r,c) := First(v | Solution(r, c, v));
+                empty Tested;
+            
+            	while (card(Tested) < 81) do
+            		! unset the value of a random cell that has not been tested before
+            		repeat
+            			RandomNumber := floor(uniform(0,81));
+            			Row := Element(AllRows, div(RandomNumber,9) + 1);
+            			Column := Element(AllColumns, mod(RandomNumber,9) + 1);
+            
+            			break when not Tested(Row, Column);
+            		endrepeat;
+            
+            		Tested(Row,Column) := 1;
+            		Value := FixedValues(Row, Column);
+            		FixedValues(Row,Column) := '';
+            
+            		! if it does not produce the same unique solution, reset
+            		solve UniquenessSudoku where solver = SelectedSolver;
+            
+            		if (UniquenesObjective <> 81) then
+            			FixedValues(Row, Column) := Value;
+            		endif;
+            	endwhile;
+            
+            	solve UniquenessSudoku where solver = SelectedSolver;
+            	GeneratedSize := card(FixedValues);
+            	if (GeneratedSize < card(BestFixedValues)) then
+            		BestFixedValues(r,c) := FixedValues(r,c);
+            	endif;
+            
+            	PageRefreshAll();
+            endwhile;
+            
+            FixedValues(r, c) := BestFixedValues(r, c);
+            empty GUISolution;
+            GeneratedSize := card(FixedValues);
+            
+            empty SudokuString;
+            for (r,c) do
+            	SudokuString += if (FixedValues(r,c)) then FixedValues(r,c) else "." endif;
+            endfor;
+        }
+        Parameter RandomNumber;
+        Parameter Tested {
+            IndexDomain: (r,c);
+        }
+        ElementParameter BestFixedValues {
+            IndexDomain: (r,c);
+            Range: AllValues;
+        }
+    }
+    Procedure GenerateSudoku2 {
+        Body: {
+            ! create a random puzzle
+            empty FixedValues;
+            RandomCoefficient(r,c,v) := uniform(1,10);
+            solve sudoku;
+            
+            ! prepare the uniqueness sudoku to create an alternative (or not)
+            UniquenessCoefficient(r, c, v) := Solution(r, c, v);
+            RandomCoefficient(r,c,v) := 1;
+            
+            FixedValues(r,c) := First(v | Solution(r, c, v));
+            
+            while (card(Tested) < 81) do
+            	! find the highest cellweight of all cells
+            	MaxWeight := max((c,r) | FixedValues(r, c) and not Tested(r,c), CellWeight(c, r));
+            	CellsWithMaxWeight := Count((r,c) | FixedValues(r, c) and CellWeight(c, r) = MaxWeight);
+            	RandomNumber := floor(uniform(0,CellsWithMaxWeight));
+            	! select a cell with the heighest weight that has not been tested before
+            	for ((r,c) | FixedValues(r, c) and not Tested(r,c) and CellWeight(c, r) = MaxWeight) do
+            		if (RandomNumber) then
+            			RandomNumber -= 1;
+            			skip;
+            		endif;
+            		Row := r;
+            		Column := c;
+            		break;
+            	endfor;
+            
+            	! unset the value for this cell
+            	Tested(Row,Column) := 1;
+            	Value := FixedValues(Row, Column);
+            	FixedValues(Row,Column) := '';
+            
+            	! and figure out if it still produces the same solution, if not reset 
+            	solve UniquenessSudoku where solver = SelectedSolver;
+            
+            	if (UniquenesObjective <> 81) then
+            		FixedValues(Row, Column) := Value;
+            	endif;
+            endwhile;
+            
+            solve UniquenessSudoku where solver = SelectedSolver;
+            
+            empty GUISolution;
+            GeneratedSize := card(FixedValues);
+            
+            empty SudokuString;
+            for (r,c) do
+            	SudokuString += if (FixedValues(r,c)) then FixedValues(r,c) else "." endif;
+            endfor;
+            
+            PageRefreshAll();
+            GenerateSudoku1;
+        }
+        Parameter MaxWeight;
+        Parameter CellsWithMaxWeight;
+        Parameter RandomNumber;
+        Parameter Tested {
+            IndexDomain: (r,c);
         }
     }
     Procedure MainTermination {

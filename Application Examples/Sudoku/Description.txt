@@ -2,5 +2,7 @@ An example that is based on a game called 'Sudoku'.  The objective of the game i
 
 Besides regular MIP solve, this example also allows you to use some solvers, such as CPLEX and BARON, to find multiple solutions.
 
+In addition, the example contains a Sudoku generator that employs the uniqueness model to eliminate (random) cells from a puzzle such that the puzzle still produces a unique solution.
+
 Keywords:
 Mixed Integer Programming, Mixed Integer Formulations, Multiple Solutions, GMP Functions, Pivot Table.
