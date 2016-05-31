@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ExportSettings>
+	<ExcludedFile>backup</ExcludedFile>
+	<ExcludedFile>log</ExcludedFile>
+	<ExcludedFile>Source\Release</ExcludedFile>
+	<ExcludedFile>Source\RunAIMMS.dsp</ExcludedFile>
+	<ExcludedFile>Source\RunAIMMS.dsw</ExcludedFile>
+	<ExcludedFile>Source\RunAIMMS.ncb</ExcludedFile>
+	<ExcludedFile>Source\RunAIMMS.vcproj.PDT.Mischa.user</ExcludedFile>
+</ExportSettings>

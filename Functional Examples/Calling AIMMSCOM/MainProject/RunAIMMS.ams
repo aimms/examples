@@ -1,0 +1,76 @@
+## ams_version=1.0
+
+Model Main_Integrated {
+    Comment: {
+        "This model is not intended to be run interactively. It is called from the external
+        program RunAIMMS.exe, which uses the AIMMS API to connect to this model."
+    }
+    DeclarationSection Input_Data {
+        Set Depots {
+            Index: d;
+        }
+        Set Customers {
+            Index: c;
+        }
+        Parameter Supply {
+            IndexDomain: (d);
+        }
+        Parameter Demand {
+            IndexDomain: (c);
+        }
+        Parameter UnitTransportCost {
+            IndexDomain: (d,c);
+        }
+    }
+    DeclarationSection Transport_Model_Formulation {
+        Variable Transport {
+            IndexDomain: (d,c) | UnitTransportCost(d,c);
+            Range: nonnegative;
+        }
+        Constraint SatisfySupply {
+            IndexDomain: (d);
+            Definition: sum(c, Transport(d,c)) <= Supply(d);
+        }
+        Constraint MeetDemand {
+            IndexDomain: c;
+            Definition: sum(d, Transport(d,c)) >= Demand(c);
+        }
+        Variable TotalCost {
+            Definition: sum((d,c), UnitTransportCost(d,c)*Transport(d,c));
+        }
+        MathematicalProgram TransportModel {
+            Objective: TotalCost;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: LP;
+        }
+        Parameter TransportModelStatus;
+    }
+    Procedure MainInitialization;
+    Procedure MainExecution {
+        Body: {
+            display Depots, Customers, Supply(d), Demand(c), UnitTransportCost(d,c) ;
+            solve TransportModel;
+            TransportModelStatus := ord(TransportModel.ProgramStatus);
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+    Procedure OpenExplorer {
+        Body: {
+            if DialogAsk("This will open the Windows Explorer, but it will close this AIMMS session. Are you sure?", Button1:"Yes", Button2:"No") = 1 then
+            
+            	DirectoryGetCurrent(CurrentDirectory);
+            	OpenDocument(CurrentDirectory);
+            
+            	ExitAimms(0);
+            
+            endif;
+        }
+        StringParameter CurrentDirectory;
+    }
+}

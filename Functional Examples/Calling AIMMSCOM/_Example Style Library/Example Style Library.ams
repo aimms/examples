@@ -1,0 +1,18 @@
+## ams_version=1.0
+
+LibraryModule Example_Base {
+    Prefix: ExampleStyle;
+    Interface: data { ButtonColor };
+    ElementParameter ButtonColor {
+        Range: AllColors;
+        Definition: {
+            'Text Blue'
+        }
+    }
+    Procedure LibraryInitialization;
+    Procedure LibraryTermination {
+        Body: {
+            return 1 ;
+        }
+    }
+}
