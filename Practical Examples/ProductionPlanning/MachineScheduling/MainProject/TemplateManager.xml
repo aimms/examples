@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Page Name="GanttChart" PageGUID="2C95433E-2D9D-4DC5-A5FF-13632831508D" />
+	<Page Name="SelectProductionLine" PageGUID="572464F1-5D04-49C1-B694-40D1D8968074" />
+</TemplateManager>

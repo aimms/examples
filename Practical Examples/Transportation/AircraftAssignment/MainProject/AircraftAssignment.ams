@@ -1,6 +1,6 @@
 ## ams_version=1.0
 
-Model Main_AircraftAssignement {
+Model Main_AircraftAssignment {
     Set Aircraft {
         Index: a;
         InitialData: data { a, b, c, d, e };
@@ -72,7 +72,7 @@ Model Main_AircraftAssignement {
     }
     Procedure MainTermination {
         Body: {
-            return DataManagementExit();
+            return 1;
         }
     }
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-05-23 13:53:42">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>42B6F589-7E25-4993-AD8D-9A07F2CE87A9</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="42" left="54" bottom="870" right="1062" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<AllowZoom>false</AllowZoom>
+		<EqualXYScale>false</EqualXYScale>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<VisibleArea>
+			<Left>indent</Left>
+			<Right>XCoordMax</Right>
+			<Top>YCoordMax</Top>
+			<Bottom>indent</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>n</Identifier>
+			<XCoordinate>XCoord( n )</XCoordinate>
+			<YCoordinate>YCoord( n )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Top</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>9043B6BC-F2E6-4015-A940-74CD05E6AD57 black</Color>
+			<Text>NodeName( n )</Text>
+		</Node>
+		<Arc>
+			<Identifier>NetworkFlow( n, nn )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MinimumSize>1</MinimumSize>
+			<MaximumSize>4</MaximumSize>
+			<TextPosition>Left</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>9043B6BC-F2E6-4015-A940-74CD05E6AD57 black</Color>
+			<Size>ArcSize( n, nn )</Size>
+			<Text>ArcName( n, nn )</Text>
+			<ArrowPosition>ArcArrowPosition( n, nn )</ArrowPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<TextAlongArc>true</TextAlongArc>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>XCoord</Symbol>
+			<Symbol>YCoord</Symbol>
+			<Symbol>NetworkFlow</Symbol>
+			<Symbol>indent</Symbol>
+			<Symbol>XCoordMax</Symbol>
+			<Symbol>YCoordMax</Symbol>
+			<Symbol>NodeName</Symbol>
+			<Symbol>ArcName</Symbol>
+			<Symbol>ArcSize</Symbol>
+			<Symbol>n</Symbol>
+			<Symbol>nn</Symbol>
+			<Symbol>ArcArrowPosition</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<UserMenuTree Version="4000" TimeStamp="2016-04-25 14:24:31">
+	<Menu Name="Gantt Menu" UUID="9DA03B13-283D-487E-89A2-E8E4E91B104C">
+		<MenuItem Name="SelectProductionLine" UUID="A9BE3510-9BEF-4CA9-9464-BAACDD131169">
+			<ActionSequence>
+				<Action Type="Run">
+					<RunWhat>SpecificProcecure</RunWhat>
+					<Procedure>SelectNewProductionLine</Procedure>
+					<AbortOnError>true</AbortOnError>
+				</Action>
+			</ActionSequence>
+		</MenuItem>
+	</Menu>
+</UserMenuTree>

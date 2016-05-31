@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-05-11 14:41:46">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>70A567D9-8AD7-4A79-9A88-821B41F65FDA</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Gantt Chart">
+		<Location top="84" left="138" bottom="396" right="1068" />
+		<TabOrder>1</TabOrder>
+		<PopupMenu ProjectUUID="70A567D9-8AD7-4A79-9A88-821B41F65FDA" MenuUUID="9DA03B13-283D-487E-89A2-E8E4E91B104C" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<VerticalGridLines>true</VerticalGridLines>
+		<StatusLine>true</StatusLine>
+		<BarHeightFactor>3</BarHeightFactor>
+		<Calendar>
+			<Items>hc</Items>
+			<MeasurementFactor>1</MeasurementFactor>
+			<MeasurementUnit>hours</MeasurementUnit>
+			<ReferenceTime>begHourCal</ReferenceTime>
+			<LeftBound>begHourCal</LeftBound>
+			<RightBound>endHourCal</RightBound>
+		</Calendar>
+		<IndexLocations>
+			<RowDomain>i</RowDomain>
+			<LegendDomain>o</LegendDomain>
+		</IndexLocations>
+		<TaskGroup>
+			<Domain>durationActivity( i, o )</Domain>
+			<Start>startTimeActivity( i, o )</Start>
+			<Duration>durationActivity( i, o )</Duration>
+			<InsideBarText>barName( o )</InsideBarText>
+			<ProcedureUponChange>uponSelection( i, o )</ProcedureUponChange>
+			<ProcedureUponSelect>uponSelection( i, o )</ProcedureUponSelect>
+			<ProcedureUponDoubleClick>uponSelection( i, o )</ProcedureUponDoubleClick>
+			<TooltipText>barName( o )</TooltipText>
+		</TaskGroup>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="12" left="246" bottom="72" right="438" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>time_limit_in_seconds</Identifier>
+			<NumberFormat Width="8" Decimals="0" Alignment="Center" ShowDefaults="true" />
+			<Title>"Time Limit (sec)"</Title>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="12" left="138" bottom="72" right="228" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve MIP"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveMIP</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="12" left="876" bottom="72" right="1068" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>Makespan</Identifier>
+			<Unit Display="PerValue" />
+			<NumberFormat Width="5" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="2D Chart">
+		<Location top="498" left="138" bottom="816" right="1068" />
+		<TabOrder>5</TabOrder>
+		<Border Style="InShadow" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">pTimepoint( tp )</Domain>
+			<Annotation>
+				<Label_spacing ID="1031">5</Label_spacing>
+			</Annotation>
+			<Scale>
+				<Minimum ID="1014">0</Minimum>
+				<Maximum ID="1015">MaxTime</Maximum>
+			</Scale>
+			<Misc_settings>
+				<Title ID="1002">"Time (sec)"</Title>
+			</Misc_settings>
+		</X_Axis>
+		<Y_Axis>
+			<Identifier>
+				<Value ID="2007">LowerBound( tp )</Value>
+				<Appearance>
+					<Line>
+						<Width ID="2025">1.5</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Identifier>
+				<Value ID="2007">UpperBound( tp )</Value>
+				<Appearance>
+					<Line>
+						<Color ID="2023">RGB ff0000</Color>
+						<Width ID="2025">1.5</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Title>
+				<Text ID="2003">"Objective"</Text>
+				<Rotation ID="2005">"90 Degrees"</Rotation>
+			</Title>
+			<Scale>
+				<Minimum ID="2035">LowerBoundMin</Minimum>
+				<Maximum ID="2036">UpperBoundMax</Maximum>
+			</Scale>
+		</Y_Axis>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="462" left="144" bottom="486" right="294" />
+		<StaticText>MIP Gap</StaticText>
+		<Font GUID="921ED5BD-E7D2-4F81-B6EE-A12B9887B48B" Name="medium" />
+		<TextColor RGB="#008000" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>begHourCal</Symbol>
+			<Symbol>endHourCal</Symbol>
+			<Symbol>SolveMIP</Symbol>
+			<Symbol>Makespan</Symbol>
+			<Symbol>time_limit_in_seconds</Symbol>
+			<Symbol>pTimepoint</Symbol>
+			<Symbol>LowerBound</Symbol>
+			<Symbol>UpperBound</Symbol>
+			<Symbol>MaxTime</Symbol>
+			<Symbol>LowerBoundMin</Symbol>
+			<Symbol>UpperBoundMax</Symbol>
+			<Symbol>startTimeActivity</Symbol>
+			<Symbol>durationActivity</Symbol>
+			<Symbol>barName</Symbol>
+			<Symbol>uponSelection</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>o</Symbol>
+			<Symbol>tp</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

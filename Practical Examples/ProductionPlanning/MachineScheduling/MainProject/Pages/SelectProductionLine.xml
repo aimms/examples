@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-04-25 14:24:31">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>70A567D9-8AD7-4A79-9A88-821B41F65FDA</ProjectUUID>
+	<IsDialogPage>true</IsDialogPage>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Scalar">
+		<Location top="24" left="42" bottom="126" right="336" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>selectedProductionLine</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>selectedProductionLine</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

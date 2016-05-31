@@ -1,0 +1,435 @@
+## ams_version=1.0
+
+Model Main_MachineScheduling {
+    Comment: {
+        "Machine scheduling
+        
+        Problem type:
+        MIP (hard)
+        
+        Keywords:
+        Gantt chart, MIP Gap, Callback procedures, GMP, Calendar.
+        
+        Description:
+        In this multi-machine scheduling problem activities have to be assigned to
+        one machine, while taking into account the delivery (or due) dates of the
+        activities. The objective is to minimize the makespan. The machines are
+        different. This machine scheduling problem is formulated as a MIP problem.
+        
+        The project contains one page showing a Gantt chart that displays the
+        assignment of the activities to the machines. The Gantt chart is updated
+        whenever the solver finds a new solution. The page also contains a graph
+        that displays the progress of the optimality gap during the optimization run."
+    }
+    Section TimeRepresentation {
+        Parameter numberOfDaysInCalendar {
+            InitialData: 7;
+        }
+        StringParameter fmtHourCal {
+            Definition: "%c%y-%m-%d %H";
+        }
+        StringParameter begHourCal {
+            InitialData: "2016-05-09 00";
+        }
+        StringParameter endHourCal {
+            Definition: {
+                MomentToString(
+                	Format        :  fmtHourCal,
+                	unit          :  [hour],
+                	ReferenceDate :  begHourCal,
+                	Elapsed       :  (numberOfDaysInCalendar*24) [hour])
+            }
+        }
+        Calendar HourCalendar {
+            Index: i_hc, i_hc1, i_hc2;
+            Unit: hour;
+            BeginDate: begHourCal;
+            EndDate: endHourCal;
+            TimeslotFormat: fmtHourCal;
+        }
+        ElementParameter startHour {
+            Range: HourCalendar;
+            Definition: first(HourCalendar);
+        }
+    }
+    Section UnitsOfMeasurement {
+        Quantity SI_Time_Duration {
+            BaseUnit: hour;
+            Conversions: {
+                minute->hour : #-># / 60,
+                s     ->hour : #-># / 3600,
+                day   ->hour : #-># * 24,
+                week  ->hour : #-># * 168
+            }
+            Comment: "Expresses the value for the duration of periods.";
+        }
+        Quantity LocProductUnit {
+            BaseUnit: lpu;
+        }
+        Quantity SI_Unitless {
+            BaseUnit: -;
+            Conversions: %->- : #-># / 100;
+            Comment: "Expresses a dimensionless value.";
+        }
+    }
+    Section Input_Data {
+        DeclarationSection Input_Sets {
+            Set S_AvailableLines {
+                Index: i;
+            }
+            Set S_OrderNumbers {
+                SubsetOf: Integers;
+                Index: o;
+            }
+            Set S_ProductTypes {
+                Index: pt;
+                Definition: data { small, medium, large };
+            }
+            Set S_ProductNames {
+                Index: pn;
+            }
+        }
+        DeclarationSection Input_Parameters {
+            ElementParameter EP_ProductType {
+                IndexDomain: pn;
+                Range: S_ProductTypes;
+            }
+            Parameter P_Capac {
+                IndexDomain: (i,pt);
+                Unit: lpu/hour;
+                Comment: "For each available line";
+            }
+            Parameter P_OrderQuantity {
+                IndexDomain: o;
+                Unit: lpu;
+            }
+            ElementParameter EP_OrderProduct {
+                IndexDomain: o;
+                Range: S_ProductNames;
+            }
+            ElementParameter EP_OrderDeliveryDate {
+                IndexDomain: (o);
+                Range: HourCalendar;
+            }
+        }
+    }
+    Section Mixed_Integer_Programming_Scheduling_Model {
+        Procedure SolveMIP {
+            Body: {
+                empty durationActivity, startTimeActivity, Makespan;
+                
+                ! First point in the graph.
+                sTimePoints := { 0 };
+                LowerBound(0) := LowerBoundInit;
+                UpperBound(0) := UpperBoundInit;
+                
+                PageRefreshAll ;
+                
+                ep_StartNoOverlap(i, o, i_hc) := i_hc-ActivityLengthM1(i, o)  ;
+                ep_StartNoOverlap(i, o, i_hc) | ( ep_StartNoOverlap(i, o, i_hc) = '' ) := startHour ;
+                
+                myGMP := GMP::Instance::Generate( MachineScheduling );
+                
+                ! CPLEX calls the time callback procedure more frequent if it uses
+                ! branch-and-cut, as controlled by the option 'MIP search strategy'.
+                GMPSolver := GMP::Instance::GetSolver( myGMP );
+                if ( FindString(GMPSolver, "CPLEX") ) then
+                    GMP::Instance::SetOptionValue( myGMP, "MIP search strategy", 1 );
+                endif;
+                
+                ! The general solvers option 'Progress Time Interval' determines the
+                ! frequency by which the time callback procedure is called.
+                GMP::Instance::SetCallbackTime( myGMP, 'CallbackTime' );
+                GMP::Instance::SetCallbackNewIncumbent( myGMP, 'CallbackIncumbent' );
+                
+                GMP::Instance::SetTimeLimit( myGMP, time_limit_in_seconds );
+                
+                GMP::Instance::Solve( myGMP );
+                
+                CurrentTimeElapsed :=  GMP::Solution::GetTimeUsed( myGMP, 1 ) / 100;
+                BestBound := GMP::Solution::GetBestBound( myGMP, 1 );
+                ObjectiveValue := GMP::Solution::GetObjective( myGMP, 1 );
+                
+                AddGapGraphPoint( CurrentTimeElapsed, BestBound, ObjectiveValue );
+                
+                PrepGanttChartIdentifiersFromMIPSolution ;
+            }
+            Parameter CurrentTimeElapsed;
+            Parameter BestBound;
+            Parameter ObjectiveValue;
+            ElementParameter GMPSolver {
+                Range: AllSolvers;
+            }
+        }
+        Procedure PrepGanttChartIdentifiersFromMIPSolution {
+            Body: {
+                empty durationActivity, startTimeActivity ;
+                for (i, o) | SelectProcutionLine(i, o) do
+                	for i_hc | StartProductionOnProductionLine(i, o, i_hc) do
+                		startTimeActivity(i, o) :=  i_hc ;
+                	endfor ;
+                	durationActivity(i, o) :=  ActivityLength(i, o);
+                endfor ;
+            }
+        }
+        DeclarationSection Mixed_Integer_Programming_Support_Identifiers {
+            ElementParameter ep_StartNoOverlap {
+                IndexDomain: (i,o,i_hc);
+                Range: HourCalendar;
+            }
+            ElementParameter ep_lineEnds {
+                IndexDomain: i;
+                Range: HourCalendar;
+            }
+            Parameter domStartProductionProductionLine {
+                IndexDomain: (i,o,i_hc);
+                Definition: 1 | ( ( i_hc + ActivityLengthM1(i, o) ) <= EP_OrderDeliveryDate(o) );
+            }
+        }
+        DeclarationSection MIP_scheduling_declarations {
+            Variable SelectProcutionLine {
+                IndexDomain: (i,o);
+                Range: binary;
+                Comment: "For every order i_o select precisely one production line i_al";
+            }
+            Variable LineTotalSpan {
+                IndexDomain: i;
+                Range: free;
+                Unit: hour;
+                Definition: sum( ( o, i_hc), CostOfStartingOrder(i, o, i_hc) );
+            }
+            Variable StartProductionOnProductionLine {
+                IndexDomain: (i, o, i_hc) | domStartProductionProductionLine(i, o, i_hc);
+                Range: binary;
+            }
+            Variable CostOfStartingOrder {
+                IndexDomain: (i,o,i_hc) | domStartProductionProductionLine(i, o, i_hc);
+                Range: free;
+                Unit: hour;
+                Definition: ((ord(i_hc))[hour]+ActivityLength(i, o))  * StartProductionOnProductionLine(i, o, i_hc);
+            }
+            Variable Makespan {
+                Range: free;
+                Unit: hour;
+            }
+            Constraint EnsureAnOrderIsHandledOnOneProductionLineOnly {
+                IndexDomain: o;
+                Definition: sum( i, SelectProcutionLine(i, o) ) = 1;
+            }
+            Constraint EnsureEachOrderIsStartedOnlyOnce {
+                IndexDomain: (i,o);
+                Definition: sum( i_hc, StartProductionOnProductionLine(i, o, i_hc) ) = SelectProcutionLine(i, o);
+            }
+            Constraint EnsureThereIsNoOverlapOnAnyLine {
+                IndexDomain: (i,i_hc);
+                Definition: sum((o,i_hc1)| (ep_StartNoOverlap(i, o, i_hc)<=i_hc1) and (i_hc1<=i_hc), StartProductionOnProductionLine(i, o, i_hc1)) <= 1;
+            }
+            Constraint JobsEndBeforemakespan {
+                IndexDomain: i;
+                Unit: hour;
+                Definition: LineTotalSpan(i) <= Makespan;
+            }
+            MathematicalProgram MachineScheduling {
+                Objective: Makespan;
+                Direction: minimize;
+                Type: Automatic;
+            }
+            ElementParameter myGMP {
+                Range: AllGeneratedMathematicalPrograms;
+            }
+        }
+        DeclarationSection Scheduling_Support_Identifiers {
+            Parameter time_limit_in_seconds {
+                Property: NoSave;
+                InitialData: 30;
+            }
+            Parameter ActivityLength {
+                IndexDomain: (i,o);
+                Unit: hour;
+                Definition: Ceil( P_OrderQuantity(o) / P_Capac(i, EP_ProductType( EP_OrderProduct( o ) ) ) );
+            }
+            Parameter ActivityLengthM1 {
+                IndexDomain: (i,o);
+                Unit: hour;
+                Definition: ActivityLength(i, o)-1[hour];
+            }
+        }
+    }
+    Section Page_declarations {
+        Procedure CallbackIncumbent {
+            Arguments: SolverSession;
+            Body: {
+                GMP::Solution::RetrieveFromSolverSession( SolverSession, 1 );
+                GMP::Solution::SendToModel( myGMP, 1 );
+                
+                PrepGanttChartIdentifiersFromMIPSolution ;
+                
+                PageRefreshAll ;
+                
+                return 1;
+            }
+            ElementParameter SolverSession {
+                Range: AllSolverSessions;
+                Property: Input;
+            }
+        }
+        Procedure CallbackTime {
+            Arguments: SolverSession;
+            Body: {
+                CurrentTimeElapsed :=  GMP::SolverSession::GetTimeUsed( SolverSession ) / 100;
+                BestBound := GMP::SolverSession::GetBestBound( SolverSession );
+                ObjectiveValue := GMP::SolverSession::GetObjective( SolverSession );
+                
+                AddGapGraphPoint( CurrentTimeElapsed, BestBound, ObjectiveValue );
+                
+                return 1;
+            }
+            Comment: {
+                "The general solvers option \'Progress Time Interval\' determines the
+                frequency by which this time callback procedure is called."
+            }
+            ElementParameter SolverSession {
+                Range: AllSolverSessions;
+                Property: Input;
+            }
+            Parameter CurrentTimeElapsed;
+            Parameter BestBound;
+            Parameter ObjectiveValue;
+        }
+        DeclarationSection Declaration_Gap {
+            Set sTimePoints {
+                SubsetOf: Integers;
+                Index: tp;
+            }
+            Parameter pTimepoint {
+                IndexDomain: tp;
+                Definition: tp;
+            }
+            Parameter LowerBound {
+                IndexDomain: tp;
+            }
+            Parameter UpperBound {
+                IndexDomain: tp;
+            }
+            Parameter MaxTime {
+                Definition: time_limit_in_seconds;
+            }
+            Parameter LowerBoundInit {
+                Definition: 0;
+            }
+            Parameter UpperBoundInit {
+                Definition: 310;
+            }
+            Parameter LowerBoundMin {
+                Definition: 0;
+            }
+            Parameter UpperBoundMax {
+                Definition: UpperBoundInit - 10;
+            }
+        }
+        Procedure AddGapGraphPoint {
+            Arguments: (CurrentTimeElapsed,BestBound,ObjectiveValue);
+            Body: {
+                if ( BestBound = na ) then
+                    BestBound := LowerBoundInit;
+                endif;
+                
+                if ( ObjectiveValue = na ) then
+                    ObjectiveValue := UpperBoundInit;
+                endif;
+                
+                sTimePoints += ceil( CurrentTimeElapsed ) ;
+                
+                LowerBound( ceil( CurrentTimeElapsed ) ) := BestBound;
+                UpperBound( ceil( CurrentTimeElapsed ) ) := ObjectiveValue;
+                
+                PageRefreshAll ;
+            }
+            Comment: {
+                "Add point to the graph that displays the gap. This procedure is called whenever the
+                solver finds a new incumbent solution."
+            }
+            Parameter CurrentTimeElapsed;
+            Parameter BestBound;
+            Parameter ObjectiveValue;
+        }
+        DeclarationSection GanttChartIdentifiers {
+            ElementParameter startTimeActivity {
+                IndexDomain: (i,o);
+                Range: HourCalendar;
+            }
+            Parameter durationActivity {
+                IndexDomain: (i,o);
+                Unit: hour;
+            }
+            StringParameter barName {
+                IndexDomain: o;
+                Definition: "" + o + " " + EP_OrderProduct(o) + " " + EP_ProductType( EP_OrderProduct(o) );
+            }
+            ElementParameter selectedProductionLine {
+                Range: S_AvailableLines;
+            }
+            ElementParameter previousProductionLine {
+                Range: S_AvailableLines;
+            }
+            ElementParameter selectedOrder {
+                Range: S_OrderNumbers;
+            }
+        }
+        Section ContextMenu {
+            Procedure SelectNewProductionLine {
+                Body: {
+                    if selectedOrder then
+                    
+                    	previousProductionLine := first( i | durationActivity(i, selectedOrder ) );
+                    	if not selectedProductionLine then
+                    		selectedProductionLine := first( S_AvailableLines );
+                    	endif ;
+                    
+                    	PageOpen("SelectProductionLine");
+                    
+                    	if selectedProductionLine and ( previousProductionLine <> selectedProductionLine ) then
+                    
+                    		durationActivity(selectedProductionLine, selectedOrder )  := durationActivity(previousProductionLine, selectedOrder );
+                    		durationActivity(previousProductionLine, selectedOrder )  := 0 ;
+                    
+                    		startTimeActivity(selectedProductionLine, selectedOrder ) := startTimeActivity(previousProductionLine, selectedOrder );
+                    		startTimeActivity(previousProductionLine, selectedOrder ) := '' ;
+                    
+                    	endif ;
+                    
+                    endif ;
+                }
+            }
+            Procedure uponSelection {
+                Arguments: (selLin,selOrder);
+                Body: {
+                    selectedOrder := selOrder ;
+                }
+                ElementParameter selLin {
+                    Range: S_AvailableLines;
+                    Property: Input;
+                }
+                ElementParameter selOrder {
+                    Range: S_OrderNumbers;
+                    Property: Input;
+                }
+            }
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            Read from file "Example3 4 machines 20 orders.txt" ;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            SolveMIP;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

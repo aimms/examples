@@ -1,0 +1,342 @@
+## ams_version=1.0
+
+Model Main_PiecewiseLinearTransportation {
+    Comment: {
+        "Piecewise linear transportation problem
+        
+        Problem type:
+        MIP (small)
+        
+        Keywords:
+        Piecewise linear, Special Ordered Set, SOS2, Network object.
+        
+        Description:
+        The Piecewise Linear Transportation problem models a simple transportation model
+        with one complication, namely the objective function representing the cost is a
+        piecewise linear function. This piecewise linear cost function is used to model
+        price discounts. The piecewise linear function is modelled using the integer
+        linear programming trick of Chapter 7.6 of the AIMMS Optimization Modeling
+        book.
+        
+        Note:
+        The Piecewise Linear Transportation problem is described by Christensen and
+        Labbé (2015) but the model formulation in this project differs from their
+        formulation.
+        
+        References:
+        Christensen, T.R.L., M. Labbé, A branch-cut-and-price algorithm for the
+        piecewise linear transportation problem, European Journal of Operational
+        Research 245(3), pp. 645-655 (2015)."
+    }
+    DeclarationSection Declaration_Model {
+        Set Suppliers {
+            SubsetOf: Integers;
+            Index: i;
+            Parameter: supplier;
+            Definition: {
+                { 1 .. NumberOfSuppliers }
+            }
+        }
+        Parameter NumberOfSuppliers {
+            Range: {
+                {1..100}
+            }
+        }
+        Parameter Capacity {
+            IndexDomain: i;
+            Comment: "The total capacity of each supplier.";
+        }
+        Set Customers {
+            SubsetOf: Integers;
+            Index: j;
+            Parameter: customer;
+            Definition: {
+                { 1 .. NumberOfCustomers }
+            }
+        }
+        Parameter NumberOfCustomers {
+            Range: {
+                {1..100}
+            }
+        }
+        Parameter Demand {
+            IndexDomain: j;
+        }
+        Variable Flow {
+            IndexDomain: (i,j);
+            Range: nonnegative;
+            Comment: "Flow from supplier i to customer j.";
+        }
+        Variable TransportCost {
+            IndexDomain: (i,j);
+            Range: nonnegative;
+        }
+        Constraint DemandConstraint {
+            IndexDomain: j;
+            Definition: sum( i, Flow(i,j) ) = Demand(j);
+        }
+        Constraint SupplyConstraint {
+            IndexDomain: i;
+            Definition: sum( j, Flow(i,j) ) <= Capacity(i);
+        }
+        Variable TotalCost {
+            Range: free;
+            Definition: sum( (i,j), TransportCost(i,j) );
+        }
+        MathematicalProgram Transport {
+            Objective: TotalCost;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: Automatic;
+        }
+    }
+    Section Section_Piesewise_Linear {
+        DeclarationSection Declaration_Piesewise_Linear {
+            Set Intervals {
+                SubsetOf: BreakPoints;
+                Index: k, kk;
+                Definition: {
+                    { 1 .. NumberOfIntervals }
+                }
+            }
+            Set BreakPoints {
+                SubsetOf: Integers;
+                Index: l;
+                Definition: {
+                    { 0 .. NumberOfIntervals }
+                }
+            }
+            Parameter NumberOfIntervals {
+                Range: {
+                    {1..100}
+                }
+            }
+            Parameter BreakPointFlow {
+                IndexDomain: (i,j,l);
+                Range: integer;
+                Comment: "Flow value of each breakpoint.";
+            }
+            Parameter BreakPointCost {
+                IndexDomain: (i,j,l);
+            }
+            Variable Lambda {
+                IndexDomain: (i,j,l);
+                Range: nonnegative;
+            }
+            Constraint CostConstraint {
+                IndexDomain: (i,j);
+                Definition: TransportCost(i,j) = sum( l, Lambda(i,j,l)*BreakPointCost(i,j,l) );
+            }
+            Constraint FlowConstraint {
+                IndexDomain: (i,j);
+                Definition: Flow(i,j) = sum( l, Lambda(i,j,l)*BreakPointFlow(i,j,l) );
+            }
+            Constraint SOSConstraint {
+                IndexDomain: (i,j);
+                Property: Sos2;
+                Definition: sum( l, Lambda(i,j,l) ) = 1;
+            }
+        }
+        DeclarationSection Declaration_Page {
+            Parameter LastIntervalBreakPoint {
+                IndexDomain: (i,j);
+                Range: integer;
+                Definition: BreakPointFlow(i,j,last(l));
+            }
+            Parameter MaxIntervalBreakPoint {
+                Range: integer;
+                Definition: max( (i,j), LastIntervalBreakPoint(i,j) );
+            }
+            StringParameter FlowString {
+                IndexDomain: (i,j);
+                Definition: {
+                    if ( TotalCost ) then
+                    	FormatString( "Flow = " )
+                    	+
+                    	sum( l | Lambda(i,j,l) and not Lambda(i,j,l+1) and not Lambda(i,j,l-1), FormatString( "%n * Lambda(%e)", BreakPointFlow(i,j,l), l ) )
+                    	+
+                    	sum( l | Lambda(i,j,l) and Lambda(i,j,l+1), FormatString( "%n * Lambda(%e) + %n * Lambda(%e)", BreakPointFlow(i,j,l), l, BreakPointFlow(i,j,l+1), l+1 ) )
+                    	+
+                    	FormatString( " = " )
+                    	+
+                    	sum( l | Lambda(i,j,l) and not Lambda(i,j,l+1) and not Lambda(i,j,l-1), FormatString( "%n * %.2n", BreakPointFlow(i,j,l), Lambda(i,j,l) ) )
+                    	+
+                    	sum( l | Lambda(i,j,l) and Lambda(i,j,l+1), FormatString( "%n * %.2n + %n * %.2n", BreakPointFlow(i,j,l), Lambda(i,j,l), BreakPointFlow(i,j,l+1), Lambda(i,j,l+1) ) )
+                    	+
+                    	FormatString( " = %n", Flow(i,j) )
+                    else
+                    	""
+                    endif
+                }
+            }
+            StringParameter CostString {
+                IndexDomain: (i,j);
+                Definition: {
+                    if ( TotalCost ) then
+                    	FormatString( "Transport Cost = " )
+                    	+
+                    	sum( l | Lambda(i,j,l) and not Lambda(i,j,l+1) and not Lambda(i,j,l-1), FormatString( "%.2n * Lambda(%e)", BreakPointCost(i,j,l), l ) )
+                    	+
+                    	sum( l | Lambda(i,j,l) and Lambda(i,j,l+1), FormatString( "%.2n * Lambda(%e) + %.2n * Lambda(%e)", BreakPointCost(i,j,l), l, BreakPointCost(i,j,l+1), l+1 ) )
+                    	+
+                    	FormatString( " = " )
+                    	+
+                    	sum( l | Lambda(i,j,l) and not Lambda(i,j,l+1) and not Lambda(i,j,l-1), FormatString( "%.2n * %.2n", BreakPointCost(i,j,l), Lambda(i,j,l) ) )
+                    	+
+                    	sum( l | Lambda(i,j,l) and Lambda(i,j,l+1), FormatString( "%.2n * %.2n + %.2n * %.2n", BreakPointCost(i,j,l), Lambda(i,j,l), BreakPointCost(i,j,l+1), Lambda(i,j,l+1) ) )
+                    	+
+                    	FormatString( " = %.2n", TransportCost(i,j) )
+                    else
+                    	""
+                    endif
+                }
+            }
+        }
+    }
+    Section Section_Network {
+        DeclarationSection Declaration_Network {
+            Set Nodes {
+                SubsetOf: Integers;
+                Index: n, nn;
+                Definition: {
+                    { 1 .. NumberOfSuppliers + NumberOfCustomers }
+                }
+            }
+            Parameter XCoord {
+                IndexDomain: n;
+            }
+            Parameter YCoord {
+                IndexDomain: n;
+            }
+            Parameter NetworkFlow {
+                IndexDomain: (n,nn);
+            }
+            Parameter indent {
+                Range: (0, 1);
+                Definition: 0.9;
+            }
+            Parameter XCoordMax {
+                Definition: max( n, XCoord(n) ) + (1-indent);
+            }
+            Parameter YCoordMax {
+                Definition: max( n, YCoord(n) ) + (1-0.5*indent);
+            }
+            StringParameter NodeName {
+                IndexDomain: n;
+            }
+            StringParameter ArcName {
+                IndexDomain: (n,nn);
+            }
+            Parameter ArcSize {
+                IndexDomain: (n,nn);
+            }
+            Parameter ArcArrowPosition {
+                IndexDomain: (n,nn) | NetworkFlow(n,nn);
+                Range: [0, 100];
+                Definition: 10 + n/(NumberOfSuppliers+1) * 90;
+            }
+        }
+        Procedure UpdateNetwork {
+            Body: {
+                for (i) do
+                	XCoord(i) := 1;
+                endfor;
+                
+                for (i) do
+                	YCoord(i) := (i-1) * (NumberOfCustomers-1)/(NumberOfSuppliers-1) + 1;
+                endfor;
+                
+                for (j) do
+                	XCoord(NumberOfSuppliers+j) := 5;
+                endfor;
+                
+                for (j) do
+                	YCoord(NumberOfSuppliers+j) := j;
+                endfor;
+                
+                for (i,j) do
+                	NetworkFlow(i,NumberOfSuppliers+j) := Flow(i,j);
+                endfor;
+                
+                for (i) do
+                	NodeName(i) := FormatString( "s%i", i );
+                endfor;
+                
+                for (j) do
+                	NodeName(NumberOfSuppliers+j) := FormatString( "c%i", j );
+                endfor;
+                
+                for (i,j) do
+                	ArcName(i,NumberOfSuppliers+j) := FormatString( "%.2f", Flow(i,j) );
+                endfor;
+                
+                MaxNetworkFlow := max( (n,nn), NetworkFlow(n,nn) );
+                ArcSize(n,nn) := 4*NetworkFlow(n,nn)/MaxNetworkFlow;
+            }
+            Parameter MaxNetworkFlow;
+        }
+    }
+    Procedure MainInitialization {
+        Body: {
+            GenerateData;
+            
+            supplier := 1;
+            customer := 1;
+        }
+    }
+    Procedure GenerateData {
+        Body: {
+            NumberOfSuppliers :=  5;
+            NumberOfCustomers := 15;
+            NumberOfIntervals :=  3;
+            
+            Capacity(i) := round( Uniform(0.8*60*NumberOfCustomers/NumberOfSuppliers, 1.2*60*NumberOfCustomers/NumberOfSuppliers) );
+            
+            Demand(j) := round( Uniform(20, 100) );
+            
+            if ( sum( j, Demand(j) ) > sum( i, Capacity(i) ) ) then
+                Surplus := sum( j, Demand(j) ) - sum( i, Capacity(i) );
+            
+            	Capacity(i) += ceil( Surplus / NumberOfSuppliers );
+            endif;
+            
+            BreakPointFlow(i,j,0) := 0;
+            BreakPointFlow(i,j,NumberOfIntervals) := min( Capacity(i), Demand(j) );
+            
+            for (k | k<NumberOfIntervals) do
+            	BreakPointFlow(i,j,k) := BreakPointFlow(i,j,k-1) + round( Uniform(0.7*BreakPointFlow(i,j,NumberOfIntervals)/NumberOfIntervals, 1.3*BreakPointFlow(i,j,NumberOfIntervals)/NumberOfIntervals) );
+            endfor;
+            
+            BreakPointCost(i,j,0) := 0;
+            for (i,j) do
+            	dummy(k) := round( Uniform(10+5*k, 60+5*k) );
+            
+            	for (k) do
+            		maxk := argmax( kk, dummy(kk) );
+            		BreakPointCost(i,j,k) := BreakPointCost(i,j,k-1) + dummy(maxk)*(BreakPointFlow(i,j,k)-BreakPointFlow(i,j,k-1))/LastIntervalBreakPoint(i,j);
+            		dummy(maxk) := 0;
+            	endfor
+            endfor;
+        }
+        Parameter Surplus;
+        Parameter dummy {
+            IndexDomain: k;
+        }
+        ElementParameter maxk {
+            Range: Intervals;
+        }
+    }
+    Procedure MainExecution {
+        Body: {
+            solve Transport;
+            
+            UpdateNetwork;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

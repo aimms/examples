@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-05-23 15:43:28">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>42B6F589-7E25-4993-AD8D-9A07F2CE87A9</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="96" left="30" bottom="228" right="132" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>supplier</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="60" left="30" bottom="90" right="156" />
+		<StaticText>Supplier</StaticText>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="282" left="30" bottom="414" right="132" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>customer</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="246" left="30" bottom="276" right="156" />
+		<StaticText>Customer</StaticText>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="36" left="168" bottom="534" right="1056" />
+		<TabOrder>3</TabOrder>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<HorizontalLine>
+			<Identifier>TransportCost( supplier, customer )</Identifier>
+		</HorizontalLine>
+		<ExplicitIdentifier>
+			<Identifier>BreakPointCost( supplier, customer, l )</Identifier>
+			<NumberFormat Width="0" Decimals="1" />
+			<IdentifierTextInCell>true</IdentifierTextInCell>
+			<TitleText>"Transport Cost vs Flow"</TitleText>
+			<Color>RGB 0000ff</Color>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<MarkPoints>true</MarkPoints>
+		<VerticalLine>
+			<Identifier>Flow( supplier, customer )</Identifier>
+		</VerticalLine>
+		<XAxisIdentifier>
+			<Identifier>BreakPointFlow( supplier, customer, l )</Identifier>
+		</XAxisIdentifier>
+		<XRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>LastIntervalBreakPoint( supplier, customer )</Upper>
+		</XRange>
+	</PageObject>
+	<PageObject Type="Bar Chart">
+		<Location top="546" left="168" bottom="762" right="1056" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<HorizontalGridLines>true</HorizontalGridLines>
+		<YRange Automatic="false">
+			<Lower>0</Lower>
+			<Upper>1</Upper>
+		</YRange>
+		<ExplicitIdentifier>
+			<Identifier>Lambda( supplier, customer, l )</Identifier>
+			<TitleText>"Lambda"</TitleText>
+		</ExplicitIdentifier>
+		<FillWithColor>true</FillWithColor>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="780" left="168" bottom="816" right="1056" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>FlowString( supplier, customer )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="822" left="168" bottom="858" right="1056" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>CostString( supplier, customer )</Identifier>
+			<NumberFormat Width="15" Decimals="0" Alignment="Left" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="546" left="30" bottom="606" right="132" />
+		<TabOrder>7</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve"</Title>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>MainExecution</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="618" left="30" bottom="678" right="132" />
+		<TabOrder>8</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Flows"</Title>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<ActionSequence>
+			<Action Type="GotoPage">
+				<Destination>Next</Destination>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="36" left="1110" bottom="504" right="1458" />
+		<StaticText>In this example the Transport Cost is defined as a piecewise linear function of the Flow. This piecewise function is defined by several breakpoints, each with its own Flow value. For each of these breakpoints the corresponding Transport Cost is given; see the curve on the left (note that you can vary the supplier and customer).
+
+The piecewise function is modelled by introducing the variable Lambda that represents the weight of each breakpoint. The Flow can be represented as the weighted sum of the breakpoints, and the Transport Cost as the weighted sum of the Transport Cost corresponding to the breakpoints.
+
+After the solve, the two dashed line show the optimal Flow for the selected combination of supplier and customer, and the corresponding Transport Cost.</StaticText>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="546" left="1110" bottom="738" right="1446" />
+		<StaticText>After pressing the Solve button, the model will be solved, and values for Lambda, Flow and Transport Cost will be calculated. The bar chart on the left shows the values of Lambda for a selected combination of supplier and customer. Note that we have one Lambda for each breakpoint.</StaticText>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="780" left="1110" bottom="858" right="1452" />
+		<StaticText>The two objects at the bottom show how the values of Flow and Transport Cost are calculated for Lambda.</StaticText>
+		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Suppliers</Symbol>
+			<Symbol>Customers</Symbol>
+			<Symbol>Flow</Symbol>
+			<Symbol>TransportCost</Symbol>
+			<Symbol>BreakPointFlow</Symbol>
+			<Symbol>BreakPointCost</Symbol>
+			<Symbol>Lambda</Symbol>
+			<Symbol>LastIntervalBreakPoint</Symbol>
+			<Symbol>FlowString</Symbol>
+			<Symbol>CostString</Symbol>
+			<Symbol>MainExecution</Symbol>
+			<Symbol>supplier</Symbol>
+			<Symbol>customer</Symbol>
+			<Symbol>l</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
