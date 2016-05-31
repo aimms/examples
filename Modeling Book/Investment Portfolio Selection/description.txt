@@ -1,4 +1,4 @@
-This example is based on the chapter 'A Portfolio Selection Problem' from the AIMMS Optimization Modeling book (an electronic version of the book is available through the 'Help' menu).
+This example is based on the Chapter 'Portfolio Selection Problem' (Chapter 18) from the AIMMS Optimization Modeling book (an electronic version of the book is available through the 'Help' menu).
 
 In this example the strategic portfolio selection model has been implemented. It models how top management could spread an overall budget over several investment categories. Once their budget allocation becomes available, tactical investment decisions at the next decision level must be made concerning individual securities within each investment category. Such a two-phase approach supports hierarchical decision making which is typical in large financial institutions.
 

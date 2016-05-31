@@ -4,7 +4,7 @@ Problem type:
 MIP (small)
 
 Keywords:
-Piecewise linear, Special Ordered Set, SOS2, Network object.
+Piecewise linear, special ordered set, SOS2, network object.
 
 Description:
 The Piecewise Linear Transportation problem models a simple transportation model

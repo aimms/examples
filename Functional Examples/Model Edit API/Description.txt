@@ -1,9 +1,9 @@
 The AIMMS API supports Model Edit Functions, allowing external applications to inspect, modify or even construct AIMMS models. This example illustrates how the Model Edit functions can be used to build and solve an AIMMS transport model from within an external program, using the AIMMS API. 
 
 The external program "Model Edit API.exe" performs the following steps:
-(Please note that for the 64-bit version of AIMMS, the executable is named "Model Edit API64.exe") 
+(Please note that for the 64-bit version of AIMMS, the executable is named "Model Edit API64.exe".) 
 
-1) It starts up an AIMMS project (empty AIMMS project.prj).
+1) It starts up an AIMMS project (empty AIMMS project.aimms).
 2) It builds a transport model in this AIMMS project, i.e. it creates 
 - sets, parameters, variables, constraints, and a math program,
 - a procedure that initializes the data, solves the model, and writes the data (including the solution) to a file.

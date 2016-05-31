@@ -14,4 +14,4 @@ In addition, the model contains a very simple horizon-dependent optimization mod
 - consider data of variables outside of the planning interval of the horizon as fixed
 
 Keywords:
-LP model, horizon, composite table.
+LP model, Horizon, Composite table.
