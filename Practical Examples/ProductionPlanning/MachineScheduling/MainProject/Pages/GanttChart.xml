@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-05-11 14:41:46">
-	<PageEditSize Type="Inherited" />
+<Page Version="4000" TimeStamp="2016-05-24 08:36:06">
+	<PageEditSize Type="Inherited">
+		<Size Width="1600" Height="890" />
+	</PageEditSize>
 	<ProjectUUID>70A567D9-8AD7-4A79-9A88-821B41F65FDA</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromBottom" Value="8" />
+	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Gantt Chart">
-		<Location top="84" left="138" bottom="396" right="1068" />
+		<Location top="84" left="138" bottom="474" right="1068" />
 		<TabOrder>1</TabOrder>
 		<PopupMenu ProjectUUID="70A567D9-8AD7-4A79-9A88-821B41F65FDA" MenuUUID="9DA03B13-283D-487E-89A2-E8E4E91B104C" />
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -85,7 +90,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="2D Chart">
-		<Location top="498" left="138" bottom="816" right="1068" />
+		<Location top="540" left="138" bottom="858" right="1068" />
 		<TabOrder>5</TabOrder>
 		<Border Style="InShadow" Width="2" />
 		<X_Axis>
@@ -130,7 +135,7 @@
 		</Y_Axis>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="462" left="144" bottom="486" right="294" />
+		<Location top="498" left="144" bottom="522" right="294" />
 		<StaticText>MIP Gap</StaticText>
 		<Font GUID="921ED5BD-E7D2-4F81-B6EE-A12B9887B48B" Name="medium" />
 		<TextColor RGB="#008000" />
