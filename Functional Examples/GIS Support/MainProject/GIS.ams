@@ -338,6 +338,16 @@ Model Main_Transport {
                 IndexDomain: (d,c);
                 Definition: -1 * round(100*(XCoordinate(d) - XCoordinate(c)));
             }
+            Parameter ZoomEuropeOrUSA {
+                Range: binary;
+                Definition: {
+                    if ( ZoomArea = 'NL' ) then
+                    	0
+                    else
+                    	1
+                    endif
+                }
+            }
         }
         DeclarationSection USA_Demo_Page_Related_Identifiers {
             ElementParameter AState {
@@ -350,7 +360,7 @@ Model Main_Transport {
             Parameter ReturnValue;
             Parameter Latitude;
             Parameter Longitude;
-            Parameter ShowRoad {
+            Parameter ShowRoads {
                 InitialData: 0;
             }
             Parameter OpenStreetMapBackground;
