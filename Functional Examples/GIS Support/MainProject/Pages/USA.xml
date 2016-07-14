@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+<Page Version="4000" TimeStamp="2016-06-03 10:43:25">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -109,7 +109,7 @@
 			<Layer>
 				<Name ID="2001">"Roads"</Name>
 				<Source ID="2012">"US Roads"</Source>
-				<Show_Layer ID="2010">ShowRoad</Show_Layer>
+				<Show_Layer ID="2010">ShowRoads</Show_Layer>
 			</Layer>
 		</Background>
 	</PageObject>
@@ -234,7 +234,7 @@
 			<UserColor GUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB">Text Blue</UserColor>
 		</TextColor>
 		<ExplicitIdentifier>
-			<Identifier>ShowRoad</Identifier>
+			<Identifier>ShowRoads</Identifier>
 			<Description>"Show Road Network"</Description>
 		</ExplicitIdentifier>
 	</PageObject>
@@ -327,7 +327,7 @@ Example uses Demis Web Map Server as data source with permission of Demis. For l
 			<Symbol>ActiveBounds</Symbol>
 			<Symbol>NetworkInfo</Symbol>
 			<Symbol>AState</Symbol>
-			<Symbol>ShowRoad</Symbol>
+			<Symbol>ShowRoads</Symbol>
 			<Symbol>OpenStreetMapBackground</Symbol>
 			<Symbol>ZoomToUSA</Symbol>
 			<Symbol>ResetNetworkArea</Symbol>

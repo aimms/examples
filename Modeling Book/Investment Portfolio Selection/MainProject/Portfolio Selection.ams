@@ -220,6 +220,11 @@ Model Main_Portfolio_Selection {
                     
                     else
                     
+                    		if ( FindString(SelectedMIQPsolver,"Knitro") ) then
+                        		optname := SelectedMIQPsolver + "::honor_bounds";
+                        		OptionSetValue( optname, 1 );
+                      		endif;
+                    
                             solve MinimumFractionTacticalInvestment where solver := SelectedMIQPsolver ;
                     
                     endif;
@@ -227,6 +232,7 @@ Model Main_Portfolio_Selection {
                 ElementParameter GenMP {
                     Range: AllGeneratedMathematicalPrograms;
                 }
+                StringParameter optname;
             }
         }
         Section Investment_Budget {
@@ -289,6 +295,11 @@ Model Main_Portfolio_Selection {
                     
                        else
                     
+                       		if ( FindString(SelectedMINLPsolver,"Knitro") ) then
+                        		optname := SelectedMINLPsolver + "::honor bounds";
+                        		OptionSetValue( optname, 1 );
+                      		endif;
+                    
                             solve BudgetMinimumFractionTacticalInvestment where solver := SelectedMINLPsolver ;
                     
                        endif;
@@ -296,6 +307,7 @@ Model Main_Portfolio_Selection {
                 ElementParameter GenMP {
                     Range: AllGeneratedMathematicalPrograms;
                 }
+                StringParameter optname;
             }
         }
     }
@@ -387,7 +399,8 @@ Model Main_Portfolio_Selection {
                 for sol do
                 
                     if FindString( FormatString( "%e",sol ), "AOA" ) or
-                       FindString( FormatString( "%e",sol ), "BARON" )
+                       FindString( FormatString( "%e",sol ), "BARON" ) or
+                       FindString( FormatString( "%e",sol ), "Knitro" )
                 
                     then
                 
@@ -398,8 +411,7 @@ Model Main_Portfolio_Selection {
                     if FindString( FormatString( "%e",sol ), "CPLEX" ) or
                        FindString( FormatString( "%e",sol ), "BARON" ) or
                        FindString( FormatString( "%e",sol ), "AOA" ) or
-                       FindString( FormatString( "%e",sol ), "KNITRO 6" ) or
-                       FindString( FormatString( "%e",sol ), "MOSEK" )
+                       FindString( FormatString( "%e",sol ), "Knitro" )
                 
                     then
                 

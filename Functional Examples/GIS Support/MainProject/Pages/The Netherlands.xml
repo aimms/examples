@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+<Page Version="4000" TimeStamp="2016-06-03 11:04:17">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -79,6 +79,11 @@
 					<Top ID="1017">53.5</Top>
 				</Image_Coordinates>
 			</Source>
+			<Source>
+				<Name ID="1001">"Roads"</Name>
+				<Type ID="1002">"ESRI"</Type>
+				<Shape_File ID="1011">"Roads Shape Files\road.shp"</Shape_File>
+			</Source>
 			<Layer>
 				<Name ID="2001">"Oceans"</Name>
 				<Source ID="2012">"Demis"</Source>
@@ -116,10 +121,16 @@
 				<Show_Layer ID="2010">VALUE := ShowRivers and InternetConnectionExist</Show_Layer>
 			</Layer>
 			<Layer>
-				<Name ID="2001">"Roads"</Name>
+				<Name ID="2001">"Highways"</Name>
 				<Source ID="2012">"Demis"</Source>
 				<External_Name ID="2002">"Highways"</External_Name>
 				<Show_Layer ID="2010">VALUE := ShowHighways and InternetConnectionExist</Show_Layer>
+			</Layer>
+			<Layer>
+				<Name ID="2001">"Roads"</Name>
+				<Source ID="2012">"Roads"</Source>
+				<External_Name ID="2002">"Roads"</External_Name>
+				<Show_Layer ID="2010">VALUE := ShowRoads</Show_Layer>
 			</Layer>
 			<Layer>
 				<Name ID="2001">"NL bitmap"</Name>
@@ -129,8 +140,8 @@
 		</Background>
 		<Node>
 			<Identifier>dd</Identifier>
-			<XCoordinate>XCoordinate( dd -&gt; Depot )</XCoordinate>
-			<YCoordinate>YCoordinate( dd -&gt; Depot )</YCoordinate>
+			<XCoordinate>XCoordinate( dd-&gt;Depot )</XCoordinate>
+			<YCoordinate>YCoordinate( dd-&gt;Depot )</YCoordinate>
 			<NumberFormat Width="6" Decimals="2" />
 			<MaximumSize>15</MaximumSize>
 			<ScaleFactor>12</ScaleFactor>
@@ -169,6 +180,7 @@
 	</PageObject>
 	<PageObject Type="Composite Table">
 		<Location top="243" left="537" bottom="441" right="768" />
+		<Hidden>ZoomEuropeOrUSA</Hidden>
 		<TabOrder>13</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -191,6 +203,7 @@
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="219" left="537" bottom="237" right="633" />
+		<Hidden>ZoomEuropeOrUSA</Hidden>
 		<StaticText>From depot:</StaticText>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
@@ -200,6 +213,7 @@
 	<PageObject Type="Scalar">
 		<Location top="219" left="648" bottom="240" right="750" />
 		<ReadOnly>"Yes"</ReadOnly>
+		<Hidden>ZoomEuropeOrUSA</Hidden>
 		<TabOrder>12</TabOrder>
 		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<Border Style="None" />
@@ -250,10 +264,10 @@
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
-		<Location top="504" left="534" bottom="561" right="714" />
+		<Location top="495" left="534" bottom="561" right="762" />
 		<Hidden>VALUE := (1 - InternetConnectionExist)</Hidden>
 		<TabOrder>14</TabOrder>
-		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextShown>IdentifierText</TextShown>
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -269,6 +283,10 @@
 		<ExplicitIdentifier>
 			<Identifier>ShowHighways</Identifier>
 			<Description>"Show Highways"</Description>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ShowRoads</Identifier>
+			<Description>"Show Roads (USA only - using shape files)"</Description>
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Button">
@@ -330,9 +348,10 @@
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
-		<Location top="444" left="534" bottom="501" right="720" />
+		<Location top="444" left="534" bottom="492" right="726" />
+		<Hidden>ZoomEuropeOrUSA</Hidden>
 		<TabOrder>10</TabOrder>
-		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextShown>IdentifierText</TextShown>
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor>
@@ -353,7 +372,7 @@
 	<PageObject Type="Text">
 		<Location top="564" left="537" bottom="606" right="747" />
 		<StaticText>Note: Rivers and Highways only present when visible area is small enough.</StaticText>
-		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
+		<Font GUID="C82FBF27-1614-41C9-B718-A431388D2B5A" Name="General Text" />
 		<TextColor>
 			<UserColor GUID="C2620AD3-F3CE-4CDC-BAEC-17742857CC54">default selection</UserColor>
 		</TextColor>
@@ -393,6 +412,7 @@
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="189" left="537" bottom="213" right="723" />
+		<Hidden>ZoomEuropeOrUSA</Hidden>
 		<TabOrder>7</TabOrder>
 		<ButtonType>Text</ButtonType>
 		<Title>"Solve Transport Model"</Title>
@@ -451,6 +471,7 @@ Example uses Demis Web Map Server as data source with permission of Demis. For l
 			<Symbol>ShowRivers</Symbol>
 			<Symbol>ShowHighways</Symbol>
 			<Symbol>CurveSetting</Symbol>
+			<Symbol>ShowRoads</Symbol>
 			<Symbol>MainExecution</Symbol>
 			<Symbol>ZoomToNetherlands</Symbol>
 			<Symbol>ZoomToUSA</Symbol>
@@ -460,6 +481,7 @@ Example uses Demis Web Map Server as data source with permission of Demis. For l
 			<Symbol>c</Symbol>
 			<Symbol>dd</Symbol>
 			<Symbol>dc</Symbol>
+			<Symbol>ZoomEuropeOrUSA</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

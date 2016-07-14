@@ -345,8 +345,6 @@ Model Main_multistart {
                 empty AllNodes;
                 NumberOfNodes := 0;
                 
-                option seed := 1234;
-                
                 continue_demo := 1;
                 
                 solve_cnt := 0;

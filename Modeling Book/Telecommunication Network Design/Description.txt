@@ -4,9 +4,9 @@ The objective of the model is to check the utilization of telecommunication netw
 
 - All calls are routed from origin to destination
 
-- The routing uphods the capacity restriction of a cable
+- The routing upholds the capacity restriction of a cable
 
-- The routing uphods the capacity restriction of a switch-station
+- The routing upholds the capacity restriction of a switch-station
   
 For illustration this demo uses a dataset containing Dutch cities.
 

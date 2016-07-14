@@ -3,4 +3,4 @@ The indexed page object can be used to show the same page for several items in a
 Furthermore, this example also illustrates the use of indexed page object in showing the data for multiple cases. 
 
 Keywords:
-Indexed Page, multiple cases.
+Indexed Page, Multiple cases.

@@ -4,7 +4,7 @@ Problem type:
 MIP (small)
 
 Keywords:
-Multiple solutions, incumbent callback, solution pool, GMP
+Multiple solutions, Incumbent callback, Solution pool, GMP
 
 Description:
 This example demonstrates several approaches to get multiple solutions when

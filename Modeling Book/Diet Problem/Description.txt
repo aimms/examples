@@ -5,4 +5,4 @@ This example illustrates how data consistency can be ensured through measurement
 Details about this example can be read in Chapter 10 of the AIMMS Optimization Modeling book. An electronic version of this book is available through the 'Help' menu.
 
 Keywords:
-Diet problem, Blending problem, Unit-valued Parameter, Unit Parameter, Quantity, Unit conversion.
+Diet problem, Blending problem, Unit-valued parameter, Unit parameter, Quantity, Unit conversion.

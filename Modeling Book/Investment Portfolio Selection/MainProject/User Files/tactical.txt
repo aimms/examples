@@ -6,6 +6,6 @@ At the tactical level, historical return values for each security will be used t
 
 2) A model that only tries to minimize the total downside risk,
 
-3) A model that tries to minimize two-sided, while requiring a minimal invested fraction. The resulting model will become a mixed-integer quadratic program. Depending on the available solvers, you can choose whether you want to solve the underlying problem with a global MIQP solver or a local MINLP solver. 
+3) A model that tries to minimize two-sided, while requiring a minimal invested fraction. The resulting model will become a mixed-integer quadratic program (MIQP). Depending on the available solvers, you can choose whether you want to solve the underlying problem with a global MIQP solver or a local MINLP solver. 
 
-4) A model that tries to minimize two-sided, while requiring a minimal invested fraction and a maximum on the non-linear cost associated with the investments. The resulting model will become a mixed-integer non-linear program. Depending on the available solvers, you can choose whether you want to solve the underlying problem with the global solver BARON, or the local solver AOA.
+4) A model that tries to minimize two-sided, while requiring a minimal invested fraction and a maximum on the nonlinear cost associated with the investments. The resulting model will become a mixed-integer nonlinear program (MINLP). Depending on the available solvers, you can choose whether you want to solve the underlying problem with the global solver BARON, or the local solvers AOA or Knitro.

@@ -24,6 +24,6 @@ negate_objective_coefficient_modifications 1
 * XA 15
 * NETSOL
 * Environment
-Project_Title "AIMMS 3 - AIMMS as an Optimization Component"
+Project_Title "AIMMS as an Optimization Component"
 Startup_Page "AIMMS Demo"
 Data_Management_Style 1

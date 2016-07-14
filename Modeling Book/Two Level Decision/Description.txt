@@ -1,8 +1,8 @@
-This example is based on the chapter 'A Two-Level Decision Problem' from the AIMMS Optimization Modeling book. This chapter is available as extensive documentation to this example through the link 'Open Documentation' (in order to view it, Adobe Acrobat Reader is required). 
+This example is based on the Chapter 'Two-Level Decision Problem' (Chapter 14) from the AIMMS Optimization Modeling book. This chapter is available as extensive documentation to this example through the link 'Open Documentation' (in order to view it, Adobe Acrobat Reader is required). 
 
-In this example there is a government at the policy making level wanting to influence the behavior of several companies at the policy receiving level. In order to achieve this, the government implements tax and subsidy poilicies. The companies make their own optimal decisions given the tax and subsidy rates announced by the government. Taking into account this rational behavior of the companies, the government problem is to decide upon appropriate tax and subsidy levels. 
+In this example there is a government at the policy making level wanting to influence the behavior of several companies at the policy receiving level. In order to achieve this, the government implements tax and subsidy policies. The companies make their own optimal decisions given the tax and subsidy rates announced by the government. Taking into account this rational behavior of the companies, the government problem is to decide upon appropriate tax and subsidy levels. 
 
 On the first demo page, the policy receiving submodels are solved for a pre-specified taxation level. On the second demo page, the two level problem is solved using an intuitive and general approach in order to find simultaneously the appropriate tax and subsidy levels and the optimal responses from the companies. Finally, on the third demo page, a sensitivity analysis is carried out with respect to one of the key parameters.
 
 Keywords:
-Evironmental Economics, Stackelberg Games, Nonlinear Programming, NLP.
+Environmental Economics, Stackelberg Games, Nonlinear Programming, NLP.
