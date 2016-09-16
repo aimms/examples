@@ -3,7 +3,7 @@
 Model Main_Cutting_Stock {
     Comment: {
         "Keywords:
-        Cutting Stock, Algorithmic approach, GMP, callback function, Heuristic, AIMMS API. "
+        Cutting Stock, Algorithmic approach, GMP, callback function, Heuristic, Gantt Chart, AIMMS API. "
     }
     Section Model_Formulation {
         DeclarationSection Input_Data {

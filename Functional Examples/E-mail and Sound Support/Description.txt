@@ -1,4 +1,4 @@
-This example, illustrates two external DLLs (complete with source) that allow you to
+This example illustrates two external DLLs (complete with source) that allow you to
 - programmatically generate and send e-mail messages from within a model
 - play sounds from within your model
 

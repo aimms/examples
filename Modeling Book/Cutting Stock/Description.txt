@@ -17,7 +17,7 @@ The demo page illustrates the solution both in tabular and graphical (not when a
 Details about this Cutting Stock problem can be read in Chapter 20 of AIMMS Optimization Modeling book.
 
 Keywords:
-Cutting Stock, Algorithmic approach, GMP, Callback function, Heuristic, AIMMS API. 
+Cutting Stock, Algorithmic approach, GMP, Callback function, Heuristic, Gantt Chart, AIMMS API. 
 
 
 

@@ -224,7 +224,6 @@ Model Main_Mail_and_Sound {
             AIMMSMapiAddParagraph(MailBodyText);
             
             AIMMSMapiAddTextFromFile(MailSignatureFile);
-            AIMMSMapiAddAttachment("Mail and Sound.aimms");
             AIMMSMapiAddAttachment("MainProject\\Mail and Sound.ams");
             
             AIMMSMapiSendMail(interactive: 1);
