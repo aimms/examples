@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-05-23 15:43:28">
+<Page Version="4000" TimeStamp="2016-11-17 10:21:53">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>42B6F589-7E25-4993-AD8D-9A07F2CE87A9</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
@@ -154,21 +154,21 @@
 		<Location top="36" left="1110" bottom="504" right="1458" />
 		<StaticText>In this example the Transport Cost is defined as a piecewise linear function of the Flow. This piecewise function is defined by several breakpoints, each with its own Flow value. For each of these breakpoints the corresponding Transport Cost is given; see the curve on the left (note that you can vary the supplier and customer).
 
-The piecewise function is modelled by introducing the variable Lambda that represents the weight of each breakpoint. The Flow can be represented as the weighted sum of the breakpoints, and the Transport Cost as the weighted sum of the Transport Cost corresponding to the breakpoints.
+The piecewise function is modelled by introducing the variable Lambda which represents the weight of each breakpoint. The Flow can be represented as the weighted sum of the breakpoints, and the Transport Cost as the weighted sum of the Transport Cost corresponding to the breakpoints.
 
-After the solve, the two dashed line show the optimal Flow for the selected combination of supplier and customer, and the corresponding Transport Cost.</StaticText>
+After the solve, the two dashed lines show the optimal Flow for the selected combination of supplier and customer, and the corresponding Transport Cost. (The dashed lines are not visible if the Flow equals 0.)</StaticText>
 		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="546" left="1110" bottom="738" right="1446" />
-		<StaticText>After pressing the Solve button, the model will be solved, and values for Lambda, Flow and Transport Cost will be calculated. The bar chart on the left shows the values of Lambda for a selected combination of supplier and customer. Note that we have one Lambda for each breakpoint.</StaticText>
+		<StaticText>After pressing the Solve button, the model will be solved, and values for Lambda, Flow and Transport Cost will be calculated. The bar chart on the left shows the values of Lambda for a selected combination of supplier and customer. Note that at a breakpoint only one Lambda is active.</StaticText>
 		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Text">
 		<Location top="780" left="1110" bottom="858" right="1452" />
-		<StaticText>The two objects at the bottom show how the values of Flow and Transport Cost are calculated for Lambda.</StaticText>
+		<StaticText>The two objects at the bottom show how the values of Flow and Transport Cost are calculated for the current values of Lambda.</StaticText>
 		<Font GUID="E7AE4836-E26C-4C3B-BB70-EA9C5319F262" Name="medium" />
 		<TextColor RGB="#000000" />
 	</PageObject>

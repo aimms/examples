@@ -281,7 +281,7 @@ Model Main_PiecewiseLinearTransportation {
         Body: {
             GenerateData;
             
-            supplier := 1;
+            supplier := 2;
             customer := 1;
         }
     }
