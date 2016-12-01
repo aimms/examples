@@ -12,3 +12,7 @@ page the heath map of the non-convex objective funtion is plotted. On
 the second page the impact of starting points is demonstrated. On the
 third and last page the multistart algorithm is demonstrated step by
 step.
+
+Note:
+The example demonstrates the basic algorithm as described in chapter
+'Advanced Methods for Nonlinear Programs' in the Language Reference.

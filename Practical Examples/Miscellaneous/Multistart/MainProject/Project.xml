@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.10.1.102 unicode x86" ProjectUUID="3D1CBC88-F0BA-4206-8AC8-7864B594850E">
+<Project AimmsVersion="4.28.1.770 unicode x64" ProjectUUID="3D1CBC88-F0BA-4206-8AC8-7864B594850E">
 	<ModelFileName>multistart.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />

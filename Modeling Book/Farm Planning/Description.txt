@@ -3,7 +3,7 @@ Every year a farmer must decide what crops to grow, taking into account limiting
 
 Even though the model is relatively small in terms of symbolic constraints, the number of identifiers is relatively large.
 
-In this example, it is illustrated also how to investigate the effect of parameter changes on the value of the optimall solution (Sensitivity Analysis).
+In this example, it is illustrated also how to investigate the effect of parameter changes on the value of the optimal solution (Sensitivity Analysis).
 
 Details about this example can be read in Chapter 11 of the AIMMS Optimization Modeling book.
 

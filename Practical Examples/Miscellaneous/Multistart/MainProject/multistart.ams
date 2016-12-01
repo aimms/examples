@@ -3,7 +3,7 @@
 Model Main_multistart {
     Comment: {
         "Keywords:
-        3D Chart, Slider, Complementarity Model, Complementarity Variable."
+        Multistart, Starting point, GMP, 3D chart, Network object."
     }
     Section Chart_Demo {
         Parameter MaxSubPointsInput {
@@ -2025,15 +2025,15 @@ Model Main_multistart {
             Procedure GetLeastInfeasibleSolution {
                 Arguments: (NumberOfStoredSolutions);
                 Body: {
-                    BestSumInfeas := 1.0e20;
+                    BestMaxInfeas := 1.0e20;
                     BestSolution := 0;
                     
                     for ( ls ) do
-                        GMP::Solution::Check( GNLP, ls, NumInfeas, SumInfeas, skipObj : 1 );
+                        GMP::Solution::Check( GNLP, ls, NumInfeas, SumInfeas, MaxInfeas, skipObj : 1 );
                     
-                        if ( SumInfeas < BestSumInfeas ) then
+                        if ( MaxInfeas < BestMaxInfeas ) then
                             BestSolution := ls;
-                            BestSumInfeas := SumInfeas;
+                            BestMaxInfeas := MaxInfeas;
                         endif;
                     endfor;
                     
@@ -2054,7 +2054,8 @@ Model Main_multistart {
                 }
                 Parameter NumInfeas;
                 Parameter SumInfeas;
-                Parameter BestSumInfeas;
+                Parameter MaxInfeas;
+                Parameter BestMaxInfeas;
                 Parameter BestSolution {
                     Range: integer;
                 }
