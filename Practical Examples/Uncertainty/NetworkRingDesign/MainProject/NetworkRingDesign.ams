@@ -1,0 +1,378 @@
+## ams_version=1.0
+
+Model Main_Synchronous_Optical_Network_Ring_Design {
+    Comment: {
+        "Synchronous Optical Network Ring Design
+        
+        Problem type:
+        MIP (medium - hard)
+        
+        Keywords:
+        Synchronous Optical Network, SONET, ring assignment, stochastic programming,
+        stochastic integer programming, uncertain data, Benders decomposition, network
+        object.
+        
+        Description:
+        To prevent failures of a single optical telecommunication fiber, selfhealing rings (SHR)
+        are utilized to connect client nodes by a ring of fibers. These rings automatically
+        reroute telecommunication traffic in the case of equipment failure, providing essential
+        survivability to high-bandwidth networks.
+        
+        In this problem we consider the assignment of rings to nodes in a network. The objective
+        is to minimize the total cost of the network subject to a ring capacity limit. Demands
+        are given for each pair of nodes. If one of the nodes is not assigned to a ring then
+        the corresponding demand is unmet, and penalized in the objective.
+        
+        In practice, the demand may depend on several unknown factors. In such cases, a network
+        design that considers this uncertainty may perform better than one that does not. In
+        this project we deal with this uncertainty by using stochastic programming, which
+        results in this case in a 2-stage stochastic integer program. One way to solve the
+        stochastic integer program is by using the Benders decomposition algorithm of CPLEX.
+        
+        This example uses the network structure of several instances used by Goldschmidt, Laugier
+        and Olinick (2003). These instances can be found at:
+        https://lyle.smu.edu/~olinick/papers/srap/srap.html
+        
+        Note:
+        To run the Benders decomposition algorithm with CPLEX, version 12.7 or higher is
+        required.
+        
+        References:
+        Smith, J.C., A. J. Schaefer, J. W. Yen, A Stochastic Integer Programming Approach to
+        Solving a Synchronous Optical Network Ring Design Problem, NETWORKS 44(1) (2004),
+        pp. 12-26.
+        
+        Goldschmidt, O., A. Laugier, and E.V. Olinick, SONET/SDH ring assignment with capacity
+        constraints, Discrete Applied Mathematics 129 (2003), pp. 99-128."
+    }
+    DeclarationSection Declaration_NRD_Model {
+        Set Nodes {
+            SubsetOf: Integers;
+            Index: i, j;
+            Definition: {
+                { 1 .. NumberOfNodes }
+            }
+        }
+        Parameter NumberOfNodes {
+            Range: integer;
+            InitialData: 15;
+        }
+        Set Rings {
+            SubsetOf: Integers;
+            Index: k;
+            Definition: {
+                { 1 .. NumberOfRings }
+            }
+            Comment: "The set with Unidirectional Path Switched Rings (UPSR).";
+        }
+        Parameter NumberOfRings {
+            Range: integer;
+            InitialData: 4;
+        }
+        Parameter Demand {
+            IndexDomain: (i,j);
+            Property: Stochastic;
+            Comment: "The number of channels required to carry the traffic between nodes i and j.";
+        }
+        Parameter ActiveArc {
+            IndexDomain: (i,j);
+            Range: binary;
+            Definition: if ( Demand(i,j) ) then 1 else 0 endif;
+        }
+        Parameter DemandShortagePenalty {
+            IndexDomain: (i,j) | Demand(i,j);
+            Definition: 0.5;
+        }
+        Parameter TotalDemand {
+            IndexDomain: k;
+            InitialData: 48;
+            Comment: "Total amount of demand ring k can support.";
+        }
+        Parameter ADMCapacity {
+            IndexDomain: k;
+            InitialData: 3;
+            Comment: "Add-drop multiplexer (ADM) capacity of ring k.";
+        }
+        Variable x {
+            IndexDomain: (i,k);
+            Range: binary;
+            Property: Stochastic;
+            Stage: 1;
+            Comment: {
+                "This variable indicates whether node i is assigned to ring k,
+                in which case this value is 1."
+            }
+        }
+        Variable f {
+            IndexDomain: (i,j,k) | ActiveArc(i,j);
+            Range: nonnegative;
+            Property: Stochastic;
+            Stage: 2;
+            Comment: {
+                "This variable represents the fraction of demand between the nodes i and j that will be
+                satisfied by ring k."
+            }
+        }
+        Variable w {
+            IndexDomain: (i,j) | ActiveArc(i,j);
+            Range: nonnegative;
+            Property: Stochastic;
+            Stage: 2;
+            Comment: {
+                "This variable represents the fraction of demand between nodes i and j that is not satisfied
+                by the network."
+            }
+        }
+        Variable obj {
+            Range: free;
+            Definition: sum( (i,k), x(i,k) ) + sum( (i,j), DemandShortagePenalty(i,j) * Demand(i,j) * w(i,j) );
+            Comment: {
+                "The objective function minimizes the sum of the total number of node-to-ring
+                assignments (ADM installations), plus the total demand shortages weighted by
+                their corresponding penalties."
+            }
+        }
+        Constraint DemandAllocation {
+            IndexDomain: (i,j) | ActiveArc(i,j);
+            Definition: sum( k, f(i,j,k) ) + w(i,j) = 1;
+            Comment: {
+                "This constraint defines the fraction of demand between each node pair
+                that is not satisfied in the network."
+            }
+        }
+        Constraint DemandRestriction {
+            IndexDomain: k;
+            Definition: sum( (i,j), Demand(i,j) * f(i,j,k) ) <= TotalDemand(k);
+        }
+        Constraint AMDRestriction {
+            IndexDomain: k;
+            Definition: sum( i, x(i,k) ) <= ADMCapacity(k);
+        }
+        Constraint RingRestriction {
+            IndexDomain: (i,j,k) | ActiveArc(i,j);
+            Definition: f(i,j,k) <= x(i,k);
+            Comment: {
+                "This constraint states that demand between nodes i and j may be satisfied
+                on ring k only if both nodes i and j are placed on ring k."
+            }
+        }
+        MathematicalProgram SONET {
+            Objective: obj;
+            Direction: minimize;
+            Constraints: AllConstraints;
+            Variables: AllVariables;
+            Type: MIP;
+        }
+    }
+    DeclarationSection Declaration_Stochastic_Model {
+        ElementParameter StochasticGMP {
+            Range: AllGeneratedMathematicalPrograms;
+        }
+        Set MyStages {
+            SubsetOf: Integers;
+            Index: st;
+            Definition: data { 1 .. 2 };
+        }
+        Set MyScenarios {
+            SubsetOf: AllStochasticScenarios;
+            Index: sc;
+        }
+        Parameter ScenarioProb {
+            IndexDomain: sc;
+        }
+        ElementParameter ScenarioTreeMap {
+            IndexDomain: (sc,st);
+            Range: MyScenarios;
+        }
+    }
+    Section User_Interface {
+        Parameter pi {
+            Definition: 4 * arctan(1);
+        }
+        Parameter xcoord {
+            IndexDomain: i;
+            Definition: sin( (i-1) * pi * 2 / card(i) );
+        }
+        Parameter ycoord {
+            IndexDomain: i;
+            Definition: cos( (i-1) * pi * 2 / card(i) );
+        }
+        Set Colors {
+            SubsetOf: Integers;
+            Index: n;
+            Definition: {
+                {1..NumberOfColors}
+            }
+        }
+        Parameter NumberOfColors {
+            Range: integer;
+            Definition: 8;
+        }
+        ElementParameter ColorValue {
+            IndexDomain: n;
+            Range: AllColors;
+            Definition: data { 1 : red,  2 : blue,  3 : green,  4 : magenta,  5 : cyan,  6 : yellow,  7 : orange,  8 : grey };
+        }
+        ElementParameter ArcColor {
+            IndexDomain: (i,j);
+            Range: AllColors;
+        }
+        Parameter ArcSize {
+            IndexDomain: (i,j);
+            Default: 1.3;
+        }
+        ElementParameter NodeColor {
+            IndexDomain: i;
+            Range: AllColors;
+        }
+        Procedure ColorsAssignment {
+            Arguments: (ringassign);
+            Body: {
+                empty NodeColor, ArcColor, ArcSize;
+                
+                for (i,k) | ringassign(i,k) do
+                	NodeColor(i) := ColorValue(k);
+                endfor;
+                
+                for (i,j) | not NodeColor(i) or not NodeColor(j) do
+                	ArcColor(i,j) := 'orange';
+                	ArcSize(i,j) := 2;
+                endfor;
+            }
+            Parameter ringassign {
+                IndexDomain: (i,k);
+                Property: Input;
+            }
+        }
+        Procedure ClearAssignments {
+            Body: {
+                empty NodeColor, ArcColor, ArcSize;
+                
+                PageRefreshAll;
+            }
+        }
+        Procedure LoadNewCase {
+            Body: {
+                empty url;
+                
+                res := CaseDialogSelectForLoad( url );
+                
+                if ( res ) then
+                	CaseFileLoad( url );
+                
+                	ClearAssignments;
+                endif;
+            }
+            StringParameter url;
+            Parameter res;
+        }
+    }
+    Procedure MainInitialization;
+    Procedure SolveDeterministicModel {
+        Body: {
+            ClearAssignments;
+            
+            solve SONET;
+            
+            ColorsAssignment( x );
+        }
+    }
+    Procedure GenerateStochasticModel {
+        Body: {
+            option seed := 3141;
+            
+            AllStochasticScenarios := data { sc1 .. sc10 };
+            MyScenarios := AllStochasticScenarios;
+            
+            for (i,j) | ActiveArc(i,j) do
+            	Demand(sc,i,j).Stochastic := round( Uniform( 1.5, 3.0 ), 2 );
+            endfor;
+            
+            ScenarioTreeMap(sc,1) := 'sc1';
+            ScenarioTreeMap(sc,2) := sc;
+            
+            ScenarioProb(sc) := 1 / Card(sc);
+            
+            StochasticGMP := GMP::Instance::GenerateStochasticProgram(
+                                                SONET,
+                                                AllStochasticParameters,
+                                                AllStochasticVariables,
+                                                MyScenarios,
+                                                ScenarioProb,
+                                                ScenarioTreeMap,
+                                                "DetOrExp",
+                                                GenerationMode:'SubstituteStochasticVariables',
+                                                name:"MyStochasticProgram" );
+        }
+        Comment: {
+            "A two stage stochastic integer program is generated with the integer variable x in the
+            first stage. The stochastic demand is generated using the Uniform distribution, using
+            the original network structure."
+        }
+    }
+    Procedure SolveStochasticModel {
+        Body: {
+            ClearAssignments;
+            
+            GenerateStochasticModel;
+            
+            GMP::Instance::Solve( StochasticGMP );
+            
+            ColorsAssignment( x.Stochastic('sc1',i,k) );
+        }
+    }
+    Procedure SolveStochasticModelUsingBenders {
+        Body: {
+            ClearAssignments;
+            
+            GenerateStochasticModel;
+            
+            if ( not SolverCanUseBenders(StochasticGMP) ) then
+            	halt with "CPLEX 12.7 or higher is needed to run the Benders algorithm.";
+                return;
+            endif;
+            
+            ! Use the Benders strategy in which we, the user, specify the decomposition.
+            GMP::Instance::SetOptionValue( StochasticGMP, 'benders strategy', 1 );
+            
+            ! Specify the Benders decomposition. The stage 1 variable x is assigned to the master problem.
+            GMP::Benders::SetDecompositionMulti( StochasticGMP, (sc,i,k), x.Stochastic(sc,i,k), 0 );
+            
+            ! The stage 2 variables f and w are assigned to a subproblem; each scenario corresponds to a subproblem.
+            GMP::Benders::SetDecompositionMulti( StochasticGMP, (sc,i,j,k) | ActiveArc(i,j), f.Stochastic(sc,i,j,k), Ord(sc) );
+            GMP::Benders::SetDecompositionMulti( StochasticGMP, (sc,i,j)   | ActiveArc(i,j), w.Stochastic(sc,i,j)  , Ord(sc) );
+            
+            GMP::Instance::Solve( StochasticGMP );
+            
+            ! Switch off Benders again.
+            GMP::Instance::SetOptionValue( StochasticGMP, 'benders strategy', 0 );
+            
+            ColorsAssignment( x.Stochastic('sc1',i,k) );
+        }
+    }
+    Function SolverCanUseBenders {
+        Arguments: (myGMP);
+        Body: {
+            MIPSolver := GMP::Instance::GetSolver( StochasticGMP );
+            
+            if ( FindString(Formatstring("%e",MIPSolver),"CPLEX") and
+                 SubString(Formatstring("%e",MIPSolver),-4,-1)>= "12.7" ) then
+            	SolverCanUseBenders := 1;
+            else
+            	SolverCanUseBenders := 0;
+            endif;
+        }
+        ElementParameter myGMP {
+            Range: AllGeneratedMathematicalPrograms;
+            Property: Input;
+        }
+        ElementParameter MIPSolver {
+            Range: AllSolvers;
+        }
+    }
+    Procedure MainTermination {
+        Body: {
+            return 1;
+        }
+    }
+}

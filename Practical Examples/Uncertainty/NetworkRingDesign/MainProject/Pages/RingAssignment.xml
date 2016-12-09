@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-12-03 00:02:15">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>90983CBE-4C06-485E-AD92-A9C86D4C861F</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="54" left="96" bottom="774" right="816" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-1.2</Left>
+			<Right>1.2</Right>
+			<Top>1.2</Top>
+			<Bottom>-1.2</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>i</Identifier>
+			<XCoordinate>xcoord( i )</XCoordinate>
+			<YCoordinate>ycoord( i )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>10</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>NodeColor( i )</Color>
+			<Shape>Circle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>Demand( i, j )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Color>ArcColor( i, j )</Color>
+			<Size>ArcSize( i, j )</Size>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="168" left="852" bottom="288" right="1080" />
+		<TabOrder>4</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve deterministic model"</Title>
+		<Font GUID="443BEB0A-C2D8-4A01-9AC5-F6D1F6146A12" Name="large" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveDeterministicModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="312" left="852" bottom="432" right="1080" />
+		<TabOrder>2</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve stochastic model"</Title>
+		<Font GUID="443BEB0A-C2D8-4A01-9AC5-F6D1F6146A12" Name="large" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveStochasticModel</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="456" left="852" bottom="576" right="1080" />
+		<TabOrder>3</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Solve stochastic model using Benders"</Title>
+		<Font GUID="443BEB0A-C2D8-4A01-9AC5-F6D1F6146A12" Name="large" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>SolveStochasticModelUsingBenders</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="618" left="852" bottom="750" right="1080" />
+		<StaticText>After solving the model, nodes with the same color are assigned to the same ring. Black nodes are not assigned to any ring. The orange lines mark unsatisfied demand (and therefore one of its adjacent nodes is black).</StaticText>
+		<Font GUID="83594BA6-4875-4063-B820-5A860F4C4B90" Name="medium" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="60" left="852" bottom="162" right="1080" />
+		<StaticText>The object to the left shows the nodes in the network. The lines indicate an existing demand between two nodes.</StaticText>
+		<Font GUID="83594BA6-4875-4063-B820-5A860F4C4B90" Name="medium" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>Demand</Symbol>
+			<Symbol>xcoord</Symbol>
+			<Symbol>ycoord</Symbol>
+			<Symbol>ArcColor</Symbol>
+			<Symbol>ArcSize</Symbol>
+			<Symbol>NodeColor</Symbol>
+			<Symbol>SolveDeterministicModel</Symbol>
+			<Symbol>SolveStochasticModel</Symbol>
+			<Symbol>SolveStochasticModelUsingBenders</Symbol>
+			<Symbol>i</Symbol>
+			<Symbol>j</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

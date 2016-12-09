@@ -1,0 +1,18 @@
+﻿* AIMMS
+postsolve off
+* AOA
+* CPLEX 12.6
+* CONOPT 3.14V
+* CPLEX 12.7
+* XA 15
+* BARON 15
+* Knitro 10.1
+* SNOPT 7.2
+* GUROBI 7.0
+* CPOptimizer 12.6.3
+* MINOS
+* NETSOL
+* Environment
+Startup_Page "RingAssignment"
+Startup_Case "data\GH_15_1.data"
+Case_LoadAsActive_Procedure "LoadNewCase"
