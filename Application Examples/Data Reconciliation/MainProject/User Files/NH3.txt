@@ -34,11 +34,7 @@
 
     ShowErrorThreshold := 1 ;
 
-    SourceNode := 'Mixer' ;
-
     ResultDisplay := 'Flows' ;
-
-    DestinationNode := 'Reactor' ;
 
     NodeEl := '' ;
 
