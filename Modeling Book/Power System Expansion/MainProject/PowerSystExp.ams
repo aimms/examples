@@ -626,7 +626,7 @@ Model Main_PowerSystExp {
             }
             ElementParameter SP_DetOrExp_AuxScen {
                 Range: AllStochasticScenarios;
-                Definition: StringToElement( AllStochasticScenarios, SPRoot_Name, 1);
+                Definition: StringToElement( AllStochasticScenarios, SPRoot_Name, 0);
             }
             ElementParameter SP_GMP_PowerExpModel {
                 Range: AllGeneratedMathematicalPrograms;
@@ -847,7 +847,7 @@ Model Main_PowerSystExp {
     Procedure MainExecution;
     Procedure MainTermination {
         Body: {
-                return 1;
+            return 1;
         }
     }
     Module Scenario_Generation_Module {

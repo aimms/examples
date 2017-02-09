@@ -622,7 +622,7 @@ LibraryModule Database_Interface_Generation {
                 
                 onerror err do
                 	DialogMessage("Something went wrong. See the messages window for details.");
-                endblock
+                endblock;
             }
             Comment: "This is the core procedure of the example. It creates the runtime library.";
             StringParameter IndexDomainString {

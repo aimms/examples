@@ -324,7 +324,7 @@ Model Main_Pooling {
             Arguments: (CaseName);
             Body: {
                 If not CaseFind(CaseName,CaseID) then
-                        CaseCreate(CaseName,CaseID)
+                        CaseCreate(CaseName,CaseID);
                 endif;
                 
                 CaseSetCurrent(CaseID);

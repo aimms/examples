@@ -235,8 +235,8 @@ Model Main_CarSelection {
                 for (p) do
                         repeat
                                 WantedCars(p) += Element(cars, 1 + round(uniform(0,MaxCars)));
-                                break when loopcount = WantedCarsSize(p)
-                        endrepeat
+                                break when loopcount = WantedCarsSize(p);
+                        endrepeat;
                 endfor;
                 
                 PossibleAssignments(p,c) := c in WantedCars(p);

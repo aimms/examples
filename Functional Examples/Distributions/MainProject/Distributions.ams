@@ -655,8 +655,8 @@ Model Main_template {
                 	step  := 1;
                 	while (step>0.00001) do
                 		if DistributionSkewness( Weibull(shapealpha(dl)) )  > skewnessExtremeValue
-                		then shapealpha(dl)-=step
-                		else shapealpha(dl)+=step
+                		then shapealpha(dl)-=step;
+                		else shapealpha(dl)+=step;
                 		endif;
                 		step:=step/2;
                 	endwhile;
@@ -666,8 +666,8 @@ Model Main_template {
                 	step  := 0.05;
                 	while (step>0.00001) do
                 		if DistributionSkewness( Lognormal(shapealpha(dl),0,1) )  > skewnessExtremeValue
-                		then shapealpha(dl)+=step
-                		else shapealpha(dl)-=step
+                		then shapealpha(dl)+=step;
+                		else shapealpha(dl)-=step;
                 		endif;
                 		step:=step/2;
                 	endwhile;
@@ -677,8 +677,8 @@ Model Main_template {
                 	step  := 0.05;
                 	while (step>0.00001) do
                 		if DistributionKurtosis( Lognormal(shapealpha(dl),0,1) ) > kurtosisExtremeValue
-                		then shapealpha(dl)-=step
-                		else shapealpha(dl)+=step
+                		then shapealpha(dl)-=step;
+                		else shapealpha(dl)+=step;
                 		endif;
                 		step:=step/2;
                 	endwhile;
@@ -688,8 +688,8 @@ Model Main_template {
                 	step  := 1;
                 	while (step>0.00001) do
                 		if DistributionSkewness( Gamma(shapealpha(dl),0,1) )  > skewnessExtremeValue
-                		then shapealpha(dl)+=step
-                		else shapealpha(dl)-=step
+                		then shapealpha(dl)+=step;
+                		else shapealpha(dl)-=step;
                 		endif;
                 		step:=step/2;
                 	endwhile;
@@ -699,8 +699,8 @@ Model Main_template {
                 	step  := 1;
                 	while (step>0.00001) do
                 		if DistributionKurtosis( Gamma(shapealpha(dl),0,1) ) > kurtosisExtremeValue
-                		then shapealpha(dl)+=step
-                		else shapealpha(dl)-=step
+                		then shapealpha(dl)+=step;
+                		else shapealpha(dl)-=step;
                 		endif;
                 		step:=step/2;
                 	endwhile;
@@ -876,7 +876,7 @@ Model Main_template {
                 	scale :=1/deviation_distribution;
                 	location :=-mean_distribution/deviation_distribution;
                 	CreateHistogram('_gamma',gammaindex);
-                endfor
+                endfor;
             }
         }
         Procedure CreateWeibullHistograms {
@@ -887,7 +887,7 @@ Model Main_template {
                 	scale :=1/deviation_distribution;
                 	location :=-mean_distribution/deviation_distribution;
                 	CreateHistogram('_weibull',weibullindex);
-                endfor
+                endfor;
             }
         }
         Procedure CreateParetoHistograms {
@@ -898,7 +898,7 @@ Model Main_template {
                 	scale :=1/deviation_distribution;
                 	location :=-mean_distribution/deviation_distribution;
                 	CreateHistogram('_pareto',paretoindex);
-                endfor
+                endfor;
             }
         }
         Procedure CreateLogNormalHistograms {
@@ -909,7 +909,7 @@ Model Main_template {
                 	scale :=1/deviation_distribution;
                 	location :=-mean_distribution/deviation_distribution;
                 	CreateHistogram('_lognormal',logn);
-                endfor
+                endfor;
             }
         }
         Procedure SmoothGammaHistograms {

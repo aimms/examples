@@ -286,7 +286,7 @@ Model Main_Calendar {
                 Arguments: (day);
                 Body: {
                     DayStatus(day,st) := 1- DayStatus(day,st);
-                    InactiveDays := {d2 | DayStatus(d2,'Inactive')}
+                    InactiveDays := {d2 | DayStatus(d2,'Inactive')};
                 }
                 Comment: "The procedure changes the status the selected day and updates the InactiveDays set";
                 ElementParameter day {

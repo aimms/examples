@@ -85,14 +85,14 @@ Model Main_GoalProgramming {
     }
     Procedure MainTermination {
         Body: {
-                return 1;
+            return 1;
         }
     }
     Procedure PDFFileOpen {
         Body: {
             ! http://iwse.osu.edu/isecourses/ise702/GoalProgEx.pdf
             
-            OpenDocument("GoalProgEx.pdf")
+            OpenDocument("GoalProgEx.pdf");
         }
     }
 }

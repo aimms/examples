@@ -1991,10 +1991,10 @@ Model Main_multistart {
                     ! Send best solution found to AIMMS identifiers.
                     if ( NumberOfStoredSolutions > 0 ) then
                         GMP::Solution::SendToModel( OriginalNLP, 1 );
-                        
+                    
                         if ( NumberOfLocalSolutions = 0 ) then
                         	GMP::Solution::SetObjective( OriginalNLP, 1, na );
-                        endif
+                        endif;
                     endif;
                 }
                 Comment: {

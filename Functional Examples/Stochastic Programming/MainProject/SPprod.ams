@@ -153,7 +153,7 @@ Model Main_Scenario_Generation {
         }
         ElementParameter SPModel_DetOrExpValues {
             Range: AllStochasticScenarios;
-            Definition: StringToElement( AllStochasticScenarios, SPModel_RootName, 1);
+            Definition: StringToElement( AllStochasticScenarios, SPModel_RootName, 0);
         }
         ElementParameter StochProductionGMP {
             Range: AllGeneratedMathematicalPrograms;
@@ -312,7 +312,7 @@ Model Main_Scenario_Generation {
                         if ScenarioTreeMapping(sc,st) = ScenarioTreeMapping(sc+1,st)
                            then IsRepresentativeScenario(sc+1,st) := 0;
                         endif;
-                endfor
+                endfor;
             }
             Comment: {
                 "
@@ -485,7 +485,7 @@ Model Main_Scenario_Generation {
                   if IsRepresentativeScenario(sc,st)
                      then ScenDisplayColour(sc,st) := 'black';
                      else ScenDisplayColour(sc,st) := 'white';
-                  endif
+                  endif;
                 
                 endfor;
             }
@@ -506,7 +506,7 @@ Model Main_Scenario_Generation {
                   if IsRepresentativeScenario(sc,st)
                      then ScenDisplayColour(sc,st) := 'red';
                      else ScenDisplayColour(sc,st) := 'black';
-                  endif
+                  endif;
                 
                 endfor;
             }
@@ -521,7 +521,7 @@ Model Main_Scenario_Generation {
                 if ShowOnlyReprScen
                    then ShowOnlyRepresentativeScenarios;
                    else ShowAllScenarios;
-                endif
+                endif;
             }
         }
     }

@@ -132,7 +132,7 @@ Model Main_SEEEq {
         Procedure ShowPage {
             Body: {
                 If VisiblePage= "Input Overview" then
-                        VisiblePage:="Results Overview"
+                        VisiblePage:="Results Overview";
                 endif;
             }
         }

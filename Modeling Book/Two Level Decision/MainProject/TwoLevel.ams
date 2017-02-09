@@ -296,7 +296,9 @@ Model Main_TwoLevel {
             }
         }
         Procedure UpdateAllData {
-            Body: update;
+            Body: {
+                update;
+            }
         }
         Procedure UpdateSensivityAnalysisGraphs;
     }

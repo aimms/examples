@@ -761,7 +761,7 @@ Model Main_Database_Inspection {
                 				""
                 			endif;
                 
-                endswitch
+                endswitch;
             }
             Comment: {
                 "This procedure fills the SQLQuery that will be executed when reading the data.
@@ -984,7 +984,7 @@ Model Main_Database_Inspection {
                 
                 	!PageSetCursor("Database Information", "Information Table", DatabaseName(TheDatabase));
                 
-                endif
+                endif;
             }
             Comment: "This procedure initially determines which database and table is selected on the Database Information page.";
         }

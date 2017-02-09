@@ -295,7 +295,7 @@ Model Main_Parallel_Sessions {
             for ar do
               if GMP_PGM_ProgrCateg(ar) <> ''
                  then
-                   GMP::ProgressWindow::DeleteCategory( GMP_PGM_ProgrCateg(ar) )
+                   GMP::ProgressWindow::DeleteCategory( GMP_PGM_ProgrCateg(ar) );
               endif;
             endfor;
             
@@ -354,7 +354,7 @@ Model Main_Parallel_Sessions {
             for ar do
               if GMP_PGM_ProgrCateg(ar) <> ''
                  then
-                   GMP::ProgressWindow::DeleteCategory( GMP_PGM_ProgrCateg(ar) )
+                   GMP::ProgressWindow::DeleteCategory( GMP_PGM_ProgrCateg(ar) );
               endif;
             endfor;
             

@@ -204,7 +204,7 @@ Model Main_template {
             	SetElementAdd(Groups,NewGroup,sa_r + "_" + sa_c);
             	SelectedGroups += NewGroup;
             	GroupDefinition(NewGroup,r,c) := [ord(sa_r) = div(ord(r)+2,3)   ] and
-                  					 [ord(sa_c) = div(ord(c)+2,3)]
+                  					 [ord(sa_c) = div(ord(c)+2,3)];
             endfor;
             
             ! rows
@@ -243,7 +243,7 @@ Model Main_template {
             for (n_r,n_c) do
             	SetElementAdd(Groups,NewGroup,n_r + "_" + n_c);
             	GroupDefinition(NewGroup,r,c) := [ord(n_r) = div(ord(r) + (2 - ord(n_r)),3)   ] and
-                  					 [ord(n_c) = div(ord(c) + (2 - ord(n_c)),3)]
+                  					 [ord(n_c) = div(ord(c) + (2 - ord(n_c)),3)];
             endfor;
             
             SelectedGroup := first(Groups);

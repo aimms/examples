@@ -390,7 +390,7 @@ Model Main_Gate_Assignment_in_AIMMS {
                 
                 	!If the minimum of the reduced cost for all gate types is >= 0, then we are finished.
                 	if min(a,LastPlanReducedCost(a)) >= -0.00025 then
-                		break "masterproblem-solve-loop"
+                		break "masterproblem-solve-loop";
                 	endif ;
                 
                 
@@ -1068,7 +1068,7 @@ Model Main_Gate_Assignment_in_AIMMS {
                 
                 	!Make sure that it is not selected anymore as the selected assigned flight
                 	isAssignedFlightSelected(si,SelectedAssignedFlight) := 0 ;
-                endif
+                endif;
             }
             Comment: {
                 "Make the selected flight in the Assigned Gantt Chart unassigned (i.e. move the
@@ -1088,7 +1088,7 @@ Model Main_Gate_Assignment_in_AIMMS {
                 
                 	!Make sure that it is not selected anymore as the selected assigned flight
                 	isUnassignedFlightSelected(SelectedUnassignedFlight) := 0 ;
-                endif
+                endif;
             }
             Comment: {
                 "Make flight that was unassigned, assigned. i.e. Move the flight from the unassigned

@@ -55,7 +55,7 @@ Model Main_MPS_File_Functions {
                     endif;
                     
                     If DirectoryExists(MPSDirectory) then
-                            FileDelete(MPSDirectory + "\\*.*")
+                            FileDelete(MPSDirectory + "\\*.*");
                     else
                             DirectoryCreate(MPSDirectory);
                     endif;
@@ -74,7 +74,7 @@ Model Main_MPS_File_Functions {
                             SolverValues_TuneSingle('Iterations') := NumberIterations;
                             SolverValues_TuneSingle('Solution Time') := SolutionTime;
                     
-                    endif
+                    endif;
                 }
             }
             Procedure TuneMultipleMPSFiles {
@@ -85,7 +85,7 @@ Model Main_MPS_File_Functions {
                     endif;
                     
                     If DirectoryExists(MPSDirectory) then
-                            FileDelete(MPSDirectory + "\\*.*")
+                            FileDelete(MPSDirectory + "\\*.*");
                     else
                             DirectoryCreate(MPSDirectory);
                     endif;
@@ -109,13 +109,13 @@ Model Main_MPS_File_Functions {
                             SolverValues_TuneMultiple('Iterations') := NumberIterations;
                             SolverValues_TuneMultiple('Solution Time') := SolutionTime;
                     
-                    endif
+                    endif;
                 }
             }
         }
         DeclarationSection Tuning_Declarations {
             Parameter TunerFlag {
-                Text: "The flag indicates the tuner to point to a right tuning directory ";
+                Text: "The flag indicates the tuner to point to a right tuning directory";
                 Range: nonnegative;
                 InitialData: 0;
             }
@@ -261,7 +261,9 @@ Model Main_MPS_File_Functions {
             }
         }
         Procedure ViewOptionFiles {
-            Body: FileView(OptionFile);
+            Body: {
+                FileView(OptionFile);
+            }
         }
         Procedure ResetData {
             Body: {
@@ -287,7 +289,7 @@ Model Main_MPS_File_Functions {
             Body: {
                 for i_cp do
                         OptionGetString(i_cp,Default_OptionStringValue(i_cp));
-                endfor
+                endfor;
             }
         }
     }

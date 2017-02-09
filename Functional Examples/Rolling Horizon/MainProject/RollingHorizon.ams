@@ -163,7 +163,7 @@ Model Main_template {
                 					     ord(FirstPeriodInPlanningInterval) +
                 					     NumberOfPeriodsInPlanningInterval +
                 					     StepSize -
-                					     NumberOfPeriods
+                					     NumberOfPeriods;
                 endif ;
                 
                 FirstWeekInPlanningInterval       += StepSize ;

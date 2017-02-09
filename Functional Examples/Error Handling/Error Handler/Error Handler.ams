@@ -232,11 +232,11 @@ LibraryModule Error_Handler {
             
                      if NrOfLocations = 1 then
             
-                        TempMargin := 1+TabSize
+                        TempMargin := 1+TabSize;
             
                      else
             
-                        TempMargin := 1+2*TabSize
+                        TempMargin := 1+2*TabSize;
             
                      endif;
             

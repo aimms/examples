@@ -261,7 +261,7 @@ Model Main_ReindeerPairing {
                 	! no solutions yet:
                 	leftName(rd)  := element(lefty,ord(rd));
                 	rightName(rd) := element(Righty,ord(rd));
-                endif
+                endif;
             }
         }
     }

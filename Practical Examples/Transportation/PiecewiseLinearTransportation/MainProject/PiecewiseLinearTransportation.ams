@@ -316,7 +316,7 @@ Model Main_PiecewiseLinearTransportation {
             		maxk := argmax( kk, dummy(kk) );
             		BreakPointCost(i,j,k) := BreakPointCost(i,j,k-1) + dummy(maxk)*(BreakPointFlow(i,j,k)-BreakPointFlow(i,j,k-1))/LastIntervalBreakPoint(i,j);
             		dummy(maxk) := 0;
-            	endfor
+            	endfor;
             endfor;
         }
         Parameter Surplus;

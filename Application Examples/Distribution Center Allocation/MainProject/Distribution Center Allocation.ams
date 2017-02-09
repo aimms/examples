@@ -250,7 +250,7 @@ Model Main_Distribution_Center_Allocation {
                 NLYCoordinate( NewLocation ) := sum( d, YCoordinate(d) * ExpectedDemand(d) ) / sum( d, ExpectedDemand(d) );
                 
                 TotalCost := sum[ d, arccos( sin( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * sin( ycoordinate(d)*2*arccos(0)/180 ) +
-                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation )* 2 * arccos(0) / 180 ) ) * ShippingCost * ExpectedDemand(d)]
+                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation )* 2 * arccos(0) / 180 ) ) * ShippingCost * ExpectedDemand(d)];
                 
                 else
                 
@@ -258,7 +258,7 @@ Model Main_Distribution_Center_Allocation {
                 NLYCoordinate( NewLocation ) := average( d, YCoordinate(d) ) ;
                 
                 TotalCost := sum[ d, arccos( sin( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * sin( ycoordinate(d)*2*arccos(0)/180 ) +
-                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation ) * 2 * arccos(0) / 180) ) * ShippingCost]
+                		cos( NLYCoordinate( NewLocation ) * 2 * arccos(0) / 180 ) * cos( ycoordinate(d)*2*arccos(0)/180 ) * cos( xcoordinate( d ) * 2 * arccos(0) / 180 - NLXCoordinate( NewLocation ) * 2 * arccos(0) / 180) ) * ShippingCost];
                 
                 endif;
                 

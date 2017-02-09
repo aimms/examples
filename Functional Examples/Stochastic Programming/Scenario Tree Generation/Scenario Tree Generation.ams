@@ -410,7 +410,7 @@ LibraryModule Scenario_Tree_Generation_Library {
                         if ( Apply( CompareScenariosCallbackFunction, s, s+1, AllStages, FirstDifferentStage ) = 0 ) then
                             ScenarioGenerationProbability(s+1) += ScenarioGenerationProbability(s);
                             ScenarioGenerationProbability(s) := 0;
-                        endif
+                        endif;
                     endfor;
                     
                     AllScenarios -= { s | ScenarioGenerationProbability(s) = 0 };
