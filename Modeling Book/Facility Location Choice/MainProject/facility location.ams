@@ -351,19 +351,19 @@ Model Main_Facility_Location {
             composite table:
                l               XCoord      YCoord
             !------------------------------------
-              'Amsterdam'      121         488
-              'The Hague'       79         454
-              'Utrecht'        136         455
-              'Gouda'          108         447
-              'Arnhem'         191         444
-              'Maastricht'     175         318
-              'Haarlem'        103         489
-              'Groningen'      233         582
-              'Rotterdam'       92         436
-              'Amersfoort'     155         464
-              'Zwolle'         203         503
-              'Nijmegen'       187         427
-            !  'Den Bosch'      149         412
+              'Amsterdam'      118         487
+              'The Hague'       68         438
+              'Utrecht'        136         442
+              'Gouda'          103         429
+              'Arnhem'         205         422
+              'Maastricht'     184         231
+              'Haarlem'         97         490
+              'Groningen'      258         632
+              'Rotterdam'       82         412
+              'Amersfoort'     159         452
+              'Zwolle'         219         514
+              'Nijmegen'       196         396
+            ! 'Den Bosch'      153         377
             ;
             
             composite table:
@@ -392,8 +392,8 @@ Model Main_Facility_Location {
               'Cotton'      'Maastricht'                  9
               'Beer'        'Haarlem'                     9
               'Cotton'      'Haarlem'                    10
-            !  'Beer'        'Den Bosch'                   9
-            !  'Cotton'      'Den Bosch'                  10
+            ! 'Beer'        'Den Bosch'                   9
+            ! 'Cotton'      'Den Bosch'                  10
             ;
             
             ProductPlants       := { l | exists[ c | Supply(c,l) ] };
@@ -425,7 +425,7 @@ Model Main_Facility_Location {
     }
     Procedure MainTermination {
         Body: {
-                return 1;
+            return 1;
         }
     }
 }

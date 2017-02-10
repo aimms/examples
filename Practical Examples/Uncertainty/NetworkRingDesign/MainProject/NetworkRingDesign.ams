@@ -42,7 +42,7 @@ Model Main_Synchronous_Optical_Network_Ring_Design {
         Solving a Synchronous Optical Network Ring Design Problem, NETWORKS 44(1) (2004),
         pp. 12-26.
         
-        Goldschmidt, O., A. Laugier, and E.V. Olinick, SONET/SDH ring assignment with capacity
+        Goldschmidt, O., A. Laugier, E.V. Olinick, SONET/SDH ring assignment with capacity
         constraints, Discrete Applied Mathematics 129 (2003), pp. 99-128."
     }
     DeclarationSection Declaration_NRD_Model {

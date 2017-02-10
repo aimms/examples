@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Project AimmsVersion="4.6.4.277 unicode x86" ProjectUUID="69E2AF0F-ED8E-4ABE-8F66-1D09D7A2CB6D">
+<Project AimmsVersion="4.30.4.807 unicode x86" ProjectUUID="69E2AF0F-ED8E-4ABE-8F66-1D09D7A2CB6D">
 	<ModelFileName>PowerSystExp.ams</ModelFileName>
 	<AutoSaveAndBackup>
 		<DataBackup AtRegularInterval="true" EveryNMinutes="15" NumBackupsDatedToday="3" NumDaysBeforeToday="3" />
