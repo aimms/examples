@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+﻿<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-10-12 10:22:31">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -49,7 +49,7 @@
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Table">
-		<Location top="192" left="210" bottom="369" right="756" />
+		<Location top="186" left="207" bottom="363" right="753" />
 		<TabOrder>6</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -81,6 +81,11 @@
 			<FirstColumn>0</FirstColumn>
 			<HeaderText>"Covered"</HeaderText>
 			<NumberFormat Width="5" Decimals="0" Alignment="Center" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>ValueForCovered( t )</Identifier>
+			<FirstColumn>0</FirstColumn>
+			<NumberFormat Width="7" Decimals="3" />
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
@@ -266,6 +271,7 @@
 		<Model>
 			<Symbol>Incidence</Symbol>
 			<Symbol>CostOfMedia</Symbol>
+			<Symbol>ValueForCovered</Symbol>
 			<Symbol>IsSelectedMIP</Symbol>
 			<Symbol>TotalCostMIP</Symbol>
 			<Symbol>SolveMIP</Symbol>

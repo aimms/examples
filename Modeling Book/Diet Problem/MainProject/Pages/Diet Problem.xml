@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+<Page Version="4000" TimeStamp="2016-10-12 13:50:18">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -266,7 +266,7 @@
 		</TextColor>
 	</PageObject>
 	<PageObject Type="Table">
-		<Location top="507" left="3" bottom="612" right="198" />
+		<Location top="504" left="0" bottom="609" right="195" />
 		<TabOrder>4</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="None" Width="2" MarginTop="5" MarginRight="3" MarginBottom="5" MarginLeft="3" />

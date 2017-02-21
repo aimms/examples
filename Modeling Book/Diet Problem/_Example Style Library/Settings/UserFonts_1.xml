@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<UserFonts>
+	<UserFont Name="Legend" FaceName="Arial" PointSize="90" UUID="3D4F8FDE-28E6-4338-998E-C89108819645" />
+	<UserFont Name="Buttons" FaceName="Arial" PointSize="100" UUID="0BDEF216-23B3-4F0F-B5D6-83C5A7303CF9" InternalID="1" />
+	<UserFont Name="Headers" FaceName="Arial" PointSize="111" Bold="true" UUID="107CF1DD-5B8E-41FC-BD55-10C950947E3C" InternalID="2" />
+	<UserFont Name="Page Title" FaceName="Arial" PointSize="200" Bold="true" UUID="2EF20F59-DBC6-40B2-986C-82C67C9F42F5" InternalID="3" />
+	<UserFont Name="Table Text" FaceName="Arial" PointSize="80" UUID="428A93A5-26E1-4F42-8B0F-227299B289C7" InternalID="4" />
+	<UserFont Name="General Text" FaceName="Arial" PointSize="100" UUID="C82FBF27-1614-41C9-B718-A431388D2B5A" InternalID="6" />
+</UserFonts>

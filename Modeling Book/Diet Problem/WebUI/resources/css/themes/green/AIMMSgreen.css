@@ -1,0 +1,463 @@
+/* main background */
+
+html.theme-green body {
+	background:#fff url(images/Blured_Logo.png) no-repeat fixed top center;
+	height:auto;
+	min-height:100%;
+	font-size:12px;
+}
+
+
+
+/* header */
+html.theme-green header.tag-application {
+	background:#fff;
+	box-shadow: 0 2px 7px 0px rgba(0, 0, 0, 0.1);
+}
+
+html.theme-green header.tag-application .app-section {
+	background:url("images/aimmslogo.png") no-repeat 10px center;
+	padding-left:160px;
+	text-indent:-9999em;
+
+}
+html.theme-green header.tag-application h2 {
+	text-transform:uppercase;
+	color:#333333;
+	font-weight: bold;
+}
+.log-list-container:before, header nav.visible:before {
+	border-color: transparent transparent #000 transparent;
+}
+
+html.theme-green header .help-button .active:before {
+	color:#fff;
+	background:#000;
+}
+
+html.theme-green header .chrome-button,
+html.theme-green header .chrome-button:before,
+html.theme-green header .chrome-button i:before,
+html.theme-green header .sidebar-view-button i:before,
+html.theme-green header .homebutton,
+html.theme-green header .icon-pencil {
+	color:#177B57 ! important ;
+	font-size:16px;
+	background-color: transparent;
+}
+
+html.theme-green header .settings-area .optiondialog-nib.chrome-button{
+	background-color: white;
+	opacity: 1;
+}
+
+html.theme-green header .tools>div {
+	margin-right:4px;
+	margin-top:1px;
+}
+html.theme-green header .tools>div:before,
+html.theme-green header .tools>div i:before {
+	font-size:14px;
+}
+
+html.theme-green .tools .awf-optiondialog.open {
+right: -247px;
+top: 2px;
+}
+
+/* menubar */
+html.theme-green .menubar {
+	flex:none;
+}
+
+html.theme-green .menubar li a {
+	color:#000;
+	text-transform:uppercase;
+	font-size:12px;
+}
+html.theme-green .menubar li a:hover, .menubar li a:focus {
+	background:none;
+	text-decoration:underline;
+}
+
+html.theme-green .menubar li.active a,
+html.theme-green .menubar li.ancestor>a {
+	background:none;
+	border-bottom:3px solid #269861;
+	font-weight:bold ;
+}
+
+html.theme-green .menubar li + li a span {border:0;}
+
+html.theme-green .menubar li ul li a {
+	white-space: nowrap;
+}
+
+/*sidebar */
+html.theme-green .sidebar-container {
+	margin-top:0;
+	z-index:12;
+}
+
+html.theme-green .data-management-addon .case-form,
+html.theme-green .widget-creator-addon.open .show-widget-form-btn {bottom:0;}
+/*colors */
+html.theme-green .tooltipster-default,
+html.theme-green .sidebar,
+html.theme-green .sidebar-container,
+html.theme-green .awf-ui-access-msg,
+html.theme-green .noty_bar.noty_type_all,
+html.theme-green .noty_bar.noty_type_trace,
+
+html.theme-green .noty_bar.noty_type_debug,
+html.theme-green .noty_bar.noty_type_info,
+html.theme-green .datasource-totals-container .active-aggregates li {
+	background:#474B55;
+	
+}
+
+html.theme-green .widget-item, 
+html.theme-green .case-list-view li,
+html.theme-green .ui-state-highlight,
+html.theme-green .case-form .icon-plus,
+html.theme-green .widget-form .icon-plus {
+	background:#474B55;
+}
+html.theme-green .widget-item.widget-item-active.open, 
+html.theme-green .widget-item-active, 
+html.theme-green .widget-item:hover,
+html.theme-green .case-list-view li:hover,
+html.theme-green .case-form .icon-plus:hover, 
+html.theme-green .case-form .icon-plus:focus,
+html.theme-green .widget-form .icon-plus:hover, 
+html.theme-green .widget-form .icon-plus:focus {
+	background:#007DBB;
+}
+
+html.theme-green .data-management-addon .scrollable-wrap .antiscroll-inner:before, 
+html.theme-green .data-management-addon .scrollable-wrap:before,
+html.theme-green .grid-wrap,
+html.theme-green .typeswitch li i:before,
+html.theme-green .chrome-button,
+html.theme-green .chrome-button:before,
+html.theme-green .chrome-button i:before,
+html.theme-green header .sidebar-view-button i:before,
+html.theme-green header h2,
+html.theme-green header .homebutton,
+html.theme-green header nav i,
+html.theme-green .contents ul li,
+html.theme-green .contents ul li span.name,
+html.theme-green .contents ul li i,
+html.theme-green .searchable-list li,
+html.theme-green .datasource-totals-container .totalstitle,
+html.theme-green .datasource-totals-container ul.select-list li label,
+html.theme-green .tag-scalar .kpi .value,
+html.theme-green .layers-form.active [class^="icon-"] {
+	color:#474B55;
+}
+
+html.theme-green .typeswitch li:hover i:before,
+html.theme-green .chrome-button:hover,
+html.theme-green  .chrome-button:hover:before,
+html.theme-green  .chrome-button:hover i:before,
+html.theme-green header .sidebar-view-button:hover i:before,
+html.theme-green .tools .optiondialog-nib:hover:before,
+html.theme-green header .homebutton:hover i,
+html.theme-green header nav i:hover,
+html.theme-green .layers-form.active [class^="icon-"]:hover {
+	background: transparent;
+	color:#ccc;
+}
+
+
+.theme-green .grid-table td.grid,
+.theme-green .grid-table td.grid.number {
+text-align: right;
+width: 100px;
+color: :#32c77f;
+}
+
+html.theme-green .veil.large {
+	opacity:0.9;
+}
+
+html.theme-green section#main {overflow:visible;padding-top:100px;}
+
+
+html.theme-green .widgetdiv {
+	border-radius:5px;
+	margin-bottom: 10px;
+}
+
+html.theme-green .widgetdiv .awf-dock.top {
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+
+html.theme-green .widgetdiv .hbox {
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	overflow:hidden;
+}
+
+.h-gradient-overlay,
+.v-gradient-overlay {
+	border-radius:5px;
+}
+
+html.theme-green .title-addon {
+	color:#474B55;
+	font-weight:400;
+	font-size:18px;
+}
+html.theme-green .table-wrap {
+	border-radius:5px;
+}
+
+
+
+/* table header */
+html.theme-green h2.title-addon{
+	color: #269861;
+}
+
+
+/*threshold color */
+
+html.theme-green .tag-table .grid-viewport td.annotation-threshold-high{
+	background-color:  honeydew;
+}
+html.theme-green .tag-table .grid-viewport td.annotation-threshold-low{
+	background-color: lavenderblush;
+}
+
+
+/*button in selection */
+html.theme-green .awf-select-actions > div {
+	font-size:16px;
+	background:#269861;
+}
+
+html.theme-green .searchable-form input{
+	font-size:16px;
+}
+
+
+/*pie chart */
+
+
+html.theme-green .piechart .wedge .label{
+	font-size: 12px;
+	fill:#767676;
+}
+
+/* optioneditors */
+
+html.theme-green .awf-optiondialog > h3 {
+	color:#474B55;
+	font-weight:600;
+}
+
+html.theme-green .awf-optiondialog:before {
+border-right-color: #269861;
+}
+html.theme-green .awf-optiondialog.left:before {
+border-left-color: #269861;
+border-right-color: transparent;
+}
+
+html.theme-green .awf-optiondialog .optiondialog-nav .toolbar-button.open:before {
+	background:#269861;
+	border-color:#269861;
+}
+
+html.theme-green .awf-optiondialog .optiondialog-nav .toolbar-button:hover:before {
+	color: #269861;
+	border-color: #269861;
+}
+
+
+html.theme-green .awf-select-actions > div:hover {
+	background:#568000;
+	color:#fff;
+}
+html.theme-green .pivot-overlay .bins .bin .items .target-feedback {
+	background: #ccc;
+}
+html.theme-green .searchable-list .active .checkbox:before {
+	color:#568000;
+}
+
+html.theme-green .current .movehandler .up {
+border-color:transparent transparent #32c77f transparent;
+}
+html.theme-green .current .movehandler .down {
+border-color: #32c77f transparent transparent transparent;
+}
+
+/* button */ 
+html.theme-green .aimms-widget>.ui-button,
+html.theme-green .wizardform button {
+	color:#fff;
+	font-weight:600;
+	background:#269861;
+	border-radius:5px;
+	font-size:16px;
+	cursor:pointer;
+}
+
+html.theme-green .aimms-widget>.ui-button:hover,
+html.theme-green .wizardform button:hover {
+	opacity: 0.8;
+}
+
+
+.html.theme-green .barchart .bar:hover{
+	fill: #007DBB;
+}
+
+/* themeswitchers */
+html.theme-green .themeswitcher,
+html.theme-green .paletteswitch {
+	width:20px;
+}
+
+html.theme-green .themeswitcher select,
+html.theme-green .paletteswitch select{
+	border:0;
+	background:none;
+}
+
+html.theme-green .themeswitcher:hover,
+html.theme-green .themeswitcher:active,
+html.theme-green .paletteswitch:hover,
+html.theme-green .paletteswitch:active {
+	width:auto;
+}
+
+/* errorbar */
+
+html.theme-green .awf-ui-access-msg {
+	border-radius:0 0 20px 20px
+}
+html.theme-green .noty_bar {
+		border-radius:20px
+}
+
+/* user */
+
+html.theme-green header .user {
+	background:#b8e2f3;
+	border-radius:0 0 5px 5px;
+}
+html.theme-green header .user:hover {
+	background:#b8e2f3;
+}
+html.theme-green .user .popout:before {border-color:transparent transparent #32c77f transparent;}
+
+
+
+
+
+html.theme-green .sidebar {
+	font-size:14px;
+}
+
+html.theme-green .editor-container{
+	height: 100%;
+}
+
+/* map colors */
+html.theme-green .tag-map circle {
+ fill:black !important
+ r:20;
+
+}
+
+ /*this is the line and the shadow*/
+html.theme-green .tag-map  [title] polyline{
+	stroke: #8FCBB9 !important;
+}
+
+html.theme-green .tag-map  [title="P_Supplier_WarehouseFlow"] polyline{
+	stroke: #FF9296 ;
+
+}
+
+/* and this is it's arrowhead */
+html.theme-green .tag-map  #connections-end-marker path {
+		fill: #4D5B5F !important;
+}
+/* this is the text color */
+html.theme-green .tag-map  [title] text{
+	fill: none !important;
+}
+
+/* this is the label and its shadow */
+html.theme-green .tag-map  [title] rect {
+	fill: none !important;
+}
+
+/* this is just the label background */
+html.theme-green .tag-map  [title] rect + rect {
+	fill: none !important;
+}
+
+
+
+/*fill color */
+html.theme-green .annotation-Mod19Ord1 {
+background:#006341;
+fill:#006341;
+stroke:#006341;
+}
+
+html.theme-green .annotation-Mod19Ord2 {
+background:#5BD299;
+fill:#5BD299;
+stroke:#5BD299;
+}
+
+html.theme-green .annotation-Mod19Ord3 {
+background:#84DDB2;
+fill:#84DDB2;
+stroke:#84DDB2;
+}
+
+html.theme-green .annotation-Mod19Ord4 {
+background:  #A5CE9E;
+fill:  #A5CE9E;
+stroke:  #A5CE9E;
+}
+
+html.theme-green .annotation-Mod19Ord5 {
+background:#DBB58B;
+fill:#DBB58B;
+stroke:#DBB58B;
+}
+
+html.theme-green .annotation-Mod19Ord6 {
+background: #F6D356;
+fill: #F6D356;
+stroke: #F6D356;
+}
+
+
+html.theme-green .annotation-Mod19Ord7 {
+background:   #FBE290;
+fill:   #FBE290;
+stroke:  #FBE290;
+}
+
+html.theme-green .annotation-Mod19Ord8 {
+background: #9DD9E7;
+fill: #9DD9E7;
+stroke: #9DD9E7;
+}
+
+
+html.theme-green .annotation-Mod19Ord9{
+background:#74CFC1;
+fill:#74CFC1;
+stroke:#74CFC1;
+}

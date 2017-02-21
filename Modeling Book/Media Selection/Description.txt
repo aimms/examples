@@ -6,5 +6,7 @@ The extension of this example is to add some logical conditions to the existing 
 
 Details about this example can be read in Chapter 9 of the AIMMS Optimization Modeling book. An electronic version of this book is available through the 'Help' menu.
 
+For this example you can use the AIMMS WebUI for the graphical user interface. To use the AIMMS WebUI you should select 'Tools - Start Web UI' from the menu bar. This will open the home page in a browser. 
+
 Keywords:
-Integer Program, Logical Constraint, Set Covering Problem.
+Integer Program, Logical Constraint, Set Covering Problem, WebUI.

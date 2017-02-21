@@ -1,0 +1,20 @@
+{
+  "level": {
+    ".*": null
+  },
+  "appenders": {
+    "$null": {
+      "filepath": null,
+      "maxSize": null
+    }
+  },
+  "remotes": {
+    "$null": {
+      "protocol": null,
+      "url": null
+    }
+  },
+  "stdout": false,
+  "dateFormat": "(DD-MM-YYYY HH:mm:ss)",
+  "overwritable": true
+}

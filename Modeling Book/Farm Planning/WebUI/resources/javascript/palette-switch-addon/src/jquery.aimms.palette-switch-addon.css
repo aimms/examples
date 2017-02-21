@@ -1,0 +1,11 @@
+.paletteswitch {
+	order: 3;
+	max-width: 350px;
+	margin-top: 5px;
+	margin-right: 10px;
+}
+	.paletteswitch select {
+		width: 100%;
+		margin: 0;
+		background: rgba(0, 0, 100, 0.05);
+	}

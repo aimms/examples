@@ -44,6 +44,11 @@ Model Main_Media_Selection_Problem {
         }
     }
     Section MIP_Programming {
+        Parameter ValueForCovered {
+            IndexDomain: t;
+            Range: free;
+            Definition: sum[m, Incidence(t,m) * IsSelectedMIP (m)];
+        }
         Variable IsSelectedMIP {
             IndexDomain: (m);
             Range: binary;
@@ -283,7 +288,7 @@ Model Main_Media_Selection_Problem {
     Procedure MainExecution;
     Procedure MainTermination {
         Body: {
-                return 1;
+            return 1;
         }
     }
 }

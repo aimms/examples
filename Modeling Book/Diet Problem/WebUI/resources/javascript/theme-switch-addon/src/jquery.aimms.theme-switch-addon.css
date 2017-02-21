@@ -1,0 +1,17 @@
+.themeswitcher {
+	order: 2;
+	margin-top: 5px;
+	margin-right: 10px;
+	max-width:350px;
+}
+	.themeswitcher select {
+		width: 100%;
+		margin: 0;
+		background: rgba(0, 0, 100, 0.05);
+	}
+
+@media only screen and (max-width:570px) {
+	.themeswitcher {
+		display: none;
+	}
+}

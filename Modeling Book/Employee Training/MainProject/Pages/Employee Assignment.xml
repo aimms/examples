@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2015-08-07 15:55:22">
+<Page Version="4000" TimeStamp="2016-11-16 10:41:03">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -81,7 +81,7 @@
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Button">
-		<Location top="426" left="6" bottom="450" right="192" />
+		<Location top="423" left="6" bottom="447" right="192" />
 		<TabOrder>8</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -129,7 +129,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Table">
-		<Location top="192" left="207" bottom="432" right="768" />
+		<Location top="186" left="213" bottom="426" right="774" />
 		<ReadOnly>"Yes"</ReadOnly>
 		<TabOrder>2</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />
@@ -155,7 +155,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Table">
-		<Location top="438" left="207" bottom="525" right="768" />
+		<Location top="468" left="210" bottom="555" right="771" />
 		<ReadOnly>"Yes"</ReadOnly>
 		<TabOrder>5</TabOrder>
 		<Font GUID="428A93A5-26E1-4F42-8B0F-227299B289C7" Name="Table Text" />

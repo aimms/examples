@@ -6,6 +6,14 @@ Model Main_FarmPlanning {
         LP, Linear Program, Measurement Units, Sensitivity Analysis, What-If Analysis, Worked Example."
     }
     Section Model_Formulation {
+        DeclarationSection WebUIDeclaration {
+            Parameter YieldSales {
+                IndexDomain: (c);
+                Range: nonnegative;
+                Unit: ton*hectare;
+                Definition: Sales(c)*AmountPLanted(c);
+            }
+        }
         DeclarationSection Set_Declaration {
             Set Crops {
                 Index: c;
@@ -34,6 +42,10 @@ Model Main_FarmPlanning {
         DeclarationSection Parameter_Declaration_Land {
             Parameter LandAvailable {
                 Unit: hectare;
+            }
+            Parameter BP_land {
+                IndexDomain: c;
+                Range: binary;
             }
             Parameter FractionOccupiesLand {
                 IndexDomain: (t,c);

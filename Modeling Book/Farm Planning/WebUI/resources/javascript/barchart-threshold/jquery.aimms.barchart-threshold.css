@@ -1,0 +1,10 @@
+.chart .hline.threshold-high {
+	stroke:#F0725E;/* red */
+	stroke-width:2px;
+}
+
+.chart .hline.threshold-low {
+	stroke:#A5C57F; /* green */
+	stroke-width:2px;
+}
+

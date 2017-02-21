@@ -8,6 +8,23 @@ Model Main_DietProblem {
     Section Model_Section {
         Set FoodTypes {
             Index: f;
+            Definition: {
+                data 
+                    { 'Big Mac'             , 'Quarter Pounder'     , 'French Fries'        , Salad                 , 'Lowfat Milk'         ,
+                      'Coca Cola'           , 'Big Mac Menu'        , 'Quarter Pounder Menu', 'Vegetable Burger'    }
+            }
+        }
+        Parameter BP_selectedproducts {
+            IndexDomain: i;
+            Range: binary;
+        }
+        Variable Selectedproducts {
+            IndexDomain: i;
+            Range: binary;
+        }
+        Set Identifierss {
+            Index: i;
+            Definition: data { 'Nutritient Value', 'Servings', 'Weight (g)', 'PricePetUnit' };
         }
         Set Nutrients {
             Index: n;

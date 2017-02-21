@@ -1,0 +1,108 @@
+.menubar {
+	position:relative;
+	float:left;
+	flex: 1 0 auto;
+	height:40px;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+header h2.page-section {flex:1 0 1;}
+
+.menubar li {
+	float:left;
+	display:inline;
+	position:relative;
+}
+	.menubar li.active>a {
+		background:rgba(17, 119, 187, 0.5);
+		color:#fff;
+	}
+	
+	.menubar li.ancestor>a {
+		background:rgba(17, 119, 187, 0.25)
+	}
+
+	.menubar li a {
+		display:block;
+		height:40px;
+		color:#000;
+		line-height:40px;
+		cursor:pointer;
+		font-size:14px;
+		color:#17b;
+		text-decoration:none;
+		padding-top:10px;
+		-webkit-transition:0.4s background ease;
+		-moz-transition:0.4s background ease;
+		transition:0.4s background ease;
+	}
+	.menubar li a span {
+		padding:0 10px;
+		text-indent:0;
+		height:20px;
+		line-height:20px;
+	}
+
+	.menubar li + li a span{
+		border-left:1px solid #e9e9e9;
+	}
+	
+		.menubar li a:hover,
+		.menubar li a:focus {
+			background:rgba(17, 119, 187, 0.25);
+		}
+		
+			.menubar li a:hover span,
+			.menubar li a:focus span{
+				border-color:transparent;
+			}
+			
+		.menubar li a i {
+			color:#999;
+			float:right;
+			margin-top:5px;
+		}
+		
+		.menubar li a:hover i,
+		.menubar li a:focus i{
+			color:#17b;
+		}
+		
+	.menubar li ul {
+		display:block;
+		margin:0;
+		padding:0;
+		list-style:none;
+		opacity:0;
+		pointer-events:none;
+		position:absolute;
+		left:0;
+		top:40px;
+		background-color: rgba(255,255,255, 0.95);
+		box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.2);
+		-webkit-transition:0.4s opacity ease;
+		-moz-transition:0.4s opacity ease;
+		transition:0.4s opacity ease;
+
+	}
+	.menubar li:hover ul {
+		opacity:1;
+		pointer-events:all;
+	}
+	.menubar li ul li {
+		display:block;
+		float:none;
+	}
+	.menubar li ul li a{
+		line-height:30px;
+		height:30px;
+		padding:0 15px;
+	}
+		.menubar li ul li a span {
+			padding:0;
+			line-height:30px;
+			border:0;
+			height:30px;
+		}
+		
