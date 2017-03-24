@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
-<UserColors LastKnownInternalId="50">
-	<UserColor Name="Bar Blue" RGB="#C8C8C8" UUID="A3839E01-47DC-46BB-819D-6CECB851B151" InternalID="37" />
+<UserColors LastKnownInternalId="51">
+	<UserColor Name="Bar Blue" RGB="#c8c8c8" UUID="A3839E01-47DC-46BB-819D-6CECB851B151" InternalID="37" />
 	<UserColor Name="Header Blue" RGB="#000081" UUID="B5956EEA-5F3E-4BD0-85C7-9F70EB490991" InternalID="45" />
 	<UserColor Name="Text Blue" RGB="#222222" UUID="23F33851-505F-45B5-AA1F-5360CB8B3EFB" InternalID="39" />
 	<UserColor Name="Background yellow" RGB="#fee7af" UUID="CCB23DE4-D3C9-4647-BE46-7A1779576484" InternalID="46" />
-	<UserColor Name="Link" RGB="#004BFF" UUID="1798981A-C40D-4713-BC08-E97545963465" InternalID="50" />
+	<UserColor Name="Link" RGB="#004bff" UUID="1798981A-C40D-4713-BC08-E97545963465" InternalID="50" />
+	<UserColor Name="Dark Green" RGB="#009b00" UUID="125F7F96-4914-4B46-BD30-5A51F4A1E2DD" InternalID="51" />
 </UserColors>

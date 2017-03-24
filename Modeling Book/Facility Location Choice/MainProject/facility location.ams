@@ -401,11 +401,11 @@ Model Main_Facility_Location {
             DistributionCenters := Locations - ProductPlants - CustomerZones;
             
             NodeColor( l | l in ProductPlants )       := 'red';
-            NodeColor( l | l in CustomerZones )       := 'green';
+            NodeColor( l | l in CustomerZones )       := 'Dark Green';
             NodeColor( l | l in DistributionCenters ) := 'blue';
             
             ArcColor( 'Beer' )   := 'red';
-            ArcColor( 'Cotton' ) := 'green';
+            ArcColor( 'Cotton' ) := 'Dark Green';
             
             VariableCost(c,p,d,z) := ( sqrt( sqr( XCoord(p) - XCoord(d) ) + sqr( YCoord(p) - YCoord(d) ) ) +
                                        sqrt( sqr( XCoord(z) - XCoord(d) ) + sqr( YCoord(z) - YCoord(d) ) ) ) / 100;

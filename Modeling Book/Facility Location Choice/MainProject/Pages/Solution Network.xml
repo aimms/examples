@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2014-10-02 11:08:38">
+<Page Version="4000" TimeStamp="2017-03-24 16:56:25">
 	<Location top="23" left="4" bottom="644" right="768" />
 	<PageEditSize Type="Inherited">
 		<Size Width="772" Height="622" />
@@ -267,7 +267,7 @@
 			<Identifier>ArcShipped( c, f, t )</Identifier>
 			<NumberFormat Width="6" Decimals="2" />
 			<MaximumSize>8</MaximumSize>
-			<ScaleFactor>2</ScaleFactor>
+			<ScaleFactor>3</ScaleFactor>
 			<TextPosition>Right</TextPosition>
 			<Color>ArcColor( c )</Color>
 			<Shape>Straight</Shape>
@@ -307,7 +307,7 @@
 	<PageObject Type="Line">
 		<Location top="600" left="351" bottom="600" right="384" />
 		<LineColor>
-			<UserColor GUID="ABB4A8BD-7798-41D3-BA43-C629DFC98735">green</UserColor>
+			<UserColor GUID="125F7F96-4914-4B46-BD30-5A51F4A1E2DD">Dark Green</UserColor>
 		</LineColor>
 		<LineWidth>2</LineWidth>
 	</PageObject>
