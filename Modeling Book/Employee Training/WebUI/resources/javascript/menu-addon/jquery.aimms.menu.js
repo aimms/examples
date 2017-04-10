@@ -46,7 +46,7 @@ var menuAddon = AWF.Widget.create({
 
 
 		pageslist.forEach(function (page) {
-			if (page.uri.contains("/")) {
+			if (page.uri.includes("/")) {
 				var ancestor = page.uri.split("/")[0];
 				topLevels.push({uri: ancestor, children:[]});
 			} else {
@@ -59,6 +59,9 @@ var menuAddon = AWF.Widget.create({
 				pageslist.filter(function(subpage) {
 					return subpage.uri.startsWith(page.uri + "/");
 				}).forEach(function (subpage) {
+					if(!page.children) {
+						page.children = [];
+					}
 					page.children.push(subpage);
 				});
 
@@ -69,8 +72,7 @@ var menuAddon = AWF.Widget.create({
 						.append('<a data-uri="' + page.uri + '"><span>' + page.uri + '<i class="icon-arrow-down2"></span></i></a>')
 						.append("<ul>");
 
-					page.children.forEach(function (subpage) {
-
+					_.uniq(page.children, function(n) {return n.uri}).forEach(function (subpage) {
 						var newSubpage = subpage.uri.split("/");
 						newSubpage.shift();
 						newSubpage = newSubpage.join("/");
