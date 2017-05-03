@@ -128,6 +128,10 @@ Model Main_TSP {
             GMP::Instance::SetCallbackAddLazyConstraint( myGMP, 'CB_Lazy' );
             
             GMP::Instance::Solve( myGMP );
+            
+            if ( GMP::Solution::Count( myGMP ) >= 1 ) then
+            	DetermineSubtours('');
+            endif;
         }
     }
     Procedure CB_Lazy {

@@ -173,7 +173,7 @@ LibraryModule Pivot_Table_State_Manager {
             	CurrentStateFile(CurrentTagElement) := SelectedStateFile;
             	empty CurrentErrorMessage;
             	PivotTableReloadState(CurrentPage, CurrentTag, StateLocation(SelectedStateFile));
-            	if CurrentErrorMessage then DialogMessage(CurrentErrorMessage) endif;
+            	if CurrentErrorMessage then DialogMessage(CurrentErrorMessage); endif;
             
             endif;
             
@@ -226,7 +226,7 @@ LibraryModule Pivot_Table_State_Manager {
             		CurrentStateFile(CurrentTagElement) := StateName;
             		empty CurrentErrorMessage;
             		PivotTableSaveState(CurrentPage,CurrentTag, StateSource);
-            		if CurrentErrorMessage then DialogMessage(CurrentErrorMessage) endif;
+            		if CurrentErrorMessage then DialogMessage(CurrentErrorMessage); endif;
             
             	else
             
@@ -269,7 +269,7 @@ LibraryModule Pivot_Table_State_Manager {
             		empty CurrentErrorMessage;
             		PivotTableDeleteState(SelectedStateFile,StateSource);
             		if CurrentErrorMessage then
-            			DialogMessage(CurrentErrorMessage)
+            			DialogMessage(CurrentErrorMessage);
             		endif;
             		States -= SelectedStateFile;
             
