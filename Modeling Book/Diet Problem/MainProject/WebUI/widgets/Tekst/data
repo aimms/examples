@@ -16,7 +16,7 @@
 	"widget.uri": "Tekst",
 	"------------------------------------------------------------------>>>>-widget.uri-": "",
 	"------------------------------------------------------------------<<<<-contents-": "",
-	"contents": "literal:\"<div>Navigation </div><div><br></div><div><a href=\\\"Home\\\">Home</a></div><div><a href=\\\"Input Data\\\">Input Data</a></div><div><a href=\\\"Solve\\\">Solve</a></div>\"",
+	"contents": "literal:\"<div>Navigation </div><div><br></div><div><a href=\\\"Main%20Project/home\\\">Home</a></div><div><a href=\\\"Main%20Project/Input%20Data\\\">Input Data</a></div><div><a href=\\\"Main%20Project/Solve\\\">Solve</a></div>\"",
 	"------------------------------------------------------------------>>>>-contents-": "",
 	"slot7": "",
 	"slot8": "",
