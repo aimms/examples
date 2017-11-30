@@ -17,7 +17,7 @@
 	"slot3": "",
 	"slot4": "",
 	"------------------------------------------------------------------<<<<-pages-": "",
-	"pages": "literal:[{\"uri\":\"Input Data\"},{\"uri\":\"Solve\"}]",
+	"pages": "literal:{\"name\":\"root\",\"children\":[{\"name\":\"Main Project\",\"slug\":\"main_project\",\"children\":[{\"name\":\"home\",\"slug\":\"home_1\",\"children\":[]},{\"name\":\"Input Data\",\"slug\":\"input_data\",\"children\":[]},{\"name\":\"Solve\",\"slug\":\"solve_1\",\"children\":[]}]}]}",
 	"------------------------------------------------------------------>>>>-pages-": "",
 	"------------------------------------------------------------------<<<<-palette.current-": "",
 	"palette.current": "literal:\"default\"",
