@@ -11,7 +11,7 @@
 	"aimms.widget.type": "literal:\"text\"",
 	"------------------------------------------------------------------>>>>-aimms.widget.type-": "",
 	"------------------------------------------------------------------<<<<-contents-": "",
-	"contents": "literal:\"<div><a href=\\\"Home\\\">Home</a></div><div><a href=\\\"Input Data\\\">Input Data</a></div>\"",
+	"contents": "literal:\"<div>Navigation:</div><div><a href=\\\"Main%20Project/home\\\">Home</a></div><div><a href=\\\"Main%20Project/Input%20Data\\\">Input Data</a></div>\"",
 	"------------------------------------------------------------------>>>>-contents-": "",
 	"slot5": "",
 	"slot6": "",

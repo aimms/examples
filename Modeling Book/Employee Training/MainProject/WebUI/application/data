@@ -4,7 +4,7 @@
 	"awf.persistence.version": "1.1",
 	"------------------------------------------------------------------>>>>-awf.persistence.version-": "",
 	"------------------------------------------------------------------<<<<-pages-": "",
-	"pages": "literal:[{\"uri\":\"Solve\"},{\"uri\":\"Input Data\"}]",
+	"pages": "literal:{\"name\":\"root\",\"children\":[{\"name\":\"Main Project\",\"slug\":\"main_project\",\"children\":[{\"name\":\"home\",\"slug\":\"home_1\",\"children\":[]},{\"name\":\"Solve\",\"slug\":\"solve_1\",\"children\":[]},{\"name\":\"Input Data\",\"slug\":\"input_data\",\"children\":[]}]}]}",
 	"------------------------------------------------------------------>>>>-pages-": "",
 	"------------------------------------------------------------------<<<<-themes.current-": "",
 	"themes.current": "literal:\"default\"",
