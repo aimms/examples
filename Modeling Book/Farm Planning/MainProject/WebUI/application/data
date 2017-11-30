@@ -7,7 +7,7 @@
 	"widget.uri": "application",
 	"------------------------------------------------------------------>>>>-widget.uri-": "",
 	"------------------------------------------------------------------<<<<-pages-": "",
-	"pages": "literal:[{\"uri\":\"Input Data\"},{\"uri\":\"Sensitivity Analysis\"},{\"uri\":\"Input Data/Water\"},{\"uri\":\"Input Data/Land\"},{\"uri\":\"Input Data/Labor\"},{\"uri\":\"Output Data\"}]",
+	"pages": "literal:{\"name\":\"root\",\"children\":[{\"name\":\"Main Project\",\"slug\":\"main_project\",\"children\":[{\"name\":\"home\",\"slug\":\"home_1\",\"children\":[]},{\"name\":\"Input Data\",\"slug\":\"input_data\",\"children\":[{\"name\":\"Water\",\"slug\":\"water_1\",\"children\":[]},{\"name\":\"Land\",\"slug\":\"land_1\",\"children\":[]},{\"name\":\"Labor\",\"slug\":\"labor_1\",\"children\":[]}]},{\"name\":\"Sensitivity Analysis\",\"slug\":\"sensitivity_analysis\",\"children\":[]},{\"name\":\"Output Data\",\"slug\":\"output_data\",\"children\":[]}]}]}",
 	"------------------------------------------------------------------>>>>-pages-": "",
 	"slot1": "",
 	"------------------------------------------------------------------<<<<-awf.persistence.version-": "",

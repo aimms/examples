@@ -15,7 +15,7 @@
 	"slot4": "",
 	"slot5": "",
 	"------------------------------------------------------------------<<<<-contents-": "",
-	"contents": "literal:\"<div>Navigation:</div><div><br></div><div><a href=\\\"Home\\\">Home</a></div><div><a href=\\\"Input Data\\\">Input Data</a></div><div>&nbsp;<a href=\\\"Input Data/Labor\\\">Labor</a></div><div>&nbsp;<a href=\\\"Input Data/Land\\\">Land</a></div><div>&nbsp;<a href=\\\"Input Data/Water\\\">Water</a></div><div><a href=\\\"Output Data\\\">Output Data</a></div><div><a href=\\\"Sensitivity Analysis\\\">Sensitivity Analysis</a></div>\"",
+	"contents": "literal:\"<div>Navigation:</div><div><a href=\\\"Main%20Project/home\\\"><span style=\\\"background-color: inherit;\\\">Home</span></a></div><div><a href=\\\"Main%20Project/Input Data\\\"><span style=\\\"background-color: inherit;\\\">Input Data</span></a></div><div>&nbsp;<a href=\\\"Main%20Project/Input Data/Labor\\\" style=\\\"background-color: inherit;\\\">Labor</a></div><div>&nbsp;<a href=\\\"Main%20Project/Input Data/Land\\\"><span style=\\\"background-color: inherit;\\\">Land</span></a></div><div>&nbsp;<a href=\\\"Main%20Project/Input Data/Water\\\" style=\\\"background-color: inherit;\\\">Water</a></div><div><a href=\\\"Main%20Project/Output Data\\\"><span style=\\\"background-color: inherit;\\\">Output Data</span></a></div><div><a href=\\\"S\\\"><span style=\\\"background-color: inherit;\\\">S</span></a><a href=\\\"Main%20Project/Sensitivity Analysis\\\"><span style=\\\"background-color: inherit;\\\">ensitivity Analysis</span></a></div>\"",
 	"------------------------------------------------------------------>>>>-contents-": "",
 	"slot6": "",
 	"slot7": "",
