@@ -13,6 +13,7 @@ The RunAIMMS.exe executable can be made via Microsoft Visual Studio 2013. To cre
 - run 'nmake' in the 'Source' subfolder
 - copy the created 'RunAIMMS.exe' program to the folder where the AIMMS project (RunAIMMS.aimms) is located (i.e. 'Calling AIMMSCOM')
 
-To run the python script RunAIMMS.py
+To run the python script RunAIMMS.py:
+- make sure that you have installed the AIMMS Launcher; this will automatically register the AIMMS COM interface on a per-user basis. It allows you to use the AIMMS COM interface for any installation-free AIMMS version installed on your machine.
 - edit the script to let projectName point to the actual full path of RunAIMMS.aimms file
 - run python RunAIMMS.py
