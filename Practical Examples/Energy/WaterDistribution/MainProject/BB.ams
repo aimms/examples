@@ -54,7 +54,7 @@ Section Section_BB {
     }
     Set OptimalityStatuses {
         SubsetOf: AllSolutionStates;
-        InitialData: {
+        Definition: {
             { 'Optimal', 'LocallyOptimal', 'IntermediateNonOptimal' }
         }
     }
@@ -93,8 +93,8 @@ Section Section_BB {
             LB(c,1) := 0;
             UB(c,1) := 1;
             for (c) do
-                GMP::Column::SetLowerBound( GMPBB, c, LB(C,1) );
-                GMP::Column::SetUpperBound( GMPBB, c, UB(C,1) );
+                GMP::Column::SetLowerBound( GMPBB, c, LB(c,1) );
+                GMP::Column::SetUpperBound( GMPBB, c, UB(c,1) );
             endfor;
             
             ! Solve initial node.

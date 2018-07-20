@@ -90,6 +90,7 @@ Model Main_template {
         }
         Parameter UniquenessCoefficient {
             IndexDomain: (r,c,v);
+            InitialData: 0;
         }
         Variable UniquenesObjective {
             Definition: sum[(r,c,v), UniquenessCoefficient(r,c,v)*Solution(r,c,v)];
@@ -193,6 +194,9 @@ Model Main_template {
     Procedure MainInitialization {
         Body: {
             CreateGroups;
+            
+            ! Select latest CPLEX version as the default.
+            SelectedSolver := StringToElement(AllSolvers, max(IndexSolvers|FindString(IndexSolvers,"CPLEX"),SubString(IndexSolvers,1,50)));
         }
     }
     Procedure CreateGroups {
