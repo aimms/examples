@@ -376,7 +376,7 @@ Model Main_Transport {
             Customer := first(c);
             Depot    := first(d);
             Location := first(l);
-            InternetConnectionExist := TestInternetConnection("http://www.aimms.com");
+            InternetConnectionExist := TestInternetConnection("https://www.aimms.com");
             ZoomArea := 'NL';
             ActiveBounds(nb)  := NLBounds(nb);
             
@@ -439,7 +439,7 @@ Model Main_Transport {
             ZoomArea := 'Office';
             ActiveBounds(nb) := OfficeBounds(nb);
             
-            InternetConnectionExist := TestInternetConnection("http://www.aimms.com");
+            InternetConnectionExist := TestInternetConnection("https://www.aimms.com");
             
             if (InternetConnectionExist) then
             	read from file "<prj>:OfficeAddresses.txt";
