@@ -318,7 +318,7 @@ Model Main_Calendar {
         Body: {
             CalendarBeginDate := FormatString("%s-01-01", SubString(CurrentToString(DefaultDateFormat),1,4));
             CalendarEndDate := FormatString("%s-12-31", SubString(CurrentToString(DefaultDateFormat),1,4));
-            ChoiceDescription('on week',ch) := FormatString( "Week %l", ch );
+            ChoiceDescription('on week',ch) := FormatString( "Week %i", ch );
             
             GroupSelectionDays := {d2 | TimeslotCharacteristic(d2,'weekday') > 5 };
             FilterDayStatus(st) := 1;

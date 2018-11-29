@@ -184,7 +184,7 @@ Model Main_MPS_File_Functions {
         DeclarationSection Solving_Declarations {
             StringParameter MPSFileName {
                 Text: "The name of the MPS file to be solved";
-                Comment: "\"Single MPS Files\\\\flowshop1.mps\"";
+                InitialData: "";
             }
             Parameter ObjectiveValue {
                 Text: "The objective value returned by the solver";

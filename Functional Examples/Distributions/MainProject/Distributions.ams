@@ -169,6 +169,7 @@ Model Main_template {
             SubsetOf: Integers;
             Index: p;
             Parameter: pl;
+            Property: ElementsAreNumerical;
             Definition: {
                 {1..numberofpoints}
             }
@@ -757,7 +758,7 @@ Model Main_template {
             Range: integer;
         }
         Parameter samplesize {
-            InitialData: 3000;
+            InitialData: 300;
         }
         Parameter histogramsize {
             Definition: 152;
@@ -765,6 +766,7 @@ Model Main_template {
         Set samplefrequencieset {
             SubsetOf: Integers;
             Index: s;
+            Property: ElementsAreLabels;
             Definition: {
                 {1..histogramsize}
             }

@@ -3,8 +3,8 @@ Composite table:
 !   -----  -----    -----------  -----------------
     Job-1  Pos-1                 NonBasic         
     Job-1  Pos-2                 NonBasic         
-    Job-1  Pos-3              1  NonBasic         
-    Job-1  Pos-4                 NonBasic         
+    Job-1  Pos-3                 NonBasic         
+    Job-1  Pos-4              1  NonBasic         
     Job-1  Pos-5                 NonBasic         
     Job-1  Pos-6                 NonBasic         
     Job-1  Pos-7                 NonBasic         
@@ -45,8 +45,8 @@ Composite table:
     Job-6  Pos-7                 NonBasic         
     Job-7  Pos-1                 NonBasic         
     Job-7  Pos-2                 NonBasic         
-    Job-7  Pos-3                 NonBasic         
-    Job-7  Pos-4              1  NonBasic         
+    Job-7  Pos-3              1  NonBasic         
+    Job-7  Pos-4                 NonBasic         
     Job-7  Pos-5                 NonBasic         
     Job-7  Pos-6                 NonBasic         
     Job-7  Pos-7                 NonBasic         
@@ -67,49 +67,49 @@ Composite table:
     Pos-2  M-01            5  NonBasic       
     Pos-2  M-02           13  NonBasic       
     Pos-2  M-03           25  NonBasic       
-    Pos-2  M-04           36  NonBasic       
-    Pos-2  M-05           51  NonBasic       
-    Pos-2  M-06           62  NonBasic       
-    Pos-2  M-07           76  NonBasic       
-    Pos-2  M-08           91  NonBasic       
+    Pos-2  M-04           31  NonBasic       
+    Pos-2  M-05           46  NonBasic       
+    Pos-2  M-06           57  NonBasic       
+    Pos-2  M-07           71  NonBasic       
+    Pos-2  M-08           86  NonBasic       
     Pos-2  M-09          111  NonBasic       
     Pos-2  M-10          135  NonBasic       
     Pos-3  M-01            8  NonBasic       
     Pos-3  M-02           25  NonBasic       
     Pos-3  M-03           35  NonBasic       
-    Pos-3  M-04           51  NonBasic       
-    Pos-3  M-05           65  NonBasic       
-    Pos-3  M-06           81  NonBasic       
-    Pos-3  M-07           92  NonBasic       
-    Pos-3  M-08          104  NonBasic       
+    Pos-3  M-04           46  NonBasic       
+    Pos-3  M-05           60  NonBasic       
+    Pos-3  M-06           71  NonBasic       
+    Pos-3  M-07           90  NonBasic       
+    Pos-3  M-08          112  NonBasic       
     Pos-3  M-09          120  NonBasic       
     Pos-3  M-10          137  NonBasic       
-    Pos-4  M-01           14  NonBasic       
+    Pos-4  M-01           18  NonBasic       
     Pos-4  M-02           35  NonBasic       
-    Pos-4  M-03           50  NonBasic       
+    Pos-4  M-03           45  NonBasic       
     Pos-4  M-04           65  NonBasic       
-    Pos-4  M-05           81  NonBasic       
-    Pos-4  M-06           88  NonBasic       
-    Pos-4  M-07          107  NonBasic       
-    Pos-4  M-08          123  NonBasic       
-    Pos-4  M-09          129  NonBasic       
-    Pos-4  M-10          145  NonBasic       
+    Pos-4  M-05           79  NonBasic       
+    Pos-4  M-06           95  NonBasic       
+    Pos-4  M-07          106  NonBasic       
+    Pos-4  M-08          118  NonBasic       
+    Pos-4  M-09          132  NonBasic       
+    Pos-4  M-10          142  NonBasic       
     Pos-5  M-01           24  NonBasic       
     Pos-5  M-02           45  NonBasic       
-    Pos-5  M-03           58  NonBasic       
-    Pos-5  M-04           79  NonBasic       
-    Pos-5  M-05           89  NonBasic       
-    Pos-5  M-06          107  NonBasic       
-    Pos-5  M-07          123  NonBasic       
-    Pos-5  M-08          129  NonBasic       
+    Pos-5  M-03           60  NonBasic       
+    Pos-5  M-04           80  NonBasic       
+    Pos-5  M-05           95  NonBasic       
+    Pos-5  M-06          110  NonBasic       
+    Pos-5  M-07          121  NonBasic       
+    Pos-5  M-08          132  NonBasic       
     Pos-5  M-09          141  NonBasic       
     Pos-5  M-10          150  NonBasic       
     Pos-6  M-01           39  NonBasic       
     Pos-6  M-02           58  NonBasic       
     Pos-6  M-03           80  NonBasic       
-    Pos-6  M-04           89  NonBasic       
+    Pos-6  M-04           90  NonBasic       
     Pos-6  M-05          110  NonBasic       
-    Pos-6  M-06          118  NonBasic       
+    Pos-6  M-06          121  NonBasic       
     Pos-6  M-07          130  NonBasic       
     Pos-6  M-08          144  NonBasic       
     Pos-6  M-09          147  NonBasic       

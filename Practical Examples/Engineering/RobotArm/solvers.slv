@@ -1,4 +1,3 @@
 ! Format AIMMS380
 ! solver name     /  dll name               /  model types for which solver is the default
-CBC 2.8.0         /  libAimmsCbc280.dll     /  LP MIP
 IPOPT 3.11        /  libAimmsIpopt311.dll   /  NLP QP QCP

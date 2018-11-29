@@ -183,7 +183,7 @@ Model Main_MachineScheduling {
             }
             Parameter domStartProductionProductionLine {
                 IndexDomain: (i,o,i_hc);
-                Definition: 1 | ( ( i_hc + ActivityLengthM1(i, o) ) <= EP_OrderDeliveryDate(o) );
+                Definition: 1 $ ( ( i_hc + ActivityLengthM1(i, o) ) <= EP_OrderDeliveryDate(o) );
             }
         }
         DeclarationSection MIP_scheduling_declarations {

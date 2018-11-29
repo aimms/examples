@@ -20,6 +20,7 @@ Model Main_template {
             SubsetOf: Integers;
             Index: v;
             Parameter: Value;
+            Property: ElementsAreLabels;
             Definition: Data{1..9};
         }
         Set Groups {
@@ -196,7 +197,7 @@ Model Main_template {
             CreateGroups;
             
             ! Select latest CPLEX version as the default.
-            SelectedSolver := StringToElement(AllSolvers, max(IndexSolvers|FindString(IndexSolvers,"CPLEX"),SubString(IndexSolvers,1,50)));
+            SelectedSolver := StringToElement(AllSolvers, max(IndexSolvers|FindString(IndexSolvers,"CPLEX") and not FindString(IndexSolvers,"ODH"),SubString(IndexSolvers,1,50)));
         }
     }
     Procedure CreateGroups {

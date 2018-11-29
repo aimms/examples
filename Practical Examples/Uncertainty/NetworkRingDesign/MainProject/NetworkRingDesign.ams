@@ -49,6 +49,7 @@ Model Main_Synchronous_Optical_Network_Ring_Design {
         Set Nodes {
             SubsetOf: Integers;
             Index: i, j;
+            Property: ElementsAreLabels;
             Definition: {
                 { 1 .. NumberOfNodes }
             }

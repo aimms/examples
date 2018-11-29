@@ -259,6 +259,7 @@ Model Main_SEEEq {
                         }
                         Set ExistingATs {
                             SubsetOf: arrowTargets;
+                            Index: eat;
                         }
                         ElementParameter ATOfLegend {
                             Range: ExistingATs;

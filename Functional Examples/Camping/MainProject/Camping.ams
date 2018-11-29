@@ -25,6 +25,7 @@ Model Main_Camping {
                 SubsetOf: Integers;
                 Index: y, y1, y2;
                 Parameter: YElem;
+                Property: ElementsAreLabels;
                 Definition: {
                     { 1..NumberOfRows }
                 }

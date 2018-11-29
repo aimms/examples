@@ -277,7 +277,7 @@ Model Main_PowerSystExp {
                 	SolveDet_PowerExpModel;
                 	CopyCurrentScenSolInPlan;
                 
-                endfor
+                endfor;
             }
         }
         Procedure PerformScenarioAnalysis {
@@ -296,7 +296,7 @@ Model Main_PowerSystExp {
                 	SolveDet_PowerExpModel;
                 	CopyCurrentPlanSolInScenario;
                 
-                	endfor
+                	endfor;
                 
                 endfor;
                 
@@ -739,9 +739,9 @@ Model Main_PowerSystExp {
                 if CurrentChildBranchElem <> ''
                        then
                           CurrentSPScenario := First( s | Ord(s) = Ord(CurrentChildBranchElem)  );
-                          InstDemandValue(k) := SPInstDemand(k, CurrentSPScenario)
+                          InstDemandValue(k) := SPInstDemand(k, CurrentSPScenario);
                        else
-                          InstDemandValue(k) := AverageSPInstDemand(k)
+                          InstDemandValue(k) := AverageSPInstDemand(k);
                      endif;
                 
                 InstDemand.Stochastic( CurrentScenario, k) := InstDemandValue(k);

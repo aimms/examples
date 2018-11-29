@@ -18,7 +18,7 @@ that read integer and double numbers from a text file, are used to read
 the data.
 
 References:
-Wentges, P., Accelerating Benders\' decomposition for the capacitated facility
+Wentges, P., Accelerating Benders' decomposition for the capacitated facility
 location problem, Mathematical Methods of Operations Research 44 (2), 1996,
 pp. 267-290.
 

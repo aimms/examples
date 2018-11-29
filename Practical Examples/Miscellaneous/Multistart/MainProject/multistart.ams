@@ -170,6 +170,7 @@ Model Main_multistart {
         Set AllNodes {
             SubsetOf: Integers;
             Index: n, n1;
+            Property: ElementsAreLabels;
         }
         Parameter x_coord {
             IndexDomain: n;

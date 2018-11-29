@@ -211,7 +211,7 @@ Model Main_Flow_Shop {
             ProcesTime(j,m) := round(Uniform(1,20));
             
             for (IndexSolvers) do
-                if ( FindString(IndexSolvers, "CPLEX") ) then
+                if ( FindString(IndexSolvers, "CPLEX") and not FindString(IndexSolvers, "ODH") ) then
                     SolversMIP += {IndexSolvers};
                 elseif ( FindString(IndexSolvers, "GUROBI") ) then
             		SolversMIP += {IndexSolvers};

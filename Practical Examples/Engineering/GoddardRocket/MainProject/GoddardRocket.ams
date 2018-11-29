@@ -22,6 +22,7 @@ Model Main_GoddardRocket {
         Set Intervals {
             SubsetOf: Integers;
             Index: h;
+            Property: ElementsAreLabels;
             Definition: {
                 {0..NumberOfIntervals}
             }

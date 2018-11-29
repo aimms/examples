@@ -205,7 +205,7 @@ Model Main_StructuralOptimization {
                 point += 1;
                 
                 while (point) do
-                    x(point) := x(point-1) + sqrt(LengthOfWeb**2 - DepthOfCorrugation**2);
+                    x(point) := x(point-1) + sqrt(LengthOfWeb^2 - DepthOfCorrugation^2);
                     x(point+1) := x(point) + WidthOfFlange;
                     point += 2;
                 endwhile;
@@ -224,7 +224,7 @@ Model Main_StructuralOptimization {
             WidthOfFlange := 45.8;
             LengthOfWeb := 43.2;
             DepthOfCorrugation := 30.5;
-            WidthOfCorrugation := WidthOfFlange + sqrt(LengthOfWeb**2-DepthOfCorrugation**2);
+            WidthOfCorrugation := WidthOfFlange + sqrt(LengthOfWeb^2-DepthOfCorrugation^2);
             SectionModulus(s) := DepthOfCorrugation * PlateThickness(s) * ( LengthOfWeb/3 +  WidthOfFlange * FlangeEffectiveness ) / 2;
             
             solve LeastWeightOfStructure;

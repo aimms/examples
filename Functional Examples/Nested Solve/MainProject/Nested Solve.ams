@@ -284,8 +284,8 @@ Model Recursive_Solve_Model {
                 if ( ProgramStatus <> 'IntermediateNonInteger' ) then
                 
                     BestObjective   := GMP::SolverSession::GetObjective( ThisSession );
-                    LinearObjective := GMP::SolverSession::GetLinearObjective( ThisSession );
-                    SolutionTime    := GMP::SolverSession::GetCPUSecondsUsed( ThisSession );
+                    LinearObjective := GMP::SolverSession::GetBestBound( ThisSession );
+                    SolutionTime    := GMP::SolverSession::GetTimeUsed( ThisSession );
                 
                     UpdatePage;
                 
@@ -319,7 +319,7 @@ Model Recursive_Solve_Model {
                 if CplexSolver then
                     GMP::Instance::SetSolver( GMPNetworkFlowModel, CplexSolver );
                 else
-                    DialogMessage("You need to have CPLEX 8.0 or higher to run the model with nested solve") ;
+                    DialogMessage("You need to have CPLEX to run the model with nested solve") ;
                     Halt ;
                 endif ;
                 
@@ -330,7 +330,7 @@ Model Recursive_Solve_Model {
                 GMP::Instance::Solve( GMPNetworkFlowModel );
                 
                 BestObjective   := GMP::Instance::GetObjective( GMPNetworkFlowModel );
-                LinearObjective := GMP::Instance::GetLinearObjective( GMPNetworkFlowModel );
+                LinearObjective := GMP::Instance::GetBestBound( GMPNetworkFlowModel );
                 
                 UpdatePage;
             }

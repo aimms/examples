@@ -2,11 +2,11 @@
 
     MonitoringCosts := 1000 [1000 * $] ;
 
-    WasteTargetLevel := 11000 [1000 * kg] ;
-
     ( AmountWasteWater ) [1000 * m3] := data { Company1 : 2000,  Company2 : 2500,  Company3 : 1500,  Company4 : 3000 } ;
 
     ( WasteConcentration ) [kg/m3] := data { Company1 : 1.500,  Company2 : 1.000,  Company3 : 2.500,  Company4 : 2.000 } ;
+    
+    WasteTargetLevel := 11000 [1000 * kg] ;
 
     ( EfficiencyCoefficient ) [$*kg/m3^2] := data { Company1 : 1.000,  Company2 : 0.800,  Company3 : 1.300,  Company4 : 1.000 } ;
 

@@ -91,6 +91,9 @@ Model Main_Oil_Drilling_Well {
             Text: "The probability of finding oil when doing s and r";
             Range: [0, 1];
         }
+        ElementParameter myGMP {
+            Range: AllGeneratedMathematicalPrograms;
+        }
     }
     DeclarationSection GUI_Declaration {
         Set AdjustableFormulations {
@@ -599,7 +602,13 @@ Model Main_Oil_Drilling_Well {
             if ( CheckIfConstraintsApplied ) then
             
             	CurrentSolver('MINLP') := First(IndexSolvers | FindString(IndexSolvers,"BARON"));
-            	Solve OilWellDrilling;
+            
+            	if ( CurrentSolver('MINLP') ) then
+            		Solve OilWellDrilling;
+            	else
+            		myGMP := GMP::Instance::Generate( OilWellDrilling );
+            		GMPOuterApprox::DoOuterApproximation( myGMP );
+            	endif;
             
             	SolutionsOutput;
             
@@ -697,32 +706,36 @@ Model Main_Oil_Drilling_Well {
             Input: GMP corresponding to the NLP problem, NumberOfSamplePoints, NumberOfSelectedSamplePoints.
             
             0.      Set IterationCount equal to 1.
-            1.      Generate NumberOfSamplePoints sample points from uniform distribution.
+            1.      Generate NumberOfSamplePoints sample points from the uniform distribution.
                     Calculate the penalized objective for all sample points and select the best
                     NumberOfSelectedSamplePoints sample points.
-            2.      Take one of the NumberOfSelectedSamplePoints sample points. If all sample points
-                    are processed then go to step (6).
-            3.      For all clusters, calculate the distance between the sample point and the center
-                    of the cluster. If the distance is smaller than the radius of the cluster (i.e.,
-                    the sample point belongs to the cluster) then go to step (2).
-            4.      Solve NLP by using the sample point as its starting point to obtain a candidate
-                    local solution.
-                    For all clusters, calculate the distance between the candidate local solution and
-                    the local solution belonging to the cluster. If the distance is 0 then the candidate
-                    local solution is the same as the local solution belonging to the cluster; update
-                    the center and radius of the cluster by using the sample point and go to step (2).
-            5.      Construct new cluster by using the mean of the sample point and the candidate local
-                    solution as its center with radius equal to half the distance between these two
-                    points. Assign the candidate local solution as the local solution belonging to the
-                    cluster. Go to step (2).
-            6.      Increment IterationCount. If the number of iterations exceeds the IterationLimit,
-                    then go to step (7). Else go to step (1).
-            7.      Order the local solutions and store the NumberOfBestSolutions solutions in the
+            2.      For all sample points (NumberOfSelectedSamplePoints in total) do:
+            			For all clusters, calculate the distance between the sample point and the center
+                    	of the cluster. If the distance is smaller than the radius of the cluster (i.e.,
+                    	the sample point belongs to the cluster) then delete the sample point.
+            3.      For all (remaining) sample points do:
+            			Solve the NLP by using the sample point as its starting point to obtain a candidate
+            			local solution.
+                    	For all clusters do:
+                    	a.	Calculate the distance between the candidate local solution and the local
+                    		solution belonging to the cluster.
+                		b.	If the distance equals 0 (which implies that the candidate local solution is the
+                			same as the local solution belonging to the cluster) then update the center and
+                			radius of the cluster by using the sample point.
+                		c.	Else, construct a new cluster by using the mean of the sample point and the
+                			candidate local solution as its center with radius equal to half the distance
+                			between these two points. Assign the candidate local solution as the local
+                			solution belonging to the cluster.
+                		For all remaining sample points, calculate the distance between the sample point
+                		and the center of the updated or the new cluster. If the distance is smaller
+                		than the radius of the cluster then delete the sample point.
+            4.      Increment IterationCount. If the number of iterations exceeds the IterationLimit,
+                    then go to step (5). Else go to step (1).
+            5.      Order the local solutions and store the NumberOfBestSolutions solutions in the
                     solution repository.
             
-            The algorithm starts in fact by solving the NLP once by using the starting point (i.e.,
-            doing a normal solve). The starting point and the solution obtained are used to create,
-            as in step (5), the first cluster.
+            By default, the algorithm uses the starting point as the first \"sample\" point in the first
+            iteration.
             
             The algorithm deletes all initial solutions present in the solution repository of the GMP."
         }

@@ -33,6 +33,7 @@ Model Main_PiecewiseLinearTransportation {
             SubsetOf: Integers;
             Index: i;
             Parameter: supplier;
+            Property: ElementsAreLabels;
             Definition: {
                 { 1 .. NumberOfSuppliers }
             }
@@ -96,6 +97,7 @@ Model Main_PiecewiseLinearTransportation {
             Set Intervals {
                 SubsetOf: BreakPoints;
                 Index: k, kk;
+                Property: ElementsAreLabels;
                 Definition: {
                     { 1 .. NumberOfIntervals }
                 }
@@ -103,6 +105,7 @@ Model Main_PiecewiseLinearTransportation {
             Set BreakPoints {
                 SubsetOf: Integers;
                 Index: l;
+                Property: ElementsAreLabels;
                 Definition: {
                     { 0 .. NumberOfIntervals }
                 }

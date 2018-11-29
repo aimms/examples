@@ -148,6 +148,7 @@ Model Main_Parallel_Sessions {
                 SubsetOf: Integers;
                 Index: c;
                 Parameter: Cut;
+                Property: ElementsAreLabels;
                 Definition: {
                     { 1 .. 100 }
                 }
@@ -278,7 +279,7 @@ Model Main_Parallel_Sessions {
                                                  FormatString("GMP Pattern Generation Model '%e'", ar) );
                 
                     GMP_PGM_SolverSession(ar) :=
-                        GMP::Instance::CreateSolverSession ( GMPPatternGenerationModel(ar), Solver: 'XA 15' );
+                        GMP::Instance::CreateSolverSession ( GMPPatternGenerationModel(ar) );
                 
                     GMP_PGM_ExecStatus(ar) := GMP::SolverSession::ExecutionStatus( GMP_PGM_SolverSession(ar) );
                 
