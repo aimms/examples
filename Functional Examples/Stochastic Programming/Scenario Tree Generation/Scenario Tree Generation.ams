@@ -55,6 +55,7 @@ LibraryModule Scenario_Tree_Generation_Library {
             Set AllStages {
                 SubsetOf: Integers;
                 Index: st, st2;
+                Property: ElementsAreLabels;
             }
             ElementParameter ScenarioGenerationTreeMapping {
                 IndexDomain: (s,::st);
@@ -702,7 +703,7 @@ LibraryModule Scenario_Tree_Generation_Library {
             Set Stages {
                 SubsetOf: Integers;
                 Index: sost;
-                Property: Input;
+                Property: Input, ElementsAreLabels;
             }
             Set Scenarios {
                 SubsetOf: AllStochasticScenarios;
