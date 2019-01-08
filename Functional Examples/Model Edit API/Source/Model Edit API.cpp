@@ -57,8 +57,14 @@ CHECK("opening project");
 int main_model_MEH = 0;
 res = AimmsMeOpenRoot(0, &main_model_MEH);
 CHECK("getting handle 'MEH' to main model");
+
+//runtime Transport_Model
+int runtime_library_MEH = 0;
+res = AimmsMeCreateRuntimeLibrary(_T("Transport_Model_Library"), _T("tml"), &runtime_library_MEH);
+CHECK("creating runtime library Transport_Model_Library");
+
 int TM_MEH = 0;
-res = AimmsMeCreateNode(_T("Transport_Model_Section"), AIMMSAPI_ME_IDTYPE_SECTION, main_model_MEH, 0, &TM_MEH);
+res = AimmsMeCreateNode(_T("Transport_Model_Section"), AIMMSAPI_ME_IDTYPE_SECTION, runtime_library_MEH, 0, &TM_MEH);
 CHECK("creating Transport_Model_Section");
 
 //DECLARATION SECTION Model_Declaration
@@ -197,7 +203,7 @@ res = AimmsMeSetAttribute(Solve_Transport_MEH, AIMMSAPI_ME_ATTR_BODY,
 CHECK("set body");
 
 //Now that the model has been created, compile it.
-res = AimmsMeCompile(main_model_MEH);
+res = AimmsMeCompile(runtime_library_MEH);
 //If there are errors, we print the first error to the Log file.
 if (AimmsErrorLine(1,1)) {
     FPRINTF(Log,_T("Error on line %d: %s - %s"), AimmsErrorLine(1,1), AimmsErrorNode(1,1), AimmsErrorMessage(1));

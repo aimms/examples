@@ -15,7 +15,7 @@ Model Model_Edit_API {
         Definition: "Log.txt";
     }
     StringParameter DataOutput {
-        Definition: "Empty AIMMS Project\\Data Output.txt";
+        Definition: "Data Output.txt";
     }
     StringParameter ModelOutput {
         Definition: "Empty AIMMS Project//TransportModel.ams";
