@@ -17,7 +17,7 @@ Model Main_Portfolio_Selection_using_Chance_Constraints {
             }
             Set Assets {
                 SubsetOf: Integers;
-                Text: "Set containing all assets ";
+                Text: "Set containing all assets";
                 Index: a;
                 Definition: data { 1 .. 200 };
             }
