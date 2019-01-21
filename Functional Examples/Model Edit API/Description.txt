@@ -8,7 +8,7 @@ The external program "Model Edit API.exe" performs the following steps:
 - sets, parameters, variables, constraints, and a math program;
 - a procedure (named 'Solve_Transport') that initializes the data, solves the model, and writes the data (including the solution) to a file.
 3) It exports the model to a .ams file.
-4) It writes a log file, in which you can see whether the steps above were succesful.
+4) It writes a log file, in which you can see whether the steps above were successful.
 
 The source of the external program "Model Edit API.exe" is displayed on the Source tab on the demo page and it is contained in the Source directory that comes with this example.
 
@@ -23,7 +23,7 @@ You can inspect the created transport model by importing it, as a runtime librar
 Notes:
 - You can change the PATH environment variable by going to Control Panel, System... For Windows 7, Windows 10 and newer Windows versions: Advanced system settings, Environment Variables, select 'Path', click on Edit, and add the path of the Bin directory (separated by ";").
 - AIMMS projects started via the AIMMS API are in end-user mode. By default, warnings are not communicated to end-users. If you do want to check whether AIMMS has any warnings for you, you can set the option Communicate_warnings_to_end_users to 'On'.
-- The transport model is not created in the 'Empty AIMMS project'. To add it to that project the model has to be imported as a runtim library, as demonstrated for the 'Model Edit API' project by running the procedure 'ImportModelFile'.
+- The transport model is not created in the 'Empty AIMMS project'. To add it to that project the model has to be imported as a runtime library, as demonstrated for the 'Model Edit API' project by running the procedure 'ImportModelFile'.
 
 Keywords:
 Model Edit functions, AIMMS API, using AIMMS externally, C++, integrating AIMMS, runtime libraries.
