@@ -8,12 +8,8 @@ The AIMMS website can be found at:
 
    http://www.aimms.com
 
-The AIMMS Google Group can be found at:
-
-   https://groups.google.com/forum/#!forum/aimms
-
 If you have any questions about AIMMS in general or about how to get the most out of AIMMS for your problem, you can ask
-them here.
+them on our community forum at https://community.aimms.com/
 
 
 This repository contains several types of AIMMS examples:
